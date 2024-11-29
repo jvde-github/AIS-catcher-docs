@@ -8,8 +8,35 @@ To select particular hardware use the `-d` option followed by `:` and the device
 
 
 ## Input from file and stdin
+<div class="command-container">
+      <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-r</span>
+        <span class="cmd-value">filename</span>
+        <span class="cmd-flag">-ga</span>
+        <span class="cmd-setting">setting</span>
+        <span class="cmd-value">value</span>
+        ...
+    </div>
 
-AIS-catcher can read from a file with the switch ``-r`` followed by the filename and with a ``.`` or ``stdin`` it reads from stdin, e.g. ``-r .``. The following command records a signal with ```rtl_sdr``` at a sampling rate of 288K Hz and pipes it to AIS-catcher for decoding:
+      <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-r</span>
+        <span class="cmd-value">format</span>
+        <span class="cmd-value">filename</span>
+        <span class="cmd-flag">-ga</span>
+        <span class="cmd-setting">setting</span>
+        <span class="cmd-value">value</span>
+        ...
+    </div>
+
+</div>
+AIS-catcher can read from a file with the switch ``-r`` followed by the filename and with a ``.`` or ``stdin`` it reads from stdin, e.g. ``-r .``.
+```bash
+AIS-catcher -r .
+```
+
+ The following command records a signal with ```rtl_sdr``` at a sampling rate of 288K Hz and pipes it to AIS-catcher for decoding:
 ```bash
 rtl_sdr -s 288K -f 162M  - | AIS-catcher -r . -s 288K -v
 ```
@@ -31,11 +58,45 @@ Default assumption is that the file is in raw unsigned 8-bit IQ format. Alternat
 | LOOP | boolean | false | Enable continuous file looping |
 
 ## Input over TCP
+<div class="command-container">
+      <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-t</span>
+        <span class="cmd-value">url</span>
+        <span class="cmd-flag">-gt</span>
+        <span class="cmd-setting">setting</span>
+        <span class="cmd-value">value</span>
+        ...
+    </div>
+
+    <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-t</span>
+        <span class="cmd-value">host</span>
+        <span class="cmd-value">port</span>
+        <span class="cmd-flag">-gt</span>
+        <span class="cmd-setting">setting</span>
+        <span class="cmd-value">value</span>
+        ...
+    </div>
+    <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-t</span>
+        <span class="cmd-value">protocol</span>
+        <span class="cmd-value">host</span>
+        <span class="cmd-value">port</span>
+        <span class="cmd-flag">-gt</span>
+        <span class="cmd-setting">setting</span>
+        <span class="cmd-value">value</span>
+        ...
+    </div>
+</div>
 
 Input over TCP with various protocols can be done with `-t` followed by the URL of the server. As an example, to read raw NMEA from a TCP server we can use:
 ```bash
-AIS-catcher -t txt://192.168.1.120:5011 
+AIS-catcher -t txt://192.168.1.120:5011
 ```
+
 Various protocols are supported as input. The table below lists the available protocols and their descriptions:
 
 | Protocol | Description                                   |
@@ -58,7 +119,14 @@ Use the appropriate protocol based on your server's configuration and data forma
 | PORT | string | - | Remote port number |
 
 ## Input as UDP server
-
+<div class="command-container">
+      <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-x</span>
+        <span class="cmd-value">server</span>
+        <span class="cmd-value">port</span>
+    </div>
+</div>
 You can receive NMEA input via a built-in UDP server:
 ```bash
 AIS-catcher -x 192.168.1.235 4002
@@ -76,10 +144,25 @@ AIS-catcher -x 192.168.1.235 4002
 The command line allows you to set some device-specific parameters. AIS-catcher follows the default settings and naming conventions for the devices as much as possible so that optimal parameters determined by SDR software for signal analysis (e.g. SDR#, SDR++, SDRangel) can be directly copied. Below some examples. Note that these settings are not selecting the device used for decoding itself, this needs to be done via the ``-d`` switch (or `-e/s/r/z`). If a device is not connected or used for decoding any specific settings are simply ignored.
 
 ### RTL SDR
+
+<div class="command-container">
+      <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-d</span>
+        <span class="cmd-value">serial code</span>
+        <span class="cmd-flag">-gr</span>
+        <span class="cmd-setting">setting</span>
+        <span class="cmd-value">value</span>
+        ...
+    </div>
+</div>
+
 Gain and other settings specific to the RTL SDR can be set on the command line with the ```-gr``` switch. For example, the following command sets the tuner gain to +33.3 and switches the RTL AGC on:
+
 ```bash
 AIS-catcher -gr tuner 33.3 rtlagc ON
 ```
+
 Settings are not case-sensitive.
 
 #### Summary Settings
@@ -92,10 +175,23 @@ Settings are not case-sensitive.
 | BUFFER_COUNT | integer | 24 | Number of FIFO buffers (1-100) |
 
 ### AirSpy HF+
+<div class="command-container">
+      <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-d</span>
+        <span class="cmd-value">serial code</span>
+        <span class="cmd-flag">-gh</span>
+        <span class="cmd-setting">setting</span>
+        <span class="cmd-value">value</span>
+        ...
+    </div>
+</div>
 Gain settings specific for the AirSpy HF+ can be set on the command line with the ```-gh``` switch. The following command switches off the preamp:
+
 ```bash
 AIS-catcher -gh preamp OFF
 ```
+
 Please note that only AGC mode is supported so there are limited options.
 
 #### Summary Settings
@@ -107,11 +203,26 @@ Please note that only AGC mode is supported so there are limited options.
 
 ### AirSpy Mini/R2
 
-The AirSpy Mini/R2 requires careful gain configuration as described [here](https://airspy.com/quickstart/). As outlined in that reference there are three different gain modes: linearity, sensitivity and so-called free. These can be set via the ```-gm```switch when using the AirSpy. We can activate 'linearity' mode with gain ```10```using the following ```AIS-catcher``` command line:
+<div class="command-container">
+      <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-d</span>
+        <span class="cmd-value">serial code</span>
+        <span class="cmd-flag">-gm</span>
+        <span class="cmd-setting">setting</span>
+        <span class="cmd-value">value</span>
+        ...
+    </div>
+</div>
+
+The AirSpy Mini/R2 requires careful gain configuration as described [here](https://airspy.com/quickstart/).  As outlined in that reference there are three different gain modes: linearity, sensitivity and so-called free. These can be set via the ```-gm```switch when using the AirSpy. 
+
+We can activate 'linearity' mode with gain ```10```using the following ```AIS-catcher``` command line:
+
 ```bash
 AIS-catcher -gm linearity 10
 ```
-Finally, gains at different stages can be set as follows:
+Settings can also be provided per stage:
 ```bash
 AIS-catcher -gm lna AUTO vga 12 mixer 12
 ```
@@ -129,10 +240,23 @@ More guidance on setting the gain model and levels can be obtained in the mentio
 | BIASTEE | boolean | false | Enable/disable bias tee power |
 
 ### SDRPlay RSP1/RSP1A/RSPDX (API 3.x)
+<div class="command-container">
+      <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-d</span>
+        <span class="cmd-value">serial code</span>
+        <span class="cmd-flag">-gs</span>
+        <span class="cmd-setting">setting</span>
+        <span class="cmd-value">value</span>
+        ...
+    </div>
+</div>
+
 Settings specific for the SDRPlay  can be set on the command line with the ```-gs``` switch, e.g.:
 ```bash
 AIS-catcher -gs lnastate 5
 ```
+
 
 #### Summary Settings
 
@@ -144,10 +268,33 @@ AIS-catcher -gs lnastate 5
 | ANTENNA | char | 'A' | Antenna selection (A/B/C) for RSPdx models |
 
 ### Serial Port
+<div class="command-container">
+    <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-e</span>
+        <span class="cmd-value">port</span>
+        <span class="cmd-flag">-ge</span>
+        <span class="cmd-setting">setting</span>
+        <span class="cmd-value">value</span>
+        ...
+    </div>
+      <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-e</span>
+        <span class="cmd-value">baudrate</span>
+        <span class="cmd-value">port</span>
+        <span class="cmd-flag">-ge</span>
+        <span class="cmd-setting">setting</span>
+        <span class="cmd-value">value</span>
+        ...
+    </div>
+</div>
 Settings specific for reading NMEA lines from a serial port can all be set with the `e` switch fow now, e.g. on Linux:
 ```bash
 AIS-catcher -e 368400 /dev/serial1
+
 ```
+
 To dump the raw input from the serial device on-screen use `-`ge print on`.
 
 #### Summary Settings
@@ -159,7 +306,21 @@ To dump the raw input from the serial device on-screen use `-`ge print on`.
 | PRINT | boolean | false | Enable debug printing of received data |
 
 ### HackRF
+
+<div class="command-container">
+      <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-d</span>
+        <span class="cmd-value">serial code</span>
+        <span class="cmd-flag">-gf</span>
+        <span class="cmd-setting">setting</span>
+        <span class="cmd-value">value</span>
+        ...
+    </div>
+</div>
+
 Settings specific for the HackRF can be set on the command line with the ```-gf``` switch, e.g.:
+
 ```bash
 AIS-catcher -gf lna 16 vga 16 preamp OFF
 ```
@@ -172,6 +333,27 @@ AIS-catcher -gf lna 16 vga 16 preamp OFF
 | PREAMP | boolean | false | Enable/disable preamplifier |
 
 ### SpyServer
+<div class="command-container">
+      <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-y</span>
+        <span class="cmd-value">url</span>
+        <span class="cmd-flag">-gy</span>
+        <span class="cmd-setting">setting</span>
+        <span class="cmd-value">value</span>
+        ...
+    </div>
+        <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-y</span>
+        <span class="cmd-value">url</span>
+        <span class="cmd-value">port</span>
+        <span class="cmd-flag">-gy</span>
+        <span class="cmd-setting">setting</span>
+        <span class="cmd-value">value</span>
+        ...
+    </div>
+</div>
 
 For [SpyServer](https://airspy.com/)  use the ``-y`` switch like:
 ```bash

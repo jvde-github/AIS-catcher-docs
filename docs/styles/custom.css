@@ -99,3 +99,58 @@
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
+
+  .command-container {
+    margin: 20px 0;
+}
+
+.command-example {
+    font-family: monospace;
+    font-size: 0.85em;
+    background: #313131;
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+}
+
+.command-syntax {
+    font-family: monospace;
+    font-size: 0.85em;
+    background: #1e1e1e;
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.cmd-name {
+    color: #fff;
+}
+
+.cmd-flag {
+    background: #666;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin: 0 4px;
+}
+
+.cmd-value {
+    background: #4CAF50;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin: 0 4px;
+}
+
+.cmd-setting {
+    background: #FF8C00;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin: 0 4px;
+}
