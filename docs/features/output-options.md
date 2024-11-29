@@ -75,6 +75,23 @@ This step is only required if you want to ZIP content and post data to secure se
 
 The supported protocol switches are ``AISCATCHER`` (default), ``MINIMAL`` (NMEA lines and metadata), ``LINES`` (one JSON message per line), ``APRS`` (to submit to APRS.fi).
 
+### Summary Settimgs
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| URL | string | empty | Target HTTP endpoint URL |
+| USERPWD | string | empty | Authentication credentials |
+| STATIONID/ID/CALLSIGN | string | empty | Station identifier |
+| INTERVAL | integer | 60 | Post interval in seconds (1-86400) |
+| TIMEOUT | integer | 10 | Connection timeout in seconds (1-30) |
+| GZIP | boolean | false | Enable GZIP compression |
+| RESPONSE | boolean | true | Show response messages |
+| PROTOCOL | enum | "AISCATCHER" | Protocol type ("AISCATCHER", "MINIMAL", "AIRFRAMES", "LIST", "APRS") |
+| LAT | float | 0.0 | Station latitude |
+| LON | float | 0.0 | Station longitude |
+| DEVICE_SETTING | string | "N/A" | Device settings |
+| GROUPS_IN | integer | - | Number of input groups |
+
 ## UDP 
 
 AIS messages can be forwarded between applications over UDP via the `-u` switch and as a TCP Client using `-P`. To send data to a port at a specific server, we can use:
@@ -88,6 +105,19 @@ AIS-catcher -u 192.168.1.235 4002 JSON on
 Most external programs will not be able to accept these JSON-packaged NMEA strings. It is a way to transfer received messages between AIS-catcher instances without losing metadata like the timestamp, ppm correction and signal level. These are not captured in the standard NMEA strings. 
 Another option for UDP sending via `-u` is `BROADCAST on/off` to enable sending to broadcast addresses.
 
+
+### Summary Settimgs
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| HOST | string | empty | Target UDP host address |
+| PORT | string | empty | Target UDP port |
+| JSON | boolean | false | Enable JSON output format |
+| BROADCAST | boolean | false | Enable broadcast mode |
+| RESET | integer | -1 | Socket reset interval in minutes (1-1440) |
+| UUID | string | empty | Unique identifier (must be valid UUID) |
+| GROUPS_IN | integer | - | Number of input groups |
+
 ## TCP Client
 
 To send raw NMEA as a TCP Client connecting to a listener:
@@ -95,6 +125,18 @@ To send raw NMEA as a TCP Client connecting to a listener:
 AIS-catcher -P 192.168.1.235 4002
 ```
 In this case, AIS-catcher acts as a TCP client and connects to the remote listener at 192.168.1.239 port 4002. 
+
+### Summary Settings
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| HOST | string | empty | Target TCP server host |
+| PORT | string | empty | Target TCP server port |
+| KEEP_ALIVE | boolean | false | Enable TCP keep-alive |
+| JSON | boolean | false | Enable JSON output format |
+| PERSIST | boolean | true | Enable persistent connection |
+| UUID | string | empty | Unique identifier (must be valid UUID) |
+| GROUPS_IN | integer | - | Number of input groups |
 
 ## TCP Server
 
@@ -104,6 +146,14 @@ You can also set up AIS-catcher as a TCP listener itself for sending NMEA messag
 AIS-catcher -S 5011
 ```
 
+### Summary Settings
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| PORT | integer | 5010 | Listen port (0-65535) |
+| TIMEOUT | integer | - | Connection timeout |
+| JSON | boolean | false | Enable JSON output format |
+| GROUPS_IN | integer | - | Number of input groups |
 
 ## Connecting to OpenCPN
 In this example, we have AIS-catcher running on a Raspberry PI and aim to receive the messages in OpenCPN running on a Windows computer with IP address ``192.168.1.239``. We have chosen to use port ``10101``. On the Raspberry, we start AIS-catcher with the following command to send the NMEA messages to the Windows machine:

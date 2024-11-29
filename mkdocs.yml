@@ -5,8 +5,7 @@ site_url: https://aiscatcher.org/docs
 
 theme:
   name: 'material'
-  logo:
-    icon: fontawesome/brands/github
+  logo:   assets/logo.svg 
   language: 'en'
   palette:
     primary: 'blue'
@@ -66,6 +65,7 @@ nav:
       - Grafana: advanced/grafana.md
       - Validation: advanced/validation.md
       - Troubleshooting: advanced/troubleshooting.md
+      - JSON AIS format: advanced/JSON-decoding.md
   - Community: community.md
   - FAQ: faq.md
   - References: references.md

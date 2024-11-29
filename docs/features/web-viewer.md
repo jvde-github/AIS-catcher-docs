@@ -95,5 +95,57 @@ AIS-catcher -N 8100 PROME on
 
 For more information on how to configure Prometheus and Grafana to get an initial dashboard, see [README-grafana.md](../advanced/grafana.md).
 
+## Summary Settings
 
+Server Options:
+
+| Option | Type | Description |
+|:------:|:----:|:------------|
+| `PORT` | Integer (1-65535) | Single port for web server |
+| `PORT_MIN` | Integer (1-65535) | Minimum port in binding range |
+| `PORT_MAX` | Integer (1-65535) | Maximum port in binding range |
+| `IP_BIND` | String | Server binding IP address |
+| `REUSE_PORT` | Boolean | Enable port reuse |
+| `ZLIB` | Boolean | Enable response compression |
+
+Location Settings:
+
+| Option | Type | Description |
+|:------:|:----:|:------------|
+| `LAT` | Float | Station latitude |
+| `LON` | Float | Station longitude |
+| `SHARE_LOC` | Boolean | Share station location |
+| `USE_GPS` | Boolean | Use GPS data |
+| `OWN_MMSI` | Integer | Own vessel MMSI |
+
+Data Management:
+
+| Option | Type | Description |
+|:------:|:----:|:------------|
+| `HISTORY` | Integer (5-43200) | History retention (seconds) |
+| `CUTOFF` | Integer (0-10000) | Data retention threshold |
+| `BACKUP` | Integer (5-2880) | Backup interval (minutes) |
+| `FILE` | String | Statistics file path |
+| `REALTIME` | Boolean | Enable real-time updates |
+
+Output Formats:
+
+| Option | Type | Description |
+|:------:|:----:|:------------|
+| `KML` | Boolean | Enable KML output |
+| `GEOJSON` | Boolean | Enable GeoJSON output |
+| `PROME` | Boolean | Enable Prometheus metrics |
+| `MESSAGE` | Boolean | Enable message saving |
+
+UI Customization:
+
+| Option | Type | Description |
+|:------:|:----:|:------------|
+| `STATION` | String | Station display name |
+| `STATION_LINK` | String | Station info URL |
+| `CDN` | String | Local CDN resources path |
+| `PLUGIN` | String | JavaScript plugin path |
+| `STYLE` | String | CSS style path |
+| `PLUGIN_DIR` | String | Plugins directory |
+| `ABOUT` | String | About page path |
 

@@ -16,4 +16,16 @@ is required, build AIS-catcher in the main directory with:
   AIS-catcher -i vcan0
   ``` 
   Note that this only works on Linux with socketCAN support and has not been tested properly. Obviously, the program is not certified by NMEA and is not build for connecting it to a NMEA2000 network on a boat. It is for the experimenters wanting to learn and play with networks and AIS.
+
+  ## Summary Settings Input
+
+  | Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| INTERFACE | string | "can0" | CAN bus interface name |
+
+## Summary Settings Output
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| NETWORK | string | "" | CAN network interface name |
   

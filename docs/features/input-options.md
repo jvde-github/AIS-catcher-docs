@@ -23,6 +23,13 @@ AIS-catcher -s 1536K -r CU8 posterholt.raw -v -go SOXR on
 ```
 Default assumption is that the file is in raw unsigned 8-bit IQ format. Alternative formats can be set via `-gr` (see below) and can even include NMEA strings in text input. 
 
+### Summary Settings
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| FILE | string | - | Input file path or "stdin" for standard input |
+| LOOP | boolean | false | Enable continuous file looping |
+
 ## Input over TCP
 
 Input over TCP with various protocols can be done with `-t` followed by the URL of the server. As an example, to read raw NMEA from a TCP server we can use:
@@ -40,12 +47,29 @@ Various protocols are supported as input. The table below lists the available pr
 | `wsmqtt` | MQTT with JSOP payload over WebSockets.                        |
 
 Use the appropriate protocol based on your server's configuration and data format. 
+
+### Summary Settings
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| URL | string | - | Full connection URL including protocol, host, port, etc |
+| PROTOCOL | enum | "RTLTCP" | Connection protocol (RTLTCP, MQTT, GPSD, WS, WSMQTT, TXT, NONE) |
+| HOST | string | - | Remote host address |
+| PORT | string | - | Remote port number |
+
 ## Input as UDP server
 
 You can receive NMEA input via a built-in UDP server:
 ```bash
 AIS-catcher -x 192.168.1.235 4002
 ```
+
+### Summary Settings
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| PORT | string | - | UDP server port to listen on |
+| SERVER | string | - | UDP server address to bind to |
 
 ## Device specific settings
 
@@ -58,12 +82,28 @@ AIS-catcher -gr tuner 33.3 rtlagc ON
 ```
 Settings are not case-sensitive.
 
+#### Summary Settings
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| TUNER | auto/float | auto/33.0 | Tuner gain/AGC (0-50 dB or AUTO) |
+| RTLAGC | boolean | true | Enable/disable RTL2832U AGC |
+| BIASTEE | boolean | false | Enable/disable bias tee power |
+| BUFFER_COUNT | integer | 24 | Number of FIFO buffers (1-100) |
+
 ### AirSpy HF+
 Gain settings specific for the AirSpy HF+ can be set on the command line with the ```-gh``` switch. The following command switches off the preamp:
 ```bash
 AIS-catcher -gh preamp OFF
 ```
 Please note that only AGC mode is supported so there are limited options.
+
+#### Summary Settings
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| PREAMP | boolean | false | Enable/disable preamplifier |
+| THRESHOLD/ | enum | "LOW" | AGC threshold setting ("HIGH" or "LOW") |
 
 ### AirSpy Mini/R2
 
@@ -77,11 +117,31 @@ AIS-catcher -gm lna AUTO vga 12 mixer 12
 ```
 More guidance on setting the gain model and levels can be obtained in the mentioned link.
 
+#### Summary Setings
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| SENSITIVITY | integer | - | Sensitivity gain mode (0-21) |
+| LINEARITY | integer | 17 | Linearity gain mode (0-21) |
+| VGA | integer | 10 | VGA gain in Free mode (0-14) |
+| MIXER | auto/integer | auto/10 | Mixer gain/AGC in Free mode (0-14 or AUTO) |
+| LNA | auto/integer | auto/10 | LNA gain/AGC in Free mode (0-14 or AUTO) |
+| BIASTEE | boolean | false | Enable/disable bias tee power |
+
 ### SDRPlay RSP1/RSP1A/RSPDX (API 3.x)
 Settings specific for the SDRPlay  can be set on the command line with the ```-gs``` switch, e.g.:
 ```bash
 AIS-catcher -gs lnastate 5
 ```
+
+#### Summary Settings
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| AGC | boolean | false | Enable/disable Automatic Gain Control |
+| LNASTATE | integer | 0 | LNA state/gain (0-9) |
+| GRDB | integer | 32 | RF gain reduction in dB (0-59) |
+| ANTENNA | char | 'A' | Antenna selection (A/B/C) for RSPdx models |
 
 ### Serial Port
 Settings specific for reading NMEA lines from a serial port can all be set with the `e` switch fow now, e.g. on Linux:
@@ -90,21 +150,43 @@ AIS-catcher -e 368400 /dev/serial1
 ```
 To dump the raw input from the serial device on-screen use `-`ge print on`.
 
+#### Summary Settings
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| BAUDRATE | integer | 38400 | Serial port speed |
+| PORT | string | "" | Serial port device path/name |
+| PRINT | boolean | false | Enable debug printing of received data |
+
 ### HackRF
 Settings specific for the HackRF can be set on the command line with the ```-gf``` switch, e.g.:
 ```bash
 AIS-catcher -gf lna 16 vga 16 preamp OFF
 ```
+#### Summary Settings
 
-### RTL TCP and SpyServer
-AIS-catcher can process the data from a [`rtl_tcp`](https://projects.osmocom.org/projects/rtl-sdr/wiki/Rtl-sdr#rtl_tcp) process running remotely, e.g. if the server is on `192.168.1.235` port `1234` with a sampling rate of `240K` samples/sec:
-```bash
-AIS-catcher -t 192.168.1.235 1234 -gt TUNER auto
-```
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| LNA | integer | 8 | LNA (RF) gain in dB (0-40, rounded to multiples of 8) |
+| VGA | integer | 20 | VGA (IF) gain in dB (0-62, rounded to multiples of 2) |
+| PREAMP | boolean | false | Enable/disable preamplifier |
+
+### SpyServer
+
 For [SpyServer](https://airspy.com/)  use the ``-y`` switch like:
 ```bash
 AIS-catcher -y 192.168.1.235 5555 -gy GAIN 14
 ```
+
+#### Summary Settings
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| URL | string | - | Full connection URL (sdr://host:port) |
+| HOST | string | "localhost" | SpyServer host address |
+| PORT | string | "1234" | SpyServer port |
+| GAIN | float | 0.0 | Tuner gain (0-50 dB) |
+| TIMEOUT | integer | 2 | Connection timeout in seconds |
 
 ### SoapySDR
 
@@ -134,3 +216,16 @@ AIS-catcher -d SOAPYSDR -s 1536K -gu GAIN "TUNER=37.3" PROBE on SETTINGS "biaste
 To complete the example, this command also sets the tuner gain for the RTL-SDR to 37.3 and switches on the bias-tee via the SETTING command giving access to the device's extra settings.
 
 If the sample rates for a device are not supported by AIS-catcher, the SOXR functionality could be considered (e.g. ```-go SOXR on```). Again, we advise to use the built-in drivers and include resampling functionality where possible.  
+
+#### Summary Settings
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| DEVICE | string | "" | SoapySDR device arguments string |
+| GAIN | string | - | Gain settings in key=value pairs |
+| STREAM | string | - | Stream arguments in key=value pairs |
+| SETTING | string | - | Device settings in key=value pairs |
+| ANTENNA | string | "" | Antenna selection |
+| AGC | boolean | true | Enable/disable Automatic Gain Control |
+| PROBE | boolean | false | Print actual device settings |
+| CH | integer | 0 | Channel selection (0-32) |
