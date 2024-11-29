@@ -1,0 +1,92 @@
+site_name: AIS-catcher Docs
+site_description: Comprehensive guide to installing, configuring, and using AIS-catcher.
+site_author: jvde.github@gmail.com
+site_url: https://aiscatcher.org/docs
+
+theme:
+  name: 'material'
+  logo:
+    icon: fontawesome/brands/github
+  language: 'en'
+  palette:
+    primary: 'blue'
+    accent: 'light blue'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+  icon:
+    repo: fontawesome/brands/github
+    social:
+      - icon: fontawesome/brands/github
+        link: https://github.com/jvde-github/AIS-catcher
+      - icon: fontawesome/brands/twitter
+        link: https://twitter.com/yourtwitter
+  features:
+    - navigation.top
+
+repo_url: https://github.com/jvde-github/AIS-catcher
+repo_name: GitHub
+extra_css:
+  - styles/custom.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/jvde-github/AIS-catcher
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/yourtwitter
+
+  footer:
+    text: '© 2021-2024 jvde.github@gmail.com. All rights reserved.'
+    links:
+      - title: 'License'
+        url: 'license.md'
+      - title: 'Disclaimer'
+        url: 'disclaimer.md'
+      
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Overview: getting-started/overview.md
+      - AIS Basics: getting-started/ais-basics.md
+      - Installation: getting-started/installation.md
+      - First Run: getting-started/first-run.md
+  - Usage:
+      - Web GUI: usage/gui.md
+      - Command Line: usage/cli.md
+      - JSON Configuration: usage/json-configuration.md
+  - Features:
+      - Input Options: features/input-options.md
+      - Output Options: features/output-options.md
+      - Web Viewer: features/web-viewer.md
+      - MQTT Integration: features/mqtt-integration.md
+      - NMEA2000: features/nmea2000-support.md
+  - Advanced:
+      - Advanced Configuration: advanced/advanced-configuration.md
+      - Grafana: advanced/grafana.md
+      - Validation: advanced/validation.md
+      - Troubleshooting: advanced/troubleshooting.md
+  - Community: community.md
+  - FAQ: faq.md
+  - References: references.md
+
+markdown_extensions:
+  - toc:
+      permalink: true      
+  - tables
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.details
+  - pymdownx.magiclink
+  - pymdownx.tasklist
+  - pymdownx.tilde
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_alt
+  - pymdownx.keys
+
+plugins:
+  - search
+  - awesome-pages

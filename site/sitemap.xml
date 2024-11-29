@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://aiscatcher.org/docs/</loc>
+         <lastmod>2024-11-29</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/getting-started/ais-basics/</loc>
+         <lastmod>2024-11-29</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/getting-started/first-run/</loc>
+         <lastmod>2024-11-29</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/getting-started/installation/</loc>
+         <lastmod>2024-11-29</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/getting-started/overview/</loc>
+         <lastmod>2024-11-29</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/usage/cli/</loc>
+         <lastmod>2024-11-29</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/usage/gui/</loc>
+         <lastmod>2024-11-29</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/usage/json-configuration/</loc>
+         <lastmod>2024-11-29</lastmod>
+    </url>
+</urlset>
