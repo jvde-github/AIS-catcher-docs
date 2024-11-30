@@ -63,15 +63,32 @@ nav:
       - JSON Configuration: usage/json-configuration.md
   - Configuration:
       - Overview: configuration/overview.md
-      - Input Options: 
-        - Overview: configuration/input/overview.md
-        - Details: configuration/input-options.md
+      - Input Options:
+            - Overview: configuration/input/overview.md
+            - SDR Devices:
+              - RTL-SDR: configuration/input/rtlsdr.md
+              - AirSpy: configuration/input/airspy.md
+              - AirSpy HF+: configuration/input/airspyhf.md
+              - HackRF: configuration/input/hackrf.md
+              - SDRPlay: configuration/input/sdrplay.md
+              - SoapySDR: configuration/input/soapysdr.md
+            - Network Input:
+              - TCP: configuration/input/tcp.md
+              - UDP: configuration/input/udp.md
+              - SpyServer: configuration/input/spyserver.md
+            - File Input:
+              - Raw Files: configuration/input/file.md
+              - WAV Files: configuration/input/wav.md
+            - Other Input:
+              - Serial Port: configuration/input/serial.md
+              - NMEA2000: configuration/input/NMEA2000.md
+      - Model: configuration/model.md
       - Output Options:
         - Overview:  configuration/output/overview.md
         - Details: configuration/output/output-options.md
-        - Web Viewer: configuration/web-viewer.md
-        - MQTT Integration: configuration/mqtt-integration.md
-        - NMEA2000: configuration/nmea2000-support.md
+        - Web Viewer: configuration/output/web-viewer.md
+        - MQTT Integration: configuration/output/mqtt.md
+        - NMEA2000: configuration/output/nmea2000.md
   - Advanced:
       - Advanced Configuration: advanced/advanced-configuration.md
       - Grafana: advanced/grafana.md
@@ -98,6 +115,11 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_generator: !!python/name:pymdownx.emoji.to_alt
   - pymdownx.keys
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 plugins:
   - search
