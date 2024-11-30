@@ -42,24 +42,36 @@ extra:
         url: 'license.md'
       - title: 'Disclaimer'
         url: 'disclaimer.md'
-      
+
 nav:
   - Home: index.md
   - Getting Started:
       - Overview: getting-started/overview.md
       - AIS Basics: getting-started/ais-basics.md
-      - Installation: getting-started/installation.md
       - First Run: getting-started/first-run.md
-  - Usage:
+  - Installation:
+      - Overview: installation/overview.md
+      - Docker: installation/docker.md
+      - Raspberry Pi: installation/raspberry-pi.md
+      - Windows: installation/windows.md
+      - Build from Source: installation/build-source.md
+      - Ubuntu and Debian: installation/ubuntu-debian.md
+  - Basic Usage:
+      - Overview: usage/overview.md
       - Web GUI: usage/gui.md
       - Command Line: usage/cli.md
       - JSON Configuration: usage/json-configuration.md
-  - Features:
-      - Input Options: features/input-options.md
-      - Output Options: features/output-options.md
-      - Web Viewer: features/web-viewer.md
-      - MQTT Integration: features/mqtt-integration.md
-      - NMEA2000: features/nmea2000-support.md
+  - Configuration:
+      - Overview: configuration/overview.md
+      - Input Options: 
+        - Overview: configuration/input/overview.md
+        - Details: configuration/input-options.md
+      - Output Options:
+        - Overview:  configuration/output/overview.md
+        - Details: configuration/output/output-options.md
+        - Web Viewer: configuration/web-viewer.md
+        - MQTT Integration: configuration/mqtt-integration.md
+        - NMEA2000: configuration/nmea2000-support.md
   - Advanced:
       - Advanced Configuration: advanced/advanced-configuration.md
       - Grafana: advanced/grafana.md

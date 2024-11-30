@@ -334,6 +334,7 @@ AIS-catcher -gf lna 16 vga 16 preamp OFF
 
 ### SpyServer
 <div class="command-container">
+
       <div class="command-syntax">
         <span class="cmd-name">AIS-catcher</span>
         <span class="cmd-flag">-y</span>
