@@ -1,24 +1,46 @@
 # AIS-Catcher
 
-Welcome to the documentation pages for **AIS-Catcher**, an open-source initiative designed to transform your general-purpose Software Defined Radio (SDR)-equipped computer into a powerful, dual-channel AIS receiver. AIS-Catcher bridges the gap between affordable SDR devices like the **RTL-SDR** and expensive commercial AIS receivers, giving you complete control over maritime data monitoring and sharing.
+Welcome to the documentation pages for **AIS-Catcher**, an open-source software package developed to transform your general-purpose Software Defined Radio (SDR)-equipped computer into a powerful, dual-channel AIS receiver. AIS-Catcher bridges the gap between affordable SDR devices like the **RTL-SDR** and expensive commercial AIS receivers, giving you complete control over maritime data monitoring and sharing.
 
-Whether you're a maritime enthusiast, researcher, or data aggregator, AIS-Catcher offers advanced features, cross-platform compatibility, and a user-friendly setup to meet your needs.
+[Community Site](https://aiscatcher.org){ .md-button .md-button--secondary }
+[Github](https://github.com/jvde-github/AIS-catcher){ .md-button .md-button--secondary }
+
+Whether you're a maritime enthusiast, researcher, or data aggregator, AIS-Catcher offers advanced features, cross-platform compatibility, and a user-friendly setup to meet your needs. 
 
 ## What is AIS?
 
 The **Automatic Identification System (AIS)** is a maritime safety technology similar to **ADSB** used in aviation. AIS provides real-time information such as a vessel’s position, speed, and heading by transmitting messages over **VHF radio frequencies** (around **162 MHz**). 
 
-AIS plays a crucial role in:
 
-- **Collision Avoidance**: Helping vessels navigate safely in crowded waters.
-- **Traffic Monitoring**: Assisting port authorities in managing maritime traffic.
-- **Search-and-Rescue**: Providing accurate location information for rescue operations.
-- **Environmental Monitoring**: Tracking vessel movements for environmental studies.
+## Free Open-Source
+The sofware is Free Open Source publisched under  GPL3 and can be installed from these docs or our [Github](https://github.com/jvde-github/AIS-catcher)) account.
 
-With AIS, much like ADS-B for aircraft, you can track and monitor vessels in real time. This makes AIS invaluable for enthusiasts, researchers, and organizations involved in maritime navigation and safety.
+## Community Features
+
+AIS-catcher offers a vibrant community through our website [aiscatcher.org](https://aiscatcher.org). This platform serves two main purposes:
+
+1. **Station Performance Tracking**  
+   Monitor your AIS receiver's performance and compare it with other stations in your area.
+
+2. **Global Ship Movement Overview**  
+   Access a comprehensive view of maritime traffic from our network of contributors.
+
+[Join](community/overview.md) our community as stablishd AIS station or as a user of AIS-catcher.
+
 
 ---
-## ⚠️ **Important Disclaimer**
+
+## Getting Started
+
+[Getting Started](getting-started/overview.md){ .md-button .md-button--primary }
+
+Follow these quick links to get started:
+
+1. [**Overview**](getting-started/overview.md): Learn the basics of AIS-Catcher and its capabilities.
+2. [**Installation Guide**](getting-started/installation.md): Step-by-step instructions for setting up AIS-Catcher on your platform.
+4. [**AIS Basics**](getting-started/ais-basics.md): A primer on AIS technology and how it works.
+
+## **Important Disclaimer**
 
 > ### **Hobby and Research Use Only**
 > **AIS-Catcher is a hobbyist and research project. It is NOT intended or approved for use in navigation or safety-of-life applications.**
@@ -29,18 +51,19 @@ With AIS, much like ADS-B for aircraft, you can track and monitor vessels in rea
 >
 > **AIS-Catcher is provided as-is, with no guarantees of reliability or accuracy.** Always ensure compliance with your local laws and regulations regarding the reception and processing of AIS signals. AIS-Catcher should only be used in contexts where it is permissible by law and safe to do so.
 
-
-
 ---
 
-## Why Choose AIS-Catcher?
+## Design criteria of AIS-Catcher
 
-AIS-Catcher is the ultimate tool for decoding and analyzing AIS signals from ships, allowing you to monitor vessel movements, improve situational awareness, and contribute to the maritime community.
+AIS-Catcher is a tool for decoding and analyzing AIS signals from ships, allowing you to monitor vessel movements, improve situational awareness, and contribute to the maritime community.
 
 ### **Key Features**
 - **Multi-Platform Compatibility**  
   Runs seamlessly on Windows, Ubuntu/Debian, Raspberry Pi, macOS, and even inside Docker containers.
   
+  - **Sensitive Decoder**
+  The decoder has been designed to extract maximum performance from the available SDR hardware 
+
   - **Lightweight and Efficient**  
   Written in C++ and optimized for high performance and small footprint on low-power devices like Raspberry Pi.
 
@@ -53,6 +76,10 @@ AIS-Catcher is the ultimate tool for decoding and analyzing AIS signals from shi
 - **Built-In Web Viewer**  
   Access real-time AIS data and system statistics through a web-based interface with advanced customization options and plugin system.
 
+- **Community Exchange**
+  Share data with community feed (aiscatcher.org) abd receive position reports from nearby station in the local Web Viewer for performance tuning
+
+
 
 ---
 AIS-catcher began as a basic decoder for RTL-SDR dongles, offering on-screen output and UDP transmission for key aggregation sites. Over time, we've expanded its compatibility to include a wider range of SDRs and input methods. On the output side, it now supports viewing signals and positions through a web viewer, saving to databases, and forwarding as NMEA2000 on Linux systems using socketCAN. This enhancement has subtly shifted AIS-catcher's role, making it a useful tool for managing different AIS data streams. Below is a cheatsheet for the various input and output modes.
@@ -60,16 +87,7 @@ AIS-catcher began as a basic decoder for RTL-SDR dongles, offering on-screen out
 ![image](https://github.com/jvde-github/AIS-catcher/assets/52420030/53fdef5c-f8ff-4040-a505-2af06c03c234)
 
 ---
-## Getting Started
 
-Follow these quick links to get started:
-
-1. [**Overview**](getting-started/overview.md): Learn the basics of AIS-Catcher and its capabilities.
-2. [**Installation Guide**](getting-started/installation.md): Step-by-step instructions for setting up AIS-Catcher on your platform.
-3. [**First Run**](getting-started/first-run.md): Configure and run AIS-Catcher for the first time.
-4. [**AIS Basics**](getting-started/ais-basics.md): A primer on AIS technology and how it works.
-
----
 
 ## Powerful Features for Every Use Case
 
@@ -88,10 +106,6 @@ Run AIS-Catcher with flexible JSON configuration files or directly via command-l
 ### Plugins and Customization
 Enhance your setup with custom plugins, styles, and offline map support to create a tailored experience.
 
-### Advanced Features
-- **MQTT Integration:** Publish AIS data to brokers or subscribe to incoming feeds.
-- **NMEA2000 Support:** Experimental support for socketCAN on Linux.
-- **Validation Tools:** Verify AIS message integrity with built-in checks.
 
 ---
 

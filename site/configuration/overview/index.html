@@ -12,13 +12,13 @@
         <meta name="author" content="jvde.github@gmail.com">
       
       
-        <link rel="canonical" href="https://aiscatcher.org/docs/configuration/web-viewer/">
+        <link rel="canonical" href="https://aiscatcher.org/docs/configuration/overview/">
       
       
-        <link rel="prev" href="../input-options/">
+        <link rel="prev" href="../../usage/json-configuration/">
       
       
-        <link rel="next" href="../mqtt-integration/">
+        <link rel="next" href="../input/overview/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Web Viewer - AIS-catcher Docs</title>
+        <title>Overview - AIS-catcher Docs</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#web-viewer" class="md-skip">
+        <a href="#ais-catcher-architecture" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Web Viewer
+              Overview
             
           </span>
         </div>
@@ -557,7 +557,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../usage/overview.md" class="md-nav__link">
+      <a href="../../usage/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -682,10 +682,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../overview.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -694,6 +714,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Architecture
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -741,7 +799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../input/overview.md" class="md-nav__link">
+      <a href="../input/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -761,12 +819,152 @@
   
   
   
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_2" id="__nav_5_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SDR Devices
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            SDR Devices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../input-options/" class="md-nav__link">
+      <a href="../input/rtlsdr/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Details
+    RTL-SDR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../input/airspy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AirSpy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../input/airspyhf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AirSpy HF+
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../input/hackrf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HackRF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../input/sdrplay/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SDRPlay
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../input/soapysdr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SoapySDR
   </span>
   
 
@@ -788,22 +986,325 @@
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_3" >
         
           
-          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_2_3" id="__nav_5_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Network Input
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Network Input
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../input/tcp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TCP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../input/udp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UDP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../input/spyserver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SpyServer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_4" id="__nav_5_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    File Input
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            File Input
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../input/file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Raw Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../input/wav/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WAV Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_5" id="__nav_5_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Other Input
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Other Input
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../input/serial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serial Port
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../input/NMEA2000/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NMEA2000
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -814,8 +1315,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
             <span class="md-nav__icon md-icon"></span>
             Output Options
           </label>
@@ -867,30 +1368,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Web Viewer
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../output/web-viewer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -899,98 +1380,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#menu-structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      Menu structure
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#visualization" class="md-nav__link">
-    <span class="md-ellipsis">
-      Visualization
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Validation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#plots" class="md-nav__link">
-    <span class="md-ellipsis">
-      Plots
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#custom-plugins-and-styles" class="md-nav__link">
-    <span class="md-ellipsis">
-      Custom plugins and styles...
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#offline-web-viewer" class="md-nav__link">
-    <span class="md-ellipsis">
-      Offline web viewer
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sending-data-to-prometheus-for-use-in-grafana-dashboards" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sending data to Prometheus for use in Grafana dashboards
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Summary Settings
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1003,7 +1392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mqtt-integration/" class="md-nav__link">
+      <a href="../output/mqtt/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1024,7 +1413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../nmea2000-support/" class="md-nav__link">
+      <a href="../output/nmea2000/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1287,72 +1676,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#menu-structure" class="md-nav__link">
+  <a href="#basic-architecture" class="md-nav__link">
     <span class="md-ellipsis">
-      Menu structure
+      Basic Architecture
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#visualization" class="md-nav__link">
+  <a href="#advanced-architecture" class="md-nav__link">
     <span class="md-ellipsis">
-      Visualization
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Validation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#plots" class="md-nav__link">
-    <span class="md-ellipsis">
-      Plots
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#custom-plugins-and-styles" class="md-nav__link">
-    <span class="md-ellipsis">
-      Custom plugins and styles...
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#offline-web-viewer" class="md-nav__link">
-    <span class="md-ellipsis">
-      Offline web viewer
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sending-data-to-prometheus-for-use-in-grafana-dashboards" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sending data to Prometheus for use in Grafana dashboards
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Summary Settings
+      Advanced Architecture
     </span>
   </a>
   
@@ -1376,266 +1711,78 @@
   
 
 
-<h1 id="web-viewer">Web Viewer<a class="headerlink" href="#web-viewer" title="Permanent link">&para;</a></h1>
-<p><img alt="image" src="https://github.com/jvde-github/AIS-catcher/assets/52420030/54eea1c6-2f72-4c23-91c4-dd289753d4cc" /></p>
-<p>AIS-catcher includes a simple web interface. A live demo is available for <a href="https://kx1t.com/ais/">East Boston, US</a>. The web interface gratefully uses the following libraries: <a href="https://www.chartjs.org/docs/latest/charts/line.html">chart.js</a>, chart.js <a href="https://www.chartjs.org/chartjs-plugin-annotation/latest/">annotation plugin</a>, <a href="https://leafletjs.com/">leaflet</a>, <a href="https://m3.material.io/styles/icons/overview">Material Design Icons</a>, tabulator, <a href="https://github.com/markedjs/marked">marked</a> and <a href="https://github.com/lipis/flag-icons">flag-icons</a>. </p>
-<p>Make sure you use the latest version and start the web viewer as follows:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span>
-</code></pre></div>
-where <code>8100</code> is the port number. If your machine network name is raspberrypi, e.g.,  then enter <code>raspberrypi:8100</code> in your browser.  On the web page, you will find several sections with information related to the station and received messages.</p>
-<p>For users wishing to include a station name and a link to an external website in the Statistics section:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span>STATION<span class="w"> </span>Southwood<span class="w"> </span>STATION_LINK<span class="w"> </span>http://example.com
-</code></pre></div>
-This could be a useful option if you want to offer the interface externally. To display the reception range and distances from your station, provide the program with the station coordinates and permission to share the location with the web viewer:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span>LAT<span class="w"> </span><span class="m">50</span><span class="w"> </span>LON<span class="w"> </span><span class="m">3</span>.141592<span class="w"> </span>SHARE_LOC<span class="w"> </span>on
-</code></pre></div>
-The last option <code>share_loc</code> (default is off) will allow the web viewer to access and display the location.</p>
-<p>The user can make a page in <a href="https://www.markdownguide.org/basic-syntax/">markdown format</a>. The content will be shown in the About tab of the web viewer:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>ABOUT<span class="w"> </span>about.md
-</code></pre></div>
-All these options can be captured in the configuration file (in a section with name <code>server</code>), see below. </p>
-<h2 id="menu-structure">Menu structure<a class="headerlink" href="#menu-structure" title="Permanent link">&para;</a></h2>
-<p>The main menu behind the hamburger icon in the top left corner navigates between different functional areas. Context-sensitive menus, accessible through right-click, long press on iOS, or the vertical dot icon on the map, offer more functionalities. Here you can set options like activating the "dark mode" theme, displaying the station range on the map, locking/unlocking the map center, toggling text-only ship labels, decluttering ship labels, and viewing details of the last message received from a vessel, amongst others.</p>
-<h2 id="visualization">Visualization<a class="headerlink" href="#visualization" title="Permanent link">&para;</a></h2>
-<p>When AIS-catcher receives data containing a vessel's dimensions but can not determine the direction it is pointing (heading), it will display a circle that accommodates the ship's dimensions regardless of heading. Missing heading information is common for Class B ships. If there's a decent approximation available for the heading, such as course-over-ground above certain speeds, it will be used. Shapes plotted using this approximation will have a dashed border, indicating incomplete information. An example is the USS Constitution docked in Boston.</p>
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/52420030/219856857-e0965190-1468-47b6-88ad-423b77c455ff.png" width="50%"/>
-</p>
+<h1 id="ais-catcher-architecture">AIS-catcher Architecture<a class="headerlink" href="#ais-catcher-architecture" title="Permanent link">&para;</a></h1>
+<p>AIS-catcher follows a modular architecture that can scale from simple to complex configurations. Let's explore both scenarios:</p>
+<h2 id="basic-architecture">Basic Architecture<a class="headerlink" href="#basic-architecture" title="Permanent link">&para;</a></h2>
+<p>In its simplest form, AIS-catcher processes data through three main stages:</p>
+<pre class="mermaid"><code>flowchart LR
+    I[Input] --&gt;|Raw Data| M[Model]
+    M --&gt;|Decoded Messages| O[Output]
 
-<p>In the map section, clicking on a vessel will open a  <strong>ship card</strong> with details of the vessel. For smaller screens it can be minimized in the top bar (via the <code>^</code> symbol or by clicking on the header bar). The ship card will open minimized on mobile devices. In its maximized form, users can choose which rows will be visible in the minimized state. Additional options, such as looking up the vessel on aggregator sites, are available by clicking the three-dot icon on the ship card header.</p>
-<h2 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h2>
-<p>The web-interface shows a "validation" indication at the left border of the ship card header.</p>
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/52420030/212470486-8987fa96-5324-41d8-a782-dbcbdc18aca0.png" width="25%"/>
-</p>
+    style I fill:#e3f2fd,stroke:#1976d2
+    style M fill:#e8f5e9,stroke:#2e7d32
+    style O fill:#fff3e0,stroke:#e65100
 
-<p>AIS-catcher analyzes an enormous stream of bits per day for both AIS channels (2 to the power 33 to be precise). To avoid erroneous messages, the AIS system employs a 16-bit CRC and matching of other bit patterns. Unfortunately, purely statistically this cannot prevent that there will be an occasional technically correct but nonsense message. These are typically easy to recognize (e.g. looking at the signal level, and location on the map) and aggregator sites like MarineTraffic will filter these out. </p>
-<p>To reliably measure the reception range for the station in the web interface, AIS-catcher has implemented a "validation function" that checks the location of the vessel for consistency between messages and flags if there is an inconsistency. Practically speaking, if we receive a position from an MMSI that is relatively close to the last received position, the "validation" indicator will be green and the distance to the station will be included to determine the station range. Please note that messages within 50 NMi from the receiving station will always be included for range setting. The validation indicator will be grey if validation for the location cannot be performed and red if it is not successful. </p>
-<h2 id="plots">Plots<a class="headerlink" href="#plots" title="Permanent link">&para;</a></h2>
-<p>The Plot section contains several visualizations to assess the performance of the receiver:</p>
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/52420030/219856922-33404fe8-dc54-4bc2-a1a6-84f4ce5dd72a.png" width="50%"/>
-</p>
-<p>Restarting AIS-catcher typically erases history in the graphs. To retain plot "state" and backup the information to a file use the following:</p>
-<p><div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>FILE<span class="w"> </span>stat.bin<span class="w"> </span>BACKUP<span class="w"> </span><span class="m">10</span>
-</code></pre></div>
-This will back up the plots when the program closes and every 10 minutes in a file <code>stat.bin</code>. The minimum backup interval is 5 minutes.</p>
-<h2 id="custom-plugins-and-styles">Custom plugins and styles...<a class="headerlink" href="#custom-plugins-and-styles" title="Permanent link">&para;</a></h2>
-<p>To give the user the option to tweak the look-and-feel and functionality of the web viewer and/or modify for example the color scheme or regional preferences, the program provides the option to inject custom plugins (JavaScript) and CSS into the website, with a command like:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>PLUGIN<span class="w"> </span>plugin1.js<span class="w"> </span>PLUGIN<span class="w"> </span>plugin2.js<span class="w"> </span>STYLE<span class="w"> </span>mystyle.css
-</code></pre></div>
-You can also include all plugin files from a specific directory using the command:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>PLUGIN_DIR<span class="w"> </span>/usr/share/aiscatcher/plugins
-</code></pre></div>
-Files need to have the extension <code>.pjs</code> and <code>.pss</code> for respectively JavaScript and CSS style plugins. The repository includes a few example plugins that demonstrate how to add additional maps or cater to regional preferences. Examples of plugins can be found in <a href="https://github.com/jvde-github/AIS-Catcher-PLUGINS">another</a> GitHub repository.</p>
-<h2 id="offline-web-viewer">Offline web viewer<a class="headerlink" href="#offline-web-viewer" title="Permanent link">&para;</a></h2>
-<p>There is an option to run the web viewer without relying on online libraries. This facilitates using the web interface whilst traveling without an internet connection. The steps are simple. First, go to your home directory (say <code>/home/jasper</code>) and clone the necessary offline web assets:
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jvde-github/webassets.git
-</code></pre></div>
-This will create a directory <code>webassets</code> that we need to share with AIS-catcher as an alternative location for online web content  with the CDN argument followed by the location of the web assets directory:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-x<span class="w"> </span><span class="m">192</span>.168.1.120<span class="w"> </span><span class="m">4002</span><span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>CDN<span class="w"> </span>/home/jasper/webassets
-</code></pre></div></p>
-<h2 id="sending-data-to-prometheus-for-use-in-grafana-dashboards">Sending data to Prometheus for use in Grafana dashboards<a class="headerlink" href="#sending-data-to-prometheus-for-use-in-grafana-dashboards" title="Permanent link">&para;</a></h2>
-<p>You can add the option <code>PROME on</code> to the web configuration command to start rendering Prometheus-compatible statistics at <code>/metrics</code>. For example:</p>
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>PROME<span class="w"> </span>on
-</code></pre></div>
-<p>For more information on how to configure Prometheus and Grafana to get an initial dashboard, see <a href="../../advanced/grafana/">README-grafana.md</a>.</p>
-<h2 id="summary-settings">Summary Settings<a class="headerlink" href="#summary-settings" title="Permanent link">&para;</a></h2>
-<p>Server Options:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">Option</th>
-<th style="text-align: center;">Type</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><code>PORT</code></td>
-<td style="text-align: center;">Integer (1-65535)</td>
-<td style="text-align: left;">Single port for web server</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>PORT_MIN</code></td>
-<td style="text-align: center;">Integer (1-65535)</td>
-<td style="text-align: left;">Minimum port in binding range</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>PORT_MAX</code></td>
-<td style="text-align: center;">Integer (1-65535)</td>
-<td style="text-align: left;">Maximum port in binding range</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>IP_BIND</code></td>
-<td style="text-align: center;">String</td>
-<td style="text-align: left;">Server binding IP address</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>REUSE_PORT</code></td>
-<td style="text-align: center;">Boolean</td>
-<td style="text-align: left;">Enable port reuse</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>ZLIB</code></td>
-<td style="text-align: center;">Boolean</td>
-<td style="text-align: left;">Enable response compression</td>
-</tr>
-</tbody>
-</table>
-<p>Location Settings:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">Option</th>
-<th style="text-align: center;">Type</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><code>LAT</code></td>
-<td style="text-align: center;">Float</td>
-<td style="text-align: left;">Station latitude</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>LON</code></td>
-<td style="text-align: center;">Float</td>
-<td style="text-align: left;">Station longitude</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>SHARE_LOC</code></td>
-<td style="text-align: center;">Boolean</td>
-<td style="text-align: left;">Share station location</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>USE_GPS</code></td>
-<td style="text-align: center;">Boolean</td>
-<td style="text-align: left;">Use GPS data</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>OWN_MMSI</code></td>
-<td style="text-align: center;">Integer</td>
-<td style="text-align: left;">Own vessel MMSI</td>
-</tr>
-</tbody>
-</table>
-<p>Data Management:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">Option</th>
-<th style="text-align: center;">Type</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><code>HISTORY</code></td>
-<td style="text-align: center;">Integer (5-43200)</td>
-<td style="text-align: left;">History retention (seconds)</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>CUTOFF</code></td>
-<td style="text-align: center;">Integer (0-10000)</td>
-<td style="text-align: left;">Data retention threshold</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>BACKUP</code></td>
-<td style="text-align: center;">Integer (5-2880)</td>
-<td style="text-align: left;">Backup interval (minutes)</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>FILE</code></td>
-<td style="text-align: center;">String</td>
-<td style="text-align: left;">Statistics file path</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>REALTIME</code></td>
-<td style="text-align: center;">Boolean</td>
-<td style="text-align: left;">Enable real-time updates</td>
-</tr>
-</tbody>
-</table>
-<p>Output Formats:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">Option</th>
-<th style="text-align: center;">Type</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><code>KML</code></td>
-<td style="text-align: center;">Boolean</td>
-<td style="text-align: left;">Enable KML output</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>GEOJSON</code></td>
-<td style="text-align: center;">Boolean</td>
-<td style="text-align: left;">Enable GeoJSON output</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>PROME</code></td>
-<td style="text-align: center;">Boolean</td>
-<td style="text-align: left;">Enable Prometheus metrics</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>MESSAGE</code></td>
-<td style="text-align: center;">Boolean</td>
-<td style="text-align: left;">Enable message saving</td>
-</tr>
-</tbody>
-</table>
-<p>UI Customization:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">Option</th>
-<th style="text-align: center;">Type</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><code>STATION</code></td>
-<td style="text-align: center;">String</td>
-<td style="text-align: left;">Station display name</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>STATION_LINK</code></td>
-<td style="text-align: center;">String</td>
-<td style="text-align: left;">Station info URL</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>CDN</code></td>
-<td style="text-align: center;">String</td>
-<td style="text-align: left;">Local CDN resources path</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>PLUGIN</code></td>
-<td style="text-align: center;">String</td>
-<td style="text-align: left;">JavaScript plugin path</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>STYLE</code></td>
-<td style="text-align: center;">String</td>
-<td style="text-align: left;">CSS style path</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>PLUGIN_DIR</code></td>
-<td style="text-align: center;">String</td>
-<td style="text-align: left;">Plugins directory</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>ABOUT</code></td>
-<td style="text-align: center;">String</td>
-<td style="text-align: left;">About page path</td>
-</tr>
-</tbody>
-</table>
+    click I "input" _blank
+    click M "model" _blank
+    click O "output" _blank</code></pre>
+<p>Input: Single data source (e.g., an SDR device)
+Model: Message decoding and processing
+Output: Delivery of decoded messages (e.g., to screen)</p>
+<h2 id="advanced-architecture">Advanced Architecture<a class="headerlink" href="#advanced-architecture" title="Permanent link">&para;</a></h2>
+<p>For more complex setups, AIS-catcher supports multiple inputs with input-specific models:</p>
+<pre class="mermaid"><code>flowchart LR
+    %% Input 1 with two models
+    I1[Input 1] --&gt; M1[Model A1]
+    I1 --&gt; M2[Model A2]
+
+    %% Input 2 with one model
+    I2[Input 2] --&gt; M3[Model B]
+
+    %% Models to Outputs
+    M1 --&gt; O1[Output 1]
+    M1 --&gt; O2[Output 2]
+    M2 --&gt; O2
+    M2 --&gt; O3[Output 3]
+    M3 --&gt; O2
+    M3 --&gt; O3
+
+    %% Styling
+    style I1 fill:#e3f2fd,stroke:#1976d2
+    style I2 fill:#e3f2fd,stroke:#1976d2
+    style M1 fill:#e8f5e9,stroke:#2e7d32
+    style M2 fill:#e8f5e9,stroke:#2e7d32
+    style M3 fill:#fce4ec,stroke:#c2185b
+    style O1 fill:#fff3e0,stroke:#e65100
+    style O2 fill:#fff3e0,stroke:#e65100
+    style O3 fill:#fff3e0,stroke:#e65100
+
+    click I1 "input" _blank
+    click I2 "input" _blank
+    click M1 "model" _blank
+    click M2 "model" _blank
+    click O1 "output" _blank
+    click O2 "output" _blank
+    click O3 "output" _blank</code></pre>
+<p>In this advanced setup:
+Inputs</p>
+<p>Multiple input sources operate independently
+Each input can use multiple specialized models
+Examples: RTL-SDR, Airspy, network streams, files</p>
+<p>Models</p>
+<p>Input 1 uses two parallel models (A1 and A2)
+Input 2 uses a single dedicated model (B)
+Models are optimized for their specific input source</p>
+<p>Outputs</p>
+<p>Each model can send data to multiple outputs
+Outputs can receive data from multiple models
+Examples: screen display, file logging, network streaming, database storage</p>
+<p>Configuration
+Each component can be configured independently:</p>
+<p>Input Configuration: Configure devices, files, and network sources
+Model Configuration: Adjust signal processing and decoding parameters
+Output Configuration: Set up various output formats and destinations</p>
+<p>This modular architecture allows for flexible setups ranging from simple single-channel monitoring to complex multi-receiver systems with diverse output requirements.</p>
 
 
 

@@ -1,171 +1,135 @@
-/* Header styling */
-.md-header {
-    background-color: #f8f9fa;
-    color: #333;
+/* Header and Navigation Styles */
+.md-header,
+.md-header[data-md-state=shadow] {
+    background-color: white;
+    color: black;
 }
 
-/* Header title and topic */
-.md-header__title, 
-.md-header__topic {
-    color: #333;
+.md-tabs {
+    background-color: white;
+    color: black;
 }
 
-/* GitHub icon and other header icons */
-.md-header__button.md-logo, 
-.md-header__button {
-    color: #333;
+/* Mobile Navigation Styles */
+.md-nav__title {
+    background-color: white !important;
+    color: black !important;
 }
 
-/* Specifically target the GitHub icon */
-.md-header .md-header__source {
-    color: #4078c0;
+.md-nav__item .md-nav__link--active {
+    color: black;
 }
 
-/* Repository icon */
-.md-header__source .md-source__icon {
-    color: #4078c0;
+.md-nav--primary .md-nav__title,
+.md-nav--primary .md-nav__title[for=__drawer] {
+    background-color: white !important;
+    color: black !important;
 }
 
-/* All SVG icons in header */
-.md-header .md-icon svg {
-    color: #333;
-    fill: #333;
+.md-nav__source {
+    background-color: white !important;
 }
 
-/* Search icon */
-.md-search__icon svg {
-    fill: #333;
-    ;
+/* Icon and Button Styles */
+[data-md-toggle=drawer]:checked~.md-header .md-header-nav__button.md-icon--menu {
+    color: black;
 }
 
-/* Dark/light mode toggle icon */
-.md-header .md-theme-icon {
-    color: #333;    ;
+.md-nav__title .md-nav__button.md-logo img,
+.md-nav__title .md-nav__button.md-logo svg {
+    fill: black;
 }
 
-/* Repository information */
-.md-source__repository {
-    color: #333;
+.md-source__repository,
+.md-source__icon {
+    color: black !important;
 }
 
-/* Repository facts (stars, forks) */
-.md-source__facts {
-    color: #666;
-}
-
-/* Hover states */
-.md-header__button:hover {
-    opacity: 0.7;
-}
-
-/* Mobile navigation me
-
-/* Custom styling for the search box */
+/* Search Styles */
 .md-search__inner {
-    /* Lighter background color */
     background-color: rgba(0, 0, 0, 0.05);
     border-radius: 4px;
-  }
-  
-  .md-search__input {
-    /* Input field styling */
+}
+
+.md-search__input {
     background-color: white !important;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 4px;
     color: rgba(0, 0, 0, 0.87);
     padding: 0.5rem;
-  }
-  
-  /* Search box hover state */
-  .md-search__input:hover {
+}
+
+.md-search__input:hover {
     background-color: white !important;
     border-color: rgba(0, 0, 0, 0.24);
-  }
-  
-  /* Search box focus state */
-  .md-search__input:focus {
+}
+
+.md-search__input:focus {
     background-color: white !important;
     border-color: var(--md-primary-color);
     outline: none;
-  }
-  
-  /* Search icon color */
-  .md-search__icon svg {
-    color: rgba(0, 0, 0, 0.54);
-  }
-  
-  /* Search results dropdown */
-  .md-search__output {
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .command-container {
-    margin: 20px 0;
 }
-/* Existing styles... */
 
+/* Command Container Styles */
 .command-syntax {
+    position: relative;
     font-family: monospace;
     font-size: 0.85em;
-    background: #f8f9fa;  /* Lighter background to blend with page */
-    color: #333;         /* Darker text for better contrast */
-    padding: 12px 16px;
-    border-radius: 5px;
-    margin-bottom: 5px;
-    margin-top: 5px;
-    overflow-x: auto;    /* Enables horizontal scrolling */
-    white-space: nowrap; /* Prevents line wrapping */
-    border: 1px solid #e0e0e0; /* Subtle border */
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Subtle shadow */
-}
-
-.command-example {
-    font-family: monospace;
-    font-size: 0.85em;
-    background: #f1f3f4;  /* Slightly darker than syntax box */
+    background: #f8f9fa;
     color: #333;
     padding: 12px 16px;
+    padding-top: 24px;  /* Extra padding for label */
     border-radius: 5px;
-    margin-bottom: 5px;
-    margin-top: 5px;
+    margin: 20px 0;
     overflow-x: auto;
     white-space: nowrap;
     border: 1px solid #e0e0e0;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
+.command-syntax::before {
+    content: 'Syntax';
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    font-size: 0.75em;
+    color: #666;
+    background: #f8f9fa;
+    padding: 0 4px;
+    border-radius: 2px;
+}
+
+/* Command Element Styles */
 .cmd-name {
-    color: #333;         /* Updated to match new theme */
+    color: #333;
 }
 
 .cmd-flag {
-    background: #e9ecef;  /* Lighter background */
-    color: #495057;      /* Darker text */
+    background: #e9ecef;
+    color: #495057;
     padding: 2px 8px;
     border-radius: 4px;
     margin: 0 4px;
 }
 
 .cmd-value {
-    background: #e8f5e9;  /* Lighter green */
-    color: #2e7d32;      /* Darker green text */
+    background: #e8f5e9;
+    color: #2e7d32;
     padding: 2px 8px;
     border-radius: 4px;
     margin: 0 4px;
 }
 
 .cmd-setting {
-    background: #fff3e0;  /* Lighter orange */
-    color: #e65100;      /* Darker orange text */
+    background: #fff3e0;
+    color: #e65100;
     padding: 2px 8px;
     border-radius: 4px;
     margin: 0 4px;
 }
 
-/* Add smooth transitions */
+/* Transitions */
 .command-syntax,
-.command-example,
 .cmd-flag,
 .cmd-value,
 .cmd-setting {

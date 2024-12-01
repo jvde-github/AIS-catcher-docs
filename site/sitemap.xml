@@ -37,15 +37,7 @@
          <lastmod>2024-11-30</lastmod>
     </url>
     <url>
-         <loc>https://aiscatcher.org/docs/configuration/input-options/</loc>
-         <lastmod>2024-11-30</lastmod>
-    </url>
-    <url>
-         <loc>https://aiscatcher.org/docs/configuration/mqtt-integration/</loc>
-         <lastmod>2024-11-30</lastmod>
-    </url>
-    <url>
-         <loc>https://aiscatcher.org/docs/configuration/nmea2000-support/</loc>
+         <loc>https://aiscatcher.org/docs/configuration/model/</loc>
          <lastmod>2024-11-30</lastmod>
     </url>
     <url>
@@ -53,7 +45,75 @@
          <lastmod>2024-11-30</lastmod>
     </url>
     <url>
-         <loc>https://aiscatcher.org/docs/configuration/web-viewer/</loc>
+         <loc>https://aiscatcher.org/docs/configuration/overview/</loc>
+         <lastmod>2024-11-30</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/configuration/input/NMEA2000/</loc>
+         <lastmod>2024-11-30</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/configuration/input/airspy/</loc>
+         <lastmod>2024-11-30</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/configuration/input/airspyhf/</loc>
+         <lastmod>2024-11-30</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/configuration/input/file/</loc>
+         <lastmod>2024-11-30</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/configuration/input/hackrf/</loc>
+         <lastmod>2024-11-30</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/configuration/input/overview/</loc>
+         <lastmod>2024-11-30</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/configuration/input/rtlsdr/</loc>
+         <lastmod>2024-11-30</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/configuration/input/sdrplay/</loc>
+         <lastmod>2024-11-30</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/configuration/input/serial/</loc>
+         <lastmod>2024-11-30</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/configuration/input/soapysdr/</loc>
+         <lastmod>2024-11-30</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/configuration/input/spyserver/</loc>
+         <lastmod>2024-11-30</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/configuration/input/tcp/</loc>
+         <lastmod>2024-11-30</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/configuration/input/udp/</loc>
+         <lastmod>2024-11-30</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/configuration/input/wav/</loc>
+         <lastmod>2024-11-30</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/configuration/output/mqtt/</loc>
+         <lastmod>2024-11-30</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/configuration/output/nmea2000/</loc>
+         <lastmod>2024-11-30</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/configuration/output/web-viewer/</loc>
          <lastmod>2024-11-30</lastmod>
     </url>
     <url>
@@ -110,6 +170,10 @@
     </url>
     <url>
          <loc>https://aiscatcher.org/docs/usage/json-configuration/</loc>
+         <lastmod>2024-11-30</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/usage/overview/</loc>
          <lastmod>2024-11-30</lastmod>
     </url>
 </urlset>

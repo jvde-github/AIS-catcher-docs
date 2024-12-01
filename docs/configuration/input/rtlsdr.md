@@ -24,7 +24,7 @@ Settings are not case-sensitive.
 
 | Setting | Type | Default | Description |
 |---------|------|---------|-------------|
-| TUNER | auto/float | auto/33.0 | Tuner gain/AGC (0-50 dB or AUTO) |
-| RTLAGC | boolean | true | Enable/disable RTL2832U AGC |
-| BIASTEE | boolean | false | Enable/disable bias tee power |
-| BUFFER_COUNT | integer | 24 | Number of FIFO buffers (1-100) |
+|  <span class="cmd-setting">TUNER</span> | auto/float | <span class="cmd-value">auto</span> | Tuner gain/AGC (0-50 dB or AUTO) |
+|  <span class="cmd-setting">RTLAGC</span> | boolean | <span class="cmd-value">true</span>  | Enable/disable RTL2832U AGC |
+|  <span class="cmd-setting">BIASTEE</span> | boolean | <span class="cmd-value">false</span>  | Enable/disable bias tee power |
+|  <span class="cmd-setting">BUFFER_COUNT</span> | integer | <span class="cmd-value">24</span>  | Number of FIFO buffers (1-100) |

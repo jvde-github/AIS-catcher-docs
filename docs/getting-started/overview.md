@@ -38,13 +38,10 @@ Follow these high-level steps to get AIS-catcher up and running:
 2. **Install AIS-catcher**:
    - Follow the detailed instructions in the [Installation Guide](./installation.md) tailored to your platform.
 
-3. **Perform Your First Run**:
-   - Use the [First Run Guide](./first-run.md) to verify your setup and begin capturing AIS data.
+3. **Customize Input and Output**:
+   - Tailor your setup by exploring the [Input Options](../configuration/input/overview.md) and [Output Options](../configuration/output/overview.md) to meet your specific needs.
 
-4. **Customize Input and Output**:
-   - Tailor your setup by exploring the [Input Options](../features/input-options.md) and [Output Options](../features/output-options.md) to meet your specific needs.
-
-5. **Leverage Advanced Features**:
+4. **Leverage Advanced Features**:
    - Enhance your AIS-catcher experience by integrating advanced tools such as MQTT, Grafana, and NMEA2000 support.
 
 ## References
@@ -52,8 +49,7 @@ Follow these high-level steps to get AIS-catcher up and running:
 To kickstart your AIS-catcher journey, refer to the following resources:
 
 - [Installation Guide](./installation.md)
-- [First Run Guide](./first-run.md)
-- [Features Overview](../features/input-options.md)
+- [Full Configuration](../configuration/overview.md)
 - [Troubleshooting](../advanced/troubleshooting.md)
 
 If you encounter any issues, the [Community](../community.md) section is a great place to ask questions and connect with other users.

@@ -8,8 +8,8 @@ In its simplest form, AIS-catcher processes data through three main stages:
 
 ```mermaid
 flowchart LR
-    I[Input] -->|Raw Data| M[Model]
-    M -->|Decoded Messages| O[Output]
+    I[Input] -->M[Model]
+    M --> O[Output]
     
     style I fill:#e3f2fd,stroke:#1976d2
     style M fill:#e8f5e9,stroke:#2e7d32
@@ -23,6 +23,7 @@ flowchart LR
 Input: Single data source (e.g., an SDR device)
 Model: Message decoding and processing
 Output: Delivery of decoded messages (e.g., to screen)
+
 
 ## Advanced Architecture
 For more complex setups, AIS-catcher supports multiple inputs with input-specific models:
