@@ -6,8 +6,7 @@ site_url: https://aiscatcher.org/docs
 theme:
   name: 'material'
   palette:
-    # Remove all color schemes except one
-    - scheme: default  # This gives you a white background
+    - scheme: default
       primary: white
       accent: white
   logo:   assets/logo.svg 
@@ -27,7 +26,6 @@ theme:
         link: https://twitter.com/yourtwitter
   features:
     - navigation.top
-    - navigation.expand
 
 repo_url: https://github.com/jvde-github/AIS-catcher
 repo_name: GitHub

@@ -8,7 +8,7 @@ Welcome to the **AIS-Catcher** documentation. AIS-Catcher is an open-source soft
 >
 > [Read the full disclaimer](disclaimer.md).
 
-[Getting Started](getting-started/overview.md){ .md-button .md-button--primary }
+[Get Started](getting-started/overview.md){ .md-button .md-button--primary }
 
 ---
 
