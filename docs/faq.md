@@ -13,4 +13,4 @@ In OpenCPN the only thing we need to do is create a Connection with the followin
 <img src="https://raw.githubusercontent.com/jvde-github/AIS-catcher/eb6ac606933f1793ad04f56fa58c92ae49171f0c/media/OpenCPN%20settings.jpg" width=40% height=40%>
 </p>
 
-In newer versions of OpenCPN, the user has to specify a protocol, in this case select NMEA0183.
+> In newer versions of OpenCPN, the user has to specify a protocol, in this case select NMEA0183.

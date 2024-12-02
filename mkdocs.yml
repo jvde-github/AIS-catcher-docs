@@ -33,7 +33,7 @@ repo_url: https://github.com/jvde-github/AIS-catcher
 repo_name: GitHub
 extra_css:
   - styles/custom.css
-
+  
 extra:
   social:
     - icon: fontawesome/brands/github
@@ -124,6 +124,7 @@ markdown_extensions:
   - pymdownx.magiclink
   - pymdownx.tasklist
   - pymdownx.tilde
+  - md_in_html
   - pymdownx.emoji:
       emoji_generator: !!python/name:pymdownx.emoji.to_alt
   - pymdownx.keys
