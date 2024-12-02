@@ -1,5 +1,16 @@
 # TCP Client
 
+<div class="command-container">
+      <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-P</span>
+        <span class="cmd-value">host</span>
+        <span class="cmd-value">port</span>
+        [<span class="cmd-setting">setting</span> <span class="cmd-value">value</span>]
+        ...
+    </div>
+</div>
+
 To send raw NMEA as a TCP Client connecting to a listener:
 ```bash
 AIS-catcher -P 192.168.1.235 4002

@@ -1,6 +1,11 @@
 # Building from Source
 
-## CMake
+## Disclaimer
+
+...
+
+## Building
+
 The steps to compile AIS-catcher for RTL-SDR dongles are fairly straightforward on most systems. There are various options including a standard Makefile, a ```solution``` file for MSVC (see next section) and you can use ```cmake```, as we will detail now.
 
 The first step is to ensure you have the necessary dependencies and build tools installed for your device(s). 

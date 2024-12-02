@@ -8,3 +8,6 @@
 > - **Legal Compliance:** Use of AIS-Catcher must be limited to applications where it is legally allowed, such as personal hobbies or academic research.
 >
 > **AIS-Catcher is provided as-is, with no guarantees of reliability or accuracy.** Always ensure compliance with your local laws and regulations regarding the reception and processing of AIS signals. AIS-Catcher should only be used in contexts where it is permissible by law and safe to do so.
+
+
+The software is provided under the [GPL3 license](references/license.md).

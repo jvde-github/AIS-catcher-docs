@@ -3,11 +3,9 @@
 <div class="command-container">
       <div class="command-syntax">
         <span class="cmd-name">AIS-catcher</span>
-        <span class="cmd-flag">-d</span>
-        <span class="cmd-value">serial code</span>
+        [<span class="cmd-flag">-d</span> <span class="cmd-value">serial number</span>]
         <span class="cmd-flag">-gf</span>
-        <span class="cmd-setting">setting</span>
-        <span class="cmd-value">value</span>
+        [<span class="cmd-setting">setting</span> <span class="cmd-value">value</span>]
         ...
     </div>
 </div>
@@ -21,6 +19,10 @@ AIS-catcher -gf lna 16 vga 16 preamp OFF
 
 | Setting | Type | Default | Description |
 |---------|------|---------|-------------|
-| LNA | integer | 8 | LNA (RF) gain in dB (0-40, rounded to multiples of 8) |
-| VGA | integer | 20 | VGA (IF) gain in dB (0-62, rounded to multiples of 2) |
-| PREAMP | boolean | false | Enable/disable preamplifier |
+| <span class="cmd-setting">LNA</span> | integer | <span class="cmd-value">8</span> | LNA (RF) gain in dB (0-40, rounded to multiples of 8) |
+| <span class="cmd-setting">VGA</span> | integer | <span class="cmd-value">20</span> | VGA (IF) gain in dB (0-62, rounded to multiples of 2) |
+| <span class="cmd-setting">PREAMP</span> | boolean | <span class="cmd-value">false</span> | Enable/disable preamplifier |
+| <span class="cmd-setting">SAMPLE_RATE</span> | integer | <span class="cmd-value">Device-specific</span> | Sampling rate in Hz (0-20,000,000) |
+| <span class="cmd-setting">BANDWIDTH</span> | integer | <span class="cmd-value">0</span> | Tuner bandwidth in Hz (0-1,000,000, 0=auto) |
+| <span class="cmd-setting">FREQOFFSET</span> | integer | <span class="cmd-value">0</span> | Frequency correction in PPM (-150 to +150) |
+| <span class="cmd-setting">FORMAT</span> | string | <span class="cmd-value">auto</span> | Data type for input source |

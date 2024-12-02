@@ -1,14 +1,28 @@
 # Windows Binaries
 
+## Disclaimer
+
+...
+
+## Installation
+
 Links to fully built Windows binaries of recent releases are provided in the table below, with and without SDRPlay support (which requires a running SDRPlay API). Running `AIS-catcher` should be a simple matter of unpacking the ZIP file in one directory and starting the executable on the command line with the required parameters or by clicking `start.bat`, which you can edit with Notepad to set desired parameters.
 
-It will likely run out of the box if you already have RTL-SDR software running on your PC. If you encounter an issue or crash, you might want to check:
+It will likely run out of the box if you already have RTL-SDR software running on your PC. If you encounter an issue or crash, you might want to check: 
+
 - Installation of RTL-SDR drivers is done via [Zadig](https://www.rtl-sdr.com/tag/zadig/).
 - Installation of the Visual Studio runtime [libraries](https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170).
 
-The AIS-catcher executables are built with the latest Windows MSVC compiler. Please update your [libraries](https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170) before starting the executables below. Issues have been reported on Windows 10.
+---
+
+[Start First Run](../usage/cli.md){ .md-button .md-button--primary }
+
+---
 
 ## Recent Releases
+
+The AIS-catcher executables are built with the latest Windows MSVC compiler. Please update your [libraries](https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170) before starting the executables below. Issues have been reported on Windows 10.
+
 
 | Version | Win32 | x64 | Win32 + SDRPlay | x64 + SDRPlay |
 | :------ | :---- | :--: | :-------------- | :------------ |

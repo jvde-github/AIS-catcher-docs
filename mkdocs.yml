@@ -47,10 +47,14 @@ extra:
       - title: 'Disclaimer'
         url: 'disclaimer.md'
 
+extra_javascript:
+  - https://unpkg.com/mermaid/dist/mermaid.min.js
+
 nav:
   - Home: index.md
   - Getting Started:
       - Overview: getting-started/overview.md
+      - Features: getting-started/features.md
       - AIS Basics: getting-started/ais-basics.md
   - Installation:
       - Overview: installation/overview.md
@@ -96,25 +100,33 @@ nav:
           - UDP: configuration/output/UDP.md
           - HTTP: configuration/output/HTTP.md
         - Web Viewer: configuration/output/web-viewer.md
-        - MQTT Integration: configuration/output/MQTT.md
+        - MQTT: configuration/output/MQTT.md
         - NMEA2000: configuration/output/NMEA2000.md
-        - Postgres: configuration/output/PSQL.md
+        - PostgreSQL: configuration/output/PSQL.md
   - Advanced:
-      - Advanced Configuration: advanced/advanced-configuration.md
+      - FM decoding: advanced/FM-decoding.md
+      - GPS: advanced/GPS.md
+      - Performance Tuning: advanced/Low-spec-devices.md
+      - Connecting to GNUradio: advanced/GNUradio.md
+      - Long Rang AIS: advanced/long-range.md
+      - Setting Sample Rate: advanced/samplerate.md
       - Grafana: advanced/grafana.md
       - Validation: advanced/validation.md
       - Troubleshooting: advanced/troubleshooting.md
-      - JSON AIS format: advanced/JSON-decoding.md
   - Community: community.md
   - FAQ: faq.md
-  - References: references.md
+  - References:
+      - JSON AIS format: references/JSON-decoding.md
+      - License: references/license.md
+
 
 markdown_extensions:
+  - extra
   - toc:
       permalink: true      
   - tables
   - admonition
-  - pymdownx.superfences
+  - pymdownx.superfences:
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.snippets
@@ -122,6 +134,7 @@ markdown_extensions:
   - pymdownx.magiclink
   - pymdownx.tasklist
   - pymdownx.tilde
+  - pymdownx.extra
   - md_in_html
   - pymdownx.emoji:
       emoji_generator: !!python/name:pymdownx.emoji.to_alt

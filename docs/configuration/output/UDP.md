@@ -1,5 +1,18 @@
 # UDP 
 
+<div class="command-container">
+      <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-u</span>
+        <span class="cmd-value">host</span>
+        <span class="cmd-value">port</span>
+        [<span class="cmd-setting">setting</span> <span class="cmd-value">value</span>]
+
+        ...
+    </div>
+</div>
+
+
 AIS messages can be forwarded between applications over UDP via the `-u` switch and as a TCP Client using `-P`. To send data to a port at a specific server, we can use:
 ```bash
 AIS-catcher -u 192.168.1.235 4002

@@ -1,12 +1,14 @@
 # AIS-Catcher
 
-Welcome to the **AIS-Catcher** documentation. AIS-Catcher is an open-source software package designed to convert your inexpensive general-purpose **Software Defined Radio** (SDR) into a robust, dual-channel **Automatic Identification System (AIS)** receiver. Empower yourself with complete control over maritime data monitoring and sharing without the need for expensive commercial AIS receivers.
+Welcome to the **AIS-Catcher** documentation. AIS-Catcher is an open-source software package designed to convert your inexpensive general-purpose **Software Defined Radio** (SDR) into a robust, dual-channel **Automatic Identification System (AIS)** receiver. Empower yourself with complete control over maritime data monitoring and sharing without the need for expensive commercial AIS receivers. 
 
-## **Important Disclaimer**
-
+> ## **Important Disclaimer**
+>
 > **AIS-Catcher is intended for hobbyist and research projects only. It is NOT approved for use in navigation or safety-of-life applications.**
 >
 > [Read the full disclaimer](disclaimer.md).
+
+---
 
 [Get Started](getting-started/overview.md){ .md-button .md-button--primary }
 
@@ -42,5 +44,5 @@ AIS-Catcher is free and open-source software published under the **GPLv3** licen
 - [**Complete User Guide**](getting-started/overview.md): Detailed instructions and feature walkthroughs.
 - [**Community and Support**](community.md): Join the AIS-Catcher community to share insights and get help.
 - [**FAQ**](faq.md): Answers to frequently asked questions.
-- [**References**](references.md): Links to additional resources and documentation.
+- [**References**](references/overview.md): Links to additional resources and documentation.
 

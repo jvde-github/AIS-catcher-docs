@@ -23,18 +23,5 @@ Instructions for running AIS-Catcher on Android devices.
 🐳 [**Docker Installation**](docker.md)  
 Deploy AIS-Catcher using Docker containers.
 
-🖥️ [**GUI Installation**](gui-installation.md)  
-User-friendly installation using the graphical interface.
-
-### Advanced Installation
-
 ⚙️ [**Build from Source**](build-source.md)  
 Instructions for building AIS-Catcher from source code.
-
----
-
-Each installation guide includes:
-- Step-by-step instructions
-- Required dependencies
-- Basic configuration
-- Troubleshooting tips

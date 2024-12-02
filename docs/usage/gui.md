@@ -1,13 +1,10 @@
 # Web GUI for Remote Configuration
 
-This section is for Raspberry Pi devices only.
+This section is for Rdevices that have AIS-catcher-control installed (Docker/Raspberry only).
 
 ## Configuring AIS-catcher via the Web GUI
 
-AIS-catcher provides a web-based graphical user interface for easy configuration. It needs to be installed as a separate service by entering in the terminal:
-```bash
-sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/main/install_ais_catcher_control.sh)"
-```
+
 To access it, open your web browser and navigate to your Raspberry Pi's IP address on port 8110 (for example, `http://zerowh:8110`). 
 
 ![image](https://github.com/user-attachments/assets/1fe942d2-dd3a-4116-99e8-f88f2de4ed14)

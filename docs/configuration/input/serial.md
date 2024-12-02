@@ -5,8 +5,7 @@
         <span class="cmd-flag">-e</span>
         <span class="cmd-value">port</span>
         <span class="cmd-flag">-ge</span>
-        <span class="cmd-setting">setting</span>
-        <span class="cmd-value">value</span>
+        [<span class="cmd-setting">setting</span> <span class="cmd-value">value</span>]
         ...
     </div>
       <div class="command-syntax">
@@ -15,8 +14,7 @@
         <span class="cmd-value">baudrate</span>
         <span class="cmd-value">port</span>
         <span class="cmd-flag">-ge</span>
-        <span class="cmd-setting">setting</span>
-        <span class="cmd-value">value</span>
+        [<span class="cmd-setting">setting</span> <span class="cmd-value">value</span>]
         ...
     </div>
 </div>
@@ -30,8 +28,13 @@ To dump the raw input from the serial device on-screen use `-`ge print on`.
 
 ## Summary Settings
 
+
 | Setting | Type | Default | Description |
 |---------|------|---------|-------------|
-| BAUDRATE | integer | 38400 | Serial port speed |
-| PORT | string | "" | Serial port device path/name |
-| PRINT | boolean | false | Enable debug printing of received data |
+| <span class="cmd-setting">SAMPLE_RATE</span> | integer | <span class="cmd-value">device-specific</span> | Sampling rate in Hz (0-20,000,000) |
+| <span class="cmd-setting">BANDWIDTH</span> | integer | <span class="cmd-value">0</span> | Tuner bandwidth in Hz (0-1,000,000, 0=auto) |
+| <span class="cmd-setting">FREQOFFSET</span> | integer | <span class="cmd-value">0</span> | Frequency correction in PPM (-150 to +150) |
+| <span class="cmd-setting">FORMAT</span> | string | <span class="cmd-value">auto</span> | Data type for input source |
+| <span class="cmd-setting">BAUDRATE</span> | integer | <span class="cmd-value">38400</span> | Serial port speed |
+| <span class="cmd-setting">PORT</span> | string | <span class="cmd-value">""</span> | Serial port device path/name |
+| <span class="cmd-setting">PRINT</span> | boolean | <span class="cmd-value">false</span> | Enable debug printing of received data |

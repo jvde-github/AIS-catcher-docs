@@ -1,8 +1,32 @@
 # AIS-catcher Architecture
 
-AIS-catcher follows a modular architecture that can scale from simple to complex configurations. Let's explore both scenarios:
+## Usage Profiles
 
-## Basic Architecture
+AIS-catcher follows a modular architecture that can scale from simple to complex configurations to cater for various use cses.
+
+
+**Receiver**
+
+Minimal options for decoding and output 
+
+**Aggregator** 
+
+Route and filter streams to aggregators
+
+**Database**
+
+Log all messages to PostgreSQL 
+
+**Experimenter**
+
+Simultaneous SDRs, decoder testing
+
+**Web Viewer**
+
+Display vessels via built-in web interface
+
+
+## Basic Data Flow
 
 In its simplest form, AIS-catcher processes data through three main stages:
 
@@ -10,19 +34,29 @@ In its simplest form, AIS-catcher processes data through three main stages:
 flowchart LR
     I[Input] -->M[Model]
     M --> O[Output]
-    
     style I fill:#e3f2fd,stroke:#1976d2
     style M fill:#e8f5e9,stroke:#2e7d32
     style O fill:#fff3e0,stroke:#e65100
-
     click I "input" _blank
     click M "model" _blank
     click O "output" _blank
 ```
 
-Input: Single data source (e.g., an SDR device)
-Model: Message decoding and processing
-Output: Delivery of decoded messages (e.g., to screen)
+## Documentation Structure
+
+The documentation is organized along these lines.
+
+[***Input***](input/overview.md)  
+
+Examples: RTL-SDR, Airspy, network streams, files.
+
+[***Model***](model.md)  
+
+Message decoding and processing. AIS-catcher includes various decoding models for experimentation.
+
+[***Output***](output/overview.md)  
+
+Examples: screen display, file logging, network streaming, database storage
 
 
 ## Advanced Architecture
@@ -64,31 +98,4 @@ flowchart LR
     click O3 "output" _blank
 ```
 
-In this advanced setup:
-Inputs
-
-Multiple input sources operate independently
-Each input can use multiple specialized models
-Examples: RTL-SDR, Airspy, network streams, files
-
-Models
-
-Input 1 uses two parallel models (A1 and A2)
-Input 2 uses a single dedicated model (B)
-Models are optimized for their specific input source
-
-Outputs
-
-Each model can send data to multiple outputs
-Outputs can receive data from multiple models
-Examples: screen display, file logging, network streaming, database storage
-
-Configuration
-Each component can be configured independently:
-
-Input Configuration: Configure devices, files, and network sources
-Model Configuration: Adjust signal processing and decoding parameters
-Output Configuration: Set up various output formats and destinations
-
-This modular architecture allows for flexible setups ranging from simple single-channel monitoring to complex multi-receiver systems with diverse output requirements.
-
+In this advanced setup: Multiple input sources operate independently. Each input can use multiple specialized models for decoding.  Each model can send data to one or more multiple outputs.

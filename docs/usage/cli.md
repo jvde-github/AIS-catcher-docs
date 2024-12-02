@@ -1,26 +1,63 @@
-# Command Line Interface
+# Command Line Usage
 
 
 ## Basic usage
+
+Firstly, we will check if AIS-catcher is correctly installed with build-in support for the desired hardware. The option `-L` will
+list the supported hardware.
+```bash
+AIS-catcher -L
+```
+We can view the available hardware as follows:
+```bash
+AIS-catcher -l
+```
+
+### The First Run
 
 To start AIS decoding, print some occasional statistics (every 10 seconds)
 ```bash
 AIS-catcher -v 10
 ```
+If you have multiple devices connected you can use `-d:` followed by the device number or `-d` followed by the serial number of the device, e.g.:
+
+```bash
+AIS-catcher -d:0
+```
+If the the setup is succesful you should see AIS messages in NMEA format being printed to screen. 
+
+### Output to screen
+
+By default the program prints the received messages to screen including some meta data. This output to console can be controlled 
+via the `-o` switch followed by the aspired output: no output (`-o 0`), plain NMEA (`-o 1`), NMEA with meta data (default via `-o 2`) but also full JSON
+deconding of the AIS message (`-o 5`):
+```bash
+AIS-catcher -o 5
+```
+The full JSON format for decoded AIS messages is documented [here](../references/JSON-decoding.md). The AIS NMEA lines on screen can be suppressed with the option ```-q``` equivalent to `-o 0`. 
+
+### Sharing your data
+
 The next step is to share the data with other programs or services. 
-To share your raw feed with other AIS-catcher users (and see their data in your webviewer - see below) use `-X`. Additionally, for sending the messages via UDP to ports 10110 and 10111, we can use the following command:
+To share your  feed with other AIS-catcher users (and see their data in your webviewer) use `-X` followed by your own unique sharing key created at [aiscatcher.org](https://aiscatcher.org/join). Ignoring the sharing key will share your data anonymously.
+
+Additionally, for sending the messages via UDP to ports 10110 and 10111, we can use the following command:
 ```bash
 AIS-catcher -v 10 -X -u 127.0.0.1 10110 -u 127.0.0.1 10111
 ```
 If successful, NMEA messages will start to come in, appear on the screen and send as UDP messages to `127.0.0.1` port `10110` and port `10111` and will be visible on [aiscatcher.org](https://aiscatcher.org). The UDP messages are the primary method to forward messages for visualization in OpenCPN or to AIS aggregator websites like MarineTraffic, FleetMon, VesselFinder, ShipXplorer and others. See below for more pointers on how this can be set up.
-The AIS NMEA lines on screen can be suppressed with the option ```-q```. 
 
+
+### Device Specific Settings
 For RTL-SDR devices performance can be sensitive to the device settings. In general, a good starting point is the following:
 ```bash
 AIS-catcher -gr RTLAGC on TUNER auto -a 192K
 ```
-It has been reported by several users that adding a bandwidth setting of ``-a 192K`` can be beneficial so it is worthwhile to try with and without this filter. Finding the best settings for your hardware requires some systematic experimentation whereby one parameter is changed at a time, e.g. switch RTLAGC ``on`` or ``off``, set the TUNER to ``auto`` or try fixed tuner gains between 0 and 50. The hardware settings available depend on the hardware and more details can be found below.
+It has been reported by several users that adding a bandwidth setting of ``-a 192K`` can be beneficial so it is worthwhile to try with and without this filter. Finding the best settings for your hardware requires some systematic experimentation whereby one parameter is changed at a time, e.g. switch RTLAGC ``on`` or ``off``, set the TUNER to ``auto`` or try fixed tuner gains between 0 and 50. 
 
+The hardware settings available depend on the specific SDR and more details can be found in our [Configuration Section](../configuration/overview.md).
+
+### Performance Considerations
 AIS-catcher also supports the 18 Euro RPI Zero W. However, the hardware might not keep up with the high data flow. This can sometimes be resolved by activating **fast downsampling** via:
 ```bash
 AIS-catcher -F
@@ -29,7 +66,10 @@ Fast downsampling uses approximations and comes at a very small performance degr
 ```bash
 AIS-catcher -s 288K
 ```
+
 Reception will be impacted though. Unfortunately, latest feedback seems to be that this is best way to run on the Zero W as this Zero is struggling with the high data throuugput. Another drawback of these lower cost boards is that they can create interference that impacts the radio reception.
+
+### Activating the Web Viewer
 
 Finally, to create a webviewer that you can access from your local network, use the following command:
 ```bash
@@ -37,7 +77,11 @@ AIS-catcher -N 8100
 ```
 A simple webviewer with a map (and community feed) will be available at `http://localhost:8100`. The webviewer can be accessed from any device on the same network with the IP address of the machine. The webviewer can be customized, see below.
 
-That's all there is. Below we will dive into some more details.
+That's all.
+
+### Where to go from here?
+
+For more details on all available settings, [visit](../configuration/overview.md) our detailed coniguration pages.
 
 ## Detailed settings
 

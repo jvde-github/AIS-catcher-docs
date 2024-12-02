@@ -1,7 +1,13 @@
-# Basic Installation on a Raspberry Pi
+#  Ubuntu/Debian Installation
+
+## Disclaimer
+
+...
+
+## Installation
 
 This guide provides instructions for installing AIS-catcher on Debian-based systems (like Raspberry Pi) and setting it up to run as a background service. This ensures AIS-catcher will automatically start when the machine is booted.
-## Installation
+## Basic Installation
 
 To install AIS-catcher via a script, open a terminal or log in via SSH, then run the following command:
 ```console
@@ -11,25 +17,39 @@ The script will install all dependencies and build AIS-catcher. The required SDR
 
 To update AIS-catcher to the latest version, simply run the above command again.
 
-If you want to use pre-installed Debian packes in the installation use:
+---
+
+[Start First Run](../usage/cli.md){ .md-button .md-button--primary }
+
+---
+
+### Using pre-installed Debian packages
+
+If you want to use pre-installed Debian packages in the installation use:
 ```console
 sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install)" _ -p
 ```
 The advantage that this avoids an compilation step which can save quite a bit of time on older Raspberry devices but it does not optimize the binaries for the specific hardware and ***is not compatible with the RTL-SDR V4***.
 
-### Verifying the installation
+## Installation with Web GUI 
 
-To verify that AIS-catcher is installed or updated, run:
-```console
-/usr/bin/AIS-catcher -L
+AIS-catcher provides a web-based graphical user interface for easy configuration. It needs to be installed as a separate service by entering in the terminal:
+```bash
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/main/install_ais_catcher_control.sh)"
 ```
-Now (re)connect the dongle and you can start playing with the various command line options, e.g. to start some basic decoding with a webviewer at `http://localhost:8100`, use file following command:
-```console
-/usr/bin/AIS-catcher -v 10 -N 8100
-```
-If all works, you should start seeing NMEA lines on screen and have an active webviewer at the aforementioned address.
+To access it, open your web browser and navigate to your Raspberry Pi's IP address on port 8110 (for example, `http://zerowh:8110`). 
 
-### Configuration
+---
+
+[Start First Run](../usage/gui.md){ .md-button .md-button--primary }
+
+---
+
+![image](https://github.com/user-attachments/assets/1fe942d2-dd3a-4116-99e8-f88f2de4ed14)
+
+
+
+## Configuration Files
 
 For running AIS-catcher as a background service we can use two configuration files:
 

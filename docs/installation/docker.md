@@ -1,4 +1,10 @@
-# Container images
+# Docker Container
+
+## Disclaimer
+
+...
+
+## Installation
 
 Pre-built container images containing AIS-catcher are available from the GitHub Container Registry. Available container tags are documented on the [package's page](https://github.com/jvde-github/AIS-catcher/pkgs/container/ais-catcher), with `latest` (the latest release) and `edge` (the bleeding edge of the `main` branch) being the two main ones.
 
@@ -24,6 +30,12 @@ services:
 ```
 Please note that the SDRplay devices are currently not supported in the Docker images.
 
+---
+
+[Start First Run](../usage/cli.md){ .md-button .md-button--primary }
+
+---
+
 ### More Docker options
 To pull the latest docker image (e.g. to create or refresh to the latest version) without running:
 ```console
@@ -38,8 +50,14 @@ Notice that if you want to run the webviewer (-N 8100) you need to make that ava
 An excellent Docker set-up is the [docker-shipfeeder](https://github.com/sdr-enthusiasts/docker-shipfeeder) that provides a user friendly way to 
 feed various aggregators with excellent documentation and user support by the sdrenthusiasts community.
 
-## Docker with GUI
+## Docker with Web GUI
 If you are already up and running with Docker installed, you can simply use:
 ```console
 docker run --privileged -v /dev/bus/usb:/dev/bus/usb -p 8110:8110 -p 8100:8100 --pull=always ghcr.io/jvde-github/ais-catcher-control:edge
 ```
+
+---
+
+[Start First Run](../usage/gui.md){ .md-button .md-button--primary }
+
+---
