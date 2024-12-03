@@ -1,4 +1,4 @@
-name: Deploy MkDocs Material Documentation
+name: Deploy MkDocs Site
 
 on:
   push:
@@ -12,15 +12,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-          cache: 'pip'
-
+      
       - name: Install Dependencies
         run: |
           pip install \
@@ -33,11 +30,11 @@ jobs:
             mkdocs-minify-plugin \
             mkdocs-redirects \
             mkdocs-rss-plugin
-
-      - name: Build MkDocs Site
-        run: mkdocs build --config-file mkdocs.yml
-
-      - name: Deploy to GitHub Pages
+      
+      - name: Build Site
+        run: mkdocs build
+      
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: site
