@@ -1,154 +1,63 @@
-site_name: AIS-catcher Docs
-site_description: Comprehensive guide to installing, configuring, and using AIS-catcher.
-site_author: jvde.github@gmail.com
-site_url: https://aiscatcher.org/docs
+name: Deploy MkDocs Material Documentation
 
-theme:
-  name: 'material'
-  custom_dir: overrides
-  palette:
-    - scheme: default
-      primary: white
-      accent: white
-  logo:   assets/logo.svg 
-  language: 'en'
-  palette:
-    primary: 'blue'
-    accent: 'light blue'
-  font:
-    text: 'Roboto'
-    code: 'Roboto Mono'
-  icon:
-    repo: fontawesome/brands/github
-    social:
-      - icon: fontawesome/brands/github
-        link: https://github.com/jvde-github/AIS-catcher
-      - icon: fontawesome/brands/twitter
-        link: https://twitter.com/yourtwitter
-  features:
-    - navigation.top
-    - content.code.annotate  
-    - content.code.copy      
-    - content.code.wrap     
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
 
-repo_url: https://github.com/jvde-github/AIS-catcher
-repo_name: GitHub
-extra_css:
-  - styles/custom.css
-  
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/jvde-github/AIS-catcher
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/yourtwitter
-    - icon: fontawesome/solid/house
-      link: https://aiscatcher.org
-    - icon: fontawesome/solid/comments
-      link: https://github.com/jvde-github/AIS-catcher/discussions
-    - icon: fontawesome/solid/bug
-      link: https://github.com/jvde-github/AIS-catcher/issues
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
-  footer:
-    text: '© 2021-2024 jvde.github@gmail.com. All rights reserved.'
-    links:
-      - title: 'License'
-        url: 'license.md'
-      - title: 'Disclaimer'
-        url: 'disclaimer.md'
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
-nav:
-  - Home: index.md
-  - Getting Started:
-      - Overview: getting-started/overview.md
-      - Features: getting-started/features.md
-      - AIS Basics: getting-started/ais-basics.md
-  - Installation:
-      - Overview: installation/overview.md
-      - Docker: installation/docker.md
-      - Raspberry Pi: installation/raspberry-pi.md
-      - Windows: installation/windows.md
-      - Build from Source: installation/build-source.md
-      - Ubuntu and Debian: installation/ubuntu-debian.md
-  - Basic Usage:
-      - Overview: usage/overview.md
-      - Web GUI: usage/gui.md
-      - Command Line: usage/cli.md
-      - JSON Configuration: usage/json-configuration.md
-  - Configuration:
-      - Overview: configuration/overview.md
-      - Input Options:
-            - Overview: configuration/input/overview.md
-            - SDR Devices:
-              - RTL-SDR: configuration/input/rtlsdr.md
-              - AirSpy: configuration/input/airspy.md
-              - AirSpy HF+: configuration/input/airspyhf.md
-              - HackRF: configuration/input/hackrf.md
-              - SDRPlay: configuration/input/sdrplay.md
-              - SoapySDR: configuration/input/soapysdr.md
-            - Network Input:
-              - TCP: configuration/input/tcp.md
-              - UDP: configuration/input/udp.md
-              - SpyServer: configuration/input/spyserver.md
-            - File Input:
-              - Raw Files: configuration/input/file.md
-              - WAV Files: configuration/input/wav.md
-            - Other Input:
-              - Serial Port: configuration/input/serial.md
-              - NMEA2000: configuration/input/NMEA2000.md
-      - Model: configuration/model.md
-      - Output Options:
-        - Overview: configuration/output/overview.md
-        - Community Feed: configuration/output/community-feed.md
-        - Console Output: configuration/output/console.md
-        - Network Output:
-          - TCP Server: configuration/output/TCP-server.md
-          - TCP Client: configuration/output/TCP-client.md
-          - UDP: configuration/output/UDP.md
-          - HTTP: configuration/output/HTTP.md
-          - MQTT: configuration/output/MQTT.md
-        - Web Viewer: configuration/output/web-viewer.md
-        - NMEA2000: configuration/output/NMEA2000.md
-        - PostgreSQL: configuration/output/PSQL.md
-  - Advanced:
-      - FM decoding: advanced/FM-decoding.md
-      - GPS: advanced/GPS.md
-      - Performance Tuning: advanced/Low-spec-devices.md
-      - Connecting to GNUradio: advanced/GNUradio.md
-      - Long Rang AIS: advanced/long-range.md
-      - Setting Sample Rate: advanced/samplerate.md
-      - Grafana: advanced/grafana.md
-      - Validation: advanced/validation.md
-      - Troubleshooting: advanced/troubleshooting.md
-  - Community: community.md
-  - FAQ: faq.md
-  - References:
-      - JSON AIS format: references/JSON-decoding.md
-      - License: references/license.md
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
 
-markdown_extensions:
-  - admonition
-  - attr_list
-  - codehilite
-  - pymdownx.superfences
-  - pymdownx.highlight
-  - pymdownx.inlinehilite
-  - pymdownx.details
-  - pymdownx.magiclink
-  - pymdownx.tasklist
-  - pymdownx.tilde
-  - pymdownx.extra
-  - md_in_html
-  - pymdownx.emoji:
-      emoji_generator: !!python/name:pymdownx.emoji.to_alt
-  - pymdownx.keys
-  - pymdownx.snippets:
-      check_paths: true
-  - toc:
-      permalink: true
+      - name: Install dependencies
+        run: |
+          pip install \
+            mkdocs-material \
+            mkdocs-material-extensions \
+            mkdocs-glightbox \
+            mkdocs-git-revision-date-localized-plugin \
+            pillow \
+            cairosvg \
+            mkdocs-minify-plugin \
+            mkdocs-redirects \
+            mkdocs-rss-plugin
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
-plugins:
-  - search
-  - awesome-pages
+      - name: Build site
+        run: mkdocs build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
