@@ -1131,9 +1131,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sequencing-on-the-command-line" class="md-nav__link">
+  <a href="#pipeline-example" class="md-nav__link">
     <span class="md-ellipsis">
-      Sequencing on the command line
+      Pipeline example
     </span>
   </a>
   
@@ -2024,9 +2024,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sequencing-on-the-command-line" class="md-nav__link">
+  <a href="#pipeline-example" class="md-nav__link">
     <span class="md-ellipsis">
-      Sequencing on the command line
+      Pipeline example
     </span>
   </a>
   
@@ -2101,20 +2101,23 @@
 </div>
 
 <h2 id="reading-from-stdin">Reading from STDIN<a class="headerlink" href="#reading-from-stdin" title="Permanent link">&para;</a></h2>
-<p>AIS-catcher can read from a file with the switch <code>-r</code> followed by the filename and with a <code>.</code> or <code>stdin</code> it reads from stdin:
+<p>AIS-catcher can read input in two ways using the -r switch: from a file by specifying a filename, or from standard input by using either a dot (.) or stdin as the argument:
 <div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-r<span class="w"> </span>.
 </code></pre></div></p>
-<h2 id="sequencing-on-the-command-line">Sequencing on the command line<a class="headerlink" href="#sequencing-on-the-command-line" title="Permanent link">&para;</a></h2>
-<p>The following command records a signal with <code>rtl_sdr</code> at a sampling rate of 288K Hz and pipes it to AIS-catcher for decoding:
+<h2 id="pipeline-example">Pipeline example<a class="headerlink" href="#pipeline-example" title="Permanent link">&para;</a></h2>
+<p>AIS-catcher can be integrated into command-line processing pipelines for real-time signal processing. For example, you can capture radio signals using rtl_sdr and pipe them directly to AIS-catcher for decoding:
 <div class="highlight"><pre><span></span><code>rtl_sdr<span class="w"> </span>-s<span class="w"> </span>288K<span class="w"> </span>-f<span class="w"> </span>162M<span class="w">  </span>-<span class="w"> </span><span class="p">|</span><span class="w"> </span>AIS-catcher<span class="w"> </span>-r<span class="w"> </span>.<span class="w"> </span>-s<span class="w"> </span>288K<span class="w"> </span>-v
 </code></pre></div>
-The same mechanism can be used to apply other transformations on the signal, e.g. downsampling with <code>sox</code>:
+You can also perform signal transformations using tools like <code>sox</code>. Here's an example of downsampling a signal before processing:
 <div class="highlight"><pre><span></span><code>sox<span class="w"> </span>-c<span class="w"> </span><span class="m">2</span><span class="w"> </span>-r<span class="w"> </span><span class="m">1536000</span><span class="w"> </span>-b<span class="w"> </span><span class="m">8</span><span class="w"> </span>-e<span class="w"> </span>unsigned<span class="w"> </span>-t<span class="w"> </span>raw<span class="w"> </span>posterholt.raw<span class="w"> </span>-t<span class="w"> </span>raw<span class="w"> </span>-b<span class="w"> </span><span class="m">16</span><span class="w"> </span>-e<span class="w"> </span>signed<span class="w"> </span>-r<span class="w"> </span><span class="m">96000</span><span class="w"> </span>-<span class="w"> </span><span class="p">|</span>AIS-catcher<span class="w"> </span>-s<span class="w"> </span>96K<span class="w"> </span>-r<span class="w"> </span>CS16<span class="w"> </span>.<span class="w"> </span>-v
-</code></pre></div>
-For reference, as per version 0.36, AIS-catcher has the option to use the internal sox library directly if included in your build:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-s<span class="w"> </span>1536K<span class="w"> </span>-r<span class="w"> </span>CU8<span class="w"> </span>posterholt.raw<span class="w"> </span>-v<span class="w"> </span>-go<span class="w"> </span>SOXR<span class="w"> </span>on<span class="w"> </span>
-</code></pre></div>
-Default assumption is that the file is in raw unsigned 8-bit IQ format (CU8). Alternative formats can be set via  the FORMAT setting. </p>
+</code></pre></div></p>
+<blockquote>
+<p>As of version 0.36, AIS-catcher includes built-in sox functionality (if compiled with this feature), allowing for
+built-in usage of sox:
+<code>bash
+AIS-catcher -s 1536K -r CU8 posterholt.raw -v -go SOXR on</code></p>
+</blockquote>
+<p>By default, AIS-catcher expects input files to be in raw unsigned 8-bit IQ format (CU8). You can specify other formats using the FORMAT setting.</p>
 <h2 id="nmea0183-input-from-file">NMEA0183 input from file<a class="headerlink" href="#nmea0183-input-from-file" title="Permanent link">&para;</a></h2>
 <p>For a text file with NMEA input, we can use:
 <div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-r<span class="w"> </span>txt<span class="w"> </span>nmea-file
