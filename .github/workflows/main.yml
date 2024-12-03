@@ -27,6 +27,7 @@ jobs:
             mkdocs-git-revision-date-localized-plugin \
             pillow \
             cairosvg \
+            mkdocs-awesome-pages-plugin \
             mkdocs-minify-plugin \
             mkdocs-redirects \
             mkdocs-rss-plugin
