@@ -1,40 +1,29 @@
-name: Deploy MkDocs Site
-
+name: ci 
 on:
   push:
-    branches: ["main"]
-  workflow_dispatch:
-
+    branches:
+      - master 
+      - main
 permissions:
   contents: write
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
-      
-      - name: Install Dependencies
-        run: |
-          pip install \
-            mkdocs-material \
-            mkdocs-material-extensions \
-            mkdocs-glightbox \
-            mkdocs-git-revision-date-localized-plugin \
-            pillow \
-            cairosvg \
-            mkdocs-minify-plugin \
-            mkdocs-redirects \
-            mkdocs-rss-plugin
-      
-      - name: Build Site
-        run: mkdocs build
-      
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
+          python-version: 3.x
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
+      - uses: actions/cache@v4
         with:
-          folder: site
+          key: mkdocs-material-${{ env.cache_id }}
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+      - run: pip install mkdocs-material 
+      - run: mkdocs gh-deploy --force
