@@ -2,6 +2,8 @@
 
 --8<-- "docs/disclaimer.md"
 
+[Basic](#basic-docker-container){ .md-button .md-button--secondary }
+[Web GUI](#docker-with-web-gui){ .md-button .md-button--secondary }
 
 ## Basic Docker Container
 
