@@ -2016,6 +2016,14 @@
 
 <h1 id="input-from-file-and-stdin">Input from file and stdin<a class="headerlink" href="#input-from-file-and-stdin" title="Permanent link">&para;</a></h1>
 <div class="command-container">
+            <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-r</span>
+        <span class="cmd-flag">-ga</span>
+        [<span class="cmd-setting">setting</span> <span class="cmd-value">value</span>]
+        ...
+    </div>
+
       <div class="command-syntax">
         <span class="cmd-name">AIS-catcher</span>
         <span class="cmd-flag">-r</span>
@@ -2037,7 +2045,7 @@
     </div>
 
 </div>
-<p>AIS-catcher can read from a file with the switch <code>-r</code> followed by the filename and with a <code>.</code> or <code>stdin</code> it reads from stdin, e.g. <code>-r .</code>.
+<p>AIS-catcher can read from a file with the switch <code>-r</code> followed by the filename and with a <code>.</code> or <code>stdin</code> it reads from stdin:
 <div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-r<span class="w"> </span>.
 </code></pre></div></p>
 <p>The following command records a signal with <code>rtl_sdr</code> at a sampling rate of 288K Hz and pipes it to AIS-catcher for decoding:
@@ -2049,7 +2057,13 @@ The same mechanism can be used to apply other transformations on the signal, e.g
 For reference, as per version 0.36, AIS-catcher has the option to use the internal sox library directly if included in your build:
 <div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-s<span class="w"> </span>1536K<span class="w"> </span>-r<span class="w"> </span>CU8<span class="w"> </span>posterholt.raw<span class="w"> </span>-v<span class="w"> </span>-go<span class="w"> </span>SOXR<span class="w"> </span>on<span class="w"> </span>
 </code></pre></div>
-Default assumption is that the file is in raw unsigned 8-bit IQ format. Alternative formats can be set via <code>-gr</code> (see below) and can even include NMEA strings in text input. </p>
+Default assumption is that the file is in raw unsigned 8-bit IQ format (CU8). Alternative formats can be set via  the FORMAT setting. </p>
+<p>For a text file with NMEA input, we can use:
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-r<span class="w"> </span>txt<span class="w"> </span>nmea-file
+</code></pre></div>
+Or equivalently for illustration purposes:
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-r<span class="w"> </span>-ga<span class="w"> </span>FORMAT<span class="w"> </span>txt<span class="w"> </span>file<span class="w"> </span>nmea-file
+</code></pre></div></p>
 <h2 id="summary-settings">Summary Settings<a class="headerlink" href="#summary-settings" title="Permanent link">&para;</a></h2>
 <div class="input-table">
 <table>
