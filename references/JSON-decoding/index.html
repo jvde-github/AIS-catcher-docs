@@ -1912,24 +1912,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ais-decoding" class="md-nav__link">
-    <span class="md-ellipsis">
-      AIS decoding
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#nmea-input" class="md-nav__link">
-    <span class="md-ellipsis">
-      NMEA input
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#json-format" class="md-nav__link">
     <span class="md-ellipsis">
       JSON Format
@@ -2242,24 +2224,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ais-decoding" class="md-nav__link">
-    <span class="md-ellipsis">
-      AIS decoding
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#nmea-input" class="md-nav__link">
-    <span class="md-ellipsis">
-      NMEA input
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#json-format" class="md-nav__link">
     <span class="md-ellipsis">
       JSON Format
@@ -2527,14 +2491,6 @@
 
 
 <h1 id="complete-ais-message-json-documentation">Complete AIS Message JSON Documentation<a class="headerlink" href="#complete-ais-message-json-documentation" title="Permanent link">&para;</a></h1>
-<h2 id="ais-decoding">AIS decoding<a class="headerlink" href="#ais-decoding" title="Permanent link">&para;</a></h2>
-<h2 id="nmea-input">NMEA input<a class="headerlink" href="#nmea-input" title="Permanent link">&para;</a></h2>
-<p>AIS-catcher can print AIS messages in  JSON. The output format is specified with the <code>-o</code> switch.  As an example to show a full decoding of JSON messages use <code>-o 5</code>:
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;!AIVDM,1,1,,B,3776k`5000a3SLPEKnDQQWpH0000,0*78&#39;</span><span class="w">  </span><span class="p">|</span><span class="w"> </span>AIS-catcher<span class="w"> </span>-r<span class="w"> </span>txt<span class="w"> </span>.<span class="w"> </span>-o<span class="w"> </span><span class="m">5</span>
-</code></pre></div>
-which produces
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="s2">&quot;AIS&quot;</span><span class="p">,</span><span class="nt">&quot;device&quot;</span><span class="p">:</span><span class="s2">&quot;AIS-catcher&quot;</span><span class="p">,</span><span class="nt">&quot;scaled&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;channel&quot;</span><span class="p">:</span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="nt">&quot;nmea&quot;</span><span class="p">:[</span><span class="s2">&quot;!AIVDM,1,1,,B,3776k`5000a3SLPEKnDQQWpH0000,0*78&quot;</span><span class="p">],</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="nt">&quot;repeat&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="nt">&quot;mmsi&quot;</span><span class="p">:</span><span class="mi">477213600</span><span class="p">,</span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="nt">&quot;status_text&quot;</span><span class="p">:</span><span class="s2">&quot;Moored&quot;</span><span class="p">,</span><span class="nt">&quot;turn&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="nt">&quot;speed&quot;</span><span class="p">:</span><span class="mf">0.000000</span><span class="p">,</span><span class="nt">&quot;accuracy&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;lon&quot;</span><span class="p">:</span><span class="mf">126.605469</span><span class="p">,</span><span class="nt">&quot;lat&quot;</span><span class="p">:</span><span class="mf">37.460617</span><span class="p">,</span><span class="nt">&quot;course&quot;</span><span class="p">:</span><span class="mf">39.000000</span><span class="p">,</span><span class="nt">&quot;heading&quot;</span><span class="p">:</span><span class="mi">252</span><span class="p">,</span><span class="nt">&quot;second&quot;</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="nt">&quot;maneuver&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="nt">&quot;raim&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="nt">&quot;radio&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
-</code></pre></div></p>
 <h2 id="json-format">JSON Format<a class="headerlink" href="#json-format" title="Permanent link">&para;</a></h2>
 <p>Below documents the JSON format used for decoding AIS messages. Depending on the settings for JSON decoding fields may or may not be included in the outcome.
 With format <code>JSON_NMEA</code> only the common fields will be included in the JSON package. The AIS message details are still included in the NMEA array embedded in the JSON. With format <code>JSON_FULL</code> the program will perform a full decoding of the AIS messages and include in the JSON. The output format is largely compatible with <code>gpsdecode</code>.</p>
