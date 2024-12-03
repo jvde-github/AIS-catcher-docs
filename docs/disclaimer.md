@@ -1,13 +1,9 @@
-# **Important Disclaimer**
+## Important Disclaimer
 
-> ### **Hobby and Research Use Only**
-> **AIS-Catcher is a hobbyist and research project. It is NOT intended or approved for use in navigation or safety-of-life applications.**
+> **AIS-Catcher is for hobby and research use only. Not for navigation or safety-critical applications.**
 >
-> - **No Location Broadcasting:** AIS-Catcher does not broadcast location data and is not compliant with maritime regulations for navigational devices.
-> - **Not Certified:** It has not undergone the rigorous testing required for safety-critical applications.
-> - **Legal Compliance:** Use of AIS-Catcher must be limited to applications where it is legally allowed, such as personal hobbies or academic research.
+> - Does not broadcast location data
+> - Not certified for safety-critical use
+> - Use only where legally permitted
 >
-> **AIS-Catcher is provided as-is, with no guarantees of reliability or accuracy.** Always ensure compliance with your local laws and regulations regarding the reception and processing of AIS signals. AIS-Catcher should only be used in contexts where it is permissible by law and safe to do so.
-
-
-The software is provided under the [GPL3 license](references/license.md).
+> **Provided as-is without guarantees.** Comply with local laws regarding AIS signal reception. Licensed under GPLv3.

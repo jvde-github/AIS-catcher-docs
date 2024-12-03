@@ -1,10 +1,9 @@
 # Docker Container
 
-## Disclaimer
+--8<-- "docs/disclaimer.md"
 
-...
 
-## Installation
+## Basic Docker Container
 
 Pre-built container images containing AIS-catcher are available from the GitHub Container Registry. Available container tags are documented on the [package's page](https://github.com/jvde-github/AIS-catcher/pkgs/container/ais-catcher), with `latest` (the latest release) and `edge` (the bleeding edge of the `main` branch) being the two main ones.
 
@@ -36,7 +35,7 @@ Please note that the SDRplay devices are currently not supported in the Docker i
 
 ---
 
-### More Docker options
+### More options
 To pull the latest docker image (e.g. to create or refresh to the latest version) without running:
 ```console
 docker pull ghcr.io/jvde-github/ais-catcher:edge

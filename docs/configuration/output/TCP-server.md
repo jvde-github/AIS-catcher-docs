@@ -20,9 +20,10 @@ AIS-catcher -S 5011
 
 ## Summary Settings
 
+<div class="input-table" markdown>
 | Setting | Type | Default | Description |
 |---------|------|---------|-------------|
-| PORT | integer | 5010 | Listen port (0-65535) |
-| TIMEOUT | integer | - | Connection timeout |
-| JSON | boolean | false | Enable JSON output format |
-| GROUPS_IN | integer | - | Number of input groups |
+| <span class="cmd-setting">PORT</span> | integer | <span class="cmd-value">5010</span> | Listen port (0-65535) |
+| <span class="cmd-setting">TIMEOUT</span> | integer | <span class="cmd-value">-</span> | Connection timeout |
+| <span class="cmd-setting">JSON</span> | boolean | <span class="cmd-value">false</span> | Enable JSON output format |
+</div>

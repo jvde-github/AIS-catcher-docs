@@ -110,53 +110,42 @@ For more information on how to configure Prometheus and Grafana to get an initia
 
 Server Options:
 
-| Option | Type | Description |
-|:------:|:----:|:------------|
-| `PORT` | Integer (1-65535) | Single port for web server |
-| `PORT_MIN` | Integer (1-65535) | Minimum port in binding range |
-| `PORT_MAX` | Integer (1-65535) | Maximum port in binding range |
-| `IP_BIND` | String | Server binding IP address |
-| `REUSE_PORT` | Boolean | Enable port reuse |
-| `ZLIB` | Boolean | Enable response compression |
-
-Location Settings:
-
-| Option | Type | Description |
-|:------:|:----:|:------------|
-| `LAT` | Float | Station latitude |
-| `LON` | Float | Station longitude |
-| `SHARE_LOC` | Boolean | Share station location |
-| `USE_GPS` | Boolean | Use GPS data |
-| `OWN_MMSI` | Integer | Own vessel MMSI |
-
-Data Management:
-
-| Option | Type | Description |
-|:------:|:----:|:------------|
-| `HISTORY` | Integer (5-43200) | History retention (seconds) |
-| `CUTOFF` | Integer (0-10000) | Data retention threshold |
-| `BACKUP` | Integer (5-2880) | Backup interval (minutes) |
-| `FILE` | String | Statistics file path |
-| `REALTIME` | Boolean | Enable real-time updates |
-
-Output Formats:
-
-| Option | Type | Description |
-|:------:|:----:|:------------|
-| `KML` | Boolean | Enable KML output |
-| `GEOJSON` | Boolean | Enable GeoJSON output |
-| `PROME` | Boolean | Enable Prometheus metrics |
-| `MESSAGE` | Boolean | Enable message saving |
-
-UI Customization:
-
-| Option | Type | Description |
-|:------:|:----:|:------------|
-| `STATION` | String | Station display name |
-| `STATION_LINK` | String | Station info URL |
-| `CDN` | String | Local CDN resources path |
-| `PLUGIN` | String | JavaScript plugin path |
-| `STYLE` | String | CSS style path |
-| `PLUGIN_DIR` | String | Plugins directory |
-| `ABOUT` | String | About page path |
-
+<div class="input-table" markdown>
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| <span class="cmd-setting">PORT</span> | integer | <span class="cmd-value">-</span> | Single port for web server |
+| <span class="cmd-setting">PORT_MIN</span> | integer | <span class="cmd-value">-</span> | Minimum port in binding range |
+| <span class="cmd-setting">PORT_MAX</span> | integer | <span class="cmd-value">-</span> | Maximum port in binding range |
+| <span class="cmd-setting">IP_BIND</span> | string | <span class="cmd-value">-</span> | Server binding IP address |
+| <span class="cmd-setting">REUSE_PORT</span> | boolean | <span class="cmd-value">false</span> | Enable port reuse |
+| <span class="cmd-setting">ZLIB</span> | boolean | <span class="cmd-value">true</span> | Enable response compression |
+| | | | |
+| Location Settings | | | |
+| <span class="cmd-setting">LAT</span> | float | <span class="cmd-value">-</span> | Station latitude |
+| <span class="cmd-setting">LON</span> | float | <span class="cmd-value">-</span> | Station longitude |
+| <span class="cmd-setting">SHARE_LOC</span> | boolean | <span class="cmd-value">false</span> | Share station location |
+| <span class="cmd-setting">USE_GPS</span> | boolean | <span class="cmd-value">false</span> | Use GPS data |
+| <span class="cmd-setting">OWN_MMSI</span> | integer | <span class="cmd-value">-</span> | Own vessel MMSI |
+| | | | |
+| Data Management | | | |
+| <span class="cmd-setting">HISTORY</span> | integer | <span class="cmd-value">-</span> | History retention (5-43200 sec) |
+| <span class="cmd-setting">CUTOFF</span> | integer | <span class="cmd-value">-</span> | Data retention threshold (0-10000) | 
+| <span class="cmd-setting">BACKUP</span> | integer | <span class="cmd-value">-1</span> | Backup interval (5-2880 min) |
+| <span class="cmd-setting">FILE</span> | string | <span class="cmd-value">-</span> | Statistics file path |
+| <span class="cmd-setting">REALTIME</span> | boolean | <span class="cmd-value">false</span> | Enable real-time updates |
+| | | | |
+| Output Formats | | | |
+| <span class="cmd-setting">KML</span> | boolean | <span class="cmd-value">false</span> | Enable KML output |
+| <span class="cmd-setting">GEOJSON</span> | boolean | <span class="cmd-value">false</span> | Enable GeoJSON output |
+| <span class="cmd-setting">PROME</span> | boolean | <span class="cmd-value">false</span> | Enable Prometheus metrics |
+| <span class="cmd-setting">MESSAGE</span> | boolean | <span class="cmd-value">false</span> | Enable message saving |
+| | | | |
+| UI Customization | | | | 
+| <span class="cmd-setting">STATION</span> | string | <span class="cmd-value">-</span> | Station display name |
+| <span class="cmd-setting">STATION_LINK</span> | string | <span class="cmd-value">-</span> | Station info URL |
+| <span class="cmd-setting">CDN</span> | string | <span class="cmd-value">-</span> | Local CDN resources path |
+| <span class="cmd-setting">PLUGIN</span> | string | <span class="cmd-value">-</span> | JavaScript plugin path |
+| <span class="cmd-setting">STYLE</span> | string | <span class="cmd-value">-</span> | CSS style path |
+| <span class="cmd-setting">PLUGIN_DIR</span> | string | <span class="cmd-value">-</span> | Plugins directory |
+| <span class="cmd-setting">ABOUT</span> | string | <span class="cmd-value">-</span> | About page path |
+</div>

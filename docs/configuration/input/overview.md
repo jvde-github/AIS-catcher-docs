@@ -14,12 +14,13 @@ To select a specific device, use either:
 ## Universal Settings
 The following settings apply across all input devices. For the most common options there is a command line option available that can be used as a shortcut. 
 
-| Setting | Command Line | Key | Description | Range | Default |
+| Option | Command Line | Setting | Description | Range | Default |
 |---------|--------------|---|----------|--------|---------|
-| Sample Rate | `-s RATE` | SAMPLE_RATE | Sampling rate in Hz | 0-20,000,000 | Device-specific |
-| Bandwidth | `-a BW` | BANDWIDTH | Tuner bandwidth in Hz | 0-1,000,000 | 0 (auto) |
-| Frequency Correction | `-p PPM` |  FREQOFFSET | Frequency correction in PPM | -150 to +150 | 0 |
-| Data Type | | FORMAT | Data type for input source |
+| Sample Rate | `-s RATE` | <span class="cmd-setting">SAMPLE_RATE</span> | Sampling rate in Hz | 0-20,000,000 | Device-specific |
+| Bandwidth | `-a BW` | <span class="cmd-setting">BANDWIDTH</span> | Tuner bandwidth in Hz | 0-1,000,000 | 0 (none) |
+| Frequency Correction | `-p PPM` | <span class="cmd-setting">FREQOFFSET</span> | Frequency correction in PPM | -150 to +150 | 0 |
+| Data Type | | <span class="cmd-setting">FORMAT</span> | CU8, CF32, CS16, CS8, TXT| | Device-specific |
+
 
 For example, to set the sample rate to 1536K, frequecy offset of your device to 1 ppm and bandwidth to 192K:
 ```bash
@@ -47,23 +48,41 @@ by the GPS coordinates. The web page has an option to fix the center of the map 
 
 For detailed information about specific devices and input types, please refer to the following documentation:
 
-### SDR Devices
-- [RTL-SDR Configuration](rtlsdr.md)
-- [AirSpy Configuration](airspy.md)
-- [AirSpy HF+ Configuration](airspyhf.md)
-- [HackRF Configuration](hackrf.md)
-- [SDRPlay Configuration](sdrplay.md)
-- [SoapySDR Configuration](soapysdr.md)
 
-### Network and File Input
+<style>
+.device-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+</style>
+
+<div class="device-links" markdown>
+  <div markdown>
+
+### SDR Devices
+
+- [RTL-SDR ](rtlsdr.md)
+- [AirSpy ](airspy.md)
+- [AirSpy HF+ ](airspyhf.md)
+- [HackRF ](hackrf.md)
+- [SDRPlay ](sdrplay.md)
+- [SoapySDR ](soapysdr.md)
+</div>
+<div  markdown>
+
+### Other Inputs
+
 - [TCP Input](tcp.md)
 - [UDP Input](udp.md)
 - [SpyServer Input](spyserver.md)
-- [File Input](file.md)
-- [WAV File Input](wav.md)
-
-### Other Inputs
-- [Serial Port Configuration](serial.md)
-- [NMEA2000 Configuration](NMEA2000.md)
+- [File ](file.md)
+- [Wave File ](wav.md)
+- [Serial Port ](serial.md)
+- [NMEA2000 ](NMEA2000.md)
+  </div>
+</div>
 
 See the [Input Overview](overview.md) for a complete introduction to all input options.

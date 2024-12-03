@@ -37,29 +37,50 @@ AIS-catcher -t txt://192.168.1.120:5011
 
 Various protocols are supported as input. The table below lists the available protocols and their descriptions:
 
-| Protocol | Description                                   |
-| :------- | :------------------------------------------- |
-| `txt`    | Raw NMEA text.                               |
-| `gpsd`   | GPSD server input.                           |
-| `rtltcp` | Connecting to an RTL-TCP server.             |
-| `mqtt`   | MQTT with JSON payload.                      |
-| `wsmqtt` | MQTT with JSOP payload over WebSockets.                        |
+| Protocol | Description                                  | Protocol | Description                                   |
+| :------- | :------------------------------------------- |------- | :------------------------------------------- |
+| `txt`    |  NMEA0183                               |`mqtt`   | MQTT                       |
+| `gpsd`   | GPSD server                            | `wsmqtt` | MQTT over WS                       |
+| `rtltcp` | Connecting to an RTL-TCP server           |
 
 Use the appropriate protocol based on your server's configuration and data format. 
 
 ### Summary Settings
 
+<div class="input-table" markdown>
 | Setting | Type | Default | Description |
 |---------|------|---------|-------------|
-| <span class="cmd-setting">TUNER</span> | auto/float | <span class="cmd-value">auto</span> | Tuner gain/AGC (0-50 dB or AUTO) |
-| <span class="cmd-setting">RTLAGC</span> | boolean | <span class="cmd-value">true</span> | Enable/disable RTL2832U AGC |
-| <span class="cmd-setting">BIASTEE</span> | boolean | <span class="cmd-value">false</span> | Enable/disable bias tee power |
-| <span class="cmd-setting">BUFFER_COUNT</span> | integer | <span class="cmd-value">24</span> | Number of FIFO buffers (1-100) |
-| <span class="cmd-setting">SAMPLE_RATE</span> | integer | <span class="cmd-value">device-specific</span> | Sampling rate in Hz (0-20,000,000) |
+| Generic Options | | | |
+| <span class="cmd-setting">SAMPLE_RATE</span> | integer | <span class="cmd-value">288K</span> | Sampling rate in Hz (0-20,000,000) |
 | <span class="cmd-setting">BANDWIDTH</span> | integer | <span class="cmd-value">0</span> | Tuner bandwidth in Hz (0-1,000,000) |
 | <span class="cmd-setting">FREQOFFSET</span> | integer | <span class="cmd-value">0</span> | Frequency correction in PPM (-150 to +150) |
-| <span class="cmd-setting">FORMAT</span> | string | <span class="cmd-value">-</span> | Data type for input source |
-| <span class="cmd-setting">URL</span> | string | <span class="cmd-value">-</span> | Full connection URL including protocol, host, port, etc |
-| <span class="cmd-setting">PROTOCOL</span> | enum | <span class="cmd-value">RTLTCP</span> | Connection protocol (RTLTCP, MQTT, GPSD, WS, WSMQTT, TXT, NONE) |
+| <span class="cmd-setting">FORMAT</span> | string | <span class="cmd-value">CU8</span> | Data type for input source |
+| Specific Options | | | |
 | <span class="cmd-setting">HOST</span> | string | <span class="cmd-value">-</span> | Remote host address |
 | <span class="cmd-setting">PORT</span> | string | <span class="cmd-value">-</span> | Remote port number |
+| <span class="cmd-setting">PROTOCOL</span> | string | <span class="cmd-value">rtltcp</span> | Protocol (RTLTCP/MQTT/GPSD/WS/WSMQTT) |
+| <span class="cmd-setting">URL</span> | string | <span class="cmd-value">-</span> | Complete URL including protocol and credentials |
+| | | | |
+| TCP Options | | | |
+| <span class="cmd-setting">PERSISTENT</span> | boolean | <span class="cmd-value">true</span> | Keep connection alive after errors |
+| <span class="cmd-setting">KEEP_ALIVE</span> | boolean | <span class="cmd-value">false</span> | Enable TCP keepalive |
+| <span class="cmd-setting">RESET</span> | integer | <span class="cmd-value">-1</span> | Reset connection after N minutes (-1=never) |
+| <span class="cmd-setting">TIMEOUT</span> | integer | <span class="cmd-value">0</span> | Connection timeout in seconds |
+| | | | |
+| WebSocket Options | | | |
+| <span class="cmd-setting">PROTOCOLS</span> | string | <span class="cmd-value">mqtt</span> | WebSocket sub-protocols |
+| <span class="cmd-setting">BINARY</span> | boolean | <span class="cmd-value">on</span> | Enable binary WebSocket mode |
+| <span class="cmd-setting">ORIGIN</span> | string | <span class="cmd-value">-</span> | Origin header for WebSocket |
+| | | | |
+| MQTT Options | | | |
+| <span class="cmd-setting">TOPIC</span> | string | <span class="cmd-value">ais/data</span> | MQTT topic |
+| <span class="cmd-setting">CLIENT_ID</span> | string | <span class="cmd-value">-</span> | MQTT client identifier |
+| <span class="cmd-setting">USERNAME</span> | string | <span class="cmd-value">-</span> | MQTT username |
+| <span class="cmd-setting">PASSWORD</span> | string | <span class="cmd-value">-</span> | MQTT password |
+| <span class="cmd-setting">QOS</span> | integer | <span class="cmd-value">0</span> | MQTT QoS level (0-2) |
+| | | | |
+| RTLTCP Options | | | |
+| <span class="cmd-setting">TUNER</span> | float | <span class="cmd-value">33.0</span> | Tuner gain (0-50, auto) |
+| <span class="cmd-setting">RTLAGC</span> | boolean | <span class="cmd-value">false</span> | Enable RTL AGC |
+| <span class="cmd-setting">FREQUENCY</span> | integer | <span class="cmd-value">0</span> | Frequency in Hz |
+</div>

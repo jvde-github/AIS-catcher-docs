@@ -66,15 +66,16 @@ The supported protocol switches are ``AISCATCHER`` (default), ``MINIMAL`` (NMEA 
 
 | Setting | Type | Default | Description |
 |---------|------|---------|-------------|
-| URL | string | empty | Target HTTP endpoint URL |
-| USERPWD | string | empty | Authentication credentials |
-| STATIONID/ID/CALLSIGN | string | empty | Station identifier |
-| INTERVAL | integer | 60 | Post interval in seconds (1-86400) |
-| TIMEOUT | integer | 10 | Connection timeout in seconds (1-30) |
-| GZIP | boolean | false | Enable GZIP compression |
-| RESPONSE | boolean | true | Show response messages |
-| PROTOCOL | enum | "AISCATCHER" | Protocol type ("AISCATCHER", "MINIMAL", "AIRFRAMES", "LIST", "APRS") |
-| LAT | float | 0.0 | Station latitude |
-| LON | float | 0.0 | Station longitude |
-| DEVICE_SETTING | string | "N/A" | Device settings |
-| GROUPS_IN | integer | - | Number of input groups |
+| <span class="cmd-setting">URL</span> | string | <span class="cmd-value">-</span> | Target HTTP endpoint URL |
+| <span class="cmd-setting">USERPWD</span> | string | <span class="cmd-value">-</span> | Authentication credentials |
+| <span class="cmd-setting">STATIONID</span> | string | <span class="cmd-value">-</span> | Station identifier |
+| <span class="cmd-setting">INTERVAL</span> | integer | <span class="cmd-value">60</span> | Post interval in seconds (1-86400) |
+| <span class="cmd-setting">TIMEOUT</span> | integer | <span class="cmd-value">10</span> | Connection timeout in seconds (1-30) |
+| <span class="cmd-setting">GZIP</span> | boolean | <span class="cmd-value">false</span> | Enable GZIP compression |
+| <span class="cmd-setting">RESPONSE</span> | boolean | <span class="cmd-value">true</span> | Show response messages |
+| <span class="cmd-setting">PROTOCOL</span> | string | <span class="cmd-value">AISCATCHER</span> | Protocol type (AISCATCHER/MINIMAL/AIRFRAMES/LIST/APRS) |
+| <span class="cmd-setting">LAT</span> | float | <span class="cmd-value">0.0</span> | Station latitude |
+| <span class="cmd-setting">LON</span> | float | <span class="cmd-value">0.0</span> | Station longitude |
+| <span class="cmd-setting">DEVICE_SETTING</span> | string | <span class="cmd-value">N/A</span> | Device settings |
+
+Note: filter and routing options can be set as per [generic output settings](overview.md)

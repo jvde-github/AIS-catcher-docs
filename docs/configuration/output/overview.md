@@ -2,9 +2,8 @@
 
 AIS-catcher has multiple output options. As for the input, they share a few common settings to manage the flow of messages to output connections and for filtring.
 
-## Common Settings
 
-### Message Filtering
+## Message Filtering
 
 AIS-catcher has functionality to filter UDP, HTTP and screen output on message type, e.g. send only messages of type 1, 2, 3, 5, 18, 19, 24 and 27 over UDP:
 ```bash
@@ -24,18 +23,28 @@ Message type 8 is region-specific. If you encounter any messages in the wild tha
 
 **Note**: filtering for messages to screen can only be set on the command line and not in the JSON configuration file at this stage. UDP filtering is available in the JSON configuration file.
 
-### Routing Messages
+### Filter settings
+
+<div class="settings-table" markdown>
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| <span class="cmd-setting">FILTER</span> | boolean | <span class="cmd-value">false</span> | Enable/disable filtering |
+| <span class="cmd-setting">ALLOW_TYPE</span> | list | <span class="cmd-value">all</span> | Comma-separated list of message types to allow (1-27) |
+| <span class="cmd-setting">BLOCK_TYPE</span> | list | <span class="cmd-value">none</span> | Comma-separated list of message types to block |
+| <span class="cmd-setting">ALLOW_REPEAT</span> | list | <span class="cmd-value">all</span> | Allow messages with specific repeat counter values (0-3) |
+| <span class="cmd-setting">BLOCK_REPEAT</span> | list | <span class="cmd-value">none</span> | Block messages with specific repeat counter values |
+| <span class="cmd-setting">ALLOW_MMSI</span> | list | <span class="cmd-value">all</span> | Only allow messages from specific MMSI numbers |
+| <span class="cmd-setting">BLOCK_MMSI</span> | list | <span class="cmd-value">none</span> | Block messages from specific MMSI numbers |
+| <span class="cmd-setting">ALLOW_CHANNEL</span> | string | <span class="cmd-value">all</span> | Only allow messages from specific AIS channels |
+| <span class="cmd-setting">ID</span> | integer | <span class="cmd-value">all</span> | Only allow messages from specific station IDs |
+| <span class="cmd-setting">GPS</span> | boolean | <span class="cmd-value">true</span> | Include GPS messages in output |
+| <span class="cmd-setting">AIS</span> | boolean | <span class="cmd-value">true</span> | Include AIS messages in output |
+</div>
+
+## Routing Messages
 
 In principle, messages from all models sourced via all input connections is sourced to all Output Connections. Sometimes it is desirable to manage this flow.
-This can be done via the Setting `GROUPS_IN` with as value the list of models that feed this input.
-
-For example, if we run with two input sources, the output is along the following lines:
-```bash
-AIS-catcher -x 127.0.0.1 1001 -v -x 127.0.0.1 1002 -v
-```
-### Universal Settings
-
-...
+This can be done via the Setting `GROUPS_IN` with as value the list of models that feed this input. 
 
 ## Output Options
 

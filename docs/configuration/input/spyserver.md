@@ -27,15 +27,21 @@ AIS-catcher -y 192.168.1.235 5555 -gy GAIN 14
 
 ## Summary Settings
 
+<div class="input-table" markdown>
+
 
 | Setting | Type | Default | Description |
 |---------|------|---------|-------------|
-| <span class="cmd-setting">SAMPLE_RATE</span> | integer | <span class="cmd-value">device-specific</span> | Sampling rate in Hz (0-20,000,000) |
-| <span class="cmd-setting">BANDWIDTH</span> | integer | <span class="cmd-value">0</span> | Tuner bandwidth in Hz (0-1,000,000) |
+| Generic Options | | | |
+| <span class="cmd-setting">SAMPLE_RATE</span> | integer | <span class="cmd-value">Host specific</span> | Sampling rate in Hz (0-20,000,000) |
+| <span class="cmd-setting">BANDWIDTH</span> | integer | <span class="cmd-value">0</span> | Tuner bandwidth in Hz (0-1,000,000, 0 = off) |
 | <span class="cmd-setting">FREQOFFSET</span> | integer | <span class="cmd-value">0</span> | Frequency correction in PPM (-150 to +150) |
-| <span class="cmd-setting">FORMAT</span> | string | <span class="cmd-value">-</span> | Data type for input source |
+| <span class="cmd-setting">FORMAT</span> | string | <span class="cmd-value">CF32</span> | Data type for input source |
+| Specific Options | | | |
 | <span class="cmd-setting">URL</span> | string | <span class="cmd-value">-</span> | Full connection URL (sdr://host:port) |
 | <span class="cmd-setting">HOST</span> | string | <span class="cmd-value">localhost</span> | SpyServer host address |
 | <span class="cmd-setting">PORT</span> | string | <span class="cmd-value">1234</span> | SpyServer port |
 | <span class="cmd-setting">GAIN</span> | float | <span class="cmd-value">0.0</span> | Tuner gain (0-50 dB) |
 | <span class="cmd-setting">TIMEOUT</span> | integer | <span class="cmd-value">2</span> | Connection timeout in seconds |
+
+</div>

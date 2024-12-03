@@ -42,11 +42,17 @@ Default assumption is that the file is in raw unsigned 8-bit IQ format. Alternat
 
 ## Summary Settings
 
+<div class="input-table" markdown>
+
 | Setting | Type | Default | Description |
 |---------|------|---------|-------------|
-| <span class="cmd-setting">SAMPLE_RATE</span> | integer | <span class="cmd-value">Device-specific</span> | Sampling rate in Hz (0-20,000,000) |
-| <span class="cmd-setting">BANDWIDTH</span> | integer | <span class="cmd-value">0</span> | Tuner bandwidth in Hz (0-1,000,000) |
+| Generic Options | | | |
+| <span class="cmd-setting">SAMPLE_RATE</span> | integer | <span class="cmd-value">1536K</span> | Sampling rate in Hz (0-20,000,000) |
+| <span class="cmd-setting">BANDWIDTH</span> | integer | <span class="cmd-value">0</span> | Tuner bandwidth in Hz (0-1,000,000), 0 = off |
 | <span class="cmd-setting">FREQOFFSET</span> | integer | <span class="cmd-value">0</span> | Frequency correction in PPM (-150 to +150) |  
-| <span class="cmd-setting">FORMAT</span> | string | <span class="cmd-value">-</span> | Data type for input source |
+| <span class="cmd-setting">FORMAT</span> | string | <span class="cmd-value">CU8</span> | Data type for input source |
+| Specific Options | | | |
 | <span class="cmd-setting">FILE</span> | string | <span class="cmd-value">-</span> | Input file path or "stdin" for standard input |
 | <span class="cmd-setting">LOOP</span> | boolean | <span class="cmd-value">false</span> | Enable continuous file looping |
+
+</div>

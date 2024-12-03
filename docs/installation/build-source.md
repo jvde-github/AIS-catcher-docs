@@ -1,8 +1,7 @@
 # Building from Source
 
-## Disclaimer
+--8<-- "docs/disclaimer.md"
 
-...
 
 ## Building
 

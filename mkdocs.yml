@@ -5,6 +5,7 @@ site_url: https://aiscatcher.org/docs
 
 theme:
   name: 'material'
+  custom_dir: overrides
   palette:
     - scheme: default
       primary: white
@@ -26,6 +27,9 @@ theme:
         link: https://twitter.com/yourtwitter
   features:
     - navigation.top
+    - content.code.annotate  
+    - content.code.copy      
+    - content.code.wrap     
 
 repo_url: https://github.com/jvde-github/AIS-catcher
 repo_name: GitHub
@@ -38,6 +42,12 @@ extra:
       link: https://github.com/jvde-github/AIS-catcher
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/yourtwitter
+    - icon: fontawesome/solid/house
+      link: https://aiscatcher.org
+    - icon: fontawesome/solid/comments
+      link: https://github.com/jvde-github/AIS-catcher/discussions
+    - icon: fontawesome/solid/bug
+      link: https://github.com/jvde-github/AIS-catcher/issues
 
   footer:
     text: '© 2021-2024 jvde.github@gmail.com. All rights reserved.'
@@ -46,9 +56,6 @@ extra:
         url: 'license.md'
       - title: 'Disclaimer'
         url: 'disclaimer.md'
-
-extra_javascript:
-  - https://unpkg.com/mermaid/dist/mermaid.min.js
 
 nav:
   - Home: index.md
@@ -99,8 +106,8 @@ nav:
           - TCP Client: configuration/output/TCP-client.md
           - UDP: configuration/output/UDP.md
           - HTTP: configuration/output/HTTP.md
+          - MQTT: configuration/output/MQTT.md
         - Web Viewer: configuration/output/web-viewer.md
-        - MQTT: configuration/output/MQTT.md
         - NMEA2000: configuration/output/NMEA2000.md
         - PostgreSQL: configuration/output/PSQL.md
   - Advanced:
@@ -121,15 +128,12 @@ nav:
 
 
 markdown_extensions:
-  - extra
-  - toc:
-      permalink: true      
-  - tables
   - admonition
-  - pymdownx.superfences:
+  - attr_list
+  - codehilite
+  - pymdownx.superfences
   - pymdownx.highlight
   - pymdownx.inlinehilite
-  - pymdownx.snippets
   - pymdownx.details
   - pymdownx.magiclink
   - pymdownx.tasklist
@@ -139,12 +143,11 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_generator: !!python/name:pymdownx.emoji.to_alt
   - pymdownx.keys
-  - attr_list
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.snippets:
+      check_paths: true
+  - toc:
+      permalink: true
+
 
 plugins:
   - search

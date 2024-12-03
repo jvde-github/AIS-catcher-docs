@@ -27,12 +27,13 @@ Another option for UDP sending via `-u` is `BROADCAST on/off` to enable sending 
 
 ## Summary Settimgs
 
+<div class="input-table" markdown>
 | Setting | Type | Default | Description |
 |---------|------|---------|-------------|
-| HOST | string | empty | Target UDP host address |
-| PORT | string | empty | Target UDP port |
-| JSON | boolean | false | Enable JSON output format |
-| BROADCAST | boolean | false | Enable broadcast mode |
-| RESET | integer | -1 | Socket reset interval in minutes (1-1440) |
-| UUID | string | empty | Unique identifier (must be valid UUID) |
-| GROUPS_IN | integer | - | Number of input groups |
+| <span class="cmd-setting">HOST</span> | string | <span class="cmd-value">-</span> | Target UDP host address |
+| <span class="cmd-setting">PORT</span> | string | <span class="cmd-value">-</span> | Target UDP port |
+| <span class="cmd-setting">JSON</span> | boolean | <span class="cmd-value">false</span> | Enable JSON output format |
+| <span class="cmd-setting">BROADCAST</span> | boolean | <span class="cmd-value">false</span> | Enable broadcast mode |
+| <span class="cmd-setting">RESET</span> | integer | <span class="cmd-value">-1</span> | Socket reset interval in minutes (1-1440) |
+| <span class="cmd-setting">UUID</span> | string | <span class="cmd-value">-</span> | Unique identifier (must be valid UUID) |
+</div>

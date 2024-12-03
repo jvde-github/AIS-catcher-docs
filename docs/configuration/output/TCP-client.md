@@ -19,12 +19,13 @@ In this case, AIS-catcher acts as a TCP client and connects to the remote listen
 
 ## Summary Settings
 
+<div class="input-table" markdown>
 | Setting | Type | Default | Description |
 |---------|------|---------|-------------|
-| HOST | string | empty | Target TCP server host |
-| PORT | string | empty | Target TCP server port |
-| KEEP_ALIVE | boolean | false | Enable TCP keep-alive |
-| JSON | boolean | false | Enable JSON output format |
-| PERSIST | boolean | true | Enable persistent connection |
-| UUID | string | empty | Unique identifier (must be valid UUID) |
-| GROUPS_IN | integer | - | Number of input groups |
+| <span class="cmd-setting">HOST</span> | string | <span class="cmd-value">-</span> | Target TCP server host |
+| <span class="cmd-setting">PORT</span> | string | <span class="cmd-value">-</span> | Target TCP server port |
+| <span class="cmd-setting">KEEP_ALIVE</span> | boolean | <span class="cmd-value">false</span> | Enable TCP keep-alive |
+| <span class="cmd-setting">PERSIST</span> | boolean | <span class="cmd-value">true</span> | Keep trying to reconnect when connection fails |
+| <span class="cmd-setting">JSON</span> | boolean | <span class="cmd-value">false</span> | Enable JSON output format |
+| <span class="cmd-setting">UUID</span> | string | <span class="cmd-value">-</span> | Unique identifier (must be valid UUID) |
+</div>

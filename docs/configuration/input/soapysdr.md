@@ -38,13 +38,23 @@ If the sample rates for a device are not supported by AIS-catcher, the SOXR func
 
 ## Summary Settings
 
+<div class="input-table" markdown>
+
 | Setting | Type | Default | Description |
 |---------|------|---------|-------------|
-| DEVICE | string | "" | SoapySDR device arguments string |
-| GAIN | string | - | Gain settings in key=value pairs |
-| STREAM | string | - | Stream arguments in key=value pairs |
-| SETTING | string | - | Device settings in key=value pairs |
-| ANTENNA | string | "" | Antenna selection |
-| AGC | boolean | true | Enable/disable Automatic Gain Control |
-| PROBE | boolean | false | Print actual device settings |
-| CH | integer | 0 | Channel selection (0-32) |
+| Generic Options | | | |
+| <span class="cmd-setting">SAMPLE_RATE</span> | integer | <span class="cmd-value">0/span> | Sampling rate in Hz (0-20,000,000) |
+| <span class="cmd-setting">BANDWIDTH</span> | integer | <span class="cmd-value">0</span> | Tuner bandwidth in Hz (0-1,000,000, 0=off) |
+| <span class="cmd-setting">FREQOFFSET</span> | integer | <span class="cmd-value">0</span> | Frequency correction in PPM (-150 to +150) |
+| <span class="cmd-setting">FORMAT</span> | string | <span class="cmd-value">CF32</span> | Data type for input source |
+| Specific Options | | | |
+| <span class="cmd-setting">DEVICE</span> | string | <span class="cmd-value">""</span> | SoapySDR device arguments string |
+| <span class="cmd-setting">GAIN</span> | string | <span class="cmd-value">-</span> | Gain settings in key=value pairs |
+| <span class="cmd-setting">STREAM</span> | string | <span class="cmd-value">-</span> | Stream arguments in key=value pairs |
+| <span class="cmd-setting">SETTING</span> | string | <span class="cmd-value">-</span> | Device settings in key=value pairs |
+| <span class="cmd-setting">ANTENNA</span> | string | <span class="cmd-value">-</span> | Antenna selection |
+| <span class="cmd-setting">AGC</span> | boolean | <span class="cmd-value">true</span> | Enable/disable Automatic Gain Control |
+| <span class="cmd-setting">PROBE</span> | boolean | <span class="cmd-value">false</span> | Print actual device settings |
+| <span class="cmd-setting">CH</span> | integer | <span class="cmd-value">0</span> | Channel selection (0-32) |
+
+</div>
