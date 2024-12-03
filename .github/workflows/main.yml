@@ -6,28 +6,22 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: write
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
           cache: 'pip'
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: |
           pip install \
             mkdocs-material \
@@ -40,11 +34,10 @@ jobs:
             mkdocs-redirects \
             mkdocs-rss-plugin
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Build site
+      - name: Build MkDocs Site
         run: mkdocs build
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifa
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: site
