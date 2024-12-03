@@ -1,5 +1,13 @@
 # Input from file and stdin
 <div class="command-container">
+            <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-r</span>
+        <span class="cmd-flag">-ga</span>
+        [<span class="cmd-setting">setting</span> <span class="cmd-value">value</span>]
+        ...
+    </div>
+      
       <div class="command-syntax">
         <span class="cmd-name">AIS-catcher</span>
         <span class="cmd-flag">-r</span>
@@ -21,7 +29,7 @@
     </div>
 
 </div>
-AIS-catcher can read from a file with the switch ``-r`` followed by the filename and with a ``.`` or ``stdin`` it reads from stdin, e.g. ``-r .``.
+AIS-catcher can read from a file with the switch ``-r`` followed by the filename and with a ``.`` or ``stdin`` it reads from stdin:
 ```bash
 AIS-catcher -r .
 ```
@@ -38,7 +46,16 @@ For reference, as per version 0.36, AIS-catcher has the option to use the intern
 ```bash
 AIS-catcher -s 1536K -r CU8 posterholt.raw -v -go SOXR on 
 ```
-Default assumption is that the file is in raw unsigned 8-bit IQ format. Alternative formats can be set via `-gr` (see below) and can even include NMEA strings in text input. 
+Default assumption is that the file is in raw unsigned 8-bit IQ format (CU8). Alternative formats can be set via  the FORMAT setting. 
+
+For a text file with NMEA input, we can use:
+```bash
+AIS-catcher -r txt nmea-file
+```
+Or equivalently for illustration purposes:
+```bash
+AIS-catcher -r -ga FORMAT txt file nmea-file
+```
 
 ## Summary Settings
 
