@@ -1,0 +1,170 @@
+/* Header and Navigation Styles */
+.md-header,
+.md-header[data-md-state=shadow] {
+    background-color: white;
+    color: black;
+}
+
+.md-tabs {
+    background-color: white;
+    color: black;
+}
+
+/* Mobile Navigation Styles */
+.md-nav__title {
+    background-color: white !important;
+    color: black !important;
+}
+
+.md-nav__item .md-nav__link--active {
+    color: black;
+}
+
+.md-nav--primary .md-nav__title,
+.md-nav--primary .md-nav__title[for=__drawer] {
+    background-color: white !important;
+    color: black !important;
+}
+
+.md-nav__source {
+    background-color: white !important;
+}
+
+/* Icon and Button Styles */
+[data-md-toggle=drawer]:checked~.md-header .md-header-nav__button.md-icon--menu {
+    color: black;
+}
+
+.md-nav__title .md-nav__button.md-logo img,
+.md-nav__title .md-nav__button.md-logo svg {
+    fill: black;
+}
+
+.md-source__repository,
+.md-source__icon {
+    color: black !important;
+}
+
+/* Search Styles */
+.md-search__inner {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+
+.md-search__input {
+    background-color: white !important;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    color: rgba(0, 0, 0, 0.87);
+    padding: 0.5rem;
+}
+
+.md-search__input:hover {
+    background-color: white !important;
+    border-color: rgba(0, 0, 0, 0.24);
+}
+
+.md-search__input:focus {
+    background-color: white !important;
+    border-color: var(--md-primary-color);
+    outline: none;
+}
+
+/* Command Container Styles */
+.command-syntax {
+    position: relative;
+    font-family: monospace;
+    font-size: 0.85em;
+    background: #f8f9fa;
+    color: #333;
+    padding: 12px 16px;
+    padding-top: 24px;
+    /* Extra padding for label */
+    border-radius: 5px;
+    margin: 20px 0;
+    overflow-x: auto;
+    white-space: nowrap;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.command-syntax::before {
+    content: 'Syntax';
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    font-size: 0.75em;
+    color: #666;
+    background: #f8f9fa;
+    padding: 0 4px;
+    border-radius: 2px;
+}
+
+/* Command Element Styles */
+.cmd-name {
+    color: #333;
+}
+
+.cmd-flag {
+    background: #e9ecef;
+    color: #495057;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin: 0 4px;
+}
+
+.cmd-value {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin: 0 4px;
+}
+
+.cmd-setting {
+    background: #fff3e0;
+    color: #e65100;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin: 0 4px;
+}
+
+/* Transitions */
+.command-syntax,
+.cmd-flag,
+.cmd-value,
+.cmd-setting {
+    transition: all 0.2s ease-in-out;
+}
+
+.steps {
+    counter-reset: step;
+}
+
+.step {
+    position: relative;
+    padding-left: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.step::before {
+    content: counter(step);
+    counter-increment: step;
+    position: absolute;
+    left: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: rgb(226, 226, 226);
+    color: black;
+    text-align: center;
+    line-height: 2rem;
+}
+
+
+.input-table  table tr:nth-child(2),
+.input-table  table tr:nth-child(3),
+.input-table  table tr:nth-child(4),
+.input-table  table tr:nth-child(5) {
+    /*background-color: #f2f2f2;*/
+}
