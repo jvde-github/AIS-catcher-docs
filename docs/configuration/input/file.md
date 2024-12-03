@@ -31,24 +31,26 @@
 </div>
 
 ## Reading from STDIN
-AIS-catcher can read from a file with the switch ``-r`` followed by the filename and with a ``.`` or ``stdin`` it reads from stdin:
+AIS-catcher can read input in two ways using the -r switch: from a file by specifying a filename, or from standard input by using either a dot (.) or stdin as the argument:
 ```bash
 AIS-catcher -r .
 ```
-## Sequencing on the command line
- The following command records a signal with ```rtl_sdr``` at a sampling rate of 288K Hz and pipes it to AIS-catcher for decoding:
+## Pipeline example
+AIS-catcher can be integrated into command-line processing pipelines for real-time signal processing. For example, you can capture radio signals using rtl_sdr and pipe them directly to AIS-catcher for decoding:
 ```bash
 rtl_sdr -s 288K -f 162M  - | AIS-catcher -r . -s 288K -v
 ```
-The same mechanism can be used to apply other transformations on the signal, e.g. downsampling with ``sox``:
+You can also perform signal transformations using tools like `sox`. Here's an example of downsampling a signal before processing:
 ```bash
 sox -c 2 -r 1536000 -b 8 -e unsigned -t raw posterholt.raw -t raw -b 16 -e signed -r 96000 - |AIS-catcher -s 96K -r CS16 . -v
 ```
-For reference, as per version 0.36, AIS-catcher has the option to use the internal sox library directly if included in your build:
-```bash
-AIS-catcher -s 1536K -r CU8 posterholt.raw -v -go SOXR on 
-```
-Default assumption is that the file is in raw unsigned 8-bit IQ format (CU8). Alternative formats can be set via  the FORMAT setting. 
+> As of version 0.36, AIS-catcher includes built-in sox functionality (if compiled with this feature), allowing for
+> built-in usage of sox:
+ >```bash
+>AIS-catcher -s 1536K -r CU8 posterholt.raw -v -go SOXR on
+> ```
+
+By default, AIS-catcher expects input files to be in raw unsigned 8-bit IQ format (CU8). You can specify other formats using the FORMAT setting.
 
 ## NMEA0183 input from file
 
