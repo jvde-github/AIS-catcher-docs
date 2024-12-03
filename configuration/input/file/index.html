@@ -1122,6 +1122,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#reading-from-stdin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading from STDIN
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequencing-on-the-command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sequencing on the command line
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nmea0183-input-from-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      NMEA0183 input from file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary-settings" class="md-nav__link">
     <span class="md-ellipsis">
       Summary Settings
@@ -1988,6 +2015,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#reading-from-stdin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading from STDIN
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequencing-on-the-command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sequencing on the command line
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nmea0183-input-from-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      NMEA0183 input from file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary-settings" class="md-nav__link">
     <span class="md-ellipsis">
       Summary Settings
@@ -2045,9 +2099,12 @@
     </div>
 
 </div>
+
+<h2 id="reading-from-stdin">Reading from STDIN<a class="headerlink" href="#reading-from-stdin" title="Permanent link">&para;</a></h2>
 <p>AIS-catcher can read from a file with the switch <code>-r</code> followed by the filename and with a <code>.</code> or <code>stdin</code> it reads from stdin:
 <div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-r<span class="w"> </span>.
 </code></pre></div></p>
+<h2 id="sequencing-on-the-command-line">Sequencing on the command line<a class="headerlink" href="#sequencing-on-the-command-line" title="Permanent link">&para;</a></h2>
 <p>The following command records a signal with <code>rtl_sdr</code> at a sampling rate of 288K Hz and pipes it to AIS-catcher for decoding:
 <div class="highlight"><pre><span></span><code>rtl_sdr<span class="w"> </span>-s<span class="w"> </span>288K<span class="w"> </span>-f<span class="w"> </span>162M<span class="w">  </span>-<span class="w"> </span><span class="p">|</span><span class="w"> </span>AIS-catcher<span class="w"> </span>-r<span class="w"> </span>.<span class="w"> </span>-s<span class="w"> </span>288K<span class="w"> </span>-v
 </code></pre></div>
@@ -2058,6 +2115,7 @@ For reference, as per version 0.36, AIS-catcher has the option to use the intern
 <div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-s<span class="w"> </span>1536K<span class="w"> </span>-r<span class="w"> </span>CU8<span class="w"> </span>posterholt.raw<span class="w"> </span>-v<span class="w"> </span>-go<span class="w"> </span>SOXR<span class="w"> </span>on<span class="w"> </span>
 </code></pre></div>
 Default assumption is that the file is in raw unsigned 8-bit IQ format (CU8). Alternative formats can be set via  the FORMAT setting. </p>
+<h2 id="nmea0183-input-from-file">NMEA0183 input from file<a class="headerlink" href="#nmea0183-input-from-file" title="Permanent link">&para;</a></h2>
 <p>For a text file with NMEA input, we can use:
 <div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-r<span class="w"> </span>txt<span class="w"> </span>nmea-file
 </code></pre></div>
