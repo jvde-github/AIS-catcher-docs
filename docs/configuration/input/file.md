@@ -29,11 +29,13 @@
     </div>
 
 </div>
+
+## Reading from STDIN
 AIS-catcher can read from a file with the switch ``-r`` followed by the filename and with a ``.`` or ``stdin`` it reads from stdin:
 ```bash
 AIS-catcher -r .
 ```
-
+## Sequencing on the command line
  The following command records a signal with ```rtl_sdr``` at a sampling rate of 288K Hz and pipes it to AIS-catcher for decoding:
 ```bash
 rtl_sdr -s 288K -f 162M  - | AIS-catcher -r . -s 288K -v
@@ -47,6 +49,8 @@ For reference, as per version 0.36, AIS-catcher has the option to use the intern
 AIS-catcher -s 1536K -r CU8 posterholt.raw -v -go SOXR on 
 ```
 Default assumption is that the file is in raw unsigned 8-bit IQ format (CU8). Alternative formats can be set via  the FORMAT setting. 
+
+## NMEA0183 input from file
 
 For a text file with NMEA input, we can use:
 ```bash
