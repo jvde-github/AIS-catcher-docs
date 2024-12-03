@@ -2,7 +2,7 @@
 
 --8<-- "docs/disclaimer.md"
 
-Chose the installation option:
+Jump to the desired Installation Option:
 
 [Basic](#basic-docker-container){ .md-button .md-button--secondary }
 [Web GUI](#docker-with-web-gui){ .md-button .md-button--secondary }
