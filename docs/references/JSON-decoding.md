@@ -1,18 +1,5 @@
 # Complete AIS Message JSON Documentation
 
-## AIS decoding
-
-## NMEA input
-
-AIS-catcher can print AIS messages in  JSON. The output format is specified with the `-o` switch.  As an example to show a full decoding of JSON messages use `-o 5`:
-```bash
-echo '!AIVDM,1,1,,B,3776k`5000a3SLPEKnDQQWpH0000,0*78'  | AIS-catcher -r txt . -o 5
-```
-which produces
-```json
-{"class":"AIS","device":"AIS-catcher","scaled":true,"channel":"B","nmea":["!AIVDM,1,1,,B,3776k`5000a3SLPEKnDQQWpH0000,0*78"],"type":3,"repeat":0,"mmsi":477213600,"status":5,"status_text":"Moored","turn":0,"speed":0.000000,"accuracy":true,"lon":126.605469,"lat":37.460617,"course":39.000000,"heading":252,"second":12,"maneuver":0,"raim":false,"radio":0}
-```
-
 ## JSON Format
 Below documents the JSON format used for decoding AIS messages. Depending on the settings for JSON decoding fields may or may not be included in the outcome.
 With format `JSON_NMEA` only the common fields will be included in the JSON package. The AIS message details are still included in the NMEA array embedded in the JSON. With format `JSON_FULL` the program will perform a full decoding of the AIS messages and include in the JSON. The output format is largely compatible with `gpsdecode`.
