@@ -14,11 +14,12 @@ sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/jvde-github/AIS-catc
 ```
 The script will install all dependencies and build AIS-catcher. The required SDR libraries are installed from the official packages if they cannot be found on the system. For the RTL-SDR we build from source from the official package to guarantee support for the RTL-SDR V4 but, again, only if the package is not already installed on the system. On a fresh Raspberry Pi4 this will take less than 20 minutes. 
 
-To update AIS-catcher to the latest version, simply run the above command again. To additionally install the Web GUI, see [below](#installation-with-web-gui).
+To update AIS-catcher to the latest version, simply run the above command again. 
 
 ---
 
 [Start First Run](../usage/cli.md){ .md-button .md-button--primary }
+[Install Web GUI](#installation-with-web-gui){ .md-button .md-button--secondary }
 
 ---
 

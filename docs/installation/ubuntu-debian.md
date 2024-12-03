@@ -19,6 +19,7 @@ To update AIS-catcher to the latest version, simply run the above command again.
 ---
 
 [Start First Run](../usage/cli.md){ .md-button .md-button--primary }
+[Install Web GUI](#installation-with-web-gui){ .md-button .md-button--secondary }
 
 ---
 
