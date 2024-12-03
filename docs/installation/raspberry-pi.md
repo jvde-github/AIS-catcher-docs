@@ -5,7 +5,7 @@
 ## Installation
 
 
-This guide provides instructions for installing AIS-catcher on Debian-based systems (like Raspberry Pi) and setting it up to run as a background service. This ensures AIS-catcher will automatically start when the machine is booted. 
+This guide provides instructions for installing AIS-catcher on Debian-based systems (like Raspberry Pi) and setting it up to run as a background service. The background service provides the option for AIS-catcher to automatically start when the machine is booted.
 
 > The Basic Installation via the below script is  required as a first step if you want to install the Web GUI package.
 
