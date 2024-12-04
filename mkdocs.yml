@@ -59,6 +59,7 @@ extra:
 
 nav:
   - Home: index.md
+  - What is New?: what-is-new.md
   - Getting Started:
       - Overview: getting-started/overview.md
       - Features: getting-started/features.md
