@@ -10,12 +10,14 @@ Links to pre-built Windows binaries are available below, with and without SDRPla
 2. Launch via command line or `start.bat` (editable with Notepad)
 
 **Prerequisites:**
+
 - RTL-SDR drivers (install via [Zadig](https://www.rtl-sdr.com/tag/zadig/))
 - Visual Studio [runtime libraries](https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170)
 
 ## Recent Releases
 
-> **Note:** Built with latest Windows MSVC compiler. Update [runtime libraries](https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170) before running. Some issues reported on Windows 10.
+> **Note:** Built with latest Windows MSVC compiler. Update [runtime libraries](https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170) before running. Some issues have been reported with outdated runtime libraries and Windows 10
+
 ---
 
 [Start First Run](../usage/cli.md){ .md-button .md-button--primary }
