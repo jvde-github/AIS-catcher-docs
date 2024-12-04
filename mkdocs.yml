@@ -35,7 +35,10 @@ repo_url: https://github.com/jvde-github/AIS-catcher
 repo_name: GitHub
 extra_css:
   - styles/custom.css
-  
+
+extra_javascript:
+  - https://aiscatcher.org/js/script.js
+
 extra:
   social:
     - icon: fontawesome/solid/house
