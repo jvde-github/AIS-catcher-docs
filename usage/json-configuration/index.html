@@ -683,14 +683,20 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Configuration Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#core-settings" class="md-nav__link">
     <span class="md-ellipsis">
       Core Settings
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2179,14 +2185,20 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Configuration Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#core-settings" class="md-nav__link">
     <span class="md-ellipsis">
       Core Settings
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2371,18 +2383,26 @@
 
 
 <h1 id="json-configuration">JSON Configuration<a class="headerlink" href="#json-configuration" title="Permanent link">&para;</a></h1>
-<p>AIS-catcher (v0.41+) supports configuration via JSON format:</p>
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-C<span class="w"> </span>config.json
+<p>AIS-catcher (v0.41+) supports extensive configuration through JSON files, enabling users to tailor the application to their specific needs. This guide provides an in-depth look at the JSON configuration structure, key settings, and best practices to help you effectively set up and manage AIS-catcher.</p>
+<p>To start AIS-catcher with a JSON configuration file, use the -C option followed by the path to your config.json file:</p>
+<p><div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-C<span class="w"> </span>config.json
 </code></pre></div>
+This command instructs AIS-catcher to load and apply the settings defined in config.json.</p>
 <h2 id="basic-structure">Basic Structure<a class="headerlink" href="#basic-structure" title="Permanent link">&para;</a></h2>
-<p>Required minimal configuration:
+<p>A minimal JSON configuration file for AIS-catcher requires the following structure:
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aiscatcher&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="p">}</span>
 </code></pre></div></p>
+<ul>
+<li>config: Identifies the configuration type. Must be "aiscatcher".</li>
+<li>version: Specifies the configuration version. Currently, only version 1 is supported.</li>
+</ul>
 <h2 id="configuration-keys">Configuration Keys<a class="headerlink" href="#configuration-keys" title="Permanent link">&para;</a></h2>
-<h2 id="core-settings">Core Settings<a class="headerlink" href="#core-settings" title="Permanent link">&para;</a></h2>
+<p>Configuration keys are organized into several categories to manage different aspects of AIS-catcher's functionality. Each key has a specific purpose and should be used as per the documentation.</p>
+<h3 id="core-settings">Core Settings<a class="headerlink" href="#core-settings" title="Permanent link">&para;</a></h3>
+<p>Core settings define fundamental aspects of AIS-catcher's operation.</p>
 <table>
 <thead>
 <tr>
@@ -2443,7 +2463,34 @@
 </tr>
 </tbody>
 </table>
+<ul>
+<li>
+<p>config: Must always be set to "aiscatcher" to identify the configuration type.</p>
+</li>
+<li>
+<p>version: Defines the configuration file version. Ensure it is set to 1 as this is the currently supported version.</p>
+</li>
+<li>
+<p>input: Specifies the primary input device for AIS data (e.g., "rtlsdr", "airspy"). Refer to Input Options for supported devices.</p>
+</li>
+<li>
+<p>serial: Defines the serial number of the device to be used. Useful when multiple devices are connected.</p>
+</li>
+<li>
+<p>verbose: When set to true, AIS-catcher provides detailed logs and output for debugging purposes.</p>
+</li>
+<li>
+<p>sharing: Enables sharing of AIS data with the AIS-catcher community feed, allowing others to access your AIS data and vice versa.</p>
+</li>
+<li>
+<p>sharing_key: A unique key obtained from aiscatcher.org to securely share your AIS data with the community.</p>
+</li>
+<li>
+<p>screen: Controls the verbosity and format of the console output. Values range from 0 (no output) to 5 (full JSON decoding).</p>
+</li>
+</ul>
 <h2 id="input-device-settings">Input Device Settings<a class="headerlink" href="#input-device-settings" title="Permanent link">&para;</a></h2>
+<p>AIS-catcher supports various input devices. Each device type has specific configuration options. Below are the supported devices and their respective settings.</p>
 <h3 id="rtl-sdr-rtlsdr">RTL-SDR (<code>rtlsdr</code>)<a class="headerlink" href="#rtl-sdr-rtlsdr" title="Permanent link">&para;</a></h3>
 <p><div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;rtlsdr&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
