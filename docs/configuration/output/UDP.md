@@ -28,7 +28,7 @@ Another option for UDP sending via `-u` is `BROADCAST on/off` to enable sending 
 ## Summary Settimgs
 
 <div class="input-table" markdown>
-| Setting | Type | Default | Description |
+| Key | Type | Default | Description |
 |---------|------|---------|-------------|
 | <span class="cmd-setting">HOST</span> | string | <span class="cmd-value">-</span> | Target UDP host address |
 | <span class="cmd-setting">PORT</span> | string | <span class="cmd-value">-</span> | Target UDP port |

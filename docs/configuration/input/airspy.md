@@ -27,7 +27,7 @@ More guidance on setting the gain model and levels can be obtained in the mentio
 
 <div class="input-table" markdown>
 
-| Setting | Type | Default | Description |
+| Key | Type | Default | Description |
 |---------|------|---------|-------------|
 | Generic Options | | | |
 | <span class="cmd-setting">SAMPLE_RATE</span> | integer | <span class="cmd-value">192K</span> | Sampling rate in Hz (0-20,000,000) |

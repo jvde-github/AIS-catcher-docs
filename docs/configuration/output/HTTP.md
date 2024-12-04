@@ -64,7 +64,7 @@ The supported protocol switches are ``AISCATCHER`` (default), ``MINIMAL`` (NMEA 
 
 ## Summary Settimgs
 
-| Setting | Type | Default | Description |
+| Key | Type | Default | Description |
 |---------|------|---------|-------------|
 | <span class="cmd-setting">URL</span> | string | <span class="cmd-value">-</span> | Target HTTP endpoint URL |
 | <span class="cmd-setting">USERPWD</span> | string | <span class="cmd-value">-</span> | Authentication credentials |

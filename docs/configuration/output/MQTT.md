@@ -19,7 +19,7 @@ AIS-catcher -Q mqtt://username:password@127.0.0.1:1883 CLIENT_ID aiscatcher QOS 
 ## Summary Settings
 
 <div class="input-table" markdown>
-| Setting | Type | Default | Description |
+| Key | Type | Default | Description |
 |---------|------|---------|-------------|
 | <span class="cmd-setting">URL</span> | string | <span class="cmd-value">-</span> | MQTT broker URL (mqtt[s]://[user:pass@]host[:port]) |
 | <span class="cmd-setting">HOST</span> | string | <span class="cmd-value">-</span> | MQTT broker hostname |

@@ -53,7 +53,7 @@ I hope this is sufficient to get you experimenting! Unfortunately, the options c
 ## Summary Settings
 
 <div class="input-table" markdown>
-| Setting | Type | Default | Description |
+| Key | Type | Default | Description |
 |---------|------|---------|-------------|
 | <span class="cmd-setting">CONN_STR</span> | string | <span class="cmd-value">dbname=ais</span> | PostgreSQL connection string |
 | <span class="cmd-setting">STATION_ID</span> | integer | <span class="cmd-value">0</span> | Station identifier |

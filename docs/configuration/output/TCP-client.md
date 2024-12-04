@@ -20,7 +20,7 @@ In this case, AIS-catcher acts as a TCP client and connects to the remote listen
 ## Summary Settings
 
 <div class="input-table" markdown>
-| Setting | Type | Default | Description |
+| Key | Type | Default | Description |
 |---------|------|---------|-------------|
 | <span class="cmd-setting">HOST</span> | string | <span class="cmd-value">-</span> | Target TCP server host |
 | <span class="cmd-setting">PORT</span> | string | <span class="cmd-value">-</span> | Target TCP server port |

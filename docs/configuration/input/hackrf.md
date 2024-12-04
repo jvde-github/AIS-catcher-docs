@@ -19,7 +19,7 @@ AIS-catcher -gf lna 16 vga 16 preamp OFF
 
 <div class="input-table" markdown>
 
-| Setting | Type | Default | Description |
+| Key | Type | Default | Description |
 |---------|------|---------|-------------|
 | Generic Options | | | |
 | <span class="cmd-setting">SAMPLE_RATE</span> | integer | <span class="cmd-value">6144K</span> | Sampling rate in Hz (0-20,000,000) |

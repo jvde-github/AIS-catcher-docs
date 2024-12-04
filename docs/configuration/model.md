@@ -90,7 +90,7 @@ AIS-catcher will also accept AIVDO input which is typically used for the MMSI of
 ## Model Settings
 
 ### Common Settings
-| Setting | Type | Default | Description |
+| Key | Type | Default | Description |
 |---------|------|---------|-------------|
 | <span class="cmd-setting">DROOP</span> | boolean | <span class="cmd-value">true</span> | Enable droop compensation in CIC5 filters |
 | <span class="cmd-setting">FP_DS</span> | boolean | <span class="cmd-value">false</span> | Enable fixed-point downsampling |
@@ -98,14 +98,14 @@ AIS-catcher will also accept AIVDO input which is typically used for the MMSI of
 | <span class="cmd-setting">OWN_MMSI</span> | integer | <span class="cmd-value">-1</span> | Own vessel MMSI |
 
 ### Downsampling Options
-| Setting | Type | Default | Description |
+| Key | Type | Default | Description |
 |---------|------|---------|-------------|
 | <span class="cmd-setting">SOXR</span> | boolean | <span class="cmd-value">false</span> | Use SOXR resampler |
 | <span class="cmd-setting">SRC</span> | boolean | <span class="cmd-value">false</span> | Use SRC resampler |
 | <span class="cmd-setting">MA</span> | boolean | <span class="cmd-value">false</span> | Use moving average downsampling |
 
 ### NMEA Model Settings
-| Setting | Type | Default | Description |
+| Key | Type | Default | Description |
 |---------|------|---------|-------------|
 | <span class="cmd-setting">NMEA_REFRESH</span> | boolean | <span class="cmd-value">false</span> | Recalculate NMEA lines |
 | <span class="cmd-setting">CRC_CHECK</span> | boolean | <span class="cmd-value">false</span> | Enable CRC validation |

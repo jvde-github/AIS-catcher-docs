@@ -22,7 +22,7 @@ Settings are not case-sensitive.
 
 <div class="input-table" markdown>
 
-| Setting | Type | Default | Description |
+| Key | Type | Default | Description |
 |---------|------|---------|-------------|
 | Generic Options | | | |
 | <span class="cmd-setting">SAMPLE_RATE</span> | integer | <span class="cmd-value">1536K</span> | Sampling rate in Hz (0-20,000,000) |

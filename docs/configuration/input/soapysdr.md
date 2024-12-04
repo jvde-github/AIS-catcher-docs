@@ -40,7 +40,7 @@ If the sample rates for a device are not supported by AIS-catcher, the SOXR func
 
 <div class="input-table" markdown>
 
-| Setting | Type | Default | Description |
+| Key | Type | Default | Description |
 |---------|------|---------|-------------|
 | Generic Options | | | |
 | <span class="cmd-setting">SAMPLE_RATE</span> | integer | <span class="cmd-value">0/span> | Sampling rate in Hz (0-20,000,000) |

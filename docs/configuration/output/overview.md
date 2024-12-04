@@ -26,7 +26,7 @@ Message type 8 is region-specific. If you encounter any messages in the wild tha
 ### Filter settings
 
 <div class="settings-table" markdown>
-| Setting | Type | Default | Description |
+| Key | Type | Default | Description |
 |---------|------|---------|-------------|
 | <span class="cmd-setting">FILTER</span> | boolean | <span class="cmd-value">false</span> | Enable/disable filtering |
 | <span class="cmd-setting">ALLOW_TYPE</span> | list | <span class="cmd-value">all</span> | Comma-separated list of message types to allow (1-27) |

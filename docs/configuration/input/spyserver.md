@@ -30,7 +30,7 @@ AIS-catcher -y 192.168.1.235 5555 -gy GAIN 14
 <div class="input-table" markdown>
 
 
-| Setting | Type | Default | Description |
+| Key | Type | Default | Description |
 |---------|------|---------|-------------|
 | Generic Options | | | |
 | <span class="cmd-setting">SAMPLE_RATE</span> | integer | <span class="cmd-value">Host specific</span> | Sampling rate in Hz (0-20,000,000) |

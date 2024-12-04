@@ -111,7 +111,7 @@ For more information on how to configure Prometheus and Grafana to get an initia
 Server Options:
 
 <div class="input-table" markdown>
-| Setting | Type | Default | Description |
+| Key | Type | Default | Description |
 |---------|------|---------|-------------|
 | <span class="cmd-setting">PORT</span> | integer | <span class="cmd-value">-</span> | Single port for web server |
 | <span class="cmd-setting">PORT_MIN</span> | integer | <span class="cmd-value">-</span> | Minimum port in binding range |

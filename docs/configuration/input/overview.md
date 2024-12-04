@@ -14,7 +14,7 @@ To select a specific device, use either:
 ## Universal Settings
 The following settings apply across all input devices. For the most common options there is a command line option available that can be used as a shortcut. 
 
-| Option | Command Line | Setting | Description | Range | Default |
+| Option | Command Line | Key | Description | Range | Default |
 |---------|--------------|---|----------|--------|---------|
 | Sample Rate | `-s RATE` | <span class="cmd-setting">SAMPLE_RATE</span> | Sampling rate in Hz | 0-20,000,000 | Device-specific |
 | Bandwidth | `-a BW` | <span class="cmd-setting">BANDWIDTH</span> | Tuner bandwidth in Hz | 0-1,000,000 | 0 (none) |

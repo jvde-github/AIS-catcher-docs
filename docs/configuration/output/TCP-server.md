@@ -21,7 +21,7 @@ AIS-catcher -S 5011
 ## Summary Settings
 
 <div class="input-table" markdown>
-| Setting | Type | Default | Description |
+| Key | Type | Default | Description |
 |---------|------|---------|-------------|
 | <span class="cmd-setting">PORT</span> | integer | <span class="cmd-value">5010</span> | Listen port (0-65535) |
 | <span class="cmd-setting">TIMEOUT</span> | integer | <span class="cmd-value">-</span> | Connection timeout |

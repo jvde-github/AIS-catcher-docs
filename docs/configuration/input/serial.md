@@ -29,7 +29,7 @@ To dump the raw input from the serial device on-screen use `-`ge print on`.
 ## Summary Settings
 
 <div class="input-table" markdown>
-| Setting | Type | Default | Description |
+| Key | Type | Default | Description |
 |---------|------|---------|-------------|
 | Generic Options | | | |
 | <span class="cmd-setting">SAMPLE_RATE</span> | integer | <span class="cmd-value">N/A</span> | Sampling rate in Hz (0-20,000,000) |
