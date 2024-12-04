@@ -24,7 +24,7 @@ theme:
       - icon: fontawesome/brands/github
         link: https://github.com/jvde-github/AIS-catcher
       - icon: fontawesome/brands/twitter
-        link: https://twitter.com/yourtwitter
+        link: https://x.com/githubjvde
   features:
     - navigation.top
     - content.code.annotate  
@@ -38,12 +38,12 @@ extra_css:
   
 extra:
   social:
+    - icon: fontawesome/solid/house
+      link: https://aiscatcher.org
     - icon: fontawesome/brands/github
       link: https://github.com/jvde-github/AIS-catcher
     - icon: fontawesome/brands/twitter
-      link: https://twitter.com/yourtwitter
-    - icon: fontawesome/solid/house
-      link: https://aiscatcher.org
+      link: https://x.com/githubjvde
     - icon: fontawesome/solid/comments
       link: https://github.com/jvde-github/AIS-catcher/discussions
     - icon: fontawesome/solid/bug
