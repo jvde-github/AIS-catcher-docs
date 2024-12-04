@@ -40,6 +40,7 @@ Advancements in Software Defined Radio (SDR) technology have made it possible to
 ### Important Safety Notice
 
 SDR-based AIS receivers should **not** be used for:
+
 * Navigation purposes
 * Safety of life applications
 * Commercial vessel operations
