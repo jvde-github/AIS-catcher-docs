@@ -34,8 +34,8 @@ Core settings define fundamental aspects of AIS-catcher's operation.
 |-----|------|-------------|---------------|
 | `config` | string | "aiscatcher" | |
 | `version` | number | 1 | |
-| `input` | string | Primary input device selection | [Input Options](../configuration/input/overview.md) |
-| `serial` | string | Device serial number | [Input Options](../configuration/input/overview.md) |
+| `input` | string | Primary input device selection | rtlsdr/hackrf/etc |
+| `serial` | string | Device serial number | optional|
 | `verbose` | boolean | Enable verbose output | [Console Output](../configuration/output/console.md) |
 | `sharing` | boolean | Enable community feed sharing | [Community Feed](../configuration/output/community-feed.md) |
 | `sharing_key` | string | Community feed key | [Community Feed](../configuration/output/community-feed.md) |
