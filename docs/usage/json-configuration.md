@@ -71,7 +71,6 @@ AIS-catcher supports various input devices. Each device type has specific config
         "bandwidth": "192K",
         "sample_rate": "1536K",
         "biastee": false,
-        "buffer_count": 2
     }
 }
 ```
