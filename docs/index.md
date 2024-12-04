@@ -11,7 +11,7 @@ Welcome to the **AIS-Catcher** documentation. AIS-Catcher is an open-source soft
 ---
 
 [Get Started](getting-started/overview.md){ .md-button .md-button--primary }
-[Get Started](getting-started/what-is-new.md){ .md-button .md-button-secondary }
+[Get Started](what-is-new.md){ .md-button .md-button-secondary }
 
 
 ---
