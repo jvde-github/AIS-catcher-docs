@@ -53,7 +53,7 @@ Tailor your setup with our advanced [Options](../configuration/overview.md)
 <div class="step" markdown>
 
 **Set up your Community Feed**  
-[Register](https://aiscatcher.org/join) your station at **aiscatcher.org** and start feeding
+[Register](https://aiscatcher.org/addstation_ac) your station at **aiscatcher.org** and start feeding
 </div>
 
 <div class="step" markdown>

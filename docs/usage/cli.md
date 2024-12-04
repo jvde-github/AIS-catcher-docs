@@ -74,7 +74,7 @@ Share your feed with the AIS-Catcher community and view others’ data:
 ```bash
 AIS-catcher -X <your sharing key>
 ```
-Omitting the sharing key will share data anonymously and a  key can be created at [aiscatcher.org](https://aiscatcher.org/join). 
+Omitting the sharing key will share data anonymously and a  key can be created at [aiscatcher.org](https://aiscatcher.org/addstation_ac). 
 
 #### Sharing over UDP
 Additionally, for sending the messages via UDP to ports 10110 and 10111,  use the following command:

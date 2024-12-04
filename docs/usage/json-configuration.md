@@ -22,6 +22,8 @@ Required minimal configuration:
 
 | Key | Type | Description | Documentation |
 |-----|------|-------------|---------------|
+| `config` | string | "aiscatcher" | |
+| `version` | number | 1 | |
 | `input` | string | Primary input device selection | [Input Options](../configuration/input/overview.md) |
 | `serial` | string | Device serial number | [Input Options](../configuration/input/overview.md) |
 | `verbose` | boolean | Enable verbose output | [Console Output](../configuration/output/console.md) |
