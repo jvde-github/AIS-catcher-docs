@@ -1,14 +1,17 @@
 # JSON Configuration
 
-AIS-catcher (v0.41+) supports configuration via JSON format:
+AIS-catcher (v0.41+) supports extensive configuration through JSON files, enabling users to tailor the application to their specific needs. This guide provides an in-depth look at the JSON configuration structure, key settings, and best practices to help you effectively set up and manage AIS-catcher.
+
+To start AIS-catcher with a JSON configuration file, use the -C option followed by the path to your config.json file:
 
 ```bash
 AIS-catcher -C config.json
 ```
+This command instructs AIS-catcher to load and apply the settings defined in config.json.
 
 ## Basic Structure
 
-Required minimal configuration:
+A minimal JSON configuration file for AIS-catcher requires the following structure:
 ```json
 {
     "config": "aiscatcher",
@@ -16,9 +19,16 @@ Required minimal configuration:
 }
 ```
 
+- config: Identifies the configuration type. Must be "aiscatcher".
+- version: Specifies the configuration version. Currently, only version 1 is supported.
+
 ## Configuration Keys
 
-## Core Settings
+Configuration keys are organized into several categories to manage different aspects of AIS-catcher's functionality. Each key has a specific purpose and should be used as per the documentation.
+
+### Core Settings
+
+Core settings define fundamental aspects of AIS-catcher's operation.
 
 | Key | Type | Description | Documentation |
 |-----|------|-------------|---------------|
@@ -31,7 +41,25 @@ Required minimal configuration:
 | `sharing_key` | string | Community feed key | [Community Feed](../configuration/output/community-feed.md) |
 | `screen` | number | Screen output mode (0-5) | [Console Output](../configuration/output/console.md) |
 
+- config: Must always be set to "aiscatcher" to identify the configuration type.
+
+- version: Defines the configuration file version. Ensure it is set to 1 as this is the currently supported version.
+
+-   input: Specifies the primary input device for AIS data (e.g., "rtlsdr", "airspy"). Refer to Input Options for supported devices.
+
+- serial: Defines the serial number of the device to be used. Useful when multiple devices are connected.
+
+- verbose: When set to true, AIS-catcher provides detailed logs and output for debugging purposes.
+
+- sharing: Enables sharing of AIS data with the AIS-catcher community feed, allowing others to access your AIS data and vice versa.
+
+- sharing_key: A unique key obtained from aiscatcher.org to securely share your AIS data with the community.
+
+- screen: Controls the verbosity and format of the console output. Values range from 0 (no output) to 5 (full JSON decoding).
+
 ## Input Device Settings
+
+AIS-catcher supports various input devices. Each device type has specific configuration options. Below are the supported devices and their respective settings.
 
 ### RTL-SDR (`rtlsdr`)
 ```json
