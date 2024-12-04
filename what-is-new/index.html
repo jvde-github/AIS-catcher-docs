@@ -258,6 +258,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    What is New?
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -267,6 +278,76 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#edge-version-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Edge Version Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Edge Version Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mqtt-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      MQTT Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websocket-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebSocket Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-viewer-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web Viewer Enhancements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Updates
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1956,6 +2037,65 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#edge-version-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Edge Version Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Edge Version Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mqtt-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      MQTT Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websocket-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebSocket Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-viewer-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web Viewer Enhancements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Updates
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1972,59 +2112,56 @@
   
 
 
-<h1 id="whats-new">What's new?<a class="headerlink" href="#whats-new" title="Permanent link">&para;</a></h1>
-<p><strong>Edge</strong>:
-- Support to publish AIS messages to MQTT broker.</p>
-<p>Example:
-<div class="highlight"><pre><span></span><code><span class="go">AIS-catcher -Q mqtt://127.0.0.1:1883 </span>
-</code></pre></div>
-or via WebSockets:
-<div class="highlight"><pre><span></span><code><span class="go">AIS-catcher -Q wsmqtt://127.0.0.1:1883 </span>
-</code></pre></div>
-Add <code>MSGFORMAT</code> to specify the data send to the Broker (NMEA/JSON_NMEA/JSON_FULL) or provide a <code>TOPIC</code>, both are optional:
-<div class="highlight"><pre><span></span><code><span class="go">AIS-catcher -Q mqtt://127.0.0.1:1883 admin MSGFORMAT JSON_FULL TOPIC data/ais</span>
-</code></pre></div>
-Authentication and client can also be easily set if needed:
-<div class="highlight"><pre><span></span><code><span class="go">AIS-catcher -Q mqtt://username:password@127.0.0.1:1883  admin CLIENT aiscatcher</span>
+<h1 id="whats-new">What's New?<a class="headerlink" href="#whats-new" title="Permanent link">&para;</a></h1>
+<h2 id="edge-version-features">Edge Version Features<a class="headerlink" href="#edge-version-features" title="Permanent link">&para;</a></h2>
+<h3 id="mqtt-integration">MQTT Integration<a class="headerlink" href="#mqtt-integration" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>Publishing Messages</strong>
+  <div class="highlight"><pre><span></span><code><span class="c1"># Basic MQTT connection</span>
+AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://127.0.0.1:1883
+
+<span class="c1"># WebSocket MQTT connection</span>
+AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>wsmqtt://127.0.0.1:1883
+
+<span class="c1"># With message format and topic</span>
+AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://127.0.0.1:1883<span class="w"> </span>admin<span class="w"> </span>MSGFORMAT<span class="w"> </span>JSON_FULL<span class="w"> </span>TOPIC<span class="w"> </span>data/ais
+
+<span class="c1"># With authentication and client ID</span>
+AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://username:password@127.0.0.1:1883<span class="w"> </span>admin<span class="w"> </span>CLIENT<span class="w"> </span>aiscatcher
 </code></pre></div></p>
-<p>To read from a MQTT broker as input use <code>-t mqtt://</code> (or <code>wsmqtt://</code> for WebSocket communication with the broker):
-<div class="highlight"><pre><span></span><code><span class="go">AIS-catcher -t mqtt://username:password@127.0.0.1:1883 </span>
+</li>
+<li>
+<p><strong>Reading Messages</strong>
+  <div class="highlight"><pre><span></span><code><span class="c1"># Read from MQTT broker</span>
+AIS-catcher<span class="w"> </span>-t<span class="w"> </span>mqtt://username:password@127.0.0.1:1883
 </code></pre></div></p>
-<ul>
-<li>smaller UI tidy up (e.g. opens default on map and adjusted colors)</li>
-<li><code>-y</code>  now accepts the server location as <code>sdr://127.0.0.1:5555</code></li>
-<li><code>-t</code> now accepts the server location and protocol as <code>txt://127.0.0.1:4001</code> for text over TCP, <code>gpsd://127.0.0.1:4267</code> for a GPSD server and <code>rtltcp://127.0.0.1:4099</code> for a RTL_TCP server and <code>tcp://127.0.0.1:1313</code> for raw IQ data over tcp</li>
-<li><code>-t</code> and <code>-Q</code> can send text data using WebSockets using <code>ws://</code></li>
-<li>added NMEA2000 settings to the JSON configuration</li>
-<li>Options to automatically show the vessel track when hovering over and/or selecting a vessel</li>
-<li>Fix to system daemon file to restart process after 10s only</li>
-<li>Shipcard is placed near the vessel if the screen dimensions allow for it</li>
-<li>Shipcard is draggable</li>
+</li>
 </ul>
-<p><strong>v0.60</strong> version:
-- Option to send fully decoded AIS messages in JSON format via UDP and TCP (similar to screen output with <code>-o 5</code>). Add <code>JSON_FULL on</code> to <code>~P/S/u</code>.
-- Bug fix for connecting serial devices in macOS
-- Option to select columns in the table (and many more options added):</p>
-<p><img alt="image" src="https://github.com/user-attachments/assets/a89120dc-9a2b-485c-b6ff-5516385ad8ae" /></p>
+<h3 id="websocket-support">WebSocket Support<a class="headerlink" href="#websocket-support" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Option to use text description in tables for ship type</li>
-<li>Overlay in AIS-catcher webviewer that shows possibility of atmospheric ducting conditions enable long range AIS reception</li>
+<li>Text data transmission via WebSockets using <code>ws://</code> protocol with <code>-t</code> and <code>-Q</code> options</li>
 </ul>
-<p><img alt="image" src="https://github.com/jvde-github/AIS-catcher/assets/52420030/d15920f1-d827-42da-9f05-3587fe553feb" /></p>
+<h3 id="web-viewer-enhancements">Web Viewer Enhancements<a class="headerlink" href="#web-viewer-enhancements" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Added debian packages and installation script</li>
+<li>Default map view on startup</li>
+<li>Optimized color scheme</li>
+<li>Draggable shipcard functionality</li>
+<li>Smart shipcard positioning near vessels</li>
+<li>Automatic vessel track display options:</li>
+<li>On hover</li>
+<li>On selection</li>
 </ul>
-<p>Earlier versions:</p>
+<h3 id="additional-updates">Additional Updates<a class="headerlink" href="#additional-updates" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Added a measure tool to measure distance and bearing between two points and/or ships. Start with CTRL-Click or activate the measure tool and press +</li>
-<li>Additional option  for <code>-f</code>-switch to either append NMEA lines to file (<code>-f filename MODE APP</code> for appending - default) or starting fresh with <code>-f filename MODE OUT</code></li>
-<li>Community feed by running with -X. This will feed the aiscatcher.org server and return data as an extra map layer option in your webviewer.</li>
-<li>Performance improvements when drawing a large number of vessels by switching from Leaflet to Openlayers (notice this might require re-working some plugins). in openlayers it is more straightforward to plot ship icons on the canvas.</li>
-<li>Option to auto terminate the program if no messages received for a while, e.g. after 10 minutes <code>-T 600 nomsg_ony</code>. This will help cure network connections for input or devices going stale without an error </li>
-<li>You can access  geoJSON output of the current ship positions by visiting the web viewer at <code>/geojson</code> and for KML output, please navigate to <code>/kml</code> (enable with the
-switches <code>-N geojson on</code> and <code>-N kml on</code>). The KML feature facilitates the visualization of ship positions in Google Earth Pro. Be sure to add a network link and configure the auto-refresh rate in GE. A demonstration of the use of GeoJSON is <a href="https://github.com/jvde-github/AIS-in-TAR1090">plotting the vessels on the tar1090 map.</a></li>
-<li>Experimenter Mode for NMEA2000 via socketCAN on Linux. <a href="https://github.com/jvde-github/AIS-catcher/blob/main/README.md#nmea2000-input-and-output-via-socketcan">See documentation below</a>.</li>
-<li>Pyssel blog post describes procedure to show offline mbtiles maps <a href="https://pysselilivet.blogspot.com/2023/12/ais-receiver-and-dispatcher-best.html">here</a></li>
+<li>Server protocol support:</li>
+<li>SDR data: <code>sdr://127.0.0.1:5555</code></li>
+<li>Text over TCP: <code>txt://127.0.0.1:4001</code></li>
+<li>GPSD: <code>gpsd://127.0.0.1:4267</code></li>
+<li>RTL_TCP: <code>rtltcp://127.0.0.1:4099</code></li>
+<li>Raw IQ data: <code>tcp://127.0.0.1:1313</code></li>
+<li>NMEA2000 configuration added to JSON settings</li>
+<li>System daemon restart interval set to 10s</li>
 </ul>
 
 
