@@ -1,27 +1,39 @@
-# Configuration (JSON)
+# JSON Configuration
 
-As per version 0.41, AIS-catcher can be mostly configured via a configuration file in JSON format,
-```console
+AIS-catcher (v0.41+) supports configuration via JSON format:
+
+```bash
 AIS-catcher -C config.json
 ```
-where `config.json` is the name of the configuration file. The idea behind this feature is to simplify the setup of feeding multiple online sources. The minimal configuration file should have the following:
-```json
-{ "config": "aiscatcher", "version": 1 }
-```
-A fuller example config file looks as follows:
+
+## Basic Structure
+
+Required minimal configuration:
 ```json
 {
     "config": "aiscatcher",
-    "version": "1",
-    "input": "serialport",
-    "verbose": true,
-    "sharing": true,
-    "sharing_key": "6ef40ea8-59b9-11ef-8db4",
-    "screen": 0,
-    "serialport": {
-        "baudrate": 38400,
-        "port": "/dev/tty0"
-    },
+    "version": 1
+}
+```
+
+## Configuration Keys
+
+## Core Settings
+
+| Key | Type | Description | Documentation |
+|-----|------|-------------|---------------|
+| `input` | string | Primary input device selection | [Input Options](../configuration/input/overview.md) |
+| `serial` | string | Device serial number | [Input Options](../configuration/input/overview.md) |
+| `verbose` | boolean | Enable verbose output | [Console Output](../configuration/output/console.md) |
+| `sharing` | boolean | Enable community feed sharing | [Community Feed](../configuration/output/community-feed.md) |
+| `sharing_key` | string | Community feed key | [Community Feed](../configuration/output/community-feed.md) |
+| `screen` | number | Screen output mode (0-5) | [Console Output](../configuration/output/console.md) |
+
+## Input Device Settings
+
+### RTL-SDR (`rtlsdr`)
+```json
+{
     "rtlsdr": {
         "active": true,
         "rtlagc": true,
@@ -30,49 +42,133 @@ A fuller example config file looks as follows:
         "sample_rate": "1536K",
         "biastee": false,
         "buffer_count": 2
-    },
+    }
+}
+```
+[Full RTL-SDR Documentation](../configuration/input/rtlsdr.md)
+
+### Airspy (`airspy`)
+```json
+{
     "airspy": {
         "sample_rate": "3000K",
         "linearity": 17,
         "biastee": false
-    },
+    }
+}
+```
+[Full Airspy Documentation](../configuration/input/airspy.md)
+
+### Airspy HF+ (`airspyhf`)
+```json
+{
     "airspyhf": {
         "sample_rate": "192k",
         "threshold": "low",
         "preamp": false
-    },
+    }
+}
+```
+[Full Airspy HF+ Documentation](../configuration/input/airspyhf.md)
+
+### HackRF (`hackrf`)
+```json
+{
     "hackrf": {
         "sample_rate": "6144k",
         "lna": 8,
         "vga": 20,
         "preamp": false
-    },
+    }
+}
+```
+[Full HackRF Documentation](../configuration/input/hackrf.md)
+
+### SDRPlay (`sdrplay`)
+```json
+{
     "sdrplay": {
         "sample_rate": "2304K",
         "agc": true,
         "lnastate": 5,
         "grdb": 40
-    },
-    "udpserver": {
-        "server": "192.168.1.235",
-        "port": 4002
-    },
+    }
+}
+```
+[Full SDRPlay Documentation](../configuration/input/sdrplay.md)
+
+### Serial Port Input (`serialport`)
+```json
+{
+    "serialport": {
+        "baudrate": 38400,
+        "port": "/dev/tty0"
+    }
+}
+```
+[Full Serial Port Documentation](../configuration/input/serial.md)
+
+## Network Input Settings
+
+### TCP Client (`tcp`)
+```json
+{
+    "tcp": {
+        "host": "192.168.1.100",
+        "port": 12345
+    }
+}
+```
+[Full TCP Documentation](../configuration/input/tcp.md)
+
+### SpyServer (`spyserver`)
+```json
+{
+    "spyserver": {
+        "host": "server.example.com",
+        "port": 5555
+    }
+}
+```
+[Full SpyServer Documentation](../configuration/input/spyserver.md)
+
+## Output Settings
+
+### Web Viewer (`server`)
+```json
+{
     "server": {
-        "file": "stat.bin",
-        "backup": 10,
-        "realtime": true,
         "active": true,
         "port": 8100,
         "station": "My Station",
-        "station_link": "http://example.com/",
         "share_loc": true,
         "lat": 52,
-        "lon": 4.3,
-        "plugin_dir": "/home/jasper/AIS-catcher/plugins/",
-        "cdn": "/home/jasper/webassets",
-        "prome": true,
-        "context": "settings"
-    },
+        "lon": 4.3
+    }
+}
+```
+[Full Web Server Documentation](../configuration/output/web-viewer.md)
+
+
+### UDP Output (`udp`)
+```json
+{
+    "udp": [
+        {
+            "active": true,
+            "host": "192.168.1.235",
+            "port": 4002,
+            "filter": false,
+            "allow_type": "1,2,3,5,18,19,24"
+        }
+    ]
+}
+```
+[Full UDP Documentation](../configuration/output/UDP.md)
+
+### TCP Output (`tcp`)
+```json
+{
     "tcp": [
         {
             "active": true,
@@ -80,76 +176,36 @@ A fuller example config file looks as follows:
             "port": 12,
             "keep_alive": false
         }
-    ],
-    "udp": [
+    ]
+}
+```
+[Full TCP Documentation](../configuration/output/TCP-client.md)
+
+## Multi-Receiver Configuration
+
+For multiple receivers, use the `receiver` array:
+```json
+{
+    "config": "aiscatcher",
+    "version": 1,
+    "receiver": [
         {
-            "host": "ais.fleetmon.com",
-            "port": 0
+            "input": "airspy",
+            "airspy": {
+                "sample_rate": "3000K"
+            }
         },
         {
-            "active": true,
-            "host": "hub.shipxplorer.com",
-            "port": 0,
-            "filter": false,
-            "allow_type": "1,2,3,5,18,19,24"
-        }
-    ],
-    "tcp_listener": [
-        {
-            "port": 5012
-        }
-    ],
-    "http": [
-        {
-            "url": "https://ais.chaos-consulting.de/shipin/index.php",
-            "userpwd": "user:pwd",
-            "interval": 30,
-            "gzip": false,
-            "response": false,
-            "filter": false
-        },
-        {
-            "url": "http://aprs.fi/jsonais/post/secret_key",
-            "id": "myid",
-            "interval": 60,
-            "protocol": "aprs",
-            "response": false
+            "input": "rtlsdr",
+            "serial": "ais",
+            "rtlsdr": {
+                "bandwidth": "192k"
+            }
         }
     ]
 }
 ```
 
-The UDP and HTTP outward connections are included as a JSON array (surrounded by `[` and `]`) with an  "object" for each separate channel. In each object we can include the 
-boolean field ``active`` (see the second UDP definition) which will cause the program to ignore the settings if set to `false` providing an easy way to switch particular channels or dongle configurations on and off. 
+## Important Notes
 
-The fields and values in the configuration file can be specified consistent with the command line settings as described 
-in this document. JSON is however case sensitive so field names must be entered in lower case.
-
-The active device is selected via the ``input`` or ``serial`` field. Sections for specific SDRs like `rtlsdr` specify the settings of the device only and **do not** automatically select it. Therefore, we can specify settings for many devices even if not connected. This will not have an impact.
-
-If both `input` and `serial` are included in the configuration file to select a device for decoding, the program will check that they are consistent, i.e. the hardware with the specified serial number must be of type ``input``. 
-If you want to run multiple receivers simultaneously, this is possible as well but the device-specific settings and selection need to be included in an array ``receiver``:
-```json
-{
-  "config":"aiscatcher",
-  "version":1,
-  "receiver":[
-    {
-      "input":"airspy",
-      "verbose":true,
-      "airspy":{
-        "sample_rate":"3000K"
-      }
-    },
-    {
-      "input":"rtlsdr",
-      "serial":"ais",
-      "verbose":true,
-      "rtlsdr":{
-        "bandwidth":"192k"
-      }
-    }
-  ]
-}
-```
-If there is only one RTL-SDR connected, only `input` set to `rtlsdr` is sufficient. Similarly, if there is only one device connected with serial `ais`, we only have to specify `serial`. 
+JSON is case-sensitive; all keys must be lowercase. Device-specific sections only configure the device but don't select it - use `input` or `serial` for device selection. The `active` boolean in any section enables/disables that configuration. Array-based outputs like for example for `udp` support multiple output channels.

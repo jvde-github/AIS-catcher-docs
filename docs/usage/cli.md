@@ -1,51 +1,88 @@
 # Command Line Usage
 
+## Overview
+
+This guide provides step-by-step instructions for using AIS-Catcher, from verifying installation to a first run with some basic output.
 
 ## Basic usage
 
-Firstly, we will check if AIS-catcher is correctly installed with build-in support for the desired hardware. The option `-L` will
-list the supported hardware.
+Check if AIS-Catcher is correctly installed with built-in support for your hardware:
 ```bash
 AIS-catcher -L
 ```
-We can view the available hardware as follows:
+List the available connected hardware:
 ```bash
 AIS-catcher -l
 ```
 
 ### The First Run
 
-To start AIS decoding, print some occasional statistics (every 10 seconds)
+Start AIS decoding with occasional statistics (every 10 seconds):
 ```bash
 AIS-catcher -v 10
 ```
-If you have multiple devices connected you can use `-d:` followed by the device number or `-d` followed by the serial number of the device, e.g.:
-
+If you have multiple devices connected, specify the device using:
 ```bash
 AIS-catcher -d:0
 ```
-If the the setup is succesful you should see AIS messages in NMEA format being printed to screen. 
+Alternatively, use the serial number of the device:
+```bash
+AIS-catcher <serial number>
+```
+
+Successful setup will display AIS messages in NMEA format on the screen.
 
 ### Output to screen
 
-By default the program prints the received messages to screen including some meta data. This output to console can be controlled 
-via the `-o` switch followed by the aspired output: no output (`-o 0`), plain NMEA (`-o 1`), NMEA with meta data (default via `-o 2`) but also full JSON
-deconding of the AIS message (`-o 5`):
+Control the format of the AIS message output using the `-o` option:
+
+- No output: `-o 0` or `-q`
+- Plain NMEA: `-n` or `-o 1`
+- NMEA with metadata (default): `-o 2`
+- Full JSON decoding: `-o 5`
+
+For example show full content of the AIS messages in JSON format:
 ```bash
 AIS-catcher -o 5
 ```
-The full JSON format for decoded AIS messages is documented [here](../references/JSON-decoding.md). The AIS NMEA lines on screen can be suppressed with the option ```-q``` equivalent to `-o 0`. 
+The full JSON format for decoded AIS messages is documented [here](../references/JSON-decoding.md). 
+
+To suppress all NMEA messages on the screen:
+```bash
+AIS-catcher -q
+```
+
+## Activating the Web Viewer
+
+Create a web viewer accessible from your local network to visualize AIS data:
+
+```bash
+AIS-catcher -N 8100
+```
+
+The web viewer will be available at `http://localhost:8100`. It can also be accessed from any device on the same network using the machine's IP address annd defined port number.
+
+Customization options for the web viewer are available in the [configuration settings](../configuration/output/web-viewer.md).
+
 
 ### Sharing your data
 
-The next step is to share the data with other programs or services. 
-To share your  feed with other AIS-catcher users (and see their data in your webviewer) use `-X` followed by your own unique sharing key created at [aiscatcher.org](https://aiscatcher.org/join). Ignoring the sharing key will share your data anonymously.
+#### Community Feed
 
-Additionally, for sending the messages via UDP to ports 10110 and 10111, we can use the following command:
+The next step is to share the data with other programs or services. 
+Share your feed with the AIS-Catcher community and view others’ data: 
 ```bash
-AIS-catcher -v 10 -X -u 127.0.0.1 10110 -u 127.0.0.1 10111
+AIS-catcher -X <your sharing key>
 ```
-If successful, NMEA messages will start to come in, appear on the screen and send as UDP messages to `127.0.0.1` port `10110` and port `10111` and will be visible on [aiscatcher.org](https://aiscatcher.org). The UDP messages are the primary method to forward messages for visualization in OpenCPN or to AIS aggregator websites like MarineTraffic, FleetMon, VesselFinder, ShipXplorer and others. See below for more pointers on how this can be set up.
+Omitting the sharing key will share data anonymously and a  key can be created at [aiscatcher.org](https://aiscatcher.org/join). 
+
+#### Sharing over UDP
+Additionally, for sending the messages via UDP to ports 10110 and 10111,  use the following command:
+```bash
+AIS-catcher  -u 127.0.0.1 10110 -u 127.0.0.1 10111
+```
+
+If successful, NMEA messages will start to come in, appear on the screen and send as raw NMEA  to `127.0.0.1` port `10110` and port `10111`. This is an ideal connection method for visualization in software like OpenCPN or for AIS aggregator websites such as MarineTraffic or VesselFinder.
 
 
 ### Device Specific Settings
@@ -67,17 +104,7 @@ Fast downsampling uses approximations and comes at a very small performance degr
 AIS-catcher -s 288K
 ```
 
-Reception will be impacted though. Unfortunately, latest feedback seems to be that this is best way to run on the Zero W as this Zero is struggling with the high data throuugput. Another drawback of these lower cost boards is that they can create interference that impacts the radio reception.
-
-### Activating the Web Viewer
-
-Finally, to create a webviewer that you can access from your local network, use the following command:
-```bash
-AIS-catcher -N 8100
-```
-A simple webviewer with a map (and community feed) will be available at `http://localhost:8100`. The webviewer can be accessed from any device on the same network with the IP address of the machine. The webviewer can be customized, see below.
-
-That's all.
+Reception will be impacted though. Unfortunately, latest feedback seems to be that this is best way to run on the Zero W as this Zero is struggling with the high data throughput and lowering the sample rate is the only option. Another drawback of these lower cost boards is that they can create interference that impacts the radio reception.
 
 ### Where to go from here?
 

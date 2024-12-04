@@ -25,13 +25,12 @@ You'll be prompted to change this password immediately for security reasons.
 
 ### Input Device Selection
 
-Navigate to the **Input** section to select your input device. You can choose from connected devices or manually specify a device type and serial number. If you're using a single SDR device, you can leave the device selection as **None**, and AIS-catcher will automatically detect and use the available device. Click the search icon to let AIS-catcher detect available SDR hardware.
+Navigate to the **Input** section to select your input device. You can choose from connected devices or manually specify a device type and serial number. If you have only a single SDR device connected, you can leave the device selection as **None**, and AIS-catcher will automatically detect and use the available device. Click the search icon to let AIS-catcher detect available SDR hardware.
 
 ![image](https://github.com/user-attachments/assets/83cc4f88-7d76-49db-b126-e62a2b652663)
 
 Specific device settings for your SDR or other input device can be set on this page as well. 
 
-You can also configure specific settings for your SDR or other input devices on this page.
 
 > **Note: After modifying any settings, remember to save the changes and restart AIS-catcher in the Control section for them to take effect.**
     
@@ -50,7 +49,7 @@ The local web viewer is accessible from your Raspberry Pi (e.g., on port **8100*
 > Note: For a public page showcasing your station's performance, the easiest method is to feed data to aiscatcher.org using a sharing key.
 
 ### Service Control
-In the Control section, you can manage the AIS-catcher service:
+Navigate to **Control** to manage the AIS-catcher service:
 
 - **Start/Stop** the service.
 - Enable **Auto-Start** functionality.
