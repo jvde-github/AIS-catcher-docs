@@ -32,9 +32,7 @@
 - Optimized color scheme
 - Draggable shipcard functionality
 - Smart shipcard positioning near vessels
-- Automatic vessel track display options:
-  - On hover
-  - On selection
+- Automatic vessel track display options: On hover and On selection
 
 ### Additional Updates
 - Server protocol support:
