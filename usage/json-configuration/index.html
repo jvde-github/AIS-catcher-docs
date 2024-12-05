@@ -721,6 +721,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#important-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Notes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#input-device-settings" class="md-nav__link">
     <span class="md-ellipsis">
       Input Device Settings
@@ -800,9 +809,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#tcp-client-tcp" class="md-nav__link">
+  <a href="#tcp-client-rtltcp" class="md-nav__link">
     <span class="md-ellipsis">
-      TCP Client (tcp)
+      TCP Client (rtltcp)
     </span>
   </a>
   
@@ -851,9 +860,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tcp-output-tcp" class="md-nav__link">
+  <a href="#tcp-output-client-tcp" class="md-nav__link">
     <span class="md-ellipsis">
-      TCP Output (tcp)
+      TCP Output (Client) (tcp)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp-output-server-tcp-listener" class="md-nav__link">
+    <span class="md-ellipsis">
+      TCP Output (Server) (tcp-listener)
     </span>
   </a>
   
@@ -868,15 +886,6 @@
   <a href="#multi-receiver-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       Multi-Receiver Configuration
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#important-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Important Notes
     </span>
   </a>
   
@@ -2223,6 +2232,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#important-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Notes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#input-device-settings" class="md-nav__link">
     <span class="md-ellipsis">
       Input Device Settings
@@ -2302,9 +2320,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#tcp-client-tcp" class="md-nav__link">
+  <a href="#tcp-client-rtltcp" class="md-nav__link">
     <span class="md-ellipsis">
-      TCP Client (tcp)
+      TCP Client (rtltcp)
     </span>
   </a>
   
@@ -2353,9 +2371,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tcp-output-tcp" class="md-nav__link">
+  <a href="#tcp-output-client-tcp" class="md-nav__link">
     <span class="md-ellipsis">
-      TCP Output (tcp)
+      TCP Output (Client) (tcp)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp-output-server-tcp-listener" class="md-nav__link">
+    <span class="md-ellipsis">
+      TCP Output (Server) (tcp-listener)
     </span>
   </a>
   
@@ -2370,15 +2397,6 @@
   <a href="#multi-receiver-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       Multi-Receiver Configuration
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#important-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Important Notes
     </span>
   </a>
   
@@ -2422,7 +2440,7 @@ This command instructs AIS-catcher to load and apply the settings defined in con
 <h2 id="configuration-keys">Configuration Keys<a class="headerlink" href="#configuration-keys" title="Permanent link">&para;</a></h2>
 <p>Configuration keys are organized into several categories to manage different aspects of AIS-catcher's functionality. Each key has a specific purpose and should be used as per the documentation.</p>
 <h3 id="core-settings">Core Settings<a class="headerlink" href="#core-settings" title="Permanent link">&para;</a></h3>
-<p>Core settings define fundamental aspects of AIS-catcher's operation.</p>
+<p>Core but optional settings define fundamental aspects of AIS-catcher's operation.</p>
 <table>
 <thead>
 <tr>
@@ -2434,6 +2452,12 @@ This command instructs AIS-catcher to load and apply the settings defined in con
 </thead>
 <tbody>
 <tr>
+<td><strong>General</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td><code>config</code></td>
 <td>string</td>
 <td>"aiscatcher"</td>
@@ -2444,24 +2468,6 @@ This command instructs AIS-catcher to load and apply the settings defined in con
 <td>number</td>
 <td>1</td>
 <td></td>
-</tr>
-<tr>
-<td><code>input</code></td>
-<td>string</td>
-<td>Primary input device selection</td>
-<td>rtlsdr/hackrf/etc</td>
-</tr>
-<tr>
-<td><code>serial</code></td>
-<td>string</td>
-<td>Device serial number</td>
-<td>optional</td>
-</tr>
-<tr>
-<td><code>verbose</code></td>
-<td>boolean</td>
-<td>Enable verbose output</td>
-<td><a href="../../configuration/output/console/">Console Output</a></td>
 </tr>
 <tr>
 <td><code>sharing</code></td>
@@ -2476,6 +2482,30 @@ This command instructs AIS-catcher to load and apply the settings defined in con
 <td><a href="../../configuration/output/community-feed/">Community Feed</a></td>
 </tr>
 <tr>
+<td><strong>Receiver</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>input</code></td>
+<td>string</td>
+<td>Primary input device selection</td>
+<td>rtlsdr/hackrf/etc</td>
+</tr>
+<tr>
+<td><code>serial</code></td>
+<td>string</td>
+<td>Device serial number</td>
+<td></td>
+</tr>
+<tr>
+<td><code>verbose</code></td>
+<td>boolean</td>
+<td>Enable verbose output</td>
+<td><a href="../../configuration/output/console/">Console Output</a></td>
+</tr>
+<tr>
 <td><code>screen</code></td>
 <td>number</td>
 <td>Screen output mode (0-5)</td>
@@ -2485,34 +2515,43 @@ This command instructs AIS-catcher to load and apply the settings defined in con
 </table>
 <ul>
 <li>
-<p>config: Must always be set to "aiscatcher" to identify the configuration type.</p>
+<p><code>config</code>: Must always be set to "aiscatcher" to identify the configuration type.</p>
 </li>
 <li>
-<p>version: Defines the configuration file version. Ensure it is set to 1 as this is the currently supported version.</p>
+<p><code>version</code>: Defines the configuration file version. Ensure it is set to 1 as this is the currently supported version.</p>
 </li>
 <li>
-<p>input: Specifies the primary input device for AIS data (e.g., "rtlsdr", "airspy"). Refer to Input Options for supported devices.</p>
+<p><code>sharing</code>: Enables sharing of AIS data with the AIS-catcher community feed, allowing others to access your AIS data and vice versa.</p>
 </li>
 <li>
-<p>serial: Defines the serial number of the device to be used. Useful when multiple devices are connected.</p>
+<p><code>sharing_key</code>: A unique key obtained from <a href="https://aiscatcher.org/addstation_ac">aiscatcher.org</a> to easily share your AIS data with the community.</p>
 </li>
 <li>
-<p>verbose: When set to true, AIS-catcher provides detailed logs and output for debugging purposes.</p>
+<p><code>input</code>: Specifies the primary input device for AIS data (e.g., "rtlsdr", "airspy", etc).</p>
 </li>
 <li>
-<p>sharing: Enables sharing of AIS data with the AIS-catcher community feed, allowing others to access your AIS data and vice versa.</p>
+<p><code>serial</code>: Defines the serial number of the device to be used. Useful when multiple devices are connected.</p>
 </li>
 <li>
-<p>sharing_key: A unique key obtained from aiscatcher.org to securely share your AIS data with the community.</p>
+<p><code>verbose</code>: When set to true, AIS-catcher provides detailed logs and output for debugging purposes.</p>
 </li>
 <li>
-<p>screen: Controls the verbosity and format of the console output. Values range from 0 (no output) to 5 (full JSON decoding).</p>
+<p><code>screen</code>: Controls the verbosity and format of the console output. Values range from 0 (no output) to 5 (full JSON decoding). </p>
 </li>
 </ul>
+<blockquote>
+<h2 id="important-notes">Important Notes<a class="headerlink" href="#important-notes" title="Permanent link">&para;</a></h2>
+<p>JSON is case-sensitive; all keys must be lowercase. Device-specific sections only configure the device but don't select it - use <code>input</code> or <code>serial</code> for device selection. 
+The <code>active</code> boolean in any section enables/disables that configuration and if ommited it is assumed to be active.</p>
+<p>Outputs are often captured in a JSON-array, like for example for <code>udp</code>, to support multiple output channels.</p>
+</blockquote>
 <h2 id="input-device-settings">Input Device Settings<a class="headerlink" href="#input-device-settings" title="Permanent link">&para;</a></h2>
-<p>AIS-catcher supports various input devices. Each device type has specific configuration options. Below are the supported devices and their respective settings.</p>
+<p>AIS-catcher supports various input devices. Each device type has specific configuration options. Below are the supported devices and their respective settings. The documentation of the relevant keys can be found in the <a href="../../configuration/input/overview/">Configuration</a> sections. Below we provide a few examples.</p>
 <h3 id="rtl-sdr-rtlsdr">RTL-SDR (<code>rtlsdr</code>)<a class="headerlink" href="#rtl-sdr-rtlsdr" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<details>
+<summary>Example</summary>
+
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;rtlsdr&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;rtlagc&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
@@ -2523,9 +2562,12 @@ This command instructs AIS-catcher to load and apply the settings defined in con
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<a href="../../configuration/input/rtlsdr/">Full RTL-SDR Documentation</a></p>
+</details>
+<p><a href="../../configuration/input/rtlsdr/">Full RTL-SDR Documentation</a></p>
 <h3 id="airspy-airspy">Airspy (<code>airspy</code>)<a class="headerlink" href="#airspy-airspy" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<details>
+<summary>Example</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;airspy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;sample_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3000K&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;linearity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
@@ -2533,9 +2575,12 @@ This command instructs AIS-catcher to load and apply the settings defined in con
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<a href="../../configuration/input/airspy/">Full Airspy Documentation</a></p>
+</details>
+<p><a href="../../configuration/input/airspy/">Full Airspy Documentation</a></p>
 <h3 id="airspy-hf-airspyhf">Airspy HF+ (<code>airspyhf</code>)<a class="headerlink" href="#airspy-hf-airspyhf" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<details>
+<summary>Example</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;airspyhf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;sample_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192k&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;low&quot;</span><span class="p">,</span>
@@ -2543,9 +2588,13 @@ This command instructs AIS-catcher to load and apply the settings defined in con
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<a href="../../configuration/input/airspyhf/">Full Airspy HF+ Documentation</a></p>
+[Full Airspy HF+ Documentation](../configuration/input/airspyhf.md)
+</details>
+
 <h3 id="hackrf-hackrf">HackRF (<code>hackrf</code>)<a class="headerlink" href="#hackrf-hackrf" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<details>
+<summary>Example</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;hackrf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;sample_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6144k&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;lna&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
@@ -2554,9 +2603,12 @@ This command instructs AIS-catcher to load and apply the settings defined in con
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<a href="../../configuration/input/hackrf/">Full HackRF Documentation</a></p>
+</details>
+<p><a href="../../configuration/input/hackrf/">Full HackRF Documentation</a></p>
 <h3 id="sdrplay-sdrplay">SDRPlay (<code>sdrplay</code>)<a class="headerlink" href="#sdrplay-sdrplay" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<details>
+<summary>Example</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;sdrplay&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;sample_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2304K&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;agc&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
@@ -2565,51 +2617,69 @@ This command instructs AIS-catcher to load and apply the settings defined in con
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<a href="../../configuration/input/sdrplay/">Full SDRPlay Documentation</a></p>
+</details>
+<p><a href="../../configuration/input/sdrplay/">Full SDRPlay Documentation</a></p>
 <h3 id="serial-port-input-serialport">Serial Port Input (<code>serialport</code>)<a class="headerlink" href="#serial-port-input-serialport" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<details>
+<summary>Example</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;serialport&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;baudrate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">38400</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/dev/tty0&quot;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<a href="../../configuration/input/serial/">Full Serial Port Documentation</a></p>
+</details>
+<p><a href="../../configuration/input/serial/">Full Serial Port Documentation</a></p>
 <h2 id="network-input-settings">Network Input Settings<a class="headerlink" href="#network-input-settings" title="Permanent link">&para;</a></h2>
-<h3 id="tcp-client-tcp">TCP Client (<code>tcp</code>)<a class="headerlink" href="#tcp-client-tcp" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;tcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<h3 id="tcp-client-rtltcp">TCP Client (<code>rtltcp</code>)<a class="headerlink" href="#tcp-client-rtltcp" title="Permanent link">&para;</a></h3>
+<details>
+<summary>Example</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;rtltcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.1.100&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<a href="../../configuration/input/tcp/">Full TCP Documentation</a></p>
+</details>
+<p><a href="../../configuration/input/tcp/">Full TCP Documentation</a></p>
 <h3 id="spyserver-spyserver">SpyServer (<code>spyserver</code>)<a class="headerlink" href="#spyserver-spyserver" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<details>
+<summary>Example</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;spyserver&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;server.example.com&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5555</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<a href="../../configuration/input/spyserver/">Full SpyServer Documentation</a></p>
+</details>
+<p><a href="../../configuration/input/spyserver/">Full SpyServer Documentation</a></p>
 <h2 id="output-settings">Output Settings<a class="headerlink" href="#output-settings" title="Permanent link">&para;</a></h2>
+<p>AIS-catcher supports various output channels. Each output channel has specific configuration options.  The documentation of the relevant keys can be found in the <a href="../../configuration/output/overview/">Configuration</a> sections with some JSON examples below.</p>
 <h3 id="web-viewer-server">Web Viewer (<code>server</code>)<a class="headerlink" href="#web-viewer-server" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;server&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8100</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;station&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My Station&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;share_loc&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;lat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">52</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;lon&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.3</span>
-<span class="w">    </span><span class="p">}</span>
+<details>
+<summary>Example</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;server&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8100</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;station&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My Station&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;share_loc&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;lat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">52</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;lon&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.3</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<a href="../../configuration/output/web-viewer/">Full Web Server Documentation</a></p>
+</details>
+<p><a href="../../configuration/output/web-viewer/">Full Web Server Documentation</a></p>
 <h3 id="udp-output-udp">UDP Output (<code>udp</code>)<a class="headerlink" href="#udp-output-udp" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<details>
+<summary>Example</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;udp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
@@ -2621,9 +2691,12 @@ This command instructs AIS-catcher to load and apply the settings defined in con
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<a href="../../configuration/output/UDP/">Full UDP Documentation</a></p>
-<h3 id="tcp-output-tcp">TCP Output (<code>tcp</code>)<a class="headerlink" href="#tcp-output-tcp" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+</details>
+<p><a href="../../configuration/output/UDP/">Full UDP Documentation</a></p>
+<h3 id="tcp-output-client-tcp">TCP  Output (Client) (<code>tcp</code>)<a class="headerlink" href="#tcp-output-client-tcp" title="Permanent link">&para;</a></h3>
+<details>
+<summary>Example</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;tcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
@@ -2634,9 +2707,25 @@ This command instructs AIS-catcher to load and apply the settings defined in con
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<a href="../../configuration/output/TCP-client/">Full TCP Documentation</a></p>
+</details>
+<p><a href="../../configuration/output/TCP-server/">Full TCP Documentation</a></p>
+<h3 id="tcp-output-server-tcp-listener">TCP  Output (Server) (<code>tcp-listener</code>)<a class="headerlink" href="#tcp-output-server-tcp-listener" title="Permanent link">&para;</a></h3>
+<details>
+<summary>Example</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;tcp_listener&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5012</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<p><a href="../../configuration/output/TCP-server/">Full TCP Documentation</a></p>
 <h2 id="multi-receiver-configuration">Multi-Receiver Configuration<a class="headerlink" href="#multi-receiver-configuration" title="Permanent link">&para;</a></h2>
-<p>For multiple receivers, use the <code>receiver</code> array:
+<p>For multiple receivers,  you can more the relevant settings to a <code>receiver</code> array as in this example
+starting two receivers:
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aiscatcher&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
@@ -2657,8 +2746,6 @@ This command instructs AIS-catcher to load and apply the settings defined in con
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div></p>
-<h2 id="important-notes">Important Notes<a class="headerlink" href="#important-notes" title="Permanent link">&para;</a></h2>
-<p>JSON is case-sensitive; all keys must be lowercase. Device-specific sections only configure the device but don't select it - use <code>input</code> or <code>serial</code> for device selection. The <code>active</code> boolean in any section enables/disables that configuration. Array-based outputs like for example for <code>udp</code> support multiple output channels.</p>
 
 
 

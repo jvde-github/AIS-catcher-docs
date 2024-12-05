@@ -161,10 +161,31 @@
     line-height: 2rem;
 }
 
-
-.input-table  table tr:nth-child(2),
-.input-table  table tr:nth-child(3),
-.input-table  table tr:nth-child(4),
-.input-table  table tr:nth-child(5) {
-    /*background-color: #f2f2f2;*/
-}
+.md-typeset details {
+    border: 1px solid #E3E7F3;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+  }
+  
+  .md-typeset details summary {
+    background-color: #F5F7FE;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .md-typeset details summary:hover {
+    background-color: #E3E7F3;
+  }
+  
+  .md-typeset details[open] summary {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 1px solid #E3E7F3;
+  }
+  
+  .md-typeset details pre {
+    margin: 1rem;
+  }
