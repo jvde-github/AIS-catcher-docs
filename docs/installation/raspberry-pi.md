@@ -36,7 +36,7 @@ The advantage that this avoids an compilation step which can save quite a bit of
 
 ## Installation with Web GUI 
 
-AIS-catcher provides a web-based graphical user interface for easy configuration. Ensure you have stalled the basic [package](#basic-installation) first. It needs to be installed as a separate service by entering in the terminal:
+AIS-catcher provides a web-based graphical user interface for easy configuration. Ensure you have installed the basic [package](#basic-installation) first. It needs to be installed as a separate service by entering in the terminal:
 ```bash
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/main/install_ais_catcher_control.sh)"
 ```
