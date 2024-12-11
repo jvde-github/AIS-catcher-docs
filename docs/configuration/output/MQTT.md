@@ -16,6 +16,21 @@ AIS-catcher can push AIS messages via the MQTT protocol (3.1.1) to a broker with
 AIS-catcher -Q mqtt://username:password@127.0.0.1:1883 CLIENT_ID aiscatcher QOS 0 TOPIC data/ais MSGFORMAT JSON_NMEA
 ```
 
+More examples:
+ ```bash
+  # Basic MQTT connection
+  AIS-catcher -Q mqtt://127.0.0.1:1883
+
+  # WebSocket MQTT connection
+  AIS-catcher -Q wsmqtt://127.0.0.1:1883
+
+  # With message format and topic
+  AIS-catcher -Q mqtt://127.0.0.1:1883 admin MSGFORMAT JSON_FULL TOPIC data/ais
+
+  # With authentication and client ID
+  AIS-catcher -Q mqtt://username:password@127.0.0.1:1883 admin CLIENT aiscatcher
+  ```
+
 ## Summary Settings
 
 <div class="input-table" markdown>

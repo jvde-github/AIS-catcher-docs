@@ -93,7 +93,15 @@ git clone https://github.com/jvde-github/webassets.git
 ```
 This will create a directory `webassets` that we need to share with AIS-catcher as an alternative location for online web content  with the CDN argument followed by the location of the web assets directory:
 ```bash
-AIS-catcher -x 192.168.1.120 4002 -N 8100 CDN /home/jasper/webassets
+AIS-catcher -N 8100 CDN /home/jasper/webassets
+```
+Offline maps can also be included in `mbtiles` format:
+```bash
+AIS-catcher  -N 8100 MBTILES filename
+```
+or as an overlay
+```bash
+AIS-catcher  -N 8100 MBOVERLAY filename
 ```
 
 ## Sending data to Prometheus for use in Grafana dashboards
@@ -144,6 +152,8 @@ Server Options:
 | <span class="cmd-setting">STATION</span> | string | <span class="cmd-value">-</span> | Station display name |
 | <span class="cmd-setting">STATION_LINK</span> | string | <span class="cmd-value">-</span> | Station info URL |
 | <span class="cmd-setting">CDN</span> | string | <span class="cmd-value">-</span> | Local CDN resources path |
+| <span class="cmd-setting">MBTILES</span> | string | <span class="cmd-value">-</span> | Offline map in mbtiles format |
+| <span class="cmd-setting">MBOVERLAY</span> | string | <span class="cmd-value">-</span> | Offline overlay in mbtiles format |
 | <span class="cmd-setting">PLUGIN</span> | string | <span class="cmd-value">-</span> | JavaScript plugin path |
 | <span class="cmd-setting">STYLE</span> | string | <span class="cmd-value">-</span> | CSS style path |
 | <span class="cmd-setting">PLUGIN_DIR</span> | string | <span class="cmd-value">-</span> | Plugins directory |

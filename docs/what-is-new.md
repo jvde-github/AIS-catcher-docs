@@ -2,6 +2,17 @@
 
 ## Edge Version Features
 
+### Offline Maps
+  ```bash
+   # include an offline map in mbtiles format
+  AIS-catcher -N 8100 MBTILES map.mbtiles
+  # or as overlay
+  AIS-catcher -N 8100 MBOVERLAY map.mbtiles
+  ```
+
+
+## Version 0.61
+
 ### MQTT Integration
 - **Publishing Messages**
   ```bash

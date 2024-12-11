@@ -115,6 +115,7 @@ nav:
         - NMEA2000: configuration/output/NMEA2000.md
         - PostgreSQL: configuration/output/PSQL.md
   - Advanced:
+      - Offline Web Viewer: advanced/offline.md
       - FM decoding: advanced/FM-decoding.md
       - GPS: advanced/GPS.md
       - Performance Tuning: advanced/Low-spec-devices.md
