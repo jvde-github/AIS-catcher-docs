@@ -12,13 +12,13 @@
         <meta name="author" content="jvde.github@gmail.com">
       
       
-        <link rel="canonical" href="https://aiscatcher.org/docs/installation/overview/">
+        <link rel="canonical" href="https://aiscatcher.org/docs/advanced/offline/">
       
       
-        <link rel="prev" href="../../getting-started/ais-basics/">
+        <link rel="prev" href="../../configuration/output/PSQL/">
       
       
-        <link rel="next" href="../docker/">
+        <link rel="next" href="../FM-decoding/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Overview - AIS-catcher Docs</title>
+        <title>Offline Web Viewer - AIS-catcher Docs</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#installation" class="md-skip">
+        <a href="#offline-web-viewer" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Offline Web Viewer
             
           </span>
         </div>
@@ -371,19 +371,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -397,7 +395,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Installation
@@ -408,28 +406,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Overview
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../installation/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -438,66 +418,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#desktop-operating-systems" class="md-nav__link">
-    <span class="md-ellipsis">
-      Desktop Operating Systems
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#embedded-mobile" class="md-nav__link">
-    <span class="md-ellipsis">
-      Embedded &amp; Mobile
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#alternative-installation-methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      Alternative Installation Methods
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -510,7 +430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docker/" class="md-nav__link">
+      <a href="../../installation/docker/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -531,7 +451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../raspberry-pi/" class="md-nav__link">
+      <a href="../../installation/raspberry-pi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -552,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../windows/" class="md-nav__link">
+      <a href="../../installation/windows/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -573,7 +493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../build-source/" class="md-nav__link">
+      <a href="../../installation/build-source/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -594,7 +514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ubuntu-debian/" class="md-nav__link">
+      <a href="../../installation/ubuntu-debian/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1655,17 +1575,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -1679,7 +1601,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Advanced
@@ -1690,10 +1612,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../advanced/offline/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1702,6 +1633,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1714,7 +1646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced/FM-decoding/" class="md-nav__link">
+      <a href="../FM-decoding/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1735,7 +1667,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced/GPS/" class="md-nav__link">
+      <a href="../GPS/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1756,7 +1688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced/Low-spec-devices/" class="md-nav__link">
+      <a href="../Low-spec-devices/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1777,7 +1709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced/GNUradio/" class="md-nav__link">
+      <a href="../GNUradio/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1798,7 +1730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced/long-range/" class="md-nav__link">
+      <a href="../long-range/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1819,7 +1751,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced/samplerate/" class="md-nav__link">
+      <a href="../samplerate/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1840,7 +1772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced/grafana/" class="md-nav__link">
+      <a href="../grafana/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1861,7 +1793,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced/validation/" class="md-nav__link">
+      <a href="../validation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1882,7 +1814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced/troubleshooting/" class="md-nav__link">
+      <a href="../troubleshooting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2044,56 +1976,8 @@
   
   
   
+    
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#desktop-operating-systems" class="md-nav__link">
-    <span class="md-ellipsis">
-      Desktop Operating Systems
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#embedded-mobile" class="md-nav__link">
-    <span class="md-ellipsis">
-      Embedded &amp; Mobile
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#alternative-installation-methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      Alternative Installation Methods
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -2111,25 +1995,20 @@
   
 
 
-  <h1>Overview</h1>
-
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<p>Choose the installation method that best matches your system:</p>
-<h3 id="desktop-operating-systems">Desktop Operating Systems<a class="headerlink" href="#desktop-operating-systems" title="Permanent link">&para;</a></h3>
-<p>📱 <a href="../windows/"><strong>Windows Installation</strong></a><br />
-Complete guide for installing AIS-Catcher on Windows systems.</p>
-<p>🐧 <a href="../ubuntu-debian/"><strong>Ubuntu/Debian Installation</strong></a><br />
-Installation steps for Ubuntu, Debian and other Linux distributions.</p>
-<h3 id="embedded-mobile">Embedded &amp; Mobile<a class="headerlink" href="#embedded-mobile" title="Permanent link">&para;</a></h3>
-<p>🍓 <a href="../raspberry-pi/"><strong>Raspberry Pi Installation</strong></a><br />
-Dedicated guide for setting up AIS-Catcher on Raspberry Pi devices.</p>
-<p>📱 <a href="../android/"><strong>Android Installation</strong></a><br />
-Instructions for running AIS-Catcher on Android devices.</p>
-<h3 id="alternative-installation-methods">Alternative Installation Methods<a class="headerlink" href="#alternative-installation-methods" title="Permanent link">&para;</a></h3>
-<p>🐳 <a href="../docker/"><strong>Docker Installation</strong></a><br />
-Deploy AIS-Catcher using Docker containers.</p>
-<p>⚙️ <a href="../build-source/"><strong>Build from Source</strong></a><br />
-Instructions for building AIS-Catcher from source code.</p>
+<h1 id="offline-web-viewer">Offline web viewer<a class="headerlink" href="#offline-web-viewer" title="Permanent link">&para;</a></h1>
+<p>There is an option to run the web viewer without relying on online libraries. This facilitates using the web interface whilst traveling without an internet connection. The steps are simple. First, go to your home directory (say <code>/home/jasper</code>) and clone the necessary offline web assets:
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jvde-github/webassets.git
+</code></pre></div>
+This will create a directory <code>webassets</code> that we need to share with AIS-catcher as an alternative location for online web content  with the CDN argument followed by the location of the web assets directory:
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>CDN<span class="w"> </span>/home/jasper/webassets
+</code></pre></div>
+Offline maps can also be included in <code>mbtiles</code> format:
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w">  </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>MBTILES<span class="w"> </span>filename.mbtiles
+</code></pre></div>
+or as an overlay
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w">  </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>MBOVERLAY<span class="w"> </span>filename.mbtiles
+</code></pre></div></p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/3a0282b5-8e16-4fe1-bedf-7a0e97d75674" /></p>
 
 
 

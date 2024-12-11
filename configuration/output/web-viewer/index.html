@@ -1729,6 +1729,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../advanced/offline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Offline Web Viewer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../advanced/FM-decoding/" class="md-nav__link">
         
   
@@ -2225,7 +2246,13 @@ Files need to have the extension <code>.pjs</code> and <code>.pss</code> for res
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jvde-github/webassets.git
 </code></pre></div>
 This will create a directory <code>webassets</code> that we need to share with AIS-catcher as an alternative location for online web content  with the CDN argument followed by the location of the web assets directory:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-x<span class="w"> </span><span class="m">192</span>.168.1.120<span class="w"> </span><span class="m">4002</span><span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>CDN<span class="w"> </span>/home/jasper/webassets
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>CDN<span class="w"> </span>/home/jasper/webassets
+</code></pre></div>
+Offline maps can also be included in <code>mbtiles</code> format:
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w">  </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>MBTILES<span class="w"> </span>filename
+</code></pre></div>
+or as an overlay
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w">  </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>MBOVERLAY<span class="w"> </span>filename
 </code></pre></div></p>
 <h2 id="sending-data-to-prometheus-for-use-in-grafana-dashboards">Sending data to Prometheus for use in Grafana dashboards<a class="headerlink" href="#sending-data-to-prometheus-for-use-in-grafana-dashboards" title="Permanent link">&para;</a></h2>
 <p>You can add the option <code>PROME on</code> to the web configuration command to start rendering Prometheus-compatible statistics at <code>/metrics</code>. For example:</p>
@@ -2430,6 +2457,18 @@ This will create a directory <code>webassets</code> that we need to share with A
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Local CDN resources path</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">MBTILES</span></td>
+<td>string</td>
+<td><span class="cmd-value">-</span></td>
+<td>Offline map in mbtiles format</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">MBOVERLAY</span></td>
+<td>string</td>
+<td><span class="cmd-value">-</span></td>
+<td>Offline overlay in mbtiles format</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">PLUGIN</span></td>
