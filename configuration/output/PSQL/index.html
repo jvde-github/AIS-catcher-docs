@@ -2068,12 +2068,17 @@
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>createdb<span class="w"> </span>ais
 </code></pre></div>
 Set up the necessary tables from the AIS-catcher directory:
-<div class="highlight"><pre><span></span><code>psql<span class="w"> </span>ais<span class="w"> </span>&lt;DBMS/create.sql<span class="w"> </span>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>ais<span class="w"> </span>&lt;<span class="w"> </span>create.sql
 </code></pre></div>
-Make sure you build the latest version of AIS-catcher with this dependency:
+The file <code>create.sql</code> is in the directory DBMS in the AIS-catcher source directory. If you installed via the install script for Ububtu/Debian/Raspberry Pi it can be found in the directory <code>/etc/AIS-catcher/DBMS</code>.</p>
+<p>Make sure you build the latest version of AIS-catcher with this dependency:
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libpq-dev
-</code></pre></div>
-Now AIS-catcher can write the received messages to the database:
+</code></pre></div></p>
+<blockquote>
+<p>For writing to a PSQL database from AIS-catcher, ensure that the user running the program is set up for writing to 
+a PSQL database or specify the user explicitly in the connection string.</p>
+</blockquote>
+<p>Ensure that the Now AIS-catcher can write the received messages to the database:
 <div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-D<span class="w"> </span><span class="nv">dbname</span><span class="o">=</span>ais<span class="w"> </span>STATION_ID<span class="w"> </span><span class="m">17</span>
 </code></pre></div>
 or when more details, like username and password, are required:

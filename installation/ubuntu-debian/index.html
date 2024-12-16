@@ -604,15 +604,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installation-with-web-gui" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installation with Web GUI
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#configuration-files" class="md-nav__link">
     <span class="md-ellipsis">
       Configuration Files
@@ -630,6 +621,21 @@
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-with-web-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation with Web GUI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation with Web GUI">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#feedback" class="md-nav__link">
@@ -2142,15 +2148,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installation-with-web-gui" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installation with Web GUI
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#configuration-files" class="md-nav__link">
     <span class="md-ellipsis">
       Configuration Files
@@ -2168,6 +2165,21 @@
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-with-web-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation with Web GUI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation with Web GUI">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#feedback" class="md-nav__link">
@@ -2232,15 +2244,6 @@ The script will install all dependencies and build AIS-catcher. The required SDR
 <div class="highlight"><pre><span></span><code><span class="go">sudo bash -c &quot;$(wget -qO- https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install)&quot; _ -p</span>
 </code></pre></div>
 The advantage that this avoids an compilation step which can save quite a bit of time on older Raspberry devices but it does not optimize the binaries for the specific hardware and <strong><em>is not compatible with the RTL-SDR V4</em></strong>.</p>
-<h2 id="installation-with-web-gui">Installation with Web GUI<a class="headerlink" href="#installation-with-web-gui" title="Permanent link">&para;</a></h2>
-<p>AIS-catcher provides a web-based graphical user interface for easy configuration. Ensure you have installed the basic <a href="#basic-installation">package</a> first. It needs to be installed as a separate service by entering in the terminal:
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/main/install_ais_catcher_control.sh<span class="k">)</span><span class="s2">&quot;</span>
-</code></pre></div>
-To access it, open your web browser and navigate to your Raspberry Pi's IP address on port 8110 (for example, <code>http://zerowh:8110</code>). </p>
-<hr />
-<p><a class="md-button md-button--primary" href="../../usage/gui/">Start First Run</a></p>
-<hr />
-<p><img alt="image" src="https://github.com/user-attachments/assets/1fe942d2-dd3a-4116-99e8-f88f2de4ed14" /></p>
 <h2 id="configuration-files">Configuration Files<a class="headerlink" href="#configuration-files" title="Permanent link">&para;</a></h2>
 <p>For running AIS-catcher as a background service we can use two configuration files:</p>
 <ul>
@@ -2249,7 +2252,8 @@ To access it, open your web browser and navigate to your Raspberry Pi's IP addre
 </ul>
 <p>The simplest approach is to edit the configuration file /etc/AIS-catcher/config.cmd to capture your settings which are detailed below. Lines starting with # are considered comments and ignored. The default file contains comments for popular options, which can be modified using a text editor, for example:
 <div class="highlight"><pre><span></span><code><span class="go">sudo nano /etc/AIS-catcher/config.cmd</span>
-</code></pre></div></p>
+</code></pre></div>
+Please note that config.json takes precedence over config.cmd.</p>
 <h3 id="running-ais-catcher-as-a-background-service">Running AIS-catcher as a Background Service<a class="headerlink" href="#running-ais-catcher-as-a-background-service" title="Permanent link">&para;</a></h3>
 <p>To start AIS-catcher as a background service use the following command:
 <div class="highlight"><pre><span></span><code><span class="go">sudo systemctl start ais-catcher.service</span>
@@ -2260,6 +2264,15 @@ To view the status of the service copy the following command:
 To ensure AIS-catcher starts automatically at boot time, enable the service with:
 <div class="highlight"><pre><span></span><code><span class="go">sudo systemctl enable ais-catcher.service</span>
 </code></pre></div></p>
+<h2 id="installation-with-web-gui">Installation with Web GUI<a class="headerlink" href="#installation-with-web-gui" title="Permanent link">&para;</a></h2>
+<p>AIS-catcher provides a web-based graphical user interface for easy configuration. Ensure you have installed the basic <a href="#basic-installation">package</a> first. It needs to be installed as a separate service by entering in the terminal:
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/main/install_ais_catcher_control.sh<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+To access it, open your web browser and navigate to your Raspberry Pi's IP address on port 8110 (for example, <code>http://zerowh:8110</code>). </p>
+<hr />
+<p><a class="md-button md-button--primary" href="../../usage/gui/">Start First Run</a></p>
+<hr />
+<p><img alt="image" src="https://github.com/user-attachments/assets/1fe942d2-dd3a-4116-99e8-f88f2de4ed14" /></p>
 <h3 id="feedback">Feedback<a class="headerlink" href="#feedback" title="Permanent link">&para;</a></h3>
 <p>This is fairly new script and under development so any feedback is appreciated. </p>
 <p><img alt="image" src="https://github.com/user-attachments/assets/1be6abdb-7df2-4f4b-8d73-1740e0476013" /></p>
