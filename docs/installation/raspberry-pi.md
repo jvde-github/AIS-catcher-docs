@@ -34,23 +34,6 @@ sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/jvde-github/AIS-catc
 ```
 The advantage that this avoids an compilation step which can save quite a bit of time on older Raspberry devices but it does not optimize the binaries for the specific hardware and ***is not compatible with the RTL-SDR V4***.
 
-## Installation with Web GUI 
-
-AIS-catcher provides a web-based graphical user interface for easy configuration. Ensure you have installed the basic [package](#basic-installation) first. It needs to be installed as a separate service by entering in the terminal:
-```bash
-sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/main/install_ais_catcher_control.sh)"
-```
-To access it, open your web browser and navigate to your Raspberry Pi's IP address on port 8110 (for example, `http://zerowh:8110`). 
-
----
-
-[Start First Run](../usage/gui.md){ .md-button .md-button--primary }
-
----
-
-![image](https://github.com/user-attachments/assets/1fe942d2-dd3a-4116-99e8-f88f2de4ed14)
-
-
 
 ## Configuration Files
 
@@ -78,6 +61,26 @@ To ensure AIS-catcher starts automatically at boot time, enable the service with
 ```console
 sudo systemctl enable ais-catcher.service
 ```
+
+Please note that config.json takes precedence over config.cmd.
+
+## Installation with Web GUI 
+
+AIS-catcher provides a web-based graphical user interface for easy configuration. Ensure you have installed the basic [package](#basic-installation) first. It needs to be installed as a separate service by entering in the terminal:
+```bash
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/main/install_ais_catcher_control.sh)"
+```
+To access it, open your web browser and navigate to your Raspberry Pi's IP address on port 8110 (for example, `http://zerowh:8110`). 
+
+---
+
+[Start First Run](../usage/gui.md){ .md-button .md-button--primary }
+
+---
+
+![image](https://github.com/user-attachments/assets/1fe942d2-dd3a-4116-99e8-f88f2de4ed14)
+
+
 ### Feedback
 This is fairly new script and under development so any feedback is appreciated. 
 

@@ -17,13 +17,19 @@ sudo -u postgres createdb ais
 ```
 Set up the necessary tables from the AIS-catcher directory:
 ```bash
-psql ais <DBMS/create.sql 
+sudo -u postgres psql ais < create.sql
 ```
+The file `create.sql` is in the directory DBMS in the AIS-catcher source directory. If you installed via the install script for Ububtu/Debian/Raspberry Pi it can be found in the directory `/etc/AIS-catcher/DBMS`.
+
 Make sure you build the latest version of AIS-catcher with this dependency:
 ```bash
 sudo apt install libpq-dev
 ```
-Now AIS-catcher can write the received messages to the database:
+
+> For writing to a PSQL database from AIS-catcher, ensure that the user running the program is set up for writing to 
+> a PSQL database or specify the user explicitly in the connection string.
+
+Ensure that the Now AIS-catcher can write the received messages to the database:
 ```bash
 AIS-catcher -D dbname=ais STATION_ID 17
 ```
