@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -315,6 +315,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ais-catcher-for-android" class="md-nav__link">
+    <span class="md-ellipsis">
+      AIS-catcher for Android
+    </span>
+  </a>
   
 </li>
       
@@ -2113,6 +2122,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ais-catcher-for-android" class="md-nav__link">
+    <span class="md-ellipsis">
+      AIS-catcher for Android
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#version-061" class="md-nav__link">
     <span class="md-ellipsis">
       Version 0.61
@@ -2184,11 +2202,20 @@
 <h1 id="whats-new">What's New?<a class="headerlink" href="#whats-new" title="Permanent link">&para;</a></h1>
 <h2 id="edge-version-features">Edge Version Features<a class="headerlink" href="#edge-version-features" title="Permanent link">&para;</a></h2>
 <h3 id="offline-maps">Offline Maps<a class="headerlink" href="#offline-maps" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="c1"># include an offline map in mbtiles format</span>
+<ul>
+<li>Support for offline maps in mbtiles format in the Web Viewer
+  <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="c1"># include an offline map in mbtiles format</span>
 AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>MBTILES<span class="w"> </span>map.mbtiles
 <span class="c1"># or as overlay</span>
 AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>MBOVERLAY<span class="w"> </span>map.mbtiles
-</code></pre></div>
+</code></pre></div></li>
+<li>Debian packages now support RTL SDR V4 (the RTL-SDR library is build from source and statically linked into the executable)</li>
+</ul>
+<h2 id="ais-catcher-for-android">AIS-catcher for Android<a class="headerlink" href="#ais-catcher-for-android" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Option to auto start decoding when USB device is connected when starting the App</li>
+<li>Option to launch a webviewer available at a specified port</li>
+</ul>
 <h2 id="version-061">Version 0.61<a class="headerlink" href="#version-061" title="Permanent link">&para;</a></h2>
 <h3 id="mqtt-integration">MQTT Integration<a class="headerlink" href="#mqtt-integration" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2345,7 +2372,7 @@ AIS-catcher<span class="w"> </span>-t<span class="w"> </span>mqtt://username:pas
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
         <script src="https://aiscatcher.org/js/script.js"></script>
       
