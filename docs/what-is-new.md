@@ -3,13 +3,19 @@
 ## Edge Version Features
 
 ### Offline Maps
+- Support for offline maps in mbtiles format in the Web Viewer
   ```bash
    # include an offline map in mbtiles format
   AIS-catcher -N 8100 MBTILES map.mbtiles
   # or as overlay
   AIS-catcher -N 8100 MBOVERLAY map.mbtiles
   ```
+- Debian packages now support RTL SDR V4 (the RTL-SDR library is build from source and statically linked into the executable)
 
+## AIS-catcher for Android
+
+- Option to auto start decoding when USB device is connected when starting the App
+- Option to launch a webviewer available at a specified port
 
 ## Version 0.61
 
