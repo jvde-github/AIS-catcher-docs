@@ -453,7 +453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../raspberry-pi/" class="md-nav__link">
+      <a href="../ubuntu-debian/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -541,9 +541,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#important-disclaimer" class="md-nav__link">
+  <a href="#license-important-disclaimer" class="md-nav__link">
     <span class="md-ellipsis">
-      Important Disclaimer
+      License &amp; Important Disclaimer
     </span>
   </a>
   
@@ -587,7 +587,7 @@
         
   
   <span class="md-ellipsis">
-    Ubuntu and Debian
+    Raspberry Pi
   </span>
   
 
@@ -2043,9 +2043,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#important-disclaimer" class="md-nav__link">
+  <a href="#license-important-disclaimer" class="md-nav__link">
     <span class="md-ellipsis">
-      Important Disclaimer
+      License &amp; Important Disclaimer
     </span>
   </a>
   
@@ -2088,15 +2088,10 @@
 
 
 <h1 id="building-from-source">Building from Source<a class="headerlink" href="#building-from-source" title="Permanent link">&para;</a></h1>
-<h2 id="important-disclaimer">Important Disclaimer<a class="headerlink" href="#important-disclaimer" title="Permanent link">&para;</a></h2>
+<h2 id="license-important-disclaimer">License &amp; Important Disclaimer<a class="headerlink" href="#license-important-disclaimer" title="Permanent link">&para;</a></h2>
 <blockquote>
-<p><strong>AIS-Catcher is for hobby and research use only. Not for navigation or safety-critical applications.</strong></p>
-<ul>
-<li>Does not broadcast location data</li>
-<li>Not certified for safety-critical use</li>
-<li>Use only where legally permitted</li>
-</ul>
-<p><strong>Provided as-is without guarantees.</strong> Comply with local laws regarding AIS signal reception. Licensed under GPLv3.</p>
+<p>AIS-catcher is provided for research and educational purposes. It has not been designed, tested, or certified for reliability, accuracy, or safety. <strong>Do not rely on AIS-catcher for navigation or any safety-critical applications.</strong> Users bear full responsibility for ensuring compliance with local laws and regulations regarding the reception, decoding, and use of AIS signals. AIS-catcher is provided “as is,” without warranty of any kind, and must not be used for illegal or unauthorized activities. Operate AIS-catcher only where such use is permitted by local authorities.</p>
+<p>Copyright (C) 2021–2025 <a href="mailto:jvde.github@gmail.com">jvde.github at gmail.com</a>. Licensed under the GNU General Public License v3.0</p>
 </blockquote>
 <h2 id="building">Building<a class="headerlink" href="#building" title="Permanent link">&para;</a></h2>
 <p>The steps to compile AIS-catcher for RTL-SDR dongles are fairly straightforward on most systems. There are various options including a standard Makefile, a <code>solution</code> file for MSVC (see next section) and you can use <code>cmake</code>, as we will detail now.</p>
@@ -2105,95 +2100,84 @@ For example, the following installs the minimum build tools for Ubuntu and Raspb
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
 sudo<span class="w"> </span>apt-get<span class="w"> </span>upgrade
 
-sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>make<span class="w"> </span>gcc<span class="w"> </span>g++<span class="w"> </span>cmake<span class="w"> </span>pkg-config<span class="w"> </span>-y
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>make<span class="w"> </span>gcc<span class="w"> </span>g++<span class="w"> </span>cmake<span class="w"> </span>pkg-config<span class="w"> </span>libsqlite3-dev<span class="w"> </span>-y
 </code></pre></div>
 For MacOS with <code>brew</code> installed:
 <div class="highlight"><pre><span></span><code>brew<span class="w"> </span>update
 brew<span class="w"> </span>upgrade
 
-brew<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>make<span class="w"> </span>gcc<span class="w"> </span>cmake<span class="w"> </span>pkg-config
+brew<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>make<span class="w"> </span>gcc<span class="w"> </span>cmake<span class="w"> </span>pkg-config<span class="w"> </span>sqlite3
 </code></pre></div></p>
 <p>AIS-catcher requires libraries for the particular hardware you want to use. The following table summarizes the installation instructions for all supported hardware:</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">System</th>
-<th style="text-align: left;">Linux/Raspberry</th>
-<th style="text-align: left;">macOS</th>
-<th style="text-align: left;">MSVC/vcpkg</th>
-<th style="text-align: center;">MSVC/PothosSDR</th>
+<th>System</th>
+<th>Linux/Raspberry</th>
+<th>macOS</th>
+<th>MSVC/vcpkg</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Command</td>
-<td style="text-align: left;"><em>sudo apt install ...</em></td>
-<td style="text-align: left;"><em>brew install ...</em></td>
-<td style="text-align: left;"><em>vcpkg install ...</em></td>
-<td style="text-align: center;"><a href="https://downloads.myriadrf.org/builds/PothosSDR/"><em>Download</em></a></td>
+<td>Command</td>
+<td><em>sudo apt install ...</em></td>
+<td><em>brew install ...</em></td>
+<td><em>vcpkg install ...</em></td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong><em>RTL-SDR</em></strong></td>
-<td style="text-align: left;">librtlsdr-dev</td>
-<td style="text-align: left;">librtlsdr</td>
-<td style="text-align: left;">rtlsdr rtlsdr:x64-windows</td>
-<td style="text-align: center;">included</td>
+<td><strong>RTL-SDR</strong></td>
+<td>librtlsdr-dev</td>
+<td>librtlsdr</td>
+<td>rtlsdr rtlsdr:x64-windows</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong><em>Airspy</em></strong></td>
-<td style="text-align: left;">libairspy-dev</td>
-<td style="text-align: left;">airspy</td>
-<td style="text-align: left;">-</td>
-<td style="text-align: center;">included</td>
+<td><strong>Airspy</strong></td>
+<td>libairspy-dev</td>
+<td>airspy</td>
+<td>-</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong><em>Airspy HF+</em></strong></td>
-<td style="text-align: left;">libairspyhf-dev</td>
-<td style="text-align: left;">airspyhf</td>
-<td style="text-align: left;">-</td>
-<td style="text-align: center;">included</td>
+<td><strong>Airspy HF+</strong></td>
+<td>libairspyhf-dev</td>
+<td>airspyhf</td>
+<td>-</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong><em>HackRF</em></strong></td>
-<td style="text-align: left;">libhackrf-dev</td>
-<td style="text-align: left;">hackrf</td>
-<td style="text-align: left;">-</td>
-<td style="text-align: center;">included</td>
+<td><strong>HackRF</strong></td>
+<td>libhackrf-dev</td>
+<td>hackrf</td>
+<td>-</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong><em>SDRplay 1A</em></strong></td>
-<td style="text-align: left;"><a href="https://www.sdrplay.com/downloads/">API 3.x</a></td>
-<td style="text-align: left;">-</td>
-<td style="text-align: left;"><a href="https://www.sdrplay.com/downloads/">API 3.x</a></td>
-<td style="text-align: center;"><a href="https://www.sdrplay.com/downloads/">API 3.x</a></td>
+<td><strong>SDRplay 1A</strong></td>
+<td><a href="https://www.sdrplay.com/downloads/">API 3.x</a></td>
+<td>-</td>
+<td><a href="https://www.sdrplay.com/downloads/">API 3.x</a></td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong><em>SoapySDR</em></strong></td>
-<td style="text-align: left;">libsoapysdr-dev</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;">X</td>
+<td><strong>SoapySDR</strong></td>
+<td>libsoapysdr-dev</td>
+<td>-</td>
+<td>-</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong><em>ZeroMQ</em></strong></td>
-<td style="text-align: left;">libzmq3-dev</td>
-<td style="text-align: left;">zeromq</td>
-<td style="text-align: left;">ZeroMQ ZeroMQ:x64-windows</td>
-<td style="text-align: center;">included</td>
+<td><strong>ZeroMQ</strong></td>
+<td>libzmq3-dev</td>
+<td>zeromq</td>
+<td>ZeroMQ ZeroMQ:x64-windows</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong><em>HTTP secure</em></strong></td>
-<td style="text-align: left;">libssl-dev</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">openssl openssl:x64-windows</td>
-<td style="text-align: center;">X</td>
+<td><strong>HTTP secure</strong></td>
+<td>libssl-dev</td>
+<td>-</td>
+<td>openssl openssl:x64-windows</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong><em>ZIP</em></strong></td>
-<td style="text-align: left;">zlib1g-dev</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">zlib zlib:x64-windows</td>
-<td style="text-align: center;">X</td>
+<td><strong>ZIP</strong></td>
+<td>zlib1g-dev</td>
+<td>-</td>
+<td>zlib zlib:x64-windows</td>
 </tr>
 </tbody>
 </table>

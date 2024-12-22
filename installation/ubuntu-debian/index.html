@@ -26,7 +26,7 @@
     
     
       
-        <title>Ubuntu and Debian - AIS-catcher Docs</title>
+        <title>Raspberry Pi - AIS-catcher Docs</title>
       
     
     
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ubuntu and Debian
+              Raspberry Pi
             
           </span>
         </div>
@@ -450,10 +450,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../raspberry-pi/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Raspberry Pi
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -462,6 +482,134 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#license-important-disclaimer" class="md-nav__link">
+    <span class="md-ellipsis">
+      License &amp; Important Disclaimer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-ais-catcher-to-latest-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update AIS-catcher to latest version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-from-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install From Source
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-the-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing the installation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-files-for-background-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Files for background service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Files for background service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-ais-catcher-as-a-background-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running AIS-catcher as a Background Service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-with-web-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation with Web GUI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation with Web GUI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedback
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -529,7 +677,7 @@
           
   
   <span class="md-ellipsis">
-    Ubuntu and Debian
+    Raspberry Pi
   </span>
   
 
@@ -540,7 +688,7 @@
         
   
   <span class="md-ellipsis">
-    Ubuntu and Debian
+    Raspberry Pi
   </span>
   
 
@@ -562,9 +710,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#important-disclaimer" class="md-nav__link">
+  <a href="#license-important-disclaimer" class="md-nav__link">
     <span class="md-ellipsis">
-      Important Disclaimer
+      License &amp; Important Disclaimer
     </span>
   </a>
   
@@ -590,9 +738,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#using-pre-build-debian-packages" class="md-nav__link">
+  <a href="#update-ais-catcher-to-latest-version" class="md-nav__link">
     <span class="md-ellipsis">
-      Using pre-build Debian packages
+      Update AIS-catcher to latest version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-from-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install From Source
     </span>
   </a>
   
@@ -613,13 +770,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuration-files-for-backrgound-service" class="md-nav__link">
+  <a href="#configuration-files-for-background-service" class="md-nav__link">
     <span class="md-ellipsis">
-      Configuration Files for backrgound service
+      Configuration Files for background service
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Configuration Files for backrgound service">
+    <nav class="md-nav" aria-label="Configuration Files for background service">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2115,9 +2272,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#important-disclaimer" class="md-nav__link">
+  <a href="#license-important-disclaimer" class="md-nav__link">
     <span class="md-ellipsis">
-      Important Disclaimer
+      License &amp; Important Disclaimer
     </span>
   </a>
   
@@ -2143,9 +2300,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#using-pre-build-debian-packages" class="md-nav__link">
+  <a href="#update-ais-catcher-to-latest-version" class="md-nav__link">
     <span class="md-ellipsis">
-      Using pre-build Debian packages
+      Update AIS-catcher to latest version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-from-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install From Source
     </span>
   </a>
   
@@ -2166,13 +2332,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuration-files-for-backrgound-service" class="md-nav__link">
+  <a href="#configuration-files-for-background-service" class="md-nav__link">
     <span class="md-ellipsis">
-      Configuration Files for backrgound service
+      Configuration Files for background service
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Configuration Files for backrgound service">
+    <nav class="md-nav" aria-label="Configuration Files for background service">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2232,15 +2398,10 @@
 
 
 <h1 id="ubuntudebianraspberry-pi-installation">Ubuntu/Debian/Raspberry Pi Installation<a class="headerlink" href="#ubuntudebianraspberry-pi-installation" title="Permanent link">&para;</a></h1>
-<h2 id="important-disclaimer">Important Disclaimer<a class="headerlink" href="#important-disclaimer" title="Permanent link">&para;</a></h2>
+<h2 id="license-important-disclaimer">License &amp; Important Disclaimer<a class="headerlink" href="#license-important-disclaimer" title="Permanent link">&para;</a></h2>
 <blockquote>
-<p><strong>AIS-Catcher is for hobby and research use only. Not for navigation or safety-critical applications.</strong></p>
-<ul>
-<li>Does not broadcast location data</li>
-<li>Not certified for safety-critical use</li>
-<li>Use only where legally permitted</li>
-</ul>
-<p><strong>Provided as-is without guarantees.</strong> Comply with local laws regarding AIS signal reception. Licensed under GPLv3.</p>
+<p>AIS-catcher is provided for research and educational purposes. It has not been designed, tested, or certified for reliability, accuracy, or safety. <strong>Do not rely on AIS-catcher for navigation or any safety-critical applications.</strong> Users bear full responsibility for ensuring compliance with local laws and regulations regarding the reception, decoding, and use of AIS signals. AIS-catcher is provided “as is,” without warranty of any kind, and must not be used for illegal or unauthorized activities. Operate AIS-catcher only where such use is permitted by local authorities.</p>
+<p>Copyright (C) 2021–2025 <a href="mailto:jvde.github@gmail.com">jvde.github at gmail.com</a>. Licensed under the GNU General Public License v3.0</p>
 </blockquote>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <p>This guide provides instructions for installing AIS-catcher on Debian-based systems (like Raspberry Pi) and setting it up to run as a background service. The background service provides the option for AIS-catcher to automatically start when the machine is booted.</p>
@@ -2249,25 +2410,32 @@
 </blockquote>
 <h2 id="basic-installation">Basic Installation<a class="headerlink" href="#basic-installation" title="Permanent link">&para;</a></h2>
 <p>To install AIS-catcher via a script, open a terminal or log in via SSH, then run the following command:
-<div class="highlight"><pre><span></span><code><span class="go">sudo bash -c &quot;$(wget -qO- https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install)&quot;</span>
-</code></pre></div>
-The script will install all dependencies and build AIS-catcher. The required SDR libraries are installed from the official packages if they cannot be found on the system. For the RTL-SDR we build from source from the official package to guarantee support for the RTL-SDR V4 but, again, only if the package is not already installed on the system. On a fresh Raspberry Pi4 this will take less than 20 minutes. </p>
-<p>To update AIS-catcher to the latest version, simply run the above command again. To additionally install the Web GUI, see <a href="#installation-with-web-gui">below</a>. The Web GUI allows you to control the AIS-catcher process (start and stop) and set the configuration remotely via a convenient Web GUI.</p>
+<div class="highlight"><pre><span></span><code><span class="go">sudo bash -c &quot;$(wget -qO- https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) _ -p&quot;</span>
+</code></pre></div></p>
+<p>The script will install all dependencies and install AIS-catcher. The required SDR libraries are installed from the official packages, if they cannot be found on the system. This script will install AIS-catcher from the latest available Debian package on Github. To guarantee support for the RTL-SDR V4 the latest version of the Osmocom library is statically linked into the AIS-catcher executable.</p>
+<blockquote>
+<p>This script <strong><em>is not compatible with</em></strong> the first versions of the Raspberry Pi and Zero due to their limited support for floating point hardware acceleration.
+The pre-build packages also do not include PostgreSQL support. If this is required, please build from <a href="#install-from-source">source</a>.</p>
+</blockquote>
+<p>To additionally install the Web GUI, see <a href="#installation-with-web-gui">below</a>. The Web GUI allows you to control the AIS-catcher process (start and stop) and set the configuration remotely via a convenient Web GUI.</p>
 <hr />
 <p><a class="md-button md-button--primary" href="../../usage/cli/">Start First Run</a>
 <a class="md-button md-button--secondary" href="#installation-with-web-gui">Install Web GUI</a></p>
 <hr />
-<h3 id="using-pre-build-debian-packages">Using pre-build Debian packages<a class="headerlink" href="#using-pre-build-debian-packages" title="Permanent link">&para;</a></h3>
-<p>If you want to use pre-installed Debian packages in the installation use:
-<div class="highlight"><pre><span></span><code><span class="go">sudo bash -c &quot;$(wget -qO- https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install)&quot; _ -p</span>
+<h3 id="update-ais-catcher-to-latest-version">Update AIS-catcher to latest version<a class="headerlink" href="#update-ais-catcher-to-latest-version" title="Permanent link">&para;</a></h3>
+<p>After you have installed with the above script, 
+to update AIS-catcher to the latest version, simply run the above command again. It will <strong><em>not</em></strong> overwrite any configuration files when there are available on the system.</p>
+<h3 id="install-from-source">Install From Source<a class="headerlink" href="#install-from-source" title="Permanent link">&para;</a></h3>
+<p>If you want to install from source, you can run the script as follows:</p>
+<p><div class="highlight"><pre><span></span><code><span class="go">sudo bash -c &quot;$(wget -qO- https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install)&quot; </span>
 </code></pre></div>
-The advantage that this avoids an compilation step which can save quite a bit of time on older Raspberry devices but it <strong><em>is not compatible with</em></strong> the first versions of the Raspberry Pi and Zero due to limnited support for floating point hardware acceleration. The pre-build packages also do not include PostgreSQL support.</p>
+The advantage of building from source is that the executable is optimized for the hardware specifics but can take a significant amount of time (20 minutes on a Raspberry Pi 4).</p>
 <h3 id="testing-the-installation">Testing the installation<a class="headerlink" href="#testing-the-installation" title="Permanent link">&para;</a></h3>
 <p>Once the program is installed it can be run on the command line and checked for the features that are included in the build:
 <div class="highlight"><pre><span></span><code><span class="go">AIS-catcher -L</span>
 </code></pre></div></p>
 <p>More information to <a href="../../usage/cli/">get started</a> is available. The installation script also sets up the infrastructure to run AIS-catcher as a systemd background service automatically on start up. </p>
-<h2 id="configuration-files-for-backrgound-service">Configuration Files for backrgound service<a class="headerlink" href="#configuration-files-for-backrgound-service" title="Permanent link">&para;</a></h2>
+<h2 id="configuration-files-for-background-service">Configuration Files for background service<a class="headerlink" href="#configuration-files-for-background-service" title="Permanent link">&para;</a></h2>
 <p>For running AIS-catcher as a background service we can use two configuration files:</p>
 <ul>
 <li>/etc/AIS-catcher/config.json (JSON configuration)</li>
@@ -2293,9 +2461,7 @@ To ensure AIS-catcher starts automatically at boot time, enable the service with
 </code></pre></div>
 To access it, open your web browser and navigate to your Raspberry Pi's IP address on port 8110 (for example, <code>http://zerowh:8110</code>). </p>
 <blockquote>
-<p>The input configuration for AIS-catcher is quite flexible and allows for some complex configuration. This is not fully embedded in the UI in first instance. Therefore, the menus only work with our starting config JSON or any version amended by 
-the UI. Once, the configuration files are manually edited, certain functionality will not be available.</p>
-<p>You can still set the settings in the Advanced section of the Web UI by editing the parameters there. Also controlling the process (viewing the log and starting and stopping) is availaible. </p>
+<p>Please note that once you manually edit the AIS-catcher configuration files, certain simplified Web  UI features (such as one-click or wizard-like configuration menus) will no longer be available.  However, you can still configure advanced settings via the Web UI and manage AIS-catcher by viewing logs or starting and stopping the service.</p>
 </blockquote>
 <hr />
 <p><a class="md-button md-button--primary" href="../../usage/gui/">Start First Run</a></p>
