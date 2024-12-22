@@ -12,7 +12,7 @@ Installation steps for Ubuntu, Debian and other Linux distributions.
 
 ### Embedded & Mobile
 
-🍓 [**Raspberry Pi Installation**](raspberry-pi.md)  
+🍓 [**Raspberry Pi Installation**](ubuntu-debian.md)  
 Dedicated guide for setting up AIS-Catcher on Raspberry Pi devices.
 
 📱 [**Android Installation**](android.md)  

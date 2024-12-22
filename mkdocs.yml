@@ -70,7 +70,7 @@ nav:
   - Installation:
       - Overview: installation/overview.md
       - Docker: installation/docker.md
-      - Raspberry Pi: installation/raspberry-pi.md
+      - Raspberry Pi: installation/ubuntu-debian.md
       - Windows: installation/windows.md
       - Build from Source: installation/build-source.md
       - Ubuntu and Debian: installation/ubuntu-debian.md

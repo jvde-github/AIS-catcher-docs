@@ -13,31 +13,30 @@ For example, the following installs the minimum build tools for Ubuntu and Raspb
 sudo apt-get update
 sudo apt-get upgrade
 
-sudo apt-get install git make gcc g++ cmake pkg-config -y
+sudo apt-get install git make gcc g++ cmake pkg-config libsqlite3-dev -y
 ```
 For MacOS with `brew` installed:
 ```bash
 brew update
 brew upgrade
 
-brew install git make gcc cmake pkg-config
+brew install git make gcc cmake pkg-config sqlite3
 ```
 
 AIS-catcher requires libraries for the particular hardware you want to use. The following table summarizes the installation instructions for all supported hardware:
 
-  System              | Linux/Raspberry              | macOS  |  MSVC/vcpkg   |     MSVC/PothosSDR |
- :--            | :--			| :--				| :--  | :--: | 
- Command  | *sudo apt install ...*      | *brew install ...* | *vcpkg install ...*            | [*Download*](https://downloads.myriadrf.org/builds/PothosSDR/) |
-***RTL-SDR***          | librtlsdr-dev          | librtlsdr  | rtlsdr rtlsdr:x64-windows             | included |
-***Airspy***          | libairspy-dev                             | airspy |    -                    | included |
-***Airspy HF+***        | libairspyhf-dev                            | airspyhf  |    -                | included |
-***HackRF***          | libhackrf-dev                             | hackrf    |    -                 | included |
-***SDRplay 1A***         | [API 3.x](https://www.sdrplay.com/downloads/) | - | [API 3.x](https://www.sdrplay.com/downloads/)     | [API 3.x](https://www.sdrplay.com/downloads/)  |
-***SoapySDR***             | libsoapysdr-dev     |       |                  | X |
-***ZeroMQ***             | libzmq3-dev     | zeromq      | ZeroMQ ZeroMQ:x64-windows                  | included |
-***HTTP secure***             | libssl-dev  | | openssl openssl:x64-windows | X |
-***ZIP***             | zlib1g-dev | | zlib zlib:x64-windows | X |
-
+| System | Linux/Raspberry | macOS | MSVC/vcpkg |
+|--|--|--|--|
+| Command | *sudo apt install ...* | *brew install ...* | *vcpkg install ...* |
+| **RTL-SDR** | librtlsdr-dev | librtlsdr | rtlsdr rtlsdr:x64-windows |
+| **Airspy** | libairspy-dev | airspy | - |
+| **Airspy HF+** | libairspyhf-dev | airspyhf | - |
+| **HackRF** | libhackrf-dev | hackrf | - |
+| **SDRplay 1A** | [API 3.x](https://www.sdrplay.com/downloads/) | - | [API 3.x](https://www.sdrplay.com/downloads/) |
+| **SoapySDR** | libsoapysdr-dev | - | - |
+| **ZeroMQ** | libzmq3-dev | zeromq | ZeroMQ ZeroMQ:x64-windows |
+| **HTTP secure** | libssl-dev | - | openssl openssl:x64-windows |
+| **ZIP** | zlib1g-dev | - | zlib zlib:x64-windows |
 
 Once the dependencies are in place, the process of installing AIS-catcher  on Linux-based systems becomes:
 ```bash
