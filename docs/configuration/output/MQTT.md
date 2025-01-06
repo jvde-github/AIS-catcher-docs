@@ -12,11 +12,13 @@
 
 
 AIS-catcher can push AIS messages via the MQTT protocol (3.1.1) to a broker with the `-Q` switch. An example with all settings:
+
 ```bash
 AIS-catcher -Q mqtt://username:password@127.0.0.1:1883 CLIENT_ID aiscatcher QOS 0 TOPIC data/ais MSGFORMAT JSON_NMEA
 ```
 
 More examples:
+
  ```bash
   # Basic MQTT connection
   AIS-catcher -Q mqtt://127.0.0.1:1883
@@ -34,6 +36,7 @@ More examples:
 ## Summary Settings
 
 <div class="input-table" markdown>
+
 | Key | Type | Default | Description |
 |---------|------|---------|-------------|
 | <span class="cmd-setting">URL</span> | string | <span class="cmd-value">-</span> | MQTT broker URL (mqtt[s]://[user:pass@]host[:port]) |
@@ -50,4 +53,5 @@ More examples:
 | WebSocket Options | | | |
 | <span class="cmd-setting">PROTOCOLS</span> | string | <span class="cmd-value">mqtt</span> | WebSocket sub-protocols |  
 | <span class="cmd-setting">BINARY</span> | boolean | <span class="cmd-value">on</span> | Enable binary WebSocket mode |
+
 </div>
