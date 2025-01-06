@@ -19,19 +19,19 @@ AIS-catcher -Q mqtt://username:password@127.0.0.1:1883 CLIENT_ID aiscatcher QOS 
 
 More examples:
 
- ```bash
-  # Basic MQTT connection
-  AIS-catcher -Q mqtt://127.0.0.1:1883
+```bash
+# Basic MQTT connection
+AIS-catcher -Q mqtt://127.0.0.1:1883
 
-  # WebSocket MQTT connection
-  AIS-catcher -Q wsmqtt://127.0.0.1:1883
+# WebSocket MQTT connection
+AIS-catcher -Q wsmqtt://127.0.0.1:1883
 
-  # With message format and topic
-  AIS-catcher -Q mqtt://127.0.0.1:1883 admin MSGFORMAT JSON_FULL TOPIC data/ais
+# With message format and topic
+AIS-catcher -Q mqtt://127.0.0.1:1883 admin MSGFORMAT JSON_FULL TOPIC data/ais
 
-  # With authentication and client ID
-  AIS-catcher -Q mqtt://username:password@127.0.0.1:1883 admin CLIENT aiscatcher
-  ```
+# With authentication and client ID
+AIS-catcher -Q mqtt://username:password@127.0.0.1:1883 admin CLIENT aiscatcher
+```
 
 ## Summary Settings
 
