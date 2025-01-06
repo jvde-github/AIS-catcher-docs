@@ -2066,11 +2066,11 @@
     </div>
 </div>
 
-<p>AIS-catcher can push AIS messages via the MQTT protocol (3.1.1) to a broker with the <code>-Q</code> switch. An example with all settings:
+<p>AIS-catcher can push AIS messages via the MQTT protocol (3.1.1) to a broker with the <code>-Q</code> switch. An example with all settings:</p>
 <div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://username:password@127.0.0.1:1883<span class="w"> </span>CLIENT_ID<span class="w"> </span>aiscatcher<span class="w"> </span>QOS<span class="w"> </span><span class="m">0</span><span class="w"> </span>TOPIC<span class="w"> </span>data/ais<span class="w"> </span>MSGFORMAT<span class="w"> </span>JSON_NMEA
-</code></pre></div></p>
-<p>More examples:
- ```bash
+</code></pre></div>
+<p>More examples:</p>
+<p>```bash
   # Basic MQTT connection
   AIS-catcher -Q mqtt://127.0.0.1:1883</p>
 <p># WebSocket MQTT connection
