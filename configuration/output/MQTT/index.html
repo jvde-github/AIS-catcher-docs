@@ -2070,16 +2070,18 @@
 <div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://username:password@127.0.0.1:1883<span class="w"> </span>CLIENT_ID<span class="w"> </span>aiscatcher<span class="w"> </span>QOS<span class="w"> </span><span class="m">0</span><span class="w"> </span>TOPIC<span class="w"> </span>data/ais<span class="w"> </span>MSGFORMAT<span class="w"> </span>JSON_NMEA
 </code></pre></div>
 <p>More examples:</p>
-<p>```bash
-  # Basic MQTT connection
-  AIS-catcher -Q mqtt://127.0.0.1:1883</p>
-<p># WebSocket MQTT connection
-  AIS-catcher -Q wsmqtt://127.0.0.1:1883</p>
-<p># With message format and topic
-  AIS-catcher -Q mqtt://127.0.0.1:1883 admin MSGFORMAT JSON_FULL TOPIC data/ais</p>
-<p># With authentication and client ID
-  AIS-catcher -Q mqtt://username:password@127.0.0.1:1883 admin CLIENT aiscatcher
-  ```</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Basic MQTT connection</span>
+AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://127.0.0.1:1883
+
+<span class="c1"># WebSocket MQTT connection</span>
+AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>wsmqtt://127.0.0.1:1883
+
+<span class="c1"># With message format and topic</span>
+AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://127.0.0.1:1883<span class="w"> </span>admin<span class="w"> </span>MSGFORMAT<span class="w"> </span>JSON_FULL<span class="w"> </span>TOPIC<span class="w"> </span>data/ais
+
+<span class="c1"># With authentication and client ID</span>
+AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://username:password@127.0.0.1:1883<span class="w"> </span>admin<span class="w"> </span>CLIENT<span class="w"> </span>aiscatcher
+</code></pre></div>
 <h2 id="summary-settings">Summary Settings<a class="headerlink" href="#summary-settings" title="Permanent link">&para;</a></h2>
 <div class="input-table">
 <table>
