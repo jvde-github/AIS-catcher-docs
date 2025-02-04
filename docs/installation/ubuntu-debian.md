@@ -13,10 +13,10 @@ This guide provides instructions for installing AIS-catcher on Debian-based syst
 
 To install AIS-catcher via a script, open a terminal or log in via SSH, then run the following command:
 ```console
-sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) _ -p"
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) _ -p"
 ```
 
-The script will install all dependencies and install AIS-catcher. The required SDR libraries are installed from the official packages, if they cannot be found on the system. This script will install AIS-catcher from the latest available Debian package on Github. To guarantee support for the RTL-SDR V4 the latest version of the Osmocom library is statically linked into the AIS-catcher executable.
+The script will install all dependencies and install AIS-catcher. If `curl` is not available on your device install it with `sudo apt install curl`. The required SDR libraries are installed from the official packages, if they cannot be found on the system. This script will install AIS-catcher from the latest available Debian package on Github. To guarantee support for the RTL-SDR V4 the latest version of the Osmocom library is statically linked into the AIS-catcher executable.
 
 > This script ***is not compatible with*** the first versions of the Raspberry Pi and Zero due to their limited support for floating point hardware acceleration.
 > The pre-build packages also do not include PostgreSQL support. If this is required, please build from [source](#install-from-source).
@@ -40,7 +40,7 @@ to update AIS-catcher to the latest version, simply run the above command again.
 If you want to install from source, you can run the script as follows:
 
 ```console
-sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install)" 
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install)" 
 ```
 The advantage of building from source is that the executable is optimized for the hardware specifics but can take a significant amount of time (20 minutes on a Raspberry Pi 4).
 
