@@ -27,7 +27,7 @@ AIS-catcher -d:0
 ```
 Alternatively, use the serial number of the device:
 ```bash
-AIS-catcher <serial number>
+AIS-catcher -d <serial number>
 ```
 
 Successful setup will display AIS messages in NMEA format on the screen.
