@@ -120,7 +120,7 @@ nav:
       - GPS: advanced/GPS.md
       - Performance Tuning: advanced/Low-spec-devices.md
       - Connecting to GNUradio: advanced/GNUradio.md
-      - Long Rang AIS: advanced/long-range.md
+      - Long Range AIS: advanced/long-range.md
       - Setting Sample Rate: advanced/samplerate.md
       - Grafana: advanced/grafana.md
       - Validation: advanced/validation.md
