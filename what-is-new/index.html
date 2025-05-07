@@ -314,6 +314,24 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#adsb-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      ADSB support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#offline-maps" class="md-nav__link">
     <span class="md-ellipsis">
       Offline Maps
@@ -1885,6 +1903,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../advanced/ADSB.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Include ADSB feed
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../advanced/FM-decoding/" class="md-nav__link">
         
   
@@ -2264,6 +2305,24 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#adsb-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      ADSB support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#offline-maps" class="md-nav__link">
     <span class="md-ellipsis">
       Offline Maps
@@ -2358,6 +2417,15 @@
 
 <h1 id="whats-new">What's New?<a class="headerlink" href="#whats-new" title="Permanent link">&para;</a></h1>
 <h2 id="edge-version-features">Edge Version Features<a class="headerlink" href="#edge-version-features" title="Permanent link">&para;</a></h2>
+<h3 id="adsb-support">ADSB support<a class="headerlink" href="#adsb-support" title="Permanent link">&para;</a></h3>
+<p>AIS-catcher can connect to a ADSB feed over TCP. The plane feed will then be visualized in the WebViewer. To input formats are supported, Beast, e.g,
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-t<span class="w"> </span>beast<span class="w"> </span>localhost<span class="w"> </span><span class="m">30003</span><span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span>
+</code></pre></div></p>
+<p>and BaseStation format:</p>
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-t<span class="w"> </span>basestation<span class="w"> </span>localhost<span class="w"> </span><span class="m">30002</span><span class="w"> </span>-N<span class="w"> </span><span class="m">81000</span>
+</code></pre></div>
+<h3 id="binary-messages">Binary Messages<a class="headerlink" href="#binary-messages" title="Permanent link">&para;</a></h3>
+<p>The WebViewer now shows the data coming from selected binary messages. Note that not all regions have these messages.</p>
 <h3 id="offline-maps">Offline Maps<a class="headerlink" href="#offline-maps" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Support for offline maps in mbtiles format in the Web Viewer

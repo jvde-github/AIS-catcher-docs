@@ -1816,6 +1816,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../advanced/ADSB.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Include ADSB feed
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../advanced/FM-decoding/" class="md-nav__link">
         
   
@@ -2226,7 +2249,8 @@
 
 <p>You can also set up AIS-catcher as a TCP listener itself for sending NMEA messages, i.e. the program acts as a TCP server where at most 64 clients can connect to and read NMEA lines:
 <div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-S<span class="w"> </span><span class="m">5011</span>
-</code></pre></div></p>
+</code></pre></div>
+Use the <code>JSON</code> option or <code>JSON_FULL</code> option to send data packaged in a JSON object for ease of downstream processing.</p>
 <h2 id="summary-settings">Summary Settings<a class="headerlink" href="#summary-settings" title="Permanent link">&para;</a></h2>
 <div class="input-table">
 <table>
@@ -2256,6 +2280,12 @@
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Enable JSON output format</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">JSON_FULL</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">false</span></td>
+<td>Enable fully decoded JSON output</td>
 </tr>
 </tbody>
 </table>

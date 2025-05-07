@@ -1816,6 +1816,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../advanced/ADSB.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Include ADSB feed
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../advanced/FM-decoding/" class="md-nav__link">
         
   
@@ -2231,7 +2254,7 @@
 The command accepts additonal parameters, e.g. to send NMEA messages packaged in a JSON object:
 <div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-u<span class="w"> </span><span class="m">192</span>.168.1.235<span class="w"> </span><span class="m">4002</span><span class="w"> </span>JSON<span class="w"> </span>on
 </code></pre></div>
-Most external programs will not be able to accept these JSON-packaged NMEA strings. It is a way to transfer received messages between AIS-catcher instances without losing metadata like the timestamp, ppm correction and signal level. These are not captured in the standard NMEA strings. 
+Most external programs will not be able to accept these JSON-packaged NMEA strings. It is a way to transfer received messages between AIS-catcher instances without losing metadata like the timestamp, ppm correction and signal level. These are not captured in the standard NMEA strings. The option <code>JSON_FULL</code> does a full decode of the AIS message.
 Another option for UDP sending via <code>-u</code> is <code>BROADCAST on/off</code> to enable sending to broadcast addresses.</p>
 <h2 id="summary-settimgs">Summary Settimgs<a class="headerlink" href="#summary-settimgs" title="Permanent link">&para;</a></h2>
 <div class="input-table">
@@ -2262,6 +2285,12 @@ Another option for UDP sending via <code>-u</code> is <code>BROADCAST on/off</co
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Enable JSON output format</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">JSON_FULL</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">false</span></td>
+<td>Enable fully decoded JSON output</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">BROADCAST</span></td>
