@@ -17,6 +17,7 @@ You can also set up AIS-catcher as a TCP listener itself for sending NMEA messag
 ```bash
 AIS-catcher -S 5011
 ```
+Use the `JSON` option or `JSON_FULL` option to send data packaged in a JSON object for ease of downstream processing.
 
 ## Summary Settings
 
@@ -26,4 +27,5 @@ AIS-catcher -S 5011
 | <span class="cmd-setting">PORT</span> | integer | <span class="cmd-value">5010</span> | Listen port (0-65535) |
 | <span class="cmd-setting">TIMEOUT</span> | integer | <span class="cmd-value">-</span> | Connection timeout |
 | <span class="cmd-setting">JSON</span> | boolean | <span class="cmd-value">false</span> | Enable JSON output format |
+| <span class="cmd-setting">JSON_FULL</span> | boolean | <span class="cmd-value">false</span> | Enable fully decoded JSON output |
 </div>

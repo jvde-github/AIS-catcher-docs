@@ -21,7 +21,7 @@ The command accepts additonal parameters, e.g. to send NMEA messages packaged in
 ```bash
 AIS-catcher -u 192.168.1.235 4002 JSON on
 ```
-Most external programs will not be able to accept these JSON-packaged NMEA strings. It is a way to transfer received messages between AIS-catcher instances without losing metadata like the timestamp, ppm correction and signal level. These are not captured in the standard NMEA strings. 
+Most external programs will not be able to accept these JSON-packaged NMEA strings. It is a way to transfer received messages between AIS-catcher instances without losing metadata like the timestamp, ppm correction and signal level. These are not captured in the standard NMEA strings. The option `JSON_FULL` does a full decode of the AIS message.
 Another option for UDP sending via `-u` is `BROADCAST on/off` to enable sending to broadcast addresses.
 
 
@@ -33,6 +33,7 @@ Another option for UDP sending via `-u` is `BROADCAST on/off` to enable sending 
 | <span class="cmd-setting">HOST</span> | string | <span class="cmd-value">-</span> | Target UDP host address |
 | <span class="cmd-setting">PORT</span> | string | <span class="cmd-value">-</span> | Target UDP port |
 | <span class="cmd-setting">JSON</span> | boolean | <span class="cmd-value">false</span> | Enable JSON output format |
+| <span class="cmd-setting">JSON_FULL</span> | boolean | <span class="cmd-value">false</span> | Enable fully decoded JSON output |
 | <span class="cmd-setting">BROADCAST</span> | boolean | <span class="cmd-value">false</span> | Enable broadcast mode |
 | <span class="cmd-setting">RESET</span> | integer | <span class="cmd-value">-1</span> | Socket reset interval in minutes (1-1440) |
 | <span class="cmd-setting">UUID</span> | string | <span class="cmd-value">-</span> | Unique identifier (must be valid UUID) |

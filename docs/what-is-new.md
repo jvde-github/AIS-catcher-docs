@@ -2,6 +2,24 @@
 
 ## Edge Version Features
 
+
+### ADSB support
+
+AIS-catcher can connect to a ADSB feed over TCP. The plane feed will then be visualized in the WebViewer. To input formats are supported, Beast, e.g,
+```bash
+AIS-catcher -t beast localhost 30003 -N 8100
+```
+
+and BaseStation format:
+
+```bash
+AIS-catcher -t basestation localhost 30002 -N 81000
+```
+
+### Binary Messages
+
+The WebViewer now shows the data coming from selected binary messages. Note that not all regions have these messages.
+
 ### Offline Maps
 - Support for offline maps in mbtiles format in the Web Viewer
   ```bash

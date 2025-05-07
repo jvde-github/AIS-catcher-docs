@@ -27,5 +27,6 @@ In this case, AIS-catcher acts as a TCP client and connects to the remote listen
 | <span class="cmd-setting">KEEP_ALIVE</span> | boolean | <span class="cmd-value">false</span> | Enable TCP keep-alive |
 | <span class="cmd-setting">PERSIST</span> | boolean | <span class="cmd-value">true</span> | Keep trying to reconnect when connection fails |
 | <span class="cmd-setting">JSON</span> | boolean | <span class="cmd-value">false</span> | Enable JSON output format |
+| <span class="cmd-setting">JSON_FULL</span> | boolean | <span class="cmd-value">false</span> | Enable fully decoded JSON output |
 | <span class="cmd-setting">UUID</span> | string | <span class="cmd-value">-</span> | Unique identifier (must be valid UUID) |
 </div>
