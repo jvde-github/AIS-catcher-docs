@@ -12,13 +12,13 @@
         <meta name="author" content="jvde.github@gmail.com">
       
       
-        <link rel="canonical" href="https://aiscatcher.org/docs/references/JSON-decoding/">
+        <link rel="canonical" href="https://aiscatcher.org/docs/installation/raspberrypi/">
       
       
-        <link rel="prev" href="../../faq/">
+        <link rel="prev" href="../docker/">
       
       
-        <link rel="next" href="../license/">
+        <link rel="next" href="../windows/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>JSON AIS format - AIS-catcher Docs</title>
+        <title>Raspberry Pi - AIS-catcher Docs</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#complete-ais-message-json-documentation" class="md-skip">
+        <a href="#ubuntudebianraspberry-pi-installation" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              JSON AIS format
+              Raspberry Pi
             
           </span>
         </div>
@@ -387,18 +387,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -414,7 +416,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Installation
@@ -428,7 +430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -451,7 +453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/docker/" class="md-nav__link">
+      <a href="../docker/" class="md-nav__link">
         
   
   
@@ -471,10 +473,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../installation/raspberrypi/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Raspberry Pi
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -485,6 +509,134 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#license-important-disclaimer" class="md-nav__link">
+    <span class="md-ellipsis">
+      License &amp; Important Disclaimer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-ais-catcher-to-latest-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update AIS-catcher to latest version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-from-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install From Source
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-the-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing the installation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-files-for-background-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Files for background service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Files for background service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-ais-catcher-as-a-background-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running AIS-catcher as a Background Service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-with-web-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation with Web GUI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation with Web GUI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedback
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -497,7 +649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/windows/" class="md-nav__link">
+      <a href="../windows/" class="md-nav__link">
         
   
   
@@ -520,7 +672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/build-source/" class="md-nav__link">
+      <a href="../build-source/" class="md-nav__link">
         
   
   
@@ -543,7 +695,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/ubuntu-debian/" class="md-nav__link">
+      <a href="../ubuntu-debian/" class="md-nav__link">
         
   
   
@@ -2037,20 +2189,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
@@ -2066,7 +2216,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             References
@@ -2077,32 +2227,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    JSON AIS format
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../references/JSON-decoding/" class="md-nav__link">
         
   
   
@@ -2113,275 +2241,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#json-format" class="md-nav__link">
-    <span class="md-ellipsis">
-      JSON Format
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="JSON Format">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#common-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common Fields
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-1-2-3-position-report-class-a" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 1, 2, 3: Position Report Class A
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-4-base-station-report" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 4: Base Station Report
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-5-static-and-voyage-related-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 5: Static and Voyage Related Data
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-6-binary-addressed-message" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 6: Binary Addressed Message
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-7-binary-acknowledge" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 7: Binary Acknowledge
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-8-binary-broadcast-message" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 8: Binary Broadcast Message
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-9-standard-sar-aircraft-position-report" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 9: Standard SAR Aircraft Position Report
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-10-utcdate-inquiry" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 10: UTC/Date Inquiry
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-11-utcdate-response" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 11: UTC/Date Response
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-12-addressed-safety-related-message" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 12: Addressed Safety Related Message
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-13-safety-related-acknowledge" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 13: Safety Related Acknowledge
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-14-safety-related-broadcast-message" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 14: Safety Related Broadcast Message
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-15-interrogation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 15: Interrogation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-16-assignment-mode-command" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 16: Assignment Mode Command
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-17-dgnss-binary-broadcast-message" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 17: DGNSS Binary Broadcast Message
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-18-standard-class-b-cs-position-report" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 18: Standard Class B CS Position Report
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-19-extended-class-b-cs-position-report" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 19: Extended Class B CS Position Report
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-20-data-link-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 20: Data Link Management
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-21-aid-to-navigation-report" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 21: Aid-to-Navigation Report
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-22-channel-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 22: Channel Management
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-23-group-assignment-command" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 23: Group Assignment Command
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-24-static-data-report" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 24: Static Data Report
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#message-type-25-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      Message Type 25 Fields
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#message-type-26-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      Message Type 26 Fields
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#message-type-27-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      Message Type 27 Fields
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2394,7 +2253,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../license/" class="md-nav__link">
+      <a href="../../references/license/" class="md-nav__link">
         
   
   
@@ -2444,244 +2303,103 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#json-format" class="md-nav__link">
+  <a href="#license-important-disclaimer" class="md-nav__link">
     <span class="md-ellipsis">
-      JSON Format
+      License &amp; Important Disclaimer
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="JSON Format">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Installation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#common-fields" class="md-nav__link">
+  <a href="#update-ais-catcher-to-latest-version" class="md-nav__link">
     <span class="md-ellipsis">
-      Common Fields
+      Update AIS-catcher to latest version
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#type-1-2-3-position-report-class-a" class="md-nav__link">
+  <a href="#install-from-source" class="md-nav__link">
     <span class="md-ellipsis">
-      Type 1, 2, 3: Position Report Class A
+      Install From Source
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#type-4-base-station-report" class="md-nav__link">
+  <a href="#testing-the-installation" class="md-nav__link">
     <span class="md-ellipsis">
-      Type 4: Base Station Report
+      Testing the installation
     </span>
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#type-5-static-and-voyage-related-data" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-files-for-background-service" class="md-nav__link">
     <span class="md-ellipsis">
-      Type 5: Static and Voyage Related Data
+      Configuration Files for background service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Files for background service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-ais-catcher-as-a-background-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running AIS-catcher as a Background Service
     </span>
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#type-6-binary-addressed-message" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-with-web-gui" class="md-nav__link">
     <span class="md-ellipsis">
-      Type 6: Binary Addressed Message
+      Installation with Web GUI
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Installation with Web GUI">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#type-7-binary-acknowledge" class="md-nav__link">
+  <a href="#feedback" class="md-nav__link">
     <span class="md-ellipsis">
-      Type 7: Binary Acknowledge
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-8-binary-broadcast-message" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 8: Binary Broadcast Message
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-9-standard-sar-aircraft-position-report" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 9: Standard SAR Aircraft Position Report
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-10-utcdate-inquiry" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 10: UTC/Date Inquiry
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-11-utcdate-response" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 11: UTC/Date Response
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-12-addressed-safety-related-message" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 12: Addressed Safety Related Message
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-13-safety-related-acknowledge" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 13: Safety Related Acknowledge
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-14-safety-related-broadcast-message" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 14: Safety Related Broadcast Message
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-15-interrogation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 15: Interrogation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-16-assignment-mode-command" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 16: Assignment Mode Command
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-17-dgnss-binary-broadcast-message" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 17: DGNSS Binary Broadcast Message
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-18-standard-class-b-cs-position-report" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 18: Standard Class B CS Position Report
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-19-extended-class-b-cs-position-report" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 19: Extended Class B CS Position Report
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-20-data-link-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 20: Data Link Management
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-21-aid-to-navigation-report" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 21: Aid-to-Navigation Report
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-22-channel-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 22: Channel Management
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-23-group-assignment-command" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 23: Group Assignment Command
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-24-static-data-report" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type 24: Static Data Report
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#message-type-25-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      Message Type 25 Fields
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#message-type-26-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      Message Type 26 Fields
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#message-type-27-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      Message Type 27 Fields
+      Feedback
     </span>
   </a>
   
@@ -2711,1847 +2429,79 @@
   
 
 
-<h1 id="complete-ais-message-json-documentation">Complete AIS Message JSON Documentation<a class="headerlink" href="#complete-ais-message-json-documentation" title="Permanent link">&para;</a></h1>
-<h2 id="json-format">JSON Format<a class="headerlink" href="#json-format" title="Permanent link">&para;</a></h2>
-<p>Below documents the JSON format used for decoding AIS messages. Depending on the settings for JSON decoding fields may or may not be included in the outcome.
-With format <code>JSON_NMEA</code> only the common fields will be included in the JSON package. The AIS message details are still included in the NMEA array embedded in the JSON. With format <code>JSON_FULL</code> the program will perform a full decoding of the AIS messages and include in the JSON. The output format is largely compatible with <code>gpsdecode</code>.</p>
-<h3 id="common-fields">Common Fields<a class="headerlink" href="#common-fields" title="Permanent link">&para;</a></h3>
-<p>These fields are present in all AIS messages:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>class</td>
-<td>String</td>
-<td>Always "AIS"</td>
-<td>"AIS"</td>
-</tr>
-<tr>
-<td>device</td>
-<td>String</td>
-<td>Always "AIS-catcher"</td>
-<td>"AIS-catcher"</td>
-</tr>
-<tr>
-<td>type</td>
-<td>Integer</td>
-<td>Message type number</td>
-<td>1</td>
-</tr>
-<tr>
-<td>scaled</td>
-<td>Boolean</td>
-<td>Values scaled to real units</td>
-<td>true</td>
-</tr>
-<tr>
-<td>channel</td>
-<td>String</td>
-<td>AIS channel</td>
-<td>"A"</td>
-</tr>
-<tr>
-<td>nmea</td>
-<td>String</td>
-<td>Original NMEA sentence</td>
-<td>"!AIVDM,1,1,,A,13..."</td>
-</tr>
-<tr>
-<td>mmsi</td>
-<td>Integer</td>
-<td>MMSI number</td>
-<td>123456789</td>
-</tr>
-</tbody>
-</table>
-<p>Optional configuration-dependent fields:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>version</td>
-<td>String</td>
-<td>Software version</td>
-</tr>
-<tr>
-<td>driver</td>
-<td>Integer</td>
-<td>Driver identifier</td>
-</tr>
-<tr>
-<td>hardware</td>
-<td>String</td>
-<td>Hardware identifier</td>
-</tr>
-<tr>
-<td>signal_power</td>
-<td>Float</td>
-<td>Signal strength in dB</td>
-</tr>
-<tr>
-<td>ppm</td>
-<td>Float</td>
-<td>Frequency error in ppm</td>
-</tr>
-<tr>
-<td>rxtime</td>
-<td>String</td>
-<td>Reception timestamp</td>
-</tr>
-<tr>
-<td>country</td>
-<td>String</td>
-<td>Country name from MMSI</td>
-</tr>
-<tr>
-<td>country_code</td>
-<td>String</td>
-<td>Two-letter country code</td>
-</tr>
-</tbody>
-</table>
-<h3 id="type-1-2-3-position-report-class-a">Type 1, 2, 3: Position Report Class A<a class="headerlink" href="#type-1-2-3-position-report-class-a" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range/Units</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status</td>
-<td>Integer</td>
-<td>0-15</td>
-<td>Navigation status</td>
-</tr>
-<tr>
-<td>status_text</td>
-<td>String</td>
-<td>See note 1</td>
-<td>Navigation status description</td>
-</tr>
-<tr>
-<td>turn</td>
-<td>Float</td>
-<td>±720°/min</td>
-<td>Rate of turn</td>
-</tr>
-<tr>
-<td>turn_unscaled</td>
-<td>Integer</td>
-<td>Raw</td>
-<td>Unscaled turn value</td>
-</tr>
-<tr>
-<td>speed</td>
-<td>Float</td>
-<td>0-102.2 knots</td>
-<td>Speed over ground</td>
-</tr>
-<tr>
-<td>accuracy</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Position accuracy flag</td>
-</tr>
-<tr>
-<td>lon</td>
-<td>Float</td>
-<td>±180°</td>
-<td>Longitude</td>
-</tr>
-<tr>
-<td>lat</td>
-<td>Float</td>
-<td>±90°</td>
-<td>Latitude</td>
-</tr>
-<tr>
-<td>course</td>
-<td>Float</td>
-<td>0-359.9°</td>
-<td>Course over ground</td>
-</tr>
-<tr>
-<td>heading</td>
-<td>Integer</td>
-<td>0-359°</td>
-<td>True heading</td>
-</tr>
-<tr>
-<td>second</td>
-<td>Integer</td>
-<td>0-59</td>
-<td>Second of timestamp</td>
-</tr>
-<tr>
-<td>maneuver</td>
-<td>Integer</td>
-<td>0-2</td>
-<td>Maneuver indicator</td>
-</tr>
-<tr>
-<td>raim</td>
-<td>Boolean</td>
-<td>-</td>
-<td>RAIM flag</td>
-</tr>
-<tr>
-<td>radio</td>
-<td>Integer</td>
-<td>-</td>
-<td>Radio status</td>
-</tr>
-</tbody>
-</table>
-<h3 id="type-4-base-station-report">Type 4: Base Station Report<a class="headerlink" href="#type-4-base-station-report" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>year</td>
-<td>Integer</td>
-<td>YYYY</td>
-<td>UTC year</td>
-</tr>
-<tr>
-<td>month</td>
-<td>Integer</td>
-<td>1-12</td>
-<td>UTC month</td>
-</tr>
-<tr>
-<td>day</td>
-<td>Integer</td>
-<td>1-31</td>
-<td>UTC day</td>
-</tr>
-<tr>
-<td>hour</td>
-<td>Integer</td>
-<td>0-23</td>
-<td>UTC hour</td>
-</tr>
-<tr>
-<td>minute</td>
-<td>Integer</td>
-<td>0-59</td>
-<td>UTC minute</td>
-</tr>
-<tr>
-<td>second</td>
-<td>Integer</td>
-<td>0-59</td>
-<td>UTC second</td>
-</tr>
-<tr>
-<td>accuracy</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Position accuracy flag</td>
-</tr>
-<tr>
-<td>lon</td>
-<td>Float</td>
-<td>±180°</td>
-<td>Longitude</td>
-</tr>
-<tr>
-<td>lat</td>
-<td>Float</td>
-<td>±90°</td>
-<td>Latitude</td>
-</tr>
-<tr>
-<td>epfd</td>
-<td>Integer</td>
-<td>0-8</td>
-<td>EPFD type</td>
-</tr>
-<tr>
-<td>epfd_text</td>
-<td>String</td>
-<td>See note 2</td>
-<td>EPFD description</td>
-</tr>
-<tr>
-<td>raim</td>
-<td>Boolean</td>
-<td>-</td>
-<td>RAIM flag</td>
-</tr>
-<tr>
-<td>radio</td>
-<td>Integer</td>
-<td>-</td>
-<td>Radio status</td>
-</tr>
-</tbody>
-</table>
-<h3 id="type-5-static-and-voyage-related-data">Type 5: Static and Voyage Related Data<a class="headerlink" href="#type-5-static-and-voyage-related-data" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ais_version</td>
-<td>Integer</td>
-<td>0-3</td>
-<td>AIS version</td>
-</tr>
-<tr>
-<td>imo</td>
-<td>Integer</td>
-<td>1-999999999</td>
-<td>IMO number</td>
-</tr>
-<tr>
-<td>callsign</td>
-<td>String</td>
-<td>7 chars</td>
-<td>Radio callsign</td>
-</tr>
-<tr>
-<td>shipname</td>
-<td>String</td>
-<td>20 chars</td>
-<td>Vessel name</td>
-</tr>
-<tr>
-<td>shiptype</td>
-<td>Integer</td>
-<td>0-99</td>
-<td>Ship type code</td>
-</tr>
-<tr>
-<td>shiptype_text</td>
-<td>String</td>
-<td>See note 3</td>
-<td>Ship type description</td>
-</tr>
-<tr>
-<td>to_bow</td>
-<td>Integer</td>
-<td>0-511m</td>
-<td>Dimension to bow</td>
-</tr>
-<tr>
-<td>to_stern</td>
-<td>Integer</td>
-<td>0-511m</td>
-<td>Dimension to stern</td>
-</tr>
-<tr>
-<td>to_port</td>
-<td>Integer</td>
-<td>0-63m</td>
-<td>Dimension to port</td>
-</tr>
-<tr>
-<td>to_starboard</td>
-<td>Integer</td>
-<td>0-63m</td>
-<td>Dimension to starboard</td>
-</tr>
-<tr>
-<td>epfd</td>
-<td>Integer</td>
-<td>0-8</td>
-<td>EPFD type</td>
-</tr>
-<tr>
-<td>epfd_text</td>
-<td>String</td>
-<td>See note 2</td>
-<td>EPFD description</td>
-</tr>
-<tr>
-<td>eta</td>
-<td>String</td>
-<td>ISO8601</td>
-<td>Estimated time of arrival</td>
-</tr>
-<tr>
-<td>draught</td>
-<td>Float</td>
-<td>0-25.5m</td>
-<td>Draft in meters</td>
-</tr>
-<tr>
-<td>destination</td>
-<td>String</td>
-<td>20 chars</td>
-<td>Destination port</td>
-</tr>
-<tr>
-<td>dte</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Data terminal flag</td>
-</tr>
-</tbody>
-</table>
-<h3 id="type-6-binary-addressed-message">Type 6: Binary Addressed Message<a class="headerlink" href="#type-6-binary-addressed-message" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>seqno</td>
-<td>Integer</td>
-<td>0-3</td>
-<td>Sequence number</td>
-</tr>
-<tr>
-<td>dest_mmsi</td>
-<td>Integer</td>
-<td>9 digits</td>
-<td>Destination MMSI</td>
-</tr>
-<tr>
-<td>retransmit</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Retransmit flag</td>
-</tr>
-<tr>
-<td>dac</td>
-<td>Integer</td>
-<td>-</td>
-<td>Designated Area Code</td>
-</tr>
-<tr>
-<td>fid</td>
-<td>Integer</td>
-<td>-</td>
-<td>Function ID</td>
-</tr>
-<tr>
-<td>data</td>
-<td>String</td>
-<td>-</td>
-<td>Binary data</td>
-</tr>
-</tbody>
-</table>
-<h3 id="type-7-binary-acknowledge">Type 7: Binary Acknowledge<a class="headerlink" href="#type-7-binary-acknowledge" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>mmsi1</td>
-<td>Integer</td>
-<td>9 digits</td>
-<td>MMSI number 1</td>
-</tr>
-<tr>
-<td>mmsiseq1</td>
-<td>Integer</td>
-<td>0-3</td>
-<td>Sequence for MMSI 1</td>
-</tr>
-<tr>
-<td>mmsi2</td>
-<td>Integer</td>
-<td>9 digits</td>
-<td>MMSI number 2</td>
-</tr>
-<tr>
-<td>mmsiseq2</td>
-<td>Integer</td>
-<td>0-3</td>
-<td>Sequence for MMSI 2</td>
-</tr>
-<tr>
-<td>mmsi3</td>
-<td>Integer</td>
-<td>9 digits</td>
-<td>MMSI number 3</td>
-</tr>
-<tr>
-<td>mmsiseq3</td>
-<td>Integer</td>
-<td>0-3</td>
-<td>Sequence for MMSI 3</td>
-</tr>
-<tr>
-<td>mmsi4</td>
-<td>Integer</td>
-<td>9 digits</td>
-<td>MMSI number 4</td>
-</tr>
-<tr>
-<td>mmsiseq4</td>
-<td>Integer</td>
-<td>0-3</td>
-<td>Sequence for MMSI 4</td>
-</tr>
-</tbody>
-</table>
-<h3 id="type-8-binary-broadcast-message">Type 8: Binary Broadcast Message<a class="headerlink" href="#type-8-binary-broadcast-message" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>dac</td>
-<td>Integer</td>
-<td>-</td>
-<td>Designated Area Code</td>
-</tr>
-<tr>
-<td>fid</td>
-<td>Integer</td>
-<td>-</td>
-<td>Function ID</td>
-</tr>
-<tr>
-<td>data</td>
-<td>String</td>
-<td>-</td>
-<td>Binary data</td>
-</tr>
-</tbody>
-</table>
-<h3 id="type-9-standard-sar-aircraft-position-report">Type 9: Standard SAR Aircraft Position Report<a class="headerlink" href="#type-9-standard-sar-aircraft-position-report" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>alt</td>
-<td>Integer</td>
-<td>0-4095</td>
-<td>Altitude in meters</td>
-</tr>
-<tr>
-<td>speed</td>
-<td>Integer</td>
-<td>0-1023</td>
-<td>Speed over ground</td>
-</tr>
-<tr>
-<td>accuracy</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Position accuracy</td>
-</tr>
-<tr>
-<td>lon</td>
-<td>Float</td>
-<td>±180°</td>
-<td>Longitude</td>
-</tr>
-<tr>
-<td>lat</td>
-<td>Float</td>
-<td>±90°</td>
-<td>Latitude</td>
-</tr>
-<tr>
-<td>course</td>
-<td>Float</td>
-<td>0-359.9°</td>
-<td>Course over ground</td>
-</tr>
-<tr>
-<td>second</td>
-<td>Integer</td>
-<td>0-59</td>
-<td>UTC second</td>
-</tr>
-<tr>
-<td>regional</td>
-<td>Integer</td>
-<td>-</td>
-<td>Regional reserved</td>
-</tr>
-<tr>
-<td>dte</td>
-<td>Boolean</td>
-<td>-</td>
-<td>DTE flag</td>
-</tr>
-<tr>
-<td>assigned</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Assigned mode flag</td>
-</tr>
-<tr>
-<td>raim</td>
-<td>Boolean</td>
-<td>-</td>
-<td>RAIM flag</td>
-</tr>
-<tr>
-<td>radio</td>
-<td>Integer</td>
-<td>-</td>
-<td>Radio status</td>
-</tr>
-</tbody>
-</table>
-<h3 id="type-10-utcdate-inquiry">Type 10: UTC/Date Inquiry<a class="headerlink" href="#type-10-utcdate-inquiry" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>dest_mmsi</td>
-<td>Integer</td>
-<td>9 digits</td>
-<td>Destination MMSI</td>
-</tr>
-</tbody>
-</table>
-<h3 id="type-11-utcdate-response">Type 11: UTC/Date Response<a class="headerlink" href="#type-11-utcdate-response" title="Permanent link">&para;</a></h3>
-<p>Same fields as Type 4</p>
-<h3 id="type-12-addressed-safety-related-message">Type 12: Addressed Safety Related Message<a class="headerlink" href="#type-12-addressed-safety-related-message" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>seqno</td>
-<td>Integer</td>
-<td>0-3</td>
-<td>Sequence number</td>
-</tr>
-<tr>
-<td>dest_mmsi</td>
-<td>Integer</td>
-<td>9 digits</td>
-<td>Destination MMSI</td>
-</tr>
-<tr>
-<td>retransmit</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Retransmit flag</td>
-</tr>
-<tr>
-<td>text</td>
-<td>String</td>
-<td>-</td>
-<td>Safety related text</td>
-</tr>
-</tbody>
-</table>
-<h3 id="type-13-safety-related-acknowledge">Type 13: Safety Related Acknowledge<a class="headerlink" href="#type-13-safety-related-acknowledge" title="Permanent link">&para;</a></h3>
-<p>Same fields as Type 7</p>
-<h3 id="type-14-safety-related-broadcast-message">Type 14: Safety Related Broadcast Message<a class="headerlink" href="#type-14-safety-related-broadcast-message" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>text</td>
-<td>String</td>
-<td>-</td>
-<td>Safety related text</td>
-</tr>
-</tbody>
-</table>
-<h3 id="type-15-interrogation">Type 15: Interrogation<a class="headerlink" href="#type-15-interrogation" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>mmsi1</td>
-<td>Integer</td>
-<td>9 digits</td>
-<td>Interrogated MMSI 1</td>
-</tr>
-<tr>
-<td>type1_1</td>
-<td>Integer</td>
-<td>1-27</td>
-<td>First message type</td>
-</tr>
-<tr>
-<td>offset1_1</td>
-<td>Integer</td>
-<td>-</td>
-<td>First slot offset</td>
-</tr>
-<tr>
-<td>type1_2</td>
-<td>Integer</td>
-<td>1-27</td>
-<td>Second message type</td>
-</tr>
-<tr>
-<td>offset1_2</td>
-<td>Integer</td>
-<td>-</td>
-<td>Second slot offset</td>
-</tr>
-<tr>
-<td>mmsi2</td>
-<td>Integer</td>
-<td>9 digits</td>
-<td>Interrogated MMSI 2</td>
-</tr>
-<tr>
-<td>type2_1</td>
-<td>Integer</td>
-<td>1-27</td>
-<td>First message type</td>
-</tr>
-<tr>
-<td>offset2_1</td>
-<td>Integer</td>
-<td>-</td>
-<td>First slot offset</td>
-</tr>
-</tbody>
-</table>
-<h3 id="type-16-assignment-mode-command">Type 16: Assignment Mode Command<a class="headerlink" href="#type-16-assignment-mode-command" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>mmsi1</td>
-<td>Integer</td>
-<td>9 digits</td>
-<td>First MMSI</td>
-</tr>
-<tr>
-<td>offset1</td>
-<td>Integer</td>
-<td>-</td>
-<td>First offset</td>
-</tr>
-<tr>
-<td>increment1</td>
-<td>Integer</td>
-<td>-</td>
-<td>First increment</td>
-</tr>
-<tr>
-<td>mmsi2</td>
-<td>Integer</td>
-<td>9 digits</td>
-<td>Second MMSI</td>
-</tr>
-<tr>
-<td>offset2</td>
-<td>Integer</td>
-<td>-</td>
-<td>Second offset</td>
-</tr>
-<tr>
-<td>increment2</td>
-<td>Integer</td>
-<td>-</td>
-<td>Second increment</td>
-</tr>
-</tbody>
-</table>
-<h3 id="type-17-dgnss-binary-broadcast-message">Type 17: DGNSS Binary Broadcast Message<a class="headerlink" href="#type-17-dgnss-binary-broadcast-message" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>lon</td>
-<td>Float</td>
-<td>±180°</td>
-<td>Longitude</td>
-</tr>
-<tr>
-<td>lat</td>
-<td>Float</td>
-<td>±90°</td>
-<td>Latitude</td>
-</tr>
-<tr>
-<td>data</td>
-<td>String</td>
-<td>-</td>
-<td>DGNSS data</td>
-</tr>
-</tbody>
-</table>
-<h3 id="type-18-standard-class-b-cs-position-report">Type 18: Standard Class B CS Position Report<a class="headerlink" href="#type-18-standard-class-b-cs-position-report" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>reserved</td>
-<td>Integer</td>
-<td>-</td>
-<td>Reserved</td>
-</tr>
-<tr>
-<td>speed</td>
-<td>Float</td>
-<td>0-102.2 knots</td>
-<td>Speed over ground</td>
-</tr>
-<tr>
-<td>accuracy</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Position accuracy</td>
-</tr>
-<tr>
-<td>lon</td>
-<td>Float</td>
-<td>±180°</td>
-<td>Longitude</td>
-</tr>
-<tr>
-<td>lat</td>
-<td>Float</td>
-<td>±90°</td>
-<td>Latitude</td>
-</tr>
-<tr>
-<td>course</td>
-<td>Float</td>
-<td>0-359.9°</td>
-<td>Course over ground</td>
-</tr>
-<tr>
-<td>heading</td>
-<td>Integer</td>
-<td>0-359°</td>
-<td>True heading</td>
-</tr>
-<tr>
-<td>second</td>
-<td>Integer</td>
-<td>0-59</td>
-<td>UTC second</td>
-</tr>
-<tr>
-<td>regional</td>
-<td>Integer</td>
-<td>-</td>
-<td>Regional reserved</td>
-</tr>
-<tr>
-<td>cs</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Carrier sense unit flag</td>
-</tr>
-<tr>
-<td>display</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Display flag</td>
-</tr>
-<tr>
-<td>dsc</td>
-<td>Boolean</td>
-<td>-</td>
-<td>DSC flag</td>
-</tr>
-<tr>
-<td>band</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Band flag</td>
-</tr>
-<tr>
-<td>msg22</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Message 22 flag</td>
-</tr>
-<tr>
-<td>assigned</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Assigned mode flag</td>
-</tr>
-<tr>
-<td>raim</td>
-<td>Boolean</td>
-<td>-</td>
-<td>RAIM flag</td>
-</tr>
-<tr>
-<td>radio</td>
-<td>Integer</td>
-<td>-</td>
-<td>Radio status</td>
-</tr>
-</tbody>
-</table>
-<h3 id="type-19-extended-class-b-cs-position-report">Type 19: Extended Class B CS Position Report<a class="headerlink" href="#type-19-extended-class-b-cs-position-report" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>reserved</td>
-<td>Integer</td>
-<td>-</td>
-<td>Reserved</td>
-</tr>
-<tr>
-<td>speed</td>
-<td>Float</td>
-<td>0-102.2 knots</td>
-<td>Speed over ground</td>
-</tr>
-<tr>
-<td>accuracy</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Position accuracy</td>
-</tr>
-<tr>
-<td>lon</td>
-<td>Float</td>
-<td>±180°</td>
-<td>Longitude</td>
-</tr>
-<tr>
-<td>lat</td>
-<td>Float</td>
-<td>±90°</td>
-<td>Latitude</td>
-</tr>
-<tr>
-<td>course</td>
-<td>Float</td>
-<td>0-359.9°</td>
-<td>Course over ground</td>
-</tr>
-<tr>
-<td>heading</td>
-<td>Integer</td>
-<td>0-359°</td>
-<td>True heading</td>
-</tr>
-<tr>
-<td>second</td>
-<td>Integer</td>
-<td>0-59</td>
-<td>UTC second</td>
-</tr>
-<tr>
-<td>regional</td>
-<td>Integer</td>
-<td>-</td>
-<td>Regional reserved</td>
-</tr>
-<tr>
-<td>shipname</td>
-<td>String</td>
-<td>20 chars</td>
-<td>Vessel name</td>
-</tr>
-<tr>
-<td>shiptype</td>
-<td>Integer</td>
-<td>0-99</td>
-<td>Ship type code</td>
-</tr>
-<tr>
-<td>shiptype_text</td>
-<td>String</td>
-<td>See note 3</td>
-<td>Ship type description</td>
-</tr>
-<tr>
-<td>to_bow</td>
-<td>Integer</td>
-<td>0-511m</td>
-<td>Dimension to bow</td>
-</tr>
-<tr>
-<td>to_stern</td>
-<td>Integer</td>
-<td>0-511m</td>
-<td>Dimension to stern</td>
-</tr>
-<tr>
-<td>to_port</td>
-<td>Integer</td>
-<td>0-63m</td>
-<td>Dimension to port</td>
-</tr>
-<tr>
-<td>to_starboard</td>
-<td>Integer</td>
-<td>0-63m</td>
-<td>Dimension to starboard</td>
-</tr>
-<tr>
-<td>epfd</td>
-<td>Integer</td>
-<td>0-8</td>
-<td>EPFD type</td>
-</tr>
-<tr>
-<td>epfd_text</td>
-<td>String</td>
-<td>See note 2</td>
-<td>EPFD description</td>
-</tr>
-<tr>
-<td>raim</td>
-<td>Boolean</td>
-<td>-</td>
-<td>RAIM flag</td>
-</tr>
-<tr>
-<td>dte</td>
-<td>Boolean</td>
-<td>-</td>
-<td>DTE flag</td>
-</tr>
-<tr>
-<td>assigned</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Assigned mode flag</td>
-</tr>
-</tbody>
-</table>
-<h3 id="type-20-data-link-management">Type 20: Data Link Management<a class="headerlink" href="#type-20-data-link-management" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>offset1</td>
-<td>Integer</td>
-<td>-</td>
-<td>Offset number 1</td>
-</tr>
-<tr>
-<td>number1</td>
-<td>Integer</td>
-<td>-</td>
-<td>Reserved slots 1</td>
-</tr>
-<tr>
-<td>timeout1</td>
-<td>Integer</td>
-<td>-</td>
-<td>Timeout 1</td>
-</tr>
-<tr>
-<td>increment1</td>
-<td>Integer</td>
-<td>-</td>
-<td>Increment 1</td>
-</tr>
-<tr>
-<td>offset2</td>
-<td>Integer</td>
-<td>-</td>
-<td>Offset number 2</td>
-</tr>
-<tr>
-<td>number2</td>
-<td>Integer</td>
-<td>-</td>
-<td>Reserved slots 2</td>
-</tr>
-<tr>
-<td>timeout2</td>
-<td>Integer</td>
-<td>-</td>
-<td>Timeout 2</td>
-</tr>
-<tr>
-<td>increment2</td>
-<td>Integer</td>
-<td>-</td>
-<td>Increment 2</td>
-</tr>
-<tr>
-<td>offset3</td>
-<td>Integer</td>
-<td>-</td>
-<td>Offset number 3</td>
-</tr>
-<tr>
-<td>number3</td>
-<td>Integer</td>
-<td>-</td>
-<td>Reserved slots 3</td>
-</tr>
-<tr>
-<td>timeout3</td>
-<td>Integer</td>
-<td>-</td>
-<td>Timeout 3</td>
-</tr>
-<tr>
-<td>increment3</td>
-<td>Integer</td>
-<td>-</td>
-<td>Increment 3</td>
-</tr>
-<tr>
-<td>offset4</td>
-<td>Integer</td>
-<td>-</td>
-<td>Offset number 4</td>
-</tr>
-<tr>
-<td>number4</td>
-<td>Integer</td>
-<td>-</td>
-<td>Reserved slots 4</td>
-</tr>
-<tr>
-<td>timeout4</td>
-<td>Integer</td>
-<td>-</td>
-<td>Timeout 4</td>
-</tr>
-<tr>
-<td>increment4</td>
-<td>Integer</td>
-<td>-</td>
-<td>Increment 4</td>
-</tr>
-</tbody>
-</table>
-<h3 id="type-21-aid-to-navigation-report">Type 21: Aid-to-Navigation Report<a class="headerlink" href="#type-21-aid-to-navigation-report" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>aid_type</td>
-<td>Integer</td>
-<td>0-31</td>
-<td>Aid type</td>
-</tr>
-<tr>
-<td>aid_type_text</td>
-<td>String</td>
-<td>See note 4</td>
-<td>Aid type description</td>
-</tr>
-<tr>
-<td>name</td>
-<td>String</td>
-<td>20 chars</td>
-<td>Name of aid</td>
-</tr>
-<tr>
-<td>accuracy</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Position accuracy</td>
-</tr>
-<tr>
-<td>lon</td>
-<td>Float</td>
-<td>±180°</td>
-<td>Longitude</td>
-</tr>
-<tr>
-<td>lat</td>
-<td>Float</td>
-<td>±90°</td>
-<td>Latitude</td>
-</tr>
-<tr>
-<td>to_bow</td>
-<td>Integer</td>
-<td>0-511m</td>
-<td>Dimension to bow</td>
-</tr>
-<tr>
-<td>to_stern</td>
-<td>Integer</td>
-<td>0-511m</td>
-<td>Dimension to stern</td>
-</tr>
-<tr>
-<td>to_port</td>
-<td>Integer</td>
-<td>0-63m</td>
-<td>Dimension to port</td>
-</tr>
-<tr>
-<td>to_starboard</td>
-<td>Integer</td>
-<td>0-63m</td>
-<td>Dimension to starboard</td>
-</tr>
-<tr>
-<td>epfd</td>
-<td>Integer</td>
-<td>0-8</td>
-<td>EPFD type</td>
-</tr>
-<tr>
-<td>epfd_text</td>
-<td>String</td>
-<td>See note 2</td>
-<td>EPFD description</td>
-</tr>
-<tr>
-<td>second</td>
-<td>Integer</td>
-<td>0-59</td>
-<td>UTC second</td>
-</tr>
-<tr>
-<td>off_position</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Off position indicator</td>
-</tr>
-<tr>
-<td>regional</td>
-<td>Integer</td>
-<td>-</td>
-<td>Regional reserved</td>
-</tr>
-<tr>
-<td>raim</td>
-<td>Boolean</td>
-<td>-</td>
-<td>RAIM flag</td>
-</tr>
-<tr>
-<td>virtual_aid</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Virtual aid flag</td>
-</tr>
-<tr>
-<td>assigned</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Assigned mode flag</td>
-</tr>
-</tbody>
-</table>
-<h3 id="type-22-channel-management">Type 22: Channel Management<a class="headerlink" href="#type-22-channel-management" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>channel_a</td>
-<td>Integer</td>
-<td>-</td>
-<td>Channel A number</td>
-</tr>
-<tr>
-<td>channel_b</td>
-<td>Integer</td>
-<td>-</td>
-<td>Channel B number</td>
-</tr>
-<tr>
-<td>txrx</td>
-<td>Integer</td>
-<td>-</td>
-<td>Tx/Rx mode</td>
-</tr>
-<tr>
-<td>power</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Power level</td>
-</tr>
-<tr>
-<td>addressed</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Addressed flag</td>
-</tr>
-<tr>
-<td>band_a</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Channel A band</td>
-</tr>
-<tr>
-<td>band_b</td>
-<td>Boolean</td>
-<td>-</td>
-<td>Channel B band</td>
-</tr>
-<tr>
-<td>zonesize</td>
-<td>Integer</td>
-<td>-</td>
-<td>Zone size</td>
-</tr>
-<tr>
-<td>If addressed = true:</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>dest1</td>
-<td>Integer</td>
-<td>9 digits</td>
-<td>Destination MMSI 1</td>
-</tr>
-<tr>
-<td>dest2</td>
-<td>Integer</td>
-<td>9 digits</td>
-<td>Destination MMSI 2</td>
-</tr>
-<tr>
-<td>If addressed = false:</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>ne_lon</td>
-<td>Float</td>
-<td>±180°</td>
-<td>NE longitude</td>
-</tr>
-<tr>
-<td>ne_lat</td>
-<td>Float</td>
-<td>±90°</td>
-<td>NE latitude</td>
-</tr>
-<tr>
-<td>sw_lon</td>
-<td>Float</td>
-<td>±180°</td>
-<td>SW longitude</td>
-</tr>
-<tr>
-<td>sw_lat</td>
-<td>Float</td>
-<td>±90°</td>
-<td>SW latitude</td>
-</tr>
-</tbody>
-</table>
-<h3 id="type-23-group-assignment-command">Type 23: Group Assignment Command<a class="headerlink" href="#type-23-group-assignment-command" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ne_lon</td>
-<td>Float</td>
-<td>±180°</td>
-<td>NE longitude</td>
-</tr>
-<tr>
-<td>ne_lat</td>
-<td>Float</td>
-<td>±90°</td>
-<td>NE latitude</td>
-</tr>
-<tr>
-<td>sw_lon</td>
-<td>Float</td>
-<td>±180°</td>
-<td>SW longitude</td>
-</tr>
-<tr>
-<td>sw_lat</td>
-<td>Float</td>
-<td>±90°</td>
-<td>SW latitude</td>
-</tr>
-<tr>
-<td>station_type</td>
-<td>Integer</td>
-<td>-</td>
-<td>Station type</td>
-</tr>
-<tr>
-<td>ship_type</td>
-<td>Integer</td>
-<td>-</td>
-<td>Ship type</td>
-</tr>
-<tr>
-<td>txrx</td>
-<td>Integer</td>
-<td>-</td>
-<td>Tx/Rx mode</td>
-</tr>
-<tr>
-<td>interval</td>
-<td>Integer</td>
-<td>-</td>
-<td>Reporting interval</td>
-</tr>
-<tr>
-<td>quiet</td>
-<td>Integer</td>
-<td>-</td>
-<td>Quiet time</td>
-</tr>
-</tbody>
-</table>
-<h3 id="type-24-static-data-report">Type 24: Static Data Report<a class="headerlink" href="#type-24-static-data-report" title="Permanent link">&para;</a></h3>
-<p>Message Type 24 Part A Fields</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>partno</td>
-<td>Integer</td>
-<td>0</td>
-<td>Part number, always 0 for Part A</td>
-</tr>
-<tr>
-<td>shipname</td>
-<td>String</td>
-<td>20 chars</td>
-<td>Name of the vessel</td>
-</tr>
-</tbody>
-</table>
-<p>Message Type 24 Part B Fields</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>partno</td>
-<td>Integer</td>
-<td>1</td>
-<td>Part number, always 1 for Part B</td>
-</tr>
-<tr>
-<td>callsign</td>
-<td>String</td>
-<td>7 chars</td>
-<td>Vessel radio callsign</td>
-</tr>
-<tr>
-<td>shiptype</td>
-<td>Integer</td>
-<td>0-99</td>
-<td>Type of ship and cargo</td>
-</tr>
-<tr>
-<td>shiptype_text</td>
-<td>String</td>
-<td>See note 1</td>
-<td>Description of ship type</td>
-</tr>
-<tr>
-<td>vendorid</td>
-<td>String</td>
-<td>3 chars</td>
-<td>Manufacturer's ID</td>
-</tr>
-<tr>
-<td>model</td>
-<td>Integer</td>
-<td>0-15</td>
-<td>Equipment model code</td>
-</tr>
-<tr>
-<td>serial</td>
-<td>Integer</td>
-<td>0-999999</td>
-<td>Unit serial number</td>
-</tr>
-<tr>
-<td>to_bow</td>
-<td>Integer</td>
-<td>0-511</td>
-<td>Distance from GPS to bow in meters</td>
-</tr>
-<tr>
-<td>to_stern</td>
-<td>Integer</td>
-<td>0-511</td>
-<td>Distance from GPS to stern in meters</td>
-</tr>
-<tr>
-<td>to_port</td>
-<td>Integer</td>
-<td>0-63</td>
-<td>Distance from GPS to port in meters</td>
-</tr>
-<tr>
-<td>to_starboard</td>
-<td>Integer</td>
-<td>0-63</td>
-<td>Distance from GPS to starboard in meters</td>
-</tr>
-<tr>
-<td>mothership_mmsi</td>
-<td>Integer</td>
-<td>9 digits</td>
-<td>MMSI of mothership for auxiliary craft</td>
-</tr>
-</tbody>
-</table>
-<h3 id="message-type-25-fields">Message Type 25 Fields<a class="headerlink" href="#message-type-25-fields" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>addressed</td>
-<td>Boolean</td>
-<td>true/false</td>
-<td>Message has specific destination</td>
-</tr>
-<tr>
-<td>structured</td>
-<td>Boolean</td>
-<td>true/false</td>
-<td>Message contains structured data</td>
-</tr>
-<tr>
-<td>dest_mmsi</td>
-<td>Integer</td>
-<td>9 digits</td>
-<td>Destination MMSI if addressed</td>
-</tr>
-<tr>
-<td>data</td>
-<td>String</td>
-<td>-</td>
-<td>Binary payload data</td>
-</tr>
-</tbody>
-</table>
-<h3 id="message-type-26-fields">Message Type 26 Fields<a class="headerlink" href="#message-type-26-fields" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>addressed</td>
-<td>Boolean</td>
-<td>true/false</td>
-<td>Message has specific destination</td>
-</tr>
-<tr>
-<td>structured</td>
-<td>Boolean</td>
-<td>true/false</td>
-<td>Message contains structured data</td>
-</tr>
-<tr>
-<td>dest_mmsi</td>
-<td>Integer</td>
-<td>9 digits</td>
-<td>Destination MMSI if addressed</td>
-</tr>
-<tr>
-<td>radio</td>
-<td>Integer</td>
-<td>0-3</td>
-<td>Radio status</td>
-</tr>
-<tr>
-<td>data</td>
-<td>String</td>
-<td>-</td>
-<td>Binary payload data</td>
-</tr>
-</tbody>
-</table>
-<h3 id="message-type-27-fields">Message Type 27 Fields<a class="headerlink" href="#message-type-27-fields" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>accuracy</td>
-<td>Boolean</td>
-<td>true/false</td>
-<td>Position accuracy: true if &lt; 10m</td>
-</tr>
-<tr>
-<td>raim</td>
-<td>Boolean</td>
-<td>true/false</td>
-<td>RAIM flag: Receiver Autonomous Integrity Monitoring</td>
-</tr>
-<tr>
-<td>status</td>
-<td>Integer</td>
-<td>0-15</td>
-<td>Navigation status</td>
-</tr>
-<tr>
-<td>status_text</td>
-<td>String</td>
-<td>See note 1</td>
-<td>Navigation status description</td>
-</tr>
-<tr>
-<td>lon</td>
-<td>Float</td>
-<td>±180°</td>
-<td>Longitude in decimal degrees</td>
-</tr>
-<tr>
-<td>lat</td>
-<td>Float</td>
-<td>±90°</td>
-<td>Latitude in decimal degrees</td>
-</tr>
-<tr>
-<td>speed</td>
-<td>Integer</td>
-<td>0-62</td>
-<td>Speed over ground in knots</td>
-</tr>
-<tr>
-<td>course</td>
-<td>Integer</td>
-<td>0-359</td>
-<td>Course over ground in degrees</td>
-</tr>
-<tr>
-<td>gnss</td>
-<td>Boolean</td>
-<td>true/false</td>
-<td>GNSS position status</td>
-</tr>
-</tbody>
-</table>
-<p>Notes</p>
-<p>Navigation Status Values:</p>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>Under way using engine</td>
-</tr>
-<tr>
-<td>1</td>
-<td>At anchor</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Not under command</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Restricted manoeuverability</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Constrained by draught</td>
-</tr>
-<tr>
-<td>5</td>
-<td>Moored</td>
-</tr>
-<tr>
-<td>6</td>
-<td>Aground</td>
-</tr>
-<tr>
-<td>7</td>
-<td>Engaged in fishing</td>
-</tr>
-<tr>
-<td>8</td>
-<td>Under way sailing</td>
-</tr>
-<tr>
-<td>9</td>
-<td>Reserved for HSC</td>
-</tr>
-<tr>
-<td>10</td>
-<td>Reserved for WIG</td>
-</tr>
-<tr>
-<td>11-13</td>
-<td>Reserved</td>
-</tr>
-<tr>
-<td>14</td>
-<td>AIS-SART is active</td>
-</tr>
-<tr>
-<td>15</td>
-<td>Not defined</td>
-</tr>
-</tbody>
-</table>
+<h1 id="ubuntudebianraspberry-pi-installation">Ubuntu/Debian/Raspberry Pi Installation<a class="headerlink" href="#ubuntudebianraspberry-pi-installation" title="Permanent link">&para;</a></h1>
+<h2 id="license-important-disclaimer">License &amp; Important Disclaimer<a class="headerlink" href="#license-important-disclaimer" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>AIS-catcher is provided for research and educational purposes. It has not been designed, tested, or certified for reliability, accuracy, or safety. <strong>Do not rely on AIS-catcher for navigation or any safety-critical applications.</strong> Users bear full responsibility for ensuring compliance with local laws and regulations regarding the reception, decoding, and use of AIS signals. AIS-catcher is provided “as is,” without warranty of any kind, and must not be used for illegal or unauthorized activities. Operate AIS-catcher only where such use is permitted by local authorities.</p>
+<p>Copyright (C) 2021–2025 <a href="mailto:jvde.github@gmail.com">jvde.github at gmail.com</a>. Licensed under the GNU General Public License v3.0</p>
+</blockquote>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<p>This guide provides instructions for installing AIS-catcher on Debian-based systems (like Raspberry Pi) and setting it up to run as a background service. The background service provides the option for AIS-catcher to automatically start when the machine is booted.</p>
+<blockquote>
+<p>Basic Installation via the below script is  required as a first step if you want to install the Web GUI package.</p>
+</blockquote>
+<h2 id="basic-installation">Basic Installation<a class="headerlink" href="#basic-installation" title="Permanent link">&para;</a></h2>
+<p>To install AIS-catcher via a script, open a terminal or log in via SSH, then run the following command:
+<div class="highlight"><pre><span></span><code><span class="go">sudo bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) _ -p&quot;</span>
+</code></pre></div></p>
+<p>The script will install all dependencies and install AIS-catcher. If <code>curl</code> is not available on your device install it with <code>sudo apt install curl</code>. The required SDR libraries are installed from the official packages, if they cannot be found on the system. This script will install AIS-catcher from the latest available Debian package on Github. To guarantee support for the RTL-SDR V4 the latest version of the Osmocom library is statically linked into the AIS-catcher executable.</p>
+<blockquote>
+<p>This script <strong><em>is not compatible with</em></strong> the first versions of the Raspberry Pi and Zero due to their limited support for floating point hardware acceleration.
+The pre-build packages also do not include PostgreSQL support. If this is required, please build from <a href="#install-from-source">source</a>.</p>
+</blockquote>
+<p>To additionally install the Web GUI, see <a href="#installation-with-web-gui">below</a>. The Web GUI allows you to control the AIS-catcher process (start and stop) and set the configuration remotely via a convenient Web GUI.</p>
+<hr />
+<p><a class="md-button md-button--primary" href="../../usage/cli/">Start First Run</a>
+<a class="md-button md-button--secondary" href="#installation-with-web-gui">Install Web GUI</a></p>
+<hr />
+<h3 id="update-ais-catcher-to-latest-version">Update AIS-catcher to latest version<a class="headerlink" href="#update-ais-catcher-to-latest-version" title="Permanent link">&para;</a></h3>
+<p>After you have installed with the above script, 
+to update AIS-catcher to the latest version, simply run the above command again. It will <strong><em>not</em></strong> overwrite any configuration files when there are available on the system.</p>
+<h3 id="install-from-source">Install From Source<a class="headerlink" href="#install-from-source" title="Permanent link">&para;</a></h3>
+<p>If you want to install from source, you can run the script as follows:</p>
+<p><div class="highlight"><pre><span></span><code><span class="go">sudo bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install)&quot; </span>
+</code></pre></div>
+The advantage of building from source is that the executable is optimized for the hardware specifics but can take a significant amount of time (20 minutes on a Raspberry Pi 4).</p>
+<h3 id="testing-the-installation">Testing the installation<a class="headerlink" href="#testing-the-installation" title="Permanent link">&para;</a></h3>
+<p>Once the program is installed it can be run on the command line and checked for the features that are included in the build:
+<div class="highlight"><pre><span></span><code><span class="go">AIS-catcher -L</span>
+</code></pre></div></p>
+<p>More information to <a href="../../usage/cli/">get started</a> is available. The installation script also sets up the infrastructure to run AIS-catcher as a systemd background service automatically on start up. </p>
+<h2 id="configuration-files-for-background-service">Configuration Files for background service<a class="headerlink" href="#configuration-files-for-background-service" title="Permanent link">&para;</a></h2>
+<p>For running AIS-catcher as a background service we can use two configuration files:</p>
+<ul>
+<li>/etc/AIS-catcher/config.json (JSON configuration)</li>
+<li>/etc/AIS-catcher/config.cmd (command line parameters)</li>
+</ul>
+<p>The simplest approach is to edit the configuration file /etc/AIS-catcher/config.cmd to capture your settings which are detailed below. Lines starting with # are considered comments and ignored. The default file can be modified using a text editor, for example:
+<div class="highlight"><pre><span></span><code><span class="go">sudo nano /etc/AIS-catcher/config.cmd</span>
+</code></pre></div>
+Please note that config.json takes precedence over config.cmd.</p>
+<h3 id="running-ais-catcher-as-a-background-service">Running AIS-catcher as a Background Service<a class="headerlink" href="#running-ais-catcher-as-a-background-service" title="Permanent link">&para;</a></h3>
+<p>To start AIS-catcher as a background service use the following command:
+<div class="highlight"><pre><span></span><code><span class="go">sudo systemctl start ais-catcher.service</span>
+</code></pre></div>
+To view the status of the service copy the following command:
+<div class="highlight"><pre><span></span><code><span class="go">sudo systemctl status ais-catcher.service</span>
+</code></pre></div>
+To ensure AIS-catcher starts automatically at boot time, enable the service with:
+<div class="highlight"><pre><span></span><code><span class="go">sudo systemctl enable ais-catcher.service</span>
+</code></pre></div></p>
+<h2 id="installation-with-web-gui">Installation with Web GUI<a class="headerlink" href="#installation-with-web-gui" title="Permanent link">&para;</a></h2>
+<p>AIS-catcher provides a web-based graphical user interface for easy configuration. Ensure you have installed the basic <a href="#basic-installation">package</a> first. It needs to be installed as a separate service by entering in the terminal:
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/main/install_ais_catcher_control.sh<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+To access it, open your web browser and navigate to your Raspberry Pi's IP address on port 8110 (for example, <code>http://zerowh:8110</code>). </p>
+<blockquote>
+<p>Please note that once you manually edit the AIS-catcher configuration files, certain simplified Web  UI features (such as one-click or wizard-like configuration menus) will no longer be available.  However, you can still configure advanced settings via the Web UI and manage AIS-catcher by viewing logs or starting and stopping the service.</p>
+</blockquote>
+<hr />
+<p><a class="md-button md-button--primary" href="../../usage/gui/">Start First Run</a></p>
+<hr />
+<p><img alt="image" src="https://github.com/user-attachments/assets/1fe942d2-dd3a-4116-99e8-f88f2de4ed14" /></p>
+<h3 id="feedback">Feedback<a class="headerlink" href="#feedback" title="Permanent link">&para;</a></h3>
+<p>This is fairly new script and under development so any feedback is appreciated. </p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/1be6abdb-7df2-4f4b-8d73-1740e0476013" /></p>
 
 
 

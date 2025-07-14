@@ -22,11 +22,11 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
-        <title>Raspberry Pi - AIS-catcher Docs</title>
+        <title>Ubuntu and Debian - AIS-catcher Docs</title>
       
     
     
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Raspberry Pi
+              Ubuntu and Debian
             
           </span>
         </div>
@@ -473,32 +473,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Raspberry Pi
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../raspberrypi/" class="md-nav__link">
         
   
   
@@ -509,134 +487,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#license-important-disclaimer" class="md-nav__link">
-    <span class="md-ellipsis">
-      License &amp; Important Disclaimer
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#basic-installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Basic Installation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Basic Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#update-ais-catcher-to-latest-version" class="md-nav__link">
-    <span class="md-ellipsis">
-      Update AIS-catcher to latest version
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#install-from-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Install From Source
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#testing-the-installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Testing the installation
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration-files-for-background-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configuration Files for background service
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuration Files for background service">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#running-ais-catcher-as-a-background-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      Running AIS-catcher as a Background Service
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation-with-web-gui" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installation with Web GUI
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installation with Web GUI">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#feedback" class="md-nav__link">
-    <span class="md-ellipsis">
-      Feedback
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -709,7 +559,7 @@
   
   
   <span class="md-ellipsis">
-    Raspberry Pi
+    Ubuntu and Debian
     
   </span>
   
@@ -722,7 +572,7 @@
   
   
   <span class="md-ellipsis">
-    Raspberry Pi
+    Ubuntu and Debian
     
   </span>
   
@@ -2623,7 +2473,7 @@ The advantage of building from source is that the executable is optimized for th
 <li>/etc/AIS-catcher/config.json (JSON configuration)</li>
 <li>/etc/AIS-catcher/config.cmd (command line parameters)</li>
 </ul>
-<p>The simplest approach is to edit the configuration file /etc/AIS-catcher/config.cmd to capture your settings which are detailed below. Lines starting with # are considered comments and ignored. The default file contains comments for popular options, which can be modified using a text editor, for example:
+<p>The simplest approach is to edit the configuration file /etc/AIS-catcher/config.cmd to capture your settings which are detailed below. Lines starting with # are considered comments and ignored. The default file can be modified using a text editor, for example:
 <div class="highlight"><pre><span></span><code><span class="go">sudo nano /etc/AIS-catcher/config.cmd</span>
 </code></pre></div>
 Please note that config.json takes precedence over config.cmd.</p>
@@ -2762,7 +2612,7 @@ To access it, open your web browser and navigate to your Raspberry Pi's IP addre
       <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
         <script src="https://aiscatcher.org/js/script.js"></script>
       
