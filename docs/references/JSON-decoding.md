@@ -385,21 +385,141 @@ Message Type 24 Part B Fields
 
 Notes
 
-Navigation Status Values:
+### Note 1: Navigation Status Values
 
 | Value | Description |
 |-------|-------------|
 | 0 | Under way using engine |
 | 1 | At anchor |
 | 2 | Not under command |
-| 3 | Restricted manoeuverability |
-| 4 | Constrained by draught |
+| 3 | Restricted maneuverability |
+| 4 | Constrained by her draught |
 | 5 | Moored |
 | 6 | Aground |
 | 7 | Engaged in fishing |
 | 8 | Under way sailing |
 | 9 | Reserved for HSC |
 | 10 | Reserved for WIG |
-| 11-13 | Reserved |
+| 11 | Towing astern (regional) |
+| 12 | Pushing ahead or towing alongside (regional) |
+| 13 | Reserved |
 | 14 | AIS-SART is active |
 | 15 | Not defined |
+
+### Note 2: EPFD Type Values
+
+| Value | Description |
+|-------|-------------|
+| 0 | Undefined |
+| 1 | GPS |
+| 2 | GLONASS |
+| 3 | Combined GPS/GLONASS |
+| 4 | Loran-C |
+| 5 | Chayka |
+| 6 | Integrated navigation system |
+| 7 | Surveyed |
+| 8 | Galileo |
+
+### Note 3: Ship Type Values
+
+| Value | Description |
+|-------|-------------|
+| 0 | Not available |
+| 1-19 | Reserved |
+| 20 | Wing in ground (WIG) - all ships of this type |
+| 21 | Wing in ground (WIG) - Hazardous category A |
+| 22 | Wing in ground (WIG) - Hazardous category B |
+| 23 | Wing in ground (WIG) - Hazardous category C |
+| 24 | Wing in ground (WIG) - Hazardous category D |
+| 25-29 | Wing in ground (WIG) - Reserved |
+| 30 | Fishing |
+| 31 | Towing |
+| 32 | Towing: length exceeds 200m or breadth exceeds 25m |
+| 33 | Dredging or underwater ops |
+| 34 | Diving ops |
+| 35 | Military ops |
+| 36 | Sailing |
+| 37 | Pleasure Craft |
+| 38-39 | Reserved |
+| 40 | High speed craft (HSC) - all ships of this type |
+| 41 | High speed craft (HSC) - Hazardous category A |
+| 42 | High speed craft (HSC) - Hazardous category B |
+| 43 | High speed craft (HSC) - Hazardous category C |
+| 44 | High speed craft (HSC) - Hazardous category D |
+| 45-48 | High speed craft (HSC) - Reserved for future use |
+| 49 | High speed craft (HSC) - No additional information |
+| 50 | Pilot Vessel |
+| 51 | Search and Rescue vessel |
+| 52 | Tug |
+| 53 | Port Tender |
+| 54 | Anti-pollution equipment |
+| 55 | Law Enforcement |
+| 56-57 | Spare - Local Vessel |
+| 58 | Medical Transport |
+| 59 | Noncombatant ship according to RR Resolution No. 18 |
+| 60 | Passenger - all ships of this type |
+| 61 | Passenger - Hazardous category A |
+| 62 | Passenger - Hazardous category B |
+| 63 | Passenger - Hazardous category C |
+| 64 | Passenger - Hazardous category D |
+| 65-68 | Passenger - Reserved for future use |
+| 69 | Passenger - No additional information |
+| 70 | Cargo - all ships of this type |
+| 71 | Cargo - Hazardous category A |
+| 72 | Cargo - Hazardous category B |
+| 73 | Cargo - Hazardous category C |
+| 74 | Cargo - Hazardous category D |
+| 75-78 | Cargo - Reserved for future use |
+| 79 | Cargo - No additional information |
+| 80 | Tanker - all ships of this type |
+| 81 | Tanker - Hazardous category A |
+| 82 | Tanker - Hazardous category B |
+| 83 | Tanker - Hazardous category C |
+| 84 | Tanker - Hazardous category D |
+| 85-88 | Tanker - Reserved for future use |
+| 89 | Tanker - No additional information |
+| 90 | Other Type - all ships of this type |
+| 91 | Other Type - Hazardous category A |
+| 92 | Other Type - Hazardous category B |
+| 93 | Other Type - Hazardous category C |
+| 94 | Other Type - Hazardous category D |
+| 95-98 | Other Type - Reserved for future use |
+| 99 | Other Type - no additional information |
+
+### Note 4: Aid to Navigation Type Values
+
+| Value | Description |
+|-------|-------------|
+| 0 | Default, Type of Aid to Navigation not specified |
+| 1 | Reference point |
+| 2 | RACON (radar transponder marking a navigation hazard) |
+| 3 | Fixed offshore structure |
+| 4 | Spare, Reserved for future use |
+| 5 | Light, without sectors |
+| 6 | Light, with sectors |
+| 7 | Leading Light Front |
+| 8 | Leading Light Rear |
+| 9 | Beacon, Cardinal N |
+| 10 | Beacon, Cardinal E |
+| 11 | Beacon, Cardinal S |
+| 12 | Beacon, Cardinal W |
+| 13 | Beacon, Port hand |
+| 14 | Beacon, Starboard hand |
+| 15 | Beacon, Preferred Channel port hand |
+| 16 | Beacon, Preferred Channel starboard hand |
+| 17 | Beacon, Isolated danger |
+| 18 | Beacon, Safe water |
+| 19 | Beacon, Special mark |
+| 20 | Cardinal Mark N |
+| 21 | Cardinal Mark E |
+| 22 | Cardinal Mark S |
+| 23 | Cardinal Mark W |
+| 24 | Port hand Mark |
+| 25 | Starboard hand Mark |
+| 26 | Preferred Channel Port hand |
+| 27 | Preferred Channel Starboard hand |
+| 28 | Isolated danger |
+| 29 | Safe Water |
+| 30 | Special Mark |
+| 31 | Light Vessel / LANBY / Rigs |
+
