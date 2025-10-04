@@ -41,7 +41,11 @@ Core but optional settings define fundamental aspects of AIS-catcher's operation
 | `input` | string | Primary input device selection | rtlsdr/hackrf/etc |
 | `serial` | string | Device serial number | |
 | `verbose` | boolean | Enable verbose output | [Console Output](../configuration/output/console.md) |
+| `verbose_time` | number | Verbose update interval (seconds) | [Console Output](../configuration/output/console.md) |
 | `screen` | number | Screen output mode (0-5) | [Console Output](../configuration/output/console.md) |
+| `meta` | string | Metadata tags (T/D/M) | [Console Output](../configuration/output/console.md) |
+| `own_mmsi` | number | Own MMSI of receiver station | |
+| `model` | object | Decoder model configuration | [Model](../configuration/model/) |
 
 - `config`: Must always be set to "aiscatcher" to identify the configuration type.
 
@@ -58,6 +62,13 @@ Core but optional settings define fundamental aspects of AIS-catcher's operation
 - `verbose`: When set to true, AIS-catcher provides detailed logs and output for debugging purposes.
 
 - `screen`: Controls the verbosity and format of the console output. Values range from 0 (no output) to 5 (full JSON decoding). 
+
+- `meta`: Metadata tags to include in output. Use "T" for NMEA timestamp, "D" for decoder data (signal power, ppm), "M" for MMSI country info. Can be combined (e.g., "TD", "TDM").
+
+- `own_mmsi`: Sets the MMSI number of the receiving station. Used for NMEA2000 output and web viewer location sharing.
+
+- `model`: Configuration object for decoder model settings. See model documentation for available options.
+
 
 >## Important Notes
 >
@@ -151,6 +162,21 @@ AIS-catcher supports various input devices. Each device type has specific config
 </details>
 [Full SDRPlay Documentation](../configuration/input/sdrplay.md)
 
+### SoapySDR (`soapysdr`)
+<details>
+<summary>Example</summary>
+```json
+{
+    "soapysdr": {
+        "active": true,
+        "device": "driver=rtlsdr",
+        "sample_rate": "1536K"
+    }
+}
+```
+</details>
+[Full SoapySDR Documentation](../configuration/input/soapysdr.md)
+
 ### Serial Port Input (`serialport`)
 <details>
 <summary>Example</summary>
@@ -164,6 +190,50 @@ AIS-catcher supports various input devices. Each device type has specific config
 ```
 </details>
 [Full Serial Port Documentation](../configuration/input/serial.md)
+
+### NMEA2000 (`nmea2000`)
+<details>
+<summary>Example</summary>
+```json
+{
+    "nmea2000": {
+        "active": true,
+        "port": "can0"
+    }
+}
+```
+</details>
+[Full NMEA2000 Documentation](../configuration/input/NMEA2000.md)
+
+## File Input Settings
+
+### WAV File (`wavfile`)
+<details>
+<summary>Example</summary>
+```json
+{
+    "wavfile": {
+        "active": true,
+        "filename": "recording.wav"
+    }
+}
+```
+</details>
+[Full WAV File Documentation](../configuration/input/wav.md)
+
+### Raw File (`file`)
+<details>
+<summary>Example</summary>
+```json
+{
+    "file": {
+        "active": true,
+        "filename": "data.raw"
+    }
+}
+```
+</details>
+[Full File Documentation](../configuration/input/file.md)
 
 ## Network Input Settings
 
@@ -194,6 +264,60 @@ AIS-catcher supports various input devices. Each device type has specific config
 ```
 </details>
 [Full SpyServer Documentation](../configuration/input/spyserver.md)
+
+### UDP Server (`udpserver`)
+<details>
+<summary>Example</summary>
+```json
+{
+    "udpserver": {
+        "active": true,
+        "port": 10110
+    }
+}
+```
+</details>
+[Full UDP Documentation](../configuration/input/udp.md)
+
+### ZMQ (`zmq`)
+<details>
+<summary>Example</summary>
+```json
+{
+    "zmq": {
+        "active": true,
+        "endpoint": "tcp://localhost:5555"
+    }
+}
+```
+</details>
+[Full ZMQ Documentation](../configuration/input/tcp.md)
+
+## Multi-Receiver Configuration
+
+For multiple receivers,  you can move the relevant above settings to a `receiver` array as in this example
+starting two receivers:
+```json
+{
+    "config": "aiscatcher",
+    "version": 1,
+    "receiver": [
+        {
+            "input": "airspy",
+            "airspy": {
+                "sample_rate": "3000K"
+            }
+        },
+        {
+            "input": "rtlsdr",
+            "serial": "ais",
+            "rtlsdr": {
+                "bandwidth": "192k"
+            }
+        }
+    ]
+}
+```
 
 ## Output Settings
 
@@ -256,7 +380,7 @@ AIS-catcher supports various output channels. Each output channel has specific c
 </details>
 [Full TCP Documentation](../configuration/output/TCP-server.md)
 
-### TCP  Output (Server) (`tcp-listener`)
+### TCP  Output (Server) (`tcp_listener`)
 <details>
 <summary>Example</summary>
 ```json
@@ -272,29 +396,42 @@ AIS-catcher supports various output channels. Each output channel has specific c
 </details>
 [Full TCP Documentation](../configuration/output/TCP-server.md)
 
-## Multi-Receiver Configuration
-
-For multiple receivers,  you can more the relevant settings to a `receiver` array as in this example
-starting two receivers:
+### HTTP Output (`http`)
+<details>
+<summary>Example</summary>
 ```json
 {
-    "config": "aiscatcher",
-    "version": 1,
-    "receiver": [
+    "http": [
         {
-            "input": "airspy",
-            "airspy": {
-                "sample_rate": "3000K"
-            }
-        },
-        {
-            "input": "rtlsdr",
-            "serial": "ais",
-            "rtlsdr": {
-                "bandwidth": "192k"
-            }
+            "active": true,
+            "url": "http://example.com/ais",
+            "interval": 10,
+            "response": "json"
         }
     ]
 }
 ```
+</details>
+[Full HTTP Documentation](../configuration/output/HTTP.md)
+
+### MQTT Output (`mqtt`)
+<details>
+<summary>Example</summary>
+```json
+{
+    "mqtt": [
+        {
+            "active": true,
+            "host": "mqtt.example.com",
+            "port": 1883,
+            "topic": "ais/messages",
+            "username": "user",
+            "password": "pass"
+        }
+    ]
+}
+```
+</details>
+[Full MQTT Documentation](../configuration/output/MQTT.md)
+
 
