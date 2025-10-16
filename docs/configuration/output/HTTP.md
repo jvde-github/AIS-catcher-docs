@@ -60,7 +60,7 @@ sudo apt install libssl-dev zlib1g-dev
 ```
 This step is only required if you want to ZIP content and post data to secure servers.
 
-The supported protocol switches are ``AISCATCHER`` (default), ``MINIMAL`` (NMEA lines and metadata), ``LINES`` (one JSON message per line), ``APRS`` (to submit to APRS.fi).
+The supported protocol switches are ``AISCATCHER`` (default), ``MINIMAL`` (NMEA lines and metadata in JSON), ``LINES`` (one JSON message per line), ``APRS`` (to submit to APRS.fi), `` NMEA`` (simple NMEA).
 
 ## Summary Settimgs
 
@@ -73,7 +73,7 @@ The supported protocol switches are ``AISCATCHER`` (default), ``MINIMAL`` (NMEA 
 | <span class="cmd-setting">TIMEOUT</span> | integer | <span class="cmd-value">10</span> | Connection timeout in seconds (1-30) |
 | <span class="cmd-setting">GZIP</span> | boolean | <span class="cmd-value">false</span> | Enable GZIP compression |
 | <span class="cmd-setting">RESPONSE</span> | boolean | <span class="cmd-value">true</span> | Show response messages |
-| <span class="cmd-setting">PROTOCOL</span> | string | <span class="cmd-value">AISCATCHER</span> | Protocol type (AISCATCHER/MINIMAL/AIRFRAMES/LIST/APRS) |
+| <span class="cmd-setting">PROTOCOL</span> | string | <span class="cmd-value">AISCATCHER</span> | Protocol type (AISCATCHER/MINIMAL/AIRFRAMES/LIST/APRS/NMEA) |
 | <span class="cmd-setting">LAT</span> | float | <span class="cmd-value">0.0</span> | Station latitude |
 | <span class="cmd-setting">LON</span> | float | <span class="cmd-value">0.0</span> | Station longitude |
 | <span class="cmd-setting">DEVICE_SETTING</span> | string | <span class="cmd-value">N/A</span> | Device settings |
