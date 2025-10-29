@@ -36,39 +36,6 @@ Sharing activates additional features. Start exploring in your station's web vie
 </div>
 
 </div>
----
-
-## Web Viewer Benefits
-
-Enhancing your AIS-catcher experience, the Web Viewer offers two additional map overlays when sharing a community feed: 
-
-### 1. Community Feed
-
-![Community Feed](https://github.com/user-attachments/assets/ef73fabd-91e2-49be-8723-e186703631d4)
-
-**Features:**
-
-  - Displays vessels and objects reported by the AIS-catcher community using grey icons.
-  - Helps identify potential blind spots and assess the reception area of your station.
-
-**Benefits:**
-
-  - Improved situational awareness by visualizing community-reported AIS data.
-  - Enhanced understanding of your station's coverage and limitations.
-
-### 2. AIS Tropo Ducting Conditions
-
-![AIS Tropo Ducting](https://github.com/user-attachments/assets/72590ae3-bc09-47e4-8951-3bedab22fa3d)
-
-**Features:**
-
-  - Provides an overlay of AIS tropo ducting conditions, refreshed every six hours.
-  - Explains AIS observations that typically occur beyond the line-of-sight, extending into hundreds of miles.
-
-**Benefits:**
-
-  - Enhances the interpretation of long-range AIS signals.
-  - Assists in distinguishing between direct and ducted AIS receptions.
 
 ---
 
