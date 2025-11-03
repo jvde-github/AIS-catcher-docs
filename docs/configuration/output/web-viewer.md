@@ -137,7 +137,7 @@ Server Options:
 | | | | |
 | Data Management | | | |
 | <span class="cmd-setting">HISTORY</span> | integer | <span class="cmd-value">-</span> | History retention (5-43200 sec) |
-| <span class="cmd-setting">CUTOFF</span> | integer | <span class="cmd-value">-</span> | Data retention threshold (0-10000) | 
+| <span class="cmd-setting">CUTOFF</span> | integer | <span class="cmd-value">-</span> | Max Distance treshold (0-10000) | 
 | <span class="cmd-setting">BACKUP</span> | integer | <span class="cmd-value">-1</span> | Backup interval (5-2880 min) |
 | <span class="cmd-setting">FILE</span> | string | <span class="cmd-value">-</span> | Statistics file path |
 | <span class="cmd-setting">REALTIME</span> | boolean | <span class="cmd-value">false</span> | Enable real-time updates |
