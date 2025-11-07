@@ -1,80 +1,83 @@
 # What's New?
 
+## Edge (Latest Development)
+
+### Enhanced Features
+- **Kiosk Mode**: Full-screen display mode for dedicated monitoring setups
+- **MSGFORMAT Configuration**: Flexible output format definitions for customized data presentation
+- **Extended Binary Messages**: Additional binary message types now decoded and displayed
+- **Verbose JSON Output** (`-o 6`): Enhanced JSON format with detailed field descriptions (WIP)
+- **Debian Trixie Support**: Compatibility with Debian 13 (Trixie)
+- **Filesystem-based Map Tiles**:
+```bash
+  # Serve map tiles from filesystem
+  AIS-catcher -N 8100 FSTILES /path/to/tiles
+  # Filesystem overlay maps
+  AIS-catcher -N 8100 FSOVERLAY /path/to/overlay
+```
+
+For complete edge changes, see the [commit history](https://github.com/jvde-github/AIS-catcher/commits/main/).
+
 ## Version 0.62
 
-
-### ADSB support
-
-AIS-catcher can connect to a ADSB feed over TCP. The plane feed will then be visualized in the WebViewer. To input formats are supported, Beast, e.g,
+### ADSB Integration
+Connect to ADSB feeds to visualize aircraft alongside vessels:
 ```bash
+# Beast format
 AIS-catcher -t beast localhost 30003 -N 8100
+
+# BaseStation format
+AIS-catcher -t basestation localhost 30002 -N 8100
 ```
 
-and BaseStation format:
+### Binary Message Decoding
+The WebViewer now decodes and displays regional binary AIS messages (availability varies by location).
 
+### Offline Mapping
 ```bash
-AIS-catcher -t basestation localhost 30002 -N 81000
+# MBTiles format support
+AIS-catcher -N 8100 MBTILES map.mbtiles
+# Or as overlay
+AIS-catcher -N 8100 MBOVERLAY map.mbtiles
 ```
 
-### Binary Messages
-
-The WebViewer now shows the data coming from selected binary messages. Note that not all regions have these messages.
-
-### Offline Maps
-- Support for offline maps in mbtiles format in the Web Viewer
-  ```bash
-   # include an offline map in mbtiles format
-  AIS-catcher -N 8100 MBTILES map.mbtiles
-  # or as overlay
-  AIS-catcher -N 8100 MBOVERLAY map.mbtiles
-  ```
-- Debian packages now support RTL SDR V4 (the RTL-SDR library is build from source and statically linked into the executable)
+### RTL-SDR V4 Support
+Debian packages now include statically-linked RTL-SDR library with V4 dongle support.
 
 ## AIS-catcher for Android
 
-- Option to auto start decoding when USB device is connected when starting the App
-- Option to launch a webviewer available at a specified port
+- Auto-start decoding when USB device connects
+- Built-in webviewer on configurable port
 
 ## Version 0.61
 
 ### MQTT Integration
-- **Publishing Messages**
-  ```bash
-  # Basic MQTT connection
-  AIS-catcher -Q mqtt://127.0.0.1:1883
+```bash
+# Publish messages
+AIS-catcher -Q mqtt://127.0.0.1:1883
+AIS-catcher -Q wsmqtt://127.0.0.1:1883
+AIS-catcher -Q mqtt://127.0.0.1:1883 admin MSGFORMAT JSON_FULL TOPIC data/ais
+AIS-catcher -Q mqtt://username:password@127.0.0.1:1883 admin CLIENT aiscatcher
 
-  # WebSocket MQTT connection
-  AIS-catcher -Q wsmqtt://127.0.0.1:1883
+# Subscribe to messages
+AIS-catcher -t mqtt://username:password@127.0.0.1:1883
+```
 
-  # With message format and topic
-  AIS-catcher -Q mqtt://127.0.0.1:1883 admin MSGFORMAT JSON_FULL TOPIC data/ais
+### Protocol Expansion
+- WebSocket text transmission (`ws://`)
+- SDR data streaming (`sdr://`)
+- Text over TCP (`txt://`)
+- GPSD integration (`gpsd://`)
+- RTL_TCP support (`rtltcp://`)
+- Raw IQ data (`tcp://`)
 
-  # With authentication and client ID
-  AIS-catcher -Q mqtt://username:password@127.0.0.1:1883 admin CLIENT aiscatcher
-  ```
+### Web Viewer Improvements
+- Map-first default view
+- Enhanced color palette
+- Draggable ship information cards
+- Context-aware card positioning
+- Configurable vessel track display (on hover/selection)
 
-- **Reading Messages**
-  ```bash
-  # Read from MQTT broker
-  AIS-catcher -t mqtt://username:password@127.0.0.1:1883
-  ```
-
-### WebSocket Support
-- Text data transmission via WebSockets using `ws://` protocol with `-t` and `-Q` options
-
-### Web Viewer Enhancements
-- Default map view on startup
-- Optimized color scheme
-- Draggable shipcard functionality
-- Smart shipcard positioning near vessels
-- Automatic vessel track display options: On hover and On selection
-
-### Additional Updates
-- Server protocol support:
-  - SDR data: `sdr://127.0.0.1:5555`
-  - Text over TCP: `txt://127.0.0.1:4001`
-  - GPSD: `gpsd://127.0.0.1:4267`
-  - RTL_TCP: `rtltcp://127.0.0.1:4099`
-  - Raw IQ data: `tcp://127.0.0.1:1313`
-- NMEA2000 configuration added to JSON settings
-- System daemon restart interval set to 10s
+### Configuration
+- NMEA2000 settings in JSON configuration
+- System daemon auto-restart (10s interval)
