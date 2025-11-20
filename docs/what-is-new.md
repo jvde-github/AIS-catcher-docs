@@ -3,6 +3,7 @@
 ## Edge (Latest Development)
 
 ### Enhanced Features
+- **Online NMEA decoder**: Built-in NMEA decoder in the local webviewer
 - **Kiosk Mode**: Full-screen display mode for dedicated monitoring setups
 - **MSGFORMAT Configuration**: Flexible output format definitions for customized data presentation
 - **Extended Binary Messages**: Additional binary message types now decoded and displayed
