@@ -141,6 +141,7 @@ Server Options:
 | <span class="cmd-setting">BACKUP</span> | integer | <span class="cmd-value">-1</span> | Backup interval (5-2880 min) |
 | <span class="cmd-setting">FILE</span> | string | <span class="cmd-value">-</span> | Statistics file path |
 | <span class="cmd-setting">REALTIME</span> | boolean | <span class="cmd-value">false</span> | Enable real-time updates |
+| <span class="cmd-setting">DECODER</span> | boolean | <span class="cmd-value">false</span> | Enable online NMEA decoder |
 | | | | |
 | Output Formats | | | |
 | <span class="cmd-setting">KML</span> | boolean | <span class="cmd-value">false</span> | Enable KML output |
