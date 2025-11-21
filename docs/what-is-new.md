@@ -3,9 +3,10 @@
 ## Edge (Latest Development)
 
 ### Enhanced Features
+- **Data throughput**: significant reduction in data throughput to community hub
 - **Online NMEA decoder**: Built-in NMEA decoder in the local webviewer
 - **Kiosk Mode**: Full-screen display mode for dedicated monitoring setups
-- **MSGFORMAT Configuration**: Flexible output format definitions for customized data presentation
+- **MSGFORMAT Configuration**: Flexible output format definitions for customized data presentation. Introduction of msgformat binary_nmea to save on bandwidth
 - **Extended Binary Messages**: Additional binary message types now decoded and displayed
 - **Verbose JSON Output** (`-o 6`): Enhanced JSON format with detailed field descriptions (WIP)
 - **Debian Trixie Support**: Compatibility with Debian 13 (Trixie)
