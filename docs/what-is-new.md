@@ -1,6 +1,6 @@
 # What's New?
 
-## Edge (Latest Development)
+## Version 0.63
 
 ### Enhanced Features
 - **Data throughput**: significant reduction in data throughput to community hub
