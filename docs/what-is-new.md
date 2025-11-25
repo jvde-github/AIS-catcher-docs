@@ -4,7 +4,7 @@
 
 ### Enhanced Features
 
-- **NMEA 4.0 Tag Blocks**: support for NMEA tag blocks (`msgformat nmea_tag` for networking or `-o 7` for screen. Note that when reading the timestamps are overwritten by default which can be switched off with `-go stamp off`
+- **NMEA 4.0 Tag Blocks**: support for NMEA tag blocks (`msgformat nmea_tag` for networking or `-o 7` for screen). Note that when reading the timestamps are overwritten by default which can be switched off with `-go stamp off`
 
 ## Version 0.63
 
