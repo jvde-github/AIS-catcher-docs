@@ -3,6 +3,12 @@
 ## Version 0.63
 
 ### Enhanced Features
+
+- **NMEA 4.0 Tag Blocks**: support for NMEA tag blocks (`msgformat nmea_tag` for networking or `-o 7` for screen. Note that when reading the timestamps are overwritten by default which can be switched off with `-go stamp off`
+
+## Version 0.63
+
+### Enhanced Features
 - **Data throughput**: significant reduction in data throughput to community hub
 - **Online NMEA decoder**: Built-in NMEA decoder in the local webviewer
 - **Kiosk Mode**: Full-screen display mode for dedicated monitoring setups
