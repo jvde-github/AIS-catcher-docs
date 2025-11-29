@@ -56,7 +56,8 @@ feed various aggregators with excellent documentation and user support by the sd
 ## Docker with Web GUI
 If you are already up and running with Docker installed, you can simply use:
 ```console
-docker run --privileged -v /dev/bus/usb:/dev/bus/usb -p 8110:8110 -p 8100:8100 --pull=always ghcr.io/jvde-github/ais-catcher-control:edge
+wget https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/refs/heads/main/docker-compose.yml
+docker-compose up -d
 ```
 
 ---
