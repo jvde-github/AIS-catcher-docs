@@ -57,7 +57,7 @@ feed various aggregators with excellent documentation and user support by the sd
 If you are already up and running with Docker installed, you can simply use:
 ```console
 wget https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/refs/heads/main/docker-compose.yml
-docker-compose up -d
+docker compose up -d
 ```
 
 ---
