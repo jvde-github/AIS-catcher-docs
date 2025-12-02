@@ -1,5 +1,13 @@
 # What's New?
 
+## Version 0.65
+
+Various updates to improve stability, security and minor bug fixes.
+
+## Version 0.64
+
+Various updates to improve stability, security and minor bug fixes.
+
 ## Version 0.63
 
 ### Enhanced Features
