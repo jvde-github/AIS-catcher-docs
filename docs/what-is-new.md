@@ -1,10 +1,12 @@
 # What's New?
 
-## Version 0.65
+## Edge version
 
-Various updates to improve stability, security and minor bug fixes.
-
-## Version 0.64
+- Remodelling of realtime NMEA tab with options to filter on MMSI and share NMEA lines with decoder tab for message parsing
+- Option to track NMEA in webviewer for a specific ship or station
+- Shortcut to measure distance between two objects or points is now SHIFT-CLICK to select the first point. This should improve behaviour for devices that cannot distinguish between a left and right mouse click.
+  
+## Version 0.64 - 0.65
 
 Various updates to improve stability, security and minor bug fixes.
 
