@@ -20,13 +20,13 @@ In this case, AIS-catcher acts as a TCP client and connects to the remote listen
 ## Summary Settings
 
 <div class="input-table" markdown>
-| Key | Type | Default | Description |
+| Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
-| <span class="cmd-setting">HOST</span> | string | <span class="cmd-value">-</span> | Target TCP server host |
-| <span class="cmd-setting">PORT</span> | string | <span class="cmd-value">-</span> | Target TCP server port |
-| <span class="cmd-setting">KEEP_ALIVE</span> | boolean | <span class="cmd-value">false</span> | Enable TCP keep-alive |
-| <span class="cmd-setting">PERSIST</span> | boolean | <span class="cmd-value">true</span> | Keep trying to reconnect when connection fails |
-| <span class="cmd-setting">JSON</span> | boolean | <span class="cmd-value">false</span> | Enable JSON output format |
-| <span class="cmd-setting">JSON_FULL</span> | boolean | <span class="cmd-value">false</span> | Enable fully decoded JSON output |
-| <span class="cmd-setting">UUID</span> | string | <span class="cmd-value">-</span> | Unique identifier (must be valid UUID) |
+| <span class="cmd-setting">host</span> | string | <span class="cmd-value">-</span> | Target TCP server host |
+| <span class="cmd-setting">port</span> | string | <span class="cmd-value">-</span> | Target TCP server port |
+| <span class="cmd-setting">keep_alive</span> | boolean | <span class="cmd-value">false</span> | Enable TCP keep-alive |
+| <span class="cmd-setting">persist</span> | boolean | <span class="cmd-value">true</span> | Keep trying to reconnect when connection fails |
+| <span class="cmd-setting">json</span> | boolean | <span class="cmd-value">false</span> | Enable JSON output format |
+| <span class="cmd-setting">json_full</span> | boolean | <span class="cmd-value">false</span> | Enable fully decoded JSON output |
+| <span class="cmd-setting">uuid</span> | string | <span class="cmd-value">-</span> | Unique identifier (must be valid UUID) |
 </div>

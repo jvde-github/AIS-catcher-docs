@@ -99,6 +99,12 @@ Message decoding and processing. AIS-catcher includes various decoding models fo
 [***Output***](output/overview.md)  
 Examples: screen display, file logging, network streaming, database storage
 
+## Key Casing (CLI vs JSON)
+
+- In JSON configuration files, keys are case-sensitive and should be lowercase.
+- On the command line, setting names passed after a device/output switch (e.g. `-gr`, `-gm`, `-u`, `-H`) are not case-sensitive.
+- In this documentation, tables show setting names in lowercase to match JSON.
+
 
 ## Advanced Architecture
 For more complex setups, AIS-catcher supports multiple inputs with input-specific models:

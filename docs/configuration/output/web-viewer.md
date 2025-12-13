@@ -23,17 +23,17 @@ where ``8100`` is the port number. If your machine network name is raspberrypi, 
 
 For users wishing to include a station name and a link to an external website in the Statistics section:
 ```bash
-AIS-catcher -N STATION Southwood STATION_LINK http://example.com
+AIS-catcher -N station Southwood station_link http://example.com
 ```
 This could be a useful option if you want to offer the interface externally. To display the reception range and distances from your station, provide the program with the station coordinates and permission to share the location with the web viewer:
 ```bash
-AIS-catcher -N LAT 50 LON 3.141592 SHARE_LOC on
+AIS-catcher -N lat 50 lon 3.141592 share_loc on
 ```
 The last option `share_loc` (default is off) will allow the web viewer to access and display the location.
 
  The user can make a page in [markdown format](https://www.markdownguide.org/basic-syntax/). The content will be shown in the About tab of the web viewer:
 ```bash
-AIS-catcher -N 8100 ABOUT about.md
+AIS-catcher -N 8100 about about.md
 ```
 All these options can be captured in the configuration file (in a section with name ``server``), see below. 
 
@@ -70,7 +70,7 @@ The Plot section contains several visualizations to assess the performance of th
  Restarting AIS-catcher typically erases history in the graphs. To retain plot "state" and backup the information to a file use the following:
 
 ```bash
-AIS-catcher -N 8100 FILE stat.bin BACKUP 10
+AIS-catcher -N 8100 file stat.bin backup 10
 ```
 This will back up the plots when the program closes and every 10 minutes in a file `stat.bin`. The minimum backup interval is 5 minutes.
 
@@ -78,11 +78,11 @@ This will back up the plots when the program closes and every 10 minutes in a fi
 
 To give the user the option to tweak the look-and-feel and functionality of the web viewer and/or modify for example the color scheme or regional preferences, the program provides the option to inject custom plugins (JavaScript) and CSS into the website, with a command like:
 ```bash
-AIS-catcher -N 8100 PLUGIN plugin1.js PLUGIN plugin2.js STYLE mystyle.css
+AIS-catcher -N 8100 plugin plugin1.js plugin plugin2.js style mystyle.css
 ```
 You can also include all plugin files from a specific directory using the command:
 ```bash
-AIS-catcher -N 8100 PLUGIN_DIR /usr/share/aiscatcher/plugins
+AIS-catcher -N 8100 plugin_dir /usr/share/aiscatcher/plugins
 ```
 Files need to have the extension ``.pjs`` and ``.pss`` for respectively JavaScript and CSS style plugins. The repository includes a few example plugins that demonstrate how to add additional maps or cater to regional preferences. Examples of plugins can be found in [another](https://github.com/jvde-github/AIS-Catcher-PLUGINS) GitHub repository.
 
@@ -93,15 +93,15 @@ git clone https://github.com/jvde-github/webassets.git
 ```
 This will create a directory `webassets` that we need to share with AIS-catcher as an alternative location for online web content  with the CDN argument followed by the location of the web assets directory:
 ```bash
-AIS-catcher -N 8100 CDN /home/jasper/webassets
+AIS-catcher -N 8100 cdn /home/jasper/webassets
 ```
 Offline maps can also be included in `mbtiles` format:
 ```bash
-AIS-catcher  -N 8100 MBTILES filename
+AIS-catcher  -N 8100 mbtiles filename
 ```
 or as an overlay
 ```bash
-AIS-catcher  -N 8100 MBOVERLAY filename
+AIS-catcher  -N 8100 mboverlay filename
 ```
 
 ## Sending data to Prometheus for use in Grafana dashboards
@@ -109,7 +109,7 @@ AIS-catcher  -N 8100 MBOVERLAY filename
 You can add the option `PROME on` to the web configuration command to start rendering Prometheus-compatible statistics at `/metrics`. For example:
 
 ```bash
-AIS-catcher -N 8100 PROME on
+AIS-catcher -N 8100 prome on
 ```
 
 For more information on how to configure Prometheus and Grafana to get an initial dashboard, see [README-grafana.md](../../advanced/grafana.md).
@@ -119,44 +119,44 @@ For more information on how to configure Prometheus and Grafana to get an initia
 Server Options:
 
 <div class="input-table" markdown>
-| Key | Type | Default | Description |
+| Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
-| <span class="cmd-setting">PORT</span> | integer | <span class="cmd-value">-</span> | Single port for web server |
-| <span class="cmd-setting">PORT_MIN</span> | integer | <span class="cmd-value">-</span> | Minimum port in binding range |
-| <span class="cmd-setting">PORT_MAX</span> | integer | <span class="cmd-value">-</span> | Maximum port in binding range |
-| <span class="cmd-setting">IP_BIND</span> | string | <span class="cmd-value">-</span> | Server binding IP address |
-| <span class="cmd-setting">REUSE_PORT</span> | boolean | <span class="cmd-value">false</span> | Enable port reuse |
-| <span class="cmd-setting">ZLIB</span> | boolean | <span class="cmd-value">true</span> | Enable response compression |
+| <span class="cmd-setting">port</span> | integer | <span class="cmd-value">-</span> | Single port for web server |
+| <span class="cmd-setting">port_min</span> | integer | <span class="cmd-value">-</span> | Minimum port in binding range |
+| <span class="cmd-setting">port_max</span> | integer | <span class="cmd-value">-</span> | Maximum port in binding range |
+| <span class="cmd-setting">ip_bind</span> | string | <span class="cmd-value">-</span> | Server binding IP address |
+| <span class="cmd-setting">reuse_port</span> | boolean | <span class="cmd-value">false</span> | Enable port reuse |
+| <span class="cmd-setting">zlib</span> | boolean | <span class="cmd-value">true</span> | Enable response compression |
 | | | | |
 | Location Settings | | | |
-| <span class="cmd-setting">LAT</span> | float | <span class="cmd-value">-</span> | Station latitude |
-| <span class="cmd-setting">LON</span> | float | <span class="cmd-value">-</span> | Station longitude |
-| <span class="cmd-setting">SHARE_LOC</span> | boolean | <span class="cmd-value">false</span> | Share station location |
-| <span class="cmd-setting">USE_GPS</span> | boolean | <span class="cmd-value">false</span> | Use GPS data |
-| <span class="cmd-setting">OWN_MMSI</span> | integer | <span class="cmd-value">-</span> | Own vessel MMSI |
+| <span class="cmd-setting">lat</span> | float | <span class="cmd-value">-</span> | Station latitude |
+| <span class="cmd-setting">lon</span> | float | <span class="cmd-value">-</span> | Station longitude |
+| <span class="cmd-setting">share_loc</span> | boolean | <span class="cmd-value">false</span> | Share station location |
+| <span class="cmd-setting">use_gps</span> | boolean | <span class="cmd-value">false</span> | Use GPS data |
+| <span class="cmd-setting">own_mmsi</span> | integer | <span class="cmd-value">-</span> | Own vessel MMSI |
 | | | | |
 | Data Management | | | |
-| <span class="cmd-setting">HISTORY</span> | integer | <span class="cmd-value">-</span> | History retention (5-43200 sec) |
-| <span class="cmd-setting">CUTOFF</span> | integer | <span class="cmd-value">-</span> | Max Distance treshold (0-10000) | 
-| <span class="cmd-setting">BACKUP</span> | integer | <span class="cmd-value">-1</span> | Backup interval (5-2880 min) |
-| <span class="cmd-setting">FILE</span> | string | <span class="cmd-value">-</span> | Statistics file path |
-| <span class="cmd-setting">REALTIME</span> | boolean | <span class="cmd-value">false</span> | Enable real-time updates |
-| <span class="cmd-setting">DECODER</span> | boolean | <span class="cmd-value">false</span> | Enable online NMEA decoder |
+| <span class="cmd-setting">history</span> | integer | <span class="cmd-value">-</span> | History retention (5-43200 sec) |
+| <span class="cmd-setting">cutoff</span> | integer | <span class="cmd-value">-</span> | Max Distance treshold (0-10000) | 
+| <span class="cmd-setting">backup</span> | integer | <span class="cmd-value">-1</span> | Backup interval (5-2880 min) |
+| <span class="cmd-setting">file</span> | string | <span class="cmd-value">-</span> | Statistics file path |
+| <span class="cmd-setting">realtime</span> | boolean | <span class="cmd-value">false</span> | Enable real-time updates |
+| <span class="cmd-setting">decoder</span> | boolean | <span class="cmd-value">false</span> | Enable online NMEA decoder |
 | | | | |
 | Output Formats | | | |
-| <span class="cmd-setting">KML</span> | boolean | <span class="cmd-value">false</span> | Enable KML output |
-| <span class="cmd-setting">GEOJSON</span> | boolean | <span class="cmd-value">false</span> | Enable GeoJSON output |
-| <span class="cmd-setting">PROME</span> | boolean | <span class="cmd-value">false</span> | Enable Prometheus metrics |
-| <span class="cmd-setting">MESSAGE</span> | boolean | <span class="cmd-value">false</span> | Enable message saving |
+| <span class="cmd-setting">kml</span> | boolean | <span class="cmd-value">false</span> | Enable KML output |
+| <span class="cmd-setting">geojson</span> | boolean | <span class="cmd-value">false</span> | Enable GeoJSON output |
+| <span class="cmd-setting">prome</span> | boolean | <span class="cmd-value">false</span> | Enable Prometheus metrics |
+| <span class="cmd-setting">message</span> | boolean | <span class="cmd-value">false</span> | Enable message saving |
 | | | | |
 | UI Customization | | | | 
-| <span class="cmd-setting">STATION</span> | string | <span class="cmd-value">-</span> | Station display name |
-| <span class="cmd-setting">STATION_LINK</span> | string | <span class="cmd-value">-</span> | Station info URL |
-| <span class="cmd-setting">CDN</span> | string | <span class="cmd-value">-</span> | Local CDN resources path |
-| <span class="cmd-setting">MBTILES</span> | string | <span class="cmd-value">-</span> | Offline map in mbtiles format |
-| <span class="cmd-setting">MBOVERLAY</span> | string | <span class="cmd-value">-</span> | Offline overlay in mbtiles format |
-| <span class="cmd-setting">PLUGIN</span> | string | <span class="cmd-value">-</span> | JavaScript plugin path |
-| <span class="cmd-setting">STYLE</span> | string | <span class="cmd-value">-</span> | CSS style path |
-| <span class="cmd-setting">PLUGIN_DIR</span> | string | <span class="cmd-value">-</span> | Plugins directory |
-| <span class="cmd-setting">ABOUT</span> | string | <span class="cmd-value">-</span> | About page path |
+| <span class="cmd-setting">station</span> | string | <span class="cmd-value">-</span> | Station display name |
+| <span class="cmd-setting">station_link</span> | string | <span class="cmd-value">-</span> | Station info URL |
+| <span class="cmd-setting">cdn</span> | string | <span class="cmd-value">-</span> | Local CDN resources path |
+| <span class="cmd-setting">mbtiles</span> | string | <span class="cmd-value">-</span> | Offline map in mbtiles format |
+| <span class="cmd-setting">mboverlay</span> | string | <span class="cmd-value">-</span> | Offline overlay in mbtiles format |
+| <span class="cmd-setting">plugin</span> | string | <span class="cmd-value">-</span> | JavaScript plugin path |
+| <span class="cmd-setting">style</span> | string | <span class="cmd-value">-</span> | CSS style path |
+| <span class="cmd-setting">plugin_dir</span> | string | <span class="cmd-value">-</span> | Plugins directory |
+| <span class="cmd-setting">about</span> | string | <span class="cmd-value">-</span> | About page path |
 </div>

@@ -1,17 +1,17 @@
 # JSON Configuration
 
-AIS-catcher (v0.41+) supports extensive configuration through JSON files, enabling users to tailor the application to their specific needs. This guide provides an in-depth look at the JSON configuration structure, key settings, and best practices to help you effectively set up and manage AIS-catcher.
+AIS-catcher (v0.41+) supports extensive configuration through JSON files. This guide describes the JSON structure, key settings, and common patterns.
 
-To start AIS-catcher with a JSON configuration file, use the -C option followed by the path to your config.json file:
+To start AIS-catcher with a JSON configuration file, use the `-C` option followed by the path to your `config.json` file:
 
 ```bash
 AIS-catcher -C config.json
 ```
-This command instructs AIS-catcher to load and apply the settings defined in config.json.
+This loads and applies the settings from the JSON file.
 
 ## Basic Structure
 
-A minimal JSON configuration file for AIS-catcher requires the following structure:
+A JSON configuration file always starts with the configuration header:
 ```json
 {
     "config": "aiscatcher",
@@ -19,16 +19,48 @@ A minimal JSON configuration file for AIS-catcher requires the following structu
 }
 ```
 
-- config: Identifies the configuration type. Must be "aiscatcher".
-- version: Specifies the configuration version. Currently, only version 1 is supported.
+Where:
+
+- `config`: Identifies the configuration type. Must be `"aiscatcher"`.
+- `version`: Configuration version. Currently, only `1` is supported.
+
+
+This is the absolute minimal structure (just the first two keys). If no receiver is configured, AIS-catcher will use the default behaviour for selecting an input device.
+
+To select the RTL-SDR as an input device:
+```json
+{
+    "config": "aiscatcher",
+    "version": 1,
+    "receiver": [
+        {
+            "input": "rtlsdr"
+        }
+    ]
+}
+```
+
+
+> Note: older configurations allowed receiver selection at the root level (e.g. `input`, `serial`). This is legacy and may disappear in a future release. Prefer defining receivers in the `receiver` array. [^legacy-root-receiver]
+
+## Important Notes
+
+- JSON keys are case-sensitive and must be lowercase.
+- CLI setting names are not case-sensitive.
+- Define receivers in the `receiver` array (even for a single receiver).
+- Device sections (e.g. `rtlsdr`, `airspy`) configure the device, but do not select it. Use `input` (and optionally `serial`) inside each receiver object.
+- `active` is optional in any section; if omitted, it is assumed to be `true`.
+- Outputs like `udp` are arrays to support multiple output channels.
 
 ## Configuration Keys
 
-Configuration keys are organized into several categories to manage different aspects of AIS-catcher's functionality. Each key has a specific purpose and should be used as per the documentation.
+Configuration keys are grouped below by purpose.
 
-### Core Settings
+### General Overview
 
-Core but optional settings define fundamental aspects of AIS-catcher's operation.
+General (mostly optional) settings define fundamental aspects of AIS-catcher's operation.
+
+#### Root-level keys
 
 | Key | Type | Description | Documentation |
 |-----|------|-------------|---------------|
@@ -37,45 +69,65 @@ Core but optional settings define fundamental aspects of AIS-catcher's operation
 | `version` | number | 1 | |
 | `sharing` | boolean | Enable community feed sharing | [Community Feed](../configuration/output/community-feed.md) |
 | `sharing_key` | string | Community feed key | [Community Feed](../configuration/output/community-feed.md) |
-| **Receiver** |
-| `input` | string | Primary input device selection | rtlsdr/hackrf/etc |
-| `serial` | string | Device serial number | |
-| `verbose` | boolean | Enable verbose output | [Console Output](../configuration/output/console.md) |
-| `verbose_time` | number | Verbose update interval (seconds) | [Console Output](../configuration/output/console.md) |
-| `screen` | number | Screen output mode (0-5) | [Console Output](../configuration/output/console.md) |
-| `meta` | string | Metadata tags (T/D/M) | [Console Output](../configuration/output/console.md) |
+| **Receiver array** |
+| `receiver` | array | List of receiver objects (recommended even for a single receiver) [^legacy-root-receiver] | [Receiver configuration](#receiver-configuration-receiver-array) |
+| **Output channels** |
+| `server` | array | Web viewer configuration | [Web Viewer](../configuration/output/web-viewer.md) |
+| `udp` | array | UDP output configuration | [UDP Output](../configuration/output/UDP.md) |
+| `tcp` | array | TCP output configuration (client) | [TCP Output](../configuration/output/TCP-server.md) |
+| `tcp_listener` | array | TCP output configuration (server) | [TCP Output](../configuration/output/TCP-server.md) |
+| `http` | array | HTTP output configuration | [HTTP Output](../configuration/output/HTTP.md) |
+| `mqtt` | array | MQTT output configuration | [MQTT Output](../configuration/output/MQTT.md) |
+
+#### Receiver configuration (`receiver` array)
+
+The root-level `receiver` key contains an array of receiver objects. This is the recommended structure going forward.
+
+##### Receiver object keys
+
+Each entry in the root-level `receiver` array is a receiver object. These keys live *inside* each receiver object:
+
+| Key | Type | Description | Documentation |
+|-----|------|-------------|---------------|
+| `input` | string | Selects the input device type for this receiver (e.g. `rtlsdr`, `airspy`, `spyserver`, ...) | [Input Overview](../configuration/input/overview.md) |
+| `serial` | string/number | Receiver identifier (recommended; also used to target per-receiver CLI overrides in some setups) | |
+| `verbose` | boolean | Enable verbose output for this receiver | [Console Output](../configuration/output/console.md) |
+| `verbose_time` | number | Verbose update interval (seconds) for this receiver | [Console Output](../configuration/output/console.md) |
+| `screen` | number | Screen output mode (0-5) for this receiver | [Console Output](../configuration/output/console.md) |
+| `meta` | string | Metadata tags (T/D/M) for this receiver | [Console Output](../configuration/output/console.md) |
 | `own_mmsi` | number | Own MMSI of receiver station | |
-| `model` | object | Decoder model configuration | [Model](../configuration/model/) |
+| `<device section>` | object | Device-specific configuration object matching `input` (e.g. `rtlsdr`, `airspy`, ...). See examples in [Input Device Settings](#input-device-settings). | [Input Overview](../configuration/input/overview.md) |
+| `model` | object | Decoder model configuration for this receiver | [Model](../configuration/model.md) |
 
-- `config`: Must always be set to "aiscatcher" to identify the configuration type.
+##### Multi-receiver example
 
-- `version`: Defines the configuration file version. Ensure it is set to 1 as this is the currently supported version.
+Example with two receivers:
+```json
+{
+    "config": "aiscatcher",
+    "version": 1,
+    "receiver": [
+        {
+            "input": "airspy",
+            "serial": "airspy",
+            "airspy": {
+                "sample_rate": "3000K"
+            }
+        },
+        {
+            "input": "rtlsdr",
+            "serial": "ais",
+            "rtlsdr": {
+                "bandwidth": "192k"
+            }
+        }
+    ]
+}
+```
 
-- `sharing`: Enables sharing of AIS data with the AIS-catcher community feed, allowing others to access your AIS data and vice versa.
+In this example, each receiver selects a device via `input`, is optionally named via `serial`, and is configured via its device section (e.g. `rtlsdr`, `airspy`).
 
-- `sharing_key`: A unique key obtained from [aiscatcher.org](https://aiscatcher.org/addstation_ac) to easily share your AIS data with the community.
-
--   `input`: Specifies the primary input device for AIS data (e.g., "rtlsdr", "airspy", etc).
-
-- `serial`: Defines the serial number of the device to be used. Useful when multiple devices are connected.
-
-- `verbose`: When set to true, AIS-catcher provides detailed logs and output for debugging purposes.
-
-- `screen`: Controls the verbosity and format of the console output. Values range from 0 (no output) to 5 (full JSON decoding). 
-
-- `meta`: Metadata tags to include in output. Use "T" for NMEA timestamp, "D" for decoder data (signal power, ppm), "M" for MMSI country info. Can be combined (e.g., "TD", "TDM").
-
-- `own_mmsi`: Sets the MMSI number of the receiving station. Used for NMEA2000 output and web viewer location sharing.
-
-- `model`: Configuration object for decoder model settings. See model documentation for available options.
-
-
->## Important Notes
->
->JSON is case-sensitive; all keys must be lowercase. Device-specific sections only configure the device but don't select it - use `input` or `serial` for device selection. 
->The `active` boolean in any section enables/disables that configuration and if ommited it is assumed to be active.
->
->Outputs are often captured in a JSON-array, like for example for `udp`, to support multiple output channels.
+[^legacy-root-receiver]: Legacy configurations may use root-level `input` / `serial` to define a single receiver. This still works in some versions, but is discouraged and may be removed in a future release. Prefer putting `input` (and `serial`) inside each receiver object under `receiver`.
 
 ## Input Device Settings
 
@@ -292,32 +344,6 @@ AIS-catcher supports various input devices. Each device type has specific config
 ```
 </details>
 [Full ZMQ Documentation](../configuration/input/tcp.md)
-
-## Multi-Receiver Configuration
-
-For multiple receivers,  you can move the relevant above settings to a `receiver` array as in this example
-starting two receivers:
-```json
-{
-    "config": "aiscatcher",
-    "version": 1,
-    "receiver": [
-        {
-            "input": "airspy",
-            "airspy": {
-                "sample_rate": "3000K"
-            }
-        },
-        {
-            "input": "rtlsdr",
-            "serial": "ais",
-            "rtlsdr": {
-                "bandwidth": "192k"
-            }
-        }
-    ]
-}
-```
 
 ## Output Settings
 

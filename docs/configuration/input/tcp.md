@@ -48,39 +48,39 @@ Use the appropriate protocol based on your server's configuration and data forma
 ### Summary Settings
 
 <div class="input-table" markdown>
-| Key | Type | Default | Description |
+| Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
 | Generic Options | | | |
-| <span class="cmd-setting">SAMPLE_RATE</span> | integer | <span class="cmd-value">288K</span> | Sampling rate in Hz (0-20,000,000) |
-| <span class="cmd-setting">BANDWIDTH</span> | integer | <span class="cmd-value">0</span> | Tuner bandwidth in Hz (0-1,000,000) |
-| <span class="cmd-setting">FREQOFFSET</span> | integer | <span class="cmd-value">0</span> | Frequency correction in PPM (-150 to +150) |
-| <span class="cmd-setting">FORMAT</span> | string | <span class="cmd-value">CU8</span> | Data type for input source |
+| <span class="cmd-setting">sample_rate</span> | integer | <span class="cmd-value">288K</span> | Sampling rate in Hz (0-20,000,000) |
+| <span class="cmd-setting">bandwidth</span> | integer | <span class="cmd-value">0</span> | Tuner bandwidth in Hz (0-1,000,000) |
+| <span class="cmd-setting">freqoffset</span> | integer | <span class="cmd-value">0</span> | Frequency correction in PPM (-150 to +150) |
+| <span class="cmd-setting">format</span> | string | <span class="cmd-value">CU8</span> | Data type for input source |
 | Specific Options | | | |
-| <span class="cmd-setting">HOST</span> | string | <span class="cmd-value">-</span> | Remote host address |
-| <span class="cmd-setting">PORT</span> | string | <span class="cmd-value">-</span> | Remote port number |
-| <span class="cmd-setting">PROTOCOL</span> | string | <span class="cmd-value">rtltcp</span> | Protocol (RTLTCP/MQTT/GPSD/WS/WSMQTT) |
-| <span class="cmd-setting">URL</span> | string | <span class="cmd-value">-</span> | Complete URL including protocol and credentials |
+| <span class="cmd-setting">host</span> | string | <span class="cmd-value">-</span> | Remote host address |
+| <span class="cmd-setting">port</span> | string | <span class="cmd-value">-</span> | Remote port number |
+| <span class="cmd-setting">protocol</span> | string | <span class="cmd-value">rtltcp</span> | Protocol (RTLTCP/MQTT/GPSD/WS/WSMQTT) |
+| <span class="cmd-setting">url</span> | string | <span class="cmd-value">-</span> | Complete URL including protocol and credentials |
 | | | | |
 | TCP Options | | | |
-| <span class="cmd-setting">PERSISTENT</span> | boolean | <span class="cmd-value">true</span> | Keep connection alive after errors |
-| <span class="cmd-setting">KEEP_ALIVE</span> | boolean | <span class="cmd-value">false</span> | Enable TCP keepalive |
-| <span class="cmd-setting">RESET</span> | integer | <span class="cmd-value">-1</span> | Reset connection after N minutes (-1=never) |
-| <span class="cmd-setting">TIMEOUT</span> | integer | <span class="cmd-value">0</span> | Connection timeout in seconds |
+| <span class="cmd-setting">persistent</span> | boolean | <span class="cmd-value">true</span> | Keep connection alive after errors |
+| <span class="cmd-setting">keep_alive</span> | boolean | <span class="cmd-value">false</span> | Enable TCP keepalive |
+| <span class="cmd-setting">reset</span> | integer | <span class="cmd-value">-1</span> | Reset connection after N minutes (-1=never) |
+| <span class="cmd-setting">timeout</span> | integer | <span class="cmd-value">0</span> | Connection timeout in seconds |
 | | | | |
 | WebSocket Options | | | |
-| <span class="cmd-setting">PROTOCOLS</span> | string | <span class="cmd-value">mqtt</span> | WebSocket sub-protocols |
-| <span class="cmd-setting">BINARY</span> | boolean | <span class="cmd-value">on</span> | Enable binary WebSocket mode |
-| <span class="cmd-setting">ORIGIN</span> | string | <span class="cmd-value">-</span> | Origin header for WebSocket |
+| <span class="cmd-setting">protocols</span> | string | <span class="cmd-value">mqtt</span> | WebSocket sub-protocols |
+| <span class="cmd-setting">binary</span> | boolean | <span class="cmd-value">on</span> | Enable binary WebSocket mode |
+| <span class="cmd-setting">origin</span> | string | <span class="cmd-value">-</span> | Origin header for WebSocket |
 | | | | |
 | MQTT Options | | | |
-| <span class="cmd-setting">TOPIC</span> | string | <span class="cmd-value">ais/data</span> | MQTT topic |
-| <span class="cmd-setting">CLIENT_ID</span> | string | <span class="cmd-value">-</span> | MQTT client identifier |
-| <span class="cmd-setting">USERNAME</span> | string | <span class="cmd-value">-</span> | MQTT username |
-| <span class="cmd-setting">PASSWORD</span> | string | <span class="cmd-value">-</span> | MQTT password |
-| <span class="cmd-setting">QOS</span> | integer | <span class="cmd-value">0</span> | MQTT QoS level (0-2) |
+| <span class="cmd-setting">topic</span> | string | <span class="cmd-value">ais/data</span> | MQTT topic |
+| <span class="cmd-setting">client_id</span> | string | <span class="cmd-value">-</span> | MQTT client identifier |
+| <span class="cmd-setting">username</span> | string | <span class="cmd-value">-</span> | MQTT username |
+| <span class="cmd-setting">password</span> | string | <span class="cmd-value">-</span> | MQTT password |
+| <span class="cmd-setting">qos</span> | integer | <span class="cmd-value">0</span> | MQTT QoS level (0-2) |
 | | | | |
 | RTLTCP Options | | | |
-| <span class="cmd-setting">TUNER</span> | float | <span class="cmd-value">33.0</span> | Tuner gain (0-50, auto) |
-| <span class="cmd-setting">RTLAGC</span> | boolean | <span class="cmd-value">false</span> | Enable RTL AGC |
-| <span class="cmd-setting">FREQUENCY</span> | integer | <span class="cmd-value">0</span> | Frequency in Hz |
+| <span class="cmd-setting">tuner</span> | float | <span class="cmd-value">33.0</span> | Tuner gain (0-50, auto) |
+| <span class="cmd-setting">rtlagc</span> | boolean | <span class="cmd-value">false</span> | Enable RTL AGC |
+| <span class="cmd-setting">frequency</span> | integer | <span class="cmd-value">0</span> | Frequency in Hz |
 </div>

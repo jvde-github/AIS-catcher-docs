@@ -90,6 +90,11 @@ For RTL-SDR devices performance can be sensitive to the device settings. In gene
 ```bash
 AIS-catcher -gr RTLAGC on TUNER auto -a 192K
 ```
+Note on casing:
+
+- CLI device-setting names and boolean-ish values are not case-sensitive (e.g. `RTLAGC`, `rtlagc`, `ON`, `on` are equivalent).
+- JSON configuration keys are case-sensitive and should be lowercase (see [JSON configuration](json-configuration.md)).
+
 It has been reported by several users that adding a bandwidth setting of ``-a 192K`` can be beneficial so it is worthwhile to try with and without this filter. Finding the best settings for your hardware requires some systematic experimentation whereby one parameter is changed at a time, e.g. switch RTLAGC ``on`` or ``off``, set the TUNER to ``auto`` or try fixed tuner gains between 0 and 50. 
 
 The hardware settings available depend on the specific SDR and more details can be found in our [Configuration Section](../configuration/overview.md).

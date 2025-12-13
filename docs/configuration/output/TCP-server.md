@@ -22,10 +22,10 @@ Use the `JSON` option or `JSON_FULL` option to send data packaged in a JSON obje
 ## Summary Settings
 
 <div class="input-table" markdown>
-| Key | Type | Default | Description |
+| Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
-| <span class="cmd-setting">PORT</span> | integer | <span class="cmd-value">5010</span> | Listen port (0-65535) |
-| <span class="cmd-setting">TIMEOUT</span> | integer | <span class="cmd-value">-</span> | Connection timeout |
-| <span class="cmd-setting">JSON</span> | boolean | <span class="cmd-value">false</span> | Enable JSON output format |
-| <span class="cmd-setting">JSON_FULL</span> | boolean | <span class="cmd-value">false</span> | Enable fully decoded JSON output |
+| <span class="cmd-setting">port</span> | integer | <span class="cmd-value">5010</span> | Listen port (0-65535) |
+| <span class="cmd-setting">timeout</span> | integer | <span class="cmd-value">-</span> | Connection timeout |
+| <span class="cmd-setting">json</span> | boolean | <span class="cmd-value">false</span> | Enable JSON output format |
+| <span class="cmd-setting">json_full</span> | boolean | <span class="cmd-value">false</span> | Enable fully decoded JSON output |
 </div>

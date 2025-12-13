@@ -75,7 +75,7 @@ Finally, you can also receive NMEA input via a built-in UDP server:
 AIS-catcher -x 192.168.1.235 4002
 ```
 
-The functionality to read NMEA lines from text files has been used to validate AIS-catcher JSON output on a [file](https://www.aishub.net/ais-dispatcher) with 80K+ lines against [pyais](https://pypi.org/project/pyais/) and [gpsdecode](https://gpsd.io/gpsdecode.html). Only available switches for this decoder are ``-go NMEA_REFRESH`` and ``-go CRC_CHECK`` which force AIS-catcher to, respectively, recalculate the NMEA lines if ``on`` (default ``off``) and ignore messages with incorrect CRC if ``on`` (default ``off``). Example: 
+The functionality to read NMEA lines from text files has been used to validate AIS-catcher JSON output on a [file](https://www.aishub.net/ais-dispatcher) with 80K+ lines against [pyais](https://pypi.org/project/pyais/) and [gpsdecode](https://gpsd.io/gpsdecode.html). Only available switches for this decoder are ``-go nmea_refresh`` and ``-go crc_check`` which force AIS-catcher to, respectively, recalculate the NMEA lines if ``on`` (default ``off``) and ignore messages with incorrect CRC if ``on`` (default ``off``). Example: 
 ```bash
 echo '$AIVDM,1,1,,,3776k`5000a3SLPEKnDQQWpH0000,0*79' | AIS-catcher -r txt . -n -go nmea_refresh on crc_check off
 ```
@@ -85,32 +85,32 @@ returns a warning on the incorrect CRC and:
 ```
 Note that CRC/checksum is the simple xor-checksum for validating that the NMEA line is not corrupted and not the CRC that is transmitted with the AIS message for a decoder to check the correct reception over air. This latter 16-bit checksum/CRC is not included in the NMEA message.
 
-AIS-catcher will also accept AIVDO input which is typically used for the MMSI of the own ship. You can enable/disable this with: `-go VDO on/off`.
+AIS-catcher will also accept AIVDO input which is typically used for the MMSI of the own ship. You can enable/disable this with: `-go vdo on/off`.
 
 ## Model Settings
 
 ### Common Settings
-| Key | Type | Default | Description |
+| Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
-| <span class="cmd-setting">DROOP</span> | boolean | <span class="cmd-value">true</span> | Enable droop compensation in CIC5 filters |
-| <span class="cmd-setting">FP_DS</span> | boolean | <span class="cmd-value">false</span> | Enable fixed-point downsampling |
-| <span class="cmd-setting">STATION_ID</span> | integer | <span class="cmd-value">0</span> | Station identifier |
-| <span class="cmd-setting">OWN_MMSI</span> | integer | <span class="cmd-value">-1</span> | Own vessel MMSI |
+| <span class="cmd-setting">droop</span> | boolean | <span class="cmd-value">true</span> | Enable droop compensation in CIC5 filters |
+| <span class="cmd-setting">fp_ds</span> | boolean | <span class="cmd-value">false</span> | Enable fixed-point downsampling |
+| <span class="cmd-setting">station_id</span> | integer | <span class="cmd-value">0</span> | Station identifier |
+| <span class="cmd-setting">own_mmsi</span> | integer | <span class="cmd-value">-1</span> | Own vessel MMSI |
 
 ### Downsampling Options
-| Key | Type | Default | Description |
+| Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
-| <span class="cmd-setting">SOXR</span> | boolean | <span class="cmd-value">false</span> | Use SOXR resampler |
-| <span class="cmd-setting">SRC</span> | boolean | <span class="cmd-value">false</span> | Use SRC resampler |
-| <span class="cmd-setting">MA</span> | boolean | <span class="cmd-value">false</span> | Use moving average downsampling |
+| <span class="cmd-setting">soxr</span> | boolean | <span class="cmd-value">false</span> | Use SOXR resampler |
+| <span class="cmd-setting">src</span> | boolean | <span class="cmd-value">false</span> | Use SRC resampler |
+| <span class="cmd-setting">ma</span> | boolean | <span class="cmd-value">false</span> | Use moving average downsampling |
 
 ### NMEA Model Settings
-| Key | Type | Default | Description |
+| Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
-| <span class="cmd-setting">NMEA_REFRESH</span> | boolean | <span class="cmd-value">false</span> | Recalculate NMEA lines |
-| <span class="cmd-setting">CRC_CHECK</span> | boolean | <span class="cmd-value">false</span> | Enable CRC validation |
-| <span class="cmd-setting">VDO</span> | boolean | <span class="cmd-value">true</span> | Accept AIVDO messages |
-| <span class="cmd-setting">STAMP</span> | boolean | <span class="cmd-value">false</span> | Add timestamps |
-| <span class="cmd-setting">GPS</span> | boolean | <span class="cmd-value">false</span> | Enable GPS output |
-| <span class="cmd-setting">UUID</span> | string | <span class="cmd-value">-</span> | Set UUID for messages |
-| <span class="cmd-setting">WARNINGS</span> | boolean | <span class="cmd-value">true</span> | Show warning messages |
+| <span class="cmd-setting">nmea_refresh</span> | boolean | <span class="cmd-value">false</span> | Recalculate NMEA lines |
+| <span class="cmd-setting">crc_check</span> | boolean | <span class="cmd-value">false</span> | Enable CRC validation |
+| <span class="cmd-setting">vdo</span> | boolean | <span class="cmd-value">true</span> | Accept AIVDO messages |
+| <span class="cmd-setting">stamp</span> | boolean | <span class="cmd-value">false</span> | Add timestamps |
+| <span class="cmd-setting">gps</span> | boolean | <span class="cmd-value">false</span> | Enable GPS output |
+| <span class="cmd-setting">uuid</span> | string | <span class="cmd-value">-</span> | Set UUID for messages |
+| <span class="cmd-setting">warnings</span> | boolean | <span class="cmd-value">true</span> | Show warning messages |

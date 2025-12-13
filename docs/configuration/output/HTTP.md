@@ -14,7 +14,7 @@
 
 Some cloud services collecting AIS data prefer messages to be periodically posted via the HTTP protocol, for example, [APRS.fi](https://aprs.fi). As per version 0.29, AIS-catcher can do this directly via the ``-H`` switch. For example:
 ```console
-AIS-catcher -r posterholt.raw -v 60 -H http://localhost:8000 INTERVAL 10 ID MyStation
+AIS-catcher -r posterholt.raw -v 60 -H http://localhost:8000 interval 10 id MyStation
 ```
 will post JSON with the following layout every 10 seconds:
 
@@ -44,13 +44,13 @@ will post JSON with the following layout every 10 seconds:
 ```
 We can use this functionality to submit data to [APRS.fi](https://aprs.fi) directly without the need of middleware:
 ```console
-AIS-catcher -H http://aprs.fi/jsonais/post/secret-key ID callsign PROTOCOL aprs INTERVAL 30 -q
+AIS-catcher -H http://aprs.fi/jsonais/post/secret-key id callsign protocol aprs interval 30 -q
 ```
 Where ``secret-key`` should be your password and ``callsign`` your callsign.  The ``PROTOCOL`` setting instructs AIS-catcher to submit JSON in a form that is accepted by APRS.fi which is a multi-form HTTP message. The response from the server will be printed on screen, if you want to show this message only in case of an error, add `RESPONSE OFF` to the argument.
 
 Another example of this HTTP feed functionality is to provide data to [Chaos Consulting](https://adsb.chaos-consulting.de/map/) without the need to install any additional scripts. The Chaos Consulting server has been set up so that it can read the AIS-catcher JSON format as per above:
 ```console
-AIS-catcher -H https://ais.chaos-consulting.de/shipin/index.php USERPWD Station:Password GZIP on INTERVAL 5
+AIS-catcher -H https://ais.chaos-consulting.de/shipin/index.php userpwd Station:Password gzip on interval 5
 ```
 Notice that this server requires authentication with a station name and password and accepts JSON with gzip encoding which significantly reduces bandwidth. 
 
@@ -64,18 +64,18 @@ The supported protocol switches are ``AISCATCHER`` (default), ``MINIMAL`` (NMEA 
 
 ## Summary Settimgs
 
-| Key | Type | Default | Description |
+| Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
-| <span class="cmd-setting">URL</span> | string | <span class="cmd-value">-</span> | Target HTTP endpoint URL |
-| <span class="cmd-setting">USERPWD</span> | string | <span class="cmd-value">-</span> | Authentication credentials |
-| <span class="cmd-setting">STATIONID</span> | string | <span class="cmd-value">-</span> | Station identifier |
-| <span class="cmd-setting">INTERVAL</span> | integer | <span class="cmd-value">60</span> | Post interval in seconds (1-86400) |
-| <span class="cmd-setting">TIMEOUT</span> | integer | <span class="cmd-value">10</span> | Connection timeout in seconds (1-30) |
-| <span class="cmd-setting">GZIP</span> | boolean | <span class="cmd-value">false</span> | Enable GZIP compression |
-| <span class="cmd-setting">RESPONSE</span> | boolean | <span class="cmd-value">true</span> | Show response messages |
-| <span class="cmd-setting">PROTOCOL</span> | string | <span class="cmd-value">AISCATCHER</span> | Protocol type (AISCATCHER/MINIMAL/AIRFRAMES/LIST/APRS/NMEA) |
-| <span class="cmd-setting">LAT</span> | float | <span class="cmd-value">0.0</span> | Station latitude |
-| <span class="cmd-setting">LON</span> | float | <span class="cmd-value">0.0</span> | Station longitude |
-| <span class="cmd-setting">DEVICE_SETTING</span> | string | <span class="cmd-value">N/A</span> | Device settings |
+| <span class="cmd-setting">url</span> | string | <span class="cmd-value">-</span> | Target HTTP endpoint URL |
+| <span class="cmd-setting">userpwd</span> | string | <span class="cmd-value">-</span> | Authentication credentials |
+| <span class="cmd-setting">stationid</span> | string | <span class="cmd-value">-</span> | Station identifier |
+| <span class="cmd-setting">interval</span> | integer | <span class="cmd-value">60</span> | Post interval in seconds (1-86400) |
+| <span class="cmd-setting">timeout</span> | integer | <span class="cmd-value">10</span> | Connection timeout in seconds (1-30) |
+| <span class="cmd-setting">gzip</span> | boolean | <span class="cmd-value">false</span> | Enable GZIP compression |
+| <span class="cmd-setting">response</span> | boolean | <span class="cmd-value">true</span> | Show response messages |
+| <span class="cmd-setting">protocol</span> | string | <span class="cmd-value">AISCATCHER</span> | Protocol type (AISCATCHER/MINIMAL/AIRFRAMES/LIST/APRS/NMEA) |
+| <span class="cmd-setting">lat</span> | float | <span class="cmd-value">0.0</span> | Station latitude |
+| <span class="cmd-setting">lon</span> | float | <span class="cmd-value">0.0</span> | Station longitude |
+| <span class="cmd-setting">device_setting</span> | string | <span class="cmd-value">N/A</span> | Device settings |
 
 Note: filter and routing options can be set as per [generic output settings](overview.md)

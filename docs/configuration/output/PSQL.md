@@ -59,20 +59,20 @@ I hope this is sufficient to get you experimenting! Unfortunately, the options c
 ## Summary Settings
 
 <div class="input-table" markdown>
-| Key | Type | Default | Description |
+| Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
-| <span class="cmd-setting">CONN_STR</span> | string | <span class="cmd-value">dbname=ais</span> | PostgreSQL connection string |
-| <span class="cmd-setting">STATION_ID</span> | integer | <span class="cmd-value">0</span> | Station identifier |
-| <span class="cmd-setting">INTERVAL</span> | integer | <span class="cmd-value">10</span> | Database write interval (5-1800 sec) |
-| <span class="cmd-setting">MAX_FAILS</span> | integer | <span class="cmd-value">10</span> | Max failed connection attempts |
+| <span class="cmd-setting">conn_str</span> | string | <span class="cmd-value">dbname=ais</span> | PostgreSQL connection string |
+| <span class="cmd-setting">station_id</span> | integer | <span class="cmd-value">0</span> | Station identifier |
+| <span class="cmd-setting">interval</span> | integer | <span class="cmd-value">10</span> | Database write interval (5-1800 sec) |
+| <span class="cmd-setting">max_fails</span> | integer | <span class="cmd-value">10</span> | Max failed connection attempts |
 | | | | |
 | Table Options | | | |
-| <span class="cmd-setting">V</span> | boolean | <span class="cmd-value">true</span> | Enable vessel table logging |
-| <span class="cmd-setting">MSGS</span> | boolean | <span class="cmd-value">false</span> | Enable message table logging |
-| <span class="cmd-setting">NMEA</span> | boolean | <span class="cmd-value">false</span> | Enable NMEA sentence logging |
-| <span class="cmd-setting">BS</span> | boolean | <span class="cmd-value">false</span> | Enable basestation logging |
-| <span class="cmd-setting">SAR</span> | boolean | <span class="cmd-value">false</span> | Enable SAR position logging |
-| <span class="cmd-setting">ATON</span> | boolean | <span class="cmd-value">false</span> | Enable AtoN logging |
-| <span class="cmd-setting">VP</span> | boolean | <span class="cmd-value">false</span> | Enable vessel position logging |
-| <span class="cmd-setting">VS</span> | boolean | <span class="cmd-value">false</span> | Enable vessel static data logging |
+| <span class="cmd-setting">v</span> | boolean | <span class="cmd-value">true</span> | Enable vessel table logging |
+| <span class="cmd-setting">msgs</span> | boolean | <span class="cmd-value">false</span> | Enable message table logging |
+| <span class="cmd-setting">nmea</span> | boolean | <span class="cmd-value">false</span> | Enable NMEA sentence logging |
+| <span class="cmd-setting">bs</span> | boolean | <span class="cmd-value">false</span> | Enable basestation logging |
+| <span class="cmd-setting">sar</span> | boolean | <span class="cmd-value">false</span> | Enable SAR position logging |
+| <span class="cmd-setting">aton</span> | boolean | <span class="cmd-value">false</span> | Enable AtoN logging |
+| <span class="cmd-setting">vp</span> | boolean | <span class="cmd-value">false</span> | Enable vessel position logging |
+| <span class="cmd-setting">vs</span> | boolean | <span class="cmd-value">false</span> | Enable vessel static data logging |
 </div>

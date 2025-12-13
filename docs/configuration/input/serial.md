@@ -29,15 +29,15 @@ To dump the raw input from the serial device on-screen use `-`ge print on`.
 ## Summary Settings
 
 <div class="input-table" markdown>
-| Key | Type | Default | Description |
+| Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
 | Generic Options | | | |
-| <span class="cmd-setting">SAMPLE_RATE</span> | integer | <span class="cmd-value">N/A</span> | Sampling rate in Hz (0-20,000,000) |
-| <span class="cmd-setting">BANDWIDTH</span> | integer | <span class="cmd-value">0</span> | Tuner bandwidth in Hz (0-1,000,000, 0=off) |
-| <span class="cmd-setting">FREQOFFSET</span> | integer | <span class="cmd-value">0</span> | Frequency correction in PPM (-150 to +150) |
-| <span class="cmd-setting">FORMAT</span> | string | <span class="cmd-value">TXT</span> | Data type for input source |
+| <span class="cmd-setting">sample_rate</span> | integer | <span class="cmd-value">N/A</span> | Sampling rate in Hz (0-20,000,000) |
+| <span class="cmd-setting">bandwidth</span> | integer | <span class="cmd-value">0</span> | Tuner bandwidth in Hz (0-1,000,000, 0=off) |
+| <span class="cmd-setting">freqoffset</span> | integer | <span class="cmd-value">0</span> | Frequency correction in PPM (-150 to +150) |
+| <span class="cmd-setting">format</span> | string | <span class="cmd-value">TXT</span> | Data type for input source |
 | Specific Options | | | |
-| <span class="cmd-setting">BAUDRATE</span> | integer | <span class="cmd-value">38400</span> | Serial port speed |
-| <span class="cmd-setting">PORT</span> | string | <span class="cmd-value">0</span> | Serial port device path/name |
-| <span class="cmd-setting">PRINT</span> | boolean | <span class="cmd-value">false</span> | Enable debug printing of received data |
+| <span class="cmd-setting">baudrate</span> | integer | <span class="cmd-value">38400</span> | Serial port speed |
+| <span class="cmd-setting">port</span> | string | <span class="cmd-value">0</span> | Serial port device path/name |
+| <span class="cmd-setting">print</span> | boolean | <span class="cmd-value">false</span> | Enable debug printing of received data |
 </div>

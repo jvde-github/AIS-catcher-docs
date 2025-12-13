@@ -14,7 +14,7 @@
 AIS-catcher can push AIS messages via the MQTT protocol (3.1.1) to a broker with the `-Q` switch. An example with all settings:
 
 ```bash
-AIS-catcher -Q mqtt://username:password@127.0.0.1:1883 CLIENT_ID aiscatcher QOS 0 TOPIC data/ais MSGFORMAT JSON_NMEA
+AIS-catcher -Q mqtt://username:password@127.0.0.1:1883 client_id aiscatcher qos 0 topic data/ais msgformat JSON_NMEA
 ```
 
 More examples:
@@ -27,10 +27,10 @@ AIS-catcher -Q mqtt://127.0.0.1:1883
 AIS-catcher -Q wsmqtt://127.0.0.1:1883
 
 # With message format and topic
-AIS-catcher -Q mqtt://127.0.0.1:1883 admin MSGFORMAT JSON_FULL TOPIC data/ais
+AIS-catcher -Q mqtt://127.0.0.1:1883 admin msgformat JSON_FULL topic data/ais
 
 # With authentication and client ID
-AIS-catcher -Q mqtt://username:password@127.0.0.1:1883 admin CLIENT aiscatcher
+AIS-catcher -Q mqtt://username:password@127.0.0.1:1883 admin client aiscatcher
 ```
 
 ## Topic Templates
@@ -95,21 +95,21 @@ mosquitto_sub -h localhost -t "ais/+/data"
 
 <div class="input-table" markdown>
 
-| Key | Type | Default | Description |
+| Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
-| <span class="cmd-setting">URL</span> | string | <span class="cmd-value">-</span> | MQTT broker URL (mqtt[s]://[user:pass@]host[:port]) |
-| <span class="cmd-setting">HOST</span> | string | <span class="cmd-value">-</span> | MQTT broker hostname |
-| <span class="cmd-setting">PORT</span> | string | <span class="cmd-value">-</span> | MQTT broker port |
-| <span class="cmd-setting">USERNAME</span> | string | <span class="cmd-value">-</span> | MQTT username |
-| <span class="cmd-setting">PASSWORD</span> | string | <span class="cmd-value">-</span> | MQTT password |
-| <span class="cmd-setting">TOPIC</span> | string | <span class="cmd-value">ais/data</span> | MQTT topic |
-| <span class="cmd-setting">CLIENT_ID</span> | string | <span class="cmd-value">-</span> | MQTT client identifier |
-| <span class="cmd-setting">QOS</span> | integer | <span class="cmd-value">0</span> | MQTT QoS level (0-2) |
-| <span class="cmd-setting">MSGFORMAT</span> | string | <span class="cmd-value">NMEA</span> | Output format (NMEA/JSON_NMEA/JSON_FULL) |
-| <span class="cmd-setting">PROTOCOL</span> | string | <span class="cmd-value">MQTT</span> | Protocol (MQTT/WS/WSMQTT) |
+| <span class="cmd-setting">url</span> | string | <span class="cmd-value">-</span> | MQTT broker URL (mqtt[s]://[user:pass@]host[:port]) |
+| <span class="cmd-setting">host</span> | string | <span class="cmd-value">-</span> | MQTT broker hostname |
+| <span class="cmd-setting">port</span> | string | <span class="cmd-value">-</span> | MQTT broker port |
+| <span class="cmd-setting">username</span> | string | <span class="cmd-value">-</span> | MQTT username |
+| <span class="cmd-setting">password</span> | string | <span class="cmd-value">-</span> | MQTT password |
+| <span class="cmd-setting">topic</span> | string | <span class="cmd-value">ais/data</span> | MQTT topic |
+| <span class="cmd-setting">client_id</span> | string | <span class="cmd-value">-</span> | MQTT client identifier |
+| <span class="cmd-setting">qos</span> | integer | <span class="cmd-value">0</span> | MQTT QoS level (0-2) |
+| <span class="cmd-setting">msgformat</span> | string | <span class="cmd-value">NMEA</span> | Output format (NMEA/JSON_NMEA/JSON_FULL) |
+| <span class="cmd-setting">protocol</span> | string | <span class="cmd-value">MQTT</span> | Protocol (MQTT/WS/WSMQTT) |
 | | | | |
 | WebSocket Options | | | |
-| <span class="cmd-setting">PROTOCOLS</span> | string | <span class="cmd-value">mqtt</span> | WebSocket sub-protocols |  
-| <span class="cmd-setting">BINARY</span> | boolean | <span class="cmd-value">on</span> | Enable binary WebSocket mode |
+| <span class="cmd-setting">protocols</span> | string | <span class="cmd-value">mqtt</span> | WebSocket sub-protocols |  
+| <span class="cmd-setting">binary</span> | boolean | <span class="cmd-value">on</span> | Enable binary WebSocket mode |
 
 </div>
