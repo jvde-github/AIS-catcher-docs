@@ -2,6 +2,7 @@
 
 ## Edge version
 
+- Improve documentation for configuration via JSON
 - Fix chart colors when running web viewer in iframe on Firefox
 - Technical details of equipment added to shipcard (press information icon in sender field)
 - CS unit for class B is displayed in shipcard of the web viewer if available
