@@ -1,6 +1,6 @@
 # What's New?
 
-## Edge version
+## Version 0.66
 
 - Improve documentation for configuration via JSON
 - Fix chart colors when running web viewer in iframe on Firefox
