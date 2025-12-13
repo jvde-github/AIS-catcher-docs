@@ -2684,7 +2684,7 @@ To complete the example, this command also sets the tuner gain for the RTL-SDR t
 <table>
 <thead>
 <tr>
-<th>Key</th>
+<th>Setting (JSON key / CLI setting name)</th>
 <th>Type</th>
 <th>Default</th>
 <th>Description</th>
@@ -2698,25 +2698,25 @@ To complete the example, this command also sets the tuner gain for the RTL-SDR t
 <td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">SAMPLE_RATE</span></td>
+<td><span class="cmd-setting">sample_rate</span></td>
 <td>integer</td>
-<td><span class="cmd-value">0/span&gt;</td>
+<td><span class="cmd-value">0</span></td>
 <td>Sampling rate in Hz (0-20,000,000)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">BANDWIDTH</span></td>
+<td><span class="cmd-setting">bandwidth</span></td>
 <td>integer</td>
 <td><span class="cmd-value">0</span></td>
 <td>Tuner bandwidth in Hz (0-1,000,000, 0=off)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">FREQOFFSET</span></td>
+<td><span class="cmd-setting">freqoffset</span></td>
 <td>integer</td>
 <td><span class="cmd-value">0</span></td>
 <td>Frequency correction in PPM (-150 to +150)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">FORMAT</span></td>
+<td><span class="cmd-setting">format</span></td>
 <td>string</td>
 <td><span class="cmd-value">CF32</span></td>
 <td>Data type for input source</td>
@@ -2728,49 +2728,49 @@ To complete the example, this command also sets the tuner gain for the RTL-SDR t
 <td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">DEVICE</span></td>
+<td><span class="cmd-setting">device</span></td>
 <td>string</td>
 <td><span class="cmd-value">""</span></td>
 <td>SoapySDR device arguments string</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">GAIN</span></td>
+<td><span class="cmd-setting">gain</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Gain settings in key=value pairs</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">STREAM</span></td>
+<td><span class="cmd-setting">stream</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Stream arguments in key=value pairs</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">SETTING</span></td>
+<td><span class="cmd-setting">setting</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Device settings in key=value pairs</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">ANTENNA</span></td>
+<td><span class="cmd-setting">antenna</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Antenna selection</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">AGC</span></td>
+<td><span class="cmd-setting">agc</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">true</span></td>
 <td>Enable/disable Automatic Gain Control</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">PROBE</span></td>
+<td><span class="cmd-setting">probe</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Print actual device settings</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">CH</span></td>
+<td><span class="cmd-setting">ch</span></td>
 <td>integer</td>
 <td><span class="cmd-value">0</span></td>
 <td>Channel selection (0-32)</td>

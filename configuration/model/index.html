@@ -2869,20 +2869,20 @@ Again, the <code>FORMAT txt</code> option switches off the buffering and automat
 <p>Finally, you can also receive NMEA input via a built-in UDP server:
 <div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-x<span class="w"> </span><span class="m">192</span>.168.1.235<span class="w"> </span><span class="m">4002</span>
 </code></pre></div></p>
-<p>The functionality to read NMEA lines from text files has been used to validate AIS-catcher JSON output on a <a href="https://www.aishub.net/ais-dispatcher">file</a> with 80K+ lines against <a href="https://pypi.org/project/pyais/">pyais</a> and <a href="https://gpsd.io/gpsdecode.html">gpsdecode</a>. Only available switches for this decoder are <code>-go NMEA_REFRESH</code> and <code>-go CRC_CHECK</code> which force AIS-catcher to, respectively, recalculate the NMEA lines if <code>on</code> (default <code>off</code>) and ignore messages with incorrect CRC if <code>on</code> (default <code>off</code>). Example: 
+<p>The functionality to read NMEA lines from text files has been used to validate AIS-catcher JSON output on a <a href="https://www.aishub.net/ais-dispatcher">file</a> with 80K+ lines against <a href="https://pypi.org/project/pyais/">pyais</a> and <a href="https://gpsd.io/gpsdecode.html">gpsdecode</a>. Only available switches for this decoder are <code>-go nmea_refresh</code> and <code>-go crc_check</code> which force AIS-catcher to, respectively, recalculate the NMEA lines if <code>on</code> (default <code>off</code>) and ignore messages with incorrect CRC if <code>on</code> (default <code>off</code>). Example: 
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;$AIVDM,1,1,,,3776k`5000a3SLPEKnDQQWpH0000,0*79&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>AIS-catcher<span class="w"> </span>-r<span class="w"> </span>txt<span class="w"> </span>.<span class="w"> </span>-n<span class="w"> </span>-go<span class="w"> </span>nmea_refresh<span class="w"> </span>on<span class="w"> </span>crc_check<span class="w"> </span>off
 </code></pre></div>
 returns a warning on the incorrect CRC and:
 <div class="highlight"><pre><span></span><code>!AIVDM,1,1,,,3776k`5000a3SLPEKnDQQWpH0000,0*3A
 </code></pre></div>
 Note that CRC/checksum is the simple xor-checksum for validating that the NMEA line is not corrupted and not the CRC that is transmitted with the AIS message for a decoder to check the correct reception over air. This latter 16-bit checksum/CRC is not included in the NMEA message.</p>
-<p>AIS-catcher will also accept AIVDO input which is typically used for the MMSI of the own ship. You can enable/disable this with: <code>-go VDO on/off</code>.</p>
+<p>AIS-catcher will also accept AIVDO input which is typically used for the MMSI of the own ship. You can enable/disable this with: <code>-go vdo on/off</code>.</p>
 <h2 id="model-settings">Model Settings<a class="headerlink" href="#model-settings" title="Permanent link">&para;</a></h2>
 <h3 id="common-settings">Common Settings<a class="headerlink" href="#common-settings" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Key</th>
+<th>Setting (JSON key / CLI setting name)</th>
 <th>Type</th>
 <th>Default</th>
 <th>Description</th>
@@ -2890,25 +2890,25 @@ Note that CRC/checksum is the simple xor-checksum for validating that the NMEA l
 </thead>
 <tbody>
 <tr>
-<td><span class="cmd-setting">DROOP</span></td>
+<td><span class="cmd-setting">droop</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">true</span></td>
 <td>Enable droop compensation in CIC5 filters</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">FP_DS</span></td>
+<td><span class="cmd-setting">fp_ds</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Enable fixed-point downsampling</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">STATION_ID</span></td>
+<td><span class="cmd-setting">station_id</span></td>
 <td>integer</td>
 <td><span class="cmd-value">0</span></td>
 <td>Station identifier</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">OWN_MMSI</span></td>
+<td><span class="cmd-setting">own_mmsi</span></td>
 <td>integer</td>
 <td><span class="cmd-value">-1</span></td>
 <td>Own vessel MMSI</td>
@@ -2919,7 +2919,7 @@ Note that CRC/checksum is the simple xor-checksum for validating that the NMEA l
 <table>
 <thead>
 <tr>
-<th>Key</th>
+<th>Setting (JSON key / CLI setting name)</th>
 <th>Type</th>
 <th>Default</th>
 <th>Description</th>
@@ -2927,19 +2927,19 @@ Note that CRC/checksum is the simple xor-checksum for validating that the NMEA l
 </thead>
 <tbody>
 <tr>
-<td><span class="cmd-setting">SOXR</span></td>
+<td><span class="cmd-setting">soxr</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Use SOXR resampler</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">SRC</span></td>
+<td><span class="cmd-setting">src</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Use SRC resampler</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">MA</span></td>
+<td><span class="cmd-setting">ma</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Use moving average downsampling</td>
@@ -2950,7 +2950,7 @@ Note that CRC/checksum is the simple xor-checksum for validating that the NMEA l
 <table>
 <thead>
 <tr>
-<th>Key</th>
+<th>Setting (JSON key / CLI setting name)</th>
 <th>Type</th>
 <th>Default</th>
 <th>Description</th>
@@ -2958,43 +2958,43 @@ Note that CRC/checksum is the simple xor-checksum for validating that the NMEA l
 </thead>
 <tbody>
 <tr>
-<td><span class="cmd-setting">NMEA_REFRESH</span></td>
+<td><span class="cmd-setting">nmea_refresh</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Recalculate NMEA lines</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">CRC_CHECK</span></td>
+<td><span class="cmd-setting">crc_check</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Enable CRC validation</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">VDO</span></td>
+<td><span class="cmd-setting">vdo</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">true</span></td>
 <td>Accept AIVDO messages</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">STAMP</span></td>
+<td><span class="cmd-setting">stamp</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Add timestamps</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">GPS</span></td>
+<td><span class="cmd-setting">gps</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Enable GPS output</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">UUID</span></td>
+<td><span class="cmd-setting">uuid</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Set UUID for messages</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">WARNINGS</span></td>
+<td><span class="cmd-setting">warnings</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">true</span></td>
 <td>Show warning messages</td>

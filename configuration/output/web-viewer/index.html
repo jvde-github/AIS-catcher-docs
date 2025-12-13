@@ -2819,14 +2819,14 @@
 </code></pre></div>
 where <code>8100</code> is the port number. If your machine network name is raspberrypi, e.g.,  then enter <code>raspberrypi:8100</code> in your browser.  On the web page, you will find several sections with information related to the station and received messages.</p>
 <p>For users wishing to include a station name and a link to an external website in the Statistics section:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span>STATION<span class="w"> </span>Southwood<span class="w"> </span>STATION_LINK<span class="w"> </span>http://example.com
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span>station<span class="w"> </span>Southwood<span class="w"> </span>station_link<span class="w"> </span>http://example.com
 </code></pre></div>
 This could be a useful option if you want to offer the interface externally. To display the reception range and distances from your station, provide the program with the station coordinates and permission to share the location with the web viewer:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span>LAT<span class="w"> </span><span class="m">50</span><span class="w"> </span>LON<span class="w"> </span><span class="m">3</span>.141592<span class="w"> </span>SHARE_LOC<span class="w"> </span>on
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span>lat<span class="w"> </span><span class="m">50</span><span class="w"> </span>lon<span class="w"> </span><span class="m">3</span>.141592<span class="w"> </span>share_loc<span class="w"> </span>on
 </code></pre></div>
 The last option <code>share_loc</code> (default is off) will allow the web viewer to access and display the location.</p>
 <p>The user can make a page in <a href="https://www.markdownguide.org/basic-syntax/">markdown format</a>. The content will be shown in the About tab of the web viewer:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>ABOUT<span class="w"> </span>about.md
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>about<span class="w"> </span>about.md
 </code></pre></div>
 All these options can be captured in the configuration file (in a section with name <code>server</code>), see below. </p>
 <h2 id="menu-structure">Menu structure<a class="headerlink" href="#menu-structure" title="Permanent link">&para;</a></h2>
@@ -2852,15 +2852,15 @@ All these options can be captured in the configuration file (in a section with n
   <img src="https://user-images.githubusercontent.com/52420030/219856922-33404fe8-dc54-4bc2-a1a6-84f4ce5dd72a.png" width="50%"/>
 </p>
 <p>Restarting AIS-catcher typically erases history in the graphs. To retain plot "state" and backup the information to a file use the following:</p>
-<p><div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>FILE<span class="w"> </span>stat.bin<span class="w"> </span>BACKUP<span class="w"> </span><span class="m">10</span>
+<p><div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>file<span class="w"> </span>stat.bin<span class="w"> </span>backup<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
 This will back up the plots when the program closes and every 10 minutes in a file <code>stat.bin</code>. The minimum backup interval is 5 minutes.</p>
 <h2 id="custom-plugins-and-styles">Custom plugins and styles...<a class="headerlink" href="#custom-plugins-and-styles" title="Permanent link">&para;</a></h2>
 <p>To give the user the option to tweak the look-and-feel and functionality of the web viewer and/or modify for example the color scheme or regional preferences, the program provides the option to inject custom plugins (JavaScript) and CSS into the website, with a command like:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>PLUGIN<span class="w"> </span>plugin1.js<span class="w"> </span>PLUGIN<span class="w"> </span>plugin2.js<span class="w"> </span>STYLE<span class="w"> </span>mystyle.css
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>plugin<span class="w"> </span>plugin1.js<span class="w"> </span>plugin<span class="w"> </span>plugin2.js<span class="w"> </span>style<span class="w"> </span>mystyle.css
 </code></pre></div>
 You can also include all plugin files from a specific directory using the command:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>PLUGIN_DIR<span class="w"> </span>/usr/share/aiscatcher/plugins
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>plugin_dir<span class="w"> </span>/usr/share/aiscatcher/plugins
 </code></pre></div>
 Files need to have the extension <code>.pjs</code> and <code>.pss</code> for respectively JavaScript and CSS style plugins. The repository includes a few example plugins that demonstrate how to add additional maps or cater to regional preferences. Examples of plugins can be found in <a href="https://github.com/jvde-github/AIS-Catcher-PLUGINS">another</a> GitHub repository.</p>
 <h2 id="offline-web-viewer">Offline web viewer<a class="headerlink" href="#offline-web-viewer" title="Permanent link">&para;</a></h2>
@@ -2868,17 +2868,17 @@ Files need to have the extension <code>.pjs</code> and <code>.pss</code> for res
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jvde-github/webassets.git
 </code></pre></div>
 This will create a directory <code>webassets</code> that we need to share with AIS-catcher as an alternative location for online web content  with the CDN argument followed by the location of the web assets directory:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>CDN<span class="w"> </span>/home/jasper/webassets
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>cdn<span class="w"> </span>/home/jasper/webassets
 </code></pre></div>
 Offline maps can also be included in <code>mbtiles</code> format:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w">  </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>MBTILES<span class="w"> </span>filename
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w">  </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>mbtiles<span class="w"> </span>filename
 </code></pre></div>
 or as an overlay
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w">  </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>MBOVERLAY<span class="w"> </span>filename
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w">  </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>mboverlay<span class="w"> </span>filename
 </code></pre></div></p>
 <h2 id="sending-data-to-prometheus-for-use-in-grafana-dashboards">Sending data to Prometheus for use in Grafana dashboards<a class="headerlink" href="#sending-data-to-prometheus-for-use-in-grafana-dashboards" title="Permanent link">&para;</a></h2>
 <p>You can add the option <code>PROME on</code> to the web configuration command to start rendering Prometheus-compatible statistics at <code>/metrics</code>. For example:</p>
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>PROME<span class="w"> </span>on
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>prome<span class="w"> </span>on
 </code></pre></div>
 <p>For more information on how to configure Prometheus and Grafana to get an initial dashboard, see <a href="../../../advanced/grafana/">README-grafana.md</a>.</p>
 <h2 id="summary-settings">Summary Settings<a class="headerlink" href="#summary-settings" title="Permanent link">&para;</a></h2>
@@ -2887,7 +2887,7 @@ or as an overlay
 <table>
 <thead>
 <tr>
-<th>Key</th>
+<th>Setting (JSON key / CLI setting name)</th>
 <th>Type</th>
 <th>Default</th>
 <th>Description</th>
@@ -2895,37 +2895,37 @@ or as an overlay
 </thead>
 <tbody>
 <tr>
-<td><span class="cmd-setting">PORT</span></td>
+<td><span class="cmd-setting">port</span></td>
 <td>integer</td>
 <td><span class="cmd-value">-</span></td>
 <td>Single port for web server</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">PORT_MIN</span></td>
+<td><span class="cmd-setting">port_min</span></td>
 <td>integer</td>
 <td><span class="cmd-value">-</span></td>
 <td>Minimum port in binding range</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">PORT_MAX</span></td>
+<td><span class="cmd-setting">port_max</span></td>
 <td>integer</td>
 <td><span class="cmd-value">-</span></td>
 <td>Maximum port in binding range</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">IP_BIND</span></td>
+<td><span class="cmd-setting">ip_bind</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Server binding IP address</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">REUSE_PORT</span></td>
+<td><span class="cmd-setting">reuse_port</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Enable port reuse</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">ZLIB</span></td>
+<td><span class="cmd-setting">zlib</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">true</span></td>
 <td>Enable response compression</td>
@@ -2943,31 +2943,31 @@ or as an overlay
 <td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">LAT</span></td>
+<td><span class="cmd-setting">lat</span></td>
 <td>float</td>
 <td><span class="cmd-value">-</span></td>
 <td>Station latitude</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">LON</span></td>
+<td><span class="cmd-setting">lon</span></td>
 <td>float</td>
 <td><span class="cmd-value">-</span></td>
 <td>Station longitude</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">SHARE_LOC</span></td>
+<td><span class="cmd-setting">share_loc</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Share station location</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">USE_GPS</span></td>
+<td><span class="cmd-setting">use_gps</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Use GPS data</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">OWN_MMSI</span></td>
+<td><span class="cmd-setting">own_mmsi</span></td>
 <td>integer</td>
 <td><span class="cmd-value">-</span></td>
 <td>Own vessel MMSI</td>
@@ -2985,37 +2985,37 @@ or as an overlay
 <td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">HISTORY</span></td>
+<td><span class="cmd-setting">history</span></td>
 <td>integer</td>
 <td><span class="cmd-value">-</span></td>
 <td>History retention (5-43200 sec)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">CUTOFF</span></td>
+<td><span class="cmd-setting">cutoff</span></td>
 <td>integer</td>
 <td><span class="cmd-value">-</span></td>
 <td>Max Distance treshold (0-10000)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">BACKUP</span></td>
+<td><span class="cmd-setting">backup</span></td>
 <td>integer</td>
 <td><span class="cmd-value">-1</span></td>
 <td>Backup interval (5-2880 min)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">FILE</span></td>
+<td><span class="cmd-setting">file</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Statistics file path</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">REALTIME</span></td>
+<td><span class="cmd-setting">realtime</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Enable real-time updates</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">DECODER</span></td>
+<td><span class="cmd-setting">decoder</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Enable online NMEA decoder</td>
@@ -3033,25 +3033,25 @@ or as an overlay
 <td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">KML</span></td>
+<td><span class="cmd-setting">kml</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Enable KML output</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">GEOJSON</span></td>
+<td><span class="cmd-setting">geojson</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Enable GeoJSON output</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">PROME</span></td>
+<td><span class="cmd-setting">prome</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Enable Prometheus metrics</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">MESSAGE</span></td>
+<td><span class="cmd-setting">message</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Enable message saving</td>
@@ -3069,55 +3069,55 @@ or as an overlay
 <td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">STATION</span></td>
+<td><span class="cmd-setting">station</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Station display name</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">STATION_LINK</span></td>
+<td><span class="cmd-setting">station_link</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Station info URL</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">CDN</span></td>
+<td><span class="cmd-setting">cdn</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Local CDN resources path</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">MBTILES</span></td>
+<td><span class="cmd-setting">mbtiles</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Offline map in mbtiles format</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">MBOVERLAY</span></td>
+<td><span class="cmd-setting">mboverlay</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Offline overlay in mbtiles format</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">PLUGIN</span></td>
+<td><span class="cmd-setting">plugin</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>JavaScript plugin path</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">STYLE</span></td>
+<td><span class="cmd-setting">style</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>CSS style path</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">PLUGIN_DIR</span></td>
+<td><span class="cmd-setting">plugin_dir</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Plugins directory</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">ABOUT</span></td>
+<td><span class="cmd-setting">about</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>About page path</td>

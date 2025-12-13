@@ -2721,7 +2721,7 @@
 <table>
 <thead>
 <tr>
-<th>Key</th>
+<th>Setting (JSON key / CLI setting name)</th>
 <th>Type</th>
 <th>Default</th>
 <th>Description</th>
@@ -2735,25 +2735,25 @@
 <td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">SAMPLE_RATE</span></td>
+<td><span class="cmd-setting">sample_rate</span></td>
 <td>integer</td>
 <td><span class="cmd-value">288K</span></td>
 <td>Sampling rate in Hz (0-20,000,000)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">BANDWIDTH</span></td>
+<td><span class="cmd-setting">bandwidth</span></td>
 <td>integer</td>
 <td><span class="cmd-value">0</span></td>
 <td>Tuner bandwidth in Hz (0-1,000,000)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">FREQOFFSET</span></td>
+<td><span class="cmd-setting">freqoffset</span></td>
 <td>integer</td>
 <td><span class="cmd-value">0</span></td>
 <td>Frequency correction in PPM (-150 to +150)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">FORMAT</span></td>
+<td><span class="cmd-setting">format</span></td>
 <td>string</td>
 <td><span class="cmd-value">CU8</span></td>
 <td>Data type for input source</td>
@@ -2765,25 +2765,25 @@
 <td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">HOST</span></td>
+<td><span class="cmd-setting">host</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Remote host address</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">PORT</span></td>
+<td><span class="cmd-setting">port</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Remote port number</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">PROTOCOL</span></td>
+<td><span class="cmd-setting">protocol</span></td>
 <td>string</td>
 <td><span class="cmd-value">rtltcp</span></td>
 <td>Protocol (RTLTCP/MQTT/GPSD/WS/WSMQTT)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">URL</span></td>
+<td><span class="cmd-setting">url</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Complete URL including protocol and credentials</td>
@@ -2801,25 +2801,25 @@
 <td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">PERSISTENT</span></td>
+<td><span class="cmd-setting">persistent</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">true</span></td>
 <td>Keep connection alive after errors</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">KEEP_ALIVE</span></td>
+<td><span class="cmd-setting">keep_alive</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Enable TCP keepalive</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">RESET</span></td>
+<td><span class="cmd-setting">reset</span></td>
 <td>integer</td>
 <td><span class="cmd-value">-1</span></td>
 <td>Reset connection after N minutes (-1=never)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">TIMEOUT</span></td>
+<td><span class="cmd-setting">timeout</span></td>
 <td>integer</td>
 <td><span class="cmd-value">0</span></td>
 <td>Connection timeout in seconds</td>
@@ -2837,19 +2837,19 @@
 <td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">PROTOCOLS</span></td>
+<td><span class="cmd-setting">protocols</span></td>
 <td>string</td>
 <td><span class="cmd-value">mqtt</span></td>
 <td>WebSocket sub-protocols</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">BINARY</span></td>
+<td><span class="cmd-setting">binary</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">on</span></td>
 <td>Enable binary WebSocket mode</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">ORIGIN</span></td>
+<td><span class="cmd-setting">origin</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Origin header for WebSocket</td>
@@ -2867,31 +2867,31 @@
 <td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">TOPIC</span></td>
+<td><span class="cmd-setting">topic</span></td>
 <td>string</td>
 <td><span class="cmd-value">ais/data</span></td>
 <td>MQTT topic</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">CLIENT_ID</span></td>
+<td><span class="cmd-setting">client_id</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>MQTT client identifier</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">USERNAME</span></td>
+<td><span class="cmd-setting">username</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>MQTT username</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">PASSWORD</span></td>
+<td><span class="cmd-setting">password</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>MQTT password</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">QOS</span></td>
+<td><span class="cmd-setting">qos</span></td>
 <td>integer</td>
 <td><span class="cmd-value">0</span></td>
 <td>MQTT QoS level (0-2)</td>
@@ -2909,19 +2909,19 @@
 <td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">TUNER</span></td>
+<td><span class="cmd-setting">tuner</span></td>
 <td>float</td>
 <td><span class="cmd-value">33.0</span></td>
 <td>Tuner gain (0-50, auto)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">RTLAGC</span></td>
+<td><span class="cmd-setting">rtlagc</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Enable RTL AGC</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">FREQUENCY</span></td>
+<td><span class="cmd-setting">frequency</span></td>
 <td>integer</td>
 <td><span class="cmd-value">0</span></td>
 <td>Frequency in Hz</td>

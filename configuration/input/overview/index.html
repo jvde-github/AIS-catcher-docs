@@ -2779,6 +2779,13 @@ To select a specific device, use either:</p>
 <code>-d SERIAL</code> where SERIAL is the device's serial number</p>
 <h2 id="universal-settings">Universal Settings<a class="headerlink" href="#universal-settings" title="Permanent link">&para;</a></h2>
 <p>The following settings apply across all input devices. For the most common options there is a command line option available that can be used as a shortcut. </p>
+<p>Note:</p>
+<ul>
+<li>On the command line, device-setting names and boolean values are not case-sensitive.</li>
+<li>In JSON configuration, keys are case-sensitive and must be lowercase.</li>
+<li>For JSON, defining receivers in the <code>receiver</code> array (even for a single receiver) is the recommended structure going forward; root-level receiver keys are legacy.</li>
+</ul>
+<p>In the tables below, setting names are shown using the JSON key casing (lowercase). On the command line you can type them in any case.</p>
 <table>
 <thead>
 <tr>
@@ -2794,7 +2801,7 @@ To select a specific device, use either:</p>
 <tr>
 <td>Sample Rate</td>
 <td><code>-s RATE</code></td>
-<td><span class="cmd-setting">SAMPLE_RATE</span></td>
+<td><span class="cmd-setting">sample_rate</span></td>
 <td>Sampling rate in Hz</td>
 <td>0-20,000,000</td>
 <td>Device-specific</td>
@@ -2802,7 +2809,7 @@ To select a specific device, use either:</p>
 <tr>
 <td>Bandwidth</td>
 <td><code>-a BW</code></td>
-<td><span class="cmd-setting">BANDWIDTH</span></td>
+<td><span class="cmd-setting">bandwidth</span></td>
 <td>Tuner bandwidth in Hz</td>
 <td>0-1,000,000</td>
 <td>0 (none)</td>
@@ -2810,7 +2817,7 @@ To select a specific device, use either:</p>
 <tr>
 <td>Frequency Correction</td>
 <td><code>-p PPM</code></td>
-<td><span class="cmd-setting">FREQOFFSET</span></td>
+<td><span class="cmd-setting">freqoffset</span></td>
 <td>Frequency correction in PPM</td>
 <td>-150 to +150</td>
 <td>0</td>
@@ -2818,7 +2825,7 @@ To select a specific device, use either:</p>
 <tr>
 <td>Data Type</td>
 <td></td>
-<td><span class="cmd-setting">FORMAT</span></td>
+<td><span class="cmd-setting">format</span></td>
 <td>CU8, CF32, CS16, CS8, TXT</td>
 <td></td>
 <td>Device-specific</td>

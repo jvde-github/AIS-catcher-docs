@@ -1672,6 +1672,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community Feed
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1688,6 +1706,36 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary Settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2562,6 +2610,25 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary Settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2581,15 +2648,44 @@
 
 
 <h1 id="community-feed">Community Feed<a class="headerlink" href="#community-feed" title="Permanent link">&para;</a></h1>
+<p>The Community Feed allows you to share received AIS messages with the AIS-catcher community.</p>
 <div class="command-container">
       <div class="command-syntax">
         <span class="cmd-name">AIS-catcher</span>
         <span class="cmd-flag">-X</span>
-        <span class="cmd-value">sharing key</span>
+        [<span class="cmd-value">sharing_key</span>]
     </div>
 </div>
 
-<p>Use <code>-X</code> followed by your unique sharing key.</p>
+<p>On the CLI, <code>-X</code> enables sharing. If you provide a sharing key, the station is linked to your account; if omitted, sharing is anonymous.</p>
+<p>In JSON configuration, Community Feed settings are configured via the root-level keys <code>sharing</code> and <code>sharing_key</code> (they are not part of an output array like <code>udp</code>).</p>
+<h2 id="summary-settings">Summary Settings<a class="headerlink" href="#summary-settings" title="Permanent link">&para;</a></h2>
+<div class="input-table">
+<table>
+<thead>
+<tr>
+<th>Setting (JSON key / CLI setting name)</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="cmd-setting">sharing</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">-</span></td>
+<td>Enable community feed sharing (CLI equivalent: <code>-X</code>)</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">sharing_key</span></td>
+<td>string</td>
+<td><span class="cmd-value">-</span></td>
+<td>Optional sharing key to associate your station with aiscatcher.org (CLI: <code>-X &lt;key&gt;</code>)</td>
+</tr>
+</tbody>
+</table>
+</div>
 
 
 

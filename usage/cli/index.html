@@ -2981,7 +2981,12 @@ Omitting the sharing key will share data anonymously and a  key can be created a
 <p>For RTL-SDR devices performance can be sensitive to the device settings. In general, a good starting point is the following:
 <div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-gr<span class="w"> </span>RTLAGC<span class="w"> </span>on<span class="w"> </span>TUNER<span class="w"> </span>auto<span class="w"> </span>-a<span class="w"> </span>192K
 </code></pre></div>
-It has been reported by several users that adding a bandwidth setting of <code>-a 192K</code> can be beneficial so it is worthwhile to try with and without this filter. Finding the best settings for your hardware requires some systematic experimentation whereby one parameter is changed at a time, e.g. switch RTLAGC <code>on</code> or <code>off</code>, set the TUNER to <code>auto</code> or try fixed tuner gains between 0 and 50. </p>
+Note on casing:</p>
+<ul>
+<li>CLI device-setting names and boolean-ish values are not case-sensitive (e.g. <code>RTLAGC</code>, <code>rtlagc</code>, <code>ON</code>, <code>on</code> are equivalent).</li>
+<li>JSON configuration keys are case-sensitive and should be lowercase (see <a href="../json-configuration/">JSON configuration</a>).</li>
+</ul>
+<p>It has been reported by several users that adding a bandwidth setting of <code>-a 192K</code> can be beneficial so it is worthwhile to try with and without this filter. Finding the best settings for your hardware requires some systematic experimentation whereby one parameter is changed at a time, e.g. switch RTLAGC <code>on</code> or <code>off</code>, set the TUNER to <code>auto</code> or try fixed tuner gains between 0 and 50. </p>
 <p>The hardware settings available depend on the specific SDR and more details can be found in our <a href="../../configuration/overview/">Configuration Section</a>.</p>
 <h3 id="performance-considerations">Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permanent link">&para;</a></h3>
 <p>AIS-catcher also supports the 18 Euro RPI Zero W. However, the hardware might not keep up with the high data flow. This can sometimes be resolved by activating <strong>fast downsampling</strong> via:

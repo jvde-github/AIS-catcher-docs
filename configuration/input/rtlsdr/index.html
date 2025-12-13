@@ -2663,13 +2663,13 @@
 <p>Gain and other settings specific to the RTL SDR can be set on the command line with the <code>-gr</code> switch. For example, the following command sets the tuner gain to +33.3 and switches the RTL AGC on:</p>
 <div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-gr<span class="w"> </span>tuner<span class="w"> </span><span class="m">33</span>.3<span class="w"> </span>rtlagc<span class="w"> </span>ON
 </code></pre></div>
-<p>Settings are not case-sensitive.</p>
+<p>On the command line, setting names and boolean values are not case-sensitive. In JSON configuration, keys are case-sensitive and must be lowercase.</p>
 <h2 id="specific-settings">Specific Settings<a class="headerlink" href="#specific-settings" title="Permanent link">&para;</a></h2>
 <div class="input-table">
 <table>
 <thead>
 <tr>
-<th>Key</th>
+<th>Setting (JSON key / CLI setting name)</th>
 <th>Type</th>
 <th>Default</th>
 <th>Description</th>
@@ -2683,25 +2683,25 @@
 <td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">SAMPLE_RATE</span></td>
+<td><span class="cmd-setting">sample_rate</span></td>
 <td>integer</td>
 <td><span class="cmd-value">1536K</span></td>
 <td>Sampling rate in Hz (0-20,000,000)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">BANDWIDTH</span></td>
+<td><span class="cmd-setting">bandwidth</span></td>
 <td>integer</td>
 <td><span class="cmd-value">off</span></td>
 <td>Tuner bandwidth in Hz (0-1,000,000, 0=auto)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">FREQOFFSET</span></td>
+<td><span class="cmd-setting">freqoffset</span></td>
 <td>integer</td>
 <td><span class="cmd-value">0</span></td>
 <td>Frequency correction in PPM (-150 to +150)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">FORMAT</span></td>
+<td><span class="cmd-setting">format</span></td>
 <td>string</td>
 <td><span class="cmd-value">CU8</span></td>
 <td>Data type for input source</td>
@@ -2713,25 +2713,25 @@
 <td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">TUNER</span></td>
+<td><span class="cmd-setting">tuner</span></td>
 <td>auto/float</td>
 <td><span class="cmd-value">auto</span></td>
 <td>Tuner gain/AGC (0-50 dB or AUTO)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">RTLAGC</span></td>
+<td><span class="cmd-setting">rtlagc</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">true</span></td>
 <td>Enable/disable RTL2832U AGC</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">BIASTEE</span></td>
+<td><span class="cmd-setting">biastee</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Enable/disable bias tee power</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">BUFFER_COUNT</span></td>
+<td><span class="cmd-setting">buffer_count</span></td>
 <td>integer</td>
 <td><span class="cmd-value">24</span></td>
 <td>Number of FIFO buffers (1-100)</td>

@@ -2783,7 +2783,7 @@
 </div>
 
 <p>AIS-catcher can push AIS messages via the MQTT protocol (3.1.1) to a broker with the <code>-Q</code> switch. An example with all settings:</p>
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://username:password@127.0.0.1:1883<span class="w"> </span>CLIENT_ID<span class="w"> </span>aiscatcher<span class="w"> </span>QOS<span class="w"> </span><span class="m">0</span><span class="w"> </span>TOPIC<span class="w"> </span>data/ais<span class="w"> </span>MSGFORMAT<span class="w"> </span>JSON_NMEA
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://username:password@127.0.0.1:1883<span class="w"> </span>client_id<span class="w"> </span>aiscatcher<span class="w"> </span>qos<span class="w"> </span><span class="m">0</span><span class="w"> </span>topic<span class="w"> </span>data/ais<span class="w"> </span>msgformat<span class="w"> </span>JSON_NMEA
 </code></pre></div>
 <p>More examples:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Basic MQTT connection</span>
@@ -2793,10 +2793,10 @@ AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://127.0.0.1:18
 AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>wsmqtt://127.0.0.1:1883
 
 <span class="c1"># With message format and topic</span>
-AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://127.0.0.1:1883<span class="w"> </span>admin<span class="w"> </span>MSGFORMAT<span class="w"> </span>JSON_FULL<span class="w"> </span>TOPIC<span class="w"> </span>data/ais
+AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://127.0.0.1:1883<span class="w"> </span>admin<span class="w"> </span>msgformat<span class="w"> </span>JSON_FULL<span class="w"> </span>topic<span class="w"> </span>data/ais
 
 <span class="c1"># With authentication and client ID</span>
-AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://username:password@127.0.0.1:1883<span class="w"> </span>admin<span class="w"> </span>CLIENT<span class="w"> </span>aiscatcher
+AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://username:password@127.0.0.1:1883<span class="w"> </span>admin<span class="w"> </span>client<span class="w"> </span>aiscatcher
 </code></pre></div>
 <h2 id="topic-templates">Topic Templates<a class="headerlink" href="#topic-templates" title="Permanent link">&para;</a></h2>
 <p>AIS-catcher supports template strings for MQTT topics, allowing dynamic topic construction based on AIS message content. This enables more efficient message filtering and targeted subscriptions.</p>
@@ -2885,7 +2885,7 @@ mosquitto_sub<span class="w"> </span>-h<span class="w"> </span>localhost<span cl
 <table>
 <thead>
 <tr>
-<th>Key</th>
+<th>Setting (JSON key / CLI setting name)</th>
 <th>Type</th>
 <th>Default</th>
 <th>Description</th>
@@ -2893,61 +2893,61 @@ mosquitto_sub<span class="w"> </span>-h<span class="w"> </span>localhost<span cl
 </thead>
 <tbody>
 <tr>
-<td><span class="cmd-setting">URL</span></td>
+<td><span class="cmd-setting">url</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>MQTT broker URL (mqtt[s]://[user:pass@]host[:port])</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">HOST</span></td>
+<td><span class="cmd-setting">host</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>MQTT broker hostname</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">PORT</span></td>
+<td><span class="cmd-setting">port</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>MQTT broker port</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">USERNAME</span></td>
+<td><span class="cmd-setting">username</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>MQTT username</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">PASSWORD</span></td>
+<td><span class="cmd-setting">password</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>MQTT password</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">TOPIC</span></td>
+<td><span class="cmd-setting">topic</span></td>
 <td>string</td>
 <td><span class="cmd-value">ais/data</span></td>
 <td>MQTT topic</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">CLIENT_ID</span></td>
+<td><span class="cmd-setting">client_id</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>MQTT client identifier</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">QOS</span></td>
+<td><span class="cmd-setting">qos</span></td>
 <td>integer</td>
 <td><span class="cmd-value">0</span></td>
 <td>MQTT QoS level (0-2)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">MSGFORMAT</span></td>
+<td><span class="cmd-setting">msgformat</span></td>
 <td>string</td>
 <td><span class="cmd-value">NMEA</span></td>
 <td>Output format (NMEA/JSON_NMEA/JSON_FULL)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">PROTOCOL</span></td>
+<td><span class="cmd-setting">protocol</span></td>
 <td>string</td>
 <td><span class="cmd-value">MQTT</span></td>
 <td>Protocol (MQTT/WS/WSMQTT)</td>
@@ -2965,13 +2965,13 @@ mosquitto_sub<span class="w"> </span>-h<span class="w"> </span>localhost<span cl
 <td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">PROTOCOLS</span></td>
+<td><span class="cmd-setting">protocols</span></td>
 <td>string</td>
 <td><span class="cmd-value">mqtt</span></td>
 <td>WebSocket sub-protocols</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">BINARY</span></td>
+<td><span class="cmd-setting">binary</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">on</span></td>
 <td>Enable binary WebSocket mode</td>

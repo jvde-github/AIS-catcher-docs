@@ -2661,7 +2661,7 @@
 </div>
 
 <p>Some cloud services collecting AIS data prefer messages to be periodically posted via the HTTP protocol, for example, <a href="https://aprs.fi">APRS.fi</a>. As per version 0.29, AIS-catcher can do this directly via the <code>-H</code> switch. For example:
-<div class="highlight"><pre><span></span><code><span class="go">AIS-catcher -r posterholt.raw -v 60 -H http://localhost:8000 INTERVAL 10 ID MyStation</span>
+<div class="highlight"><pre><span></span><code><span class="go">AIS-catcher -r posterholt.raw -v 60 -H http://localhost:8000 interval 10 id MyStation</span>
 </code></pre></div>
 will post JSON with the following layout every 10 seconds:</p>
 <p><div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -2688,11 +2688,11 @@ will post JSON with the following layout every 10 seconds:</p>
 <span class="p">}</span>
 </code></pre></div>
 We can use this functionality to submit data to <a href="https://aprs.fi">APRS.fi</a> directly without the need of middleware:
-<div class="highlight"><pre><span></span><code><span class="go">AIS-catcher -H http://aprs.fi/jsonais/post/secret-key ID callsign PROTOCOL aprs INTERVAL 30 -q</span>
+<div class="highlight"><pre><span></span><code><span class="go">AIS-catcher -H http://aprs.fi/jsonais/post/secret-key id callsign protocol aprs interval 30 -q</span>
 </code></pre></div>
 Where <code>secret-key</code> should be your password and <code>callsign</code> your callsign.  The <code>PROTOCOL</code> setting instructs AIS-catcher to submit JSON in a form that is accepted by APRS.fi which is a multi-form HTTP message. The response from the server will be printed on screen, if you want to show this message only in case of an error, add <code>RESPONSE OFF</code> to the argument.</p>
 <p>Another example of this HTTP feed functionality is to provide data to <a href="https://adsb.chaos-consulting.de/map/">Chaos Consulting</a> without the need to install any additional scripts. The Chaos Consulting server has been set up so that it can read the AIS-catcher JSON format as per above:
-<div class="highlight"><pre><span></span><code><span class="go">AIS-catcher -H https://ais.chaos-consulting.de/shipin/index.php USERPWD Station:Password GZIP on INTERVAL 5</span>
+<div class="highlight"><pre><span></span><code><span class="go">AIS-catcher -H https://ais.chaos-consulting.de/shipin/index.php userpwd Station:Password gzip on interval 5</span>
 </code></pre></div>
 Notice that this server requires authentication with a station name and password and accepts JSON with gzip encoding which significantly reduces bandwidth. </p>
 <p><strong>Important</strong>: to use and build AIS-catcher with HTTP support, please install the following libraries before running cmake:
@@ -2704,7 +2704,7 @@ This step is only required if you want to ZIP content and post data to secure se
 <table>
 <thead>
 <tr>
-<th>Key</th>
+<th>Setting (JSON key / CLI setting name)</th>
 <th>Type</th>
 <th>Default</th>
 <th>Description</th>
@@ -2712,67 +2712,67 @@ This step is only required if you want to ZIP content and post data to secure se
 </thead>
 <tbody>
 <tr>
-<td><span class="cmd-setting">URL</span></td>
+<td><span class="cmd-setting">url</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Target HTTP endpoint URL</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">USERPWD</span></td>
+<td><span class="cmd-setting">userpwd</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Authentication credentials</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">STATIONID</span></td>
+<td><span class="cmd-setting">stationid</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Station identifier</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">INTERVAL</span></td>
+<td><span class="cmd-setting">interval</span></td>
 <td>integer</td>
 <td><span class="cmd-value">60</span></td>
 <td>Post interval in seconds (1-86400)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">TIMEOUT</span></td>
+<td><span class="cmd-setting">timeout</span></td>
 <td>integer</td>
 <td><span class="cmd-value">10</span></td>
 <td>Connection timeout in seconds (1-30)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">GZIP</span></td>
+<td><span class="cmd-setting">gzip</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Enable GZIP compression</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">RESPONSE</span></td>
+<td><span class="cmd-setting">response</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">true</span></td>
 <td>Show response messages</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">PROTOCOL</span></td>
+<td><span class="cmd-setting">protocol</span></td>
 <td>string</td>
 <td><span class="cmd-value">AISCATCHER</span></td>
 <td>Protocol type (AISCATCHER/MINIMAL/AIRFRAMES/LIST/APRS/NMEA)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">LAT</span></td>
+<td><span class="cmd-setting">lat</span></td>
 <td>float</td>
 <td><span class="cmd-value">0.0</span></td>
 <td>Station latitude</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">LON</span></td>
+<td><span class="cmd-setting">lon</span></td>
 <td>float</td>
 <td><span class="cmd-value">0.0</span></td>
 <td>Station longitude</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">DEVICE_SETTING</span></td>
+<td><span class="cmd-setting">device_setting</span></td>
 <td>string</td>
 <td><span class="cmd-value">N/A</span></td>
 <td>Device settings</td>

@@ -2672,14 +2672,14 @@
 </div>
 
 <p>For <a href="https://airspy.com/">SpyServer</a>  use the <code>-y</code> switch like:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-y<span class="w"> </span><span class="m">192</span>.168.1.235<span class="w"> </span><span class="m">5555</span><span class="w"> </span>-gy<span class="w"> </span>GAIN<span class="w"> </span><span class="m">14</span>
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-y<span class="w"> </span><span class="m">192</span>.168.1.235<span class="w"> </span><span class="m">5555</span><span class="w"> </span>-gy<span class="w"> </span>gain<span class="w"> </span><span class="m">14</span>
 </code></pre></div></p>
 <h2 id="summary-settings">Summary Settings<a class="headerlink" href="#summary-settings" title="Permanent link">&para;</a></h2>
 <div class="input-table">
 <table>
 <thead>
 <tr>
-<th>Key</th>
+<th>Setting (JSON key / CLI setting name)</th>
 <th>Type</th>
 <th>Default</th>
 <th>Description</th>
@@ -2693,25 +2693,25 @@
 <td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">SAMPLE_RATE</span></td>
+<td><span class="cmd-setting">sample_rate</span></td>
 <td>integer</td>
 <td><span class="cmd-value">Host specific</span></td>
 <td>Sampling rate in Hz (0-20,000,000)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">BANDWIDTH</span></td>
+<td><span class="cmd-setting">bandwidth</span></td>
 <td>integer</td>
 <td><span class="cmd-value">0</span></td>
 <td>Tuner bandwidth in Hz (0-1,000,000, 0 = off)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">FREQOFFSET</span></td>
+<td><span class="cmd-setting">freqoffset</span></td>
 <td>integer</td>
 <td><span class="cmd-value">0</span></td>
 <td>Frequency correction in PPM (-150 to +150)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">FORMAT</span></td>
+<td><span class="cmd-setting">format</span></td>
 <td>string</td>
 <td><span class="cmd-value">CF32</span></td>
 <td>Data type for input source</td>
@@ -2723,31 +2723,31 @@
 <td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">URL</span></td>
+<td><span class="cmd-setting">url</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Full connection URL (sdr://host:port)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">HOST</span></td>
+<td><span class="cmd-setting">host</span></td>
 <td>string</td>
 <td><span class="cmd-value">localhost</span></td>
 <td>SpyServer host address</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">PORT</span></td>
+<td><span class="cmd-setting">port</span></td>
 <td>string</td>
 <td><span class="cmd-value">1234</span></td>
 <td>SpyServer port</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">GAIN</span></td>
+<td><span class="cmd-setting">gain</span></td>
 <td>float</td>
 <td><span class="cmd-value">0.0</span></td>
 <td>Tuner gain (0-50 dB)</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">TIMEOUT</span></td>
+<td><span class="cmd-setting">timeout</span></td>
 <td>integer</td>
 <td><span class="cmd-value">2</span></td>
 <td>Connection timeout in seconds</td>
