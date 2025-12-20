@@ -981,6 +981,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#hydrasdr-hydrasdr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HydraSDR (hydrasdr)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#airspy-hf-airspyhf" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1546,6 +1557,34 @@
     
   
     HackRF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/input/hydrasdr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HydraSDR
   
 
     
@@ -3138,6 +3177,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#hydrasdr-hydrasdr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HydraSDR (hydrasdr)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#airspy-hf-airspyhf" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3449,7 +3499,7 @@ This loads and applies the settings from the JSON file.</p>
 <li>JSON keys are case-sensitive and must be lowercase.</li>
 <li>CLI setting names are not case-sensitive.</li>
 <li>Define receivers in the <code>receiver</code> array (even for a single receiver).</li>
-<li>Device sections (e.g. <code>rtlsdr</code>, <code>airspy</code>) configure the device, but do not select it. Use <code>input</code> (and optionally <code>serial</code>) inside each receiver object.</li>
+<li>Device sections (e.g. <code>rtlsdr</code>, <code>airspy</code>, <code>hydrasdr</code>) configure the device, but do not select it. Use <code>input</code> (and optionally <code>serial</code>) inside each receiver object.</li>
 <li><code>active</code> is optional in any section; if omitted, it is assumed to be <code>true</code>.</li>
 <li>Outputs like <code>udp</code> are arrays to support multiple output channels.</li>
 </ul>
@@ -3571,7 +3621,7 @@ This loads and applies the settings from the JSON file.</p>
 <tr>
 <td><code>input</code></td>
 <td>string</td>
-<td>Selects the input device type for this receiver (e.g. <code>rtlsdr</code>, <code>airspy</code>, <code>spyserver</code>, ...)</td>
+<td>Selects the input device type for this receiver (e.g. <code>rtlsdr</code>, <code>airspy</code>, <code>hydrasdr</code>, <code>spyserver</code>, ...)</td>
 <td><a href="../../configuration/input/overview/">Input Overview</a></td>
 </tr>
 <tr>
@@ -3613,7 +3663,7 @@ This loads and applies the settings from the JSON file.</p>
 <tr>
 <td><code>&lt;device section&gt;</code></td>
 <td>object</td>
-<td>Device-specific configuration object matching <code>input</code> (e.g. <code>rtlsdr</code>, <code>airspy</code>, ...). See examples in <a href="#input-device-settings">Input Device Settings</a>.</td>
+<td>Device-specific configuration object matching <code>input</code> (e.g. <code>rtlsdr</code>, <code>airspy</code>, <code>hydrasdr</code>, ...). See examples in <a href="#input-device-settings">Input Device Settings</a>.</td>
 <td><a href="../../configuration/input/overview/">Input Overview</a></td>
 </tr>
 <tr>
@@ -3647,7 +3697,7 @@ This loads and applies the settings from the JSON file.</p>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div></p>
-<p>In this example, each receiver selects a device via <code>input</code>, is optionally named via <code>serial</code>, and is configured via its device section (e.g. <code>rtlsdr</code>, <code>airspy</code>).</p>
+<p>In this example, each receiver selects a device via <code>input</code>, is optionally named via <code>serial</code>, and is configured via its device section (e.g. <code>rtlsdr</code>, <code>airspy</code>, <code>hydrasdr</code>).</p>
 <h2 id="input-device-settings">Input Device Settings<a class="headerlink" href="#input-device-settings" title="Permanent link">&para;</a></h2>
 <p>AIS-catcher supports various input devices. Each device type has specific configuration options. Below are the supported devices and their respective settings. The documentation of the relevant keys can be found in the <a href="../../configuration/input/overview/">Configuration</a> sections. Below we provide a few examples.</p>
 <h3 id="rtl-sdr-rtlsdr">RTL-SDR (<code>rtlsdr</code>)<a class="headerlink" href="#rtl-sdr-rtlsdr" title="Permanent link">&para;</a></h3>
@@ -3680,6 +3730,19 @@ This loads and applies the settings from the JSON file.</p>
 </code></pre></div>
 </details>
 <p><a href="../../configuration/input/airspy/">Full Airspy Documentation</a></p>
+<h3 id="hydrasdr-hydrasdr">HydraSDR (<code>hydrasdr</code>)<a class="headerlink" href="#hydrasdr-hydrasdr" title="Permanent link">&para;</a></h3>
+<details>
+<summary>Example</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;hydrasdr&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;sample_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3000K&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;linearity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;biastee&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<p><a href="../../configuration/input/hydrasdr/">Full HydraSDR Documentation</a></p>
 <h3 id="airspy-hf-airspyhf">Airspy HF+ (<code>airspyhf</code>)<a class="headerlink" href="#airspy-hf-airspyhf" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
