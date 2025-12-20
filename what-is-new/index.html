@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -319,6 +319,45 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#edge-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Edge version
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Edge version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#remove-duplicates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remove duplicates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#downsampling-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Downsampling Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#version-066" class="md-nav__link">
@@ -2813,6 +2852,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#edge-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Edge version
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Edge version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#remove-duplicates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remove duplicates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#downsampling-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Downsampling Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#version-066" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3044,6 +3122,28 @@
 
 
 <h1 id="whats-new">What's New?<a class="headerlink" href="#whats-new" title="Permanent link">&para;</a></h1>
+<h2 id="edge-version">Edge version<a class="headerlink" href="#edge-version" title="Permanent link">&para;</a></h2>
+<p>new additions:</p>
+<ul>
+<li>allow multiple commands in init_seq for serial devices, separate via a comma. Fix issues for MacOS</li>
+<li>messages from serial devices supporting AIS-catcher format can pass on warning/info and error messages via the program</li>
+</ul>
+<h3 id="remove-duplicates">Remove duplicates<a class="headerlink" href="#remove-duplicates" title="Permanent link">&para;</a></h3>
+<p>When combining multiple input streams, overlapping reception can result in duplicate messages. To remove duplicates from output channels, use the experimental <code>unique</code> option. For example, the following removes duplicates from both console and a UDP stream:
+<div class="highlight"><pre><span></span><code>AIS-catcher -o 1 unique on -u 127.0.0.1 5012 unique on
+</code></pre></div></p>
+<p>In JSON, set the <code>unique</code> key to <code>true</code> (remove duplicates) or <code>false</code> (default). Note that this could come at a performance cost that increases with the number of MMSIs so keep an eye on that.</p>
+<h3 id="downsampling-options">Downsampling Options<a class="headerlink" href="#downsampling-options" title="Permanent link">&para;</a></h3>
+<p>Two additional options, <code>position_interval</code> and <code>own_interval</code>, downsample position messages and VDO messages by limiting each MMSI to at most one update per specified interval (in seconds). Both default to <code>0</code> or, equivalent, <code>false</code>(disabled).</p>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code>AIS-catcher -u 127.0.0.1 5012 position_interval 30
+</code></pre></div></p>
+<p>Alternatively, these options are available in the Web GUI:</p>
+<p><img width="909" height="513" alt="image" src="https://github.com/user-attachments/assets/728f4675-ff13-4337-b615-d1ac728e4866" /></p>
+<p>Thanks to user Manny for suggesting these options.</p>
+<blockquote>
+<p><strong>Note:</strong> These options are intended for users aggregating across multiple receivers to reduce bandwidth, and have not been optimized for large vessel counts.</p>
+</blockquote>
 <h2 id="version-066">Version 0.66<a class="headerlink" href="#version-066" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Improve documentation for configuration via JSON</li>
@@ -3246,10 +3346,10 @@ AIS-catcher<span class="w"> </span>-t<span class="w"> </span>mqtt://username:pas
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
