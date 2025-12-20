@@ -20,7 +20,7 @@ AIS-catcher is a tool for decoding and analyzing AIS signals from ships, enablin
 ### Flexible I/O System
 **Input Sources**
 
-  - Wide SDR hardware support (RTL-SDR, AirSpy, AirSpy HF+, HackRF, SDRPlay)
+  - Wide SDR hardware support (RTL-SDR, AirSpy, AirSpy HF+, HackRF, HydraSDR, SDRPlay)
   - NMEA data over network connections
   - Serial devices
   - NMEA2000 via SocketCAN

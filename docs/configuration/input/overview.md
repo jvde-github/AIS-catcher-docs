@@ -76,6 +76,7 @@ For detailed information about specific devices and input types, please refer to
 - [AirSpy ](airspy.md)
 - [AirSpy HF+ ](airspyhf.md)
 - [HackRF ](hackrf.md)
+- [HydraSDR ](hydrasdr.md)
 - [SDRPlay ](sdrplay.md)
 - [SoapySDR ](soapysdr.md)
 </div>

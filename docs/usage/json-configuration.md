@@ -48,7 +48,7 @@ To select the RTL-SDR as an input device:
 - JSON keys are case-sensitive and must be lowercase.
 - CLI setting names are not case-sensitive.
 - Define receivers in the `receiver` array (even for a single receiver).
-- Device sections (e.g. `rtlsdr`, `airspy`) configure the device, but do not select it. Use `input` (and optionally `serial`) inside each receiver object.
+- Device sections (e.g. `rtlsdr`, `airspy`, `hydrasdr`) configure the device, but do not select it. Use `input` (and optionally `serial`) inside each receiver object.
 - `active` is optional in any section; if omitted, it is assumed to be `true`.
 - Outputs like `udp` are arrays to support multiple output channels.
 
@@ -89,14 +89,14 @@ Each entry in the root-level `receiver` array is a receiver object. These keys l
 
 | Key | Type | Description | Documentation |
 |-----|------|-------------|---------------|
-| `input` | string | Selects the input device type for this receiver (e.g. `rtlsdr`, `airspy`, `spyserver`, ...) | [Input Overview](../configuration/input/overview.md) |
+| `input` | string | Selects the input device type for this receiver (e.g. `rtlsdr`, `airspy`, `hydrasdr`, `spyserver`, ...) | [Input Overview](../configuration/input/overview.md) |
 | `serial` | string/number | Receiver identifier (recommended; also used to target per-receiver CLI overrides in some setups) | |
 | `verbose` | boolean | Enable verbose output for this receiver | [Console Output](../configuration/output/console.md) |
 | `verbose_time` | number | Verbose update interval (seconds) for this receiver | [Console Output](../configuration/output/console.md) |
 | `screen` | number | Screen output mode (0-5) for this receiver | [Console Output](../configuration/output/console.md) |
 | `meta` | string | Metadata tags (T/D/M) for this receiver | [Console Output](../configuration/output/console.md) |
 | `own_mmsi` | number | Own MMSI of receiver station | |
-| `<device section>` | object | Device-specific configuration object matching `input` (e.g. `rtlsdr`, `airspy`, ...). See examples in [Input Device Settings](#input-device-settings). | [Input Overview](../configuration/input/overview.md) |
+| `<device section>` | object | Device-specific configuration object matching `input` (e.g. `rtlsdr`, `airspy`, `hydrasdr`, ...). See examples in [Input Device Settings](#input-device-settings). | [Input Overview](../configuration/input/overview.md) |
 | `model` | object | Decoder model configuration for this receiver | [Model](../configuration/model.md) |
 
 ##### Multi-receiver example
@@ -125,7 +125,7 @@ Example with two receivers:
 }
 ```
 
-In this example, each receiver selects a device via `input`, is optionally named via `serial`, and is configured via its device section (e.g. `rtlsdr`, `airspy`).
+In this example, each receiver selects a device via `input`, is optionally named via `serial`, and is configured via its device section (e.g. `rtlsdr`, `airspy`, `hydrasdr`).
 
 [^legacy-root-receiver]: Legacy configurations may use root-level `input` / `serial` to define a single receiver. This still works in some versions, but is discouraged and may be removed in a future release. Prefer putting `input` (and `serial`) inside each receiver object under `receiver`.
 
@@ -166,6 +166,21 @@ AIS-catcher supports various input devices. Each device type has specific config
 ```
 </details>
 [Full Airspy Documentation](../configuration/input/airspy.md)
+
+### HydraSDR (`hydrasdr`)
+<details>
+<summary>Example</summary>
+```json
+{
+    "hydrasdr": {
+        "sample_rate": "3000K",
+        "linearity": 17,
+        "biastee": false
+    }
+}
+```
+</details>
+[Full HydraSDR Documentation](../configuration/input/hydrasdr.md)
 
 ### Airspy HF+ (`airspyhf`)
 <details>

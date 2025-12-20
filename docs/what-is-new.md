@@ -4,6 +4,8 @@
 
 new additions:
 
+- HydraSDR support
+- Debian packages will store HydraSDR and RTL-SDR libraries in /usr/lib/AIS-catcher now as DLLs instead of statically linking
 - allow multiple commands in init_seq for serial devices, separate via a comma. Fix issues for MacOS
 - messages from serial devices supporting AIS-catcher format can pass on warning/info and error messages via the program
   

@@ -118,10 +118,6 @@ For more details on all available settings, [visit](../configuration/overview.md
 ## Detailed settings
 
 ````
-AIS-catcher (build Nov 19 2024) v0.60-312-g4f7b402d
-(C) Copyright 2021-2024 jvde-github and other contributors
-This is free software; see the source for copying conditions.There is NO
-warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 use: AIS-catcher [options]
 
 	[-a xxx - set tuner bandwidth in Hz (default: off)]
@@ -132,6 +128,7 @@ use: AIS-catcher [options]
 	[-e [baudrate] [serial port] - read NMEA from serial port at specified baudrate]
 	[-f [filename] write NMEA lines to file]
 	[-F run model optimized for speed at the cost of accuracy for slow hardware (default: off)]
+	[-G [LEVEL level] [SYSTEM on] - control logging (levels: DEBUG, INFO, WARNING, ERROR, CRITICAL) or enable system logging]
 	[-h display this message and terminate (default: false)]
 	[-H [optional: url] - send messages via HTTP, for options see documentation]
 	[-i [interface] - read NMEA2000 data from socketCAN interface - Linux only]
@@ -150,8 +147,9 @@ use: AIS-catcher [options]
 	[-T xx - auto terminate run with SDR after xxx seconds (default: off)]
 	[-u xxx.xx.xx.xx yyy - UDP destination address and port (default: off)]
 	[-v [option: xx] - enable verbose mode, optional to provide update frequency of xx seconds (default: false)]
-	[-X connect to AIS community feed at aiscatcher.org (default: off)]
+	[-X connect to AIS community feed at www.aiscatcher.org (default: off)]
 	[-Q publish data to MQTT server]
+	[-Z lat lon - set receiver location (latitude and longitude in decimal degrees)]
 
 	Device selection:
 
@@ -170,7 +168,8 @@ use: AIS-catcher [options]
 	Device specific settings:
 
 	[-ga RAW file: FILE [filename] FORMAT [CF32/CS16/CU8/CS8] ]
-	[-ge Serial Port: PRINT [on/off]
+	[-gd HydraSDR: SENSITIVITY [0-21] LINEARITY [0-21] VGA [0-14] LNA [auto/0-14] MIXER [auto/0-14] BIASTEE [on/off] ]
+	[-ge Serial Port: PRINT [on/off] ]
 	[-gf HACKRF: LNA [0-40] VGA [0-62] PREAMP [on/off] ]
 	[-gh Airspy HF+: TRESHOLD [low/high] PREAMP [on/off] ]
 	[-gm Airspy: SENSITIVITY [0-21] LINEARITY [0-21] VGA [0-14] LNA [auto/0-14] MIXER [auto/0-14] BIASTEE [on/off] ]
@@ -185,5 +184,6 @@ use: AIS-catcher [options]
 	Model specific settings:
 
 	[-go Model: AFC_WIDE [on/off] FP_DS [on/off] PS_EMA [on/off] SOXR [on/off] SRC [on/off] DROOP [on/off] ]
+
 
 ````

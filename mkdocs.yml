@@ -85,6 +85,7 @@ nav:
               - AirSpy: configuration/input/airspy.md
               - AirSpy HF+: configuration/input/airspyhf.md
               - HackRF: configuration/input/hackrf.md
+              - HydraSDR: configuration/input/hydrasdr.md
               - SDRPlay: configuration/input/sdrplay.md
               - SoapySDR: configuration/input/soapysdr.md
             - Network Input:
