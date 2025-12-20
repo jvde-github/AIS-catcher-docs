@@ -1,5 +1,38 @@
 # What's New?
 
+## Edge version
+
+new additions:
+
+- allow multiple commands in init_seq for serial devices, separate via a comma. Fix issues for MacOS
+- messages from serial devices supporting AIS-catcher format can pass on warning/info and error messages via the program
+  
+### Remove duplicates
+When combining multiple input streams, overlapping reception can result in duplicate messages. To remove duplicates from output channels, use the experimental `unique` option. For example, the following removes duplicates from both console and a UDP stream:
+```
+AIS-catcher -o 1 unique on -u 127.0.0.1 5012 unique on
+```
+
+In JSON, set the `unique` key to `true` (remove duplicates) or `false` (default). Note that this could come at a performance cost that increases with the number of MMSIs so keep an eye on that.
+
+### Downsampling Options
+
+Two additional options, `position_interval` and `own_interval`, downsample position messages and VDO messages by limiting each MMSI to at most one update per specified interval (in seconds). Both default to `0` or, equivalent, `false`(disabled).
+
+**Example:**
+```
+AIS-catcher -u 127.0.0.1 5012 position_interval 30
+```
+
+Alternatively, these options are available in the Web GUI:
+
+<img width="909" height="513" alt="image" src="https://github.com/user-attachments/assets/728f4675-ff13-4337-b615-d1ac728e4866" />
+
+Thanks to user Manny for suggesting these options.
+
+> **Note:** These options are intended for users aggregating across multiple receivers to reduce bandwidth, and have not been optimized for large vessel counts.
+
+
 ## Version 0.66
 
 - Improve documentation for configuration via JSON
