@@ -64,6 +64,8 @@ These options can be combined to fine-tune the output rate and avoid redundant d
 
 ### Filter settings
 
+Generic filtering options requiring 'filter' set to 'true' or 'on' to be active:
+
 <div class="settings-table" markdown>
 | Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
@@ -77,7 +79,14 @@ These options can be combined to fine-tune the output rate and avoid redundant d
 | <span class="cmd-setting">allow_channel</span> | string | <span class="cmd-value">all</span> | Only allow messages from specific AIS channels |
 | <span class="cmd-setting">id</span> | integer | <span class="cmd-value">all</span> | Only allow messages from specific station IDs |
 | <span class="cmd-setting">gps</span> | boolean | <span class="cmd-value">true</span> | Include GPS messages in output |
-| <span class="cmd-setting">ais</span> | boolean | <span class="cmd-value">true</span> | Include AIS messages in output |
+| <span class="cmd-setting">ais</span> | boolean | <span class="cmd-value">true</
+</div>
+
+Downsampling options:
+
+<div class="downsample-table" markdown>
+| Setting (JSON key / CLI setting name) | Type | Default | Description |
+|---------|------|---------|-------------|
 | <span class="cmd-setting">unique</span> | boolean | <span class="cmd-value">false</span> | Only send/show unique messages|
 | <span class="cmd-setting">position_interval</span> | number | <span class="cmd-value">false</span> | Minimal time in seconds between position updates for a ship, off = false or 0 |
 | <span class="cmd-setting">own_interval</span> | number | <span class="cmd-value">false</span> | Minimal time in seconds between  updates for own ship, off = false or 0 |
