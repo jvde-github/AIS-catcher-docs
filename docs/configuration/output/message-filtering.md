@@ -60,7 +60,7 @@ AIS-catcher -u localhost 5012 position_interval 30
 
 These options can be combined to fine-tune the output rate and avoid redundant data, depending on your use case and requirements.
 
-**Note**: filtering for messages to screen can only be set on the command line and not in the JSON configuration file at this stage. UDP filtering is available in the JSON configuration file.
+**Note**: filtering for messages to screen can only be set on the command line and not in the JSON configuration file at this stage. 
 
 ### Filter settings
 
