@@ -101,6 +101,7 @@ nav:
       - Model: configuration/model.md
       - Output Options:
         - Overview: configuration/output/overview.md
+        - Message Filtering: configuration/output/message-filtering.md
         - Community Feed: configuration/output/community-feed.md
         - Console Output: configuration/output/console.md
         - Network Output:
