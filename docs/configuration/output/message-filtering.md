@@ -1,6 +1,11 @@
-# Message filtering
 
-AIS-catcher has functionality to filter UDP, webviewer, TCP, MQTT, HTTP and screen output on message type, e.g. send only messages of type 1, 2, 3, 5, 18, 19, 24 and 27 over UDP:
+# Message Filtering
+
+AIS-catcher offers extensive filtering options to help you manage the volume and relevance of AIS data output. You can filter messages by type, MMSI, channel, and other criteria, allowing you to focus on the information most important to your use case. In addition, powerful downsampling tools such as unique message filtering, own-station interval, and position interval controls are available to further reduce redundant data and manage bandwidth or storage requirements, especially in high-traffic environments. These features make it easy to tailor the output to your needs, whether you are monitoring a busy port or running a resource-constrained installation.
+
+
+## Filtering Mesages types
+To filter UDP, webviewer, TCP, MQTT, HTTP and screen output on message type, e.g. send only messages of type 1, 2, 3, 5, 18, 19, 24 and 27 over UDP:
 
 ```bash
 AIS-catcher -u 127.0.0.1 10110 filter on allow_type 1,2,3,5,18,19,24,27
@@ -23,15 +28,35 @@ AIS-catcher provides several options to reduce the number of output messages by 
 
 ### Removing duplicates: `unique` 
 
-The `unique` or `unique_interval` option ensures that only unique messages are output within a specified time window. If a message with the same content (hash) is received multiple times within the interval, only the first is output, and duplicates are suppressed. This is useful for reducing repeated identical messages from the same source.
+The `unique` or `unique_interval` option ensures that only unique messages are output within a specified time window. If a message with the same content (hash) is received multiple times within the interval, only the first is output, and duplicates are suppressed. This is useful for reducing repeated identical messages from the same source. Note that this is only relevant for stations aggregating from multiple sources with overlap.
+
+Example:
+
+```bash
+AIS-catcher -o 1 unique on
+```
 
 ### Downsampling VDO messages: `own_interval`
 
 The `own_interval` option controls the minimum interval (in seconds) between outputting messages from the receiver's own station (VDO messages). If multiple own-station messages are received within this interval, only the first is output. This is useful for reducing the frequency of self-reported position or status updates which can be quite frequent for certain devices.
 
+```bash
+AIS-catcher -O 123456789 -o 1 own_interval 10
+```
+
+Default is switched off:
+
+```bash
+AIS-catcher -O 123456789 -o 1 own_interval false
+```
+
 ### Downsampling position messages: `position_interval`
 
 The `position_interval` option sets the minimum interval (in seconds) between outputting position reports (types 1, 2, 3, 18, and 27) for each MMSI. If multiple position messages for the same vessel are received within this interval, only the first is output. This helps to limit the rate of position updates for each vessel which are typically the most frequent messages.
+
+```bash
+AIS-catcher -u localhost 5012 position_interval 30
+```
 
 These options can be combined to fine-tune the output rate and avoid redundant data, depending on your use case and requirements.
 
