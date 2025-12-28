@@ -2860,6 +2860,7 @@ Message type 8 is region-specific. If you encounter any messages in the wild tha
 <p>These options can be combined to fine-tune the output rate and avoid redundant data, depending on your use case and requirements.</p>
 <p><strong>Note</strong>: filtering for messages to screen can only be set on the command line and not in the JSON configuration file at this stage. </p>
 <h3 id="filter-settings">Filter settings<a class="headerlink" href="#filter-settings" title="Permanent link">&para;</a></h3>
+<p>Generic filtering options requiring 'filter' set to 'true' or 'on' to be active:</p>
 <div class="settings-table">
 <table>
 <thead>
@@ -2934,9 +2935,29 @@ Message type 8 is region-specific. If you encounter any messages in the wild tha
 <tr>
 <td><span class="cmd-setting">ais</span></td>
 <td>boolean</td>
-<td><span class="cmd-value">true</span></td>
-<td>Include AIS messages in output</td>
+<td><span class="cmd-value">true&lt;/</td>
+<td></td>
 </tr>
+<tr>
+<td></div></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Downsampling options:</p>
+<div class="downsample-table">
+<table>
+<thead>
+<tr>
+<th>Setting (JSON key / CLI setting name)</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td><span class="cmd-setting">unique</span></td>
 <td>boolean</td>
@@ -2957,6 +2978,7 @@ Message type 8 is region-specific. If you encounter any messages in the wild tha
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 
 
