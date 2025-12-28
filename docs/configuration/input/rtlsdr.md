@@ -28,7 +28,6 @@ On the command line, setting names and boolean values are not case-sensitive. In
 | <span class="cmd-setting">sample_rate</span> | integer | <span class="cmd-value">1536K</span> | Sampling rate in Hz (0-20,000,000) |
 | <span class="cmd-setting">bandwidth</span> | integer | <span class="cmd-value">off</span> | Tuner bandwidth in Hz (0-1,000,000, 0=auto) |
 | <span class="cmd-setting">freqoffset</span> | integer | <span class="cmd-value">0</span> | Frequency correction in PPM (-150 to +150) |
-| <span class="cmd-setting">format</span> | string | <span class="cmd-value">CU8</span> | Data type for input source |
 | Specific Options | | | |
 |  <span class="cmd-setting">tuner</span> | auto/float | <span class="cmd-value">auto</span> | Tuner gain/AGC (0-50 dB or AUTO) |
 |  <span class="cmd-setting">rtlagc</span> | boolean | <span class="cmd-value">true</span>  | Enable/disable RTL2832U AGC |

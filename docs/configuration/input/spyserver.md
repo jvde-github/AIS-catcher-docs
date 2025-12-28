@@ -36,7 +36,6 @@ AIS-catcher -y 192.168.1.235 5555 -gy gain 14
 | <span class="cmd-setting">sample_rate</span> | integer | <span class="cmd-value">Host specific</span> | Sampling rate in Hz (0-20,000,000) |
 | <span class="cmd-setting">bandwidth</span> | integer | <span class="cmd-value">0</span> | Tuner bandwidth in Hz (0-1,000,000, 0 = off) |
 | <span class="cmd-setting">freqoffset</span> | integer | <span class="cmd-value">0</span> | Frequency correction in PPM (-150 to +150) |
-| <span class="cmd-setting">format</span> | string | <span class="cmd-value">CF32</span> | Data type for input source |
 | Specific Options | | | |
 | <span class="cmd-setting">url</span> | string | <span class="cmd-value">-</span> | Full connection URL (sdr://host:port) |
 | <span class="cmd-setting">host</span> | string | <span class="cmd-value">localhost</span> | SpyServer host address |

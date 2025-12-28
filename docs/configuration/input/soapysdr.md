@@ -46,7 +46,6 @@ If the sample rates for a device are not supported by AIS-catcher, the SOXR func
 | <span class="cmd-setting">sample_rate</span> | integer | <span class="cmd-value">0</span> | Sampling rate in Hz (0-20,000,000) |
 | <span class="cmd-setting">bandwidth</span> | integer | <span class="cmd-value">0</span> | Tuner bandwidth in Hz (0-1,000,000, 0=off) |
 | <span class="cmd-setting">freqoffset</span> | integer | <span class="cmd-value">0</span> | Frequency correction in PPM (-150 to +150) |
-| <span class="cmd-setting">format</span> | string | <span class="cmd-value">CF32</span> | Data type for input source |
 | Specific Options | | | |
 | <span class="cmd-setting">device</span> | string | <span class="cmd-value">""</span> | SoapySDR device arguments string |
 | <span class="cmd-setting">gain</span> | string | <span class="cmd-value">-</span> | Gain settings in key=value pairs |

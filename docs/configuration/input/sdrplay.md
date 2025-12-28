@@ -25,7 +25,6 @@ AIS-catcher -gs lnastate 5
 | <span class="cmd-setting">sample_rate</span> | integer | <span class="cmd-value">2304K</span> | Sampling rate in Hz (0-20,000,000) |
 | <span class="cmd-setting">bandwidth</span> | integer | <span class="cmd-value">0</span> | Tuner bandwidth in Hz (0-1,000,000) |
 | <span class="cmd-setting">freqoffset</span> | integer | <span class="cmd-value">0</span> | Frequency correction in PPM (-150 to +150) |
-| <span class="cmd-setting">format</span> | string | <span class="cmd-value">CF32</span> | Data type for input source |
 | Specific Options | | | |
 | <span class="cmd-setting">agc</span> | boolean | <span class="cmd-value">false</span> | Enable/disable Automatic Gain Control |
 | <span class="cmd-setting">lnastate</span> | integer | <span class="cmd-value">0</span> | LNA state/gain (0-9) |

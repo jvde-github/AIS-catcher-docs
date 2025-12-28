@@ -24,7 +24,6 @@ Please note that only AGC mode is supported so there are limited options.
 | <span class="cmd-setting">sample_rate</span> | integer | <span class="cmd-value">Device-specific</span> | Sampling rate in Hz (0-20,000,000) |
 | <span class="cmd-setting">bandwidth</span> | integer | <span class="cmd-value">0</span> | Tuner bandwidth in Hz (0-1,000,000) |
 | <span class="cmd-setting">freqoffset</span> | integer | <span class="cmd-value">0</span> | Frequency correction in PPM (-150 to +150) |
-| <span class="cmd-setting">format</span> | enum | <span class="cmd-value">Device-specific</span> | Data type for input source |
 | Specific Options | | | |
 | <span class="cmd-setting">preamp</span> | boolean | <span class="cmd-value">false</span> | Enable/disable preamplifier |
 | <span class="cmd-setting">threshold</span> | enum | <span class="cmd-value">LOW</span> | AGC threshold setting ("HIGH" or "LOW") |
