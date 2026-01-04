@@ -169,7 +169,7 @@ use: AIS-catcher [options]
 
 	[-ga RAW file: FILE [filename] FORMAT [CF32/CS16/CU8/CS8] ]
 	[-gd HydraSDR: SENSITIVITY [0-21] LINEARITY [0-21] VGA [0-14] LNA [auto/0-14] MIXER [auto/0-14] BIASTEE [on/off] ]
-	[-ge Serial Port: PRINT [on/off] ]
+	[-ge Serial Port: PRINT [on/off] FLOWCONTROL [none/hardware/software] INIT_SEQ [string] ]
 	[-gf HACKRF: LNA [0-40] VGA [0-62] PREAMP [on/off] ]
 	[-gh Airspy HF+: TRESHOLD [low/high] PREAMP [on/off] ]
 	[-gm Airspy: SENSITIVITY [0-21] LINEARITY [0-21] VGA [0-14] LNA [auto/0-14] MIXER [auto/0-14] BIASTEE [on/off] ]
@@ -184,6 +184,7 @@ use: AIS-catcher [options]
 	Model specific settings:
 
 	[-go Model: AFC_WIDE [on/off] FP_DS [on/off] PS_EMA [on/off] SOXR [on/off] SRC [on/off] DROOP [on/off] ]
+
 
 
 ````
