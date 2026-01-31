@@ -34,7 +34,7 @@ Follow these high-level steps to get AIS-catcher up and running:
 <div class="step" markdown>
 
 **Decide on your desired setup**  
-Decide on using the [Web GUI or](#the-web-gui) not, for Docker or Raspberry Pi
+Decide on using the [Visual Web Control or](#the-visual-web-control) not, for Docker or Raspberry Pi
 
 </div>
 
@@ -65,16 +65,17 @@ Start experimenting with advanced options such as MQTT, Grafana, and NMEA2000 su
 </div>
 
 
-## The Web GUI
+## The Visual Web Control
 
 
 ![image](https://github.com/user-attachments/assets/abf29893-0567-4b94-9354-e0630cc6f9fc)
 
-The Web GUI management interface is available exclusively for Raspberry Pi and Docker deployments as a separate package to ease configuration and management of the receiver. Key features include:
+The Visual Web Control management interface is available exclusively for Raspberry Pi and Docker deployments as a separate package to ease configuration and management of the receiver. Key features include:
 
 - Background service management
 - Configuration interface
 - System monitoring
+- One-click updates and upgrades
 
 Note: Manual configuration edits may limit certain GUI functionality. The interface provides a lightweight solution ideal for Linux newcomers.
 

@@ -26,7 +26,7 @@ Two additional options, `position_interval` and `own_interval`, downsample posit
 AIS-catcher -u 127.0.0.1 5012 position_interval 30
 ```
 
-Alternatively, these options are available in the Web GUI:
+Alternatively, these options are available in the Visual Web Control interface:
 
 <img width="909" height="513" alt="image" src="https://github.com/user-attachments/assets/728f4675-ff13-4337-b615-d1ac728e4866" />
 

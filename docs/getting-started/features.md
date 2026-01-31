@@ -9,7 +9,7 @@ AIS-catcher is a tool for decoding and analyzing AIS signals from ships, enablin
 ### Multi-Platform Support
 - Runs on Windows, Ubuntu/Debian, Raspberry Pi, OSX, and Docker
 - Easy installation via scripts and pre-built Docker images
-- Web GUI available for Raspberry Pi and Docker deployments
+- Visual Web Control interface available for Raspberry Pi and Docker deployments
 
 ### High-Performance Architecture
 - Sensitive decoder optimized for maximum SDR performance
@@ -45,7 +45,7 @@ AIS-catcher is a tool for decoding and analyzing AIS signals from ships, enablin
 - Mobile-friendly design
 - Extensible plugin system
 
-### Web GUI Management (Raspberry Pi & Docker)
+### Visual Web Control Management (Raspberry Pi & Docker)
 - Service control (start/stop)
 - Input/output configuration
 - System settings management

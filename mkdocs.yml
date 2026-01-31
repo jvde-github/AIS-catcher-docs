@@ -74,7 +74,7 @@ nav:
       - Ubuntu and Debian: installation/ubuntu-debian.md
   - Basic Usage:
       - Overview: usage/overview.md
-      - Web GUI: usage/gui.md
+      - Visual Web Control: usage/gui.md
       - Command Line: usage/cli.md
       - JSON Configuration: usage/json-configuration.md
   - Configuration:

@@ -5,7 +5,7 @@
 Jump to the desired Installation Option:
 
 [Basic](#basic-docker-container){ .md-button .md-button--secondary }
-[Web GUI](#docker-with-web-gui){ .md-button .md-button--secondary }
+[Visual Web Control](#docker-with-visual-web-control){ .md-button .md-button--secondary }
 
 ## Basic Docker Container
 
@@ -53,12 +53,14 @@ Notice that if you want to run the webviewer (-N 8100) you need to make that ava
 An excellent Docker set-up is the [docker-shipfeeder](https://github.com/sdr-enthusiasts/docker-shipfeeder) that provides a user friendly way to 
 feed various aggregators with excellent documentation and user support by the sdrenthusiasts community.
 
-## Docker with Web GUI
+## Docker with Visual Web Control
 If you are already up and running with Docker installed, you can simply use:
 ```console
 wget https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/refs/heads/main/docker-compose.yml
 docker compose up -d
 ```
+
+This will set up AIS-catcher with the Visual Web Control interface, allowing you to configure, manage, and update your installation via a web browser at port 8110.
 
 ---
 
