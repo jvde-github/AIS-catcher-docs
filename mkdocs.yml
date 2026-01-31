@@ -50,7 +50,7 @@ extra:
       link: https://github.com/jvde-github/AIS-catcher/issues
 
   footer:
-    text: '© 2021-2024 jvde.github@gmail.com. All rights reserved.'
+    text: '© 2021-2026 jvde.github@gmail.com. All rights reserved.'
     links:
       - title: 'License'
         url: 'license.md'
