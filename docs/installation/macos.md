@@ -93,28 +93,27 @@ AIS-catcher
 
 For more advanced usage and configuration options, see the [Command Line Usage](../usage/cli.md) guide.
 
-## Common Options
-
-Here are some commonly used command-line options to get you started:
-
-- **Specify RTL-SDR device:** `AIS-catcher -d:0`
-- **Set frequency correction (PPM):** `AIS-catcher -p 52`
-- **Enable verbose output:** `AIS-catcher -v`
-- **Send data to online services:** `AIS-catcher -u 5.9.207.224 2947` (MarineTraffic)
-
 ## Running as a Background Service
 
 Unlike the Linux/Raspberry Pi version, there is no automated background service setup script for macOS. However, you can create a launch agent to run AIS-catcher automatically at startup using `launchd`.
 
 ### Creating a Launch Agent
 
-1. Create a launch agent plist file:
+1. First, verify the installation path of AIS-catcher:
 
 ```bash
-sudo nano ~/Library/LaunchAgents/com.aiscatcher.plist
+which AIS-catcher
 ```
 
-2. Add the following content (adjust paths and parameters as needed):
+This will return either `/usr/local/bin/AIS-catcher` (Intel Macs) or `/opt/homebrew/bin/AIS-catcher` (Apple Silicon Macs). Use this path in the next step.
+
+2. Create a launch agent plist file (note: do **not** use `sudo` for this):
+
+```bash
+nano ~/Library/LaunchAgents/com.aiscatcher.plist
+```
+
+3. Add the following content, adjusting the path and parameters for your setup:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -127,36 +126,51 @@ sudo nano ~/Library/LaunchAgents/com.aiscatcher.plist
     <array>
         <string>/usr/local/bin/AIS-catcher</string>
         <string>-v</string>
-        <!-- Add your command-line parameters here -->
+        <!-- Add additional parameters as separate strings, for example: -->
+        <!-- <string>-u</string> -->
+        <!-- <string>5.9.207.224</string> -->
+        <!-- <string>2947</string> -->
     </array>
     <key>RunAtLoad</key>
     <true/>
     <key>KeepAlive</key>
     <true/>
     <key>StandardOutPath</key>
-    <string>/tmp/aiscatcher.log</string>
+    <string>/Users/YOUR_USERNAME/aiscatcher.log</string>
     <key>StandardErrorPath</key>
-    <string>/tmp/aiscatcher.error.log</string>
+    <string>/Users/YOUR_USERNAME/aiscatcher.error.log</string>
 </dict>
 </plist>
 ```
 
-3. Load the launch agent:
+> **Important Notes:**
+> - Replace `/usr/local/bin/AIS-catcher` with the path from step 1 if different (e.g., `/opt/homebrew/bin/AIS-catcher` for Apple Silicon)
+> - Replace `YOUR_USERNAME` with your actual macOS username
+> - Each command-line argument must be in its own `<string>` tag (e.g., `-u`, `5.9.207.224`, and `2947` as three separate strings)
+> - Logs are stored in your home directory to persist across reboots (unlike `/tmp` which is cleared on restart)
+
+4. Load the launch agent:
 
 ```bash
 launchctl load ~/Library/LaunchAgents/com.aiscatcher.plist
 ```
 
-4. To start the service immediately:
+5. To start the service immediately:
 
 ```bash
 launchctl start com.aiscatcher
 ```
 
-5. To stop the service:
+6. To stop the service:
 
 ```bash
 launchctl stop com.aiscatcher
+```
+
+7. To unload the service (if you need to make changes to the plist):
+
+```bash
+launchctl unload ~/Library/LaunchAgents/com.aiscatcher.plist
 ```
 
 ## Updating AIS-catcher
