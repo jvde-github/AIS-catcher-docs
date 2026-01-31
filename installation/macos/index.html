@@ -12,13 +12,13 @@
         <meta name="author" content="jvde.github@gmail.com">
       
       
-        <link rel="canonical" href="https://aiscatcher.org/docs/usage/overview/">
+        <link rel="canonical" href="https://aiscatcher.org/docs/installation/macos/">
       
       
-        <link rel="prev" href="../../installation/ubuntu-debian/">
+        <link rel="prev" href="../raspberrypi/">
       
       
-        <link rel="next" href="../gui/">
+        <link rel="next" href="../windows/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Overview - AIS-catcher Docs</title>
+        <title>macOS - AIS-catcher Docs</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#basic-usage" class="md-skip">
+        <a href="#macos-installation" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              macOS
             
           </span>
         </div>
@@ -423,18 +423,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -455,7 +457,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -473,7 +475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -501,7 +503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/docker/" class="md-nav__link">
+      <a href="../docker/" class="md-nav__link">
         
   
   
@@ -529,7 +531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/raspberrypi/" class="md-nav__link">
+      <a href="../raspberrypi/" class="md-nav__link">
         
   
   
@@ -554,10 +556,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../installation/macos/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    macOS
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -573,6 +602,259 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#license-important-disclaimer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        License &amp; Important Disclaimer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-homebrew" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install Homebrew
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation Steps
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-install-build-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Install Build Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-install-sdr-hardware-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Install SDR Hardware Libraries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-build-and-install-ais-catcher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Build and Install AIS-catcher
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing the Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-ais-catcher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running AIS-catcher
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Options
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-as-a-background-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running as a Background Service
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running as a Background Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-launch-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a Launch Agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-ais-catcher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Updating AIS-catcher
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#command-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command Not Found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cmake-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CMake Not Found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Missing Libraries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternative-macports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternative: MacPorts
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -585,7 +867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/windows/" class="md-nav__link">
+      <a href="../windows/" class="md-nav__link">
         
   
   
@@ -613,7 +895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/build-source/" class="md-nav__link">
+      <a href="../build-source/" class="md-nav__link">
         
   
   
@@ -641,7 +923,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/ubuntu-debian/" class="md-nav__link">
+      <a href="../ubuntu-debian/" class="md-nav__link">
         
   
   
@@ -673,20 +955,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -707,7 +987,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -722,19 +1002,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../usage/overview/" class="md-nav__link">
         
   
   
@@ -750,7 +1021,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -763,7 +1033,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gui/" class="md-nav__link">
+      <a href="../../usage/gui/" class="md-nav__link">
         
   
   
@@ -791,7 +1061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cli/" class="md-nav__link">
+      <a href="../../usage/cli/" class="md-nav__link">
         
   
   
@@ -819,7 +1089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../json-configuration/" class="md-nav__link">
+      <a href="../../usage/json-configuration/" class="md-nav__link">
         
   
   
@@ -2644,6 +2914,247 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#license-important-disclaimer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        License &amp; Important Disclaimer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-homebrew" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install Homebrew
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation Steps
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-install-build-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Install Build Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-install-sdr-hardware-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Install SDR Hardware Libraries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-build-and-install-ais-catcher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Build and Install AIS-catcher
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing the Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-ais-catcher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running AIS-catcher
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Options
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-as-a-background-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running as a Background Service
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running as a Background Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-launch-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a Launch Agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-ais-catcher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Updating AIS-catcher
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#command-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command Not Found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cmake-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CMake Not Found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Missing Libraries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternative-macports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternative: MacPorts
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2662,13 +3173,170 @@
   
 
 
-<h1 id="basic-usage">Basic Usage<a class="headerlink" href="#basic-usage" title="Permanent link">&para;</a></h1>
-<p>In this section we describe how to get started with the three main configuation methods:</p>
+<h1 id="macos-installation">macOS Installation<a class="headerlink" href="#macos-installation" title="Permanent link">&para;</a></h1>
+<h2 id="license-important-disclaimer">License &amp; Important Disclaimer<a class="headerlink" href="#license-important-disclaimer" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>AIS-catcher is provided for research and educational purposes. It has not been designed, tested, or certified for reliability, accuracy, or safety. <strong>Do not rely on AIS-catcher for navigation or any safety-critical applications.</strong> Users bear full responsibility for ensuring compliance with local laws and regulations regarding the reception, decoding, and use of AIS signals. AIS-catcher is provided “as is,” without warranty of any kind, and must not be used for illegal or unauthorized activities. Operate AIS-catcher only where such use is permitted by local authorities.</p>
+<p>Copyright (C) 2021–2025 <a href="mailto:jvde.github@gmail.com">jvde.github at gmail.com</a>. Licensed under the GNU General Public License v3.0</p>
+</blockquote>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<p>This guide provides instructions for installing AIS-catcher on macOS systems using Homebrew. AIS-catcher is built from source on macOS to ensure optimal performance for your specific hardware.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<h3 id="install-homebrew">Install Homebrew<a class="headerlink" href="#install-homebrew" title="Permanent link">&para;</a></h3>
+<p>If you don't already have Homebrew installed, you can install it by opening a terminal and running:</p>
+<div class="highlight"><pre><span></span><code>/bin/bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+<p>Follow the on-screen instructions to complete the installation. After installation, you may need to add Homebrew to your PATH as instructed.</p>
+<h2 id="installation-steps">Installation Steps<a class="headerlink" href="#installation-steps" title="Permanent link">&para;</a></h2>
+<h3 id="1-install-build-dependencies">1. Install Build Dependencies<a class="headerlink" href="#1-install-build-dependencies" title="Permanent link">&para;</a></h3>
+<p>First, ensure you have the necessary build tools and dependencies:</p>
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>update
+brew<span class="w"> </span>upgrade
+
+brew<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>make<span class="w"> </span>gcc<span class="w"> </span>cmake<span class="w"> </span>pkg-config<span class="w"> </span>sqlite3
+</code></pre></div>
+<h3 id="2-install-sdr-hardware-libraries">2. Install SDR Hardware Libraries<a class="headerlink" href="#2-install-sdr-hardware-libraries" title="Permanent link">&para;</a></h3>
+<p>Depending on your SDR hardware, install the appropriate drivers. For RTL-SDR dongles (most common):</p>
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>librtlsdr
+</code></pre></div>
+<p>For other hardware types, install the corresponding libraries:</p>
+<table>
+<thead>
+<tr>
+<th>Hardware</th>
+<th>Homebrew Package</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RTL-SDR</strong></td>
+<td><code>librtlsdr</code></td>
+</tr>
+<tr>
+<td><strong>Airspy</strong></td>
+<td><code>airspy</code></td>
+</tr>
+<tr>
+<td><strong>Airspy HF+</strong></td>
+<td><code>airspyhf</code></td>
+</tr>
+<tr>
+<td><strong>HackRF</strong></td>
+<td><code>hackrf</code></td>
+</tr>
+<tr>
+<td><strong>ZeroMQ</strong></td>
+<td><code>zeromq</code></td>
+</tr>
+</tbody>
+</table>
+<p>For example, to install support for Airspy and HackRF:</p>
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>airspy<span class="w"> </span>hackrf
+</code></pre></div>
+<h3 id="3-build-and-install-ais-catcher">3. Build and Install AIS-catcher<a class="headerlink" href="#3-build-and-install-ais-catcher" title="Permanent link">&para;</a></h3>
+<p>Once the dependencies are in place, clone the repository and build AIS-catcher:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jvde-github/AIS-catcher.git<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span>
+<span class="nb">cd</span><span class="w"> </span>AIS-catcher
+mkdir<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
+cmake<span class="w"> </span>..
+make
+sudo<span class="w"> </span>make<span class="w"> </span>install
+</code></pre></div>
+<p>The build process will automatically detect and include support for any SDR libraries you have installed.</p>
+<blockquote>
+<p><strong>Note:</strong> Building from source can take several minutes depending on your Mac's specifications. The executable will be optimized for your specific hardware.</p>
+</blockquote>
+<h2 id="testing-the-installation">Testing the Installation<a class="headerlink" href="#testing-the-installation" title="Permanent link">&para;</a></h2>
+<p>Once the program is installed, verify it works correctly by checking the available features:</p>
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-L
+</code></pre></div>
+<p>This command will display all the input devices and features that are included in your build.</p>
+<h2 id="running-ais-catcher">Running AIS-catcher<a class="headerlink" href="#running-ais-catcher" title="Permanent link">&para;</a></h2>
+<p>To start receiving AIS messages with your RTL-SDR dongle:</p>
+<div class="highlight"><pre><span></span><code>AIS-catcher
+</code></pre></div>
+<p>For more advanced usage and configuration options, see the <a href="../../usage/cli/">Command Line Usage</a> guide.</p>
+<h2 id="common-options">Common Options<a class="headerlink" href="#common-options" title="Permanent link">&para;</a></h2>
+<p>Here are some commonly used command-line options to get you started:</p>
 <ul>
-<li><a href="../cli/">Command Line Usage</a></li>
-<li><a href="../gui/">Visual Web Control</a></li>
-<li><a href="../json-configuration/">JSON configuration</a></li>
+<li><strong>Specify RTL-SDR device:</strong> <code>AIS-catcher -d:0</code></li>
+<li><strong>Set frequency correction (PPM):</strong> <code>AIS-catcher -p 52</code></li>
+<li><strong>Enable verbose output:</strong> <code>AIS-catcher -v</code></li>
+<li><strong>Send data to online services:</strong> <code>AIS-catcher -u 5.9.207.224 2947</code> (MarineTraffic)</li>
 </ul>
+<h2 id="running-as-a-background-service">Running as a Background Service<a class="headerlink" href="#running-as-a-background-service" title="Permanent link">&para;</a></h2>
+<p>Unlike the Linux/Raspberry Pi version, there is no automated background service setup script for macOS. However, you can create a launch agent to run AIS-catcher automatically at startup using <code>launchd</code>.</p>
+<h3 id="creating-a-launch-agent">Creating a Launch Agent<a class="headerlink" href="#creating-a-launch-agent" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Create a launch agent plist file:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>~/Library/LaunchAgents/com.aiscatcher.plist
+</code></pre></div>
+<ol>
+<li>Add the following content (adjust paths and parameters as needed):</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="cp">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span>
+<span class="nt">&lt;plist</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;dict&gt;</span>
+<span class="w">    </span><span class="nt">&lt;key&gt;</span>Label<span class="nt">&lt;/key&gt;</span>
+<span class="w">    </span><span class="nt">&lt;string&gt;</span>com.aiscatcher<span class="nt">&lt;/string&gt;</span>
+<span class="w">    </span><span class="nt">&lt;key&gt;</span>ProgramArguments<span class="nt">&lt;/key&gt;</span>
+<span class="w">    </span><span class="nt">&lt;array&gt;</span>
+<span class="w">        </span><span class="nt">&lt;string&gt;</span>/usr/local/bin/AIS-catcher<span class="nt">&lt;/string&gt;</span>
+<span class="w">        </span><span class="nt">&lt;string&gt;</span>-v<span class="nt">&lt;/string&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- Add your command-line parameters here --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/array&gt;</span>
+<span class="w">    </span><span class="nt">&lt;key&gt;</span>RunAtLoad<span class="nt">&lt;/key&gt;</span>
+<span class="w">    </span><span class="nt">&lt;true/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;key&gt;</span>KeepAlive<span class="nt">&lt;/key&gt;</span>
+<span class="w">    </span><span class="nt">&lt;true/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;key&gt;</span>StandardOutPath<span class="nt">&lt;/key&gt;</span>
+<span class="w">    </span><span class="nt">&lt;string&gt;</span>/tmp/aiscatcher.log<span class="nt">&lt;/string&gt;</span>
+<span class="w">    </span><span class="nt">&lt;key&gt;</span>StandardErrorPath<span class="nt">&lt;/key&gt;</span>
+<span class="w">    </span><span class="nt">&lt;string&gt;</span>/tmp/aiscatcher.error.log<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;/dict&gt;</span>
+<span class="nt">&lt;/plist&gt;</span>
+</code></pre></div>
+<ol>
+<li>Load the launch agent:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>launchctl<span class="w"> </span>load<span class="w"> </span>~/Library/LaunchAgents/com.aiscatcher.plist
+</code></pre></div>
+<ol>
+<li>To start the service immediately:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>launchctl<span class="w"> </span>start<span class="w"> </span>com.aiscatcher
+</code></pre></div>
+<ol>
+<li>To stop the service:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>launchctl<span class="w"> </span>stop<span class="w"> </span>com.aiscatcher
+</code></pre></div>
+<h2 id="updating-ais-catcher">Updating AIS-catcher<a class="headerlink" href="#updating-ais-catcher" title="Permanent link">&para;</a></h2>
+<p>To update to the latest version, navigate to your AIS-catcher directory and rebuild:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>AIS-catcher
+git<span class="w"> </span>pull
+<span class="nb">cd</span><span class="w"> </span>build
+cmake<span class="w"> </span>..
+make
+sudo<span class="w"> </span>make<span class="w"> </span>install
+</code></pre></div>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="command-not-found">Command Not Found<a class="headerlink" href="#command-not-found" title="Permanent link">&para;</a></h3>
+<p>If you get a "command not found" error after installation, ensure <code>/usr/local/bin</code> is in your PATH. Add this to your <code>~/.zshrc</code> or <code>~/.bash_profile</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+</code></pre></div>
+<h3 id="cmake-not-found">CMake Not Found<a class="headerlink" href="#cmake-not-found" title="Permanent link">&para;</a></h3>
+<p>If cmake is not found, ensure Homebrew is properly installed and in your PATH. After installing Homebrew, you may need to run the commands shown at the end of the Homebrew installation.</p>
+<h3 id="missing-libraries">Missing Libraries<a class="headerlink" href="#missing-libraries" title="Permanent link">&para;</a></h3>
+<p>If the build fails due to missing libraries, make sure you've installed the required SDR libraries with Homebrew as described in step 2.</p>
+<h2 id="alternative-macports">Alternative: MacPorts<a class="headerlink" href="#alternative-macports" title="Permanent link">&para;</a></h2>
+<p>While this guide focuses on Homebrew, AIS-catcher can also be built using MacPorts. Install the equivalent packages (<code>cmake</code>, <code>git</code>, <code>rtl-sdr</code>, etc.) via MacPorts and follow the same build instructions.</p>
+<hr />
+<p><a class="md-button md-button--primary" href="../../usage/cli/">Start First Run</a>
+<a class="md-button md-button--secondary" href="../build-source/">Build from Source Details</a></p>
 
 
 

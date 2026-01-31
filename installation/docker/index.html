@@ -602,10 +602,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#docker-with-web-gui" class="md-nav__link">
+  <a href="#docker-with-visual-web-control" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Docker with Web GUI
+        Docker with Visual Web Control
       
     </span>
   </a>
@@ -636,6 +636,34 @@
     
   
     Raspberry Pi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../macos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    macOS
   
 
     
@@ -829,7 +857,7 @@
   <span class="md-ellipsis">
     
   
-    Web GUI
+    Visual Web Control
   
 
     
@@ -2749,10 +2777,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#docker-with-web-gui" class="md-nav__link">
+  <a href="#docker-with-visual-web-control" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Docker with Web GUI
+        Docker with Visual Web Control
       
     </span>
   </a>
@@ -2787,7 +2815,7 @@
 </blockquote>
 <p>Jump to the desired Installation Option:</p>
 <p><a class="md-button md-button--secondary" href="#basic-docker-container">Basic</a>
-<a class="md-button md-button--secondary" href="#docker-with-web-gui">Web GUI</a></p>
+<a class="md-button md-button--secondary" href="#docker-with-visual-web-control">Visual Web Control</a></p>
 <h2 id="basic-docker-container">Basic Docker Container<a class="headerlink" href="#basic-docker-container" title="Permanent link">&para;</a></h2>
 <p>Pre-built container images containing AIS-catcher are available from the GitHub Container Registry. Available container tags are documented on the <a href="https://github.com/jvde-github/AIS-catcher/pkgs/container/ais-catcher">package's page</a>, with <code>latest</code> (the latest release) and <code>edge</code> (the bleeding edge of the <code>main</code> branch) being the two main ones.</p>
 <p>The following <code>docker run</code> command provides an example of the usage of this container image, running the latest release of AIS-catcher interactively:</p>
@@ -2819,11 +2847,12 @@ To start AIS-catcher, you can then use:
 Notice that if you want to run the webviewer (-N 8100) you need to make that available on the host system with (<code>-p 8100:8100</code>). To send UDP data to OpenCPN running on the host computer, you can try to find the bridge network address (<code>sudo docker network inspect bridge</code> as per <a href="https://www.geeksforgeeks.org/how-to-use-docker-default-bridge-networking/">tutorials</a> and use this as UDP destination address (e.g. <code>-u 172.17.0.1  5077</code>). Alternatively you could use <code>--network host</code> although less desirable. Please consult the Docker documentation.</p>
 <p>An excellent Docker set-up is the <a href="https://github.com/sdr-enthusiasts/docker-shipfeeder">docker-shipfeeder</a> that provides a user friendly way to 
 feed various aggregators with excellent documentation and user support by the sdrenthusiasts community.</p>
-<h2 id="docker-with-web-gui">Docker with Web GUI<a class="headerlink" href="#docker-with-web-gui" title="Permanent link">&para;</a></h2>
+<h2 id="docker-with-visual-web-control">Docker with Visual Web Control<a class="headerlink" href="#docker-with-visual-web-control" title="Permanent link">&para;</a></h2>
 <p>If you are already up and running with Docker installed, you can simply use:
 <div class="highlight"><pre><span></span><code><span class="go">wget https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/refs/heads/main/docker-compose.yml</span>
 <span class="go">docker compose up -d</span>
 </code></pre></div></p>
+<p>This will set up AIS-catcher with the Visual Web Control interface, allowing you to configure, manage, and update your installation via a web browser at port 8110.</p>
 <hr />
 <p><a class="md-button md-button--primary" href="../../usage/gui/">Start First Run</a></p>
 <hr />
