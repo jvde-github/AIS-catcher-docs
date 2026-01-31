@@ -741,17 +741,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#common-options" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Common Options
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#running-as-a-background-service" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3043,17 +3032,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#common-options" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Common Options
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#running-as-a-background-service" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3257,24 +3235,22 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 <div class="highlight"><pre><span></span><code>AIS-catcher
 </code></pre></div>
 <p>For more advanced usage and configuration options, see the <a href="../../usage/cli/">Command Line Usage</a> guide.</p>
-<h2 id="common-options">Common Options<a class="headerlink" href="#common-options" title="Permanent link">&para;</a></h2>
-<p>Here are some commonly used command-line options to get you started:</p>
-<ul>
-<li><strong>Specify RTL-SDR device:</strong> <code>AIS-catcher -d:0</code></li>
-<li><strong>Set frequency correction (PPM):</strong> <code>AIS-catcher -p 52</code></li>
-<li><strong>Enable verbose output:</strong> <code>AIS-catcher -v</code></li>
-<li><strong>Send data to online services:</strong> <code>AIS-catcher -u 5.9.207.224 2947</code> (MarineTraffic)</li>
-</ul>
 <h2 id="running-as-a-background-service">Running as a Background Service<a class="headerlink" href="#running-as-a-background-service" title="Permanent link">&para;</a></h2>
 <p>Unlike the Linux/Raspberry Pi version, there is no automated background service setup script for macOS. However, you can create a launch agent to run AIS-catcher automatically at startup using <code>launchd</code>.</p>
 <h3 id="creating-a-launch-agent">Creating a Launch Agent<a class="headerlink" href="#creating-a-launch-agent" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Create a launch agent plist file:</li>
+<li>First, verify the installation path of AIS-catcher:</li>
 </ol>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>~/Library/LaunchAgents/com.aiscatcher.plist
+<div class="highlight"><pre><span></span><code>which<span class="w"> </span>AIS-catcher
+</code></pre></div>
+<p>This will return either <code>/usr/local/bin/AIS-catcher</code> (Intel Macs) or <code>/opt/homebrew/bin/AIS-catcher</code> (Apple Silicon Macs). Use this path in the next step.</p>
+<ol>
+<li>Create a launch agent plist file (note: do <strong>not</strong> use <code>sudo</code> for this):</li>
+</ol>
+<div class="highlight"><pre><span></span><code>nano<span class="w"> </span>~/Library/LaunchAgents/com.aiscatcher.plist
 </code></pre></div>
 <ol>
-<li>Add the following content (adjust paths and parameters as needed):</li>
+<li>Add the following content, adjusting the path and parameters for your setup:</li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="cp">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span>
@@ -3286,19 +3262,29 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 <span class="w">    </span><span class="nt">&lt;array&gt;</span>
 <span class="w">        </span><span class="nt">&lt;string&gt;</span>/usr/local/bin/AIS-catcher<span class="nt">&lt;/string&gt;</span>
 <span class="w">        </span><span class="nt">&lt;string&gt;</span>-v<span class="nt">&lt;/string&gt;</span>
-<span class="w">        </span><span class="cm">&lt;!-- Add your command-line parameters here --&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- Add additional parameters as separate strings, for example: --&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- &lt;string&gt;-u&lt;/string&gt; --&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- &lt;string&gt;5.9.207.224&lt;/string&gt; --&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- &lt;string&gt;2947&lt;/string&gt; --&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/array&gt;</span>
 <span class="w">    </span><span class="nt">&lt;key&gt;</span>RunAtLoad<span class="nt">&lt;/key&gt;</span>
 <span class="w">    </span><span class="nt">&lt;true/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;key&gt;</span>KeepAlive<span class="nt">&lt;/key&gt;</span>
 <span class="w">    </span><span class="nt">&lt;true/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;key&gt;</span>StandardOutPath<span class="nt">&lt;/key&gt;</span>
-<span class="w">    </span><span class="nt">&lt;string&gt;</span>/tmp/aiscatcher.log<span class="nt">&lt;/string&gt;</span>
+<span class="w">    </span><span class="nt">&lt;string&gt;</span>/Users/YOUR_USERNAME/aiscatcher.log<span class="nt">&lt;/string&gt;</span>
 <span class="w">    </span><span class="nt">&lt;key&gt;</span>StandardErrorPath<span class="nt">&lt;/key&gt;</span>
-<span class="w">    </span><span class="nt">&lt;string&gt;</span>/tmp/aiscatcher.error.log<span class="nt">&lt;/string&gt;</span>
+<span class="w">    </span><span class="nt">&lt;string&gt;</span>/Users/YOUR_USERNAME/aiscatcher.error.log<span class="nt">&lt;/string&gt;</span>
 <span class="nt">&lt;/dict&gt;</span>
 <span class="nt">&lt;/plist&gt;</span>
 </code></pre></div>
+<blockquote>
+<p><strong>Important Notes:</strong>
+- Replace <code>/usr/local/bin/AIS-catcher</code> with the path from step 1 if different (e.g., <code>/opt/homebrew/bin/AIS-catcher</code> for Apple Silicon)
+- Replace <code>YOUR_USERNAME</code> with your actual macOS username
+- Each command-line argument must be in its own <code>&lt;string&gt;</code> tag (e.g., <code>-u</code>, <code>5.9.207.224</code>, and <code>2947</code> as three separate strings)
+- Logs are stored in your home directory to persist across reboots (unlike <code>/tmp</code> which is cleared on restart)</p>
+</blockquote>
 <ol>
 <li>Load the launch agent:</li>
 </ol>
@@ -3313,6 +3299,11 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 <li>To stop the service:</li>
 </ol>
 <div class="highlight"><pre><span></span><code>launchctl<span class="w"> </span>stop<span class="w"> </span>com.aiscatcher
+</code></pre></div>
+<ol>
+<li>To unload the service (if you need to make changes to the plist):</li>
+</ol>
+<div class="highlight"><pre><span></span><code>launchctl<span class="w"> </span>unload<span class="w"> </span>~/Library/LaunchAgents/com.aiscatcher.plist
 </code></pre></div>
 <h2 id="updating-ais-catcher">Updating AIS-catcher<a class="headerlink" href="#updating-ais-catcher" title="Permanent link">&para;</a></h2>
 <p>To update to the latest version, navigate to your AIS-catcher directory and rebuild:</p>
