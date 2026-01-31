@@ -7,6 +7,9 @@ Choose the installation method that best matches your system:
 📱 [**Windows Installation**](windows.md)  
 Complete guide for installing AIS-Catcher on Windows systems.
 
+🍎 [**macOS Installation**](macos.md)  
+Installation instructions for macOS using Homebrew.
+
 🐧 [**Ubuntu/Debian Installation**](ubuntu-debian.md)  
 Installation steps for Ubuntu, Debian and other Linux distributions.
 

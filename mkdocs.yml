@@ -68,6 +68,7 @@ nav:
       - Overview: installation/overview.md
       - Docker: installation/docker.md
       - Raspberry Pi: installation/raspberrypi.md
+      - macOS: installation/macos.md
       - Windows: installation/windows.md
       - Build from Source: installation/build-source.md
       - Ubuntu and Debian: installation/ubuntu-debian.md
