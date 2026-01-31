@@ -206,7 +206,52 @@ If the build fails due to missing libraries, make sure you've installed the requ
 
 ## Alternative: MacPorts
 
-While this guide focuses on Homebrew, AIS-catcher should also be possible to build using MacPorts. If you have successfully installed AIS-catcher using MacPorts and would like to contribute installation instructions, please reach out via [GitHub Discussions](https://github.com/jvde-github/AIS-catcher/discussions).
+While this guide focuses on Homebrew, AIS-catcher can also be built using MacPorts. The following instructions were contributed by the community (credit: [GitHub Discussion #500](https://github.com/jvde-github/AIS-catcher/discussions/500)).
+
+### Prerequisites
+
+First, install Xcode command line tools:
+
+```bash
+xcode-select --install
+```
+
+Download and install MacPorts from [macports.org/install.php](https://www.macports.org/install.php), choosing the version specific to your macOS release.
+
+### Installation Steps
+
+1. Install base prerequisites via MacPorts:
+
+```bash
+sudo port install git make gcc cmake sqlite3
+```
+
+2. Install your SDR device driver. For RTL-SDR dongles:
+
+```bash
+sudo port install rtl-sdr
+```
+
+For other hardware, install the corresponding MacPorts package.
+
+3. Download, build, and install AIS-catcher:
+
+```bash
+cd
+git clone https://github.com/jvde-github/AIS-catcher.git --depth 1
+cd ~/AIS-catcher
+mkdir ~/AIS-catcher/build
+cd ~/AIS-catcher/build
+cmake ..
+make
+sudo make install
+```
+
+After installation, verify it works by running:
+
+```bash
+AIS-catcher -L
+```
 
 ---
 
