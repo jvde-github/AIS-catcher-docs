@@ -838,6 +838,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Alternative: MacPorts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-steps_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation Steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -3129,6 +3157,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Alternative: MacPorts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-steps_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation Steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -3324,7 +3380,39 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 <h3 id="missing-libraries">Missing Libraries<a class="headerlink" href="#missing-libraries" title="Permanent link">&para;</a></h3>
 <p>If the build fails due to missing libraries, make sure you've installed the required SDR libraries with Homebrew as described in step 2.</p>
 <h2 id="alternative-macports">Alternative: MacPorts<a class="headerlink" href="#alternative-macports" title="Permanent link">&para;</a></h2>
-<p>While this guide focuses on Homebrew, AIS-catcher should also be possible to build using MacPorts. If you have successfully installed AIS-catcher using MacPorts and would like to contribute installation instructions, please reach out via <a href="https://github.com/jvde-github/AIS-catcher/discussions">GitHub Discussions</a>.</p>
+<p>While this guide focuses on Homebrew, AIS-catcher can also be built using MacPorts. The following instructions were contributed by the community (credit: <a href="https://github.com/jvde-github/AIS-catcher/discussions/500">GitHub Discussion #500</a>).</p>
+<h3 id="prerequisites_1">Prerequisites<a class="headerlink" href="#prerequisites_1" title="Permanent link">&para;</a></h3>
+<p>First, install Xcode command line tools:</p>
+<div class="highlight"><pre><span></span><code>xcode-select<span class="w"> </span>--install
+</code></pre></div>
+<p>Download and install MacPorts from <a href="https://www.macports.org/install.php">macports.org/install.php</a>, choosing the version specific to your macOS release.</p>
+<h3 id="installation-steps_1">Installation Steps<a class="headerlink" href="#installation-steps_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Install base prerequisites via MacPorts:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>port<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>make<span class="w"> </span>gcc<span class="w"> </span>cmake<span class="w"> </span>sqlite3
+</code></pre></div>
+<ol>
+<li>Install your SDR device driver. For RTL-SDR dongles:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>port<span class="w"> </span>install<span class="w"> </span>rtl-sdr
+</code></pre></div>
+<p>For other hardware, install the corresponding MacPorts package.</p>
+<ol>
+<li>Download, build, and install AIS-catcher:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jvde-github/AIS-catcher.git<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span>
+<span class="nb">cd</span><span class="w"> </span>~/AIS-catcher
+mkdir<span class="w"> </span>~/AIS-catcher/build
+<span class="nb">cd</span><span class="w"> </span>~/AIS-catcher/build
+cmake<span class="w"> </span>..
+make
+sudo<span class="w"> </span>make<span class="w"> </span>install
+</code></pre></div>
+<p>After installation, verify it works by running:</p>
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-L
+</code></pre></div>
 <hr />
 <p><a class="md-button md-button--primary" href="../../usage/cli/">Start First Run</a>
 <a class="md-button md-button--secondary" href="../build-source/">Build from Source Details</a></p>
