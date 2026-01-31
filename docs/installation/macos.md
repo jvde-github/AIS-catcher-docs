@@ -206,7 +206,7 @@ If the build fails due to missing libraries, make sure you've installed the requ
 
 ## Alternative: MacPorts
 
-While this guide focuses on Homebrew, AIS-catcher can also be built using MacPorts. Install the equivalent packages (`cmake`, `git`, `rtl-sdr`, etc.) via MacPorts and follow the same build instructions.
+While this guide focuses on Homebrew, AIS-catcher should also be possible to build using MacPorts. If you have successfully installed AIS-catcher using MacPorts and would like to contribute installation instructions, please reach out via [GitHub Discussions](https://github.com/jvde-github/AIS-catcher/discussions).
 
 ---
 
