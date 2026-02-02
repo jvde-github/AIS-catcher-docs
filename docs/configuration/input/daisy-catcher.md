@@ -1,10 +1,10 @@
 # dAISy Catcher
 
-The **dAISy catcher** is an AIS receiver device from [Wegmatt](https://wegmatt.com) that can be connected to AIS-catcher via serial port.
+The **dAISy catcher** is a plug-and-play AIS receiver device from [Wegmatt](https://wegmatt.com). It can be configured to provide output compatible with AIS-catcher, including timestamps, frequency offset, and signal levels. The device connects via serial port (either HAT or USB connection).
 
 ## Overview
 
-The **dAISy catcher** outputs NMEA AIS messages over a serial connection and can be configured in AIS-catcher as a serial device. It can be connected either via the HAT interface (GPIO serial port) or USB, depending on your setup.
+The **dAISy catcher** outputs NMEA AIS messages over a serial connection (default format, but other formats are available). It can be configured in AIS-catcher as a serial device and connected either via the HAT interface (GPIO serial port) or USB, depending on your setup. AIS-catcher's functionality to send commands to serial devices at startup allows you to configure the **dAISy catcher** directly from the AIS-catcher user interface.
 
 ## Setup and Requirements
 
