@@ -34,7 +34,7 @@ For users running AIS-catcher with the [Visual Web Control](../../usage/gui.md) 
 5. Set the **Baud Rate** to `115200`
 6. In the **Init Sequence** field, enter `co2,v`
 
-![Web Control Configuration for dAISy Catcher](../../assets/daisy-catcher-webcontrol.png)
+![Web Control Configuration for dAISy Catcher](../../assets/daisycatcher-input.jpeg)
 
 7. Click **Save** and then navigate to the **Control** section to restart AIS-catcher for the changes to take effect
 
