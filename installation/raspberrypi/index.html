@@ -3101,7 +3101,7 @@
 <p>This guide provides instructions for installing AIS-catcher on Debian-based systems (like Raspberry Pi) and setting it up to run as a background service. The background service provides the option for AIS-catcher to automatically start when the machine is booted.</p>
 <h3 id="recommended-installation-path-for-new-users">Recommended Installation Path for New Users<a class="headerlink" href="#recommended-installation-path-for-new-users" title="Permanent link">&para;</a></h3>
 <p>If you are new to Linux or Raspberry Pi, we recommend installing AIS-catcher with the <strong>Visual Web Control interface</strong>. This allows you to visually configure all settings without needing to edit configuration files manually.</p>
-<p>👉 <strong>Follow the complete installation guide here:</strong> <a href="#installation-with-visual-web-control">Installation with Visual Web Control</a></p>
+<p><a class="md-button md-button--primary" href="#installation-with-visual-web-control">Installation with Visual Web Control</a></p>
 <h2 id="basic-installation">Basic Installation<a class="headerlink" href="#basic-installation" title="Permanent link">&para;</a></h2>
 <p>To install AIS-catcher via a script, open a terminal or log in via SSH, then run the following command:
 <div class="highlight"><pre><span></span><code><span class="go">sudo bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) -p&quot;</span>
@@ -3111,10 +3111,12 @@
 <p>This script <strong><em>is not compatible with</em></strong> the first versions of the Raspberry Pi and Zero due to their limited support for floating point hardware acceleration.
 The pre-build packages also do not include PostgreSQL support. If this is required, please build from <a href="#install-from-source">source</a>.</p>
 </blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Install Visual Web Control</p>
 <p>To additionally install the Visual Web Control interface, see <a href="#installation-with-visual-web-control">below</a>. The Visual Web Control allows you to control the AIS-catcher process (start and stop) and set the configuration remotely via a convenient web interface.</p>
+</div>
 <hr />
-<p><a class="md-button md-button--primary" href="../../usage/cli/">Start First Run</a>
-<a class="md-button md-button--secondary" href="#installation-with-visual-web-control">Install Visual Web Control</a></p>
+<p><a class="md-button md-button--primary" href="../../usage/cli/">Start First Run</a></p>
 <hr />
 <h3 id="update-ais-catcher-to-latest-version">Update AIS-catcher to latest version<a class="headerlink" href="#update-ais-catcher-to-latest-version" title="Permanent link">&para;</a></h3>
 <p>After you have installed with the above script, 
