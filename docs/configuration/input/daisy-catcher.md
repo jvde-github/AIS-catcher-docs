@@ -1,10 +1,10 @@
 # dAISy Catcher
 
-The **dAISy catcher** is a plug-and-play AIS receiver device from [Wegmatt](https://wegmatt.com). It can be configured to provide output compatible with AIS-catcher, including timestamps, frequency offset, and signal levels. The device connects via serial port (either HAT or USB connection).
+The **dAISy catcher** is a plug-and-play AIS receiver device from [Wegmatt](https://wegmatt.com). When properly configured, it provides output compatible with AIS-catcher with additional metadata including timestamps, frequency offset, and signal levels. The device connects via serial port (either HAT or USB connection).
 
 ## Overview
 
-The **dAISy catcher** outputs NMEA AIS messages over a serial connection (default format, but other formats are available). It can be configured in AIS-catcher as a serial device and connected either via the HAT interface (GPIO serial port) or USB, depending on your setup. AIS-catcher's functionality to send commands to serial devices at startup allows you to configure the **dAISy catcher** directly from the AIS-catcher user interface.
+The **dAISy catcher** outputs NMEA AIS messages over a serial connection (default format, but other formats are available). It can be configured in AIS-catcher as a serial device and connected either via the HAT interface (GPIO serial port) or USB, depending on your requirements. AIS-catcher's functionality to send commands to serial devices at startup allows you to configure the **dAISy catcher** directly from the AIS-catcher user interface.
 
 ## Setup and Requirements
 
@@ -14,7 +14,10 @@ The first step is to physically connect the **dAISy catcher** to your device. Be
 
 **Raspberry Pi with HAT**: Connect via GPIO serial port. The port varies by Raspberry Pi model (e.g., `/dev/serial0` on Raspberry Pi 4). Installation follows the [dAISy HAT setup guide](https://wegmatt.com/files/dAISy%20HAT%20AIS%20Receiver%20Quickstart.pdf).
 
-**USB Connection**: Plug and play - simply connect via USB. The device path varies by operating system:
+**USB Connection**: Plug and play - simply connect via USB. 
+
+Device paths by operating system:
+
 - **Linux**: `/dev/serial/by-id/usb-...`
 - **Windows**: `COM3`, `COM4`, etc.
 - **macOS**: `/dev/tty.usbserial-...`
