@@ -3050,17 +3050,20 @@
 
 
 <h1 id="daisy-catcher">dAISy Catcher<a class="headerlink" href="#daisy-catcher" title="Permanent link">&para;</a></h1>
-<p>The <strong>dAISy catcher</strong> is a plug-and-play AIS receiver device from <a href="https://wegmatt.com">Wegmatt</a>. It can be configured to provide output compatible with AIS-catcher, including timestamps, frequency offset, and signal levels. The device connects via serial port (either HAT or USB connection).</p>
+<p>The <strong>dAISy catcher</strong> is a plug-and-play AIS receiver device from <a href="https://wegmatt.com">Wegmatt</a>. When properly configured, it provides output compatible with AIS-catcher with additional metadata including timestamps, frequency offset, and signal levels. The device connects via serial port (either HAT or USB connection).</p>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>The <strong>dAISy catcher</strong> outputs NMEA AIS messages over a serial connection (default format, but other formats are available). It can be configured in AIS-catcher as a serial device and connected either via the HAT interface (GPIO serial port) or USB, depending on your setup. AIS-catcher's functionality to send commands to serial devices at startup allows you to configure the <strong>dAISy catcher</strong> directly from the AIS-catcher user interface.</p>
+<p>The <strong>dAISy catcher</strong> outputs NMEA AIS messages over a serial connection (default format, but other formats are available). It can be configured in AIS-catcher as a serial device and connected either via the HAT interface (GPIO serial port) or USB, depending on your requirements. AIS-catcher's functionality to send commands to serial devices at startup allows you to configure the <strong>dAISy catcher</strong> directly from the AIS-catcher user interface.</p>
 <h2 id="setup-and-requirements">Setup and Requirements<a class="headerlink" href="#setup-and-requirements" title="Permanent link">&para;</a></h2>
 <p>The first step is to physically connect the <strong>dAISy catcher</strong> to your device. Below are quick instructions for both connection methods.</p>
 <h3 id="connection-methods">Connection Methods<a class="headerlink" href="#connection-methods" title="Permanent link">&para;</a></h3>
 <p><strong>Raspberry Pi with HAT</strong>: Connect via GPIO serial port. The port varies by Raspberry Pi model (e.g., <code>/dev/serial0</code> on Raspberry Pi 4). Installation follows the <a href="https://wegmatt.com/files/dAISy%20HAT%20AIS%20Receiver%20Quickstart.pdf">dAISy HAT setup guide</a>.</p>
-<p><strong>USB Connection</strong>: Plug and play - simply connect via USB. The device path varies by operating system:
-- <strong>Linux</strong>: <code>/dev/serial/by-id/usb-...</code>
-- <strong>Windows</strong>: <code>COM3</code>, <code>COM4</code>, etc.
-- <strong>macOS</strong>: <code>/dev/tty.usbserial-...</code></p>
+<p><strong>USB Connection</strong>: Plug and play - simply connect via USB. </p>
+<p>Device paths by operating system:</p>
+<ul>
+<li><strong>Linux</strong>: <code>/dev/serial/by-id/usb-...</code></li>
+<li><strong>Windows</strong>: <code>COM3</code>, <code>COM4</code>, etc.</li>
+<li><strong>macOS</strong>: <code>/dev/tty.usbserial-...</code></li>
+</ul>
 <p><strong>Important</strong>: The <strong>dAISy catcher</strong> requires a baud rate of <strong>115200</strong> (different from the standard dAISy HAT).</p>
 <h2 id="web-control-configuration">Web Control Configuration<a class="headerlink" href="#web-control-configuration" title="Permanent link">&para;</a></h2>
 <p>For users running AIS-catcher with the <a href="../../../usage/gui/">Visual Web Control</a> interface (available for Linux and Docker), you can configure the <strong>dAISy catcher</strong> through the web interface:</p>
