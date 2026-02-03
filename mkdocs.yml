@@ -98,6 +98,7 @@ nav:
               - WAV Files: configuration/input/wav.md
             - Other Input:
               - Serial Port: configuration/input/serial.md
+              - dAISy Catcher: configuration/input/daisy-catcher.md
               - NMEA2000: configuration/input/NMEA2000.md
       - Model: configuration/model.md
       - Output Options:
