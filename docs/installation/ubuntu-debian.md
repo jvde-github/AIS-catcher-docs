@@ -10,7 +10,7 @@ This guide provides instructions for installing AIS-catcher on Debian-based syst
 
 If you are new to Linux or Raspberry Pi, we recommend installing AIS-catcher with the **Visual Web Control interface**. This allows you to visually configure all settings without needing to edit configuration files manually.
 
-👉 **Follow the complete installation guide here:** [Installation with Visual Web Control](#installation-with-visual-web-control)
+[Installation with Visual Web Control](#installation-with-visual-web-control){ .md-button .md-button--primary }
 
 ## Basic Installation
 

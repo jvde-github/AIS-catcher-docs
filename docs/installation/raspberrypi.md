@@ -10,7 +10,7 @@ This guide provides instructions for installing AIS-catcher on Debian-based syst
 
 If you are new to Linux or Raspberry Pi, we recommend installing AIS-catcher with the **Visual Web Control interface**. This allows you to visually configure all settings without needing to edit configuration files manually.
 
-👉 **Follow the complete installation guide here:** [Installation with Visual Web Control](#installation-with-visual-web-control)
+[Installation with Visual Web Control](#installation-with-visual-web-control){ .md-button .md-button--primary }
 
 ## Basic Installation
 
@@ -24,12 +24,12 @@ The script will install all dependencies and install AIS-catcher. If `curl` is n
 > This script ***is not compatible with*** the first versions of the Raspberry Pi and Zero due to their limited support for floating point hardware acceleration.
 > The pre-build packages also do not include PostgreSQL support. If this is required, please build from [source](#install-from-source).
 
-To additionally install the Visual Web Control interface, see [below](#installation-with-visual-web-control). The Visual Web Control allows you to control the AIS-catcher process (start and stop) and set the configuration remotely via a convenient web interface.
+!!! tip "Install Visual Web Control"
+    To additionally install the Visual Web Control interface, see [below](#installation-with-visual-web-control). The Visual Web Control allows you to control the AIS-catcher process (start and stop) and set the configuration remotely via a convenient web interface.
 
 ---
 
 [Start First Run](../usage/cli.md){ .md-button .md-button--primary }
-[Install Visual Web Control](#installation-with-visual-web-control){ .md-button .md-button--secondary }
 
 ---
 
