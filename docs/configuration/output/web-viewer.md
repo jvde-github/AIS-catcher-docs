@@ -152,9 +152,13 @@ Server Options:
 | UI Customization | | | | 
 | <span class="cmd-setting">station</span> | string | <span class="cmd-value">-</span> | Station display name |
 | <span class="cmd-setting">station_link</span> | string | <span class="cmd-value">-</span> | Station info URL |
+| <span class="cmd-setting">webcontrol_http</span> | string | <span class="cmd-value">-</span> | URL for external web control endpoint |
+| <span class="cmd-setting">context</span> | string | <span class="cmd-value">settings</span> | Default web viewer context/tab |
 | <span class="cmd-setting">cdn</span> | string | <span class="cmd-value">-</span> | Local CDN resources path |
 | <span class="cmd-setting">mbtiles</span> | string | <span class="cmd-value">-</span> | Offline map in mbtiles format |
 | <span class="cmd-setting">mboverlay</span> | string | <span class="cmd-value">-</span> | Offline overlay in mbtiles format |
+| <span class="cmd-setting">fstiles</span> | string | <span class="cmd-value">-</span> | Offline map from filesystem tile directory |
+| <span class="cmd-setting">fsoverlay</span> | string | <span class="cmd-value">-</span> | Offline overlay from filesystem tile directory |
 | <span class="cmd-setting">plugin</span> | string | <span class="cmd-value">-</span> | JavaScript plugin path |
 | <span class="cmd-setting">style</span> | string | <span class="cmd-value">-</span> | CSS style path |
 | <span class="cmd-setting">plugin_dir</span> | string | <span class="cmd-value">-</span> | Plugins directory |
