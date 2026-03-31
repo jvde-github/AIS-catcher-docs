@@ -1,25 +1,26 @@
 # What's New?
 
-## Edge version
+## Edge version — v0.67 Release Notes
 
-new additions:
+### New Features
 
-- HydraSDR support
-- Debian packages will store HydraSDR and RTL-SDR libraries in /usr/lib/AIS-catcher now as DLLs instead of statically linking
-- allow multiple commands in init_seq for serial devices, separate via a comma. Fix issues for MacOS
-- messages from serial devices supporting AIS-catcher format can pass on warning/info and error messages via the program
-  
-### Remove duplicates
-When combining multiple input streams, overlapping reception can result in duplicate messages. To remove duplicates from output channels, use the experimental `unique` option. For example, the following removes duplicates from both console and a UDP stream:
+#### HydraSDR Support
+
+HydraSDR is now a supported input device. See the [HydraSDR input page](../configuration/input/hydrasdr.md) for details.
+
+#### Duplicate Removal
+
+When combining multiple input streams, overlapping reception can result in duplicate messages. To remove duplicates from output channels, use the `unique` option. For example, the following removes duplicates from both console and a UDP stream:
+
 ```
 AIS-catcher -o 1 unique on -u 127.0.0.1 5012 unique on
 ```
 
 In JSON, set the `unique` key to `true` (remove duplicates) or `false` (default). Note that this could come at a performance cost that increases with the number of MMSIs so keep an eye on that.
 
-### Downsampling Options
+#### Downsampling Options
 
-Two additional options, `position_interval` and `own_interval`, downsample position messages and VDO messages by limiting each MMSI to at most one update per specified interval (in seconds). Both default to `0` or, equivalent, `false`(disabled).
+Two additional options, `position_interval` and `own_interval`, downsample position messages and VDO messages by limiting each MMSI to at most one update per specified interval (in seconds). Both default to `0` or, equivalent, `false` (disabled).
 
 **Example:**
 ```
@@ -34,6 +35,42 @@ Thanks to user Manny for suggesting these options.
 
 > **Note:** These options are intended for users aggregating across multiple receivers to reduce bandwidth, and have not been optimized for large vessel counts.
 
+#### Serial Device Improvements
+
+- `init_seq` now accepts multiple comma-separated commands
+- Fixed `init_seq` issues on macOS
+- Serial devices supporting AIS-catcher format can now relay warning, info, and error messages through the program
+
+#### Zones
+
+Support for user-defined geographic zones with vessel tracking against zone boundaries.
+
+#### Channel Designation (AB/CD)
+
+Channel designation is now configurable via JSON config and is shown in model startup output.
+
+### Web Viewer
+
+#### Vessel Tracks — Major Overhaul
+
+- **Incremental (delta) loading**: only new path points are fetched on each update
+- Tracks capped at 250 points per vessel, consistent between "Show Track" and "Show All Tracks"
+- Stale paths (ships no longer heard) are cleaned up automatically
+
+#### Bug Fixes and Improvements
+
+- **Signal level charts**: fixed extreme values for UDP/TCP sources
+- **Ship hover**: fixed shape staying highlighted after hover ends
+- **Plane icons**: restored missing plane icons
+- **Community feed**: restricted to local SDR hardware only
+
+### Packaging
+
+- Debian packages now store HydraSDR and RTL-SDR libraries as DLLs in `/usr/lib/AIS-catcher` instead of statically linking
+- Switched to debhelper — `dh_shlibdeps` auto-resolves correct dependencies per distro/arch
+- Fixed several `.deb` packaging issues (`libssl3/t64`, `ETXTBSY`, empty `Depends` field)
+- Added CI install test covering the full platform matrix
+- Frontend libraries bundled via npm/Vite — no CDN dependencies at runtime
 
 ## Version 0.66
 
