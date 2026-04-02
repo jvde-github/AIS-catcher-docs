@@ -1,6 +1,6 @@
 # What's New?
 
-## Edge version — v0.67 Release Notes
+## Edge version 
 
 ### New Features
 
@@ -43,11 +43,11 @@ Thanks to user Manny for suggesting these options.
 
 #### Zones
 
-Support for user-defined geographic zones with vessel tracking against zone boundaries.
+Support for tailoring routing of messages from receivers to output channels via zones in JSON configuration and Visual Web Control.
 
 #### Channel Designation (AB/CD)
 
-Channel designation is now configurable via JSON config and is shown in model startup output.
+Channel designation is now configurable via JSON config and is shown in model startup output of the Visual Web Control.
 
 ### Web Viewer
 
@@ -55,14 +55,10 @@ Channel designation is now configurable via JSON config and is shown in model st
 
 - **Incremental (delta) loading**: only new path points are fetched on each update
 - Tracks capped at 250 points per vessel, consistent between "Show Track" and "Show All Tracks"
-- Stale paths (ships no longer heard) are cleaned up automatically
 
 #### Bug Fixes and Improvements
 
 - **Signal level charts**: fixed extreme values for UDP/TCP sources
-- **Ship hover**: fixed shape staying highlighted after hover ends
-- **Plane icons**: restored missing plane icons
-- **Community feed**: restricted to local SDR hardware only
 
 ### Packaging
 
@@ -70,7 +66,7 @@ Channel designation is now configurable via JSON config and is shown in model st
 - Switched to debhelper — `dh_shlibdeps` auto-resolves correct dependencies per distro/arch
 - Fixed several `.deb` packaging issues (`libssl3/t64`, `ETXTBSY`, empty `Depends` field)
 - Added CI install test covering the full platform matrix
-- Frontend libraries bundled via npm/Vite — no CDN dependencies at runtime
+- Frontend libraries bundled via npm/Vite — no CDN dependencies at runtime. Webassets repo is archived.
 
 ## Version 0.66
 
