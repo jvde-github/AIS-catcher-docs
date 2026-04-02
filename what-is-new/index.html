@@ -321,15 +321,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#edge-version-v067-release-notes" class="md-nav__link">
+  <a href="#edge-version" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Edge version — v0.67 Release Notes
+        Edge version
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Edge version — v0.67 Release Notes">
+    <nav class="md-nav" aria-label="Edge version">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3075,15 +3075,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#edge-version-v067-release-notes" class="md-nav__link">
+  <a href="#edge-version" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Edge version — v0.67 Release Notes
+        Edge version
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Edge version — v0.67 Release Notes">
+    <nav class="md-nav" aria-label="Edge version">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3456,7 +3456,7 @@
 
 
 <h1 id="whats-new">What's New?<a class="headerlink" href="#whats-new" title="Permanent link">&para;</a></h1>
-<h2 id="edge-version-v067-release-notes">Edge version — v0.67 Release Notes<a class="headerlink" href="#edge-version-v067-release-notes" title="Permanent link">&para;</a></h2>
+<h2 id="edge-version">Edge version<a class="headerlink" href="#edge-version" title="Permanent link">&para;</a></h2>
 <h3 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h3>
 <h4 id="hydrasdr-support">HydraSDR Support<a class="headerlink" href="#hydrasdr-support" title="Permanent link">&para;</a></h4>
 <p>HydraSDR is now a supported input device. See the <a href="../configuration/input/hydrasdr.md">HydraSDR input page</a> for details.</p>
@@ -3483,22 +3483,18 @@
 <li>Serial devices supporting AIS-catcher format can now relay warning, info, and error messages through the program</li>
 </ul>
 <h4 id="zones">Zones<a class="headerlink" href="#zones" title="Permanent link">&para;</a></h4>
-<p>Support for user-defined geographic zones with vessel tracking against zone boundaries.</p>
+<p>Support for tailoring routing of messages from receivers to output channels via zones in JSON configuration and Visual Web Control.</p>
 <h4 id="channel-designation-abcd">Channel Designation (AB/CD)<a class="headerlink" href="#channel-designation-abcd" title="Permanent link">&para;</a></h4>
-<p>Channel designation is now configurable via JSON config and is shown in model startup output.</p>
+<p>Channel designation is now configurable via JSON config and is shown in model startup output of the Visual Web Control.</p>
 <h3 id="web-viewer">Web Viewer<a class="headerlink" href="#web-viewer" title="Permanent link">&para;</a></h3>
 <h4 id="vessel-tracks-major-overhaul">Vessel Tracks — Major Overhaul<a class="headerlink" href="#vessel-tracks-major-overhaul" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Incremental (delta) loading</strong>: only new path points are fetched on each update</li>
 <li>Tracks capped at 250 points per vessel, consistent between "Show Track" and "Show All Tracks"</li>
-<li>Stale paths (ships no longer heard) are cleaned up automatically</li>
 </ul>
 <h4 id="bug-fixes-and-improvements">Bug Fixes and Improvements<a class="headerlink" href="#bug-fixes-and-improvements" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Signal level charts</strong>: fixed extreme values for UDP/TCP sources</li>
-<li><strong>Ship hover</strong>: fixed shape staying highlighted after hover ends</li>
-<li><strong>Plane icons</strong>: restored missing plane icons</li>
-<li><strong>Community feed</strong>: restricted to local SDR hardware only</li>
 </ul>
 <h3 id="packaging">Packaging<a class="headerlink" href="#packaging" title="Permanent link">&para;</a></h3>
 <ul>
@@ -3506,7 +3502,7 @@
 <li>Switched to debhelper — <code>dh_shlibdeps</code> auto-resolves correct dependencies per distro/arch</li>
 <li>Fixed several <code>.deb</code> packaging issues (<code>libssl3/t64</code>, <code>ETXTBSY</code>, empty <code>Depends</code> field)</li>
 <li>Added CI install test covering the full platform matrix</li>
-<li>Frontend libraries bundled via npm/Vite — no CDN dependencies at runtime</li>
+<li>Frontend libraries bundled via npm/Vite — no CDN dependencies at runtime. Webassets repo is archived.</li>
 </ul>
 <h2 id="version-066">Version 0.66<a class="headerlink" href="#version-066" title="Permanent link">&para;</a></h2>
 <ul>
