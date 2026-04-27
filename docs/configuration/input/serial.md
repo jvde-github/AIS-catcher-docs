@@ -18,13 +18,12 @@
         ...
     </div>
 </div>
-Settings specific for reading NMEA lines from a serial port can all be set with the `e` switch fow now, e.g. on Linux:
+Settings specific for reading NMEA lines from a serial port can all be set with the `-ge` switch, e.g. on Linux:
 ```bash
-AIS-catcher -e 368400 /dev/serial1
-
+AIS-catcher -e 38400 /dev/serial1
 ```
 
-To dump the raw input from the serial device on-screen use `-`ge print on`.
+To dump the raw input from the serial device on-screen use `-ge dump on`.
 
 ## Summary Settings
 
@@ -37,6 +36,10 @@ To dump the raw input from the serial device on-screen use `-`ge print on`.
 | <span class="cmd-setting">freqoffset</span> | integer | <span class="cmd-value">0</span> | Frequency correction in PPM (-150 to +150) |
 | Specific Options | | | |
 | <span class="cmd-setting">baudrate</span> | integer | <span class="cmd-value">38400</span> | Serial port speed |
-| <span class="cmd-setting">port</span> | string | <span class="cmd-value">0</span> | Serial port device path/name |
-| <span class="cmd-setting">print</span> | boolean | <span class="cmd-value">false</span> | Enable debug printing of received data |
+| <span class="cmd-setting">port</span> | string | <span class="cmd-value">-</span> | Serial port device path/name (Windows `COMx` is auto-prefixed) |
+| <span class="cmd-setting">dump</span> | boolean | <span class="cmd-value">false</span> | Print raw bytes received from the serial device |
+| <span class="cmd-setting">dump_file</span> | string | <span class="cmd-value">-</span> | Write raw bytes to file (also enables `dump`) |
+| <span class="cmd-setting">init_seq</span> | string | <span class="cmd-value">-</span> | Initialization commands sent to the device on open |
+| <span class="cmd-setting">flowcontrol</span> | enum | <span class="cmd-value">NONE</span> | Flow control (`NONE`, `HARDWARE`, or `SOFTWARE`) |
+| <span class="cmd-setting">print</span> | boolean | <span class="cmd-value">false</span> | **Deprecated** alias for `dump` |
 </div>

@@ -69,17 +69,18 @@ Generic filtering options requiring 'filter' set to 'true' or 'on' to be active:
 <div class="settings-table" markdown>
 | Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
-| <span class="cmd-setting">filter</span> | boolean | <span class="cmd-value">false</span> | Enable/disable filtering |
+| <span class="cmd-setting">filter</span> | boolean | <span class="cmd-value">false</span> | Enable/disable filtering (other settings only take effect when this is on) |
 | <span class="cmd-setting">allow_type</span> | list | <span class="cmd-value">all</span> | Comma-separated list of message types to allow (1-27) |
 | <span class="cmd-setting">block_type</span> | list | <span class="cmd-value">none</span> | Comma-separated list of message types to block |
-| <span class="cmd-setting">allow_repeat</span> | list | <span class="cmd-value">all</span> | Allow messages with specific repeat counter values (0-3) |
+| <span class="cmd-setting">allow_repeat</span> | list | <span class="cmd-value">all</span> | Allow messages with specific repeat counter values (0-3); alias `select_repeat` |
 | <span class="cmd-setting">block_repeat</span> | list | <span class="cmd-value">none</span> | Block messages with specific repeat counter values |
-| <span class="cmd-setting">allow_mmsi</span> | list | <span class="cmd-value">all</span> | Only allow messages from specific MMSI numbers |
+| <span class="cmd-setting">allow_mmsi</span> | list | <span class="cmd-value">all</span> | Only allow messages from specific MMSI numbers; alias `select_mmsi` |
 | <span class="cmd-setting">block_mmsi</span> | list | <span class="cmd-value">none</span> | Block messages from specific MMSI numbers |
-| <span class="cmd-setting">allow_channel</span> | string | <span class="cmd-value">all</span> | Only allow messages from specific AIS channels |
-| <span class="cmd-setting">id</span> | integer | <span class="cmd-value">all</span> | Only allow messages from specific station IDs |
+| <span class="cmd-setting">allow_channel</span> | string | <span class="cmd-value">all</span> | Only allow messages from specific AIS channels (e.g. `AB`); alias `select_channel` |
+| <span class="cmd-setting">id</span> | list | <span class="cmd-value">all</span> | Comma-separated list of station IDs to allow (0-999999); alias `select_id` |
 | <span class="cmd-setting">gps</span> | boolean | <span class="cmd-value">true</span> | Include GPS messages in output |
-| <span class="cmd-setting">ais</span> | boolean | <span class="cmd-value">true</
+| <span class="cmd-setting">ais</span> | boolean | <span class="cmd-value">true</span> | Include AIS messages in output |
+| <span class="cmd-setting">remove_empty</span> | boolean | <span class="cmd-value">false</span> | Drop messages whose JSON payload is empty after decoding |
 </div>
 
 Downsampling options:

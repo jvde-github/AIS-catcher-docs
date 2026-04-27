@@ -19,6 +19,7 @@ In JSON configuration, Community Feed settings are configured via the root-level
 <div class="input-table" markdown>
 | Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
-| <span class="cmd-setting">sharing</span> | boolean | <span class="cmd-value">-</span> | Enable community feed sharing (CLI equivalent: `-X`) |
+| <span class="cmd-setting">sharing</span> | boolean | <span class="cmd-value">false</span> | Enable community feed sharing (CLI equivalent: `-X`) |
 | <span class="cmd-setting">sharing_key</span> | string | <span class="cmd-value">-</span> | Optional sharing key to associate your station with aiscatcher.org (CLI: `-X <key>`) |
+| <span class="cmd-setting">sharing_zone</span> | string | <span class="cmd-value">-</span> | Optional zone tag included with shared messages |
 </div>

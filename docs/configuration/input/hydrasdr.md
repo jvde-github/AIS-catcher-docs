@@ -41,5 +41,7 @@ On the command line, setting names and boolean-ish values are not case-sensitive
 | <span class="cmd-setting">mixer</span> | auto/integer | <span class="cmd-value">auto</span> | Mixer gain/AGC in Free mode (0-14 or AUTO) |
 | <span class="cmd-setting">lna</span> | auto/integer | <span class="cmd-value">auto</span> | LNA gain/AGC in Free mode (0-14 or AUTO) |
 | <span class="cmd-setting">biastee</span> | boolean | <span class="cmd-value">false</span> | Enable/disable bias tee power |
+| <span class="cmd-setting">gain_mode</span> | enum | <span class="cmd-value">linearity</span> | Explicit gain mode (`SENSITIVITY`, `LINEARITY`, or `FREE`). Set automatically by `sensitivity`/`linearity`/`vga`/`mixer`/`lna`. |
+| <span class="cmd-setting">real_mode</span> | boolean | <span class="cmd-value">false</span> | Switch sample format between complex `CF32` (off) and real `F32_FS4` (on) |
 
 </div>

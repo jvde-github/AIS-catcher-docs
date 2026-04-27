@@ -125,8 +125,12 @@ Server Options:
 | <span class="cmd-setting">port_min</span> | integer | <span class="cmd-value">-</span> | Minimum port in binding range |
 | <span class="cmd-setting">port_max</span> | integer | <span class="cmd-value">-</span> | Maximum port in binding range |
 | <span class="cmd-setting">ip_bind</span> | string | <span class="cmd-value">-</span> | Server binding IP address |
-| <span class="cmd-setting">reuse_port</span> | boolean | <span class="cmd-value">false</span> | Enable port reuse |
+| <span class="cmd-setting">reuse_port</span> | boolean | <span class="cmd-value">false</span> | Enable `SO_REUSEPORT` on the listening socket |
 | <span class="cmd-setting">zlib</span> | boolean | <span class="cmd-value">true</span> | Enable response compression |
+| <span class="cmd-setting">server_mode</span> | boolean | <span class="cmd-value">false</span> | Enable hardened multi-station server mode |
+| <span class="cmd-setting">log</span> | boolean | <span class="cmd-value">false</span> | Log HTTP requests |
+| <span class="cmd-setting">groups_in</span> | integer | <span class="cmd-value">all</span> | Bitmask of input groups feeding the viewer |
+| <span class="cmd-setting">zone</span> | string | <span class="cmd-value">-</span> | Comma-separated zone tags routed to this viewer |
 | | | | |
 | Location Settings | | | |
 | <span class="cmd-setting">lat</span> | float | <span class="cmd-value">-</span> | Station latitude |

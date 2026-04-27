@@ -29,3 +29,18 @@ Meta data is not calculated by default to keep the program as light as possible 
 
 There are many libraries for decoding AIS messages in NMEA format to JSON format. I encourage you to use your favorite library. Some excellent choices include [libais](https://github.com/schwehr/libais), [gpsdecode](https://github.com/ukyg9e5r6k7gubiekd6/gpsd/blob/master/gpsdecode.c) and [pyais](https://github.com/M0r13n/pyais).
 
+## Summary Settings
+
+The `-o N` shortcut maps to a `msgformat` value. Settings can be passed after `-o` in the usual way:
+
+<div class="input-table" markdown>
+| Setting (JSON key / CLI setting name) | Type | Default | Description |
+|---------|------|---------|-------------|
+| <span class="cmd-setting">msgformat</span> | string | <span class="cmd-value">FULL</span> | Output format (`NONE`/`0`, `NMEA`/`1`, `NMEA_TAG`/`7`, `BINARY_NMEA`, `FULL`/`2`, `JSON_NMEA`/`3`, `JSON_SPARSE`/`4`, `JSON_FULL`/`5`, `COMMUNITY_HUB`) |
+| <span class="cmd-setting">include_sample_start</span> | boolean | <span class="cmd-value">false</span> | Append sample-start counter to each NMEA line |
+| <span class="cmd-setting">json</span> | boolean | <span class="cmd-value">false</span> | **Deprecated** — sets `msgformat` to `JSON_NMEA` |
+| <span class="cmd-setting">json_full</span> | boolean | <span class="cmd-value">false</span> | **Deprecated** — sets `msgformat` to `FULL` |
+</div>
+
+Filter and routing settings (see [Message Filtering](message-filtering.md)) also apply.
+

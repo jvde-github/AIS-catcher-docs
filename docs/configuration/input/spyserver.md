@@ -41,6 +41,5 @@ AIS-catcher -y 192.168.1.235 5555 -gy gain 14
 | <span class="cmd-setting">host</span> | string | <span class="cmd-value">localhost</span> | SpyServer host address |
 | <span class="cmd-setting">port</span> | string | <span class="cmd-value">1234</span> | SpyServer port |
 | <span class="cmd-setting">gain</span> | float | <span class="cmd-value">0.0</span> | Tuner gain (0-50 dB) |
-| <span class="cmd-setting">timeout</span> | integer | <span class="cmd-value">2</span> | Connection timeout in seconds |
 
 </div>

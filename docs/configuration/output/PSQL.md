@@ -62,9 +62,10 @@ I hope this is sufficient to get you experimenting! Unfortunately, the options c
 | Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
 | <span class="cmd-setting">conn_str</span> | string | <span class="cmd-value">dbname=ais</span> | PostgreSQL connection string |
-| <span class="cmd-setting">station_id</span> | integer | <span class="cmd-value">0</span> | Station identifier |
-| <span class="cmd-setting">interval</span> | integer | <span class="cmd-value">10</span> | Database write interval (5-1800 sec) |
-| <span class="cmd-setting">max_fails</span> | integer | <span class="cmd-value">10</span> | Max failed connection attempts |
+| <span class="cmd-setting">station_id</span> | integer | <span class="cmd-value">0</span> | Station identifier (column value, lets multiple feeders share one DB) |
+| <span class="cmd-setting">interval</span> | integer | <span class="cmd-value">10</span> | Database write interval in seconds (5-1800) |
+| <span class="cmd-setting">max_fails</span> | integer | <span class="cmd-value">10</span> | Max failed reconnect attempts before terminating (1000 = never give up) |
+| <span class="cmd-setting">groups_in</span> | integer | <span class="cmd-value">all</span> | Bitmask of input groups feeding this output |
 | | | | |
 | Table Options | | | |
 | <span class="cmd-setting">v</span> | boolean | <span class="cmd-value">true</span> | Enable vessel table logging |

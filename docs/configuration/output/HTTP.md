@@ -60,22 +60,28 @@ sudo apt install libssl-dev zlib1g-dev
 ```
 This step is only required if you want to ZIP content and post data to secure servers.
 
-The supported protocol switches are ``AISCATCHER`` (default), ``MINIMAL`` (NMEA lines and metadata in JSON), ``LINES`` (one JSON message per line), ``APRS`` (to submit to APRS.fi), `` NMEA`` (simple NMEA).
+The supported protocol switches are ``AISCATCHER`` (default), ``MINIMAL`` (NMEA lines and metadata in JSON), ``LIST`` (one JSON message per line), ``AIRFRAMES`` (Airframes.io minimal feed), ``APRS`` (to submit to APRS.fi), ``NMEA`` (simple NMEA).
 
-## Summary Settimgs
+## Summary Settings
 
 | Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
 | <span class="cmd-setting">url</span> | string | <span class="cmd-value">-</span> | Target HTTP endpoint URL |
-| <span class="cmd-setting">userpwd</span> | string | <span class="cmd-value">-</span> | Authentication credentials |
-| <span class="cmd-setting">stationid</span> | string | <span class="cmd-value">-</span> | Station identifier |
+| <span class="cmd-setting">userpwd</span> | string | <span class="cmd-value">-</span> | Authentication credentials (`user:password`) |
+| <span class="cmd-setting">ssl_verify</span> | boolean | <span class="cmd-value">true</span> | Verify TLS certificates on `https://` endpoints |
+| <span class="cmd-setting">stationid</span> | string | <span class="cmd-value">-</span> | Station identifier (aliases: `id`, `callsign`) |
 | <span class="cmd-setting">interval</span> | integer | <span class="cmd-value">60</span> | Post interval in seconds (1-86400) |
 | <span class="cmd-setting">timeout</span> | integer | <span class="cmd-value">10</span> | Connection timeout in seconds (1-30) |
-| <span class="cmd-setting">gzip</span> | boolean | <span class="cmd-value">false</span> | Enable GZIP compression |
-| <span class="cmd-setting">response</span> | boolean | <span class="cmd-value">true</span> | Show response messages |
-| <span class="cmd-setting">protocol</span> | string | <span class="cmd-value">AISCATCHER</span> | Protocol type (AISCATCHER/MINIMAL/AIRFRAMES/LIST/APRS/NMEA) |
-| <span class="cmd-setting">lat</span> | float | <span class="cmd-value">0.0</span> | Station latitude |
-| <span class="cmd-setting">lon</span> | float | <span class="cmd-value">0.0</span> | Station longitude |
-| <span class="cmd-setting">device_setting</span> | string | <span class="cmd-value">N/A</span> | Device settings |
+| <span class="cmd-setting">gzip</span> | boolean | <span class="cmd-value">false</span> | Enable GZIP compression (requires zlib) |
+| <span class="cmd-setting">response</span> | boolean | <span class="cmd-value">true</span> | Show server response on screen |
+| <span class="cmd-setting">protocol</span> | string | <span class="cmd-value">AISCATCHER</span> | Submission protocol (`AISCATCHER`, `MINIMAL`, `AIRFRAMES`, `LIST`, `NMEA`, `APRS`) |
+| <span class="cmd-setting">lat</span> | float | <span class="cmd-value">0.0</span> | Station latitude (sent in feed metadata) |
+| <span class="cmd-setting">lon</span> | float | <span class="cmd-value">0.0</span> | Station longitude (sent in feed metadata) |
+| <span class="cmd-setting">model</span> | string | <span class="cmd-value">-</span> | Receiver model name (sent in feed metadata) |
+| <span class="cmd-setting">model_setting</span> | string | <span class="cmd-value">-</span> | Receiver model setting summary |
+| <span class="cmd-setting">product</span> | string | <span class="cmd-value">-</span> | Device product string |
+| <span class="cmd-setting">vendor</span> | string | <span class="cmd-value">-</span> | Device vendor string |
+| <span class="cmd-setting">serial</span> | string | <span class="cmd-value">-</span> | Device serial string |
+| <span class="cmd-setting">device_setting</span> | string | <span class="cmd-value">-</span> | Device setting summary |
 
 Note: filter and routing options can be set as per [generic output settings](overview.md)

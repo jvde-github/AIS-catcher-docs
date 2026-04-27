@@ -25,16 +25,20 @@ Most external programs will not be able to accept these JSON-packaged NMEA strin
 Another option for UDP sending via `-u` is `BROADCAST on/off` to enable sending to broadcast addresses.
 
 
-## Summary Settimgs
+## Summary Settings
 
 <div class="input-table" markdown>
 | Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
 | <span class="cmd-setting">host</span> | string | <span class="cmd-value">-</span> | Target UDP host address |
 | <span class="cmd-setting">port</span> | string | <span class="cmd-value">-</span> | Target UDP port |
-| <span class="cmd-setting">json</span> | boolean | <span class="cmd-value">false</span> | Enable JSON output format |
-| <span class="cmd-setting">json_full</span> | boolean | <span class="cmd-value">false</span> | Enable fully decoded JSON output |
+| <span class="cmd-setting">msgformat</span> | string | <span class="cmd-value">NMEA</span> | Output format (`NMEA`, `JSON_NMEA`, `JSON_FULL`, etc.) |
 | <span class="cmd-setting">broadcast</span> | boolean | <span class="cmd-value">false</span> | Enable broadcast mode |
-| <span class="cmd-setting">reset</span> | integer | <span class="cmd-value">-1</span> | Socket reset interval in minutes (1-1440) |
-| <span class="cmd-setting">uuid</span> | string | <span class="cmd-value">-</span> | Unique identifier (must be valid UUID) |
+| <span class="cmd-setting">reset</span> | integer | <span class="cmd-value">0</span> | Recreate socket after N minutes (1-1440; 0 = never) |
+| <span class="cmd-setting">uuid</span> | string | <span class="cmd-value">-</span> | Unique identifier (must be a valid UUID) |
+| <span class="cmd-setting">include_sample_start</span> | boolean | <span class="cmd-value">false</span> | Append sample-start counter to each NMEA line |
+| <span class="cmd-setting">json</span> | boolean | <span class="cmd-value">false</span> | **Deprecated** — sets `msgformat` to `JSON_NMEA` |
+| <span class="cmd-setting">json_full</span> | boolean | <span class="cmd-value">false</span> | **Deprecated** — sets `msgformat` to `FULL` |
 </div>
+
+Filter and routing settings (see [Message Filtering](message-filtering.md)) also apply.

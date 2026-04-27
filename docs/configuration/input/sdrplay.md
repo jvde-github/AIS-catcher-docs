@@ -29,6 +29,6 @@ AIS-catcher -gs lnastate 5
 | <span class="cmd-setting">agc</span> | boolean | <span class="cmd-value">false</span> | Enable/disable Automatic Gain Control |
 | <span class="cmd-setting">lnastate</span> | integer | <span class="cmd-value">0</span> | LNA state/gain (0-9) |
 | <span class="cmd-setting">grdb</span> | integer | <span class="cmd-value">32</span> | RF gain reduction in dB (0-59) |
-| <span class="cmd-setting">antenna</span> | char | <span class="cmd-value">'A'</span> | Antenna selection (A/B/C) for RSPdx models |
+| <span class="cmd-setting">antenna</span> | char | <span class="cmd-value">'A'</span> | Antenna selection (A or B) |
 
-</div?>
+</div>

@@ -25,7 +25,11 @@ Use the `JSON` option or `JSON_FULL` option to send data packaged in a JSON obje
 | Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
 | <span class="cmd-setting">port</span> | integer | <span class="cmd-value">5010</span> | Listen port (0-65535) |
-| <span class="cmd-setting">timeout</span> | integer | <span class="cmd-value">-</span> | Connection timeout |
-| <span class="cmd-setting">json</span> | boolean | <span class="cmd-value">false</span> | Enable JSON output format |
-| <span class="cmd-setting">json_full</span> | boolean | <span class="cmd-value">false</span> | Enable fully decoded JSON output |
+| <span class="cmd-setting">timeout</span> | integer | <span class="cmd-value">0</span> | Idle client timeout in seconds (0 = never) |
+| <span class="cmd-setting">msgformat</span> | string | <span class="cmd-value">NMEA</span> | Output format (`NMEA`, `JSON_NMEA`, `JSON_FULL`, etc.) |
+| <span class="cmd-setting">include_sample_start</span> | boolean | <span class="cmd-value">false</span> | Append sample-start counter to each NMEA line |
+| <span class="cmd-setting">json</span> | boolean | <span class="cmd-value">false</span> | **Deprecated** — sets `msgformat` to `JSON_NMEA` |
+| <span class="cmd-setting">json_full</span> | boolean | <span class="cmd-value">false</span> | **Deprecated** — sets `msgformat` to `FULL` |
 </div>
+
+Filter and routing settings (see [Message Filtering](message-filtering.md)) also apply.

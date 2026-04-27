@@ -97,19 +97,26 @@ mosquitto_sub -h localhost -t "ais/+/data"
 
 | Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
-| <span class="cmd-setting">url</span> | string | <span class="cmd-value">-</span> | MQTT broker URL (mqtt[s]://[user:pass@]host[:port]) |
-| <span class="cmd-setting">host</span> | string | <span class="cmd-value">-</span> | MQTT broker hostname |
-| <span class="cmd-setting">port</span> | string | <span class="cmd-value">-</span> | MQTT broker port |
+| <span class="cmd-setting">url</span> | string | <span class="cmd-value">-</span> | Broker URL (`mqtt[s]://[user:pass@]host[:port]` or `ws[s]mqtt://...`) |
+| <span class="cmd-setting">host</span> | string | <span class="cmd-value">-</span> | Broker hostname |
+| <span class="cmd-setting">port</span> | string | <span class="cmd-value">-</span> | Broker port |
 | <span class="cmd-setting">username</span> | string | <span class="cmd-value">-</span> | MQTT username |
 | <span class="cmd-setting">password</span> | string | <span class="cmd-value">-</span> | MQTT password |
-| <span class="cmd-setting">topic</span> | string | <span class="cmd-value">ais/data</span> | MQTT topic |
+| <span class="cmd-setting">topic</span> | string | <span class="cmd-value">ais/data</span> | MQTT topic (supports `%mmsi%`, `%type%`, etc. — see above) |
 | <span class="cmd-setting">client_id</span> | string | <span class="cmd-value">-</span> | MQTT client identifier |
 | <span class="cmd-setting">qos</span> | integer | <span class="cmd-value">0</span> | MQTT QoS level (0-2) |
-| <span class="cmd-setting">msgformat</span> | string | <span class="cmd-value">NMEA</span> | Output format (NMEA/JSON_NMEA/JSON_FULL) |
-| <span class="cmd-setting">protocol</span> | string | <span class="cmd-value">MQTT</span> | Protocol (MQTT/WS/WSMQTT) |
+| <span class="cmd-setting">msgformat</span> | string | <span class="cmd-value">NMEA</span> | Output format (`NMEA`, `JSON_NMEA`, `JSON_FULL`, etc.) |
+| <span class="cmd-setting">protocol</span> | string | <span class="cmd-value">MQTT</span> | Transport (`MQTT`, `MQTTS`, `WSMQTT`, `WSSMQTT`, `WS`, `TCP`, `TLS`, `TXT`) |
+| | | | |
+| TCP options (forwarded to underlying transport) | | | |
+| <span class="cmd-setting">persist</span> | boolean | <span class="cmd-value">true</span> | Keep reconnecting after errors |
+| <span class="cmd-setting">keep_alive</span> | boolean | <span class="cmd-value">false</span> | Enable TCP keepalive |
+| <span class="cmd-setting">timeout</span> | integer | <span class="cmd-value">0</span> | TCP timeout in seconds (0-3600) |
+| <span class="cmd-setting">reset</span> | integer | <span class="cmd-value">0</span> | Reset connection after N minutes (0-3600; 0 = never) |
 | | | | |
 | WebSocket Options | | | |
-| <span class="cmd-setting">protocols</span> | string | <span class="cmd-value">mqtt</span> | WebSocket sub-protocols |  
-| <span class="cmd-setting">binary</span> | boolean | <span class="cmd-value">on</span> | Enable binary WebSocket mode |
+| <span class="cmd-setting">protocols</span> | string | <span class="cmd-value">mqtt</span> | WebSocket sub-protocol header |
+| <span class="cmd-setting">binary</span> | boolean | <span class="cmd-value">on</span> | Enable binary WebSocket frames |
+| <span class="cmd-setting">origin</span> | string | <span class="cmd-value">-</span> | `Origin` header for WebSocket handshake |
 
 </div>

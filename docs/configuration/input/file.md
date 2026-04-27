@@ -77,5 +77,6 @@ AIS-catcher -r -ga FORMAT txt file nmea-file
 | Specific Options | | | |
 | <span class="cmd-setting">file</span> | string | <span class="cmd-value">-</span> | Input file path or "stdin" for standard input |
 | <span class="cmd-setting">loop</span> | boolean | <span class="cmd-value">false</span> | Enable continuous file looping |
+| <span class="cmd-setting">txt_block_size</span> | integer | <span class="cmd-value">2048</span> | Read block size in bytes when format is `TXT` (1-16384) |
 
 </div>

@@ -27,7 +27,7 @@ In the tables below, setting names are shown using the JSON key casing (lowercas
 | Sample Rate | `-s RATE` | <span class="cmd-setting">sample_rate</span> | Sampling rate in Hz | 0-20,000,000 | Device-specific |
 | Bandwidth | `-a BW` | <span class="cmd-setting">bandwidth</span> | Tuner bandwidth in Hz | 0-1,000,000 | 0 (none) |
 | Frequency Correction | `-p PPM` | <span class="cmd-setting">freqoffset</span> | Frequency correction in PPM | -150 to +150 | 0 |
-| Data Type | | <span class="cmd-setting">format</span> | CU8, CF32, CS16, CS8, TXT| | Device-specific |
+| Data Type | | <span class="cmd-setting">format</span> | `CU8`, `CF32`, `CS16`, `CS8`, `F32_FS4`, `DC16H`, `TXT`, `BASESTATION`, `BEAST`, `RAW1090` | | Device-specific |
 
 
 For example, to set the sample rate to 1536K, frequecy offset of your device to 1 ppm and bandwidth to 192K:

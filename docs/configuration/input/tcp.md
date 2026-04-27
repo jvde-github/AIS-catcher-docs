@@ -39,9 +39,11 @@ Various protocols are supported as input. The table below lists the available pr
 
 | Protocol | Description                                  | Protocol | Description                                   |
 | :------- | :------------------------------------------- |------- | :------------------------------------------- |
-| `txt`    |  NMEA0183                               |`mqtt`   | MQTT                       |
-| `gpsd`   | GPSD server                            | `wsmqtt` | MQTT over WS                       |
-| `rtltcp` | Connecting to an RTL-TCP server           |
+| `txt`    | NMEA0183                                     | `mqtt`   | MQTT                                       |
+| `gpsd`   | GPSD server                                  | `wsmqtt` | MQTT over WebSocket                       |
+| `ws`     | Plain WebSocket                              | `rtltcp` | RTL-TCP server (raw I/Q)                    |
+| `basestation` | BaseStation (ADS-B SBS-1)              | `beast` | Beast binary (ADS-B)                          |
+| `raw1090`| Raw 1090 MHz frames (ADS-B)                  |          |                                              |
 
 Use the appropriate protocol based on your server's configuration and data format. 
 
@@ -61,10 +63,10 @@ Use the appropriate protocol based on your server's configuration and data forma
 | <span class="cmd-setting">url</span> | string | <span class="cmd-value">-</span> | Complete URL including protocol and credentials |
 | | | | |
 | TCP Options | | | |
-| <span class="cmd-setting">persistent</span> | boolean | <span class="cmd-value">true</span> | Keep connection alive after errors |
+| <span class="cmd-setting">persist</span> | boolean | <span class="cmd-value">true</span> | Keep reconnecting after errors |
 | <span class="cmd-setting">keep_alive</span> | boolean | <span class="cmd-value">false</span> | Enable TCP keepalive |
-| <span class="cmd-setting">reset</span> | integer | <span class="cmd-value">-1</span> | Reset connection after N minutes (-1=never) |
-| <span class="cmd-setting">timeout</span> | integer | <span class="cmd-value">0</span> | Connection timeout in seconds |
+| <span class="cmd-setting">reset</span> | integer | <span class="cmd-value">0</span> | Reset connection after N minutes (0=never; range 0-3600) |
+| <span class="cmd-setting">timeout</span> | integer | <span class="cmd-value">0</span> | Connection timeout in seconds (range 0-3600) |
 | | | | |
 | WebSocket Options | | | |
 | <span class="cmd-setting">protocols</span> | string | <span class="cmd-value">mqtt</span> | WebSocket sub-protocols |
@@ -77,6 +79,7 @@ Use the appropriate protocol based on your server's configuration and data forma
 | <span class="cmd-setting">username</span> | string | <span class="cmd-value">-</span> | MQTT username |
 | <span class="cmd-setting">password</span> | string | <span class="cmd-value">-</span> | MQTT password |
 | <span class="cmd-setting">qos</span> | integer | <span class="cmd-value">0</span> | MQTT QoS level (0-2) |
+| <span class="cmd-setting">subscribe</span> | boolean | <span class="cmd-value">true</span> | Subscribe to `topic` (vs publish-only) |
 | | | | |
 | RTLTCP Options | | | |
 | <span class="cmd-setting">tuner</span> | float | <span class="cmd-value">33.0</span> | Tuner gain (0-50, auto) |
