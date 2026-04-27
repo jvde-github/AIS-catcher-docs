@@ -1,6 +1,6 @@
 # What's New?
 
-## Edge version 
+## Version 0.67
 
 ### New Features
 
@@ -38,8 +38,12 @@ Thanks to user Manny for suggesting these options.
 #### Serial Device Improvements
 
 - `init_seq` now accepts multiple comma-separated commands
-- Fixed `init_seq` issues on macOS
+- Fixed `init_seq` issues on macOS (and Windows buffer flushing during init)
 - Serial devices supporting AIS-catcher format can now relay warning, info, and error messages through the program
+- New `flowcontrol` option (`hardware`/`software`/`none`) and `disable_xonoff` switch
+- Serial port opened in non-blocking mode to avoid DTR hang on some adapters
+- New `dump_file` option to save raw serial bytes for debugging
+- DC16H frame format support
 
 #### Zones
 
@@ -49,6 +53,25 @@ Support for tailoring routing of messages from receivers to output channels via 
 
 Channel designation is now configurable via JSON config and is shown in model startup output of the Visual Web Control.
 
+#### Microsecond Timestamps
+
+`rxuxtime` field added to `JSON_FULL` output, providing microsecond-resolution receive timestamps. NMEA 4.0 tag-block timestamps now use microseconds where available.
+
+#### Reboot Watchdog
+
+A systemd `OnFailure` watchdog can automatically reboot the host if AIS-catcher stops repeatedly. Configurable burst/interval parameters with a 5-minute grace period after toggling, controlled via the install script.
+
+### Output and Configuration
+
+- **Receiver index** is now included in output; `-v` applies to all receivers, `-v+` to the last one only
+- **`webcontrol_http`** option for the webviewer
+- **`ssl_verify`** setting on HTTP outputs to disable TLS certificate verification when needed
+- **NMEA 4.0 tag blocks** now include the group ID only for multi-line sentences
+- Default `repeat` for message type 27 is now 3
+- Aliases: `rssi`/`fo` for `signalpower`/`ppm`; `DESC` for `description`
+- Internal settings unified to a key-based API with structured error reporting (`SetKey`); legacy aliases kept for backward compatibility
+- Community feed restricted to local SDR hardware only
+
 ### Web Viewer
 
 #### Vessel Tracks — Major Overhaul
@@ -56,9 +79,47 @@ Channel designation is now configurable via JSON config and is shown in model st
 - **Incremental (delta) loading**: only new path points are fetched on each update
 - Tracks capped at 250 points per vessel, consistent between "Show Track" and "Show All Tracks"
 
-#### Bug Fixes and Improvements
+#### Multi-Receiver View
+
+A new view in the webviewer lets users see and switch between multiple receivers from a single interface.
+
+#### Realtime and UI Improvements
+
+- Realtime NMEA tab now displays the shipname instead of just MMSI
+- Station name passed via `plugins.js` for immediate tab title display
+- Community feed gained a binary compact endpoint, sprite-sheet icons, and click-to-livemap
+- Dark info panel, darker hover background, fixed truncated SVG flags
+- Fixed RainViewer overlay (CORS and API path), MBTiles import, distance charts, "Show all tracks", strict-mode violations, missing planes sprite, ship-shape highlight stuck on hover
+- Shrunk `favicon.ico` from 97 KB to 15 KB
+- `marked` library now bundled (no CDN runtime dependency)
+
+#### Bug Fixes
 
 - **Signal level charts**: fixed extreme values for UDP/TCP sources
+- Static data refreshed correctly when a ship comes back into scope
+- HTTP stats fixed under TLS
+
+### Performance
+
+This release contains a substantial performance overhaul of the I/O hot path. Highlights:
+
+- **NMEA parser**: zero-alloc split, SWAR scanning, bulk 6-bit decode, line-aware start detection — ~64% fewer instructions
+- **JSON parser**: zero-copy tokenizer, hand-rolled number parsing, flat open-addressing hash table for key lookup, allocation-free steady-state parsing
+- **JSON Writer**: replaces legacy `JSONBuilder` and ad-hoc serializers with a `std::string`-backed writer; ~5–10% faster on `-o 0/3/5/7`
+- **AIS::Message**: SWAR `getText`/`getUint`, batched 6-bit payload decode (~7–10% faster on `-o 5` / `nmea_refresh`)
+- **Lock-free output**: thread-local screen buffers, atomic `ByteCounter`, DB mutex released before downstream `Send` cascade (dual `-N` benchmark: 9.05s → 6.03s)
+- POSIX `read()` for stdin, single newline flush per message (replacing per-message `fflush`)
+
+### Stability and Networking
+
+- TCP: try all `addrinfo` entries, connect timeout for blocking mode, guard repeated stop requests
+- WebSocket/MQTT: handshake fixes, Windows socket check, max frame drop, `PUBREL` handling, buffer-growth fix
+- Logger: fixed circular buffer and mutex issues
+- GPS: fixed use-after-free and JSON memory issue, warn-once on bad data, scan limits
+- Postgres/N2K: traffic monitoring extended, empty AIS messages handled, filter shadow fixed (settings now apply to the active filter)
+- File input, hybrid config, NMEA RMC parsing, NMEA checksum in `-o 6`, timer handling for non-frontend models (NMEA, N2K, ADSB, Export)
+- Backup writer wrapped in try/catch with additional diagnostics
+- Compiler-warning cleanup across the tree; spellcheck CI added (`typos`)
 
 ### Packaging
 
@@ -66,7 +127,11 @@ Channel designation is now configurable via JSON config and is shown in model st
 - Switched to debhelper — `dh_shlibdeps` auto-resolves correct dependencies per distro/arch
 - Fixed several `.deb` packaging issues (`libssl3/t64`, `ETXTBSY`, empty `Depends` field)
 - Added CI install test covering the full platform matrix
-- Frontend libraries bundled via npm/Vite — no CDN dependencies at runtime. Webassets repo is archived.
+- New Ubuntu **ARM64** and **ARMhf** packages; **RPM** packages added; Fedora dropped
+- Frontend libraries bundled via npm/Vite — no CDN dependencies at runtime. Webassets repo is archived
+- Modular CMake dependency management — individual scripts per library
+- Install script: parallelized builds, non-root install option, hardened reboot handling, removed Docker support for i386/armel
+- Copyright extended to 2026
 
 ## Version 0.66
 
