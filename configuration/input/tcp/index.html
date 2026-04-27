@@ -2817,11 +2817,23 @@
 <td style="text-align: left;"><code>gpsd</code></td>
 <td style="text-align: left;">GPSD server</td>
 <td><code>wsmqtt</code></td>
-<td style="text-align: left;">MQTT over WS</td>
+<td style="text-align: left;">MQTT over WebSocket</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>rtltcp</code></td>
-<td style="text-align: left;">Connecting to an RTL-TCP server</td>
+<td style="text-align: left;"><code>ws</code></td>
+<td style="text-align: left;">Plain WebSocket</td>
+<td><code>rtltcp</code></td>
+<td style="text-align: left;">RTL-TCP server (raw I/Q)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>basestation</code></td>
+<td style="text-align: left;">BaseStation (ADS-B SBS-1)</td>
+<td><code>beast</code></td>
+<td style="text-align: left;">Beast binary (ADS-B)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>raw1090</code></td>
+<td style="text-align: left;">Raw 1090 MHz frames (ADS-B)</td>
 <td></td>
 <td style="text-align: left;"></td>
 </tr>
@@ -2907,10 +2919,10 @@
 <td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">persistent</span></td>
+<td><span class="cmd-setting">persist</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">true</span></td>
-<td>Keep connection alive after errors</td>
+<td>Keep reconnecting after errors</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">keep_alive</span></td>
@@ -2921,14 +2933,14 @@
 <tr>
 <td><span class="cmd-setting">reset</span></td>
 <td>integer</td>
-<td><span class="cmd-value">-1</span></td>
-<td>Reset connection after N minutes (-1=never)</td>
+<td><span class="cmd-value">0</span></td>
+<td>Reset connection after N minutes (0=never; range 0-3600)</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">timeout</span></td>
 <td>integer</td>
 <td><span class="cmd-value">0</span></td>
-<td>Connection timeout in seconds</td>
+<td>Connection timeout in seconds (range 0-3600)</td>
 </tr>
 <tr>
 <td></td>
@@ -3001,6 +3013,12 @@
 <td>integer</td>
 <td><span class="cmd-value">0</span></td>
 <td>MQTT QoS level (0-2)</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">subscribe</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">true</span></td>
+<td>Subscribe to <code>topic</code> (vs publish-only)</td>
 </tr>
 <tr>
 <td></td>

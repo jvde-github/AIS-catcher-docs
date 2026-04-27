@@ -1996,10 +1996,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#summary-settimgs" class="md-nav__link">
+  <a href="#summary-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Summary Settimgs
+        Summary Settings
       
     </span>
   </a>
@@ -2731,10 +2731,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#summary-settimgs" class="md-nav__link">
+  <a href="#summary-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Summary Settimgs
+        Summary Settings
       
     </span>
   </a>
@@ -2782,7 +2782,7 @@ The command accepts additonal parameters, e.g. to send NMEA messages packaged in
 </code></pre></div>
 Most external programs will not be able to accept these JSON-packaged NMEA strings. It is a way to transfer received messages between AIS-catcher instances without losing metadata like the timestamp, ppm correction and signal level. These are not captured in the standard NMEA strings. The option <code>JSON_FULL</code> does a full decode of the AIS message.
 Another option for UDP sending via <code>-u</code> is <code>BROADCAST on/off</code> to enable sending to broadcast addresses.</p>
-<h2 id="summary-settimgs">Summary Settimgs<a class="headerlink" href="#summary-settimgs" title="Permanent link">&para;</a></h2>
+<h2 id="summary-settings">Summary Settings<a class="headerlink" href="#summary-settings" title="Permanent link">&para;</a></h2>
 <div class="input-table">
 <table>
 <thead>
@@ -2807,16 +2807,10 @@ Another option for UDP sending via <code>-u</code> is <code>BROADCAST on/off</co
 <td>Target UDP port</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">json</span></td>
-<td>boolean</td>
-<td><span class="cmd-value">false</span></td>
-<td>Enable JSON output format</td>
-</tr>
-<tr>
-<td><span class="cmd-setting">json_full</span></td>
-<td>boolean</td>
-<td><span class="cmd-value">false</span></td>
-<td>Enable fully decoded JSON output</td>
+<td><span class="cmd-setting">msgformat</span></td>
+<td>string</td>
+<td><span class="cmd-value">NMEA</span></td>
+<td>Output format (<code>NMEA</code>, <code>JSON_NMEA</code>, <code>JSON_FULL</code>, etc.)</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">broadcast</span></td>
@@ -2827,18 +2821,37 @@ Another option for UDP sending via <code>-u</code> is <code>BROADCAST on/off</co
 <tr>
 <td><span class="cmd-setting">reset</span></td>
 <td>integer</td>
-<td><span class="cmd-value">-1</span></td>
-<td>Socket reset interval in minutes (1-1440)</td>
+<td><span class="cmd-value">0</span></td>
+<td>Recreate socket after N minutes (1-1440; 0 = never)</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">uuid</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
-<td>Unique identifier (must be valid UUID)</td>
+<td>Unique identifier (must be a valid UUID)</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">include_sample_start</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">false</span></td>
+<td>Append sample-start counter to each NMEA line</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">json</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">false</span></td>
+<td><strong>Deprecated</strong> — sets <code>msgformat</code> to <code>JSON_NMEA</code></td>
+</tr>
+<tr>
+<td><span class="cmd-setting">json_full</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">false</span></td>
+<td><strong>Deprecated</strong> — sets <code>msgformat</code> to <code>FULL</code></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>Filter and routing settings (see <a href="../message-filtering/">Message Filtering</a>) also apply.</p>
 
 
 

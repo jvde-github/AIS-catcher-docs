@@ -2858,6 +2858,18 @@ Settings can also be provided per stage:
 <td><span class="cmd-value">false</span></td>
 <td>Enable/disable bias tee power</td>
 </tr>
+<tr>
+<td><span class="cmd-setting">gain_mode</span></td>
+<td>enum</td>
+<td><span class="cmd-value">linearity</span></td>
+<td>Explicit gain mode (<code>SENSITIVITY</code>, <code>LINEARITY</code>, or <code>FREE</code>). Set automatically by <code>sensitivity</code>/<code>linearity</code>/<code>vga</code>/<code>mixer</code>/<code>lna</code>.</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">real_mode</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">false</span></td>
+<td>Switch sample format between complex <code>CF32</code> (off) and real <code>F32_FS4</code> (on)</td>
+</tr>
 </tbody>
 </table>
 </div>

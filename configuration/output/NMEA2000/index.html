@@ -2708,11 +2708,11 @@ is required, build AIS-catcher in the main directory with:
   <div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-i<span class="w"> </span>vcan0
 </code></pre></div>
   Note that this only works on Linux with socketCAN support and has not been tested properly. Obviously, the program is not certified by NMEA and is not build for connecting it to a NMEA2000 network on a boat. It is for the experimenters wanting to learn and play with networks and AIS.</p>
-<h2 id="summary-settings-input">Summary Settings Input<a class="headerlink" href="#summary-settings-input" title="Permanent link">&para;</a></h2>
+<h2 id="summary-settings-input-i">Summary Settings — Input (<code>-i</code>)<a class="headerlink" href="#summary-settings-input-i" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Key</th>
+<th>Setting (JSON key / CLI setting name)</th>
 <th>Type</th>
 <th>Default</th>
 <th>Description</th>
@@ -2720,18 +2720,18 @@ is required, build AIS-catcher in the main directory with:
 </thead>
 <tbody>
 <tr>
-<td>INTERFACE</td>
+<td><span class="cmd-setting">interface</span></td>
 <td>string</td>
-<td>"can0"</td>
-<td>CAN bus interface name</td>
+<td><span class="cmd-value">-</span></td>
+<td>socketCAN interface name (e.g. <code>vcan0</code>, <code>can0</code>)</td>
 </tr>
 </tbody>
 </table>
-<h2 id="summary-settings-output">Summary Settings Output<a class="headerlink" href="#summary-settings-output" title="Permanent link">&para;</a></h2>
+<h2 id="summary-settings-output-i">Summary Settings — Output (<code>-I</code>)<a class="headerlink" href="#summary-settings-output-i" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Key</th>
+<th>Setting (JSON key / CLI setting name)</th>
 <th>Type</th>
 <th>Default</th>
 <th>Description</th>
@@ -2739,13 +2739,14 @@ is required, build AIS-catcher in the main directory with:
 </thead>
 <tbody>
 <tr>
-<td>NETWORK</td>
+<td><span class="cmd-setting">device</span></td>
 <td>string</td>
-<td>""</td>
-<td>CAN network interface name</td>
+<td><span class="cmd-value">-</span></td>
+<td>socketCAN interface name to write to (e.g. <code>vcan0</code>, <code>can0</code>)</td>
 </tr>
 </tbody>
 </table>
+<p>Filter and routing settings (see <a href="../message-filtering/">Message Filtering</a>) also apply.</p>
 
 
 

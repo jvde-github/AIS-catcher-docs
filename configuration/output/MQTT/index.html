@@ -3008,19 +3008,19 @@ mosquitto_sub<span class="w"> </span>-h<span class="w"> </span>localhost<span cl
 <td><span class="cmd-setting">url</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
-<td>MQTT broker URL (mqtt[s]://[user:pass@]host[:port])</td>
+<td>Broker URL (<code>mqtt[s]://[user:pass@]host[:port]</code> or <code>ws[s]mqtt://...</code>)</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">host</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
-<td>MQTT broker hostname</td>
+<td>Broker hostname</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">port</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
-<td>MQTT broker port</td>
+<td>Broker port</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">username</span></td>
@@ -3038,7 +3038,7 @@ mosquitto_sub<span class="w"> </span>-h<span class="w"> </span>localhost<span cl
 <td><span class="cmd-setting">topic</span></td>
 <td>string</td>
 <td><span class="cmd-value">ais/data</span></td>
-<td>MQTT topic</td>
+<td>MQTT topic (supports <code>%mmsi%</code>, <code>%type%</code>, etc. — see above)</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">client_id</span></td>
@@ -3056,13 +3056,49 @@ mosquitto_sub<span class="w"> </span>-h<span class="w"> </span>localhost<span cl
 <td><span class="cmd-setting">msgformat</span></td>
 <td>string</td>
 <td><span class="cmd-value">NMEA</span></td>
-<td>Output format (NMEA/JSON_NMEA/JSON_FULL)</td>
+<td>Output format (<code>NMEA</code>, <code>JSON_NMEA</code>, <code>JSON_FULL</code>, etc.)</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">protocol</span></td>
 <td>string</td>
 <td><span class="cmd-value">MQTT</span></td>
-<td>Protocol (MQTT/WS/WSMQTT)</td>
+<td>Transport (<code>MQTT</code>, <code>MQTTS</code>, <code>WSMQTT</code>, <code>WSSMQTT</code>, <code>WS</code>, <code>TCP</code>, <code>TLS</code>, <code>TXT</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>TCP options (forwarded to underlying transport)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><span class="cmd-setting">persist</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">true</span></td>
+<td>Keep reconnecting after errors</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">keep_alive</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">false</span></td>
+<td>Enable TCP keepalive</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">timeout</span></td>
+<td>integer</td>
+<td><span class="cmd-value">0</span></td>
+<td>TCP timeout in seconds (0-3600)</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">reset</span></td>
+<td>integer</td>
+<td><span class="cmd-value">0</span></td>
+<td>Reset connection after N minutes (0-3600; 0 = never)</td>
 </tr>
 <tr>
 <td></td>
@@ -3080,13 +3116,19 @@ mosquitto_sub<span class="w"> </span>-h<span class="w"> </span>localhost<span cl
 <td><span class="cmd-setting">protocols</span></td>
 <td>string</td>
 <td><span class="cmd-value">mqtt</span></td>
-<td>WebSocket sub-protocols</td>
+<td>WebSocket sub-protocol header</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">binary</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">on</span></td>
-<td>Enable binary WebSocket mode</td>
+<td>Enable binary WebSocket frames</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">origin</span></td>
+<td>string</td>
+<td><span class="cmd-value">-</span></td>
+<td><code>Origin</code> header for WebSocket handshake</td>
 </tr>
 </tbody>
 </table>

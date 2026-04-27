@@ -2024,10 +2024,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#summary-settimgs" class="md-nav__link">
+  <a href="#summary-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Summary Settimgs
+        Summary Settings
       
     </span>
   </a>
@@ -2731,10 +2731,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#summary-settimgs" class="md-nav__link">
+  <a href="#summary-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Summary Settimgs
+        Summary Settings
       
     </span>
   </a>
@@ -2811,8 +2811,8 @@ Notice that this server requires authentication with a station name and password
 <div class="highlight"><pre><span></span><code><span class="go">sudo apt install libssl-dev zlib1g-dev</span>
 </code></pre></div>
 This step is only required if you want to ZIP content and post data to secure servers.</p>
-<p>The supported protocol switches are <code>AISCATCHER</code> (default), <code>MINIMAL</code> (NMEA lines and metadata in JSON), <code>LINES</code> (one JSON message per line), <code>APRS</code> (to submit to APRS.fi), <code>NMEA</code> (simple NMEA).</p>
-<h2 id="summary-settimgs">Summary Settimgs<a class="headerlink" href="#summary-settimgs" title="Permanent link">&para;</a></h2>
+<p>The supported protocol switches are <code>AISCATCHER</code> (default), <code>MINIMAL</code> (NMEA lines and metadata in JSON), <code>LIST</code> (one JSON message per line), <code>AIRFRAMES</code> (Airframes.io minimal feed), <code>APRS</code> (to submit to APRS.fi), <code>NMEA</code> (simple NMEA).</p>
+<h2 id="summary-settings">Summary Settings<a class="headerlink" href="#summary-settings" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2833,13 +2833,19 @@ This step is only required if you want to ZIP content and post data to secure se
 <td><span class="cmd-setting">userpwd</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
-<td>Authentication credentials</td>
+<td>Authentication credentials (<code>user:password</code>)</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">ssl_verify</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">true</span></td>
+<td>Verify TLS certificates on <code>https://</code> endpoints</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">stationid</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
-<td>Station identifier</td>
+<td>Station identifier (aliases: <code>id</code>, <code>callsign</code>)</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">interval</span></td>
@@ -2857,37 +2863,67 @@ This step is only required if you want to ZIP content and post data to secure se
 <td><span class="cmd-setting">gzip</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
-<td>Enable GZIP compression</td>
+<td>Enable GZIP compression (requires zlib)</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">response</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">true</span></td>
-<td>Show response messages</td>
+<td>Show server response on screen</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">protocol</span></td>
 <td>string</td>
 <td><span class="cmd-value">AISCATCHER</span></td>
-<td>Protocol type (AISCATCHER/MINIMAL/AIRFRAMES/LIST/APRS/NMEA)</td>
+<td>Submission protocol (<code>AISCATCHER</code>, <code>MINIMAL</code>, <code>AIRFRAMES</code>, <code>LIST</code>, <code>NMEA</code>, <code>APRS</code>)</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">lat</span></td>
 <td>float</td>
 <td><span class="cmd-value">0.0</span></td>
-<td>Station latitude</td>
+<td>Station latitude (sent in feed metadata)</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">lon</span></td>
 <td>float</td>
 <td><span class="cmd-value">0.0</span></td>
-<td>Station longitude</td>
+<td>Station longitude (sent in feed metadata)</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">model</span></td>
+<td>string</td>
+<td><span class="cmd-value">-</span></td>
+<td>Receiver model name (sent in feed metadata)</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">model_setting</span></td>
+<td>string</td>
+<td><span class="cmd-value">-</span></td>
+<td>Receiver model setting summary</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">product</span></td>
+<td>string</td>
+<td><span class="cmd-value">-</span></td>
+<td>Device product string</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">vendor</span></td>
+<td>string</td>
+<td><span class="cmd-value">-</span></td>
+<td>Device vendor string</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">serial</span></td>
+<td>string</td>
+<td><span class="cmd-value">-</span></td>
+<td>Device serial string</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">device_setting</span></td>
 <td>string</td>
-<td><span class="cmd-value">N/A</span></td>
-<td>Device settings</td>
+<td><span class="cmd-value">-</span></td>
+<td>Device setting summary</td>
 </tr>
 </tbody>
 </table>

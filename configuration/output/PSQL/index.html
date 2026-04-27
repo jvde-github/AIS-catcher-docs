@@ -2882,19 +2882,25 @@ There are a few settings for the new <code>-D</code> switch of which the first i
 <td><span class="cmd-setting">station_id</span></td>
 <td>integer</td>
 <td><span class="cmd-value">0</span></td>
-<td>Station identifier</td>
+<td>Station identifier (column value, lets multiple feeders share one DB)</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">interval</span></td>
 <td>integer</td>
 <td><span class="cmd-value">10</span></td>
-<td>Database write interval (5-1800 sec)</td>
+<td>Database write interval in seconds (5-1800)</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">max_fails</span></td>
 <td>integer</td>
 <td><span class="cmd-value">10</span></td>
-<td>Max failed connection attempts</td>
+<td>Max failed reconnect attempts before terminating (1000 = never give up)</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">groups_in</span></td>
+<td>integer</td>
+<td><span class="cmd-value">all</span></td>
+<td>Bitmask of input groups feeding this output</td>
 </tr>
 <tr>
 <td></td>

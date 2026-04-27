@@ -2799,10 +2799,10 @@
         ...
     </div>
 </div>
-<p>Settings specific for reading NMEA lines from a serial port can all be set with the <code>e</code> switch fow now, e.g. on Linux:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-e<span class="w"> </span><span class="m">368400</span><span class="w"> </span>/dev/serial1
+<p>Settings specific for reading NMEA lines from a serial port can all be set with the <code>-ge</code> switch, e.g. on Linux:
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-e<span class="w"> </span><span class="m">38400</span><span class="w"> </span>/dev/serial1
 </code></pre></div></p>
-<p>To dump the raw input from the serial device on-screen use <code>-</code>ge print on`.</p>
+<p>To dump the raw input from the serial device on-screen use <code>-ge dump on</code>.</p>
 <h2 id="summary-settings">Summary Settings<a class="headerlink" href="#summary-settings" title="Permanent link">&para;</a></h2>
 <div class="input-table">
 <table>
@@ -2854,14 +2854,38 @@
 <tr>
 <td><span class="cmd-setting">port</span></td>
 <td>string</td>
-<td><span class="cmd-value">0</span></td>
-<td>Serial port device path/name</td>
+<td><span class="cmd-value">-</span></td>
+<td>Serial port device path/name (Windows <code>COMx</code> is auto-prefixed)</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">dump</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">false</span></td>
+<td>Print raw bytes received from the serial device</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">dump_file</span></td>
+<td>string</td>
+<td><span class="cmd-value">-</span></td>
+<td>Write raw bytes to file (also enables <code>dump</code>)</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">init_seq</span></td>
+<td>string</td>
+<td><span class="cmd-value">-</span></td>
+<td>Initialization commands sent to the device on open</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">flowcontrol</span></td>
+<td>enum</td>
+<td><span class="cmd-value">NONE</span></td>
+<td>Flow control (<code>NONE</code>, <code>HARDWARE</code>, or <code>SOFTWARE</code>)</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">print</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
-<td>Enable debug printing of received data</td>
+<td><strong>Deprecated</strong> alias for <code>dump</code></td>
 </tr>
 </tbody>
 </table>

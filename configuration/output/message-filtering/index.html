@@ -2932,7 +2932,7 @@ Message type 8 is region-specific. If you encounter any messages in the wild tha
 <td><span class="cmd-setting">filter</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
-<td>Enable/disable filtering</td>
+<td>Enable/disable filtering (other settings only take effect when this is on)</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">allow_type</span></td>
@@ -2950,7 +2950,7 @@ Message type 8 is region-specific. If you encounter any messages in the wild tha
 <td><span class="cmd-setting">allow_repeat</span></td>
 <td>list</td>
 <td><span class="cmd-value">all</span></td>
-<td>Allow messages with specific repeat counter values (0-3)</td>
+<td>Allow messages with specific repeat counter values (0-3); alias <code>select_repeat</code></td>
 </tr>
 <tr>
 <td><span class="cmd-setting">block_repeat</span></td>
@@ -2962,7 +2962,7 @@ Message type 8 is region-specific. If you encounter any messages in the wild tha
 <td><span class="cmd-setting">allow_mmsi</span></td>
 <td>list</td>
 <td><span class="cmd-value">all</span></td>
-<td>Only allow messages from specific MMSI numbers</td>
+<td>Only allow messages from specific MMSI numbers; alias <code>select_mmsi</code></td>
 </tr>
 <tr>
 <td><span class="cmd-setting">block_mmsi</span></td>
@@ -2974,13 +2974,13 @@ Message type 8 is region-specific. If you encounter any messages in the wild tha
 <td><span class="cmd-setting">allow_channel</span></td>
 <td>string</td>
 <td><span class="cmd-value">all</span></td>
-<td>Only allow messages from specific AIS channels</td>
+<td>Only allow messages from specific AIS channels (e.g. <code>AB</code>); alias <code>select_channel</code></td>
 </tr>
 <tr>
 <td><span class="cmd-setting">id</span></td>
-<td>integer</td>
+<td>list</td>
 <td><span class="cmd-value">all</span></td>
-<td>Only allow messages from specific station IDs</td>
+<td>Comma-separated list of station IDs to allow (0-999999); alias <code>select_id</code></td>
 </tr>
 <tr>
 <td><span class="cmd-setting">gps</span></td>
@@ -2991,8 +2991,14 @@ Message type 8 is region-specific. If you encounter any messages in the wild tha
 <tr>
 <td><span class="cmd-setting">ais</span></td>
 <td>boolean</td>
-<td><span class="cmd-value">true&lt;/</td>
-<td></td>
+<td><span class="cmd-value">true</span></td>
+<td>Include AIS messages in output</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">remove_empty</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">false</span></td>
+<td>Drop messages whose JSON payload is empty after decoding</td>
 </tr>
 </tbody>
 </table>

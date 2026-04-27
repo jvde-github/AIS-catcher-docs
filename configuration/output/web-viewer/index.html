@@ -3034,13 +3034,37 @@ or as an overlay
 <td><span class="cmd-setting">reuse_port</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
-<td>Enable port reuse</td>
+<td>Enable <code>SO_REUSEPORT</code> on the listening socket</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">zlib</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">true</span></td>
 <td>Enable response compression</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">server_mode</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">false</span></td>
+<td>Enable hardened multi-station server mode</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">log</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">false</span></td>
+<td>Log HTTP requests</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">groups_in</span></td>
+<td>integer</td>
+<td><span class="cmd-value">all</span></td>
+<td>Bitmask of input groups feeding the viewer</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">zone</span></td>
+<td>string</td>
+<td><span class="cmd-value">-</span></td>
+<td>Comma-separated zone tags routed to this viewer</td>
 </tr>
 <tr>
 <td></td>

@@ -2798,24 +2798,37 @@ Use the <code>JSON</code> option or <code>JSON_FULL</code> option to send data p
 <tr>
 <td><span class="cmd-setting">timeout</span></td>
 <td>integer</td>
-<td><span class="cmd-value">-</span></td>
-<td>Connection timeout</td>
+<td><span class="cmd-value">0</span></td>
+<td>Idle client timeout in seconds (0 = never)</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">msgformat</span></td>
+<td>string</td>
+<td><span class="cmd-value">NMEA</span></td>
+<td>Output format (<code>NMEA</code>, <code>JSON_NMEA</code>, <code>JSON_FULL</code>, etc.)</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">include_sample_start</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">false</span></td>
+<td>Append sample-start counter to each NMEA line</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">json</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
-<td>Enable JSON output format</td>
+<td><strong>Deprecated</strong> — sets <code>msgformat</code> to <code>JSON_NMEA</code></td>
 </tr>
 <tr>
 <td><span class="cmd-setting">json_full</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
-<td>Enable fully decoded JSON output</td>
+<td><strong>Deprecated</strong> — sets <code>msgformat</code> to <code>FULL</code></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>Filter and routing settings (see <a href="../message-filtering/">Message Filtering</a>) also apply.</p>
 
 
 

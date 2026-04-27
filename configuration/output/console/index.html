@@ -1812,6 +1812,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Console Output
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1828,6 +1846,36 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary Settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2674,6 +2722,25 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary Settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2715,6 +2782,47 @@ And finally, full decoding of the AIS message is activated via <code>-o 5</code>
 </code></pre></div></p>
 <p>Meta data is not calculated by default to keep the program as light as possible when running as a server on low spec devices but can be activated with the <code>-M</code> switch. The calculation of signal power (in dB) and applied frequency correction (in ppm) are activated with  <code>-M D</code>. NMEA messages are timestamped with  <code>-M T</code> and additional country information from the station derived from the MMSI is included in JSON output with <code>-M M</code>. </p>
 <p>There are many libraries for decoding AIS messages in NMEA format to JSON format. I encourage you to use your favorite library. Some excellent choices include <a href="https://github.com/schwehr/libais">libais</a>, <a href="https://github.com/ukyg9e5r6k7gubiekd6/gpsd/blob/master/gpsdecode.c">gpsdecode</a> and <a href="https://github.com/M0r13n/pyais">pyais</a>.</p>
+<h2 id="summary-settings">Summary Settings<a class="headerlink" href="#summary-settings" title="Permanent link">&para;</a></h2>
+<p>The <code>-o N</code> shortcut maps to a <code>msgformat</code> value. Settings can be passed after <code>-o</code> in the usual way:</p>
+<div class="input-table">
+<table>
+<thead>
+<tr>
+<th>Setting (JSON key / CLI setting name)</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="cmd-setting">msgformat</span></td>
+<td>string</td>
+<td><span class="cmd-value">FULL</span></td>
+<td>Output format (<code>NONE</code>/<code>0</code>, <code>NMEA</code>/<code>1</code>, <code>NMEA_TAG</code>/<code>7</code>, <code>BINARY_NMEA</code>, <code>FULL</code>/<code>2</code>, <code>JSON_NMEA</code>/<code>3</code>, <code>JSON_SPARSE</code>/<code>4</code>, <code>JSON_FULL</code>/<code>5</code>, <code>COMMUNITY_HUB</code>)</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">include_sample_start</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">false</span></td>
+<td>Append sample-start counter to each NMEA line</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">json</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">false</span></td>
+<td><strong>Deprecated</strong> — sets <code>msgformat</code> to <code>JSON_NMEA</code></td>
+</tr>
+<tr>
+<td><span class="cmd-setting">json_full</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">false</span></td>
+<td><strong>Deprecated</strong> — sets <code>msgformat</code> to <code>FULL</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Filter and routing settings (see <a href="../message-filtering/">Message Filtering</a>) also apply.</p>
 
 
 
