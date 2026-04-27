@@ -1,5 +1,25 @@
 # What's New?
 
+## Version 0.68
+
+### Web Viewer
+
+- Fixed vessel track polylines drifting ahead of the ship marker due to an incremental merge bug
+- Incremental plane updates now support `?since=` with timeout-based cleanup of stale aircraft
+- RainViewer refresh interval increased from 2 minutes to 10 minutes
+- RainViewer updates pause while the browser tab is hidden
+- Removed the clouds overlay layer
+- Fixed sticky hover suppression after map moves
+
+### Data and API Fixes
+
+- Fixed MMSI key corruption in path JSON
+- Added support for `@filename` response files
+
+### Service and Packaging
+
+- systemd unit no longer uses a `bash -c` subshell
+
 ## Version 0.67
 
 ### New Features
