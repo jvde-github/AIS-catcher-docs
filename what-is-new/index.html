@@ -321,6 +321,34 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Edge
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Edge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#itu-r-m1371-6-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ITU-R M.1371-6 alignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#version-068" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3202,6 +3230,34 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Edge
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Edge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#itu-r-m1371-6-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ITU-R M.1371-6 alignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#version-068" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3710,6 +3766,15 @@
 
 
 <h1 id="whats-new">What's New?<a class="headerlink" href="#whats-new" title="Permanent link">&para;</a></h1>
+<h2 id="edge">Edge<a class="headerlink" href="#edge" title="Permanent link">&para;</a></h2>
+<h3 id="itu-r-m1371-6-alignment">ITU-R M.1371-6 alignment<a class="headerlink" href="#itu-r-m1371-6-alignment" title="Permanent link">&para;</a></h3>
+<p>The JSON output has been aligned with the 2026 ITU-R M.1371-6 spec.</p>
+<ul>
+<li><strong>Message type 28</strong> (single-slot AtoN report, M.1371-6 §A7-3.26) is now expanded into structured JSON fields. See the <a href="../references/JSON-decoding/#type-28">type 28 reference</a>.</li>
+<li><strong>Messages 25 and 26</strong>: the addressed/broadcast envelope is now exposed in JSON; when the payload carries a recognised <code>(dac, fid)</code> pair the same ASM fields are emitted as for messages 6 and 8.</li>
+<li><strong>Spec field renames</strong> in messages 1/2/3, 4/11, 9, 18, 19, 21: bits previously labelled <code>regional</code>/<code>reserved</code> are now exposed under their M.1371-6 names (<code>power</code>, <code>transmission_control</code>, <code>alt_sensor</code>, <code>aton_status</code>, …). See the <a href="../references/JSON-decoding/">JSON reference</a> for the per-message field list.</li>
+<li><strong>Type 23</strong>: <code>ship_type</code> is renamed to <code>shiptype</code> and now includes a <code>shiptype_text</code> description, matching the convention used elsewhere.</li>
+</ul>
 <h2 id="version-068">Version 0.68<a class="headerlink" href="#version-068" title="Permanent link">&para;</a></h2>
 <h3 id="web-viewer">Web Viewer<a class="headerlink" href="#web-viewer" title="Permanent link">&para;</a></h3>
 <ul>

@@ -2777,7 +2777,7 @@
 <p>AIS messages can be forwarded between applications over UDP via the <code>-u</code> switch and as a TCP Client using <code>-P</code>. To send data to a port at a specific server, we can use:
 <div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-u<span class="w"> </span><span class="m">192</span>.168.1.235<span class="w"> </span><span class="m">4002</span>
 </code></pre></div>
-The command accepts additonal parameters, e.g. to send NMEA messages packaged in a JSON object:
+The command accepts additional parameters, e.g. to send NMEA messages packaged in a JSON object:
 <div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-u<span class="w"> </span><span class="m">192</span>.168.1.235<span class="w"> </span><span class="m">4002</span><span class="w"> </span>JSON<span class="w"> </span>on
 </code></pre></div>
 Most external programs will not be able to accept these JSON-packaged NMEA strings. It is a way to transfer received messages between AIS-catcher instances without losing metadata like the timestamp, ppm correction and signal level. These are not captured in the standard NMEA strings. The option <code>JSON_FULL</code> does a full decode of the AIS message.

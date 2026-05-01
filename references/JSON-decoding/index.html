@@ -2943,6 +2943,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#type-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type 28: AtoN Report (single-slot)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3704,6 +3715,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#type-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type 28: AtoN Report (single-slot)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4139,7 +4161,7 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <a href="#type-8">8 — Binary Broadcast</a> ·
 <a href="#type-12">12 — Safety Addressed</a> ·
 <a href="#type-14">14 — Safety Broadcast</a> ·
-<a href="#type-2526">25, 26 — Single/Multi Slot Binary (not decoded)</a></p>
+<a href="#type-2526">25, 26 — Single/Multi Slot Binary</a></p>
 <p><strong>Network management</strong>
 <a href="#type-10">10 — UTC Inquiry</a> ·
 <a href="#type-15">15 — Interrogation</a> ·
@@ -4149,7 +4171,8 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <a href="#type-22">22 — Channel Mgmt</a> ·
 <a href="#type-23">23 — Group Assignment</a></p>
 <p><strong>Aids to navigation</strong>
-<a href="#type-21">21 — Aid-to-Nav Report</a></p>
+<a href="#type-21">21 — Aid-to-Nav Report</a> ·
+<a href="#type-28">28 — AtoN Report (single-slot)</a></p>
 <p><strong>Other</strong>
 <a href="#common-fields">Common fields</a> ·
 <a href="#asm">ASM payloads (Type 6 / 8)</a> ·
@@ -4217,7 +4240,7 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <tr>
 <td>type</td>
 <td>Integer</td>
-<td>AIS message type number (1–27)</td>
+<td>AIS message type number (1–28)</td>
 <td>1</td>
 </tr>
 <tr>
@@ -4391,6 +4414,12 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>Spare/reserved bits</td>
 </tr>
 <tr>
+<td>power</td>
+<td>Boolean</td>
+<td>–</td>
+<td>Transmit power flag (M.1371-6 Table 46; 0 = high, 1 = low). Was part of <code>spare</code> in pre-M.1371-6 revisions.</td>
+</tr>
+<tr>
 <td>raim</td>
 <td>Boolean</td>
 <td>–</td>
@@ -4486,6 +4515,12 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>String</td>
 <td>See note 2</td>
 <td>EPFD description</td>
+</tr>
+<tr>
+<td>transmission_control</td>
+<td>Boolean</td>
+<td>–</td>
+<td>Transmission control for satellite broadcast (M.1371-6 Table 49; 0 = stop msg 27 within base coverage, 1 = transmit msg 27). Was part of <code>spare</code> in pre-M.1371-6 revisions.</td>
 </tr>
 <tr>
 <td>spare</td>
@@ -4855,10 +4890,16 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>UTC second</td>
 </tr>
 <tr>
-<td>regional</td>
+<td>alt_sensor</td>
+<td>Boolean</td>
+<td>–</td>
+<td>Altitude sensor (M.1371-6 Table 57; 0 = GNSS, 1 = barometric). Was part of <code>regional</code> in pre-M.1371-6 revisions.</td>
+</tr>
+<tr>
+<td>spare</td>
 <td>Integer</td>
 <td>–</td>
-<td>Regional reserved</td>
+<td>Spare bits</td>
 </tr>
 <tr>
 <td>dte</td>
@@ -5166,10 +5207,16 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>UTC second</td>
 </tr>
 <tr>
-<td>regional</td>
+<td>power</td>
+<td>Boolean</td>
+<td>–</td>
+<td>Transmit power flag (M.1371-6 Table 68; 0 = high, 1 = low). Was part of <code>regional</code> in pre-M.1371-6 revisions.</td>
+</tr>
+<tr>
+<td>spare</td>
 <td>Integer</td>
 <td>–</td>
-<td>Regional reserved</td>
+<td>Spare bit</td>
 </tr>
 <tr>
 <td>cs</td>
@@ -5222,6 +5269,7 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 </tbody>
 </table>
 <h3 id="type-19">Type 19: Extended Class B CS Position Report<a class="headerlink" href="#type-19" title="Permanent link">&para;</a></h3>
+<p>Aligned to M.1371-6 Table 69: the 8-bit reserved and 4-bit regional fields are now spare per spec.</p>
 <table>
 <thead>
 <tr>
@@ -5233,10 +5281,10 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 </thead>
 <tbody>
 <tr>
-<td>reserved</td>
+<td>spare</td>
 <td>Integer</td>
 <td>–</td>
-<td>Reserved</td>
+<td>Spare bits</td>
 </tr>
 <tr>
 <td>speed</td>
@@ -5279,12 +5327,6 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>Integer</td>
 <td>0–59</td>
 <td>UTC second</td>
-</tr>
-<tr>
-<td>regional</td>
-<td>Integer</td>
-<td>–</td>
-<td>Regional reserved</td>
 </tr>
 <tr>
 <td>shipname</td>
@@ -5357,12 +5399,6 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>Boolean</td>
 <td>–</td>
 <td>Assigned mode flag</td>
-</tr>
-<tr>
-<td>spare</td>
-<td>Integer</td>
-<td>–</td>
-<td>Spare bits</td>
 </tr>
 </tbody>
 </table>
@@ -5571,10 +5607,10 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>Off position indicator</td>
 </tr>
 <tr>
-<td>regional</td>
+<td>aton_status</td>
 <td>Integer</td>
-<td>–</td>
-<td>Regional reserved</td>
+<td>0–255</td>
+<td>AtoN status bits (M.1371-6 Table 71, 8-bit, AtoN-specific status per IALA R0126). Was named <code>regional</code> in pre-M.1371-6 revisions.</td>
 </tr>
 <tr>
 <td>raim</td>
@@ -5761,10 +5797,16 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>Station type</td>
 </tr>
 <tr>
-<td>ship_type</td>
+<td>shiptype</td>
 <td>Integer</td>
-<td>–</td>
-<td>Ship type</td>
+<td>0–99</td>
+<td>Ship type code</td>
+</tr>
+<tr>
+<td>shiptype_text</td>
+<td>String</td>
+<td>See note 3</td>
+<td>Ship type description</td>
 </tr>
 <tr>
 <td>txrx</td>
@@ -5895,10 +5937,71 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>9 digits</td>
 <td>MMSI of mothership (only for auxiliary craft, MMSI prefix 98)</td>
 </tr>
+<tr>
+<td>epfd</td>
+<td>Integer</td>
+<td>0–8</td>
+<td>EPFD type (M.1371-6 extended Part B; only when message length ≥ 168 bits)</td>
+</tr>
+<tr>
+<td>epfd_text</td>
+<td>String</td>
+<td>See note 2</td>
+<td>EPFD description (only when <code>epfd</code> is present)</td>
+</tr>
+<tr>
+<td>vdes_capabilities</td>
+<td>Integer</td>
+<td>0–3</td>
+<td>VDES capabilities (M.1371-6; 0 = AIS only, 1 = VDES ASM, 2 = +VDE-TER, 3 = +VDE-SAT). Only when message length ≥ 168 bits.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="type-2526">Type 25, 26: Single Slot / Multi Slot Binary Message<a class="headerlink" href="#type-2526" title="Permanent link">&para;</a></h3>
-<p>These message types are not currently decoded by AIS-catcher; only the <a href="#common-fields">common fields</a> are emitted. The raw payload is available in the <code>nmea</code> array.</p>
+<p>The envelope is decoded; when <code>binary_data_flag = 1</code> the payload follows the same <code>(dac, fid)</code> layout as msg 6 (addressed) or msg 8 (broadcast) and is dispatched to the same ASM decoders — see <a href="#asm">ASM payloads</a> below.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>addressed</td>
+<td>Boolean</td>
+<td>–</td>
+<td>Addressed flag (0 = broadcast, 1 = addressed to a specific MMSI)</td>
+</tr>
+<tr>
+<td>ai_available</td>
+<td>Boolean</td>
+<td>–</td>
+<td>Application Identifier available flag (1 = ASM application data follows)</td>
+</tr>
+<tr>
+<td>dest_mmsi</td>
+<td>Integer</td>
+<td>9 digits</td>
+<td>Destination MMSI (only when <code>addressed = true</code>)</td>
+</tr>
+<tr>
+<td>dac</td>
+<td>Integer</td>
+<td>–</td>
+<td>Designated Area Code (only when <code>ai_available = true</code>)</td>
+</tr>
+<tr>
+<td>fid</td>
+<td>Integer</td>
+<td>–</td>
+<td>Functional Identifier (only when <code>ai_available = true</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>When the <code>(dac, fid)</code> pair is recognised the structured ASM fields are emitted in addition (see <a href="#asm">ASM payloads</a>). For msg 26 the trailing 20-bit communication state is decoded into the standard <code>radio</code> sub-fields — see note 5.</p>
 <h3 id="type-27">Type 27: Long-Range AIS Broadcast<a class="headerlink" href="#type-27" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -5962,7 +6065,129 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>gnss</td>
 <td>Boolean</td>
 <td>–</td>
-<td>GNSS position status (0 = current, 1 = not GNSS)</td>
+<td>Position latency (M.1371-6; 0 = reported position latency &lt;5 s, 1 = ≥5 s, default). Was named "GNSS position status" in pre-M.1371-6 revisions; field name kept for backward compatibility.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="type-28">Type 28: AtoN Report (single-slot)<a class="headerlink" href="#type-28" title="Permanent link">&para;</a></h3>
+<p>ITU-R M.1371-6 §A7-3.26, Table 84.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>second</td>
+<td>Integer</td>
+<td>0–59</td>
+<td>UTC second</td>
+</tr>
+<tr>
+<td>lon</td>
+<td>Float</td>
+<td>±180°</td>
+<td>Longitude (1/600000° resolution)</td>
+</tr>
+<tr>
+<td>lat</td>
+<td>Float</td>
+<td>±90°</td>
+<td>Latitude (1/600000° resolution)</td>
+</tr>
+<tr>
+<td>restricted_use</td>
+<td>Integer</td>
+<td>0–3</td>
+<td>Restricted use flag (0 = default; 1..3 reserved for restricted use)</td>
+</tr>
+<tr>
+<td>aton_station_type</td>
+<td>Integer</td>
+<td>0–7</td>
+<td>AtoN station type (3-bit; lookup)</td>
+</tr>
+<tr>
+<td>virtual_aid</td>
+<td>Boolean</td>
+<td>–</td>
+<td>Virtual AtoN flag — true when <code>aton_station_type == 4</code></td>
+</tr>
+<tr>
+<td>aid_type</td>
+<td>Integer</td>
+<td>0–31</td>
+<td>Type of Aid to Navigation</td>
+</tr>
+<tr>
+<td>aid_type_text</td>
+<td>String</td>
+<td>See note 4</td>
+<td>Aid type description</td>
+</tr>
+<tr>
+<td>iala_mrn</td>
+<td>Integer</td>
+<td>0–131071</td>
+<td>IALA AtoN Maritime Resource Name (17-bit identifier)</td>
+</tr>
+<tr>
+<td>dim_type</td>
+<td>Integer</td>
+<td>0–15</td>
+<td>AtoN Dimensions Type — defines what <code>to_bow</code>/<code>to_stern</code> represent (Table 84)</td>
+</tr>
+<tr>
+<td>to_bow</td>
+<td>Integer</td>
+<td>0–511 m</td>
+<td>Dimension to bow (interpretation depends on <code>dim_type</code>)</td>
+</tr>
+<tr>
+<td>to_stern</td>
+<td>Integer</td>
+<td>0–2047 m</td>
+<td>Dimension to stern (interpretation depends on <code>dim_type</code>)</td>
+</tr>
+<tr>
+<td>additional_flag</td>
+<td>Boolean</td>
+<td>–</td>
+<td>Additional information flag</td>
+</tr>
+<tr>
+<td>charted_status</td>
+<td>Boolean</td>
+<td>–</td>
+<td>Charted status (0 = not charted, 1 = charted)</td>
+</tr>
+<tr>
+<td>on_station_status</td>
+<td>Integer</td>
+<td>0–15</td>
+<td>On-station status (4-bit; lookup)</td>
+</tr>
+<tr>
+<td>aton_status</td>
+<td>Integer</td>
+<td>0–255</td>
+<td>AtoN status bits (8-bit, AtoN-specific status per IALA R0126)</td>
+</tr>
+<tr>
+<td>spare</td>
+<td>Integer</td>
+<td>–</td>
+<td>Spare bit</td>
+</tr>
+<tr>
+<td>auth_flag</td>
+<td>Boolean</td>
+<td>–</td>
+<td>Authentication flag (1 = transmission authenticated)</td>
 </tr>
 </tbody>
 </table>
