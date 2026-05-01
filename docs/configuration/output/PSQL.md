@@ -45,7 +45,7 @@ There are a few settings for the new `-D` switch of which the first is the conne
 | ais_vessel | last received data per MMSI | V on/off | **on**  |
 | ais_message | received messages with meta data  | MSGS on/off | off  |
 | ais_nmea | nmea sentences | NMEA on/off | off |
-| ais_basestation | basestation messsages from type 4 | BS on/off | off |
+| ais_basestation | basestation messages from type 4 | BS on/off | off |
 | ais_sar_position | sar positions from type 9 | SAR on/off | off |
 | ais_aton | aton messages from type 21 | ATON on/off | off |
 | ais_vessel_pos | vessel position messages from type 1-3, 18, 19, 27 | VP on/off | off |

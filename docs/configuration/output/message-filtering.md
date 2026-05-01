@@ -4,7 +4,7 @@
 AIS-catcher offers extensive filtering options to help you manage the volume and relevance of AIS data output. You can filter messages by type, MMSI, channel, and other criteria, allowing you to focus on the information most important to your use case. In addition, powerful downsampling tools such as unique message filtering, own-station interval, and position interval controls are available to further reduce redundant data and manage bandwidth or storage requirements, especially in high-traffic environments. These features make it easy to tailor the output to your needs, whether you are monitoring a busy port or running a resource-constrained installation.
 
 
-## Filtering Mesages types
+## Filtering Messages types
 To filter UDP, webviewer, TCP, MQTT, HTTP and screen output on message type, e.g. send only messages of type 1, 2, 3, 5, 18, 19, 24 and 27 over UDP:
 
 ```bash

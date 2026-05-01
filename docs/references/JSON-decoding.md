@@ -25,7 +25,7 @@ With format `JSON_NMEA` only the common fields will be included in the JSON pack
 [8 — Binary Broadcast](#type-8) ·
 [12 — Safety Addressed](#type-12) ·
 [14 — Safety Broadcast](#type-14) ·
-[25, 26 — Single/Multi Slot Binary (not decoded)](#type-2526)
+[25, 26 — Single/Multi Slot Binary](#type-2526)
 
 **Network management**
 [10 — UTC Inquiry](#type-10) ·
@@ -37,7 +37,8 @@ With format `JSON_NMEA` only the common fields will be included in the JSON pack
 [23 — Group Assignment](#type-23)
 
 **Aids to navigation**
-[21 — Aid-to-Nav Report](#type-21)
+[21 — Aid-to-Nav Report](#type-21) ·
+[28 — AtoN Report (single-slot)](#type-28)
 
 **Other**
 [Common fields](#common-fields) ·
@@ -57,7 +58,7 @@ These fields are present in every emitted message:
 | scaled | Boolean | Values scaled to engineering units | true |
 | channel | String | VHF channel (A or B) | "A" |
 | nmea | Array of String | Original NMEA sentence(s) | ["!AIVDM,1,1,,A,13...,0\*5C"] |
-| type | Integer | AIS message type number (1–27) | 1 |
+| type | Integer | AIS message type number (1–28) | 1 |
 | repeat | Integer | Repeat indicator (0..3; 3 = do not repeat) | 0 |
 | mmsi | Integer | MMSI number | 123456789 |
 
@@ -92,6 +93,7 @@ Optional fields, added depending on input mode and message contents:
 | second | Integer | 0–59 | UTC second (60 = N/A; 61 = manual; 62 = dead reckoning; 63 = inoperative) |
 | maneuver | Integer | 0–2 | Maneuver indicator |
 | spare | Integer | – | Spare/reserved bits |
+| power | Boolean | – | Transmit power flag (M.1371-6 Table 46; 0 = high, 1 = low). Was part of `spare` in pre-M.1371-6 revisions. |
 | raim | Boolean | – | RAIM flag |
 | radio | Integer | – | Radio status (19-bit SOTDMA/ITDMA state). When non-zero, sub-fields are also decoded — see note 5. |
 
@@ -111,6 +113,7 @@ Optional fields, added depending on input mode and message contents:
 | lat | Float | ±90° | Latitude |
 | epfd | Integer | 0–8 | EPFD type |
 | epfd_text | String | See note 2 | EPFD description |
+| transmission_control | Boolean | – | Transmission control for satellite broadcast (M.1371-6 Table 49; 0 = stop msg 27 within base coverage, 1 = transmit msg 27). Was part of `spare` in pre-M.1371-6 revisions. |
 | spare | Integer | – | Spare/reserved bits |
 | raim | Boolean | – | RAIM flag |
 | radio | Integer | – | Radio status. See note 5 for sub-fields. |
@@ -190,7 +193,8 @@ When the (DAC, FID) pair is recognised, the payload is decoded into structured f
 | lat | Float | ±90° | Latitude |
 | course | Float | 0–359.9° | Course over ground |
 | second | Integer | 0–59 | UTC second |
-| regional | Integer | – | Regional reserved |
+| alt_sensor | Boolean | – | Altitude sensor (M.1371-6 Table 57; 0 = GNSS, 1 = barometric). Was part of `regional` in pre-M.1371-6 revisions. |
+| spare | Integer | – | Spare bits |
 | dte | Boolean | – | DTE flag |
 | assigned | Boolean | – | Assigned mode flag |
 | raim | Boolean | – | RAIM flag |
@@ -267,7 +271,8 @@ Same fields as [Type 7](#type-7).
 | course | Float | 0–359.9° | Course over ground |
 | heading | Integer | 0–359° | True heading |
 | second | Integer | 0–59 | UTC second |
-| regional | Integer | – | Regional reserved |
+| power | Boolean | – | Transmit power flag (M.1371-6 Table 68; 0 = high, 1 = low). Was part of `regional` in pre-M.1371-6 revisions. |
+| spare | Integer | – | Spare bit |
 | cs | Boolean | – | Class B unit type flag (false = SOTDMA, true = Carrier Sense) |
 | display | Boolean | – | Display flag |
 | dsc | Boolean | – | DSC flag |
@@ -279,9 +284,11 @@ Same fields as [Type 7](#type-7).
 
 ### Type 19: Extended Class B CS Position Report {#type-19}
 
+Aligned to M.1371-6 Table 69: the 8-bit reserved and 4-bit regional fields are now spare per spec.
+
 | Field | Type | Range | Description |
 |-------|------|-------|-------------|
-| reserved | Integer | – | Reserved |
+| spare | Integer | – | Spare bits |
 | speed | Float | 0–102.2 knots | Speed over ground |
 | accuracy | Boolean | – | Position accuracy |
 | lon | Float | ±180° | Longitude |
@@ -289,7 +296,6 @@ Same fields as [Type 7](#type-7).
 | course | Float | 0–359.9° | Course over ground |
 | heading | Integer | 0–359° | True heading |
 | second | Integer | 0–59 | UTC second |
-| regional | Integer | – | Regional reserved |
 | shipname | String | 20 chars | Vessel name |
 | shiptype | Integer | 0–99 | Ship type code |
 | shiptype_text | String | See note 3 | Ship type description |
@@ -302,7 +308,6 @@ Same fields as [Type 7](#type-7).
 | raim | Boolean | – | RAIM flag |
 | dte | Boolean | – | DTE flag |
 | assigned | Boolean | – | Assigned mode flag |
-| spare | Integer | – | Spare bits |
 
 ### Type 20: Data Link Management {#type-20}
 
@@ -343,7 +348,7 @@ Same fields as [Type 7](#type-7).
 | epfd_text | String | See note 2 | EPFD description |
 | second | Integer | 0–59 | UTC second |
 | off_position | Boolean | – | Off position indicator |
-| regional | Integer | – | Regional reserved |
+| aton_status | Integer | 0–255 | AtoN status bits (M.1371-6 Table 71, 8-bit, AtoN-specific status per IALA R0126). Was named `regional` in pre-M.1371-6 revisions. |
 | raim | Boolean | – | RAIM flag |
 | virtual_aid | Boolean | – | Virtual aid flag |
 | assigned | Boolean | – | Assigned mode flag |
@@ -386,7 +391,8 @@ If `addressed = false`:
 | sw_lon | Float | ±180° | SW longitude |
 | sw_lat | Float | ±90° | SW latitude |
 | station_type | Integer | – | Station type |
-| ship_type | Integer | – | Ship type |
+| shiptype | Integer | 0–99 | Ship type code |
+| shiptype_text | String | See note 3 | Ship type description |
 | txrx | Integer | – | Tx/Rx mode |
 | interval | Integer | – | Reporting interval |
 | quiet | Integer | minutes | Quiet time |
@@ -416,10 +422,23 @@ Message Type 24 Part B:
 | to_port | Integer | 0–63 m | Distance from GPS to port |
 | to_starboard | Integer | 0–63 m | Distance from GPS to starboard |
 | mothership_mmsi | Integer | 9 digits | MMSI of mothership (only for auxiliary craft, MMSI prefix 98) |
+| epfd | Integer | 0–8 | EPFD type (M.1371-6 extended Part B; only when message length ≥ 168 bits) |
+| epfd_text | String | See note 2 | EPFD description (only when `epfd` is present) |
+| vdes_capabilities | Integer | 0–3 | VDES capabilities (M.1371-6; 0 = AIS only, 1 = VDES ASM, 2 = +VDE-TER, 3 = +VDE-SAT). Only when message length ≥ 168 bits. |
 
 ### Type 25, 26: Single Slot / Multi Slot Binary Message {#type-2526}
 
-These message types are not currently decoded by AIS-catcher; only the [common fields](#common-fields) are emitted. The raw payload is available in the `nmea` array.
+The envelope is decoded; when `binary_data_flag = 1` the payload follows the same `(dac, fid)` layout as msg 6 (addressed) or msg 8 (broadcast) and is dispatched to the same ASM decoders — see [ASM payloads](#asm) below.
+
+| Field | Type | Range | Description |
+|-------|------|-------|-------------|
+| addressed | Boolean | – | Addressed flag (0 = broadcast, 1 = addressed to a specific MMSI) |
+| ai_available | Boolean | – | Application Identifier available flag (1 = ASM application data follows) |
+| dest_mmsi | Integer | 9 digits | Destination MMSI (only when `addressed = true`) |
+| dac | Integer | – | Designated Area Code (only when `ai_available = true`) |
+| fid | Integer | – | Functional Identifier (only when `ai_available = true`) |
+
+When the `(dac, fid)` pair is recognised the structured ASM fields are emitted in addition (see [ASM payloads](#asm)). For msg 26 the trailing 20-bit communication state is decoded into the standard `radio` sub-fields — see note 5.
 
 ### Type 27: Long-Range AIS Broadcast {#type-27}
 
@@ -433,7 +452,32 @@ These message types are not currently decoded by AIS-catcher; only the [common f
 | lat | Float | ±90° | Latitude (1/600 degree resolution) |
 | speed | Integer | 0–62 knots | Speed over ground |
 | course | Integer | 0–359° | Course over ground |
-| gnss | Boolean | – | GNSS position status (0 = current, 1 = not GNSS) |
+| gnss | Boolean | – | Position latency (M.1371-6; 0 = reported position latency <5 s, 1 = ≥5 s, default). Was named "GNSS position status" in pre-M.1371-6 revisions; field name kept for backward compatibility. |
+
+### Type 28: AtoN Report (single-slot) {#type-28}
+
+ITU-R M.1371-6 §A7-3.26, Table 84.
+
+| Field | Type | Range | Description |
+|-------|------|-------|-------------|
+| second | Integer | 0–59 | UTC second |
+| lon | Float | ±180° | Longitude (1/600000° resolution) |
+| lat | Float | ±90° | Latitude (1/600000° resolution) |
+| restricted_use | Integer | 0–3 | Restricted use flag (0 = default; 1..3 reserved for restricted use) |
+| aton_station_type | Integer | 0–7 | AtoN station type (3-bit; lookup) |
+| virtual_aid | Boolean | – | Virtual AtoN flag — true when `aton_station_type == 4` |
+| aid_type | Integer | 0–31 | Type of Aid to Navigation |
+| aid_type_text | String | See note 4 | Aid type description |
+| iala_mrn | Integer | 0–131071 | IALA AtoN Maritime Resource Name (17-bit identifier) |
+| dim_type | Integer | 0–15 | AtoN Dimensions Type — defines what `to_bow`/`to_stern` represent (Table 84) |
+| to_bow | Integer | 0–511 m | Dimension to bow (interpretation depends on `dim_type`) |
+| to_stern | Integer | 0–2047 m | Dimension to stern (interpretation depends on `dim_type`) |
+| additional_flag | Boolean | – | Additional information flag |
+| charted_status | Boolean | – | Charted status (0 = not charted, 1 = charted) |
+| on_station_status | Integer | 0–15 | On-station status (4-bit; lookup) |
+| aton_status | Integer | 0–255 | AtoN status bits (8-bit, AtoN-specific status per IALA R0126) |
+| spare | Integer | – | Spare bit |
+| auth_flag | Boolean | – | Authentication flag (1 = transmission authenticated) |
 
 ## ASM payloads (Type 6 / Type 8) {#asm}
 

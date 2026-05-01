@@ -26,7 +26,7 @@ On the command line, setting names and boolean-ish values are not case-sensitive
 
 More guidance on setting the gain model and levels can be obtained in the mentioned link.
 
-#### Summary Setings
+#### Summary Settings
 
 <div class="input-table" markdown>
 

@@ -30,7 +30,7 @@ In the tables below, setting names are shown using the JSON key casing (lowercas
 | Data Type | | <span class="cmd-setting">format</span> | `CU8`, `CF32`, `CS16`, `CS8`, `F32_FS4`, `DC16H`, `TXT`, `BASESTATION`, `BEAST`, `RAW1090` | | Device-specific |
 
 
-For example, to set the sample rate to 1536K, frequecy offset of your device to 1 ppm and bandwidth to 192K:
+For example, to set the sample rate to 1536K, frequency offset of your device to 1 ppm and bandwidth to 192K:
 ```bash
 AIS-catcher -s 1536K -a 192K -p 1
 ```

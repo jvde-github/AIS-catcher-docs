@@ -25,7 +25,7 @@ AIS-catcher -N 8100 PROME on
 
 You can skip this if you already have Prometheus and Grafana installed.
 
-The example wil use a containerized (Docker) installation of Prometheus and Grafana. If you need to install Docker, please do so first. For a quick and painless way to get started, we suggest that you use [this install script](https://github.com/sdr-enthusiasts/docker-install).
+The example will use a containerized (Docker) installation of Prometheus and Grafana. If you need to install Docker, please do so first. For a quick and painless way to get started, we suggest that you use [this install script](https://github.com/sdr-enthusiasts/docker-install).
 
 On the machine where you will run Prometheus and Grafana, create a docker-compose file in the `/opt/grafana` directory:
 

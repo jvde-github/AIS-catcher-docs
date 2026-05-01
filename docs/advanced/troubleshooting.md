@@ -11,7 +11,7 @@ If you are using a cheap RTL-SDR dongle that suffers from thermal drift (i.e. th
 </p>
 
 ## Frequency Shift and PPM
-The Web Viewer include plots of what is called the `frequency shift`. The `frequency shift` is the frequency correction from the central frequencies that AIS-catcher has used to decode the signal. This value is related to  the frequency offset of the RTL-SDR dongle as discussed above but also depends on the deviations in the equipment of the sender. The number is in ppm (parts-per-million, so 1ppm ~ 162 Hz) and in some tables and in screen output the quanity is refered to as `ppm`.  Long-running averages can be used to determine the optimal ppm correction for the receiver setup. These deviations can be corrected with `-p`. Deviations between -3 and +3 will usually not impact reception quality so for modern dongles with frequency stabilization no action is required.
+The Web Viewer include plots of what is called the `frequency shift`. The `frequency shift` is the frequency correction from the central frequencies that AIS-catcher has used to decode the signal. This value is related to  the frequency offset of the RTL-SDR dongle as discussed above but also depends on the deviations in the equipment of the sender. The number is in ppm (parts-per-million, so 1ppm ~ 162 Hz) and in some tables and in screen output the quantity is referred to as `ppm`.  Long-running averages can be used to determine the optimal ppm correction for the receiver setup. These deviations can be corrected with `-p`. Deviations between -3 and +3 will usually not impact reception quality so for modern dongles with frequency stabilization no action is required.
 
 
 ## System USB performance

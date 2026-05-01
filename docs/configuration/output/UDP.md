@@ -17,7 +17,7 @@ AIS messages can be forwarded between applications over UDP via the `-u` switch 
 ```bash
 AIS-catcher -u 192.168.1.235 4002
 ```
-The command accepts additonal parameters, e.g. to send NMEA messages packaged in a JSON object:
+The command accepts additional parameters, e.g. to send NMEA messages packaged in a JSON object:
 ```bash
 AIS-catcher -u 192.168.1.235 4002 JSON on
 ```

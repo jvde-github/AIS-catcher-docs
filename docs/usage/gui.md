@@ -5,7 +5,7 @@ This guide is for users who have installed **AIS-catcher-control** (available fo
 > The input configuration for AIS-catcher is quite flexible and allows for some complex configuration. This is not fully embedded in the UI in first instance. Therefore, the menus only work with our starting config JSON or any version amended by 
 > the UI. Once, the configuration files are manually edited, certain functionality will not be available.
 >
-> You can still set the settings in the Advanced section of the Visual Web Control interface by editing the parameters there. Also controlling the process (viewing the log and starting and stopping) is availaible. 
+> You can still set the settings in the Advanced section of the Visual Web Control interface by editing the parameters there. Also controlling the process (viewing the log and starting and stopping) is available. 
 
 
 ## Accessing the Visual Web Control Interface

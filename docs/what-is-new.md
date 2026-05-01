@@ -1,5 +1,16 @@
 # What's New?
 
+## Edge
+
+### ITU-R M.1371-6 alignment
+
+The JSON output has been aligned with the 2026 ITU-R M.1371-6 spec.
+
+- **Message type 28** (single-slot AtoN report, M.1371-6 §A7-3.26) is now expanded into structured JSON fields. See the [type 28 reference](references/JSON-decoding.md#type-28).
+- **Messages 25 and 26**: the addressed/broadcast envelope is now exposed in JSON; when the payload carries a recognised `(dac, fid)` pair the same ASM fields are emitted as for messages 6 and 8.
+- **Spec field renames** in messages 1/2/3, 4/11, 9, 18, 19, 21: bits previously labelled `regional`/`reserved` are now exposed under their M.1371-6 names (`power`, `transmission_control`, `alt_sensor`, `aton_status`, …). See the [JSON reference](references/JSON-decoding.md) for the per-message field list.
+- **Type 23**: `ship_type` is renamed to `shiptype` and now includes a `shiptype_text` description, matching the convention used elsewhere.
+
 ## Version 0.68
 
 ### Web Viewer
