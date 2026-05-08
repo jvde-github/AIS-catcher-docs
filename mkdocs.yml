@@ -115,6 +115,8 @@ nav:
         - Web Viewer: configuration/output/web-viewer.md
         - NMEA2000: configuration/output/NMEA2000.md
         - PostgreSQL: configuration/output/PSQL.md
+  - Tools:
+      - Python (aiscat): tools/python.md
   - Advanced:
       - Offline Web Viewer: advanced/offline.md
       - Include ADSB feed: advanced/ADSB.md

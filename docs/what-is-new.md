@@ -10,6 +10,17 @@ The JSON output has been aligned with the 2026 ITU-R M.1371-6 spec.
 - **Messages 25 and 26**: the addressed/broadcast envelope is now exposed in JSON; when the payload carries a recognised `(dac, fid)` pair the same ASM fields are emitted as for messages 6 and 8.
 - **Spec field renames** in messages 1/2/3, 4/11, 9, 18, 19, 21: bits previously labelled `regional`/`reserved` are now exposed under their M.1371-6 names (`power`, `transmission_control`, `alt_sensor`, `aton_status`, …). See the [JSON reference](references/JSON-decoding.md) for the per-message field list.
 - **Type 23**: `ship_type` is renamed to `shiptype` and now includes a `shiptype_text` description, matching the convention used elsewhere.
+- New ASM decoder for **DAC 366, FID 10** (IALA AtoN monitor; messages 6/8/26).
+
+### Input
+
+- **Lossless mode** for file and TCP inputs. `-ga LOSSLESS on/off` (FileRAW) and `-gt LOSSLESS on/off` (RTLTCP) control whether the input blocks or drops samples on overflow. Defaults preserve current behaviour: file replay is lossless (block), live TCP is lossy (drop). The current setting is shown in `-v` output.
+- **Simpler inline settings** for input flags. `-t`, `-r`, `-x`, `-z`, `-i`, `-w`, and `-e` now accept trailing key/value pairs after their positional arguments, so you can write `-t HOST PORT lossless on` instead of having to repeat the device subletter via `-gt`.
+
+### Build and packaging
+
+- New CMake option `-DWEBVIEWER=OFF` produces a headless build without `WebDB`/`WebViewer`/`HTTPServer` (~1.5 MB smaller binary). The `-N` flag and the `server` config key are gated when the webviewer is disabled.
+- **[`aiscat`](tools/python.md)** — Python bindings for the AIS-catcher NMEA decoder are now published on PyPI. The package exposes a `Decoder` with `decode()` / `from_file` / `from_stdin` / `from_tcp` / `from_udp` helpers, multiple output formats (`dictionary`, `annotated`, `json`, `json_nmea`, `nmea`, `nmea_tag`, `binary`), and ships pre-built wheels including armv7l and Windows ARM64. See [Tools → Python](tools/python.md) for details.
 
 ## Version 0.68
 

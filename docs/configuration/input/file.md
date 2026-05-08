@@ -77,6 +77,7 @@ AIS-catcher -r -ga FORMAT txt file nmea-file
 | Specific Options | | | |
 | <span class="cmd-setting">file</span> | string | <span class="cmd-value">-</span> | Input file path or "stdin" for standard input |
 | <span class="cmd-setting">loop</span> | boolean | <span class="cmd-value">false</span> | Enable continuous file looping |
+| <span class="cmd-setting">lossless</span> | boolean | <span class="cmd-value">true</span> | When reading from a file you usually want every sample decoded, not realtime playback. With `lossless on` (the default) the reader pauses if the decoder is briefly slower than the file, so nothing is lost. Set to `false` to mimic a live source and drop samples on overflow. |
 | <span class="cmd-setting">txt_block_size</span> | integer | <span class="cmd-value">2048</span> | Read block size in bytes when format is `TXT` (1-16384) |
 
 </div>

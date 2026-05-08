@@ -85,4 +85,5 @@ Use the appropriate protocol based on your server's configuration and data forma
 | <span class="cmd-setting">tuner</span> | float | <span class="cmd-value">33.0</span> | Tuner gain (0-50, auto) |
 | <span class="cmd-setting">rtlagc</span> | boolean | <span class="cmd-value">false</span> | Enable RTL AGC |
 | <span class="cmd-setting">frequency</span> | integer | <span class="cmd-value">0</span> | Frequency in Hz |
+| <span class="cmd-setting">lossless</span> | boolean | <span class="cmd-value">false</span> | RTLTCP is normally a live feed, so the default drops samples when the decoder cannot keep up. Set to `true` when the other end is replaying a recorded stream and you want every sample decoded — the reader will then pause to avoid overflow instead of dropping data. |
 </div>
