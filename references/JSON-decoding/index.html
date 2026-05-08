@@ -2139,7 +2139,7 @@
   <span class="md-ellipsis">
     
   
-    Advanced
+    Tools
   
 
     
@@ -2152,6 +2152,88 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python (aiscat)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2547,10 +2629,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
         
           
-          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
             
   
   
@@ -2568,8 +2650,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_10">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_11">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -4272,13 +4354,13 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>rxtime</td>
 <td>String</td>
 <td>UTC</td>
-<td>Host receive time (<code>YYYYMMDDHHMMSS</code>). Added when timestamping is enabled (<code>-M T</code>).</td>
+<td>Host receive time (<code>YYYYMMDDHHMMSS</code>), always set from the local clock when AIS-catcher decoded the message. Added when timestamping is enabled (<code>-M T</code>).</td>
 </tr>
 <tr>
 <td>rxuxtime</td>
 <td>Float</td>
 <td>seconds</td>
-<td>Host receive time as Unix epoch (with microsecond fraction). Added with <code>rxtime</code>.</td>
+<td>Same instant as <code>rxtime</code>, expressed as Unix epoch with microsecond fraction. Added with <code>rxtime</code>.</td>
 </tr>
 <tr>
 <td>signalpower</td>
@@ -4296,7 +4378,7 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>toa</td>
 <td>Float</td>
 <td>seconds</td>
-<td>Time of arrival within the host capture (when provided by the source).</td>
+<td>Upstream time of arrival, if the input carried one. For JSON input that is the source's <code>toa</code> or <code>rxuxtime</code> field (<code>toa</code> wins when both are present); for NMEA it is the tag-block <code>c:</code> timestamp. Omitted when the input had no upstream time.</td>
 </tr>
 <tr>
 <td>station_id</td>

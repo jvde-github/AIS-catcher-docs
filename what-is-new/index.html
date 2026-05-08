@@ -343,6 +343,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-and-packaging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build and packaging
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2702,7 +2724,7 @@
   <span class="md-ellipsis">
     
   
-    Advanced
+    Tools
   
 
     
@@ -2715,6 +2737,88 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tools/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python (aiscat)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3108,10 +3212,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
         
           
-          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
             
   
   
@@ -3129,8 +3233,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3246,6 +3350,28 @@
     <span class="md-ellipsis">
       
         ITU-R M.1371-6 alignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-and-packaging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build and packaging
       
     </span>
   </a>
@@ -3774,6 +3900,17 @@
 <li><strong>Messages 25 and 26</strong>: the addressed/broadcast envelope is now exposed in JSON; when the payload carries a recognised <code>(dac, fid)</code> pair the same ASM fields are emitted as for messages 6 and 8.</li>
 <li><strong>Spec field renames</strong> in messages 1/2/3, 4/11, 9, 18, 19, 21: bits previously labelled <code>regional</code>/<code>reserved</code> are now exposed under their M.1371-6 names (<code>power</code>, <code>transmission_control</code>, <code>alt_sensor</code>, <code>aton_status</code>, …). See the <a href="../references/JSON-decoding/">JSON reference</a> for the per-message field list.</li>
 <li><strong>Type 23</strong>: <code>ship_type</code> is renamed to <code>shiptype</code> and now includes a <code>shiptype_text</code> description, matching the convention used elsewhere.</li>
+<li>New ASM decoder for <strong>DAC 366, FID 10</strong> (IALA AtoN monitor; messages 6/8/26).</li>
+</ul>
+<h3 id="input">Input<a class="headerlink" href="#input" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Lossless mode</strong> for file and TCP inputs. <code>-ga LOSSLESS on/off</code> (FileRAW) and <code>-gt LOSSLESS on/off</code> (RTLTCP) control whether the input blocks or drops samples on overflow. Defaults preserve current behaviour: file replay is lossless (block), live TCP is lossy (drop). The current setting is shown in <code>-v</code> output.</li>
+<li><strong>Simpler inline settings</strong> for input flags. <code>-t</code>, <code>-r</code>, <code>-x</code>, <code>-z</code>, <code>-i</code>, <code>-w</code>, and <code>-e</code> now accept trailing key/value pairs after their positional arguments, so you can write <code>-t HOST PORT lossless on</code> instead of having to repeat the device subletter via <code>-gt</code>.</li>
+</ul>
+<h3 id="build-and-packaging">Build and packaging<a class="headerlink" href="#build-and-packaging" title="Permanent link">&para;</a></h3>
+<ul>
+<li>New CMake option <code>-DWEBVIEWER=OFF</code> produces a headless build without <code>WebDB</code>/<code>WebViewer</code>/<code>HTTPServer</code> (~1.5 MB smaller binary). The <code>-N</code> flag and the <code>server</code> config key are gated when the webviewer is disabled.</li>
+<li><strong><a href="../tools/python/"><code>aiscat</code></a></strong> — Python bindings for the AIS-catcher NMEA decoder are now published on PyPI. The package exposes a <code>Decoder</code> with <code>decode()</code> / <code>from_file</code> / <code>from_stdin</code> / <code>from_tcp</code> / <code>from_udp</code> helpers, multiple output formats (<code>dictionary</code>, <code>annotated</code>, <code>json</code>, <code>json_nmea</code>, <code>nmea</code>, <code>nmea_tag</code>, <code>binary</code>), and ships pre-built wheels including armv7l and Windows ARM64. See <a href="../tools/python/">Tools → Python</a> for details.</li>
 </ul>
 <h2 id="version-068">Version 0.68<a class="headerlink" href="#version-068" title="Permanent link">&para;</a></h2>
 <h3 id="web-viewer">Web Viewer<a class="headerlink" href="#web-viewer" title="Permanent link">&para;</a></h3>
@@ -3916,7 +4053,7 @@
 <h2 id="version-063">Version 0.63<a class="headerlink" href="#version-063" title="Permanent link">&para;</a></h2>
 <h3 id="enhanced-features">Enhanced Features<a class="headerlink" href="#enhanced-features" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>NMEA 4.0 Tag Blocks</strong>: support for NMEA tag blocks (<code>msgformat nmea_tag</code> for networking or <code>-o 7</code> for screen). Note that when reading the timestamps are overwritten by default which can be switched off with <code>-go stamp off</code></li>
+<li><strong>NMEA 4.0 Tag Blocks</strong>: support for NMEA tag blocks (<code>msgformat nmea_tag</code> for networking or <code>-o 7</code> for screen).</li>
 </ul>
 <h2 id="version-063_1">Version 0.63<a class="headerlink" href="#version-063_1" title="Permanent link">&para;</a></h2>
 <h3 id="enhanced-features_1">Enhanced Features<a class="headerlink" href="#enhanced-features_1" title="Permanent link">&para;</a></h3>

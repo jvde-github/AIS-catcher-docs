@@ -12,31 +12,31 @@
         <meta name="author" content="jvde.github@gmail.com">
       
       
-        <link rel="canonical" href="https://aiscatcher.org/docs/configuration/input/udp/">
+        <link rel="canonical" href="https://aiscatcher.org/docs/tools/python/">
       
       
-        <link rel="prev" href="../tcp/">
+        <link rel="prev" href="../../configuration/output/PSQL/">
       
       
-        <link rel="next" href="../spyserver/">
+        <link rel="next" href="../../advanced/offline/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>UDP - AIS-catcher Docs</title>
+        <title>Python (aiscat) - AIS-catcher Docs</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,9 +55,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../styles/custom.css">
+      <link rel="stylesheet" href="../../styles/custom.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#input-as-udp-server" class="md-skip">
+        <a href="#python-aiscat" class="md-skip">
           Skip to content
         </a>
       
@@ -96,9 +96,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="AIS-catcher Docs" class="md-header__button md-logo" aria-label="AIS-catcher Docs" data-md-component="logo">
+    <a href="../.." title="AIS-catcher Docs" class="md-header__button md-logo" aria-label="AIS-catcher Docs" data-md-component="logo">
       
-  <img src="../../../assets/logo.svg" alt="logo">
+  <img src="../../assets/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              UDP
+              Python (aiscat)
             
           </span>
         </div>
@@ -205,9 +205,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="AIS-catcher Docs" class="md-nav__button md-logo" aria-label="AIS-catcher Docs" data-md-component="logo">
+    <a href="../.." title="AIS-catcher Docs" class="md-nav__button md-logo" aria-label="AIS-catcher Docs" data-md-component="logo">
       
-  <img src="../../../assets/logo.svg" alt="logo">
+  <img src="../../assets/logo.svg" alt="logo">
 
     </a>
     AIS-catcher Docs
@@ -234,7 +234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -261,7 +261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../what-is-new/" class="md-nav__link">
+      <a href="../../what-is-new/" class="md-nav__link">
         
   
   
@@ -335,7 +335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/overview/" class="md-nav__link">
+      <a href="../../getting-started/overview/" class="md-nav__link">
         
   
   
@@ -363,7 +363,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/features/" class="md-nav__link">
+      <a href="../../getting-started/features/" class="md-nav__link">
         
   
   
@@ -391,7 +391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/ais-basics/" class="md-nav__link">
+      <a href="../../getting-started/ais-basics/" class="md-nav__link">
         
   
   
@@ -473,7 +473,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/overview/" class="md-nav__link">
+      <a href="../../installation/overview/" class="md-nav__link">
         
   
   
@@ -501,7 +501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/docker/" class="md-nav__link">
+      <a href="../../installation/docker/" class="md-nav__link">
         
   
   
@@ -529,7 +529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/raspberrypi/" class="md-nav__link">
+      <a href="../../installation/raspberrypi/" class="md-nav__link">
         
   
   
@@ -557,7 +557,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/macos/" class="md-nav__link">
+      <a href="../../installation/macos/" class="md-nav__link">
         
   
   
@@ -585,7 +585,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/windows/" class="md-nav__link">
+      <a href="../../installation/windows/" class="md-nav__link">
         
   
   
@@ -613,7 +613,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/build-source/" class="md-nav__link">
+      <a href="../../installation/build-source/" class="md-nav__link">
         
   
   
@@ -641,7 +641,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/ubuntu-debian/" class="md-nav__link">
+      <a href="../../installation/ubuntu-debian/" class="md-nav__link">
         
   
   
@@ -723,7 +723,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../usage/overview/" class="md-nav__link">
+      <a href="../../usage/overview/" class="md-nav__link">
         
   
   
@@ -751,7 +751,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../usage/gui/" class="md-nav__link">
+      <a href="../../usage/gui/" class="md-nav__link">
         
   
   
@@ -779,7 +779,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../usage/cli/" class="md-nav__link">
+      <a href="../../usage/cli/" class="md-nav__link">
         
   
   
@@ -807,7 +807,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../usage/json-configuration/" class="md-nav__link">
+      <a href="../../usage/json-configuration/" class="md-nav__link">
         
   
   
@@ -839,20 +839,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -873,7 +871,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -891,7 +889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../overview/" class="md-nav__link">
+      <a href="../../configuration/overview/" class="md-nav__link">
         
   
   
@@ -916,20 +914,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
         
           
           <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
@@ -950,7 +946,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -968,7 +964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../configuration/input/overview/" class="md-nav__link">
         
   
   
@@ -1043,7 +1039,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rtlsdr/" class="md-nav__link">
+      <a href="../../configuration/input/rtlsdr/" class="md-nav__link">
         
   
   
@@ -1071,7 +1067,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../airspy/" class="md-nav__link">
+      <a href="../../configuration/input/airspy/" class="md-nav__link">
         
   
   
@@ -1099,7 +1095,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../airspyhf/" class="md-nav__link">
+      <a href="../../configuration/input/airspyhf/" class="md-nav__link">
         
   
   
@@ -1127,7 +1123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hackrf/" class="md-nav__link">
+      <a href="../../configuration/input/hackrf/" class="md-nav__link">
         
   
   
@@ -1155,7 +1151,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hydrasdr/" class="md-nav__link">
+      <a href="../../configuration/input/hydrasdr/" class="md-nav__link">
         
   
   
@@ -1183,7 +1179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sdrplay/" class="md-nav__link">
+      <a href="../../configuration/input/sdrplay/" class="md-nav__link">
         
   
   
@@ -1211,7 +1207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../soapysdr/" class="md-nav__link">
+      <a href="../../configuration/input/soapysdr/" class="md-nav__link">
         
   
   
@@ -1244,20 +1240,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_3" >
         
           
           <label class="md-nav__link" for="__nav_6_2_3" id="__nav_6_2_3_label" tabindex="0">
@@ -1278,7 +1272,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_2_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1296,7 +1290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tcp/" class="md-nav__link">
+      <a href="../../configuration/input/tcp/" class="md-nav__link">
         
   
   
@@ -1321,37 +1315,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    UDP
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../configuration/input/udp/" class="md-nav__link">
         
   
   
@@ -1367,37 +1334,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#summary-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Summary Settings
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1410,7 +1346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../spyserver/" class="md-nav__link">
+      <a href="../../configuration/input/spyserver/" class="md-nav__link">
         
   
   
@@ -1493,7 +1429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../file/" class="md-nav__link">
+      <a href="../../configuration/input/file/" class="md-nav__link">
         
   
   
@@ -1521,7 +1457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../wav/" class="md-nav__link">
+      <a href="../../configuration/input/wav/" class="md-nav__link">
         
   
   
@@ -1604,7 +1540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../serial/" class="md-nav__link">
+      <a href="../../configuration/input/serial/" class="md-nav__link">
         
   
   
@@ -1632,7 +1568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../daisy-catcher/" class="md-nav__link">
+      <a href="../../configuration/input/daisy-catcher/" class="md-nav__link">
         
   
   
@@ -1660,7 +1596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../NMEA2000/" class="md-nav__link">
+      <a href="../../configuration/input/NMEA2000/" class="md-nav__link">
         
   
   
@@ -1704,7 +1640,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../model/" class="md-nav__link">
+      <a href="../../configuration/model/" class="md-nav__link">
         
   
   
@@ -1779,7 +1715,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../output/overview/" class="md-nav__link">
+      <a href="../../configuration/output/overview/" class="md-nav__link">
         
   
   
@@ -1807,7 +1743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../output/message-filtering/" class="md-nav__link">
+      <a href="../../configuration/output/message-filtering/" class="md-nav__link">
         
   
   
@@ -1835,7 +1771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../output/community-feed/" class="md-nav__link">
+      <a href="../../configuration/output/community-feed/" class="md-nav__link">
         
   
   
@@ -1863,7 +1799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../output/console/" class="md-nav__link">
+      <a href="../../configuration/output/console/" class="md-nav__link">
         
   
   
@@ -1938,7 +1874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../output/TCP-server/" class="md-nav__link">
+      <a href="../../configuration/output/TCP-server/" class="md-nav__link">
         
   
   
@@ -1966,7 +1902,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../output/TCP-client/" class="md-nav__link">
+      <a href="../../configuration/output/TCP-client/" class="md-nav__link">
         
   
   
@@ -1994,7 +1930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../output/UDP/" class="md-nav__link">
+      <a href="../../configuration/output/UDP/" class="md-nav__link">
         
   
   
@@ -2022,7 +1958,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../output/HTTP/" class="md-nav__link">
+      <a href="../../configuration/output/HTTP/" class="md-nav__link">
         
   
   
@@ -2050,7 +1986,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../output/MQTT/" class="md-nav__link">
+      <a href="../../configuration/output/MQTT/" class="md-nav__link">
         
   
   
@@ -2086,7 +2022,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../output/web-viewer/" class="md-nav__link">
+      <a href="../../configuration/output/web-viewer/" class="md-nav__link">
         
   
   
@@ -2114,7 +2050,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../output/NMEA2000/" class="md-nav__link">
+      <a href="../../configuration/output/NMEA2000/" class="md-nav__link">
         
   
   
@@ -2142,7 +2078,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../output/PSQL/" class="md-nav__link">
+      <a href="../../configuration/output/PSQL/" class="md-nav__link">
         
   
   
@@ -2182,18 +2118,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -2214,7 +2152,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2229,10 +2167,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../tools/python/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python (aiscat)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2248,6 +2213,92 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quickstart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quickstart
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timestamps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timestamps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output formats
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to use it
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        More
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2314,7 +2365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced/offline/" class="md-nav__link">
+      <a href="../../advanced/offline/" class="md-nav__link">
         
   
   
@@ -2342,7 +2393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced/ADSB/" class="md-nav__link">
+      <a href="../../advanced/ADSB/" class="md-nav__link">
         
   
   
@@ -2370,7 +2421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced/FM-decoding/" class="md-nav__link">
+      <a href="../../advanced/FM-decoding/" class="md-nav__link">
         
   
   
@@ -2398,7 +2449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced/GPS/" class="md-nav__link">
+      <a href="../../advanced/GPS/" class="md-nav__link">
         
   
   
@@ -2426,7 +2477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced/Low-spec-devices/" class="md-nav__link">
+      <a href="../../advanced/Low-spec-devices/" class="md-nav__link">
         
   
   
@@ -2454,7 +2505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced/GNUradio/" class="md-nav__link">
+      <a href="../../advanced/GNUradio/" class="md-nav__link">
         
   
   
@@ -2482,7 +2533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced/long-range/" class="md-nav__link">
+      <a href="../../advanced/long-range/" class="md-nav__link">
         
   
   
@@ -2510,7 +2561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced/samplerate/" class="md-nav__link">
+      <a href="../../advanced/samplerate/" class="md-nav__link">
         
   
   
@@ -2538,7 +2589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced/grafana/" class="md-nav__link">
+      <a href="../../advanced/grafana/" class="md-nav__link">
         
   
   
@@ -2566,7 +2617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced/validation/" class="md-nav__link">
+      <a href="../../advanced/validation/" class="md-nav__link">
         
   
   
@@ -2594,7 +2645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../advanced/troubleshooting/" class="md-nav__link">
+      <a href="../../advanced/troubleshooting/" class="md-nav__link">
         
   
   
@@ -2629,7 +2680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../community/" class="md-nav__link">
+      <a href="../../community/" class="md-nav__link">
         
   
   
@@ -2656,7 +2707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../faq/" class="md-nav__link">
+      <a href="../../faq/" class="md-nav__link">
         
   
   
@@ -2730,7 +2781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../references/JSON-decoding/" class="md-nav__link">
+      <a href="../../references/JSON-decoding/" class="md-nav__link">
         
   
   
@@ -2758,7 +2809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../references/license/" class="md-nav__link">
+      <a href="../../references/license/" class="md-nav__link">
         
   
   
@@ -2813,10 +2864,65 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#summary-settings" class="md-nav__link">
+  <a href="#install" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Summary Settings
+        Install
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quickstart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quickstart
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timestamps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timestamps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output formats
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to use it
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        More
       
     </span>
   </a>
@@ -2843,73 +2949,100 @@
   
 
 
-<h1 id="input-as-udp-server">Input as UDP server<a class="headerlink" href="#input-as-udp-server" title="Permanent link">&para;</a></h1>
-<div class="command-container">
-      <div class="command-syntax">
-        <span class="cmd-name">AIS-catcher</span>
-        <span class="cmd-flag">-x</span>
-        [<span class="cmd-setting">setting</span> <span class="cmd-value">value</span>]
-        ...
-    </div>
-</div>
-<p>You can receive NMEA input via a built-in UDP server:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-x<span class="w"> </span><span class="m">192</span>.168.1.235<span class="w"> </span><span class="m">4002</span>
-</code></pre></div></p>
-<h2 id="summary-settings">Summary Settings<a class="headerlink" href="#summary-settings" title="Permanent link">&para;</a></h2>
+<h1 id="python-aiscat">Python — <code>aiscat</code><a class="headerlink" href="#python-aiscat" title="Permanent link">&para;</a></h1>
+<p><a href="https://pypi.org/project/aiscat/"><code>aiscat</code></a> is a Python package that exposes the AIS-catcher decoder as a library. Output dictionaries match the <a href="../../references/JSON-decoding/">AIS-catcher JSON format</a> field-for-field, so anything you've built around the documented JSON output works the same when the source becomes a Python iterator.</p>
+<p>It is built for fast, complete decoding of AIS NMEA from Python: all standard message types (1–28), multi-part AIVDM reassembly, country-code resolution from MMSI prefix, lookup-table text fields populated from the same tables AIS-catcher uses, and decoding of binary application messages (type 6 and 8 ASMs across IMO, IALA, USA, and inland-waterway DAC/FID payloads).</p>
+<h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>aiscat
+</code></pre></div>
+<p>Pre-built wheels are published on PyPI for Linux (x86_64, aarch64, armv7l), macOS (Apple Silicon), and Windows (x86_64, ARM64), Python 3.9–3.14.</p>
+<h2 id="quickstart">Quickstart<a class="headerlink" href="#quickstart" title="Permanent link">&para;</a></h2>
+<p>One-shot decoding:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">aiscat</span>
+
+<span class="n">aiscat</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;!AIVDM,1,1,,A,15MgK45P3@G?fl0E`JbR0OwT0@MS,0*4E&quot;</span><span class="p">)</span>
+<span class="c1"># {&#39;type&#39;: 1, &#39;mmsi&#39;: 366730000, &#39;channel&#39;: &#39;A&#39;, &#39;rxuxtime&#39;: 1777739134.027,</span>
+<span class="c1">#  &#39;lat&#39;: 37.803802, &#39;lon&#39;: -122.392532, &#39;speed&#39;: 20.8, &#39;course&#39;: 51.3,</span>
+<span class="c1">#  &#39;status&#39;: 5, &#39;status_text&#39;: &#39;Moored&#39;, ...}</span>
+</code></pre></div>
+<p>Streaming from a file, stdin, TCP, or UDP source — the helpers wire up the I/O loop and yield decoded messages:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">aiscat</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s2">&quot;session.nmea&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">[</span><span class="s2">&quot;mmsi&quot;</span><span class="p">],</span> <span class="n">msg</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">],</span> <span class="n">msg</span><span class="p">[</span><span class="s2">&quot;lon&quot;</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">aiscat</span><span class="o">.</span><span class="n">from_tcp</span><span class="p">(</span><span class="s2">&quot;ais.example.com&quot;</span><span class="p">,</span> <span class="mi">4001</span><span class="p">):</span>
+    <span class="n">handle</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+<p>For full control, use <code>Decoder</code> directly: <code>feed(bytes)</code> parses NMEA / JSON / binary input out of the buffer, and <code>next()</code> pops one decoded message.</p>
+<h2 id="timestamps">Timestamps<a class="headerlink" href="#timestamps" title="Permanent link">&para;</a></h2>
+<p>Each decoded message carries two timestamps:</p>
+<ul>
+<li><strong><code>rxuxtime</code></strong> — the time aiscat decoded the message (i.e. now). Always present.</li>
+<li><strong><code>toa</code></strong> — the time (if any) carried in the input. For JSON input that's the <code>toa</code> or <code>rxuxtime</code> field (<code>toa</code> wins if both are present); for NMEA it's the tag-block <code>c:</code> field. Omitted from the output if the input had none.</li>
+</ul>
+<p>This split makes it unambiguous which clock you are looking at when chaining decoders or replaying recordings — the local decode time and any preserved upstream time are kept in separate fields rather than overwriting each other.</p>
+<h2 id="output-formats">Output formats<a class="headerlink" href="#output-formats" title="Permanent link">&para;</a></h2>
+<p>The <code>format=</code> kwarg selects what <code>next()</code> (and the helpers) return. Dict-shaped formats are convenient for in-Python consumption; bytes-shaped formats skip the <code>dict</code> allocation and are several times faster — useful when forwarding the data to a file, socket, database, or another AIS-catcher instance.</p>
 <table>
 <thead>
 <tr>
-<th>Setting (JSON key / CLI setting name)</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
+<th>Format</th>
+<th>Returns</th>
+<th>Equivalent to</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Generic Options</td>
-<td></td>
-<td></td>
-<td></td>
+<td><code>"dictionary"</code> <em>(default)</em></td>
+<td><code>dict</code></td>
+<td>AIS-catcher <code>-o 5</code> (parsed)</td>
+<td>Full decoded fields.</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">sample_rate</span></td>
-<td>integer</td>
-<td><span class="cmd-value">Device-specific</span></td>
-<td>Sampling rate in Hz (0-20,000,000)</td>
+<td><code>"annotated"</code></td>
+<td><code>dict</code></td>
+<td>AIS-catcher <code>-o 6</code> (parsed)</td>
+<td>Each scalar wrapped as <code>{value, unit, description, text}</code>.</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">bandwidth</span></td>
-<td>integer</td>
-<td><span class="cmd-value">0</span></td>
-<td>Tuner bandwidth in Hz (0-1,000,000)</td>
+<td><code>"json"</code></td>
+<td><code>bytes</code></td>
+<td>AIS-catcher <code>-o 5</code></td>
+<td>Full decoded JSON, ready to write/send.</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">freqoffset</span></td>
-<td>integer</td>
-<td><span class="cmd-value">0</span></td>
-<td>Frequency correction in PPM (-150 to +150)</td>
+<td><code>"json_nmea"</code></td>
+<td><code>bytes</code></td>
+<td>AIS-catcher <code>-o 3</code></td>
+<td>Slim JSON envelope wrapping the original NMEA — the relay/passthrough format.</td>
 </tr>
 <tr>
-<td>Specific Options</td>
-<td></td>
-<td></td>
-<td></td>
+<td><code>"nmea"</code></td>
+<td><code>bytes</code></td>
+<td>AIS-catcher <code>-n</code> / <code>-o 1</code></td>
+<td>The raw AIVDM/AIVDO line(s).</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">port</span></td>
-<td>string</td>
-<td><span class="cmd-value">-</span></td>
-<td>UDP server port to listen on</td>
+<td><code>"nmea_tag"</code></td>
+<td><code>bytes</code></td>
+<td>—</td>
+<td>NMEA prefixed with an IEC 61162-450 tag block carrying source + timestamp.</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">server</span></td>
-<td>string</td>
-<td><span class="cmd-value">-</span></td>
-<td>UDP server address to bind to</td>
+<td><code>"binary"</code></td>
+<td><code>bytes</code></td>
+<td>—</td>
+<td>AIS-catcher's native 0xac binary packet format (compact, suitable for inter-process transport).</td>
 </tr>
 </tbody>
 </table>
+<h2 id="when-to-use-it">When to use it<a class="headerlink" href="#when-to-use-it" title="Permanent link">&para;</a></h2>
+<p>For live decode of a single station (~50 msg/s) any AIS library is fast enough. <code>aiscat</code> earns its keep when throughput matters: historical replay, multi-receiver aggregation, batch analysis, and research workloads on millions to billions of messages. On a single Apple M-series core it reaches ≈1.76 M msg/s for <code>dictionary</code> output and ≈5.5 M msg/s for <code>nmea</code>/<code>binary</code>, tracking the native AIS-catcher CLI closely.</p>
+<h2 id="more">More<a class="headerlink" href="#more" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Source, examples (CSV, MQTT, Kafka, TCP relay), benchmarks, and the full API reference: <a href="https://github.com/jvde-github/AIS-catcher/tree/main/python">github.com/jvde-github/AIS-catcher/tree/main/python</a></li>
+<li>Licence is GPLv3, inherited from AIS-catcher.</li>
+</ul>
 
 
 
@@ -3019,10 +3152,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
