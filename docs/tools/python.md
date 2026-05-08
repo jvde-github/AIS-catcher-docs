@@ -37,6 +37,15 @@ for msg in aiscat.from_tcp("ais.example.com", 4001):
 
 For full control, use `Decoder` directly: `feed(bytes)` parses NMEA / JSON / binary input out of the buffer, and `next()` pops one decoded message.
 
+## Timestamps
+
+Each decoded message carries two timestamps:
+
+- **`rxuxtime`** — the time aiscat decoded the message (i.e. now). Always present.
+- **`toa`** — the time (if any) carried in the input. For JSON input that's the `toa` or `rxuxtime` field (`toa` wins if both are present); for NMEA it's the tag-block `c:` field. Omitted from the output if the input had none.
+
+This split makes it unambiguous which clock you are looking at when chaining decoders or replaying recordings — the local decode time and any preserved upstream time are kept in separate fields rather than overwriting each other.
+
 ## Output formats
 
 The `format=` kwarg selects what `next()` (and the helpers) return. Dict-shaped formats are convenient for in-Python consumption; bytes-shaped formats skip the `dict` allocation and are several times faster — useful when forwarding the data to a file, socket, database, or another AIS-catcher instance.
@@ -53,7 +62,7 @@ The `format=` kwarg selects what `next()` (and the helpers) return. Dict-shaped 
 
 ## When to use it
 
-For live decode of a single station (~50 msg/s) any AIS library is fast enough. `aiscat` earns its keep when throughput matters: historical replay, multi-receiver aggregation, batch analysis, and research workloads on millions to billions of messages. On a single Apple M-series core it tracks the native AIS-catcher CLI within ~13 % (≈1.9 M msg/s for `dictionary` output, ≈6 M msg/s for `nmea`/`binary`).
+For live decode of a single station (~50 msg/s) any AIS library is fast enough. `aiscat` earns its keep when throughput matters: historical replay, multi-receiver aggregation, batch analysis, and research workloads on millions to billions of messages. On a single Apple M-series core it reaches ≈1.76 M msg/s for `dictionary` output and ≈5.5 M msg/s for `nmea`/`binary`, tracking the native AIS-catcher CLI closely.
 
 ## More
 

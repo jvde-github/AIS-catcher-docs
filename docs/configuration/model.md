@@ -110,7 +110,6 @@ AIS-catcher will also accept AIVDO input which is typically used for the MMSI of
 | <span class="cmd-setting">nmea_refresh</span> | boolean | <span class="cmd-value">false</span> | Recalculate NMEA lines |
 | <span class="cmd-setting">crc_check</span> | boolean | <span class="cmd-value">false</span> | Enable CRC validation |
 | <span class="cmd-setting">vdo</span> | boolean | <span class="cmd-value">true</span> | Accept AIVDO messages |
-| <span class="cmd-setting">stamp</span> | boolean | <span class="cmd-value">false</span> | Add timestamps |
 | <span class="cmd-setting">gps</span> | boolean | <span class="cmd-value">false</span> | Enable GPS output |
 | <span class="cmd-setting">uuid</span> | string | <span class="cmd-value">-</span> | Set UUID for messages |
 | <span class="cmd-setting">warnings</span> | boolean | <span class="cmd-value">true</span> | Show warning messages |

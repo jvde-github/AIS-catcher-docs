@@ -66,11 +66,11 @@ Optional fields, added depending on input mode and message contents:
 
 | Field | Type | Unit | Description |
 |-------|------|------|-------------|
-| rxtime | String | UTC | Host receive time (`YYYYMMDDHHMMSS`). Added when timestamping is enabled (`-M T`). |
-| rxuxtime | Float | seconds | Host receive time as Unix epoch (with microsecond fraction). Added with `rxtime`. |
+| rxtime | String | UTC | Host receive time (`YYYYMMDDHHMMSS`), always set from the local clock when AIS-catcher decoded the message. Added when timestamping is enabled (`-M T`). |
+| rxuxtime | Float | seconds | Same instant as `rxtime`, expressed as Unix epoch with microsecond fraction. Added with `rxtime`. |
 | signalpower | Float | dB | Signal power level. Added when stats are enabled (`-M D`). |
 | ppm | Float | ppm | Estimated frequency offset of the receiver during decoding. Added with `signalpower`. |
-| toa | Float | seconds | Time of arrival within the host capture (when provided by the source). |
+| toa | Float | seconds | Upstream time of arrival, if the input carried one. For JSON input that is the source's `toa` or `rxuxtime` field (`toa` wins when both are present); for NMEA it is the tag-block `c:` timestamp. Omitted when the input had no upstream time. |
 | station_id | Integer or String | – | Station identifier (numeric, or 7-char ASCII for SLS). |
 | error | Integer | – | Decode error code (only present when a decode error was flagged). |
 | country | String | – | Flag country name derived from MMSI MID. Added with `-M M`. |
