@@ -344,6 +344,50 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#new-asm-decoders-dac-1-and-dac-200" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        New ASM decoders (DAC 1 and DAC 200)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inland-ais-in-the-web-viewer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inland AIS in the web viewer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#community-feed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Community feed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#input" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3357,6 +3401,50 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#new-asm-decoders-dac-1-and-dac-200" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        New ASM decoders (DAC 1 and DAC 200)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inland-ais-in-the-web-viewer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inland AIS in the web viewer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#community-feed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Community feed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#input" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3901,6 +3989,27 @@
 <li><strong>Spec field renames</strong> in messages 1/2/3, 4/11, 9, 18, 19, 21: bits previously labelled <code>regional</code>/<code>reserved</code> are now exposed under their M.1371-6 names (<code>power</code>, <code>transmission_control</code>, <code>alt_sensor</code>, <code>aton_status</code>, …). See the <a href="../references/JSON-decoding/">JSON reference</a> for the per-message field list.</li>
 <li><strong>Type 23</strong>: <code>ship_type</code> is renamed to <code>shiptype</code> and now includes a <code>shiptype_text</code> description, matching the convention used elsewhere.</li>
 <li>New ASM decoder for <strong>DAC 366, FID 10</strong> (IALA AtoN monitor; messages 6/8/26).</li>
+</ul>
+<h3 id="new-asm-decoders-dac-1-and-dac-200">New ASM decoders (DAC 1 and DAC 200)<a class="headerlink" href="#new-asm-decoders-dac-1-and-dac-200" title="Permanent link">&para;</a></h3>
+<p>A range of widely deployed Application-Specific Messages is now expanded into structured JSON fields:</p>
+<ul>
+<li><strong>IMO Circ.289 (DAC 1)</strong> — FID 20 (berthing data / port operations), FID 23 (area notice / navigation safety), FID 25 (dangerous cargo / IMDG).</li>
+<li><strong>UNECE Inland AIS (DAC 200)</strong> — FID 8 (inland ship static and voyage data, including ENI, dimensions, hazard category), FID 23 (EMMA safety warning, broadcast), FID 24 (water level gauges, up to four stations).</li>
+</ul>
+<h3 id="inland-ais-in-the-web-viewer">Inland AIS in the web viewer<a class="headerlink" href="#inland-ais-in-the-web-viewer" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Inland ENI</strong> (European vessel ID number) is now part of ship static data, shown in the ship card and available as an optional sortable column in the ship table.</li>
+<li>Inland-specific FIDs (10/55) and the <strong>blue sign</strong> indicator are surfaced on the map and ship card.</li>
+<li><strong>Ship-type details</strong> are now reachable from a click popover with the full ITU description, and ERI / inland ship-type tables are complete and labelled correctly.</li>
+</ul>
+<h3 id="community-feed">Community feed<a class="headerlink" href="#community-feed" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The community ship overlay has been replaced by a <strong>popup pane connected to <a href="https://aiscatcher.org/livemap">aiscatcher.org/livemap</a></strong> with two-way view synchronisation (map pan/zoom is shared) and local-vessel push.</li>
+<li>The community-feed icon now indicates <strong>sharing state at a glance</strong>: red = off, orange = anonymous, green = sharing with UUID.</li>
+</ul>
+<h3 id="http-api">HTTP API<a class="headerlink" href="#http-api" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Per-route CORS allow-origin</strong> flag, enabled by default on the <code>JSON</code>, <code>GeoJSON</code>, <code>KML</code>, and <code>metrics</code> endpoints so dashboards and external consumers can fetch directly from a browser. CSP also now allows <code>http</code>/<code>ws</code> schemes so LAN deployments work without a custom policy.</li>
 </ul>
 <h3 id="input">Input<a class="headerlink" href="#input" title="Permanent link">&para;</a></h3>
 <ul>
