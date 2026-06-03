@@ -12,6 +12,28 @@ The JSON output has been aligned with the 2026 ITU-R M.1371-6 spec.
 - **Type 23**: `ship_type` is renamed to `shiptype` and now includes a `shiptype_text` description, matching the convention used elsewhere.
 - New ASM decoder for **DAC 366, FID 10** (IALA AtoN monitor; messages 6/8/26).
 
+### New ASM decoders (DAC 1 and DAC 200)
+
+A range of widely deployed Application-Specific Messages is now expanded into structured JSON fields:
+
+- **IMO Circ.289 (DAC 1)** — FID 20 (berthing data / port operations), FID 23 (area notice / navigation safety), FID 25 (dangerous cargo / IMDG).
+- **UNECE Inland AIS (DAC 200)** — FID 8 (inland ship static and voyage data, including ENI, dimensions, hazard category), FID 23 (EMMA safety warning, broadcast), FID 24 (water level gauges, up to four stations).
+
+### Inland AIS in the web viewer
+
+- **Inland ENI** (European vessel ID number) is now part of ship static data, shown in the ship card and available as an optional sortable column in the ship table.
+- Inland-specific FIDs (10/55) and the **blue sign** indicator are surfaced on the map and ship card.
+- **Ship-type details** are now reachable from a click popover with the full ITU description, and ERI / inland ship-type tables are complete and labelled correctly.
+
+### Community feed
+
+- The community ship overlay has been replaced by a **popup pane connected to [aiscatcher.org/livemap](https://aiscatcher.org/livemap)** with two-way view synchronisation (map pan/zoom is shared) and local-vessel push.
+- The community-feed icon now indicates **sharing state at a glance**: red = off, orange = anonymous, green = sharing with UUID.
+
+### HTTP API
+
+- **Per-route CORS allow-origin** flag, enabled by default on the `JSON`, `GeoJSON`, `KML`, and `metrics` endpoints so dashboards and external consumers can fetch directly from a browser. CSP also now allows `http`/`ws` schemes so LAN deployments work without a custom policy.
+
 ### Input
 
 - **Lossless mode** for file and TCP inputs. `-ga LOSSLESS on/off` (FileRAW) and `-gt LOSSLESS on/off` (RTLTCP) control whether the input blocks or drops samples on overflow. Defaults preserve current behaviour: file replay is lossless (block), live TCP is lossy (drop). The current setting is shown in `-v` output.
