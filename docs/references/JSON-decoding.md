@@ -438,7 +438,7 @@ The envelope is decoded; when `binary_data_flag = 1` the payload follows the sam
 | dac | Integer | – | Designated Area Code (only when `ai_available = true`) |
 | fid | Integer | – | Functional Identifier (only when `ai_available = true`) |
 
-When the `(dac, fid)` pair is recognised the structured ASM fields are emitted in addition (see [ASM payloads](#asm)). For msg 26 the trailing 20-bit communication state is decoded into the standard `radio` sub-fields — see note 5.
+When the `(dac, fid)` pair is recognised the structured ASM fields are emitted in addition (see [ASM payloads](#asm)). For msg 26 the trailing 20-bit communication-state block (1-bit selector followed by the 19-bit SOTDMA/ITDMA state) is decoded into the standard `radio` sub-fields — see note 5.
 
 ### Type 27: Long-Range AIS Broadcast {#type-27}
 
