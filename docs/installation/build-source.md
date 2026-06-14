@@ -50,6 +50,21 @@ sudo make install
 ```
 For the SDRPlay the software needs to be downloaded and installed from the website of the manufacturer. Once installed, the AIS-catcher build process automatically includes it in the build if available. 
 
+## CMake options
+
+The build system exposes a number of CMake options that can be passed to `cmake ..` (each defaults to **ON** unless noted otherwise):
+
+| Option | Effect |
+|---|---|
+| `-DWEBVIEWER=OFF` | Build a headless AIS-catcher without `WebDB`, `WebViewer`, and `HTTPServer`. The resulting binary is about 1.5 MB smaller; the `-N` flag and the `server` config key are gated off. Useful for backend / aggregator deployments that don't need the Visual Web Control. |
+
+For example, to build a headless binary:
+
+```bash
+cmake -DWEBVIEWER=OFF ..
+make
+```
+
 ## Microsoft Visual Studio 2019+ 
 
 Ensure that you have ```vcpkg``` [installed](https://vcpkg.io/en/getting-started.html) and integrated into Visual Studio via ```vcpkg integrate install``` (as Administrator). Then install the rtl-sdr drivers as follows:

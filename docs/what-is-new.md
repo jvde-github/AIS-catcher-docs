@@ -25,6 +25,14 @@ A range of widely deployed Application-Specific Messages is now expanded into st
 - Inland-specific FIDs (10/55) and the **blue sign** indicator are surfaced on the map and ship card.
 - **Ship-type details** are now reachable from a click popover with the full ITU description, and ERI / inland ship-type tables are complete and labelled correctly.
 
+### Web viewer
+
+- **Box select on the map** — drag a rectangle to show tracks for every vessel inside the area at once.
+- **Reset tracks from now** map action — clear historical track points and start fresh from the current time without dropping the vessels themselves.
+- **GPS-derived station position** is marked with a blue border and a tooltip so it is visually distinguishable from configured fixed positions.
+- **Type 24B transponder details** (vendor, model, serial) are now surfaced in the ship card's tech details.
+- **Text telegrams** (safety / broadcast text messages) are now displayed in the web viewer.
+
 ### Community feed
 
 - The community ship overlay has been replaced by a **popup pane connected to [aiscatcher.org/livemap](https://aiscatcher.org/livemap)** with two-way view synchronisation (map pan/zoom is shared) and local-vessel push.
@@ -38,11 +46,12 @@ A range of widely deployed Application-Specific Messages is now expanded into st
 
 - **Lossless mode** for file and TCP inputs. `-ga LOSSLESS on/off` (FileRAW) and `-gt LOSSLESS on/off` (RTLTCP) control whether the input blocks or drops samples on overflow. Defaults preserve current behaviour: file replay is lossless (block), live TCP is lossy (drop). The current setting is shown in `-v` output.
 - **Simpler inline settings** for input flags. `-t`, `-r`, `-x`, `-z`, `-i`, `-w`, and `-e` now accept trailing key/value pairs after their positional arguments, so you can write `-t HOST PORT lossless on` instead of having to repeat the device subletter via `-gt`.
+- New **`sensitivity_high`** config option for SDR input selects the higher-sensitivity ("challenger") decoder model — useful when you want maximum decode rate and CPU headroom allows it.
 
 ### Build and packaging
 
 - New CMake option `-DWEBVIEWER=OFF` produces a headless build without `WebDB`/`WebViewer`/`HTTPServer` (~1.5 MB smaller binary). The `-N` flag and the `server` config key are gated when the webviewer is disabled.
-- **[`aiscat`](tools/python.md)** — Python bindings for the AIS-catcher NMEA decoder are now published on PyPI. The package exposes a `Decoder` with `decode()` / `from_file` / `from_stdin` / `from_tcp` / `from_udp` helpers, multiple output formats (`dictionary`, `annotated`, `json`, `json_nmea`, `nmea`, `nmea_tag`, `binary`), and ships pre-built wheels including armv7l and Windows ARM64. See [Tools → Python](tools/python.md) for details.
+- **[`aiscat`](tools/python.md)** — Python bindings for the AIS-catcher NMEA decoder are now published on PyPI. The package exposes a `Decoder` with `decode()` / `from_file` / `from_stdin` / `from_tcp` / `from_udp` helpers, multiple output formats (`dictionary`, `annotated`, `json`, `json_nmea`, `nmea`, `nmea_tag`, `binary`), and ships pre-built wheels including armv7l and Windows ARM64. Free-threaded (3.13t / 3.14t) wheels are also published, plus an additional decoder speedup. See [Tools → Python](tools/python.md) for details.
 
 ## Version 0.68
 

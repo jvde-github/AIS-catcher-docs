@@ -487,7 +487,7 @@ For Type 6 and Type 8 messages, AIS-catcher decodes selected Application-Specifi
 [IMO/ITU-R (DAC=1)](#asm-imo) ·
 [IALA Zeni Lite Buoy (DAC=0)](#asm-iala) ·
 [Inland AIS (DAC=200)](#asm-inland) ·
-[IALA UK & ROI (DAC=235/250)](#asm-uk) ·
+[IALA AtoN monitoring (DAC=235/250/366)](#asm-uk) ·
 [St Lawrence Seaway (DAC=316/366)](#asm-sls) ·
 [US Environmental (DAC=367)](#asm-us)
 
@@ -547,6 +547,45 @@ In **msg 8** (VTS targets, IMO Circ.289 §6):
 | vts_target_cog | Integer | degrees | Target course over ground |
 | vts_target_timestamp | Integer | seconds | UTC second of report |
 | vts_target_sog | Integer | knots | Target speed over ground |
+
+#### FID = 20: Berthing data / port operations (msg 6 and 8, ITU-R M.1371-5)
+
+| Field | Type | Unit | Description |
+|-------|------|------|-------------|
+| berth_type | Integer | – | Berthing/mooring facility type |
+| berth_number | Integer | – | Berth/mooring number |
+| berth_name | String | – | Berth/mooring name |
+| berth_arrival_time | Integer | UTC | Estimated arrival time |
+| berth_departure_time | Integer | UTC | Expected departure time |
+| berth_lon | Float | degrees | Berth longitude |
+| berth_lat | Float | degrees | Berth latitude |
+| spare | Integer | – | Spare bit |
+
+#### FID = 23: Area notice / navigation safety, broadcast (msg 6 and 8, ITU-R M.1371-5)
+
+The decoded payload covers the area notice header plus an axis-aligned bounding box; the per-shape sub-area entries that may follow are not currently expanded.
+
+| Field | Type | Unit | Description |
+|-------|------|------|-------------|
+| area_notice_type | Integer | – | Area notice type |
+| area_notice_duration | Integer | minutes | Notice duration |
+| area_notice_priority | Boolean | – | Priority (0 = default, 1 = urgent) |
+| area_notice_lon1 | Float | degrees | NE corner longitude |
+| area_notice_lat1 | Float | degrees | NE corner latitude |
+| area_notice_lon2 | Float | degrees | SW corner longitude |
+| area_notice_lat2 | Float | degrees | SW corner latitude |
+| area_notice_name | String | – | Notice name/description (when present) |
+
+#### FID = 25: Dangerous cargo / IMDG (msg 6 and 8, ITU-R M.1371-5)
+
+| Field | Type | Unit | Description |
+|-------|------|------|-------------|
+| cargo_hazard_report_type | Integer | – | Report type |
+| cargo_hazard_class | Integer | – | IMDG hazard class |
+| cargo_hazard_category | Integer | – | IMDG sub-class category |
+| cargo_hazard_id | Integer | – | UN hazmat ID number |
+| cargo_hazard_quantity | Float | tonnes | Total hazard quantity on board |
+| spare | Integer | – | Spare bit |
 
 #### FID = 21: Weather observation from ship (msg 8, IMO Circ.289 §10)
 
@@ -677,6 +716,18 @@ Only the first sensor report's common header is decoded; per-sensor bodies are n
 
 ### Inland AIS — CCNR/CESNI (DAC = 200) {#asm-inland}
 
+#### FID = 8: Inland ship static and voyage data (msg 6 and 8, UNECE ECE/TRANS/SC.3/176 Rev.2)
+
+| Field | Type | Unit | Description |
+|-------|------|------|-------------|
+| inland_locode | String | – | UN/LOCODE or ERI number |
+| inland_shiptype | Integer | – | Inland vessel type (0 = reserved, 1–13) |
+| inland_shiptype_text | String | – | Inland vessel type description (when defined) |
+| inland_draught | Float | metres | Draught (0.1 m resolution) |
+| inland_length | Integer | metres | Overall length |
+| inland_beam | Integer | metres | Beam/width |
+| destination | String | – | Destination (UN/LOCODE) |
+
 #### FID = 10: ERI ship static voyage data (msg 8)
 
 | Field | Type | Unit | Description |
@@ -691,6 +742,42 @@ Only the first sensor report's common header is decoded; per-sensor bodies are n
 | speed_q | Boolean | – | Speed quality |
 | course_q | Boolean | – | Course quality |
 | heading_q | Boolean | – | Heading quality |
+
+#### FID = 23: EMMA safety warning, broadcast (msg 8, UNECE ECE/TRANS/SC.3/176 Rev.2)
+
+| Field | Type | Unit | Description |
+|-------|------|------|-------------|
+| start_date | String | – | Start date (`YYYYMMDD`) — omitted when not set in the payload |
+| end_date | String | – | End date (`YYYYMMDD`) — omitted when not set in the payload |
+| start_time | String | – | Start time (`HHMM` UTC) — omitted when not set |
+| end_time | String | – | End time (`HHMM` UTC) — omitted when not set |
+| start_lon | Float | degrees | Start longitude of the affected area |
+| start_lat | Float | degrees | Start latitude of the affected area |
+| end_lon | Float | degrees | End longitude of the affected area |
+| end_lat | Float | degrees | End latitude of the affected area |
+| emma_warning_type | Integer | – | Warning type (0 = unknown … 9 = forest fire) |
+| emma_warning_type_text | String | – | Warning type description (when defined) |
+| min_value | Integer | – | Minimum parameter value (units depend on warning type) |
+| max_value | Integer | – | Maximum parameter value |
+| emma_severity | Integer | – | Severity (0 = low, 1 = medium, 2 = high, 3 = severe) |
+| emma_severity_text | String | – | Severity description (when defined) |
+| wind_direction | Integer | degrees | Wind direction |
+| emma_description | String | – | Free-text warning description |
+
+#### FID = 24: Water level data (msg 8, UNECE ECE/TRANS/SC.3/176 Rev.2)
+
+Up to four water-level gauges are decoded per message. Each gauge appears only when the gauge ID is non-zero and the level value is valid.
+
+| Field | Type | Unit | Description |
+|-------|------|------|-------------|
+| gauge1_id | Integer | – | Gauge station 1 ID |
+| gauge1_level | Integer | cm | Water level at gauge 1 (relative to datum) |
+| gauge2_id | Integer | – | Gauge station 2 ID |
+| gauge2_level | Integer | cm | Water level at gauge 2 |
+| gauge3_id | Integer | – | Gauge station 3 ID |
+| gauge3_level | Integer | cm | Water level at gauge 3 |
+| gauge4_id | Integer | – | Gauge station 4 ID |
+| gauge4_level | Integer | cm | Water level at gauge 4 |
 
 #### FID = 25: Bridge clearance (msg 8)
 
@@ -713,9 +800,12 @@ Only the first sensor report's common header is decoded; per-sensor bodies are n
 | passenger_count | Integer | Number of passengers |
 | shipboard_personnel_count | Integer | Other shipboard personnel |
 
-### IALA UK & ROI (DAC = 235 / 250) {#asm-uk}
+### IALA AtoN monitoring (DAC = 235 / 250 / 366) {#asm-uk}
 
-#### FID = 10: Aid-to-navigation monitor (msg 6)
+#### FID = 10: Aid-to-navigation monitor (msg 6/8/26)
+
+Used by IALA UK & NI (235), IALA ROI (250), and the US St Lawrence Seaway / USCG (366).
+
 
 | Field | Type | Unit | Description |
 |-------|------|------|-------------|

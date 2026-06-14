@@ -114,6 +114,23 @@ AIS-catcher -N 8100 prome on
 
 For more information on how to configure Prometheus and Grafana to get an initial dashboard, see [README-grafana.md](../../advanced/grafana.md).
 
+## Cross-origin access (CORS)
+
+The data endpoints intended for external consumers send an `Access-Control-Allow-Origin: *` header so that browser-based dashboards and other web pages can fetch them directly without a proxy. The HTML pages and other resources served by the web viewer are deliberately *not* CORS-exposed.
+
+CORS is enabled on:
+
+- `/api/ships.json`, `/ships.json`, `/api/ships_full.json`, `/api/ships_array.json`
+- `/api/planes_array.json`
+- `/api/binmsgs.json`
+- `/api/history_full.json`
+- `/api/stat.json`, `/stat.json`
+- `/api/path.json`, `/api/allpath.json`, `/api/path.geojson`, `/api/allpath.geojson`
+- `/kml`
+- `/metrics` (Prometheus)
+
+The Content-Security-Policy served by the web viewer also accepts `http`/`ws` schemes in `img-src` and `connect-src` so LAN deployments work without a custom policy.
+
 ## Summary Settings
 
 Server Options:

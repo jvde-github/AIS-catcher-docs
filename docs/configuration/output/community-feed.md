@@ -14,6 +14,16 @@ On the CLI, `-X` enables sharing. If you provide a sharing key, the station is l
 
 In JSON configuration, Community Feed settings are configured via the root-level keys `sharing` and `sharing_key` (they are not part of an output array like `udp`).
 
+## Live community map in the viewer
+
+When the Visual Web Control is running, the community map is no longer drawn as an overlay on the local map. Opening the community map pops up a pane connected to [aiscatcher.org/livemap](https://aiscatcher.org/livemap). Pan and zoom are kept in sync in both directions, and vessels seen by the local receiver are pushed to the community view in real time.
+
+The community-feed icon in the header indicates the current sharing state at a glance:
+
+- **Red** — sharing is off (no data leaves the station)
+- **Orange** — sharing is on, anonymously (no `sharing_key` set)
+- **Green** — sharing is on and the station is identified by a `sharing_key`
+
 ## Summary Settings
 
 <div class="input-table" markdown>

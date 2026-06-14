@@ -14,9 +14,10 @@
 
 ## Model Selection
 
-The command line provides the `-m` option which selects the specific decoding model.  In the current version, 4 different receiver models are embedded for raw data samples:
+The command line provides the `-m` option which selects the specific decoding model.  In the current version, the following receiver models are embedded for raw data samples:
 
 - **Default Model** (``-m 2``): the default demodulation engine.
+- **Challenger Model** (``-m 4``): a higher-sensitivity demodulation engine — typically yields a few percent more decoded messages than the default at the cost of additional CPU. Easiest to enable via the `sensitivity_high` switch (see [NMEA Model Settings](#nmea-model-settings) below) rather than `-m 4` directly.
 - **Base Model (non-coherent)** (``-m 1``): using FM discriminator model, similar to RTL-AIS (and GNUAIS/Aisdecoder) with tweaks to the Phase Locked Loop and main receiver filter (computed with a stochastic search algorithm).
 - **Standard Model (non-coherent)** (``-m 0``): as the Base Model with brute force timing recovery.
 - **FM Discriminator model**: (``-m `3`) as the Standard Model but with the input already assumed to be the output of an FM discriminator. Hence no FM demodulation takes place which allows ```AIS-catcher``` to be used as GNUAIS and AISdecoder.
@@ -45,7 +46,7 @@ This is typical when there are messages of poor quality. However, it increases t
 
 
 ## Other models
-For completeness, the decoder for NMEA input as text is activated by `-m 5` and `-m `4` is an experimental implementation to test new ideas. In practice, the user will not require these settings.
+For completeness, the decoder for NMEA input as text is activated by `-m 5`. In practice, the user will not need to select it manually.
 
 ## NMEA input
 
@@ -110,6 +111,7 @@ AIS-catcher will also accept AIVDO input which is typically used for the MMSI of
 | <span class="cmd-setting">nmea_refresh</span> | boolean | <span class="cmd-value">false</span> | Recalculate NMEA lines |
 | <span class="cmd-setting">crc_check</span> | boolean | <span class="cmd-value">false</span> | Enable CRC validation |
 | <span class="cmd-setting">vdo</span> | boolean | <span class="cmd-value">true</span> | Accept AIVDO messages |
+| <span class="cmd-setting">sensitivity_high</span> | boolean | <span class="cmd-value">false</span> | Use the higher-sensitivity Challenger model (`-m 4`) instead of the default model (`-m 2`) for SDR input. Trades CPU for a few percent more decoded messages. |
 | <span class="cmd-setting">gps</span> | boolean | <span class="cmd-value">false</span> | Enable GPS output |
 | <span class="cmd-setting">uuid</span> | string | <span class="cmd-value">-</span> | Set UUID for messages |
 | <span class="cmd-setting">warnings</span> | boolean | <span class="cmd-value">true</span> | Show warning messages |
