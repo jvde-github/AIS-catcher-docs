@@ -17,7 +17,7 @@ The JSON output has been aligned with the 2026 ITU-R M.1371-6 spec.
 A range of widely deployed Application-Specific Messages is now expanded into structured JSON fields:
 
 - **IMO Circ.289 (DAC 1)** — FID 20 (berthing data / port operations), FID 23 (area notice / navigation safety), FID 25 (dangerous cargo / IMDG).
-- **UNECE Inland AIS (DAC 200)** — FID 8 (inland ship static and voyage data, including ENI, dimensions, hazard category), FID 23 (EMMA safety warning, broadcast), FID 24 (water level gauges, up to four stations).
+- **Inland AIS — CCNR VTT 1.2 (DAC 200)** — FID 21 (ETA at lock/bridge/terminal), FID 22 (RTA at lock/bridge/terminal), FID 23 (EMMA safety warning), FID 24 (water level gauges, up to four stations), FID 40 (signal station status).
 
 ### Inland AIS in the web viewer
 

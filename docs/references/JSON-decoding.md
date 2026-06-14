@@ -695,10 +695,10 @@ Only the first sensor report's common header is decoded; per-sensor bodies are n
 | swellheight | Float | metres | Swell height |
 | swellperiod | Integer | seconds | Swell period |
 | swelldir | Integer | degrees | Swell direction |
-| seastate | Integer | – | Sea state (Beaufort) |
+| seastate | Integer | – | Sea state (Beaufort 0–12; 13 = not available, sentinel-suppressed) |
 | watertemp | Float | °C | Water temperature |
 | preciptype | Integer | – | Precipitation type |
-| salinity | Integer | percent | Salinity |
+| salinity | Float | percent | Salinity (0.0–50.9, 0.1 resolution). Omitted when the raw field is set to "not available". |
 | ice | Integer | – | Ice indicator |
 
 ### IALA Zeni Lite Buoy (DAC = 0, FID = 0, msg 6) {#asm-iala}
@@ -714,21 +714,11 @@ Only the first sensor report's common header is decoded; per-sensor bodies are n
 | asm_off_position_status | Boolean | – | Off-position status |
 | spare | Integer | – | Spare bits |
 
-### Inland AIS — CCNR/CESNI (DAC = 200) {#asm-inland}
+### Inland AIS — CCNR VTT 1.2 (DAC = 200) {#asm-inland}
 
-#### FID = 8: Inland ship static and voyage data (msg 6 and 8, UNECE ECE/TRANS/SC.3/176 Rev.2)
+Inland AIS DAC = 200 messages follow the CCNR/UNECE [Vessel Tracking and Tracing Standard for Inland Navigation, Edition 1.2](https://www.ccr-zkr.org/files/documents/ris/vtt12_nl.pdf).
 
-| Field | Type | Unit | Description |
-|-------|------|------|-------------|
-| inland_locode | String | – | UN/LOCODE or ERI number |
-| inland_shiptype | Integer | – | Inland vessel type (0 = reserved, 1–13) |
-| inland_shiptype_text | String | – | Inland vessel type description (when defined) |
-| inland_draught | Float | metres | Draught (0.1 m resolution) |
-| inland_length | Integer | metres | Overall length |
-| inland_beam | Integer | metres | Beam/width |
-| destination | String | – | Destination (UN/LOCODE) |
-
-#### FID = 10: ERI ship static voyage data (msg 8)
+#### FID = 10: ERI ship static voyage data (msg 8, Table 2.7)
 
 | Field | Type | Unit | Description |
 |-------|------|------|-------------|
@@ -743,7 +733,32 @@ Only the first sensor report's common header is decoded; per-sensor bodies are n
 | course_q | Boolean | – | Course quality |
 | heading_q | Boolean | – | Heading quality |
 
-#### FID = 23: EMMA safety warning, broadcast (msg 8, UNECE ECE/TRANS/SC.3/176 Rev.2)
+#### FID = 21: ETA at lock/bridge/terminal (msg 6, Table 2.8)
+
+| Field | Type | Unit | Description |
+|-------|------|------|-------------|
+| un_country | String | – | UN country code (2-char ISO 3166-1 alpha-2) |
+| un_locode | String | – | UN/LOCODE (3-char ASCII) |
+| fairway_section | String | – | Fairway section identifier |
+| terminal_code | String | – | Terminal code |
+| fairway_hectometre | String | – | Fairway hectometre |
+| eta | String | UTC | Estimated time of arrival (`MM-DD HH:MM`) |
+| tugboats | Integer | – | Number of assisting tugboats (0–6) |
+| air_draught | Float | metres | Maximum present static air draught |
+
+#### FID = 22: RTA at lock/bridge/terminal (msg 6, Table 2.9)
+
+| Field | Type | Unit | Description |
+|-------|------|------|-------------|
+| un_country | String | – | UN country code |
+| un_locode | String | – | UN/LOCODE |
+| fairway_section | String | – | Fairway section identifier |
+| terminal_code | String | – | Terminal code |
+| fairway_hectometre | String | – | Fairway hectometre |
+| rta | String | UTC | Recommended time of arrival (`MM-DD HH:MM`) |
+| lock_status | Integer | – | Lock/bridge/terminal status (0 = operational, 1 = limited, 2 = out of order) |
+
+#### FID = 23: EMMA safety warning, broadcast (msg 8, Table 2.11)
 
 | Field | Type | Unit | Description |
 |-------|------|------|-------------|
@@ -757,21 +772,21 @@ Only the first sensor report's common header is decoded; per-sensor bodies are n
 | end_lat | Float | degrees | End latitude of the affected area |
 | emma_warning_type | Integer | – | Warning type (0 = unknown … 9 = forest fire) |
 | emma_warning_type_text | String | – | Warning type description (when defined) |
-| min_value | Integer | – | Minimum parameter value (units depend on warning type) |
-| max_value | Integer | – | Maximum parameter value |
-| emma_severity | Integer | – | Severity (0 = low, 1 = medium, 2 = high, 3 = severe) |
+| min_value | Integer | – | Minimum parameter value (signed; units depend on warning type). Omitted when set to the "not available" sentinel. |
+| max_value | Integer | – | Maximum parameter value (signed). Omitted when set to "not available". |
+| emma_severity | Integer | – | Severity (0 = unknown, 1 = slight, 2 = medium, 3 = strong/heavy) |
 | emma_severity_text | String | – | Severity description (when defined) |
-| wind_direction | Integer | degrees | Wind direction |
-| emma_description | String | – | Free-text warning description |
+| wind_direction | Integer | – | Wind direction (4-bit code per Table 2.11) |
 
-#### FID = 24: Water level data (msg 8, UNECE ECE/TRANS/SC.3/176 Rev.2)
+#### FID = 24: Water level data (msg 8, Table 2.15)
 
-Up to four water-level gauges are decoded per message. Each gauge appears only when the gauge ID is non-zero and the level value is valid.
+Up to four water-level gauges are decoded per message. Each gauge appears only when its station ID is non-zero.
 
 | Field | Type | Unit | Description |
 |-------|------|------|-------------|
+| un_country | String | – | UN country code (2-char ISO 3166-1 alpha-2) |
 | gauge1_id | Integer | – | Gauge station 1 ID |
-| gauge1_level | Integer | cm | Water level at gauge 1 (relative to datum) |
+| gauge1_level | Integer | cm | Water level at gauge 1 (signed, relative to datum) |
 | gauge2_id | Integer | – | Gauge station 2 ID |
 | gauge2_level | Integer | cm | Water level at gauge 2 |
 | gauge3_id | Integer | – | Gauge station 3 ID |
@@ -792,7 +807,20 @@ Up to four water-level gauges are decoded per message. Each gauge appears only w
 | measurement_age | Integer | minutes | Age of measurement |
 | clearance_accuracy | Integer | cm | Bridge clearance accuracy (±cm) |
 
-#### FID = 55: Persons on board, detailed (msg 6)
+#### FID = 40: Signal station status (msg 8, Table 2.16)
+
+Status of a fairway signal station (lock, bridge, terminal entry signal).
+
+| Field | Type | Unit | Description |
+|-------|------|------|-------------|
+| lon | Float | degrees | Signal station longitude |
+| lat | Float | degrees | Signal station latitude |
+| signal_form | Integer | – | Signal light configuration form |
+| signal_orientation | Integer | degrees | Orientation of the signal station |
+| signal_impact | Integer | – | Direction of impact of the signal |
+| signal_status | Integer | – | Raw signal light status (30-bit, multiple lights packed) |
+
+#### FID = 55: Persons on board, detailed (msg 6, Table 2.10)
 
 | Field | Type | Description |
 |-------|------|-------------|
