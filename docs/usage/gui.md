@@ -29,13 +29,30 @@ You'll be prompted to change this password immediately for security reasons.
 ![image](https://github.com/user-attachments/assets/aea1eb3b-0344-47a9-8b4f-8ddd77ecdeb0)
 
 
+### Sidebar layout
+
+Once logged in, the Visual Web Control sidebar gives you access to the following sections:
+
+- **Control** — start/stop the AIS-catcher service and watch the live log stream.
+- **Webviewer** — opens the local AIS web viewer in a new tab.
+- **System** — host info, service status, automatic update checks for both AIS-catcher and the Control panel itself, watchdog status, and system actions (install / update / reboot).
+- **General** — global settings (station name, coordinates, sharing toggle, language, etc.).
+- **Device** — input device selection and SDR settings.
+- **Output** — sub-pages: Community, UDP, TCP Client, TCP Servers, Webviewer, HTTP, MQTT.
+- **Data Flow** — visualise and route messages between receivers and outputs via **zones**.
+- **Advanced** — direct JSON / command-line editors (`config.json`, `config.cmd`) with **Check** and **Format** buttons that validate the document before save.
+- **Change Password** and **Logout**.
+
 ### Input Device Selection
 
-Navigate to the **Input** section to select your input device. You can choose from connected devices or manually specify a device type and serial number. If you have only a single SDR device connected, you can leave the device selection as **None**, and AIS-catcher will automatically detect and use the available device. Click the search icon to let AIS-catcher detect available SDR hardware.
+Navigate to the **Device** section to select your input device. You can choose from connected devices or manually specify a device type and serial number. If you have only a single SDR device connected, you can leave the device selection as **None**, and AIS-catcher will automatically detect and use the available device. Click the search icon to let AIS-catcher detect available SDR hardware.
 
 ![image](https://github.com/user-attachments/assets/83cc4f88-7d76-49db-b126-e62a2b652663)
 
-Specific device settings for your SDR or other input device can be set on this page as well. 
+Specific device settings for your SDR or other input device can be set on this page as well. For SDR inputs (RTL-SDR, AirSpy, AirSpy HF+, HackRF, HydraSDR) two extra fields appear below the device selector:
+
+- **Channel** (`AB` or `CD`) — choose between the standard AIS channel pair (161.975 / 162.025 MHz) or the long-range channels.
+- **High Sensitivity** — toggles the higher-sensitivity ("Challenger") decoder model. Trades CPU for a few percent more decoded messages. Equivalent to the `sensitivity_high` setting documented in [Model Settings](../configuration/model.md).
 
 
 > **Note: After modifying any settings, remember to save the changes and restart AIS-catcher in the Control section for them to take effect.**
@@ -48,18 +65,42 @@ AIS-catcher allows you to share your data with the [aiscatcher.org](https://aisc
 
 #### Local Webviewer
 
-Under **Output > Web Viewer**, you can configure the local web viewer. Activate the viewer and enter your station details, including a name and your geographical coordinates.
+Under **Output > Webviewer**, you can configure the local web viewer. Activate the viewer and enter your station details, including a name and your geographical coordinates.
+
+Useful per-viewer toggles available here:
+
+- **Use GPS** — feed the station position from a connected GPS source instead of a fixed coordinate pair.
+- **Ship Timeout** (`history` setting, in seconds) — how long vessels stay visible after their last message (5 – 43200 s).
+- **Backup** (in minutes) — how often the in-memory database is written to disk so state survives restarts.
+- **Web Control Link** (`webcontrol_http`) — URL used by the viewer to surface a "Manage station" link back to this Control panel.
 
 The local web viewer is accessible from your Raspberry Pi (e.g., on port **8100**, accessed via http://zerowh:8100) and is not accessible outside your local network by default. Some users choose to share their web viewer externally; see examples [here](https://aiscatcher.org/dashboards).
 
 > Note: For a public page showcasing your station's performance, the easiest method is to feed data to aiscatcher.org using a sharing key.
+
+### Data Flow and Zones
+
+The **Data Flow** section visualises which receivers feed which outputs and lets you configure **zones** — named groupings used to tailor message routing per output channel. Zones are also referenced from the command line by the `sharing_zone` setting and from JSON configuration via the top-level `zones` array.
+
+### System actions
+
+The **System** section shows host information (load, memory, disk, AIS-catcher and Control versions) and lets you:
+
+- check for updates of both AIS-catcher and AIS-catcher-control;
+- start the update / install scripts and watch their progress live;
+- reboot the host or reset a failed service;
+- inspect the optional reboot watchdog status (enabled via the install script).
+
+### Advanced editor
+
+For configurations that can no longer be edited through the forms, **Advanced > Edit Config.json** and **Edit Config.cmd** expose the raw files. Both editors now include **Check** (validate JSON / command syntax) and **Format** (pretty-print) buttons to catch typos before you save. The Check & Format pipeline also migrates older config layouts and normalises types on the fly.
 
 ### Service Control
 Navigate to **Control** to manage the AIS-catcher service:
 
 - **Start/Stop** the service.
 - Enable **Auto-Start** functionality.
-- Monitor the service status through the log display.
+- Monitor the service status through the live log stream (colour-coded by level: error, warning, notice, info, debug).
     
 ![image](https://github.com/user-attachments/assets/abf29893-0567-4b94-9354-e0630cc6f9fc)
 
