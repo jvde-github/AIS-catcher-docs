@@ -1,6 +1,6 @@
 # What's New?
 
-## Edge
+## Version 0.69
 
 ### ITU-R M.1371-6 alignment
 
