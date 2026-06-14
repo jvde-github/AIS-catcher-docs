@@ -12,12 +12,14 @@ The JSON output has been aligned with the 2026 ITU-R M.1371-6 spec.
 - **Type 23**: `ship_type` is renamed to `shiptype` and now includes a `shiptype_text` description, matching the convention used elsewhere.
 - New ASM decoder for **DAC 366, FID 10** (IALA AtoN monitor; messages 6/8/26).
 
-### New ASM decoders (DAC 1 and DAC 200)
+### New ASM decoders
 
 A range of widely deployed Application-Specific Messages is now expanded into structured JSON fields:
 
-- **IMO Circ.289 (DAC 1)** — FID 20 (berthing data / port operations), FID 23 (area notice / navigation safety), FID 25 (dangerous cargo / IMDG).
+- **IMO Circ.289 (DAC 1)** — FID 17 (VTS-generated targets), FID 19 (marine traffic signal), FID 20 (berthing data / port operations), FID 22 (area notice, broadcast), FID 23 (area notice, addressed), FID 24 (extended ship static), FID 25 (dangerous cargo / IMDG), FID 28 (route addressed), FID 32 (tidal window).
 - **Inland AIS — CCNR VTT 1.2 (DAC 200)** — FID 21 (ETA at lock/bridge/terminal), FID 22 (RTA at lock/bridge/terminal), FID 23 (EMMA safety warning), FID 24 (water level gauges, up to four stations), FID 40 (signal station status).
+- **Sweden STM (DAC 265, FID 1)** — Sea Traffic Management route messages, with full waypoint reconstruction from the delta-encoded leg chain.
+- **Flag-state text telegrams** — DAC 210 (Cyprus), 248 (Malta), 353 (Liberia) FID 0 now decode as text.
 
 ### Inland AIS in the web viewer
 

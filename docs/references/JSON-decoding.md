@@ -486,8 +486,10 @@ For Type 6 and Type 8 messages, AIS-catcher decodes selected Application-Specifi
 **Jump to:**
 [IMO/ITU-R (DAC=1)](#asm-imo) ·
 [IALA Zeni Lite Buoy (DAC=0)](#asm-iala) ·
+[Flag-state text (DAC=210/248/353)](#asm-flagtext) ·
 [Inland AIS (DAC=200)](#asm-inland) ·
 [IALA AtoN monitoring (DAC=235/250/366)](#asm-uk) ·
+[Sweden STM (DAC=265)](#asm-stm) ·
 [St Lawrence Seaway (DAC=316/366)](#asm-sls) ·
 [US Environmental (DAC=367)](#asm-us)
 
@@ -548,6 +550,27 @@ In **msg 8** (VTS targets, IMO Circ.289 §6):
 | vts_target_timestamp | Integer | seconds | UTC second of report |
 | vts_target_sog | Integer | knots | Target speed over ground |
 
+#### FID = 17: VTS-generated/synthetic targets (msg 8, IMO Circ.289 §6 Table 6.1/6.2)
+
+Up to four synthetic targets (120 bits each) are decoded and packed into a single string.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| targets | String | `id,lat,lon,cog,sog;…` per target. `id` is 7-char ASCII; `lat`/`lon` in degrees; `cog` in degrees; `sog` in tenths of a knot. |
+
+#### FID = 19: Marine traffic signal (msg 8, IMO Circ.289 §8 Table 8.1)
+
+| Field | Type | Unit | Description |
+|-------|------|------|-------------|
+| linkage_id | Integer | – | Message linkage ID |
+| station_name | String | – | Signal station name |
+| lon | Float | degrees | Signal station longitude |
+| lat | Float | degrees | Signal station latitude |
+| traffic_signal | Integer | – | Current marine traffic signal in service (Table 8.2) |
+| hour | Integer | – | UTC hour of next change |
+| minute | Integer | – | UTC minute of next change |
+| next_signal | Integer | – | Expected next signal |
+
 #### FID = 20: Berthing data / port operations (msg 6 and 8, ITU-R M.1371-5)
 
 | Field | Type | Unit | Description |
@@ -561,9 +584,9 @@ In **msg 8** (VTS targets, IMO Circ.289 §6):
 | berth_lat | Float | degrees | Berth latitude |
 | spare | Integer | – | Spare bit |
 
-#### FID = 23: Area notice / navigation safety, broadcast (msg 6 and 8, ITU-R M.1371-5)
+#### FID = 22 / 23: Area notice — broadcast (msg 8, FID 22) and addressed (msg 6, FID 23) — ITU-R M.1371-5
 
-The decoded payload covers the area notice header plus an axis-aligned bounding box; the per-shape sub-area entries that may follow are not currently expanded.
+Both FIDs share the same payload layout (header + axis-aligned bounding box). The per-shape sub-area entries that may follow are not currently expanded.
 
 | Field | Type | Unit | Description |
 |-------|------|------|-------------|
@@ -575,6 +598,18 @@ The decoded payload covers the area notice header plus an axis-aligned bounding 
 | area_notice_lon2 | Float | degrees | SW corner longitude |
 | area_notice_lat2 | Float | degrees | SW corner latitude |
 | area_notice_name | String | – | Notice name/description (when present) |
+
+#### FID = 24: Extended ship static and voyage-related data (msg 8, IMO Circ.289 §4 Table 4.1)
+
+The 52-bit SOLAS equipment-status block is not decoded.
+
+| Field | Type | Unit | Description |
+|-------|------|------|-------------|
+| linkage_id | Integer | – | Message linkage ID |
+| air_draught | Float | metres | Maximum present static air draught (0.1 m resolution) |
+| last_port | String | – | Last port of call (UN/LOCODE) |
+| next_port | String | – | Next port of call (UN/LOCODE) |
+| second_port | String | – | Second next port of call (UN/LOCODE) |
 
 #### FID = 25: Dangerous cargo / IMDG (msg 6 and 8, ITU-R M.1371-5)
 
@@ -629,7 +664,9 @@ Only the first sensor report's common header is decoded; per-sensor bodies are n
 | minute | Integer | UTC minute |
 | site_id | Integer | Site identifier |
 
-#### FID = 27: Route information, broadcast (msg 8, IMO Circ.289 §13)
+#### FID = 27 / 28: Route information — broadcast (msg 8, FID 27) and addressed (msg 6, FID 28) — IMO Circ.289 §13
+
+Both FIDs share the same payload layout.
 
 | Field | Type | Unit | Description |
 |-------|------|------|-------------|
@@ -701,6 +738,16 @@ Only the first sensor report's common header is decoded; per-sensor bodies are n
 | salinity | Float | percent | Salinity (0.0–50.9, 0.1 resolution). Omitted when the raw field is set to "not available". |
 | ice | Integer | – | Ice indicator |
 
+#### FID = 32: Tidal window (msg 6, IMO Circ.289 §3)
+
+Three current-prediction points are packed into a compact string. Each point gives latitude, longitude, current direction (degrees, or `-1` when not available), and current speed (knots, one decimal; `-1` when not available). Points whose latitude/longitude are out of range are skipped.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| month | Integer | UTC month |
+| day | Integer | UTC day |
+| tidal | String | `lat,lon,dir_deg,speed_kn;…` per point |
+
 ### IALA Zeni Lite Buoy (DAC = 0, FID = 0, msg 6) {#asm-iala}
 
 | Field | Type | Unit | Description |
@@ -713,6 +760,33 @@ Only the first sensor report's common header is decoded; per-sensor bodies are n
 | asm_battery_status | Boolean | – | Battery status |
 | asm_off_position_status | Boolean | – | Off-position status |
 | spare | Integer | – | Spare bits |
+
+### Flag-state text telegrams (DAC = 210 / 248 / 353) {#asm-flagtext}
+
+Several national / flag-state ASMs reuse the IMO Circ.236 6-bit ASCII text payload (the same encoding as DAC = 1, FID = 0). The following allocations are decoded with the same fields:
+
+- **DAC = 210 (Cyprus), FID = 0** — text telegram
+- **DAC = 248 (Malta), FID = 0** — text telegram
+- **DAC = 353 (Liberia), FID = 0** — text telegram
+
+| Field | Type | Description |
+|-------|------|-------------|
+| linkage_id | Integer | Message linkage ID |
+| text | String | Free-text payload (6-bit ASCII) |
+
+### Sweden STM — Sea Traffic Management route (DAC = 265) {#asm-stm}
+
+#### FID = 1: STM route message (msg 8)
+
+Broadcast on msg 8, up to 3 slots. The route is reconstructed from a delta-encoded chain of legs (first waypoint, 0–6 delta legs, then an absolute final leg). Header-only / cancellation messages produce no fields.
+
+| Field | Type | Unit | Description |
+|-------|------|------|-------------|
+| waypoints | String | – | Reconstructed waypoints as `lat,lon[;lat,lon]…` |
+| planned_speed | Float | knots | Planned speed for the final leg |
+| steering_mode | Integer | – | Steering mode (0 = manual, 1 = heading, 2 = track) |
+
+Spec reference: <https://www.e-navigation.nl/content/route-message-0>
 
 ### Inland AIS — CCNR VTT 1.2 (DAC = 200) {#asm-inland}
 
