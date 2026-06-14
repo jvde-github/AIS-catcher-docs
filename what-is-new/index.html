@@ -366,6 +366,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#web-viewer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web viewer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#community-feed" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -427,7 +438,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#web-viewer" class="md-nav__link">
+  <a href="#web-viewer_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Web Viewer
@@ -593,7 +604,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#web-viewer_1" class="md-nav__link">
+  <a href="#web-viewer_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         Web Viewer
@@ -3423,6 +3434,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#web-viewer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web viewer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#community-feed" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3484,7 +3506,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#web-viewer" class="md-nav__link">
+  <a href="#web-viewer_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Web Viewer
@@ -3650,7 +3672,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#web-viewer_1" class="md-nav__link">
+  <a href="#web-viewer_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         Web Viewer
@@ -4002,6 +4024,14 @@
 <li>Inland-specific FIDs (10/55) and the <strong>blue sign</strong> indicator are surfaced on the map and ship card.</li>
 <li><strong>Ship-type details</strong> are now reachable from a click popover with the full ITU description, and ERI / inland ship-type tables are complete and labelled correctly.</li>
 </ul>
+<h3 id="web-viewer">Web viewer<a class="headerlink" href="#web-viewer" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Box select on the map</strong> — drag a rectangle to show tracks for every vessel inside the area at once.</li>
+<li><strong>Reset tracks from now</strong> map action — clear historical track points and start fresh from the current time without dropping the vessels themselves.</li>
+<li><strong>GPS-derived station position</strong> is marked with a blue border and a tooltip so it is visually distinguishable from configured fixed positions.</li>
+<li><strong>Type 24B transponder details</strong> (vendor, model, serial) are now surfaced in the ship card's tech details.</li>
+<li><strong>Text telegrams</strong> (safety / broadcast text messages) are now displayed in the web viewer.</li>
+</ul>
 <h3 id="community-feed">Community feed<a class="headerlink" href="#community-feed" title="Permanent link">&para;</a></h3>
 <ul>
 <li>The community ship overlay has been replaced by a <strong>popup pane connected to <a href="https://aiscatcher.org/livemap">aiscatcher.org/livemap</a></strong> with two-way view synchronisation (map pan/zoom is shared) and local-vessel push.</li>
@@ -4015,14 +4045,15 @@
 <ul>
 <li><strong>Lossless mode</strong> for file and TCP inputs. <code>-ga LOSSLESS on/off</code> (FileRAW) and <code>-gt LOSSLESS on/off</code> (RTLTCP) control whether the input blocks or drops samples on overflow. Defaults preserve current behaviour: file replay is lossless (block), live TCP is lossy (drop). The current setting is shown in <code>-v</code> output.</li>
 <li><strong>Simpler inline settings</strong> for input flags. <code>-t</code>, <code>-r</code>, <code>-x</code>, <code>-z</code>, <code>-i</code>, <code>-w</code>, and <code>-e</code> now accept trailing key/value pairs after their positional arguments, so you can write <code>-t HOST PORT lossless on</code> instead of having to repeat the device subletter via <code>-gt</code>.</li>
+<li>New <strong><code>sensitivity_high</code></strong> config option for SDR input selects the higher-sensitivity ("challenger") decoder model — useful when you want maximum decode rate and CPU headroom allows it.</li>
 </ul>
 <h3 id="build-and-packaging">Build and packaging<a class="headerlink" href="#build-and-packaging" title="Permanent link">&para;</a></h3>
 <ul>
 <li>New CMake option <code>-DWEBVIEWER=OFF</code> produces a headless build without <code>WebDB</code>/<code>WebViewer</code>/<code>HTTPServer</code> (~1.5 MB smaller binary). The <code>-N</code> flag and the <code>server</code> config key are gated when the webviewer is disabled.</li>
-<li><strong><a href="../tools/python/"><code>aiscat</code></a></strong> — Python bindings for the AIS-catcher NMEA decoder are now published on PyPI. The package exposes a <code>Decoder</code> with <code>decode()</code> / <code>from_file</code> / <code>from_stdin</code> / <code>from_tcp</code> / <code>from_udp</code> helpers, multiple output formats (<code>dictionary</code>, <code>annotated</code>, <code>json</code>, <code>json_nmea</code>, <code>nmea</code>, <code>nmea_tag</code>, <code>binary</code>), and ships pre-built wheels including armv7l and Windows ARM64. See <a href="../tools/python/">Tools → Python</a> for details.</li>
+<li><strong><a href="../tools/python/"><code>aiscat</code></a></strong> — Python bindings for the AIS-catcher NMEA decoder are now published on PyPI. The package exposes a <code>Decoder</code> with <code>decode()</code> / <code>from_file</code> / <code>from_stdin</code> / <code>from_tcp</code> / <code>from_udp</code> helpers, multiple output formats (<code>dictionary</code>, <code>annotated</code>, <code>json</code>, <code>json_nmea</code>, <code>nmea</code>, <code>nmea_tag</code>, <code>binary</code>), and ships pre-built wheels including armv7l and Windows ARM64. Free-threaded (3.13t / 3.14t) wheels are also published, plus an additional decoder speedup. See <a href="../tools/python/">Tools → Python</a> for details.</li>
 </ul>
 <h2 id="version-068">Version 0.68<a class="headerlink" href="#version-068" title="Permanent link">&para;</a></h2>
-<h3 id="web-viewer">Web Viewer<a class="headerlink" href="#web-viewer" title="Permanent link">&para;</a></h3>
+<h3 id="web-viewer_1">Web Viewer<a class="headerlink" href="#web-viewer_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Fixed vessel track polylines drifting ahead of the ship marker due to an incremental merge bug</li>
 <li>Incremental plane updates now support <code>?since=</code> with timeout-based cleanup of stale aircraft</li>
@@ -4089,7 +4120,7 @@
 <li>Internal settings unified to a key-based API with structured error reporting (<code>SetKey</code>); legacy aliases kept for backward compatibility</li>
 <li>Community feed restricted to local SDR hardware only</li>
 </ul>
-<h3 id="web-viewer_1">Web Viewer<a class="headerlink" href="#web-viewer_1" title="Permanent link">&para;</a></h3>
+<h3 id="web-viewer_2">Web Viewer<a class="headerlink" href="#web-viewer_2" title="Permanent link">&para;</a></h3>
 <h4 id="vessel-tracks-major-overhaul">Vessel Tracks — Major Overhaul<a class="headerlink" href="#vessel-tracks-major-overhaul" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Incremental (delta) loading</strong>: only new path points are fetched on each update</li>

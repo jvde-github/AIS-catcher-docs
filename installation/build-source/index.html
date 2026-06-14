@@ -697,6 +697,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#cmake-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CMake options
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#microsoft-visual-studio-2019" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2853,6 +2864,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#cmake-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CMake options
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#microsoft-visual-studio-2019" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2987,6 +3009,26 @@ make
 sudo<span class="w"> </span>make<span class="w"> </span>install
 </code></pre></div>
 For the SDRPlay the software needs to be downloaded and installed from the website of the manufacturer. Once installed, the AIS-catcher build process automatically includes it in the build if available. </p>
+<h2 id="cmake-options">CMake options<a class="headerlink" href="#cmake-options" title="Permanent link">&para;</a></h2>
+<p>The build system exposes a number of CMake options that can be passed to <code>cmake ..</code> (each defaults to <strong>ON</strong> unless noted otherwise):</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-DWEBVIEWER=OFF</code></td>
+<td>Build a headless AIS-catcher without <code>WebDB</code>, <code>WebViewer</code>, and <code>HTTPServer</code>. The resulting binary is about 1.5 MB smaller; the <code>-N</code> flag and the <code>server</code> config key are gated off. Useful for backend / aggregator deployments that don't need the Visual Web Control.</td>
+</tr>
+</tbody>
+</table>
+<p>For example, to build a headless binary:</p>
+<div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>-DWEBVIEWER<span class="o">=</span>OFF<span class="w"> </span>..
+make
+</code></pre></div>
 <h2 id="microsoft-visual-studio-2019">Microsoft Visual Studio 2019+<a class="headerlink" href="#microsoft-visual-studio-2019" title="Permanent link">&para;</a></h2>
 <p>Ensure that you have <code>vcpkg</code> <a href="https://vcpkg.io/en/getting-started.html">installed</a> and integrated into Visual Studio via <code>vcpkg integrate install</code> (as Administrator). Then install the rtl-sdr drivers as follows:
 <div class="highlight"><pre><span></span><code>vcpkg install rtlsdr rtlsdr:x64-windows ZeroMQ ZeroMQ:x64-windows soxr soxr:x64-windows

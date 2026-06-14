@@ -3020,9 +3020,10 @@
 <p>There is typically no need to tweak the model settings but below is provided for the experimenters and the enthusiasts.</p>
 </blockquote>
 <h2 id="model-selection">Model Selection<a class="headerlink" href="#model-selection" title="Permanent link">&para;</a></h2>
-<p>The command line provides the <code>-m</code> option which selects the specific decoding model.  In the current version, 4 different receiver models are embedded for raw data samples:</p>
+<p>The command line provides the <code>-m</code> option which selects the specific decoding model.  In the current version, the following receiver models are embedded for raw data samples:</p>
 <ul>
 <li><strong>Default Model</strong> (<code>-m 2</code>): the default demodulation engine.</li>
+<li><strong>Challenger Model</strong> (<code>-m 4</code>): a higher-sensitivity demodulation engine — typically yields a few percent more decoded messages than the default at the cost of additional CPU. Easiest to enable via the <code>sensitivity_high</code> switch (see <a href="#nmea-model-settings">NMEA Model Settings</a> below) rather than <code>-m 4</code> directly.</li>
 <li><strong>Base Model (non-coherent)</strong> (<code>-m 1</code>): using FM discriminator model, similar to RTL-AIS (and GNUAIS/Aisdecoder) with tweaks to the Phase Locked Loop and main receiver filter (computed with a stochastic search algorithm).</li>
 <li><strong>Standard Model (non-coherent)</strong> (<code>-m 0</code>): as the Base Model with brute force timing recovery.</li>
 <li><strong>FM Discriminator model</strong>: (<code>`-m</code>3`) as the Standard Model but with the input already assumed to be the output of an FM discriminator. Hence no FM demodulation takes place which allows <code>AIS-catcher</code> to be used as GNUAIS and AISdecoder.</li>
@@ -3044,7 +3045,7 @@ The program will run and summarize the performance (count and timing) of three d
 In this example the Default Model performs quite well in contrast to the Standard non-coherent engine with 38 messages identified versus 4 for the standard engine. 
 This is typical when there are messages of poor quality. However, it increases the decoding time a bit and has a slightly higher memory usage so needs more powerful hardware. Please note that the improvements seen for this particular file are an exception.</p>
 <h2 id="other-models">Other models<a class="headerlink" href="#other-models" title="Permanent link">&para;</a></h2>
-<p>For completeness, the decoder for NMEA input as text is activated by <code>-m 5</code> and <code>-m</code>4` is an experimental implementation to test new ideas. In practice, the user will not require these settings.</p>
+<p>For completeness, the decoder for NMEA input as text is activated by <code>-m 5</code>. In practice, the user will not need to select it manually.</p>
 <h2 id="nmea-input">NMEA input<a class="headerlink" href="#nmea-input" title="Permanent link">&para;</a></h2>
 <p>AIS-catcher can be used as a command line utility that decodes NMEA lines in a file and prints the results as JSON. It provides a way to move the JSON analysis to the server side (send over NMEA with minimal metadata) or for unit testing the JSON decoder which was the prime reason for the addition of this feature. As an example:
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;!AIVDM,1,1,,B,3776k`5000a3SLPEKnDQQWpH0000,0*78&#39;</span><span class="w">  </span><span class="p">|</span><span class="w"> </span>AIS-catcher<span class="w"> </span>-r<span class="w"> </span>txt<span class="w"> </span>.<span class="w"> </span>-o<span class="w"> </span><span class="m">5</span>
@@ -3168,6 +3169,12 @@ Note that CRC/checksum is the simple xor-checksum for validating that the NMEA l
 <td>boolean</td>
 <td><span class="cmd-value">true</span></td>
 <td>Accept AIVDO messages</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">sensitivity_high</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">false</span></td>
+<td>Use the higher-sensitivity Challenger model (<code>-m 4</code>) instead of the default model (<code>-m 2</code>) for SDR input. Trades CPU for a few percent more decoded messages.</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">gps</span></td>

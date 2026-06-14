@@ -2163,6 +2163,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#cross-origin-access-cors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-origin access (CORS)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2965,6 +2976,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#cross-origin-access-cors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-origin access (CORS)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3075,6 +3097,20 @@ or as an overlay
 <div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>prome<span class="w"> </span>on
 </code></pre></div>
 <p>For more information on how to configure Prometheus and Grafana to get an initial dashboard, see <a href="../../../advanced/grafana/">README-grafana.md</a>.</p>
+<h2 id="cross-origin-access-cors">Cross-origin access (CORS)<a class="headerlink" href="#cross-origin-access-cors" title="Permanent link">&para;</a></h2>
+<p>The data endpoints intended for external consumers send an <code>Access-Control-Allow-Origin: *</code> header so that browser-based dashboards and other web pages can fetch them directly without a proxy. The HTML pages and other resources served by the web viewer are deliberately <em>not</em> CORS-exposed.</p>
+<p>CORS is enabled on:</p>
+<ul>
+<li><code>/api/ships.json</code>, <code>/ships.json</code>, <code>/api/ships_full.json</code>, <code>/api/ships_array.json</code></li>
+<li><code>/api/planes_array.json</code></li>
+<li><code>/api/binmsgs.json</code></li>
+<li><code>/api/history_full.json</code></li>
+<li><code>/api/stat.json</code>, <code>/stat.json</code></li>
+<li><code>/api/path.json</code>, <code>/api/allpath.json</code>, <code>/api/path.geojson</code>, <code>/api/allpath.geojson</code></li>
+<li><code>/kml</code></li>
+<li><code>/metrics</code> (Prometheus)</li>
+</ul>
+<p>The Content-Security-Policy served by the web viewer also accepts <code>http</code>/<code>ws</code> schemes in <code>img-src</code> and <code>connect-src</code> so LAN deployments work without a custom policy.</p>
 <h2 id="summary-settings">Summary Settings<a class="headerlink" href="#summary-settings" title="Permanent link">&para;</a></h2>
 <p>Server Options:</p>
 <div class="input-table">
