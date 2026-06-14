@@ -825,6 +825,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#sidebar-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sidebar layout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#input-device-selection" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -860,6 +871,39 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-flow-and-zones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Flow and Zones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System actions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced editor
+      
+    </span>
+  </a>
   
 </li>
         
@@ -2899,6 +2943,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#sidebar-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sidebar layout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#input-device-selection" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2934,6 +2989,39 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-flow-and-zones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Flow and Zones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System actions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced editor
+      
+    </span>
+  </a>
   
 </li>
         
@@ -3014,10 +3102,27 @@ the UI. Once, the configuration files are manually edited, certain functionality
 </ul>
 <p>You'll be prompted to change this password immediately for security reasons.</p>
 <p><img alt="image" src="https://github.com/user-attachments/assets/aea1eb3b-0344-47a9-8b4f-8ddd77ecdeb0" /></p>
+<h3 id="sidebar-layout">Sidebar layout<a class="headerlink" href="#sidebar-layout" title="Permanent link">&para;</a></h3>
+<p>Once logged in, the Visual Web Control sidebar gives you access to the following sections:</p>
+<ul>
+<li><strong>Control</strong> — start/stop the AIS-catcher service and watch the live log stream.</li>
+<li><strong>Webviewer</strong> — opens the local AIS web viewer in a new tab.</li>
+<li><strong>System</strong> — host info, service status, automatic update checks for both AIS-catcher and the Control panel itself, watchdog status, and system actions (install / update / reboot).</li>
+<li><strong>General</strong> — global settings (station name, coordinates, sharing toggle, language, etc.).</li>
+<li><strong>Device</strong> — input device selection and SDR settings.</li>
+<li><strong>Output</strong> — sub-pages: Community, UDP, TCP Client, TCP Servers, Webviewer, HTTP, MQTT.</li>
+<li><strong>Data Flow</strong> — visualise and route messages between receivers and outputs via <strong>zones</strong>.</li>
+<li><strong>Advanced</strong> — direct JSON / command-line editors (<code>config.json</code>, <code>config.cmd</code>) with <strong>Check</strong> and <strong>Format</strong> buttons that validate the document before save.</li>
+<li><strong>Change Password</strong> and <strong>Logout</strong>.</li>
+</ul>
 <h3 id="input-device-selection">Input Device Selection<a class="headerlink" href="#input-device-selection" title="Permanent link">&para;</a></h3>
-<p>Navigate to the <strong>Input</strong> section to select your input device. You can choose from connected devices or manually specify a device type and serial number. If you have only a single SDR device connected, you can leave the device selection as <strong>None</strong>, and AIS-catcher will automatically detect and use the available device. Click the search icon to let AIS-catcher detect available SDR hardware.</p>
+<p>Navigate to the <strong>Device</strong> section to select your input device. You can choose from connected devices or manually specify a device type and serial number. If you have only a single SDR device connected, you can leave the device selection as <strong>None</strong>, and AIS-catcher will automatically detect and use the available device. Click the search icon to let AIS-catcher detect available SDR hardware.</p>
 <p><img alt="image" src="https://github.com/user-attachments/assets/83cc4f88-7d76-49db-b126-e62a2b652663" /></p>
-<p>Specific device settings for your SDR or other input device can be set on this page as well. </p>
+<p>Specific device settings for your SDR or other input device can be set on this page as well. For SDR inputs (RTL-SDR, AirSpy, AirSpy HF+, HackRF, HydraSDR) two extra fields appear below the device selector:</p>
+<ul>
+<li><strong>Channel</strong> (<code>AB</code> or <code>CD</code>) — choose between the standard AIS channel pair (161.975 / 162.025 MHz) or the long-range channels.</li>
+<li><strong>High Sensitivity</strong> — toggles the higher-sensitivity ("Challenger") decoder model. Trades CPU for a few percent more decoded messages. Equivalent to the <code>sensitivity_high</code> setting documented in <a href="../../configuration/model/">Model Settings</a>.</li>
+</ul>
 <blockquote>
 <p><strong>Note: After modifying any settings, remember to save the changes and restart AIS-catcher in the Control section for them to take effect.</strong></p>
 </blockquote>
@@ -3025,17 +3130,36 @@ the UI. Once, the configuration files are manually edited, certain functionality
 <p>AIS-catcher allows you to share your data with the <a href="https://aiscatcher.org">aiscatcher.org</a> community. To enable this feature, go to <strong>Output &gt; Community</strong>. By default, sharing is anonymous and enabled, but you can generate and enter a sharing key to associate the data with your station and view statistics. Click <strong>Create</strong> to set up a station on aiscatcher.org and receive your sharing key. Here you can also opt not to share your feed with the community.</p>
 <p><img alt="image" src="https://github.com/user-attachments/assets/9f032bea-784f-465a-93f4-003a5fd7f587" /></p>
 <h4 id="local-webviewer">Local Webviewer<a class="headerlink" href="#local-webviewer" title="Permanent link">&para;</a></h4>
-<p>Under <strong>Output &gt; Web Viewer</strong>, you can configure the local web viewer. Activate the viewer and enter your station details, including a name and your geographical coordinates.</p>
+<p>Under <strong>Output &gt; Webviewer</strong>, you can configure the local web viewer. Activate the viewer and enter your station details, including a name and your geographical coordinates.</p>
+<p>Useful per-viewer toggles available here:</p>
+<ul>
+<li><strong>Use GPS</strong> — feed the station position from a connected GPS source instead of a fixed coordinate pair.</li>
+<li><strong>Ship Timeout</strong> (<code>history</code> setting, in seconds) — how long vessels stay visible after their last message (5 – 43200 s).</li>
+<li><strong>Backup</strong> (in minutes) — how often the in-memory database is written to disk so state survives restarts.</li>
+<li><strong>Web Control Link</strong> (<code>webcontrol_http</code>) — URL used by the viewer to surface a "Manage station" link back to this Control panel.</li>
+</ul>
 <p>The local web viewer is accessible from your Raspberry Pi (e.g., on port <strong>8100</strong>, accessed via <a href="http://zerowh:8100">http://zerowh:8100</a>) and is not accessible outside your local network by default. Some users choose to share their web viewer externally; see examples <a href="https://aiscatcher.org/dashboards">here</a>.</p>
 <blockquote>
 <p>Note: For a public page showcasing your station's performance, the easiest method is to feed data to aiscatcher.org using a sharing key.</p>
 </blockquote>
+<h3 id="data-flow-and-zones">Data Flow and Zones<a class="headerlink" href="#data-flow-and-zones" title="Permanent link">&para;</a></h3>
+<p>The <strong>Data Flow</strong> section visualises which receivers feed which outputs and lets you configure <strong>zones</strong> — named groupings used to tailor message routing per output channel. Zones are also referenced from the command line by the <code>sharing_zone</code> setting and from JSON configuration via the top-level <code>zones</code> array.</p>
+<h3 id="system-actions">System actions<a class="headerlink" href="#system-actions" title="Permanent link">&para;</a></h3>
+<p>The <strong>System</strong> section shows host information (load, memory, disk, AIS-catcher and Control versions) and lets you:</p>
+<ul>
+<li>check for updates of both AIS-catcher and AIS-catcher-control;</li>
+<li>start the update / install scripts and watch their progress live;</li>
+<li>reboot the host or reset a failed service;</li>
+<li>inspect the optional reboot watchdog status (enabled via the install script).</li>
+</ul>
+<h3 id="advanced-editor">Advanced editor<a class="headerlink" href="#advanced-editor" title="Permanent link">&para;</a></h3>
+<p>For configurations that can no longer be edited through the forms, <strong>Advanced &gt; Edit Config.json</strong> and <strong>Edit Config.cmd</strong> expose the raw files. Both editors now include <strong>Check</strong> (validate JSON / command syntax) and <strong>Format</strong> (pretty-print) buttons to catch typos before you save. The Check &amp; Format pipeline also migrates older config layouts and normalises types on the fly.</p>
 <h3 id="service-control">Service Control<a class="headerlink" href="#service-control" title="Permanent link">&para;</a></h3>
 <p>Navigate to <strong>Control</strong> to manage the AIS-catcher service:</p>
 <ul>
 <li><strong>Start/Stop</strong> the service.</li>
 <li>Enable <strong>Auto-Start</strong> functionality.</li>
-<li>Monitor the service status through the log display.</li>
+<li>Monitor the service status through the live log stream (colour-coded by level: error, warning, notice, info, debug).</li>
 </ul>
 <p><img alt="image" src="https://github.com/user-attachments/assets/abf29893-0567-4b94-9354-e0630cc6f9fc" /></p>
 <h2 id="accessing-the-ais-web-viewer">Accessing the AIS Web Viewer<a class="headerlink" href="#accessing-the-ais-web-viewer" title="Permanent link">&para;</a></h2>
