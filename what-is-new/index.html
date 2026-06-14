@@ -344,10 +344,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#new-asm-decoders-dac-1-and-dac-200" class="md-nav__link">
+  <a href="#new-asm-decoders" class="md-nav__link">
     <span class="md-ellipsis">
       
-        New ASM decoders (DAC 1 and DAC 200)
+        New ASM decoders
       
     </span>
   </a>
@@ -3412,10 +3412,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#new-asm-decoders-dac-1-and-dac-200" class="md-nav__link">
+  <a href="#new-asm-decoders" class="md-nav__link">
     <span class="md-ellipsis">
       
-        New ASM decoders (DAC 1 and DAC 200)
+        New ASM decoders
       
     </span>
   </a>
@@ -4012,11 +4012,13 @@
 <li><strong>Type 23</strong>: <code>ship_type</code> is renamed to <code>shiptype</code> and now includes a <code>shiptype_text</code> description, matching the convention used elsewhere.</li>
 <li>New ASM decoder for <strong>DAC 366, FID 10</strong> (IALA AtoN monitor; messages 6/8/26).</li>
 </ul>
-<h3 id="new-asm-decoders-dac-1-and-dac-200">New ASM decoders (DAC 1 and DAC 200)<a class="headerlink" href="#new-asm-decoders-dac-1-and-dac-200" title="Permanent link">&para;</a></h3>
+<h3 id="new-asm-decoders">New ASM decoders<a class="headerlink" href="#new-asm-decoders" title="Permanent link">&para;</a></h3>
 <p>A range of widely deployed Application-Specific Messages is now expanded into structured JSON fields:</p>
 <ul>
-<li><strong>IMO Circ.289 (DAC 1)</strong> — FID 20 (berthing data / port operations), FID 23 (area notice / navigation safety), FID 25 (dangerous cargo / IMDG).</li>
+<li><strong>IMO Circ.289 (DAC 1)</strong> — FID 17 (VTS-generated targets), FID 19 (marine traffic signal), FID 20 (berthing data / port operations), FID 22 (area notice, broadcast), FID 23 (area notice, addressed), FID 24 (extended ship static), FID 25 (dangerous cargo / IMDG), FID 28 (route addressed), FID 32 (tidal window).</li>
 <li><strong>Inland AIS — CCNR VTT 1.2 (DAC 200)</strong> — FID 21 (ETA at lock/bridge/terminal), FID 22 (RTA at lock/bridge/terminal), FID 23 (EMMA safety warning), FID 24 (water level gauges, up to four stations), FID 40 (signal station status).</li>
+<li><strong>Sweden STM (DAC 265, FID 1)</strong> — Sea Traffic Management route messages, with full waypoint reconstruction from the delta-encoded leg chain.</li>
+<li><strong>Flag-state text telegrams</strong> — DAC 210 (Cyprus), 248 (Malta), 353 (Liberia) FID 0 now decode as text.</li>
 </ul>
 <h3 id="inland-ais-in-the-web-viewer">Inland AIS in the web viewer<a class="headerlink" href="#inland-ais-in-the-web-viewer" title="Permanent link">&para;</a></h3>
 <ul>
