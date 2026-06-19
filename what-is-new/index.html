@@ -321,6 +321,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#version-070" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.70
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 0.70">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#networking-stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Networking &amp; stability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-viewer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web viewer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bug fixes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#version-069" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -366,7 +416,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#web-viewer" class="md-nav__link">
+  <a href="#web-viewer_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Web viewer
@@ -438,7 +488,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#web-viewer_1" class="md-nav__link">
+  <a href="#web-viewer_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         Web Viewer
@@ -604,7 +654,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#web-viewer_2" class="md-nav__link">
+  <a href="#web-viewer_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         Web Viewer
@@ -649,7 +699,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#bug-fixes" class="md-nav__link">
+  <a href="#bug-fixes_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Bug Fixes
@@ -3389,6 +3439,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#version-070" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.70
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 0.70">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#networking-stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Networking &amp; stability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-viewer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web viewer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bug fixes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#version-069" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3434,7 +3534,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#web-viewer" class="md-nav__link">
+  <a href="#web-viewer_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Web viewer
@@ -3506,7 +3606,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#web-viewer_1" class="md-nav__link">
+  <a href="#web-viewer_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         Web Viewer
@@ -3672,7 +3772,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#web-viewer_2" class="md-nav__link">
+  <a href="#web-viewer_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         Web Viewer
@@ -3717,7 +3817,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#bug-fixes" class="md-nav__link">
+  <a href="#bug-fixes_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Bug Fixes
@@ -4002,6 +4102,28 @@
 
 
 <h1 id="whats-new">What's New?<a class="headerlink" href="#whats-new" title="Permanent link">&para;</a></h1>
+<h2 id="version-070">Version 0.70<a class="headerlink" href="#version-070" title="Permanent link">&para;</a></h2>
+<h3 id="networking-stability">Networking &amp; stability<a class="headerlink" href="#networking-stability" title="Permanent link">&para;</a></h3>
+<p>This release focuses on making the network output more robust under load and on unreliable links.</p>
+<ul>
+<li><strong>Rewritten TCP server</strong>: the built-in TCP server now uses <code>poll()</code> and handles up to 128 simultaneous client connections.</li>
+<li><strong>Bounded output queues</strong>: the HTTP and TCP output queues now have a fixed size and drop the oldest message when a slow consumer cannot keep up, preventing unbounded memory growth.</li>
+<li><strong>Dropped-message statistic</strong>: a new <strong>Dropped</strong> counter is reported in the output statistics so you can see when messages are being dropped to a slow connection.</li>
+<li><strong>Recovery of wedged sockets</strong>: outgoing TCP connections now use <code>TCP_USER_TIMEOUT</code> and a periodic reset with random jitter, so dead or half-open connections are detected and re-established instead of silently stalling.</li>
+<li><strong>Quieter logs</strong>: a remote peer closing the connection (<code>recv()</code> returning 0) is now treated as a clean disconnect instead of being logged as a spurious <code>recv() error 0</code>.</li>
+</ul>
+<h3 id="web-viewer">Web viewer<a class="headerlink" href="#web-viewer" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The new <strong>Dropped</strong> message count is shown in the output statistics panel.</li>
+<li>Fixed dragging of right/bottom-anchored stat cards, which now move instead of stretching.</li>
+<li>A more open gear icon for the settings button.</li>
+</ul>
+<h3 id="bug-fixes">Bug fixes<a class="headerlink" href="#bug-fixes" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>ADS-B</strong>: trailing space padding is now stripped from aircraft callsigns.</li>
+<li>Fixed a <strong>CTRL-C hang</strong> when replaying from standard input.</li>
+<li>Smoother output during file replay (stdout flushing is deferred while replaying).</li>
+</ul>
 <h2 id="version-069">Version 0.69<a class="headerlink" href="#version-069" title="Permanent link">&para;</a></h2>
 <h3 id="itu-r-m1371-6-alignment">ITU-R M.1371-6 alignment<a class="headerlink" href="#itu-r-m1371-6-alignment" title="Permanent link">&para;</a></h3>
 <p>The JSON output has been aligned with the 2026 ITU-R M.1371-6 spec.</p>
@@ -4026,7 +4148,7 @@
 <li>Inland-specific FIDs (10/55) and the <strong>blue sign</strong> indicator are surfaced on the map and ship card.</li>
 <li><strong>Ship-type details</strong> are now reachable from a click popover with the full ITU description, and ERI / inland ship-type tables are complete and labelled correctly.</li>
 </ul>
-<h3 id="web-viewer">Web viewer<a class="headerlink" href="#web-viewer" title="Permanent link">&para;</a></h3>
+<h3 id="web-viewer_1">Web viewer<a class="headerlink" href="#web-viewer_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Box select on the map</strong> — drag a rectangle to show tracks for every vessel inside the area at once.</li>
 <li><strong>Reset tracks from now</strong> map action — clear historical track points and start fresh from the current time without dropping the vessels themselves.</li>
@@ -4055,7 +4177,7 @@
 <li><strong><a href="../tools/python/"><code>aiscat</code></a></strong> — Python bindings for the AIS-catcher NMEA decoder are now published on PyPI. The package exposes a <code>Decoder</code> with <code>decode()</code> / <code>from_file</code> / <code>from_stdin</code> / <code>from_tcp</code> / <code>from_udp</code> helpers, multiple output formats (<code>dictionary</code>, <code>annotated</code>, <code>json</code>, <code>json_nmea</code>, <code>nmea</code>, <code>nmea_tag</code>, <code>binary</code>), and ships pre-built wheels including armv7l and Windows ARM64. Free-threaded (3.13t / 3.14t) wheels are also published, plus an additional decoder speedup. See <a href="../tools/python/">Tools → Python</a> for details.</li>
 </ul>
 <h2 id="version-068">Version 0.68<a class="headerlink" href="#version-068" title="Permanent link">&para;</a></h2>
-<h3 id="web-viewer_1">Web Viewer<a class="headerlink" href="#web-viewer_1" title="Permanent link">&para;</a></h3>
+<h3 id="web-viewer_2">Web Viewer<a class="headerlink" href="#web-viewer_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Fixed vessel track polylines drifting ahead of the ship marker due to an incremental merge bug</li>
 <li>Incremental plane updates now support <code>?since=</code> with timeout-based cleanup of stale aircraft</li>
@@ -4122,7 +4244,7 @@
 <li>Internal settings unified to a key-based API with structured error reporting (<code>SetKey</code>); legacy aliases kept for backward compatibility</li>
 <li>Community feed restricted to local SDR hardware only</li>
 </ul>
-<h3 id="web-viewer_2">Web Viewer<a class="headerlink" href="#web-viewer_2" title="Permanent link">&para;</a></h3>
+<h3 id="web-viewer_3">Web Viewer<a class="headerlink" href="#web-viewer_3" title="Permanent link">&para;</a></h3>
 <h4 id="vessel-tracks-major-overhaul">Vessel Tracks — Major Overhaul<a class="headerlink" href="#vessel-tracks-major-overhaul" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Incremental (delta) loading</strong>: only new path points are fetched on each update</li>
@@ -4140,7 +4262,7 @@
 <li>Shrunk <code>favicon.ico</code> from 97 KB to 15 KB</li>
 <li><code>marked</code> library now bundled (no CDN runtime dependency)</li>
 </ul>
-<h4 id="bug-fixes">Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permanent link">&para;</a></h4>
+<h4 id="bug-fixes_1">Bug Fixes<a class="headerlink" href="#bug-fixes_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Signal level charts</strong>: fixed extreme values for UDP/TCP sources</li>
 <li>Static data refreshed correctly when a ship comes back into scope</li>
