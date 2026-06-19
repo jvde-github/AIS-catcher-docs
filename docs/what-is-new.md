@@ -1,5 +1,29 @@
 # What's New?
 
+## Version 0.70
+
+### Networking & stability
+
+This release focuses on making the network output more robust under load and on unreliable links.
+
+- **Rewritten TCP server**: the built-in TCP server now uses `poll()` and handles up to 128 simultaneous client connections.
+- **Bounded output queues**: the HTTP and TCP output queues now have a fixed size and drop the oldest message when a slow consumer cannot keep up, preventing unbounded memory growth.
+- **Dropped-message statistic**: a new **Dropped** counter is reported in the output statistics so you can see when messages are being dropped to a slow connection.
+- **Recovery of wedged sockets**: outgoing TCP connections now use `TCP_USER_TIMEOUT` and a periodic reset with random jitter, so dead or half-open connections are detected and re-established instead of silently stalling.
+- **Quieter logs**: a remote peer closing the connection (`recv()` returning 0) is now treated as a clean disconnect instead of being logged as a spurious `recv() error 0`.
+
+### Web viewer
+
+- The new **Dropped** message count is shown in the output statistics panel.
+- Fixed dragging of right/bottom-anchored stat cards, which now move instead of stretching.
+- A more open gear icon for the settings button.
+
+### Bug fixes
+
+- **ADS-B**: trailing space padding is now stripped from aircraft callsigns.
+- Fixed a **CTRL-C hang** when replaying from standard input.
+- Smoother output during file replay (stdout flushing is deferred while replaying).
+
 ## Version 0.69
 
 ### ITU-R M.1371-6 alignment
