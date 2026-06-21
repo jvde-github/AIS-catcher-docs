@@ -59,7 +59,7 @@ Use the appropriate protocol based on your server's configuration and data forma
 | Specific Options | | | |
 | <span class="cmd-setting">host</span> | string | <span class="cmd-value">-</span> | Remote host address |
 | <span class="cmd-setting">port</span> | string | <span class="cmd-value">-</span> | Remote port number |
-| <span class="cmd-setting">protocol</span> | string | <span class="cmd-value">rtltcp</span> | Protocol (RTLTCP/MQTT/GPSD/WS/WSMQTT) |
+| <span class="cmd-setting">protocol</span> | string | <span class="cmd-value">rtltcp</span> | Protocol (rtltcp/txt/mqtt/wsmqtt/ws/gpsd/basestation/beast/raw1090) |
 | <span class="cmd-setting">url</span> | string | <span class="cmd-value">-</span> | Complete URL including protocol and credentials |
 | | | | |
 | TCP Options | | | |
