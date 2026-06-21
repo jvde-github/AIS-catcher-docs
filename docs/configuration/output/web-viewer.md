@@ -166,9 +166,9 @@ Server Options:
 | <span class="cmd-setting">kml</span> | boolean | <span class="cmd-value">false</span> | Enable KML output |
 | <span class="cmd-setting">geojson</span> | boolean | <span class="cmd-value">false</span> | Enable GeoJSON output |
 | <span class="cmd-setting">prome</span> | boolean | <span class="cmd-value">false</span> | Enable Prometheus metrics |
-| <span class="cmd-setting">message</span> (alias <span class="cmd-setting">msg</span>) | boolean | <span class="cmd-value">false</span> | Store the latest decoded message per vessel, viewable via the **Show Last Message** item in the vessel's right-click menu |
 | | | | |
 | UI Customization | | | | 
+| <span class="cmd-setting">message</span> (alias <span class="cmd-setting">msg</span>) | boolean | <span class="cmd-value">false</span> | Store the latest decoded message per vessel, viewable via the **Show Last Message** item in the vessel's right-click menu |
 | <span class="cmd-setting">station</span> | string | <span class="cmd-value">-</span> | Station display name |
 | <span class="cmd-setting">station_link</span> | string | <span class="cmd-value">-</span> | Station info URL |
 | <span class="cmd-setting">webcontrol_http</span> | string | <span class="cmd-value">-</span> | URL for external web control endpoint |
