@@ -3080,13 +3080,8 @@ You can also include all plugin files from a specific directory using the comman
 </code></pre></div>
 Files need to have the extension <code>.pjs</code> and <code>.pss</code> for respectively JavaScript and CSS style plugins. The repository includes a few example plugins that demonstrate how to add additional maps or cater to regional preferences. Examples of plugins can be found in <a href="https://github.com/jvde-github/AIS-Catcher-PLUGINS">another</a> GitHub repository.</p>
 <h2 id="offline-web-viewer">Offline web viewer<a class="headerlink" href="#offline-web-viewer" title="Permanent link">&para;</a></h2>
-<p>There is an option to run the web viewer without relying on online libraries. This facilitates using the web interface whilst traveling without an internet connection. The steps are simple. First, go to your home directory (say <code>/home/jasper</code>) and clone the necessary offline web assets:
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jvde-github/webassets.git
-</code></pre></div>
-This will create a directory <code>webassets</code> that we need to share with AIS-catcher as an alternative location for online web content  with the CDN argument followed by the location of the web assets directory:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>cdn<span class="w"> </span>/home/jasper/webassets
-</code></pre></div>
-Offline maps can also be included in <code>mbtiles</code> format:
+<p>The web viewer runs without an internet connection out of the box: all web libraries are now bundled into AIS-catcher, so no online content is fetched to render the interface. This facilitates using the web interface whilst traveling.</p>
+<p>Offline <em>maps</em> can be included in <code>mbtiles</code> format:
 <div class="highlight"><pre><span></span><code>AIS-catcher<span class="w">  </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>mbtiles<span class="w"> </span>filename
 </code></pre></div>
 or as an overlay
@@ -3107,6 +3102,8 @@ or as an overlay
 <li><code>/api/history_full.json</code></li>
 <li><code>/api/stat.json</code>, <code>/stat.json</code></li>
 <li><code>/api/path.json</code>, <code>/api/allpath.json</code>, <code>/api/path.geojson</code>, <code>/api/allpath.geojson</code></li>
+<li><code>/api/message</code>, <code>/api/vessel</code> (per-vessel last message and details)</li>
+<li><code>/api/decode</code> (when <code>decoder</code> is enabled)</li>
 <li><code>/kml</code></li>
 <li><code>/metrics</code> (Prometheus)</li>
 </ul>
@@ -3171,6 +3168,12 @@ or as an overlay
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
 <td>Log HTTP requests</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">frame_ancestors</span></td>
+<td>string</td>
+<td><span class="cmd-value">-</span></td>
+<td>CSP <code>frame-ancestors</code> value; set to allow embedding the viewer in an <code>&lt;iframe&gt;</code></td>
 </tr>
 <tr>
 <td><span class="cmd-setting">groups_in</span></td>
@@ -3263,6 +3266,12 @@ or as an overlay
 <td>Statistics file path</td>
 </tr>
 <tr>
+<td><span class="cmd-setting">stats_on_close</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">false</span></td>
+<td>Write/print statistics when the server shuts down</td>
+</tr>
+<tr>
 <td><span class="cmd-setting">realtime</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
@@ -3305,10 +3314,10 @@ or as an overlay
 <td>Enable Prometheus metrics</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">message</span></td>
+<td><span class="cmd-setting">message</span> (alias <span class="cmd-setting">msg</span>)</td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
-<td>Enable message saving</td>
+<td>Store the last raw message per vessel so the web viewer can show it in the ship card</td>
 </tr>
 <tr>
 <td></td>
@@ -3345,12 +3354,6 @@ or as an overlay
 <td>string</td>
 <td><span class="cmd-value">settings</span></td>
 <td>Default web viewer context/tab</td>
-</tr>
-<tr>
-<td><span class="cmd-setting">cdn</span></td>
-<td>string</td>
-<td><span class="cmd-value">-</span></td>
-<td>Local CDN resources path</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">mbtiles</span></td>
@@ -3403,6 +3406,7 @@ or as an overlay
 </tbody>
 </table>
 </div>
+<p>In addition to the options above, the web viewer accepts the standard <a href="../message-filtering/">message-filtering</a> settings (e.g. <code>FILTER on</code>, allow/block by message type or channel). These restrict which messages reach this particular viewer.</p>
 
 
 
