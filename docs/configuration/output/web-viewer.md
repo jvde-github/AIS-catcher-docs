@@ -87,15 +87,9 @@ AIS-catcher -N 8100 plugin_dir /usr/share/aiscatcher/plugins
 Files need to have the extension ``.pjs`` and ``.pss`` for respectively JavaScript and CSS style plugins. The repository includes a few example plugins that demonstrate how to add additional maps or cater to regional preferences. Examples of plugins can be found in [another](https://github.com/jvde-github/AIS-Catcher-PLUGINS) GitHub repository.
 
 ## Offline web viewer
-There is an option to run the web viewer without relying on online libraries. This facilitates using the web interface whilst traveling without an internet connection. The steps are simple. First, go to your home directory (say `/home/jasper`) and clone the necessary offline web assets:
-```bash
-git clone https://github.com/jvde-github/webassets.git
-```
-This will create a directory `webassets` that we need to share with AIS-catcher as an alternative location for online web content  with the CDN argument followed by the location of the web assets directory:
-```bash
-AIS-catcher -N 8100 cdn /home/jasper/webassets
-```
-Offline maps can also be included in `mbtiles` format:
+The web viewer runs without an internet connection out of the box: all web libraries are now bundled into AIS-catcher, so no online content is fetched to render the interface. This facilitates using the web interface whilst traveling.
+
+Offline *maps* can be included in `mbtiles` format:
 ```bash
 AIS-catcher  -N 8100 mbtiles filename
 ```
@@ -126,6 +120,8 @@ CORS is enabled on:
 - `/api/history_full.json`
 - `/api/stat.json`, `/stat.json`
 - `/api/path.json`, `/api/allpath.json`, `/api/path.geojson`, `/api/allpath.geojson`
+- `/api/message`, `/api/vessel` (per-vessel last message and details)
+- `/api/decode` (when `decoder` is enabled)
 - `/kml`
 - `/metrics` (Prometheus)
 
@@ -146,6 +142,7 @@ Server Options:
 | <span class="cmd-setting">zlib</span> | boolean | <span class="cmd-value">true</span> | Enable response compression |
 | <span class="cmd-setting">server_mode</span> | boolean | <span class="cmd-value">false</span> | Enable hardened multi-station server mode |
 | <span class="cmd-setting">log</span> | boolean | <span class="cmd-value">false</span> | Log HTTP requests |
+| <span class="cmd-setting">frame_ancestors</span> | string | <span class="cmd-value">-</span> | CSP `frame-ancestors` value; set to allow embedding the viewer in an `<iframe>` |
 | <span class="cmd-setting">groups_in</span> | integer | <span class="cmd-value">all</span> | Bitmask of input groups feeding the viewer |
 | <span class="cmd-setting">zone</span> | string | <span class="cmd-value">-</span> | Comma-separated zone tags routed to this viewer |
 | | | | |
@@ -161,6 +158,7 @@ Server Options:
 | <span class="cmd-setting">cutoff</span> | integer | <span class="cmd-value">-</span> | Max Distance threshold (0-10000) | 
 | <span class="cmd-setting">backup</span> | integer | <span class="cmd-value">-1</span> | Backup interval (5-2880 min) |
 | <span class="cmd-setting">file</span> | string | <span class="cmd-value">-</span> | Statistics file path |
+| <span class="cmd-setting">stats_on_close</span> | boolean | <span class="cmd-value">false</span> | Write/print statistics when the server shuts down |
 | <span class="cmd-setting">realtime</span> | boolean | <span class="cmd-value">false</span> | Enable real-time updates |
 | <span class="cmd-setting">decoder</span> | boolean | <span class="cmd-value">false</span> | Enable online NMEA decoder |
 | | | | |
@@ -168,14 +166,13 @@ Server Options:
 | <span class="cmd-setting">kml</span> | boolean | <span class="cmd-value">false</span> | Enable KML output |
 | <span class="cmd-setting">geojson</span> | boolean | <span class="cmd-value">false</span> | Enable GeoJSON output |
 | <span class="cmd-setting">prome</span> | boolean | <span class="cmd-value">false</span> | Enable Prometheus metrics |
-| <span class="cmd-setting">message</span> | boolean | <span class="cmd-value">false</span> | Enable message saving |
+| <span class="cmd-setting">message</span> (alias <span class="cmd-setting">msg</span>) | boolean | <span class="cmd-value">false</span> | Store the last raw message per vessel so the web viewer can show it in the ship card |
 | | | | |
 | UI Customization | | | | 
 | <span class="cmd-setting">station</span> | string | <span class="cmd-value">-</span> | Station display name |
 | <span class="cmd-setting">station_link</span> | string | <span class="cmd-value">-</span> | Station info URL |
 | <span class="cmd-setting">webcontrol_http</span> | string | <span class="cmd-value">-</span> | URL for external web control endpoint |
 | <span class="cmd-setting">context</span> | string | <span class="cmd-value">settings</span> | Default web viewer context/tab |
-| <span class="cmd-setting">cdn</span> | string | <span class="cmd-value">-</span> | Local CDN resources path |
 | <span class="cmd-setting">mbtiles</span> | string | <span class="cmd-value">-</span> | Offline map in mbtiles format |
 | <span class="cmd-setting">mboverlay</span> | string | <span class="cmd-value">-</span> | Offline overlay in mbtiles format |
 | <span class="cmd-setting">fstiles</span> | string | <span class="cmd-value">-</span> | Offline map from filesystem tile directory |
@@ -185,3 +182,5 @@ Server Options:
 | <span class="cmd-setting">plugin_dir</span> | string | <span class="cmd-value">-</span> | Plugins directory |
 | <span class="cmd-setting">about</span> | string | <span class="cmd-value">-</span> | About page path |
 </div>
+
+In addition to the options above, the web viewer accepts the standard [message-filtering](message-filtering.md) settings (e.g. `FILTER on`, allow/block by message type or channel). These restrict which messages reach this particular viewer.
