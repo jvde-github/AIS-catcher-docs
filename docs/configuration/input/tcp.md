@@ -64,8 +64,8 @@ Use the appropriate protocol based on your server's configuration and data forma
 | | | | |
 | TCP Options | | | |
 | <span class="cmd-setting">persist</span> | boolean | <span class="cmd-value">true</span> | Keep reconnecting after errors |
-| <span class="cmd-setting">keep_alive</span> | boolean | <span class="cmd-value">false</span> | Enable TCP keepalive |
-| <span class="cmd-setting">reset</span> | integer | <span class="cmd-value">0</span> | Reset connection after N minutes (0=never; range 0-3600) |
+| <span class="cmd-setting">keep_alive</span> | boolean | <span class="cmd-value">true</span> | Enable TCP keepalive |
+| <span class="cmd-setting">reset</span> | integer | <span class="cmd-value">0</span> | Periodically reset the connection after N minutes to recover wedged links (0=never; range 0-3600). A ±10% random jitter is applied to avoid synchronised reconnects. |
 | <span class="cmd-setting">timeout</span> | integer | <span class="cmd-value">0</span> | Connection timeout in seconds (range 0-3600) |
 | | | | |
 | WebSocket Options | | | |
