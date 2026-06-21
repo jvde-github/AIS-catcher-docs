@@ -3009,14 +3009,14 @@
 <tr>
 <td><span class="cmd-setting">keep_alive</span></td>
 <td>boolean</td>
-<td><span class="cmd-value">false</span></td>
+<td><span class="cmd-value">true</span></td>
 <td>Enable TCP keepalive</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">reset</span></td>
 <td>integer</td>
 <td><span class="cmd-value">0</span></td>
-<td>Reset connection after N minutes (0=never; range 0-3600)</td>
+<td>Periodically reset the connection after N minutes to recover wedged links (0=never; range 0-3600). A ±10% random jitter is applied to avoid synchronised reconnects.</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">timeout</span></td>
