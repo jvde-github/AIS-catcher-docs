@@ -37,6 +37,28 @@ AIS-catcher -s 1536K -a 192K -p 1
 
 The format option sets the data type for the input source. This is less relevant for SDRs but is useful when reading raw data from file or an internet connection.
 
+## AIS channel selection (`-c`)
+
+The `-c` option selects which AIS channel pair a receiver tunes to:
+
+```bash
+AIS-catcher -d serial1 -c CD
+```
+
+- **`-c AB`** (default) — the standard maritime AIS channels A (161.975 MHz) and B (162.025 MHz); the SDR is tuned to a 162.000 MHz centre frequency.
+- **`-c CD`** — the long-range AIS channels C and D; the SDR is tuned to a 156.800 MHz centre frequency.
+
+Because `-c` changes the **tuning frequency of the radio**, it only has an effect for SDR/RF inputs (RTL-SDR, AirSpy, HackRF, SDRplay, SoapySDR, SpyServer, RTL-TCP, raw I/Q files, …). For inputs that already carry decoded NMEA — text files, `txt://` TCP feeds, UDP, serial NMEA — the channel is taken from the sentence itself and `-c` does not retune anything.
+
+Optionally a second argument overrides the **NMEA channel designation** written into the output (the letters reported in the AIVDM sentence), without changing the tuning:
+
+```bash
+# Tune to the A/B frequencies but label the output channels C and D
+AIS-catcher -c AB CD
+```
+
+When omitted, the designation follows the selected pair (`AB` → `A`/`B`, `CD` → `C`/`D`).
+
 ## Multiple device input
 
 We can run with multiple receivers in parallel. For example, one dongle for channel A+B and one dongle for channel C+D. To run with two receivers in parallel you can use a command like:
