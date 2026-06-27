@@ -1,5 +1,23 @@
 # What's New?
 
+## Edge
+
+### Web viewer
+
+- **Refreshed interface** — tighter tables, a modern search bar, a redesigned column toolbar on the Ships tab, and smaller map count/measure icons for a cleaner map.
+- **Restyled map controls** — the controls are grouped into a rounded pill, the attribution folds out instead of always showing, and **Measure** is now available from the right-click context menu.
+- **Better labels in busy areas** — the selected vessel's label is kept on top in dense clusters, with a new **Prioritize selected label** option (on by default) and a **Show label only for selected vessel** option. The selected vessel's icon is also drawn above surrounding labels.
+- **Ship card docking** — the ship card can now be placed in the top-left corner with floating-card styling.
+- **Automatic station location** — when no station latitude/longitude is configured, the web viewer falls back to the receiver location (`-Z`) so your station still shows on the map.
+
+### Devices
+
+- **SDRplay** — no longer crashes or aborts when the SDRplay API v3 service is not running, with more robust device open and antenna validation.
+
+### NMEA 2000
+
+- **Correct AIS text over N2K** — Aid-to-Navigation names, safety-related text, and vessel name/callsign fields are now encoded correctly when output over NMEA 2000.
+
 ## Version 0.70
 
 ### Networking & stability
