@@ -2,6 +2,14 @@
 
 ## Edge
 
+### Built-in control panel
+
+- **Configure AIS-catcher from the browser** — a new managed mode (`AIS-catcher -E [config file] [address:port]`) starts a built-in control panel, by default on `http://localhost:8118`. A setup wizard walks you through input device and output configuration on first use, and the **Input** and **Output** tabs let you fine-tune everything afterwards — no config file editing needed. See [Online Configuration](usage/online-configuration.md).
+- **Remote administration with password protection** — bind to `0.0.0.0` to manage the station from another machine; the panel then requires setting a password on first access.
+- **Managed web viewer** — in managed mode the web viewer is started automatically on the port above the control panel (8119 by default).
+- **Easy install** — the install script's new `-M`/`--managed` option sets up the systemd service in managed mode, and the Windows zip includes `start-GUI.bat` to launch AIS-catcher with the control panel.
+- See also the new [Quick Start guide](https://www.aiscatcher.org/quickstart) on aiscatcher.org — from zero to a running station in six steps.
+
 ### Web viewer
 
 - **Refreshed interface** — tighter tables, a modern search bar, a redesigned column toolbar on the Ships tab, and smaller map count/measure icons for a cleaner map.
@@ -123,7 +131,7 @@ A range of widely deployed Application-Specific Messages is now expanded into st
 
 #### HydraSDR Support
 
-HydraSDR is now a supported input device. See the [HydraSDR input page](../configuration/input/hydrasdr.md) for details.
+HydraSDR is now a supported input device. See the [HydraSDR input page](configuration/input/hydrasdr.md) for details.
 
 #### Duplicate Removal
 

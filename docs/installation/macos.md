@@ -85,7 +85,15 @@ This command will display all the input devices and features that are included i
 
 ## Running AIS-catcher
 
-To start receiving AIS messages with your RTL-SDR dongle:
+The recommended way to get started is with the built-in control panel, so you can finalize the configuration in the browser:
+
+```bash
+AIS-catcher -E /tmp/aiscatcher.json 127.0.0.1:8118
+```
+
+Then open `http://localhost:8118` in a browser — a setup wizard walks you through configuring your input device and outputs. See [Online Configuration](../usage/online-configuration.md) for details.
+
+Alternatively, start receiving AIS messages with your RTL-SDR dongle directly from the command line:
 
 ```bash
 AIS-catcher

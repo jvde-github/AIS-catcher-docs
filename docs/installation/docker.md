@@ -4,8 +4,31 @@
 
 Jump to the desired Installation Option:
 
+[Built-in Control Panel](#docker-with-built-in-control-panel){ .md-button .md-button--secondary }
 [Basic](#basic-docker-container){ .md-button .md-button--secondary }
 [Visual Web Control](#docker-with-visual-web-control){ .md-button .md-button--secondary }
+
+## Docker with Built-in Control Panel
+
+The easiest way to run AIS-catcher in Docker is with the built-in control panel: start the container in managed mode and finalize the configuration in the browser.
+
+```console
+docker run --rm -it --network=host --device /dev/bus/usb ghcr.io/jvde-github/ais-catcher:edge -E /tmp/config.json 127.0.0.1:8118
+```
+
+Then open `http://localhost:8118` in a browser — a setup wizard walks you through configuring your input device and outputs.
+
+A few notes:
+
+- `--device /dev/bus/usb` passes an RTL-SDR through. For a dAISy-catcher or other serial receiver, pass its serial port instead, e.g. `--device /dev/ttyACM0`.
+- To administer the control panel from another machine, replace `127.0.0.1` with `0.0.0.0` — a password is then required on first access.
+- To keep the configuration across container restarts, store the config file on a volume, e.g. add `-v ais-catcher:/config` and use `-E /config/config.json 127.0.0.1:8118`.
+
+---
+
+[Finalize the Configuration in the Browser](../usage/online-configuration.md){ .md-button .md-button--primary }
+
+---
 
 ## Basic Docker Container
 

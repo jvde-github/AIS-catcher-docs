@@ -7,12 +7,15 @@
 Links to pre-built Windows binaries are available below, with and without SDRPlay support. To run AIS-catcher:
 
 1. Unpack the ZIP file to a directory
-2. Launch via command line or `start.bat` (editable with Notepad)
+2. Install the RTL-SDR drivers via [Zadig](https://www.rtl-sdr.com/tag/zadig/) (once per dongle)
+3. Double-click `start-GUI.bat` to launch AIS-catcher with its built-in control panel, then finalize the configuration in the browser (requires the **Edge** build from the releases table below)
+
+Alternatively, launch via the command line or `start.bat` (editable with Notepad) for a command-line based configuration.
 
 **Prerequisites:**
 
 - RTL-SDR drivers (install via [Zadig](https://www.rtl-sdr.com/tag/zadig/))
-- Visual Studio [runtime libraries](https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170)
+- Visual Studio [runtime libraries](https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170) (usually already present — only needed if AIS-catcher won't start)
 
 ## Recent Releases
 
@@ -20,7 +23,8 @@ Links to pre-built Windows binaries are available below, with and without SDRPla
 
 ---
 
-[Start First Run](../usage/cli.md){ .md-button .md-button--primary }
+[Finalize the Configuration in the Browser](../usage/online-configuration.md){ .md-button .md-button--primary }
+[Command Line First Run](../usage/cli.md){ .md-button .md-button--secondary }
 
 ---
 

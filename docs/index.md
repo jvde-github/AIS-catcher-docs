@@ -10,6 +10,7 @@ Welcome to the **AIS-Catcher** documentation. AIS-Catcher is an open-source soft
 
 ---
 
+[Quick Start Guide](https://www.aiscatcher.org/quickstart){ .md-button .md-button--primary }
 [Get Started](getting-started/overview.md){ .md-button .md-button--primary }
 [What is new?](what-is-new.md){ .md-button .md-button-secondary }
 
@@ -43,6 +44,7 @@ AIS-Catcher is free and open-source software published under the **GPLv3** licen
 
 ## Resources
 
+- [**Quick Start Guide**](https://www.aiscatcher.org/quickstart): From zero to a running station in six steps — install, then finalize the configuration in the browser.
 - [**Complete User Guide**](getting-started/overview.md): Detailed instructions and feature walkthroughs.
 - [**Community and Support**](community.md): Join the AIS-Catcher community to share insights and get help.
 - [**FAQ**](faq.md): Answers to frequently asked questions.

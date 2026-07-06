@@ -8,9 +8,19 @@ This guide provides instructions for installing AIS-catcher on Debian-based syst
 
 ### Recommended Installation Path for New Users
 
-If you are new to Linux or Raspberry Pi, we recommend installing AIS-catcher with the **Visual Web Control interface**. This allows you to visually configure all settings without needing to edit configuration files manually.
+If you are new to Linux or Raspberry Pi, we recommend installing AIS-catcher with its **built-in control panel**: install via the script below and then finalize the configuration in the browser, without needing to edit configuration files manually.
 
-[Installation with Visual Web Control](#installation-with-visual-web-control){ .md-button .md-button--primary }
+Open a terminal or log in via SSH, then run:
+
+```console
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) -p -M"
+```
+
+The script installs all dependencies and AIS-catcher, sets up the background service in managed mode and starts it. Then open the control panel in your browser on port **8118** — for example `http://raspberrypi.local:8118` or `http://192.168.1.100:8118` (your Pi's IP address). You will be asked to set a password, after which a short setup wizard walks you through configuring your input device and outputs.
+
+[Finalize the Configuration in the Browser](../usage/online-configuration.md){ .md-button .md-button--primary }
+
+> As an alternative, the separate [AIS-catcher-control](#installation-with-visual-web-control) package also provides browser-based configuration and additionally offers host-level management such as service control, one-click updates and reboot.
 
 ## Basic Installation
 
@@ -24,8 +34,8 @@ The script will install all dependencies and install AIS-catcher. If `curl` is n
 > This script ***is not compatible with*** the first versions of the Raspberry Pi and Zero due to their limited support for floating point hardware acceleration.
 > The pre-build packages also do not include PostgreSQL support. If this is required, please build from [source](#install-from-source).
 
-!!! tip "Install Visual Web Control"
-    To additionally install the Visual Web Control interface, see [below](#installation-with-visual-web-control). The Visual Web Control allows you to control the AIS-catcher process (start and stop) and set the configuration remotely via a convenient web interface.
+!!! tip "Configure via the browser"
+    To configure AIS-catcher from the browser instead of the command line, add the `-M` option to the install command as shown [above](#recommended-installation-path-for-new-users) — the service then runs with the built-in control panel on port 8118 (see [Online Configuration](../usage/online-configuration.md)). Alternatively, install the separate [Visual Web Control](#installation-with-visual-web-control) package, which also allows you to control the AIS-catcher process (start and stop) and manage the host remotely via a convenient web interface.
 
 ---
 
