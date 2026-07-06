@@ -844,6 +844,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../usage/online-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Online Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../usage/gui/" class="md-nav__link">
         
   
@@ -2915,19 +2943,22 @@
 <p>Links to pre-built Windows binaries are available below, with and without SDRPlay support. To run AIS-catcher:</p>
 <ol>
 <li>Unpack the ZIP file to a directory</li>
-<li>Launch via command line or <code>start.bat</code> (editable with Notepad)</li>
+<li>Install the RTL-SDR drivers via <a href="https://www.rtl-sdr.com/tag/zadig/">Zadig</a> (once per dongle)</li>
+<li>Double-click <code>start-GUI.bat</code> to launch AIS-catcher with its built-in control panel, then finalize the configuration in the browser (requires the <strong>Edge</strong> build from the releases table below)</li>
 </ol>
+<p>Alternatively, launch via the command line or <code>start.bat</code> (editable with Notepad) for a command-line based configuration.</p>
 <p><strong>Prerequisites:</strong></p>
 <ul>
 <li>RTL-SDR drivers (install via <a href="https://www.rtl-sdr.com/tag/zadig/">Zadig</a>)</li>
-<li>Visual Studio <a href="https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170">runtime libraries</a></li>
+<li>Visual Studio <a href="https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170">runtime libraries</a> (usually already present — only needed if AIS-catcher won't start)</li>
 </ul>
 <h2 id="recent-releases">Recent Releases<a class="headerlink" href="#recent-releases" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p><strong>Note:</strong> Built with latest Windows MSVC compiler. Update <a href="https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170">runtime libraries</a> before running. Some issues have been reported with outdated runtime libraries and Windows 10</p>
 </blockquote>
 <hr />
-<p><a class="md-button md-button--primary" href="../../usage/cli/">Start First Run</a></p>
+<p><a class="md-button md-button--primary" href="../../usage/online-configuration/">Finalize the Configuration in the Browser</a>
+<a class="md-button md-button--secondary" href="../../usage/cli/">Command Line First Run</a></p>
 <hr />
 <h2 id="recent-releases_1">Recent Releases<a class="headerlink" href="#recent-releases_1" title="Permanent link">&para;</a></h2>
 <p>The AIS-catcher executables are built with the latest Windows MSVC compiler. Please update your <a href="https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170">libraries</a> before starting the executables below. Issues have been reported on Windows 10.</p>

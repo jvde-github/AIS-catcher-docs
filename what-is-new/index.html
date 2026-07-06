@@ -333,6 +333,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#built-in-control-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in control panel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#web-viewer" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1471,6 +1482,34 @@
     
   
     Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/online-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Online Configuration
   
 
     
@@ -3501,6 +3540,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#built-in-control-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in control panel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#web-viewer" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4203,6 +4253,14 @@
 
 <h1 id="whats-new">What's New?<a class="headerlink" href="#whats-new" title="Permanent link">&para;</a></h1>
 <h2 id="edge">Edge<a class="headerlink" href="#edge" title="Permanent link">&para;</a></h2>
+<h3 id="built-in-control-panel">Built-in control panel<a class="headerlink" href="#built-in-control-panel" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Configure AIS-catcher from the browser</strong> — a new managed mode (<code>AIS-catcher -E [config file] [address:port]</code>) starts a built-in control panel, by default on <code>http://localhost:8118</code>. A setup wizard walks you through input device and output configuration on first use, and the <strong>Input</strong> and <strong>Output</strong> tabs let you fine-tune everything afterwards — no config file editing needed. See <a href="../usage/online-configuration/">Online Configuration</a>.</li>
+<li><strong>Remote administration with password protection</strong> — bind to <code>0.0.0.0</code> to manage the station from another machine; the panel then requires setting a password on first access.</li>
+<li><strong>Managed web viewer</strong> — in managed mode the web viewer is started automatically on the port above the control panel (8119 by default).</li>
+<li><strong>Easy install</strong> — the install script's new <code>-M</code>/<code>--managed</code> option sets up the systemd service in managed mode, and the Windows zip includes <code>start-GUI.bat</code> to launch AIS-catcher with the control panel.</li>
+<li>See also the new <a href="https://www.aiscatcher.org/quickstart">Quick Start guide</a> on aiscatcher.org — from zero to a running station in six steps.</li>
+</ul>
 <h3 id="web-viewer">Web viewer<a class="headerlink" href="#web-viewer" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Refreshed interface</strong> — tighter tables, a modern search bar, a redesigned column toolbar on the Ships tab, and smaller map count/measure icons for a cleaner map.</li>
@@ -4315,7 +4373,7 @@
 <h2 id="version-067">Version 0.67<a class="headerlink" href="#version-067" title="Permanent link">&para;</a></h2>
 <h3 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h3>
 <h4 id="hydrasdr-support">HydraSDR Support<a class="headerlink" href="#hydrasdr-support" title="Permanent link">&para;</a></h4>
-<p>HydraSDR is now a supported input device. See the <a href="../configuration/input/hydrasdr.md">HydraSDR input page</a> for details.</p>
+<p>HydraSDR is now a supported input device. See the <a href="../configuration/input/hydrasdr/">HydraSDR input page</a> for details.</p>
 <h4 id="duplicate-removal">Duplicate Removal<a class="headerlink" href="#duplicate-removal" title="Permanent link">&para;</a></h4>
 <p>When combining multiple input streams, overlapping reception can result in duplicate messages. To remove duplicates from output channels, use the <code>unique</code> option. For example, the following removes duplicates from both console and a UDP stream:</p>
 <div class="highlight"><pre><span></span><code>AIS-catcher -o 1 unique on -u 127.0.0.1 5012 unique on

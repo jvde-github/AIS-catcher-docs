@@ -574,6 +574,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#docker-with-built-in-control-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker with Built-in Control Panel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#basic-docker-container" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -830,6 +841,34 @@
     
   
     Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/online-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Online Configuration
   
 
     
@@ -2859,6 +2898,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#docker-with-built-in-control-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker with Built-in Control Panel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#basic-docker-container" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2924,8 +2974,23 @@
 <p>Copyright (C) 2021–2025 <a href="mailto:jvde.github@gmail.com">jvde.github at gmail.com</a>. Licensed under the GNU General Public License v3.0</p>
 </blockquote>
 <p>Jump to the desired Installation Option:</p>
-<p><a class="md-button md-button--secondary" href="#basic-docker-container">Basic</a>
+<p><a class="md-button md-button--secondary" href="#docker-with-built-in-control-panel">Built-in Control Panel</a>
+<a class="md-button md-button--secondary" href="#basic-docker-container">Basic</a>
 <a class="md-button md-button--secondary" href="#docker-with-visual-web-control">Visual Web Control</a></p>
+<h2 id="docker-with-built-in-control-panel">Docker with Built-in Control Panel<a class="headerlink" href="#docker-with-built-in-control-panel" title="Permanent link">&para;</a></h2>
+<p>The easiest way to run AIS-catcher in Docker is with the built-in control panel: start the container in managed mode and finalize the configuration in the browser.</p>
+<div class="highlight"><pre><span></span><code><span class="go">docker run --rm -it --network=host --device /dev/bus/usb ghcr.io/jvde-github/ais-catcher:edge -E /tmp/config.json 127.0.0.1:8118</span>
+</code></pre></div>
+<p>Then open <code>http://localhost:8118</code> in a browser — a setup wizard walks you through configuring your input device and outputs.</p>
+<p>A few notes:</p>
+<ul>
+<li><code>--device /dev/bus/usb</code> passes an RTL-SDR through. For a dAISy-catcher or other serial receiver, pass its serial port instead, e.g. <code>--device /dev/ttyACM0</code>.</li>
+<li>To administer the control panel from another machine, replace <code>127.0.0.1</code> with <code>0.0.0.0</code> — a password is then required on first access.</li>
+<li>To keep the configuration across container restarts, store the config file on a volume, e.g. add <code>-v ais-catcher:/config</code> and use <code>-E /config/config.json 127.0.0.1:8118</code>.</li>
+</ul>
+<hr />
+<p><a class="md-button md-button--primary" href="../../usage/online-configuration/">Finalize the Configuration in the Browser</a></p>
+<hr />
 <h2 id="basic-docker-container">Basic Docker Container<a class="headerlink" href="#basic-docker-container" title="Permanent link">&para;</a></h2>
 <p>Pre-built container images containing AIS-catcher are available from the GitHub Container Registry. Available container tags are documented on the <a href="https://github.com/jvde-github/AIS-catcher/pkgs/container/ais-catcher">package's page</a>, with <code>latest</code> (the latest release) and <code>edge</code> (the bleeding edge of the <code>main</code> branch) being the two main ones.</p>
 <p>The following <code>docker run</code> command provides an example of the usage of this container image, running the latest release of AIS-catcher interactively:</p>

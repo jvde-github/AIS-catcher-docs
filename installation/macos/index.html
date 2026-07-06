@@ -1050,6 +1050,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../usage/online-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Online Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../usage/gui/" class="md-nav__link">
         
   
@@ -3397,7 +3425,11 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 </code></pre></div>
 <p>This command will display all the input devices and features that are included in your build.</p>
 <h2 id="running-ais-catcher">Running AIS-catcher<a class="headerlink" href="#running-ais-catcher" title="Permanent link">&para;</a></h2>
-<p>To start receiving AIS messages with your RTL-SDR dongle:</p>
+<p>The recommended way to get started is with the built-in control panel, so you can finalize the configuration in the browser:</p>
+<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-E<span class="w"> </span>/tmp/aiscatcher.json<span class="w"> </span><span class="m">127</span>.0.0.1:8118
+</code></pre></div>
+<p>Then open <code>http://localhost:8118</code> in a browser — a setup wizard walks you through configuring your input device and outputs. See <a href="../../usage/online-configuration/">Online Configuration</a> for details.</p>
+<p>Alternatively, start receiving AIS messages with your RTL-SDR dongle directly from the command line:</p>
 <div class="highlight"><pre><span></span><code>AIS-catcher
 </code></pre></div>
 <p>For more advanced usage and configuration options, see the <a href="../../usage/cli/">Command Line Usage</a> guide.</p>
