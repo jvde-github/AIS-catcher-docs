@@ -34,7 +34,7 @@ Another option for UDP sending via `-u` is `BROADCAST on/off` to enable sending 
 | <span class="cmd-setting">port</span> | string | <span class="cmd-value">-</span> | Target UDP port |
 | <span class="cmd-setting">msgformat</span> | string | <span class="cmd-value">NMEA</span> | Output format (`NMEA`, `JSON_NMEA`, `JSON_FULL`, etc.) |
 | <span class="cmd-setting">broadcast</span> | boolean | <span class="cmd-value">false</span> | Enable broadcast mode |
-| <span class="cmd-setting">reset</span> | integer | <span class="cmd-value">0</span> | Recreate socket after N minutes (1-1440; 0 = never) |
+| <span class="cmd-setting">reset</span> | integer | <span class="cmd-value">off</span> | Recreate socket after N minutes (1-1440) |
 | <span class="cmd-setting">uuid</span> | string | <span class="cmd-value">-</span> | Unique identifier (must be a valid UUID) |
 | <span class="cmd-setting">include_sample_start</span> | boolean | <span class="cmd-value">false</span> | Append sample-start counter to each NMEA line |
 | <span class="cmd-setting">json</span> | boolean | <span class="cmd-value">false</span> | **Deprecated** — sets `msgformat` to `JSON_NMEA` |

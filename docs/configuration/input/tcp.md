@@ -69,8 +69,8 @@ Use the appropriate protocol based on your server's configuration and data forma
 | <span class="cmd-setting">timeout</span> | integer | <span class="cmd-value">0</span> | Connection timeout in seconds (range 0-3600) |
 | | | | |
 | WebSocket Options | | | |
-| <span class="cmd-setting">protocols</span> | string | <span class="cmd-value">mqtt</span> | WebSocket sub-protocols |
-| <span class="cmd-setting">binary</span> | boolean | <span class="cmd-value">on</span> | Enable binary WebSocket mode |
+| <span class="cmd-setting">protocols</span> | string | <span class="cmd-value">-</span> | WebSocket sub-protocols (forced to `mqtt` for `wsmqtt`) |
+| <span class="cmd-setting">binary</span> | boolean | <span class="cmd-value">off</span> | Enable binary WebSocket mode (forced on for `wsmqtt`) |
 | <span class="cmd-setting">origin</span> | string | <span class="cmd-value">-</span> | Origin header for WebSocket |
 | | | | |
 | MQTT Options | | | |
@@ -82,7 +82,7 @@ Use the appropriate protocol based on your server's configuration and data forma
 | <span class="cmd-setting">subscribe</span> | boolean | <span class="cmd-value">true</span> | Subscribe to `topic` (vs publish-only) |
 | | | | |
 | RTLTCP Options | | | |
-| <span class="cmd-setting">tuner</span> | float | <span class="cmd-value">33.0</span> | Tuner gain (0-50, auto) |
+| <span class="cmd-setting">tuner</span> | auto/float | <span class="cmd-value">auto</span> | Tuner gain/AGC (0-50 dB or AUTO) |
 | <span class="cmd-setting">rtlagc</span> | boolean | <span class="cmd-value">false</span> | Enable RTL AGC |
 | <span class="cmd-setting">frequency</span> | integer | <span class="cmd-value">0</span> | Frequency in Hz |
 | <span class="cmd-setting">lossless</span> | boolean | <span class="cmd-value">false</span> | RTLTCP is normally a live feed, so the default drops samples when the decoder cannot keep up. Set to `true` when the other end is replaying a recorded stream and you want every sample decoded — the reader will then pause to avoid overflow instead of dropping data. |

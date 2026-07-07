@@ -105,7 +105,7 @@ mosquitto_sub -h localhost -t "ais/+/data"
 | <span class="cmd-setting">topic</span> | string | <span class="cmd-value">ais/data</span> | MQTT topic (supports `%mmsi%`, `%type%`, etc. — see above) |
 | <span class="cmd-setting">client_id</span> | string | <span class="cmd-value">-</span> | MQTT client identifier |
 | <span class="cmd-setting">qos</span> | integer | <span class="cmd-value">0</span> | MQTT QoS level (0-2) |
-| <span class="cmd-setting">msgformat</span> | string | <span class="cmd-value">NMEA</span> | Output format (`NMEA`, `JSON_NMEA`, `JSON_FULL`, etc.) |
+| <span class="cmd-setting">msgformat</span> | string | <span class="cmd-value">JSON_FULL</span> | Output format (`NMEA`, `JSON_NMEA`, `JSON_FULL`, etc.) |
 | <span class="cmd-setting">protocol</span> | string | <span class="cmd-value">MQTT</span> | Transport (`MQTT`, `MQTTS`, `WSMQTT`, `WSSMQTT`, `WS`, `TCP`, `TLS`, `TXT`) |
 | | | | |
 | TCP options (forwarded to underlying transport) | | | |

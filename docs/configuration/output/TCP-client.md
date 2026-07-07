@@ -26,6 +26,7 @@ In this case, AIS-catcher acts as a TCP client and connects to the remote listen
 | <span class="cmd-setting">port</span> | string | <span class="cmd-value">-</span> | Target TCP server port |
 | <span class="cmd-setting">msgformat</span> | string | <span class="cmd-value">NMEA</span> | Output format (`NMEA`, `JSON_NMEA`, `JSON_FULL`, etc.) |
 | <span class="cmd-setting">keep_alive</span> | boolean | <span class="cmd-value">false</span> | Enable TCP keep-alive |
+| <span class="cmd-setting">reset</span> | integer | <span class="cmd-value">off</span> | Reset connection after N minutes (0-3600; 0 = never) |
 | <span class="cmd-setting">persist</span> | boolean | <span class="cmd-value">true</span> | Keep reconnecting when connection fails |
 | <span class="cmd-setting">uuid</span> | string | <span class="cmd-value">-</span> | Unique identifier (must be a valid UUID) |
 | <span class="cmd-setting">include_sample_start</span> | boolean | <span class="cmd-value">false</span> | Append sample-start counter to each NMEA line |

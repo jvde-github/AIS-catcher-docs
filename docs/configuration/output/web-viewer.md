@@ -141,7 +141,7 @@ Server Options:
 | <span class="cmd-setting">reuse_port</span> | boolean | <span class="cmd-value">false</span> | Enable `SO_REUSEPORT` on the listening socket |
 | <span class="cmd-setting">zlib</span> | boolean | <span class="cmd-value">true</span> | Enable response compression |
 | <span class="cmd-setting">server_mode</span> | boolean | <span class="cmd-value">false</span> | Enable hardened multi-station server mode |
-| <span class="cmd-setting">log</span> | boolean | <span class="cmd-value">false</span> | Log HTTP requests |
+| <span class="cmd-setting">log</span> | boolean | <span class="cmd-value">false</span> | Show the log view in the web viewer |
 | <span class="cmd-setting">frame_ancestors</span> | string | <span class="cmd-value">-</span> | CSP `frame-ancestors` value; set to allow embedding the viewer in an `<iframe>` |
 | <span class="cmd-setting">groups_in</span> | integer | <span class="cmd-value">all</span> | Bitmask of input groups feeding the viewer |
 | <span class="cmd-setting">zone</span> | string | <span class="cmd-value">-</span> | Comma-separated zone tags routed to this viewer |
@@ -150,7 +150,7 @@ Server Options:
 | <span class="cmd-setting">lat</span> | float | <span class="cmd-value">-</span> | Station latitude |
 | <span class="cmd-setting">lon</span> | float | <span class="cmd-value">-</span> | Station longitude |
 | <span class="cmd-setting">share_loc</span> | boolean | <span class="cmd-value">false</span> | Share station location |
-| <span class="cmd-setting">use_gps</span> | boolean | <span class="cmd-value">false</span> | Use GPS data |
+| <span class="cmd-setting">use_gps</span> | boolean | <span class="cmd-value">true</span> | Use GPS data for station location |
 | <span class="cmd-setting">own_mmsi</span> | integer | <span class="cmd-value">-</span> | Own vessel MMSI |
 | | | | |
 | Data Management | | | |
