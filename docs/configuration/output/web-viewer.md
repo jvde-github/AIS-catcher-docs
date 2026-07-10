@@ -54,7 +54,7 @@ In the map section, clicking on a vessel will open a  **ship card** with details
 ### Ship card fields
 
 <p align="center">
-  <img src="../../assets/shipcard.png" alt="Ship card" width="30%"/>
+  <img src="https://raw.githubusercontent.com/jvde-github/AIS-catcher-docs/4e379485d67f85bd7e4e8481d15e90ada6f4fdc1/docs/assets/shipcard.png" alt="Ship card" width="30%"/>
 </p>
 
 Most fields on the ship card are self-explanatory and come directly from the vessel's AIS messages. The less obvious ones:
