@@ -51,6 +51,26 @@ When AIS-catcher receives data containing a vessel's dimensions but can not dete
 
 In the map section, clicking on a vessel will open a  **ship card** with details of the vessel. For smaller screens it can be minimized in the top bar (via the `^` symbol or by clicking on the header bar). The ship card will open minimized on mobile devices. In its maximized form, users can choose which rows will be visible in the minimized state. Additional options, such as looking up the vessel on aggregator sites, are available by clicking the three-dot icon on the ship card header.
 
+### Ship card fields
+
+<p align="center">
+  <img src="../../assets/shipcard.png" alt="Ship card" width="30%"/>
+</p>
+
+Most fields on the ship card are self-explanatory and come directly from the vessel's AIS messages. The less obvious ones:
+
+| Field | Meaning |
+|---|---|
+| **In Range** | Number of other AIS stations the vessel's *own* transponder reports it is currently receiving (from the SOTDMA communication state, ITU-R M.1371). It describes the radio situation around the ship, not how well your station receives it. Only present in some transmissions, so it can be empty or update irregularly. |
+| **RSSI** | Signal strength (in dB) of the vessel's last message as measured by your receiver. |
+| **Drift** | Estimated frequency offset (ppm) of the last message, useful for calibrating an RTL-SDR dongle. |
+| **Distance** / **Bearing** | Position of the vessel relative to your station location. |
+| **Receiver** / **Sources** | The receiver (group) that delivered the most recent message, and all receivers that have contributed messages for this vessel — relevant when running multiple receivers or network inputs. |
+| **Count** / **last signal** | Number of messages received from this vessel and the time since the most recent one. |
+| **Sender** | Type of transmitter (Class A/B vessel, base station, aid-to-navigation, SAR aircraft, etc.), derived from the MMSI and message types. |
+| **Destination** / **ETA** | Voyage data as entered by the crew; the ETA is specified in UTC by the AIS standard. |
+| **Blue Sign** | Blue sign status for inland (river) vessels. |
+
 ## Validation
 The web-interface shows a "validation" indication at the left border of the ship card header.
 <p align="center">
