@@ -2133,6 +2133,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ship-card-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ship card fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2946,6 +2963,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ship-card-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ship card fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3082,6 +3116,58 @@ All these options can be captured in the configuration file (in a section with n
 </p>
 
 <p>In the map section, clicking on a vessel will open a  <strong>ship card</strong> with details of the vessel. For smaller screens it can be minimized in the top bar (via the <code>^</code> symbol or by clicking on the header bar). The ship card will open minimized on mobile devices. In its maximized form, users can choose which rows will be visible in the minimized state. Additional options, such as looking up the vessel on aggregator sites, are available by clicking the three-dot icon on the ship card header.</p>
+<h3 id="ship-card-fields">Ship card fields<a class="headerlink" href="#ship-card-fields" title="Permanent link">&para;</a></h3>
+<p align="center">
+  <img src="../../assets/shipcard.png" alt="Ship card" width="30%"/>
+</p>
+
+<p>Most fields on the ship card are self-explanatory and come directly from the vessel's AIS messages. The less obvious ones:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>In Range</strong></td>
+<td>Number of other AIS stations the vessel's <em>own</em> transponder reports it is currently receiving (from the SOTDMA communication state, ITU-R M.1371). It describes the radio situation around the ship, not how well your station receives it. Only present in some transmissions, so it can be empty or update irregularly.</td>
+</tr>
+<tr>
+<td><strong>RSSI</strong></td>
+<td>Signal strength (in dB) of the vessel's last message as measured by your receiver.</td>
+</tr>
+<tr>
+<td><strong>Drift</strong></td>
+<td>Estimated frequency offset (ppm) of the last message, useful for calibrating an RTL-SDR dongle.</td>
+</tr>
+<tr>
+<td><strong>Distance</strong> / <strong>Bearing</strong></td>
+<td>Position of the vessel relative to your station location.</td>
+</tr>
+<tr>
+<td><strong>Receiver</strong> / <strong>Sources</strong></td>
+<td>The receiver (group) that delivered the most recent message, and all receivers that have contributed messages for this vessel — relevant when running multiple receivers or network inputs.</td>
+</tr>
+<tr>
+<td><strong>Count</strong> / <strong>last signal</strong></td>
+<td>Number of messages received from this vessel and the time since the most recent one.</td>
+</tr>
+<tr>
+<td><strong>Sender</strong></td>
+<td>Type of transmitter (Class A/B vessel, base station, aid-to-navigation, SAR aircraft, etc.), derived from the MMSI and message types.</td>
+</tr>
+<tr>
+<td><strong>Destination</strong> / <strong>ETA</strong></td>
+<td>Voyage data as entered by the crew; the ETA is specified in UTC by the AIS standard.</td>
+</tr>
+<tr>
+<td><strong>Blue Sign</strong></td>
+<td>Blue sign status for inland (river) vessels.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h2>
 <p>The web-interface shows a "validation" indication at the left border of the ship card header.</p>
 <p align="center">
