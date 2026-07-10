@@ -71,6 +71,8 @@ Most fields on the ship card are self-explanatory and come directly from the ves
 | **Destination** / **ETA** | Voyage data as entered by the crew; the ETA is specified in UTC by the AIS standard. |
 | **Blue Sign** | Blue sign status for inland (river) vessels. |
 
+Clicking a row on the maximized ship card selects it as the row that remains visible when the card is minimized/collapsed, so you can pick the information that matters most to you for the compact view.
+
 ## Validation
 The web-interface shows a "validation" indication at the left border of the ship card header.
 <p align="center">
