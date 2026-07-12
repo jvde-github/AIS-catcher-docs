@@ -320,7 +320,7 @@
           
   
   
-  Configuration Reference
+  Settings
 
         </a>
       </li>
@@ -1323,7 +1323,7 @@
   <span class="md-ellipsis">
     
   
-    Configuration Reference
+    Settings
   
 
     
@@ -1339,7 +1339,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Configuration Reference
+    Settings
   
 
           </label>
@@ -3539,17 +3539,15 @@
 
 
 <h1 id="output-configuration">Output Configuration<a class="headerlink" href="#output-configuration" title="Permanent link">&para;</a></h1>
-<p>AIS-catcher has multiple output options. As for the input, they share a few common settings to manage the flow of messages to output connections and for filtring.</p>
-<p>Note on casing:</p>
-<ul>
-<li>JSON configuration keys are case-sensitive and should be lowercase.</li>
-<li>Command line setting names are not case-sensitive, but this documentation shows them in lowercase to match JSON.</li>
-</ul>
+<p>AIS-catcher has multiple output options. As for the input, they share a few common settings to manage the flow of messages to output connections and for filtering.</p>
+<div class="admonition note">
+<p class="admonition-title">Key casing</p>
+<p>JSON configuration keys are case-sensitive and should be lowercase. Command-line setting names are not case-sensitive; this documentation shows them in lowercase to match JSON.</p>
+</div>
 <h2 id="message-filtering">Message Filtering<a class="headerlink" href="#message-filtering" title="Permanent link">&para;</a></h2>
-<p>For detailed information about filtering options, see the <a href="../message-filtering/">Filtering</a> page. Filtering allows you to control which messages are included in the output based on type, channel, MMSI, and other criteria.</p>
+<p>For detailed information about filtering options, see the <a href="../message-filtering/">Message Filtering</a> page. Filtering allows you to control which messages are included in the output based on type, channel, MMSI, and other criteria.</p>
 <h2 id="routing-messages">Routing Messages<a class="headerlink" href="#routing-messages" title="Permanent link">&para;</a></h2>
-<p>In principle, messages from all models sourced via all input connections is sourced to all Output Connections. Sometimes it is desirable to manage this flow.
-This can be done via the Setting <code>GROUPS_IN</code> with as value the list of models that feed this input. </p>
+<p>In principle, messages from all models sourced via all input connections flow to all output connections. Sometimes it is desirable to manage this flow: set <code>groups_in</code> on an output, listing the groups that should feed it.</p>
 <h2 id="output-options">Output Options<a class="headerlink" href="#output-options" title="Permanent link">&para;</a></h2>
 <p>AIS-catcher offers multiple output options to suit different use cases. Below is an overview of the available output methods:</p>
 <h3 id="screen-output">Screen Output<a class="headerlink" href="#screen-output" title="Permanent link">&para;</a></h3>

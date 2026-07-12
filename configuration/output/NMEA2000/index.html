@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#important-notice" class="md-skip">
+        <a href="#nmea2000-input-and-output-via-socketcan" class="md-skip">
           Skip to content
         </a>
       
@@ -320,7 +320,7 @@
           
   
   
-  Configuration Reference
+  Settings
 
         </a>
       </li>
@@ -1323,7 +1323,7 @@
   <span class="md-ellipsis">
     
   
-    Configuration Reference
+    Settings
   
 
     
@@ -1339,7 +1339,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Configuration Reference
+    Settings
   
 
           </label>
@@ -2545,6 +2545,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NMEA2000
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -2561,6 +2579,47 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary-settings-input-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary Settings — Input (-i)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-settings-output-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary Settings — Output (-I)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3331,6 +3390,36 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary-settings-input-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary Settings — Input (-i)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-settings-output-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary Settings — Output (-I)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3349,9 +3438,11 @@
   
 
 
-<h1 id="important-notice">⚠️ <strong>Important Notice</strong><a class="headerlink" href="#important-notice" title="Permanent link">&para;</a></h1>
-<p>NMEA2000 support in AIS-catcher is experimental and only works on Linux with socketCAN support. The program is not certified by NMEA and is not intended for connecting to a NMEA2000 network on a boat. It is for experimenters wanting to learn and play with networks and AIS. Use at your own risk.</p>
 <h1 id="nmea2000-input-and-output-via-socketcan">NMEA2000 input and output via SocketCAN<a class="headerlink" href="#nmea2000-input-and-output-via-socketcan" title="Permanent link">&para;</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Experimental</p>
+<p>NMEA2000 support in AIS-catcher is experimental and only works on Linux with socketCAN support. The program is not certified by NMEA and is not intended for connecting to a NMEA2000 network on a boat. It is for experimenters wanting to learn and play with networks and AIS. Use at your own risk.</p>
+</div>
 <p>In v0.56 we introduced "Experimenter Mode" for NMEA2000 input and output via socketCAN on Linux. To properly handle the mechanics of a NMEA2000 network, the <a href="https://github.com/ttlappalainen/NMEA2000">NMEA2000 library</a> library by  Timo Lappalainen
 is required, build AIS-catcher in the main directory with:
   <div class="highlight"><pre><span></span><code>./scripts/build-NMEA2000.sh
