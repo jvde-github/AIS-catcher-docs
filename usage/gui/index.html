@@ -15,21 +15,21 @@
         <link rel="canonical" href="https://aiscatcher.org/docs/usage/gui/">
       
       
-        <link rel="prev" href="../online-configuration/">
+        <link rel="prev" href="../../configuration/output/PSQL/">
       
       
-        <link rel="next" href="../cli/">
+        <link rel="next" href="../../tools/python/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/logo.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Visual Web Control - AIS-catcher Docs</title>
+        <title>AIS-catcher-control - AIS-catcher Docs</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#visual-web-control-for-remote-configuration" class="md-skip">
+        <a href="#ais-catcher-control" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
 
   
 
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="AIS-catcher Docs" class="md-header__button md-logo" aria-label="AIS-catcher Docs" data-md-component="logo">
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Visual Web Control
+              AIS-catcher-control
             
           </span>
         </div>
@@ -182,13 +182,260 @@
     
   </nav>
   
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../what-is-new/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  What is New?
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/overview/" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../installation/overview/" class="md-tabs__link">
+          
+  
+  
+  Installation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../managed/dashboard/" class="md-tabs__link">
+          
+  
+  
+  Managed Mode
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../overview/" class="md-tabs__link">
+          
+  
+  
+  Manual Mode
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../configuration/overview/" class="md-tabs__link">
+          
+  
+  
+  Configuration Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/ais-basics/" class="md-tabs__link">
+          
+  
+  
+  Advanced
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../community/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Community
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../faq/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  FAQ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/features/" class="md-tabs__link">
+          
+  
+  
+  References
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
-        
-          
         
       
       <main class="md-main" data-md-component="main">
@@ -202,8 +449,10 @@
                     
 
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="AIS-catcher Docs" class="md-nav__button md-logo" aria-label="AIS-catcher Docs" data-md-component="logo">
       
@@ -291,6 +540,9 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
@@ -363,42 +615,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/features/" class="md-nav__link">
+      <a href="../../getting-started/what-you-need/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Features
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting-started/ais-basics/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    AIS Basics
+    What You’ll Need
   
 
     
@@ -428,6 +652,9 @@
     
     
     
+    
+      
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -613,6 +840,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../installation/android/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Android
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../installation/build-source/" class="md-nav__link">
         
   
@@ -673,20 +928,21 @@
       
   
   
-    
   
   
-  
     
     
     
     
+      
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -696,7 +952,7 @@
   <span class="md-ellipsis">
     
   
-    Basic Usage
+    Managed Mode
   
 
     
@@ -707,12 +963,209 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Basic Usage
+    Managed Mode
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../managed/dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Around
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../managed/setup-wizard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup Wizard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../managed/input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../managed/output/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Output Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../managed/remote-access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Access and Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manual Mode
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Manual Mode
   
 
           </label>
@@ -741,242 +1194,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../online-configuration/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Online Configuration
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Visual Web Control
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Visual Web Control
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#accessing-the-visual-web-control-interface" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Accessing the Visual Web Control Interface
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Accessing the Visual Web Control Interface">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sidebar-layout" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sidebar layout
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#input-device-selection" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Input Device Selection
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#output-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Output Settings
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Output Settings">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#local-webviewer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Local Webviewer
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#data-flow-and-zones" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Data Flow and Zones
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#system-actions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        System actions
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#advanced-editor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Advanced editor
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#service-control" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Service Control
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accessing-the-ais-web-viewer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Accessing the AIS Web Viewer
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conclusion
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1038,6 +1255,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running as a Service
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1055,22 +1300,25 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Configuration
+    Configuration Reference
   
 
     
@@ -1081,12 +1329,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Configuration
+    Configuration Reference
   
 
           </label>
@@ -1130,15 +1378,18 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
         
           
-          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
             
   
   
@@ -1156,8 +1407,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1205,15 +1456,18 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2_2" >
         
           
-          <label class="md-nav__link" for="__nav_6_2_2" id="__nav_6_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_2_2" id="__nav_7_2_2_label" tabindex="0">
             
   
   
@@ -1231,8 +1485,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_2_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1456,15 +1710,18 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2_3" >
         
           
-          <label class="md-nav__link" for="__nav_6_2_3" id="__nav_6_2_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_2_3" id="__nav_7_2_3_label" tabindex="0">
             
   
   
@@ -1482,8 +1739,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_2_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1595,15 +1852,18 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2_4" >
         
           
-          <label class="md-nav__link" for="__nav_6_2_4" id="__nav_6_2_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_2_4" id="__nav_7_2_4_label" tabindex="0">
             
   
   
@@ -1621,8 +1881,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_2_4">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1706,15 +1966,18 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2_5" >
         
           
-          <label class="md-nav__link" for="__nav_6_2_5" id="__nav_6_2_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_2_5" id="__nav_7_2_5_label" tabindex="0">
             
   
   
@@ -1732,8 +1995,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_2_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1881,15 +2144,18 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
         
           
-          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
             
   
   
@@ -1907,8 +2173,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2040,15 +2306,18 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4_5" >
         
           
-          <label class="md-nav__link" for="__nav_6_4_5" id="__nav_6_4_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_4_5" id="__nav_7_4_5_label" tabindex="0">
             
   
   
@@ -2066,8 +2335,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_4_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2328,21 +2597,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
             
   
   
@@ -2360,8 +2637,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2370,6 +2647,125 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AIS-catcher-control
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AIS-catcher-control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-the-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessing the Interface
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controlling-the-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controlling the Service
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Management
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
             
               
                 
@@ -2416,15 +2812,18 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   
@@ -2442,8 +2841,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2452,6 +2851,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/ais-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AIS Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2832,15 +3259,18 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
         
           
-          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
             
   
   
@@ -2858,8 +3288,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_11">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2868,6 +3298,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2959,121 +3417,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#accessing-the-visual-web-control-interface" class="md-nav__link">
+  <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Accessing the Visual Web Control Interface
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Accessing the Visual Web Control Interface">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sidebar-layout" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sidebar layout
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#input-device-selection" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Input Device Selection
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#output-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Output Settings
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Output Settings">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#local-webviewer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Local Webviewer
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#data-flow-and-zones" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Data Flow and Zones
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#system-actions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        System actions
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#advanced-editor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Advanced editor
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#service-control" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Service Control
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accessing-the-ais-web-viewer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Accessing the AIS Web Viewer
+        Installation
       
     </span>
   </a>
@@ -3081,10 +3428,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#accessing-the-interface" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Accessing the Interface
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controlling-the-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controlling the Service
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Management
       
     </span>
   </a>
@@ -3111,78 +3480,22 @@
   
 
 
-<h1 id="visual-web-control-for-remote-configuration">Visual Web Control for Remote Configuration<a class="headerlink" href="#visual-web-control-for-remote-configuration" title="Permanent link">&para;</a></h1>
-<p>This guide is for users who have installed <strong>AIS-catcher-control</strong> (available for Docker and Raspberry Pi installations), which provides the Visual Web Control interface for remote configuration and management.</p>
-<blockquote>
-<p>The input configuration for AIS-catcher is quite flexible and allows for some complex configuration. This is not fully embedded in the UI in first instance. Therefore, the menus only work with our starting config JSON or any version amended by 
-the UI. Once, the configuration files are manually edited, certain functionality will not be available.</p>
-<p>You can still set the settings in the Advanced section of the Visual Web Control interface by editing the parameters there. Also controlling the process (viewing the log and starting and stopping) is available. </p>
-</blockquote>
-<h2 id="accessing-the-visual-web-control-interface">Accessing the Visual Web Control Interface<a class="headerlink" href="#accessing-the-visual-web-control-interface" title="Permanent link">&para;</a></h2>
-<p>Open your web browser and navigate to your Raspberry Pi's IP address on port <strong>8110</strong>. For example:
-<div class="highlight"><pre><span></span><code>http://zerowh:8110
-</code></pre></div></p>
-<p><img alt="image" src="https://github.com/user-attachments/assets/1fe942d2-dd3a-4116-99e8-f88f2de4ed14" /></p>
-<p>When you first access the interface, log in using the default credentials:</p>
-<ul>
-<li><strong>Username</strong>: admin</li>
-<li><strong>Password</strong>: admin</li>
-</ul>
-<p>You'll be prompted to change this password immediately for security reasons.</p>
-<p><img alt="image" src="https://github.com/user-attachments/assets/aea1eb3b-0344-47a9-8b4f-8ddd77ecdeb0" /></p>
-<h3 id="sidebar-layout">Sidebar layout<a class="headerlink" href="#sidebar-layout" title="Permanent link">&para;</a></h3>
-<p>Once logged in, the Visual Web Control sidebar gives you access to the following sections:</p>
-<ul>
-<li><strong>Control</strong> — start/stop the AIS-catcher service and watch the live log stream.</li>
-<li><strong>Webviewer</strong> — opens the local AIS web viewer in a new tab.</li>
-<li><strong>System</strong> — host info, service status, automatic update checks for both AIS-catcher and the Control panel itself, watchdog status, and system actions (install / update / reboot).</li>
-<li><strong>General</strong> — global settings (station name, coordinates, sharing toggle, language, etc.).</li>
-<li><strong>Device</strong> — input device selection and SDR settings.</li>
-<li><strong>Output</strong> — sub-pages: Community, UDP, TCP Client, TCP Servers, Webviewer, HTTP, MQTT.</li>
-<li><strong>Data Flow</strong> — visualise and route messages between receivers and outputs via <strong>zones</strong>.</li>
-<li><strong>Advanced</strong> — direct JSON / command-line editors (<code>config.json</code>, <code>config.cmd</code>) with <strong>Check</strong> and <strong>Format</strong> buttons that validate the document before save.</li>
-<li><strong>Change Password</strong> and <strong>Logout</strong>.</li>
-</ul>
-<h3 id="input-device-selection">Input Device Selection<a class="headerlink" href="#input-device-selection" title="Permanent link">&para;</a></h3>
-<p>Navigate to the <strong>Device</strong> section to select your input device. You can choose from connected devices or manually specify a device type and serial number. If you have only a single SDR device connected, you can leave the device selection as <strong>None</strong>, and AIS-catcher will automatically detect and use the available device. Click the search icon to let AIS-catcher detect available SDR hardware.</p>
-<p><img alt="image" src="https://github.com/user-attachments/assets/83cc4f88-7d76-49db-b126-e62a2b652663" /></p>
-<p>Specific device settings for your SDR or other input device can be set on this page as well. For SDR inputs (RTL-SDR, AirSpy, AirSpy HF+, HackRF, HydraSDR) two extra fields appear below the device selector:</p>
-<ul>
-<li><strong>Channel</strong> (<code>AB</code> or <code>CD</code>) — choose between the standard AIS channel pair (161.975 / 162.025 MHz) or the long-range channels.</li>
-<li><strong>High Sensitivity</strong> — toggles the higher-sensitivity ("Challenger") decoder model. Trades CPU for a few percent more decoded messages. Equivalent to the <code>sensitivity_high</code> setting documented in <a href="../../configuration/model/">Model Settings</a>.</li>
-</ul>
-<blockquote>
-<p><strong>Note: After modifying any settings, remember to save the changes and restart AIS-catcher in the Control section for them to take effect.</strong></p>
-</blockquote>
-<h3 id="output-settings">Output Settings<a class="headerlink" href="#output-settings" title="Permanent link">&para;</a></h3>
-<p>AIS-catcher allows you to share your data with the <a href="https://aiscatcher.org">aiscatcher.org</a> community. To enable this feature, go to <strong>Output &gt; Community</strong>. By default, sharing is anonymous and enabled, but you can generate and enter a sharing key to associate the data with your station and view statistics. Click <strong>Create</strong> to set up a station on aiscatcher.org and receive your sharing key. Here you can also opt not to share your feed with the community.</p>
-<p><img alt="image" src="https://github.com/user-attachments/assets/9f032bea-784f-465a-93f4-003a5fd7f587" /></p>
-<h4 id="local-webviewer">Local Webviewer<a class="headerlink" href="#local-webviewer" title="Permanent link">&para;</a></h4>
-<p>Under <strong>Output &gt; Webviewer</strong>, you can configure the local web viewer. Activate the viewer and enter your station details, including a name and your geographical coordinates.</p>
-<p>Useful per-viewer toggles available here:</p>
-<ul>
-<li><strong>Use GPS</strong> — feed the station position from a connected GPS source instead of a fixed coordinate pair.</li>
-<li><strong>Ship Timeout</strong> (<code>history</code> setting, in seconds) — how long vessels stay visible after their last message (5 – 43200 s).</li>
-<li><strong>Backup</strong> (in minutes) — how often the in-memory database is written to disk so state survives restarts.</li>
-<li><strong>Web Control Link</strong> (<code>webcontrol_http</code>) — URL used by the viewer to surface a "Manage station" link back to this Control panel.</li>
-</ul>
-<p>The local web viewer is accessible from your Raspberry Pi (e.g., on port <strong>8100</strong>, accessed via <a href="http://zerowh:8100">http://zerowh:8100</a>) and is not accessible outside your local network by default. Some users choose to share their web viewer externally; see examples <a href="https://aiscatcher.org/dashboards">here</a>.</p>
-<blockquote>
-<p>Note: For a public page showcasing your station's performance, the easiest method is to feed data to aiscatcher.org using a sharing key.</p>
-</blockquote>
-<h3 id="data-flow-and-zones">Data Flow and Zones<a class="headerlink" href="#data-flow-and-zones" title="Permanent link">&para;</a></h3>
-<p>The <strong>Data Flow</strong> section visualises which receivers feed which outputs and lets you configure <strong>zones</strong> — named groupings used to tailor message routing per output channel. Zones are also referenced from the command line by the <code>sharing_zone</code> setting and from JSON configuration via the top-level <code>zones</code> array.</p>
-<h3 id="system-actions">System actions<a class="headerlink" href="#system-actions" title="Permanent link">&para;</a></h3>
-<p>The <strong>System</strong> section shows host information (load, memory, disk, AIS-catcher and Control versions) and lets you:</p>
-<ul>
-<li>check for updates of both AIS-catcher and AIS-catcher-control;</li>
-<li>start the update / install scripts and watch their progress live;</li>
-<li>reboot the host or reset a failed service;</li>
-<li>inspect the optional reboot watchdog status (enabled via the install script).</li>
-</ul>
-<h3 id="advanced-editor">Advanced editor<a class="headerlink" href="#advanced-editor" title="Permanent link">&para;</a></h3>
-<p>For configurations that can no longer be edited through the forms, <strong>Advanced &gt; Edit Config.json</strong> and <strong>Edit Config.cmd</strong> expose the raw files. Both editors now include <strong>Check</strong> (validate JSON / command syntax) and <strong>Format</strong> (pretty-print) buttons to catch typos before you save. The Check &amp; Format pipeline also migrates older config layouts and normalises types on the fly.</p>
-<h3 id="service-control">Service Control<a class="headerlink" href="#service-control" title="Permanent link">&para;</a></h3>
+<h1 id="ais-catcher-control">AIS-catcher-control<a class="headerlink" href="#ais-catcher-control" title="Permanent link">&para;</a></h1>
+<p><strong>AIS-catcher-control</strong> is a separate package for Raspberry Pi and Debian-based systems that starts and stops the AIS-catcher process and manages the host from the browser. Configuration of the receiver itself is done in AIS-catcher's own <a href="../../managed/dashboard/">dashboard</a> — AIS-catcher-control is the tool around it: service control, one-click updates and reboot.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Earlier versions of AIS-catcher-control included full configuration menus (device, outputs, data flow). This functionality has been superseded by <a href="../../managed/dashboard/">managed mode</a>; AIS-catcher-control now focuses on controlling the process and the host. On other platforms the process is managed with the native tools instead — e.g. Docker containers via Docker itself.</p>
+</div>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<p>First install AIS-catcher itself via the <a href="../../installation/raspberrypi/">install script</a>, then install AIS-catcher-control as a separate service:</p>
+<div class="highlight"><pre><span></span><code><span class="go">sudo bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/main/install_ais_catcher_control.sh)&quot;</span>
+</code></pre></div>
+<h2 id="accessing-the-interface">Accessing the Interface<a class="headerlink" href="#accessing-the-interface" title="Permanent link">&para;</a></h2>
+<p>Open your web browser and navigate to the machine's address on port <strong>8110</strong>, for example:</p>
+<div class="highlight"><pre><span></span><code>http://raspberrypi.local:8110
+</code></pre></div>
+<p>Log in with the password — you will be asked to set one on first access.</p>
+<h2 id="controlling-the-service">Controlling the Service<a class="headerlink" href="#controlling-the-service" title="Permanent link">&para;</a></h2>
 <p>Navigate to <strong>Control</strong> to manage the AIS-catcher service:</p>
 <ul>
 <li><strong>Start/Stop</strong> the service.</li>
@@ -3190,24 +3503,14 @@ the UI. Once, the configuration files are manually edited, certain functionality
 <li>Monitor the service status through the live log stream (colour-coded by level: error, warning, notice, info, debug).</li>
 </ul>
 <p><img alt="image" src="https://github.com/user-attachments/assets/abf29893-0567-4b94-9354-e0630cc6f9fc" /></p>
-<h2 id="accessing-the-ais-web-viewer">Accessing the AIS Web Viewer<a class="headerlink" href="#accessing-the-ais-web-viewer" title="Permanent link">&para;</a></h2>
-<p>After starting the service in the Control section and ensuring it runs without errors (check the log), you can view your received AIS data through the local web viewer. Access it by navigating to your Raspberry Pi's IP address on port <strong>8100</strong>:
-<div class="highlight"><pre><span></span><code>http://zerowh:8100
-</code></pre></div>
-The viewer provides a real-time display of AIS messages and vessel positions, allowing you to verify that your setup is working correctly. You can also quickly access it by selecting the Webviewer menu item.</p>
-<p><img alt="image" src="https://github.com/user-attachments/assets/1762ee88-e8b0-47a3-b50a-1ca2a7b42acb" /></p>
-<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
-<p>With these steps completed, you now have a fully functional AIS receiving station running on your Raspberry Pi. The system will receive AIS messages from nearby vessels and, if configured, share this data with the AIScatcher.org community. You can monitor vessel traffic in real-time through the web viewer interface.</p>
-<p>For advanced users who want to fine-tune their setup, AIS-catcher provides two configuration files:</p>
-<p>The JSON configuration file at:
-<div class="highlight"><pre><span></span><code>/etc/AIS-catcher/config.json
-</code></pre></div></p>
-<p>And the command-line parameters file at:
-<div class="highlight"><pre><span></span><code>/etc/AIS-catcher/config.cmd
-</code></pre></div></p>
-<blockquote>
-<p><strong>Note:</strong> The GUI script can also be run for existing installations that are based on the AIS-catcher install script. But once configuration files are manually edited they cannot be edited via the HTML forms anymore. The configuration files still can be edited though under the advanced options menu. </p>
-</blockquote>
+<h2 id="system-management">System Management<a class="headerlink" href="#system-management" title="Permanent link">&para;</a></h2>
+<p>The <strong>System</strong> section shows host information (load, memory, disk, AIS-catcher and Control versions) and lets you:</p>
+<ul>
+<li>check for updates of both AIS-catcher and AIS-catcher-control;</li>
+<li>start the update / install scripts and watch their progress live;</li>
+<li>reboot the host or reset a failed service;</li>
+<li>inspect the optional reboot watchdog status (enabled via the install script).</li>
+</ul>
 
 
 
@@ -3317,7 +3620,7 @@ The viewer provides a real-time display of AIS messages and vessel positions, al
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
