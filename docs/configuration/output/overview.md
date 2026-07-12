@@ -1,21 +1,17 @@
 # Output Configuration
 
-AIS-catcher has multiple output options. As for the input, they share a few common settings to manage the flow of messages to output connections and for filtring.
+AIS-catcher has multiple output options. As for the input, they share a few common settings to manage the flow of messages to output connections and for filtering.
 
-Note on casing:
-
-- JSON configuration keys are case-sensitive and should be lowercase.
-- Command line setting names are not case-sensitive, but this documentation shows them in lowercase to match JSON.
-
+!!! note "Key casing"
+    JSON configuration keys are case-sensitive and should be lowercase. Command-line setting names are not case-sensitive; this documentation shows them in lowercase to match JSON.
 
 ## Message Filtering
 
-For detailed information about filtering options, see the [Filtering](message-filtering.md) page. Filtering allows you to control which messages are included in the output based on type, channel, MMSI, and other criteria.
+For detailed information about filtering options, see the [Message Filtering](message-filtering.md) page. Filtering allows you to control which messages are included in the output based on type, channel, MMSI, and other criteria.
 
 ## Routing Messages
 
-In principle, messages from all models sourced via all input connections is sourced to all Output Connections. Sometimes it is desirable to manage this flow.
-This can be done via the Setting `GROUPS_IN` with as value the list of models that feed this input. 
+In principle, messages from all models sourced via all input connections flow to all output connections. Sometimes it is desirable to manage this flow: set `groups_in` on an output, listing the groups that should feed it.
 
 ## Output Options
 

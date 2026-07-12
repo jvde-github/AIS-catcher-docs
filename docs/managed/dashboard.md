@@ -44,7 +44,7 @@ All configuration is reached from the menus in the **bottom bar** of the dashboa
 
 <!-- TODO: confirm what the System menu contains (log, password, remote access, backup?) and adjust the description -->
 
-Every underlying setting is documented in detail in the [Configuration Reference](../configuration/overview.md).
+Every underlying setting is documented in detail in the [Settings reference](../configuration/overview.md).
 
 ## Starting Managed Mode Yourself
 

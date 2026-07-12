@@ -1,4 +1,4 @@
-##### Serial Port
+# Serial Port
 <div class="command-container">
     <div class="command-syntax">
         <span class="cmd-name">AIS-catcher</span>

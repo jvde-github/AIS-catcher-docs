@@ -82,7 +82,7 @@ nav:
       - Command Line: usage/cli.md
       - JSON Configuration: usage/json-configuration.md
       - Running as a Service: usage/service.md
-  - Configuration Reference:
+  - Settings:
       - Overview: configuration/overview.md
       - Input Options:
             - Overview: configuration/input/overview.md

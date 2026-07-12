@@ -17,4 +17,4 @@ There are two equivalent ways to express a configuration:
 
 For unattended operation, see [Running as a Service](service.md).
 
-Every setting is documented in the [Configuration Reference](../configuration/overview.md) with its command-line switch and JSON key side by side.
+Every setting is documented in the [Settings reference](../configuration/overview.md) with its command-line switch and JSON key side by side.

@@ -1,39 +1,27 @@
-# AIS-catcher Architecture
+# Settings Overview
+
+AIS-catcher follows a modular architecture: one or more **inputs** feed a decoding **model**, which distributes the messages to any number of **outputs**. Every setting in this reference belongs to one of these three stages — click a stage to jump to its settings:
+
+<div class="flow-diagram">
+<a class="flow-node flow-node--input" href="../input/overview/">Input</a>
+<span class="flow-arrow">→</span>
+<a class="flow-node flow-node--model" href="../model/">Model</a>
+<span class="flow-arrow">→</span>
+<a class="flow-node flow-node--output" href="../output/overview/">Output</a>
+</div>
+
+- [**Input**](input/overview.md) — SDR devices (RTL-SDR, AirSpy, …), network streams, serial devices and files.
+- [**Model**](model.md) — message decoding and processing; AIS-catcher includes various decoder models for experimentation.
+- [**Output**](output/overview.md) — community feed, UDP/TCP/HTTP/MQTT, web viewers, PostgreSQL and the screen.
+
+Each setting is documented with its JSON key and command-line switch. In managed mode the most common settings appear as fields in the [dashboard](../managed/dashboard.md); this reference covers the complete set.
+
+!!! note "Key casing (CLI vs JSON)"
+    In JSON configuration files, keys are case-sensitive and should be lowercase. On the command line, setting names passed after a device/output switch (e.g. `-gr`, `-gm`, `-u`, `-H`) are not case-sensitive. Tables in this documentation show setting names in lowercase to match JSON.
 
 ## Usage Profiles
 
-AIS-catcher follows a modular architecture that can scale from simple to complex configurations to cater for various use cases.
-
-<style>
-.profile-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
-  max-width: 1200px;
-  margin: 1rem auto;
-}
-
-.profile-card {
-  border: 2px solid #ccc;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-}
-
-.profile-title {
-  font-weight: bold;
-  margin: 0 0 0.0rem 0;
-}
-
-.profile-desc {
-  margin: 0;
-}
-
-@media (max-width: 768px) {
-  .profile-grid {
-    grid-template-columns: 1fr;
-  }
-}
-</style>
+The same three stages scale from simple to complex setups:
 
 <div class="profile-grid">
   <div class="profile-card">
@@ -58,116 +46,45 @@ AIS-catcher follows a modular architecture that can scale from simple to complex
   </div>
 </div>
 
-## Basic Data Flow
-
-In its simplest form, AIS-catcher processes data through three main stages:
-
-
-<div>
-<svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
-  <!-- Basic Flow -->
-  <g transform="translate(50,50)">
-    <text x="0" y="-20" font-size="16" font-weight="bold">Basic Flow</text>
-    
-    <!-- Boxes -->
-    <rect x="0" y="0" width="100" height="50" rx="5" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
-    <rect x="150" y="0" width="100" height="50" rx="5" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
-    <rect x="300" y="0" width="100" height="50" rx="5" fill="#fff3e0" stroke="#e65100" stroke-width="2"/>
-    
-    <!-- Labels -->
-    <text x="50" y="30" text-anchor="middle">Input</text>
-    <text x="200" y="30" text-anchor="middle">Model</text>
-    <text x="350" y="30" text-anchor="middle">Output</text>
-    
-    <!-- Arrows -->
-    <path d="M100,25 L150,25" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
-    <path d="M250,25 L300,25" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
-  </g>
-</svg>
-</div>
-
-## Documentation Structure
-
-The documentation is organized along these lines.
-
-[***Input***](input/overview.md)  
-Examples: RTL-SDR, Airspy, network streams, files.
-
-[***Model***](model.md)  
-Message decoding and processing. AIS-catcher includes various decoding models for experimentation.
-
-[***Output***](output/overview.md)  
-Examples: screen display, file logging, network streaming, database storage
-
-## Key Casing (CLI vs JSON)
-
-- In JSON configuration files, keys are case-sensitive and should be lowercase.
-- On the command line, setting names passed after a device/output switch (e.g. `-gr`, `-gm`, `-u`, `-H`) are not case-sensitive.
-- In this documentation, tables show setting names in lowercase to match JSON.
-
-
 ## Advanced Architecture
-For more complex setups, AIS-catcher supports multiple inputs with input-specific models:
 
-<div>
-<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+For more complex setups, AIS-catcher supports multiple inputs with input-specific models: multiple input sources operate independently, each input can use several specialized models for decoding, and each model can send its data to one or more outputs.
 
-  <!-- Advanced Flow -->
-  <g transform="translate(50,200)">
-    <text x="0" y="-20" font-size="16" font-weight="bold">Advanced Architecture</text>
-    
-    <!-- Input 1 -->
-    <rect x="0" y="0" width="100" height="50" rx="5" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
-    <text x="50" y="30" text-anchor="middle">Input 1</text>
-    
-    <!-- Input 2 -->
-    <rect x="0" y="100" width="100" height="50" rx="5" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
-    <text x="50" y="130" text-anchor="middle">Input 2</text>
-    
-    <!-- Models -->
-    <rect x="150" y="0" width="100" height="40" rx="5" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
-    <text x="200" y="25" text-anchor="middle">Model A1</text>
-    
-    <rect x="150" y="50" width="100" height="40" rx="5" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
-    <text x="200" y="75" text-anchor="middle">Model A2</text>
-    
-    <rect x="150" y="100" width="100" height="40" rx="5" fill="#fce4ec" stroke="#c2185b" stroke-width="2"/>
-    <text x="200" y="125" text-anchor="middle">Model B</text>
-    
-    <!-- Outputs -->
-    <rect x="300" y="0" width="100" height="40" rx="5" fill="#fff3e0" stroke="#e65100" stroke-width="2"/>
-    <text x="350" y="25" text-anchor="middle">Output 1</text>
-    
-    <rect x="300" y="50" width="100" height="40" rx="5" fill="#fff3e0" stroke="#e65100" stroke-width="2"/>
-    <text x="350" y="75" text-anchor="middle">Output 2</text>
-    
-    <rect x="300" y="100" width="100" height="40" rx="5" fill="#fff3e0" stroke="#e65100" stroke-width="2"/>
-    <text x="350" y="125" text-anchor="middle">Output 3</text>
-    
-    <!-- Arrows -->
-    <defs>
-      <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-        <polygon points="0 0, 10 3.5, 0 7" fill="black"/>
-      </marker>
-    </defs>
-    
-    <!-- Input 1 to Models -->
-    <path d="M100,25 L150,20" stroke="black" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-    <path d="M100,25 L150,70" stroke="black" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-    
-    <!-- Input 2 to Model -->
-    <path d="M100,125 L150,120" stroke="black" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-    
-    <!-- Models to Outputs -->
-    <path d="M250,20 L300,20" stroke="black" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-    <path d="M250,20 L300,70" stroke="black" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-    <path d="M250,70 L300,70" stroke="black" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-    <path d="M250,70 L300,120" stroke="black" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-    <path d="M250,120 L300,70" stroke="black" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-    <path d="M250,120 L300,120" stroke="black" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  </g>
+<div class="arch-diagram">
+<svg viewBox="0 0 470 186" xmlns="http://www.w3.org/2000/svg" font-family="Roboto, sans-serif" font-size="13">
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#8aa0ba"/>
+    </marker>
+  </defs>
+  <!-- Inputs -->
+  <rect x="1" y="16" width="100" height="42" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="1.5"/>
+  <text x="51" y="42" text-anchor="middle" fill="#0d47a1">Input 1</text>
+  <rect x="1" y="128" width="100" height="42" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="1.5"/>
+  <text x="51" y="154" text-anchor="middle" fill="#0d47a1">Input 2</text>
+  <!-- Models -->
+  <rect x="185" y="1" width="100" height="38" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="235" y="25" text-anchor="middle" fill="#1b5e20">Model A1</text>
+  <rect x="185" y="74" width="100" height="38" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="235" y="98" text-anchor="middle" fill="#1b5e20">Model A2</text>
+  <rect x="185" y="147" width="100" height="38" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="235" y="171" text-anchor="middle" fill="#1b5e20">Model B</text>
+  <!-- Outputs -->
+  <rect x="369" y="1" width="100" height="38" rx="8" fill="#fff3e0" stroke="#e65100" stroke-width="1.5"/>
+  <text x="419" y="25" text-anchor="middle" fill="#bf360c">Output 1</text>
+  <rect x="369" y="74" width="100" height="38" rx="8" fill="#fff3e0" stroke="#e65100" stroke-width="1.5"/>
+  <text x="419" y="98" text-anchor="middle" fill="#bf360c">Output 2</text>
+  <rect x="369" y="147" width="100" height="38" rx="8" fill="#fff3e0" stroke="#e65100" stroke-width="1.5"/>
+  <text x="419" y="171" text-anchor="middle" fill="#bf360c">Output 3</text>
+  <!-- Input to model arrows -->
+  <path d="M101,37 L183,22" stroke="#8aa0ba" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M101,37 L183,91" stroke="#8aa0ba" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M101,149 L183,164" stroke="#8aa0ba" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <!-- Model to output arrows -->
+  <path d="M285,20 L367,20" stroke="#8aa0ba" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M285,20 L367,90" stroke="#8aa0ba" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M285,93 L367,93" stroke="#8aa0ba" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M285,166 L367,96" stroke="#8aa0ba" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M285,166 L367,166" stroke="#8aa0ba" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
 </svg>
-
 </div>
-
-In this advanced setup: Multiple input sources operate independently. Each input can use multiple specialized models for decoding.  Each model can send data to one or more multiple outputs.
