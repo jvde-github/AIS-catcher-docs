@@ -1,6 +1,7 @@
 # Building from Source
 
---8<-- "docs/disclaimer.md"
+!!! warning "Disclaimer"
+    **AIS-catcher is intended for hobbyist and research projects only. It is NOT approved for use in navigation or safety-of-life applications.** [Read the full disclaimer](../disclaimer.md).
 
 
 ## Building
@@ -56,7 +57,7 @@ The build system exposes a number of CMake options that can be passed to `cmake 
 
 | Option | Effect |
 |---|---|
-| `-DWEBVIEWER=OFF` | Build a headless AIS-catcher without `WebDB`, `WebViewer`, and `HTTPServer`. The resulting binary is about 1.5 MB smaller; the `-N` flag and the `server` config key are gated off. Useful for backend / aggregator deployments that don't need the Visual Web Control. |
+| `-DWEBVIEWER=OFF` | Build a headless AIS-catcher without `WebDB`, `WebViewer`, and `HTTPServer`. The resulting binary is about 1.5 MB smaller; the `-N` flag and the `server` config key are gated off. Useful for backend / aggregator deployments that don't need the built-in web interface. |
 
 For example, to build a headless binary:
 
@@ -72,3 +73,23 @@ Ensure that you have ```vcpkg``` [installed](https://vcpkg.io/en/getting-started
 vcpkg install rtlsdr rtlsdr:x64-windows ZeroMQ ZeroMQ:x64-windows soxr soxr:x64-windows
 ```
 The included solution file in the mscv directory allows you to build AIS-catcher with RTL-SDR/ZMQ support in the Visual Studio IDE.
+
+## Running AIS-catcher
+
+Once built and installed, there are two ways to run your station.
+
+<div class="recommended" markdown>
+
+**Managed mode** — start AIS-catcher in managed mode:
+
+```bash
+AIS-catcher -E ~/aiscatcher.json 127.0.0.1:8118
+```
+
+Then open `http://localhost:8118` in a browser — the [setup wizard](../managed/setup-wizard.md) walks you through the configuration and starts the receiver. See [Getting Around the Dashboard](../managed/dashboard.md) to monitor and fine-tune your station.
+
+</div>
+
+**Manual mode** — configure via command-line options, e.g. `AIS-catcher -v 10`:
+
+[Command Line Run](../usage/cli.md){ .md-button }

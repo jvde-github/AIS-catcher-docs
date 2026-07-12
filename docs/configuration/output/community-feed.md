@@ -10,13 +10,15 @@ The Community Feed allows you to share received AIS messages with the AIS-catche
     </div>
 </div>
 
-On the CLI, `-X` enables sharing. If you provide a sharing key, the station is linked to your account; if omitted, sharing is anonymous.
+Sharing is **not enabled by default**. On the CLI, `-X` enables sharing: if you provide a sharing key (created at [aiscatcher.org](https://aiscatcher.org/addstation_ac)), the station is linked to your account; if omitted, sharing is anonymous. `-X off` explicitly switches sharing off, overriding an enabled setting in the configuration.
+
+In managed mode, sharing is configured in the dashboard under **Output → Community**: enter your sharing key and make sure sharing is enabled.
 
 In JSON configuration, Community Feed settings are configured via the root-level keys `sharing` and `sharing_key` (they are not part of an output array like `udp`).
 
 ## Live community map in the viewer
 
-When the Visual Web Control is running, the community map is no longer drawn as an overlay on the local map. Opening the community map pops up a pane connected to [aiscatcher.org/livemap](https://aiscatcher.org/livemap). Pan and zoom are kept in sync in both directions, and vessels seen by the local receiver are pushed to the community view in real time.
+In the web viewer, the community map is no longer drawn as an overlay on the local map. Opening the community map pops up a pane connected to [aiscatcher.org/livemap](https://aiscatcher.org/livemap). Pan and zoom are kept in sync in both directions, and vessels seen by the local receiver are pushed to the community view in real time.
 
 The community-feed icon in the header indicates the current sharing state at a glance:
 

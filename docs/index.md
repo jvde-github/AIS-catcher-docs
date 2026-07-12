@@ -1,52 +1,25 @@
-# AIS-Catcher
+<div class="hero" markdown>
 
-Welcome to the **AIS-Catcher** documentation. AIS-Catcher is an open-source software package designed to convert your inexpensive general-purpose **Software Defined Radio** (SDR) into a robust, dual-channel **Automatic Identification System (AIS)** receiver. Empower yourself with complete control over maritime data monitoring and sharing without the need for expensive commercial AIS receivers. 
+# <img class="hero-logo" src="assets/logo-blue.svg" alt=""> AIS-Catcher
 
-> ## **Important Disclaimer**
->
-> **AIS-Catcher is intended for hobbyist and research projects only. It is NOT approved for use in navigation or safety-of-life applications.**
->
-> [Read the full disclaimer](disclaimer.md).
+**AIS-Catcher** is free and open-source software that turns an inexpensive **Software Defined Radio** (SDR) into a complete **AIS** receiver: receive and visualize ship traffic on a live map, and share the data over the network or with the community. The source code is available on [GitHub](https://github.com/jvde-github/AIS-catcher) under the **GPLv3** license.
 
----
-
-[Quick Start Guide](https://www.aiscatcher.org/quickstart){ .md-button .md-button--primary }
 [Get Started](getting-started/overview.md){ .md-button .md-button--primary }
-[What is new?](what-is-new.md){ .md-button .md-button-secondary }
+[What do I need?](getting-started/what-you-need.md){ .md-button .md-button--secondary }
+[What is AIS?](getting-started/ais-basics.md){ .md-button .md-button--secondary }
 
+</div>
 
----
-
-
-## What is AIS?
-
-The **Automatic Identification System (AIS)** is a vital maritime safety technology, akin to **ADSB** used in aviation. AIS enables real-time tracking of vessels by transmitting critical information such as position, speed, and heading over **VHF radio frequencies** (around **162 MHz**). This data enhances maritime navigation safety, situational awareness, and traffic management.
-
-## Community Features
-
-Join the vibrant **AIS-Catcher** community at [aiscatcher.org](https://aiscatcher.org). Our platform offers:
-
-1. **Station Performance Tracking**  
-   Monitor and analyze your AIS receiver's performance, and benchmark it against other stations in your vicinity.
-
-2. **Global Ship Movement Overview**  
-   Gain access to a comprehensive, real-time view of maritime traffic aggregated from our global network of contributors.
-
-[Community Site](https://aiscatcher.org){ .md-button .md-button--secondary }
-
-
-## Free and Open-Source
-
-AIS-Catcher is free and open-source software published under the **GPLv3** license. You can easily install it by following our comprehensive [installation guide](getting-started/overview.md) or by visiting our [GitHub repository](https://github.com/jvde-github/AIS-catcher).
-
-[View on GitHub](https://github.com/jvde-github/AIS-catcher){ .md-button .md-button--secondary }
-
+!!! warning "Disclaimer"
+    **AIS-Catcher is intended for hobbyist and research projects only. It is NOT approved for use in navigation or safety-of-life applications.** [Read the full disclaimer](disclaimer.md).
 
 ## Resources
 
 - [**Quick Start Guide**](https://www.aiscatcher.org/quickstart): From zero to a running station in six steps — install, then finalize the configuration in the browser.
 - [**Complete User Guide**](getting-started/overview.md): Detailed instructions and feature walkthroughs.
-- [**Community and Support**](community.md): Join the AIS-Catcher community to share insights and get help.
+- [**Community and Support**](community.md): Join the AIS-Catcher community at [aiscatcher.org](https://aiscatcher.org) to track your station's performance, share insights and get help.
+- [**AIS Basics**](getting-started/ais-basics.md): An introduction to the Automatic Identification System.
+- [**Features**](getting-started/features.md): A complete overview of AIS-catcher's capabilities.
 - [**FAQ**](faq.md): Answers to frequently asked questions.
 - [**References**](references/overview.md): Links to additional resources and documentation.
 

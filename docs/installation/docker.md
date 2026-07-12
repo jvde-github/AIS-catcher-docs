@@ -1,92 +1,84 @@
 # Docker Container
 
---8<-- "docs/disclaimer.md"
+!!! warning "Disclaimer"
+    **AIS-catcher is intended for hobbyist and research projects only. It is NOT approved for use in navigation or safety-of-life applications.** [Read the full disclaimer](../disclaimer.md).
 
-Jump to the desired Installation Option:
+Pre-built container images are available from the GitHub Container Registry, with `latest` (the latest release) and `edge` (the bleeding edge of the `main` branch) being the two main tags — see the [package's page](https://github.com/jvde-github/AIS-catcher/pkgs/container/ais-catcher) for all available tags. There are two ways to run your station:
 
-[Built-in Control Panel](#docker-with-built-in-control-panel){ .md-button .md-button--secondary }
-[Basic](#basic-docker-container){ .md-button .md-button--secondary }
-[Visual Web Control](#docker-with-visual-web-control){ .md-button .md-button--secondary }
+- **[Managed mode](#managed-mode)** (recommended) — configure and control your station from the browser.
+- **[Manual mode](#manual-mode)** — configure via command-line options.
 
-## Docker with Built-in Control Panel
+!!! note
+    SDRplay devices are currently not supported in the Docker images.
 
-The easiest way to run AIS-catcher in Docker is with the built-in control panel: start the container in managed mode and finalize the configuration in the browser.
+<div class="recommended" markdown>
+
+## Managed Mode
+
+<div class="steps" markdown>
+
+<div class="step" markdown>
+
+**Pull the image**  
+With Docker installed:
 
 ```console
-docker run --rm -it --network=host --device /dev/bus/usb ghcr.io/jvde-github/ais-catcher:edge -E /tmp/config.json 127.0.0.1:8118
+docker pull ghcr.io/jvde-github/ais-catcher:edge
 ```
 
-Then open `http://localhost:8118` in a browser — a setup wizard walks you through configuring your input device and outputs.
+</div>
 
-A few notes:
+<div class="step" markdown>
 
-- `--device /dev/bus/usb` passes an RTL-SDR through. For a dAISy-catcher or other serial receiver, pass its serial port instead, e.g. `--device /dev/ttyACM0`.
-- To administer the control panel from another machine, replace `127.0.0.1` with `0.0.0.0` — a password is then required on first access.
-- To keep the configuration across container restarts, store the config file on a volume, e.g. add `-v ais-catcher:/config` and use `-E /config/config.json 127.0.0.1:8118`.
+**Run it in managed mode**
 
----
+```console
+docker run --rm -it --network=host --device-cgroup-rule='c 189:* rmw' -v /dev/bus/usb:/dev/bus/usb -v ais-config:/config ghcr.io/jvde-github/ais-catcher:edge -E /config/config.json 127.0.0.1:8118
+```
 
-[Finalize the Configuration in the Browser](../usage/online-configuration.md){ .md-button .md-button--primary }
+A quick tour of the options:
 
----
+- `--device-cgroup-rule` and `-v /dev/bus/usb` pass USB SDRs through to the container, and keep working when a device is re-plugged.
+- Using a dAISy-catcher or other serial receiver? Add `--device /dev/ttyACM0` instead.
+- Your settings live in the `ais-config` volume (created automatically), so they persist across restarts.
+- To administer the station from another machine, replace `127.0.0.1` with `0.0.0.0` — a password is then required.
 
-## Basic Docker Container
+</div>
 
-Pre-built container images containing AIS-catcher are available from the GitHub Container Registry. Available container tags are documented on the [package's page](https://github.com/jvde-github/AIS-catcher/pkgs/container/ais-catcher), with `latest` (the latest release) and `edge` (the bleeding edge of the `main` branch) being the two main ones.
+<div class="step" markdown>
 
-The following `docker run` command provides an example of the usage of this container image, running the latest release of AIS-catcher interactively:
+**Complete the setup wizard**  
+Open the dashboard in your browser at `http://localhost:8118`. On first use, the setup wizard walks you through configuring your input device and outputs, and starts the receiver:
+
+[Setup Wizard](../managed/setup-wizard.md){ .md-button .md-button--primary }
+
+</div>
+
+</div>
+
+That's it — your station is up and running. See [Getting Around the Dashboard](../managed/dashboard.md) to monitor and fine-tune it.
+
+</div>
+
+## Manual Mode
+
+Run the container with any AIS-catcher command-line options:
 
 ```console
 docker run --rm -it --pull always --device /dev/bus/usb ghcr.io/jvde-github/ais-catcher:latest <ais-catcher command line options>
 ```
 
-Alternatively, the following `docker-compose.yml` configuration provides a good starting point should you wish to use [Docker Compose](https://docs.docker.com/compose/):
+Notice that if you want to run a web viewer (`-N 8100`) you need to make that port available on the host system with `-p 8100:8100`, or use `--network=host`.
 
-```yaml
-services:
-  ais-catcher:
-    command: <ais-catcher command line options> (e.g. -N 8100)
-    container_name: ais-catcher
-    ports:
-      - 8100:8100 <don't forget to passthrough ports for the webclient>
-    devices:
-      - "/dev/bus/usb:/dev/bus/usb"
-    image: ghcr.io/jvde-github/ais-catcher:latest
-    restart: always
-```
-Please note that the SDRplay devices are currently not supported in the Docker images.
+[Command Line Run](../usage/cli.md){ .md-button }
 
----
+!!! tip "docker-shipfeeder"
+    An excellent Docker set-up is the [docker-shipfeeder](https://github.com/sdr-enthusiasts/docker-shipfeeder) that provides a user friendly way to feed various aggregators with excellent documentation and user support by the sdr-enthusiasts community.
 
-[Start First Run](../usage/cli.md){ .md-button .md-button--primary }
+## Updating
 
----
+To update to the latest image, simply pull it again:
 
-### More options
-To pull the latest docker image (e.g. to create or refresh to the latest version) without running:
 ```console
 docker pull ghcr.io/jvde-github/ais-catcher:edge
 ```
-To start AIS-catcher, you can then use:
-```console
-docker run --device /dev/bus/usb --rm -it ghcr.io/jvde-github/ais-catcher:edge
-```
-Notice that if you want to run the webviewer (-N 8100) you need to make that available on the host system with (`-p 8100:8100`). To send UDP data to OpenCPN running on the host computer, you can try to find the bridge network address (`sudo docker network inspect bridge` as per [tutorials](https://www.geeksforgeeks.org/how-to-use-docker-default-bridge-networking/) and use this as UDP destination address (e.g. `-u 172.17.0.1  5077`). Alternatively you could use `--network host` although less desirable. Please consult the Docker documentation.
-
-An excellent Docker set-up is the [docker-shipfeeder](https://github.com/sdr-enthusiasts/docker-shipfeeder) that provides a user friendly way to 
-feed various aggregators with excellent documentation and user support by the sdrenthusiasts community.
-
-## Docker with Visual Web Control
-If you are already up and running with Docker installed, you can simply use:
-```console
-wget https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/refs/heads/main/docker-compose.yml
-docker compose up -d
-```
-
-This will set up AIS-catcher with the Visual Web Control interface, allowing you to configure, manage, and update your installation via a web browser at port 8110.
-
----
-
-[Start First Run](../usage/gui.md){ .md-button .md-button--primary }
-
----

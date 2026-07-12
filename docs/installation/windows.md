@@ -1,32 +1,65 @@
 # Windows Binaries
 
---8<-- "docs/disclaimer.md"
+!!! warning "Disclaimer"
+    **AIS-catcher is intended for hobbyist and research projects only. It is NOT approved for use in navigation or safety-of-life applications.** [Read the full disclaimer](../disclaimer.md).
 
 ## Installation
 
-Links to pre-built Windows binaries are available below, with and without SDRPlay support. To run AIS-catcher:
+Pre-built Windows binaries are available below, with and without SDRPlay support. There are two ways to run your station:
 
-1. Unpack the ZIP file to a directory
-2. Install the RTL-SDR drivers via [Zadig](https://www.rtl-sdr.com/tag/zadig/) (once per dongle)
-3. Double-click `start-GUI.bat` to launch AIS-catcher with its built-in control panel, then finalize the configuration in the browser (requires the **Edge** build from the releases table below)
+- **[Managed mode](#managed-mode)** (recommended) — configure and control your station from the browser.
+- **[Manual mode](#manual-mode)** — configure via command-line options.
+
+<div class="recommended" markdown>
+
+## Managed Mode
+
+<div class="steps" markdown>
+
+<div class="step" markdown>
+
+**Download and unpack**  
+Download the **Edge** build from the [releases table](#recent-releases) below and unpack the ZIP file to a directory
+
+</div>
+
+<div class="step" markdown>
+
+**Set up the dongle driver**  
+Use [Zadig](https://www.rtl-sdr.com/tag/zadig/) to assign the generic WinUSB driver to your RTL-SDR dongle (once per dongle)
+
+</div>
+
+<div class="step" markdown>
+
+**Launch AIS-catcher**  
+Double-click `start-GUI.bat` in the unzipped folder to start AIS-catcher in managed mode
+
+</div>
+
+<div class="step" markdown>
+
+**Complete the setup wizard**  
+Open the dashboard in your browser at `http://localhost:8118`. On first use, the setup wizard walks you through configuring your input device and outputs, and starts the receiver:
+
+[Setup Wizard](../managed/setup-wizard.md){ .md-button .md-button--primary }
+
+</div>
+
+</div>
+
+That's it — your station is up and running. See [Getting Around the Dashboard](../managed/dashboard.md) to monitor and fine-tune it.
+
+</div>
+
+## Manual Mode
 
 Alternatively, launch via the command line or `start.bat` (editable with Notepad) for a command-line based configuration.
 
-**Prerequisites:**
+[Command Line Run](../usage/cli.md){ .md-button }
 
-- RTL-SDR drivers (install via [Zadig](https://www.rtl-sdr.com/tag/zadig/))
-- Visual Studio [runtime libraries](https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170) (usually already present — only needed if AIS-catcher won't start)
-
-## Recent Releases
-
-> **Note:** Built with latest Windows MSVC compiler. Update [runtime libraries](https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170) before running. Some issues have been reported with outdated runtime libraries and Windows 10
-
----
-
-[Finalize the Configuration in the Browser](../usage/online-configuration.md){ .md-button .md-button--primary }
-[Command Line First Run](../usage/cli.md){ .md-button .md-button--secondary }
-
----
+!!! tip
+    If AIS-catcher won't start, install the Visual Studio [runtime libraries](https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170) (usually already present).
 
 ## Recent Releases
 

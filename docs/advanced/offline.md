@@ -1,20 +1,20 @@
 # Offline web viewer
 
-There is an option to run the web viewer without relying on online libraries. This facilitates using the web interface whilst traveling without an internet connection. The steps are simple. First, go to your home directory (say `/home/jasper`) and clone the necessary offline web assets:
+The web viewer works without an internet connection out of the box: all web assets (libraries, styles and fonts) are baked into the AIS-catcher executable. This facilitates using the web interface whilst traveling without an internet connection.
+
+!!! note "Deprecated: CDN setting"
+    Older versions relied on online libraries and offered the `CDN` setting to point at a locally cloned copy of the web assets. This is deprecated — no separate download is needed anymore.
+
+The one thing that still requires a connection is the background map. For a fully offline experience, include offline maps in `mbtiles` format:
+
 ```bash
-git clone https://github.com/jvde-github/webassets.git
+AIS-catcher -N 8100 MBTILES filename.mbtiles
 ```
-This will create a directory `webassets` that we need to share with AIS-catcher as an alternative location for online web content  with the CDN argument followed by the location of the web assets directory:
+
+or as an overlay:
+
 ```bash
-AIS-catcher -N 8100 CDN /home/jasper/webassets
-```
-Offline maps can also be included in `mbtiles` format:
-```bash
-AIS-catcher  -N 8100 MBTILES filename.mbtiles
-```
-or as an overlay
-```bash
-AIS-catcher  -N 8100 MBOVERLAY filename.mbtiles
+AIS-catcher -N 8100 MBOVERLAY filename.mbtiles
 ```
 
 ![image](https://github.com/user-attachments/assets/3a0282b5-8e16-4fe1-bedf-7a0e97d75674)

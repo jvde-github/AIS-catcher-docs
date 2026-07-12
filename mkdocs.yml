@@ -6,11 +6,8 @@ site_url: https://aiscatcher.org/docs
 theme:
   name: 'material'
   custom_dir: overrides
-  palette:
-    - scheme: default
-      primary: white
-      accent: white
-  logo:   assets/logo.svg 
+  logo:   assets/logo.svg
+  favicon: assets/logo.svg
   language: 'en'
   palette:
     primary: 'blue'
@@ -27,9 +24,11 @@ theme:
         link: https://x.com/githubjvde
   features:
     - navigation.top
-    - content.code.annotate  
-    - content.code.copy      
-    - content.code.wrap     
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - content.code.annotate
+    - content.code.copy
+    - content.code.wrap
 
 repo_url: https://github.com/jvde-github/AIS-catcher
 repo_name: GitHub
@@ -62,23 +61,28 @@ nav:
   - What is New?: what-is-new.md
   - Getting Started:
       - Overview: getting-started/overview.md
-      - Features: getting-started/features.md
-      - AIS Basics: getting-started/ais-basics.md
+      - What You’ll Need: getting-started/what-you-need.md
   - Installation:
       - Overview: installation/overview.md
       - Docker: installation/docker.md
       - Raspberry Pi: installation/raspberrypi.md
       - macOS: installation/macos.md
       - Windows: installation/windows.md
+      - Android: installation/android.md
       - Build from Source: installation/build-source.md
       - Ubuntu and Debian: installation/ubuntu-debian.md
-  - Basic Usage:
+  - Managed Mode:
+      - Getting Around: managed/dashboard.md
+      - Setup Wizard: managed/setup-wizard.md
+      - Input Settings: managed/input.md
+      - Output Settings: managed/output.md
+      - Remote Access and Security: managed/remote-access.md
+  - Manual Mode:
       - Overview: usage/overview.md
-      - Online Configuration: usage/online-configuration.md
-      - Visual Web Control: usage/gui.md
       - Command Line: usage/cli.md
       - JSON Configuration: usage/json-configuration.md
-  - Configuration:
+      - Running as a Service: usage/service.md
+  - Configuration Reference:
       - Overview: configuration/overview.md
       - Input Options:
             - Overview: configuration/input/overview.md
@@ -117,8 +121,10 @@ nav:
         - NMEA2000: configuration/output/NMEA2000.md
         - PostgreSQL: configuration/output/PSQL.md
   - Tools:
+      - AIS-catcher-control: usage/gui.md
       - Python (aiscat): tools/python.md
   - Advanced:
+      - AIS Basics: getting-started/ais-basics.md
       - Offline Web Viewer: advanced/offline.md
       - Include ADSB feed: advanced/ADSB.md
       - FM decoding: advanced/FM-decoding.md
@@ -133,6 +139,7 @@ nav:
   - Community: community.md
   - FAQ: faq.md
   - References:
+      - Features: getting-started/features.md
       - JSON AIS format: references/JSON-decoding.md
       - License: references/license.md
 

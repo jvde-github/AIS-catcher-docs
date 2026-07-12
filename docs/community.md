@@ -23,11 +23,7 @@ Register your station by visiting [Register Station](https://aiscatcher.org/adds
 
 <div class="step" markdown>
 **Share Your AIS Data:**   
-Run AIS-catcher using the `-X` option followed by your sharing key:
-     ```bash
-     ais-catcher -X YOUR_SHARING_KEY
-     ```
-This command shares your station's raw AIS data with the community hub/ More details can be found in the [Configuration](configuration/output/community-feed.md) section.
+Sharing is not enabled by default. In the [dashboard](managed/dashboard.md), go to **Output → Community**, enter your sharing key and make sure sharing is enabled — then save and restart the receiver. For stations running in [manual mode](usage/overview.md), use `AIS-catcher -X YOUR_SHARING_KEY` instead; see the [Community Feed](configuration/output/community-feed.md) reference for all options.
 </div>
 
 <div class="step" markdown>

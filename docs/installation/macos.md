@@ -1,10 +1,14 @@
 # macOS Installation
 
---8<-- "docs/disclaimer.md"
+!!! warning "Disclaimer"
+    **AIS-catcher is intended for hobbyist and research projects only. It is NOT approved for use in navigation or safety-of-life applications.** [Read the full disclaimer](../disclaimer.md).
 
 ## Installation
 
-This guide provides instructions for installing AIS-catcher on macOS systems using Homebrew. AIS-catcher is built from source on macOS to ensure optimal performance for your specific hardware.
+This guide provides instructions for installing AIS-catcher on macOS systems using Homebrew. AIS-catcher is built from source on macOS to ensure optimal performance for your specific hardware. Once installed, there are two ways to run your station:
+
+- **[Managed mode](#managed-mode)** (recommended) — configure and control your station from the browser.
+- **[Manual mode](#manual-mode)** — configure via command-line options.
 
 ## Prerequisites
 
@@ -69,37 +73,51 @@ make
 sudo make install
 ```
 
-The build process will automatically detect and include support for any SDR libraries you have installed.
+The build process will automatically detect and include support for any SDR libraries you have installed. You can verify the result and the features included in your build with `AIS-catcher -L`.
 
-> **Note:** Building from source can take several minutes depending on your Mac's specifications. The executable will be optimized for your specific hardware.
+!!! note
+    Building from source can take several minutes depending on your Mac's specifications. The executable will be optimized for your specific hardware.
 
-## Testing the Installation
+<div class="recommended" markdown>
 
-Once the program is installed, verify it works correctly by checking the available features:
+## Managed Mode
 
-```bash
-AIS-catcher -L
-```
+<div class="steps" markdown>
 
-This command will display all the input devices and features that are included in your build.
+<div class="step" markdown>
 
-## Running AIS-catcher
-
-The recommended way to get started is with the built-in control panel, so you can finalize the configuration in the browser:
+**Start AIS-catcher in managed mode**
 
 ```bash
-AIS-catcher -E /tmp/aiscatcher.json 127.0.0.1:8118
+AIS-catcher -E ~/aiscatcher.json 127.0.0.1:8118
 ```
 
-Then open `http://localhost:8118` in a browser — a setup wizard walks you through configuring your input device and outputs. See [Online Configuration](../usage/online-configuration.md) for details.
+</div>
+
+<div class="step" markdown>
+
+**Complete the setup wizard**  
+Open the dashboard in your browser at `http://localhost:8118`. On first use, the setup wizard walks you through configuring your input device and outputs, and starts the receiver:
+
+[Setup Wizard](../managed/setup-wizard.md){ .md-button .md-button--primary }
+
+</div>
+
+</div>
+
+That's it — your station is up and running. See [Getting Around the Dashboard](../managed/dashboard.md) to monitor and fine-tune it.
+
+</div>
+
+## Manual Mode
 
 Alternatively, start receiving AIS messages with your RTL-SDR dongle directly from the command line:
 
 ```bash
-AIS-catcher
+AIS-catcher -v 10
 ```
 
-For more advanced usage and configuration options, see the [Command Line Usage](../usage/cli.md) guide.
+[Command Line Run](../usage/cli.md){ .md-button }
 
 ## Running as a Background Service
 
@@ -260,8 +278,3 @@ After installation, verify it works by running:
 ```bash
 AIS-catcher -L
 ```
-
----
-
-[Start First Run](../usage/cli.md){ .md-button .md-button--primary }
-[Build from Source Details](build-source.md){ .md-button .md-button--secondary }

@@ -1,151 +1,76 @@
 #  Ubuntu/Debian/Raspberry Pi Installation
 
---8<-- "docs/disclaimer.md"
+!!! warning "Disclaimer"
+    **AIS-catcher is intended for hobbyist and research projects only. It is NOT approved for use in navigation or safety-of-life applications.** [Read the full disclaimer](../disclaimer.md).
 
-## Installation
+AIS-catcher is installed with a single script that installs all dependencies, sets up a background service and starts it. There are two ways to run your station:
 
-This guide provides instructions for installing AIS-catcher on Debian-based systems (like Raspberry Pi) and setting it up to run as a background service. The background service provides the option for AIS-catcher to automatically start when the machine is booted.
+- **[Managed mode](#managed-mode)** (recommended) — configure and control your station from the browser.
+- **[Manual mode](#manual-mode)** — configure via the command line or configuration files.
 
-### Recommended Installation Path for New Users
+<div class="recommended" markdown>
 
-If you are new to Linux or Raspberry Pi, we recommend installing AIS-catcher with its **built-in control panel**: install via the script below and then finalize the configuration in the browser, without needing to edit configuration files manually.
+## Managed Mode
 
+<div class="steps" markdown>
+
+<div class="step" markdown>
+
+**Run the install script**  
 Open a terminal or log in via SSH, then run:
 
 ```console
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) -p -M"
 ```
 
-The script installs all dependencies and AIS-catcher, sets up the background service in managed mode and starts it. Then open the control panel in your browser on port **8118** — for example `http://raspberrypi.local:8118` or `http://192.168.1.100:8118` (your Pi's IP address). You will be asked to set a password, after which a short setup wizard walks you through configuring your input device and outputs.
+If `curl` is not available on your device, install it with `sudo apt install curl`.
 
-[Finalize the Configuration in the Browser](../usage/online-configuration.md){ .md-button .md-button--primary }
+</div>
 
-> As an alternative, the separate [AIS-catcher-control](#installation-with-visual-web-control) package also provides browser-based configuration and additionally offers host-level management such as service control, one-click updates and reboot.
+<div class="step" markdown>
 
-## Basic Installation
+**Complete the setup wizard**  
+Open the dashboard in your browser on port **8118**, e.g. `http://raspberrypi.local:8118`. On first use, the setup wizard walks you through configuring your input device and outputs, and starts the receiver:
 
-To install AIS-catcher via a script, open a terminal or log in via SSH, then run the following command:
-```console
-sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) -p"
-```
+[Setup Wizard](../managed/setup-wizard.md){ .md-button .md-button--primary }
 
-The script will install all dependencies and install AIS-catcher. If `curl` is not available on your device install it with `sudo apt install curl`. The required SDR libraries are installed from the official packages, if they cannot be found on the system. This script will install AIS-catcher from the latest available Debian package on Github. To guarantee support for the RTL-SDR V4 the latest version of the Osmocom library is statically linked into the AIS-catcher executable.
+</div>
 
-> This script ***is not compatible with*** the first versions of the Raspberry Pi and Zero due to their limited support for floating point hardware acceleration.
-> The pre-build packages also do not include PostgreSQL support. If this is required, please build from [source](#install-from-source).
+</div>
 
-!!! tip "Configure via the browser"
-    To configure AIS-catcher from the browser instead of the command line, add the `-M` option to the install command as shown [above](#recommended-installation-path-for-new-users) — the service then runs with the built-in control panel on port 8118 (see [Online Configuration](../usage/online-configuration.md)). Alternatively, install the separate [Visual Web Control](#installation-with-visual-web-control) package, which also allows you to control the AIS-catcher process (start and stop) and manage the host remotely via a convenient web interface.
+That's it — your station is up and running. See [Getting Around the Dashboard](../managed/dashboard.md) to monitor and fine-tune it.
 
----
+</div>
 
-[Start First Run](../usage/cli.md){ .md-button .md-button--primary }
+## Manual Mode
 
----
-
-### Update AIS-catcher to latest version
-
-After you have installed with the above script, 
-to update AIS-catcher to the latest version, simply run the above command again. It will ***not*** overwrite any configuration files when there are available on the system.
-
-### Install From Source
-
-If you want to install from source, you can run the script as follows:
-
-```console
-sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install)" 
-```
-The advantage of building from source is that the executable is optimized for the hardware specifics but can take a significant amount of time (20 minutes on a Raspberry Pi 4).
-
-
-### Testing the installation
-
-Once the program is installed it can be run on the command line and checked for the features that are included in the build:
-```console
-AIS-catcher -L
-```
-
-More information to [get started](../usage/cli.md) is available. The installation script also sets up the infrastructure to run AIS-catcher as a systemd background service automatically on start up. 
-
-## Configuration Files for background service
-
-> **Tip:** If you're using the [Visual Web Control interface](#installation-with-visual-web-control), you can configure all settings through the web browser without manually editing these files.
-
-For running AIS-catcher as a background service we can use two configuration files:
-
-- /etc/AIS-catcher/config.json (JSON configuration)
-- /etc/AIS-catcher/config.cmd (command line parameters)
-
-The simplest approach is to edit the configuration file /etc/AIS-catcher/config.cmd to capture your settings which are detailed below. Lines starting with # are considered comments and ignored. The default file can be modified using a text editor, for example:
-```console
-sudo nano /etc/AIS-catcher/config.cmd
-```
-Please note that config.json takes precedence over config.cmd.
-
-### Running AIS-catcher as a Background Service
-
-> **Note:** If you're using the [Visual Web Control interface](#installation-with-visual-web-control), service management (start, stop, enable) is handled through the web interface. The commands below are only needed for manual command-line configuration.
-
-To start AIS-catcher as a background service use the following command:
-```console
-sudo systemctl start ais-catcher.service
-```
-To view the status of the service copy the following command:
-```console
-sudo systemctl status ais-catcher.service
-```
-To ensure AIS-catcher starts automatically at boot time, enable the service with:
-```console
-sudo systemctl enable ais-catcher.service
-```
-
-## Installation with Visual Web Control
-
-AIS-catcher provides a web-based visual control interface for easy configuration, which is **highly recommended for new users**. This two-step installation process will get you up and running with a visual interface to manage all settings, including updates and upgrades.
-
-### Step 1: Install the Core AIS-catcher Package
-
-First, install the basic AIS-catcher package. Open a terminal or log in via SSH, then run:
+To configure via the command line instead, omit the `-M` option:
 
 ```console
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) -p"
 ```
 
-The script will install all dependencies and AIS-catcher. If `curl` is not available, install it with `sudo apt install curl`.
+The background service infrastructure is still set up — see [Running as a Service](../usage/service.md) for the configuration files and service commands.
 
-### Step 2: Install the Visual Web Control Interface
+[Command Line Run](../usage/cli.md){ .md-button }
 
-Once the core package is installed, install the Visual Web Control interface as a separate service:
+## Install from Source
 
-```bash
-sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/main/install_ais_catcher_control.sh)"
+Both commands above install the latest pre-built Debian package (the `-p` option). Leave out `-p` to build AIS-catcher from source instead:
+
+```console
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) -M"
 ```
 
-### Step 3: Access the Visual Web Control Interface
+Building from source optimizes the executable for your hardware but can take a significant amount of time (20 minutes on a Raspberry Pi 4). It is required if you need PostgreSQL support, which is not included in the pre-built packages.
 
-After installation, open your web browser and navigate to your Raspberry Pi's IP address on port 8110. For example:
-- `http://192.168.1.100:8110` (replace with your Pi's actual IP address)
-- `http://raspberrypi.local:8110` (if using hostname)
-- `http://zerowh:8110` (if you've set a custom hostname)
+!!! note
+    The pre-built packages statically link the latest Osmocom library to guarantee support for the RTL-SDR V4, and are ***not compatible with*** the first versions of the Raspberry Pi and Zero due to their limited support for floating point hardware acceleration.
 
-With the Visual Web Control interface, you can manage everything through your browser without needing to use command-line tools:
-- Configure all AIS-catcher settings visually
-- Start, stop, and monitor the AIS-catcher service (no need for systemctl commands)
-- **Update and upgrade AIS-catcher** to the latest version with one click
-- View logs and system status
+## Updating
 
-> **Note:** Once you manually edit the AIS-catcher configuration files, certain simplified Visual Web Control features (such as one-click or wizard-like configuration menus) will no longer be available. However, you can still configure advanced settings via the Visual Web Control interface and manage AIS-catcher by viewing logs or starting and stopping the service.
+To update AIS-catcher to the latest version, simply run the install command again. It will ***not*** overwrite any configuration files when these are available on the system.
 
----
+## Remote Start/Stop and Host Management
 
-[Start First Run](../usage/gui.md){ .md-button .md-button--primary }
-
----
-
-![image](https://github.com/user-attachments/assets/1fe942d2-dd3a-4116-99e8-f88f2de4ed14)
-
-
-### Feedback
-This is fairly new script and under development so any feedback is appreciated. 
-
-![image](https://github.com/user-attachments/assets/1be6abdb-7df2-4f4b-8d73-1740e0476013)
+The separate [AIS-catcher-control](../usage/gui.md) package adds browser-based control of the AIS-catcher process (start and stop, live log) and of the host itself (one-click updates, reboot).
