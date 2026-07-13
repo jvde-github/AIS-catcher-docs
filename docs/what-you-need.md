@@ -37,7 +37,7 @@ A complete AIS receiving station needs three pieces of hardware — roughly €6
 
 An **RTL-SDR dongle** is the standard choice: inexpensive, well supported and more than capable — a single dongle receives both AIS channels simultaneously. When buying new, pick a current model (RTL-SDR Blog v3 or v4) with a **TCXO** (temperature-compensated oscillator, ±1 ppm): the very cheapest DVB-T sticks drift with temperature, which costs sensitivity on AIS.
 
-Already have other receiving hardware? AIS-catcher also supports AirSpy, AirSpy HF+, SDRPlay, HackRF and several network sources — see the [input options](../configuration/input/overview.md).
+Already have other receiving hardware? AIS-catcher also supports AirSpy, AirSpy HF+, SDRPlay, HackRF and several network sources — see the [input options](configuration/input/overview.md).
 
 ## The Antenna
 
@@ -57,7 +57,7 @@ Almost anything works — AIS decoding is light work:
 | **Linux / Windows / macOS** | Native packages and builds for all of them. |
 | **Docker** | Ready-made images for containerized setups. |
 
-An internet connection is needed for installation and for [sharing your data](../community.md) — the receiving and decoding itself runs entirely locally.
+An internet connection is needed for installation and for [sharing your data](community.md) — the receiving and decoding itself runs entirely locally.
 
 ## The Location
 
@@ -69,5 +69,5 @@ VHF signals travel line of sight: water you can see (or nearly see) is water you
 
 ---
 
-[Start Installation](../installation/overview.md){ .md-button .md-button--primary }
+[Start Installation](installation/overview.md){ .md-button .md-button--primary }
 [Estimate Your Range](ais-basics.md#how-far-will-you-receive){ .md-button .md-button--muted }

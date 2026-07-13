@@ -83,7 +83,7 @@ For a large ship with its antenna around 15 m above the water, your antenna heig
 Two practical consequences:
 
 - **Height beats everything.** Raising the antenna does more for your range than any amplifier or premium receiver — a clear view of the water matters more than gain.
-- **Ranges beyond the horizon do occur.** Under certain atmospheric conditions VHF signals bend along the earth's surface (ducting) and ships hundreds of kilometres away appear briefly. See [Long Range AIS](../advanced/long-range.md).
+- **Ranges beyond the horizon do occur.** Under certain atmospheric conditions VHF signals bend along the earth's surface (ducting) and ships hundreds of kilometres away appear briefly. See [Long Range AIS](advanced/long-range.md).
 
 ## Antenna and Cable
 
@@ -104,10 +104,10 @@ Any antenna tuned for the marine VHF band works; a simple quarter-wave whip or a
 A traditional AIS receiver is dedicated hardware. A Software Defined Radio does the same job in software: the dongle digitizes a slice of the VHF band and AIS-catcher demodulates and decodes both AIS channels from it simultaneously — at a fraction of the cost of dedicated equipment, on hardware that can also receive many other signals.
 
 !!! warning "Not for navigation"
-    SDR-based AIS reception is intended for hobby and research use only. It must **not** be used for navigation, safety-of-life applications or commercial vessel operations — those require type-approved equipment meeting international maritime standards. [Read the full disclaimer](../disclaimer.md).
+    SDR-based AIS reception is intended for hobby and research use only. It must **not** be used for navigation, safety-of-life applications or commercial vessel operations — those require type-approved equipment meeting international maritime standards. [Read the full disclaimer](disclaimer.md).
 
 ## Learn More
 
 - [What You'll Need](what-you-need.md) — hardware to build your own receiving station
-- [Long Range AIS](../advanced/long-range.md) — receiving beyond the radio horizon
+- [Long Range AIS](advanced/long-range.md) — receiving beyond the radio horizon
 - [Wikipedia: Automatic Identification System](https://wikipedia.org/wiki/Automatic_Identification_System) — history and technical background

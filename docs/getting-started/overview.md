@@ -15,7 +15,7 @@ Only the first two steps happen on this page: connect your hardware and press **
 **Connect the hardware**  
 Plug the SDR dongle into your computer and connect the AIS antenna
 
-[What You’ll Need](what-you-need.md){ .md-button .md-button--muted }
+[What You’ll Need](../what-you-need.md){ .md-button .md-button--muted }
 
 </div>
 

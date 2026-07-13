@@ -57,11 +57,13 @@ extra:
         url: 'disclaimer.md'
 
 nav:
-  - Home: index.md
+  - Home:
+      - Welcome: index.md
+      - What is AIS?: ais-basics.md
+      - What You’ll Need: what-you-need.md
   - What is New?: what-is-new.md
   - Getting Started:
       - Overview: getting-started/overview.md
-      - What You’ll Need: getting-started/what-you-need.md
   - Installation:
       - Overview: installation/overview.md
       - Docker: installation/docker.md
@@ -124,7 +126,6 @@ nav:
       - AIS-catcher-control: usage/gui.md
       - Python (aiscat): tools/python.md
   - Advanced:
-      - AIS Basics: getting-started/ais-basics.md
       - Offline Web Viewer: advanced/offline.md
       - Include ADSB feed: advanced/ADSB.md
       - FM decoding: advanced/FM-decoding.md
