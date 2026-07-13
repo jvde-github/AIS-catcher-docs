@@ -3697,20 +3697,20 @@
 <p>This guide provides step-by-step instructions for using AIS-Catcher, from verifying installation to a first run with some basic output.</p>
 <h2 id="basic-usage">Basic usage<a class="headerlink" href="#basic-usage" title="Permanent link">&para;</a></h2>
 <p>Check if AIS-Catcher is correctly installed with built-in support for your hardware:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-L
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-L
 </code></pre></div>
 List the available connected hardware:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-l
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-l
 </code></pre></div></p>
 <h3 id="the-first-run">The First Run<a class="headerlink" href="#the-first-run" title="Permanent link">&para;</a></h3>
 <p>Start AIS decoding with occasional statistics (every 10 seconds):
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-v<span class="w"> </span><span class="m">10</span>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-v<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
 If you have multiple devices connected, specify the device using:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-d:0
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-d:0
 </code></pre></div>
 Alternatively, use the serial number of the device:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-d<span class="w"> </span>&lt;serial<span class="w"> </span>number&gt;
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-d<span class="w"> </span>&lt;serial<span class="w"> </span>number&gt;
 </code></pre></div></p>
 <p>Successful setup will display AIS messages in NMEA format on the screen.</p>
 <h3 id="output-to-screen">Output to screen<a class="headerlink" href="#output-to-screen" title="Permanent link">&para;</a></h3>
@@ -3722,33 +3722,33 @@ Alternatively, use the serial number of the device:
 <li>Full JSON decoding: <code>-o 5</code></li>
 </ul>
 <p>For example show full content of the AIS messages in JSON format:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-o<span class="w"> </span><span class="m">5</span>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-o<span class="w"> </span><span class="m">5</span>
 </code></pre></div>
 The full JSON format for decoded AIS messages is documented <a href="../../references/JSON-decoding/">here</a>. </p>
 <p>To suppress all NMEA messages on the screen:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-q
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-q
 </code></pre></div></p>
 <h2 id="activating-the-web-viewer">Activating the Web Viewer<a class="headerlink" href="#activating-the-web-viewer" title="Permanent link">&para;</a></h2>
 <p>Create a web viewer accessible from your local network to visualize AIS data:</p>
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span>
 </code></pre></div>
-<p>The web viewer will be available at <code>http://localhost:8100</code>. It can also be accessed from any device on the same network using the machine's IP address and defined port number.</p>
+<p>The web viewer will be available at <code class="address">http://localhost:8100</code>. It can also be accessed from any device on the same network using the machine's IP address and defined port number.</p>
 <p>Customization options for the web viewer are available in the <a href="../../configuration/output/web-viewer/">configuration settings</a>.</p>
 <h3 id="sharing-your-data">Sharing your data<a class="headerlink" href="#sharing-your-data" title="Permanent link">&para;</a></h3>
 <h4 id="community-feed">Community Feed<a class="headerlink" href="#community-feed" title="Permanent link">&para;</a></h4>
 <p>The next step is to share the data with other programs or services. 
 Share your feed with the AIS-Catcher community and view others’ data: 
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-X<span class="w"> </span>&lt;your<span class="w"> </span>sharing<span class="w"> </span>key&gt;
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-X<span class="w"> </span>&lt;your<span class="w"> </span>sharing<span class="w"> </span>key&gt;
 </code></pre></div>
 Omitting the sharing key will share data anonymously and a  key can be created at <a href="https://aiscatcher.org/addstation_ac">aiscatcher.org</a>. </p>
 <h4 id="sharing-over-udp">Sharing over UDP<a class="headerlink" href="#sharing-over-udp" title="Permanent link">&para;</a></h4>
 <p>Additionally, for sending the messages via UDP to ports 10110 and 10111,  use the following command:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w">  </span>-u<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="m">10110</span><span class="w"> </span>-u<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="m">10111</span>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w">  </span>-u<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="m">10110</span><span class="w"> </span>-u<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="m">10111</span>
 </code></pre></div></p>
 <p>If successful, NMEA messages will start to come in, appear on the screen and send as raw NMEA  to <code>127.0.0.1</code> port <code>10110</code> and port <code>10111</code>. This is an ideal connection method for visualization in software like OpenCPN or for AIS aggregator websites such as MarineTraffic or VesselFinder.</p>
 <h3 id="device-specific-settings">Device Specific Settings<a class="headerlink" href="#device-specific-settings" title="Permanent link">&para;</a></h3>
 <p>For RTL-SDR devices performance can be sensitive to the device settings. In general, a good starting point is the following:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-gr<span class="w"> </span>RTLAGC<span class="w"> </span>on<span class="w"> </span>TUNER<span class="w"> </span>auto<span class="w"> </span>-a<span class="w"> </span>192K
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-gr<span class="w"> </span>RTLAGC<span class="w"> </span>on<span class="w"> </span>TUNER<span class="w"> </span>auto<span class="w"> </span>-a<span class="w"> </span>192K
 </code></pre></div>
 Note on casing:</p>
 <ul>
@@ -3759,16 +3759,16 @@ Note on casing:</p>
 <p>The hardware settings available depend on the specific SDR and more details can be found in our <a href="../../configuration/overview/">Configuration Section</a>.</p>
 <h3 id="performance-considerations">Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permanent link">&para;</a></h3>
 <p>AIS-catcher also supports the 18 Euro RPI Zero W. However, the hardware might not keep up with the high data flow. This can sometimes be resolved by activating <strong>fast downsampling</strong> via:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-F
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-F
 </code></pre></div>
 Fast downsampling uses approximations and comes at a very small performance degradation, so is not set by default. If your device still struggles, you can try running at a sample rate of 288K (<code>-s 288K</code>):
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-s<span class="w"> </span>288K
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-s<span class="w"> </span>288K
 </code></pre></div></p>
 <p>Reception will be impacted though. Unfortunately, latest feedback seems to be that this is best way to run on the Zero W as this Zero is struggling with the high data throughput and lowering the sample rate is the only option. Another drawback of these lower cost boards is that they can create interference that impacts the radio reception.</p>
 <h3 id="where-to-go-from-here">Where to go from here?<a class="headerlink" href="#where-to-go-from-here" title="Permanent link">&para;</a></h3>
 <p>For more details on all available settings, <a href="../../configuration/overview/">visit</a> our detailed configuration pages.</p>
 <h2 id="detailed-settings">Detailed settings<a class="headerlink" href="#detailed-settings" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>use: AIS-catcher [options]
+<div class="language-text highlight"><pre><span></span><code>use: AIS-catcher [options]
 
     [-a xxx - set tuner bandwidth in Hz (default: off)]
     [-b benchmark demodulation models for time - for development purposes (default: off)]

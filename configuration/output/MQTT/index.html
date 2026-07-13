@@ -3552,10 +3552,10 @@
 </div>
 
 <p>AIS-catcher can push AIS messages via the MQTT protocol (3.1.1) to a broker with the <code>-Q</code> switch. An example with all settings:</p>
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://username:password@127.0.0.1:1883<span class="w"> </span>client_id<span class="w"> </span>aiscatcher<span class="w"> </span>qos<span class="w"> </span><span class="m">0</span><span class="w"> </span>topic<span class="w"> </span>data/ais<span class="w"> </span>msgformat<span class="w"> </span>JSON_NMEA
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://username:password@127.0.0.1:1883<span class="w"> </span>client_id<span class="w"> </span>aiscatcher<span class="w"> </span>qos<span class="w"> </span><span class="m">0</span><span class="w"> </span>topic<span class="w"> </span>data/ais<span class="w"> </span>msgformat<span class="w"> </span>JSON_NMEA
 </code></pre></div>
 <p>More examples:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Basic MQTT connection</span>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Basic MQTT connection</span>
 AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://127.0.0.1:1883
 
 <span class="c1"># WebSocket MQTT connection</span>
@@ -3618,7 +3618,7 @@ AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://username:pas
 </tbody>
 </table>
 <h3 id="template-examples">Template Examples<a class="headerlink" href="#template-examples" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># Organize by vessel MMSI</span>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Organize by vessel MMSI</span>
 AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://localhost:1883<span class="w"> </span>TOPIC<span class="w"> </span>ais/%mmsi%/data
 
 <span class="c1"># Organize by message type and channel</span>
@@ -3636,7 +3636,7 @@ AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://localhost:18
 - <code>ais/210875000/data</code><br />
 - <code>ais/123456789/data</code></p>
 <p>This allows MQTT clients to subscribe to specific vessels:
-<div class="highlight"><pre><span></span><code><span class="c1"># Subscribe to specific vessel</span>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Subscribe to specific vessel</span>
 mosquitto_sub<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-t<span class="w"> </span><span class="s2">&quot;ais/367191000/data&quot;</span>
 
 <span class="c1"># Subscribe to all vessels using wildcards</span>

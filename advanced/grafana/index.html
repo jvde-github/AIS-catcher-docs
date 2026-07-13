@@ -3535,13 +3535,13 @@
 <ul>
 <li>Edit your AIS-catcher's command line and ensure that <code>PROME on</code> is included after the <code>-N &lt;port&gt;</code> directive. For example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="go">AIS-catcher -N 8100 PROME on</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">AIS-catcher -N 8100 PROME on</span>
 </code></pre></div>
 <h2 id="step-2-create-a-container-stack-for-prometheus-and-grafana">Step 2: create a container stack for <code>prometheus</code> and <code>grafana</code><a class="headerlink" href="#step-2-create-a-container-stack-for-prometheus-and-grafana" title="Permanent link">&para;</a></h2>
 <p>You can skip this if you already have Prometheus and Grafana installed.</p>
 <p>The example will use a containerized (Docker) installation of Prometheus and Grafana. If you need to install Docker, please do so first. For a quick and painless way to get started, we suggest that you use <a href="https://github.com/sdr-enthusiasts/docker-install">this install script</a>.</p>
 <p>On the machine where you will run Prometheus and Grafana, create a docker-compose file in the <code>/opt/grafana</code> directory:</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>-m777<span class="w"> </span>/opt/grafana/grafana/appdata<span class="w"> </span>/opt/grafana/prometheus/config<span class="w"> </span>/opt/grafana/prometheus/data
+<div class="language-bash highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>-m777<span class="w"> </span>/opt/grafana/grafana/appdata<span class="w"> </span>/opt/grafana/prometheus/config<span class="w"> </span>/opt/grafana/prometheus/data
 <span class="nb">cd</span><span class="w"> </span>/opt/grafana
 cat<span class="w"> </span>&gt;<span class="w"> </span>docker-compose.yml
 </code></pre></div>
@@ -3549,7 +3549,7 @@ cat<span class="w"> </span>&gt;<span class="w"> </span>docker-compose.yml
 <details>
   <summary>&lt;&dash;&dash; Click the arrow to see the <code>docker-compose.yml</code> text</summary>
 
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.9&#39;</span>
+<div class="language-yaml highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.9&#39;</span>
 
 <span class="nt">volumes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">grafana</span><span class="p">:</span>
@@ -3608,7 +3608,7 @@ cat<span class="w"> </span>&gt;<span class="w"> </span>docker-compose.yml
 
 <p>*) The volume definition structure is written this way purposely to ensure that the containers can place files in the persistent directories. Do not try to "directly" map volumes (<code>/opt/grafana/grafana/appdata:/var/lib/grafana</code>).</p>
 <p>Download and create Grafana and Prometheus for the first time with this command:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+<div class="language-bash highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
 </code></pre></div>
 <p>You should now be able to see the following directories:</p>
 <ul>
@@ -3618,7 +3618,7 @@ cat<span class="w"> </span>&gt;<span class="w"> </span>docker-compose.yml
 </ul>
 <h2 id="step-3-configuring-prometheus">Step 3: Configuring Prometheus<a class="headerlink" href="#step-3-configuring-prometheus" title="Permanent link">&para;</a></h2>
 <p>Prometheus needs to be told where to look for the data from AIS-catcher. We will create a target prometheus configuration file that does this, please copy and paste the following. Make sure to replace <code>ip_of_AIS-catcher_machine:8100</code> with the IP address or hostname of the machine and the web port where <code>AIS-catcher</code> is running:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>prometheus<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;echo -e \&quot;  - job_name: &#39;ais&#39;\n    static_configs:\n      - targets: [&#39;ip_of_AIS-catcher_machine:8100&#39;]\&quot; &gt;&gt; /etc/prometheus/prometheus.yml&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>prometheus<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;echo -e \&quot;  - job_name: &#39;ais&#39;\n    static_configs:\n      - targets: [&#39;ip_of_AIS-catcher_machine:8100&#39;]\&quot; &gt;&gt; /etc/prometheus/prometheus.yml&quot;</span>
 docker<span class="w"> </span>restart<span class="w"> </span>prometheus
 </code></pre></div>
 <p>(If you screw this up, <strong>do NOT</strong> re-run the command. Instead, try <code>sudo nano /opt/grafana/prometheus/config/prometheus.yml</code> and fix it that way.)</p>

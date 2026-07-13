@@ -3640,18 +3640,18 @@
 <p><img alt="image" src="https://github.com/jvde-github/AIS-catcher/assets/52420030/54eea1c6-2f72-4c23-91c4-dd289753d4cc" /></p>
 <p>AIS-catcher includes a simple web interface. A live demo is available for <a href="https://kx1t.com/ais/">East Boston, US</a>. The web interface gratefully uses the following libraries: <a href="https://www.chartjs.org/docs/latest/charts/line.html">chart.js</a>, chart.js <a href="https://www.chartjs.org/chartjs-plugin-annotation/latest/">annotation plugin</a>, <a href="https://leafletjs.com/">leaflet</a>, <a href="https://m3.material.io/styles/icons/overview">Material Design Icons</a>, tabulator, <a href="https://github.com/markedjs/marked">marked</a> and <a href="https://github.com/lipis/flag-icons">flag-icons</a>. </p>
 <p>Make sure you use the latest version and start the web viewer as follows:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span>
 </code></pre></div>
-where <code>8100</code> is the port number. If your machine network name is raspberrypi, e.g.,  then enter <code>raspberrypi:8100</code> in your browser.  On the web page, you will find several sections with information related to the station and received messages.</p>
+where <code>8100</code> is the port number. If your machine network name is raspberrypi, e.g.,  then enter <code class="address">raspberrypi:8100</code> in your browser.  On the web page, you will find several sections with information related to the station and received messages.</p>
 <p>For users wishing to include a station name and a link to an external website in the Statistics section:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span>station<span class="w"> </span>Southwood<span class="w"> </span>station_link<span class="w"> </span>http://example.com
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span>station<span class="w"> </span>Southwood<span class="w"> </span>station_link<span class="w"> </span>http://example.com
 </code></pre></div>
 This could be a useful option if you want to offer the interface externally. To display the reception range and distances from your station, provide the program with the station coordinates and permission to share the location with the web viewer:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span>lat<span class="w"> </span><span class="m">50</span><span class="w"> </span>lon<span class="w"> </span><span class="m">3</span>.141592<span class="w"> </span>share_loc<span class="w"> </span>on
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span>lat<span class="w"> </span><span class="m">50</span><span class="w"> </span>lon<span class="w"> </span><span class="m">3</span>.141592<span class="w"> </span>share_loc<span class="w"> </span>on
 </code></pre></div>
 The last option <code>share_loc</code> (default is off) will allow the web viewer to access and display the location.</p>
 <p>The user can make a page in <a href="https://www.markdownguide.org/basic-syntax/">markdown format</a>. The content will be shown in the About tab of the web viewer:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>about<span class="w"> </span>about.md
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>about<span class="w"> </span>about.md
 </code></pre></div>
 All these options can be captured in the configuration file (in a section with name <code>server</code>), see below. </p>
 <h2 id="menu-structure">Menu structure<a class="headerlink" href="#menu-structure" title="Permanent link">&para;</a></h2>
@@ -3730,28 +3730,28 @@ All these options can be captured in the configuration file (in a section with n
   <img src="https://user-images.githubusercontent.com/52420030/219856922-33404fe8-dc54-4bc2-a1a6-84f4ce5dd72a.png" width="50%"/>
 </p>
 <p>Restarting AIS-catcher typically erases history in the graphs. To retain plot "state" and backup the information to a file use the following:</p>
-<p><div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>file<span class="w"> </span>stat.bin<span class="w"> </span>backup<span class="w"> </span><span class="m">10</span>
+<p><div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>file<span class="w"> </span>stat.bin<span class="w"> </span>backup<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
 This will back up the plots when the program closes and every 10 minutes in a file <code>stat.bin</code>. The minimum backup interval is 5 minutes.</p>
 <h2 id="custom-plugins-and-styles">Custom plugins and styles...<a class="headerlink" href="#custom-plugins-and-styles" title="Permanent link">&para;</a></h2>
 <p>To give the user the option to tweak the look-and-feel and functionality of the web viewer and/or modify for example the color scheme or regional preferences, the program provides the option to inject custom plugins (JavaScript) and CSS into the website, with a command like:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>plugin<span class="w"> </span>plugin1.js<span class="w"> </span>plugin<span class="w"> </span>plugin2.js<span class="w"> </span>style<span class="w"> </span>mystyle.css
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>plugin<span class="w"> </span>plugin1.js<span class="w"> </span>plugin<span class="w"> </span>plugin2.js<span class="w"> </span>style<span class="w"> </span>mystyle.css
 </code></pre></div>
 You can also include all plugin files from a specific directory using the command:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>plugin_dir<span class="w"> </span>/usr/share/aiscatcher/plugins
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>plugin_dir<span class="w"> </span>/usr/share/aiscatcher/plugins
 </code></pre></div>
 Files need to have the extension <code>.pjs</code> and <code>.pss</code> for respectively JavaScript and CSS style plugins. The repository includes a few example plugins that demonstrate how to add additional maps or cater to regional preferences. Examples of plugins can be found in <a href="https://github.com/jvde-github/AIS-Catcher-PLUGINS">another</a> GitHub repository.</p>
 <h2 id="offline-web-viewer">Offline web viewer<a class="headerlink" href="#offline-web-viewer" title="Permanent link">&para;</a></h2>
 <p>The web viewer runs without an internet connection out of the box: all web libraries are now bundled into AIS-catcher, so no online content is fetched to render the interface. This facilitates using the web interface whilst traveling.</p>
 <p>Offline <em>maps</em> can be included in <code>mbtiles</code> format:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w">  </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>mbtiles<span class="w"> </span>filename
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w">  </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>mbtiles<span class="w"> </span>filename
 </code></pre></div>
 or as an overlay
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w">  </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>mboverlay<span class="w"> </span>filename
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w">  </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>mboverlay<span class="w"> </span>filename
 </code></pre></div></p>
 <h2 id="sending-data-to-prometheus-for-use-in-grafana-dashboards">Sending data to Prometheus for use in Grafana dashboards<a class="headerlink" href="#sending-data-to-prometheus-for-use-in-grafana-dashboards" title="Permanent link">&para;</a></h2>
 <p>You can add the option <code>PROME on</code> to the web configuration command to start rendering Prometheus-compatible statistics at <code>/metrics</code>. For example:</p>
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>prome<span class="w"> </span>on
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>prome<span class="w"> </span>on
 </code></pre></div>
 <p>For more information on how to configure Prometheus and Grafana to get an initial dashboard, see <a href="../../../advanced/grafana/">README-grafana.md</a>.</p>
 <h2 id="cross-origin-access-cors">Cross-origin access (CORS)<a class="headerlink" href="#cross-origin-access-cors" title="Permanent link">&para;</a></h2>

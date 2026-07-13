@@ -3518,13 +3518,17 @@
 <div class="step">
 <p><strong>Run the install script</strong><br />
 Open a terminal or log in via SSH, then run:</p>
-<div class="highlight"><pre><span></span><code><span class="go">sudo bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) -p -M&quot;</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">sudo bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) -p -M&quot;</span>
 </code></pre></div>
 <p>If <code>curl</code> is not available on your device, install it with <code>sudo apt install curl</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Coming from a manual install?</p>
+<p>Settings from manual mode (<code>/etc/AIS-catcher/config.json</code> and <code>config.cmd</code>) are <strong>not</strong> converted to managed mode. Back up these files before installing and re-enter your settings via the setup wizard.</p>
+</div>
 </div>
 <div class="step">
 <p><strong>Complete the setup wizard</strong><br />
-Open the dashboard in your browser on port <strong>8118</strong>, e.g. <code>http://raspberrypi.local:8118</code>. On first use, the setup wizard walks you through configuring your input device and outputs, and starts the receiver:</p>
+Open the dashboard in your browser on port <strong>8118</strong>, e.g. <code class="address">http://raspberrypi.local:8118</code>. On first use, the setup wizard walks you through configuring your input device and outputs, and starts the receiver:</p>
 <p><a class="md-button md-button--primary" href="../../managed/setup-wizard/">Setup Wizard</a></p>
 </div>
 </div>
@@ -3532,13 +3536,13 @@ Open the dashboard in your browser on port <strong>8118</strong>, e.g. <code>htt
 </div>
 <h2 id="manual-mode">Manual Mode<a class="headerlink" href="#manual-mode" title="Permanent link">&para;</a></h2>
 <p>To configure via the command line instead, omit the <code>-M</code> option:</p>
-<div class="highlight"><pre><span></span><code><span class="go">sudo bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) -p&quot;</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">sudo bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) -p&quot;</span>
 </code></pre></div>
 <p>The background service infrastructure is still set up — see <a href="../../usage/service/">Running as a Service</a> for the configuration files and service commands.</p>
 <p><a class="md-button" href="../../usage/cli/">Command Line Run</a></p>
 <h2 id="install-from-source">Install from Source<a class="headerlink" href="#install-from-source" title="Permanent link">&para;</a></h2>
 <p>Both commands above install the latest pre-built Debian package (the <code>-p</code> option). Leave out <code>-p</code> to build AIS-catcher from source instead:</p>
-<div class="highlight"><pre><span></span><code><span class="go">sudo bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) -M&quot;</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">sudo bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) -M&quot;</span>
 </code></pre></div>
 <p>Building from source optimizes the executable for your hardware but can take a significant amount of time (20 minutes on a Raspberry Pi 4). It is required if you need PostgreSQL support, which is not included in the pre-built packages.</p>
 <div class="admonition note">
@@ -3548,7 +3552,9 @@ Open the dashboard in your browser on port <strong>8118</strong>, e.g. <code>htt
 <h2 id="updating">Updating<a class="headerlink" href="#updating" title="Permanent link">&para;</a></h2>
 <p>To update AIS-catcher to the latest version, simply run the install command again. It will <strong><em>not</em></strong> overwrite any configuration files when these are available on the system.</p>
 <h2 id="remote-startstop-and-host-management">Remote Start/Stop and Host Management<a class="headerlink" href="#remote-startstop-and-host-management" title="Permanent link">&para;</a></h2>
-<p>The separate <a href="../../usage/gui/">AIS-catcher-control</a> package adds browser-based control of the AIS-catcher process (start and stop, live log) and of the host itself (one-click updates, reboot).</p>
+<p>The separate <a href="../../usage/gui/">AIS-catcher-control</a> package adds browser-based control of the AIS-catcher process (start and stop, live log) and of the host itself (one-click updates, reboot). It is <strong><em>not</em></strong> included in the install above — install it with:</p>
+<div class="language-console highlight"><pre><span></span><code><span class="go">sudo bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/main/install_ais_catcher_control.sh)&quot;</span>
+</code></pre></div>
 
 
 

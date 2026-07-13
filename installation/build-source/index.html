@@ -3489,13 +3489,13 @@
 <p>The steps to compile AIS-catcher for RTL-SDR dongles are fairly straightforward on most systems. There are various options including a standard Makefile, a <code>solution</code> file for MSVC (see next section) and you can use <code>cmake</code>, as we will detail now.</p>
 <p>The first step is to ensure you have the necessary dependencies and build tools installed for your device(s). 
 For example, the following installs the minimum build tools for Ubuntu and Raspberry Pi:
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+<div class="language-bash highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
 sudo<span class="w"> </span>apt-get<span class="w"> </span>upgrade
 
 sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>make<span class="w"> </span>gcc<span class="w"> </span>g++<span class="w"> </span>cmake<span class="w"> </span>pkg-config<span class="w"> </span>libsqlite3-dev<span class="w"> </span>-y
 </code></pre></div>
 For MacOS with <code>brew</code> installed:
-<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>update
+<div class="language-bash highlight"><pre><span></span><code>brew<span class="w"> </span>update
 brew<span class="w"> </span>upgrade
 
 brew<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>make<span class="w"> </span>gcc<span class="w"> </span>cmake<span class="w"> </span>pkg-config<span class="w"> </span>sqlite3
@@ -3574,7 +3574,7 @@ brew<span class="w"> </span>install<span class="w"> </span>git<span class="w"> <
 </tbody>
 </table>
 <p>Once the dependencies are in place, the process of installing AIS-catcher  on Linux-based systems becomes:
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jvde-github/AIS-catcher.git<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span>
+<div class="language-bash highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jvde-github/AIS-catcher.git<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span>
 <span class="nb">cd</span><span class="w"> </span>AIS-catcher
 mkdir<span class="w"> </span>build
 <span class="nb">cd</span><span class="w"> </span>build
@@ -3600,21 +3600,21 @@ For the SDRPlay the software needs to be downloaded and installed from the websi
 </tbody>
 </table>
 <p>For example, to build a headless binary:</p>
-<div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>-DWEBVIEWER<span class="o">=</span>OFF<span class="w"> </span>..
+<div class="language-bash highlight"><pre><span></span><code>cmake<span class="w"> </span>-DWEBVIEWER<span class="o">=</span>OFF<span class="w"> </span>..
 make
 </code></pre></div>
 <h2 id="microsoft-visual-studio-2019">Microsoft Visual Studio 2019+<a class="headerlink" href="#microsoft-visual-studio-2019" title="Permanent link">&para;</a></h2>
 <p>Ensure that you have <code>vcpkg</code> <a href="https://vcpkg.io/en/getting-started.html">installed</a> and integrated into Visual Studio via <code>vcpkg integrate install</code> (as Administrator). Then install the rtl-sdr drivers as follows:
-<div class="highlight"><pre><span></span><code>vcpkg install rtlsdr rtlsdr:x64-windows ZeroMQ ZeroMQ:x64-windows soxr soxr:x64-windows
+<div class="language-text highlight"><pre><span></span><code>vcpkg install rtlsdr rtlsdr:x64-windows ZeroMQ ZeroMQ:x64-windows soxr soxr:x64-windows
 </code></pre></div>
 The included solution file in the mscv directory allows you to build AIS-catcher with RTL-SDR/ZMQ support in the Visual Studio IDE.</p>
 <h2 id="running-ais-catcher">Running AIS-catcher<a class="headerlink" href="#running-ais-catcher" title="Permanent link">&para;</a></h2>
 <p>Once built and installed, there are two ways to run your station.</p>
 <div class="recommended">
 <p><strong>Managed mode</strong> — start AIS-catcher in managed mode:</p>
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-E<span class="w"> </span>~/aiscatcher.json<span class="w"> </span><span class="m">127</span>.0.0.1:8118
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-E<span class="w"> </span>~/aiscatcher.json<span class="w"> </span><span class="m">127</span>.0.0.1:8118
 </code></pre></div>
-<p>Then open <code>http://localhost:8118</code> in a browser — the <a href="../../managed/setup-wizard/">setup wizard</a> walks you through the configuration and starts the receiver. See <a href="../../managed/dashboard/">Getting Around the Dashboard</a> to monitor and fine-tune your station.</p>
+<p>Then open <code class="address">http://localhost:8118</code> in a browser — the <a href="../../managed/setup-wizard/">setup wizard</a> walks you through the configuration and starts the receiver. See <a href="../../managed/dashboard/">Getting Around the Dashboard</a> to monitor and fine-tune your station.</p>
 </div>
 <p><strong>Manual mode</strong> — configure via command-line options, e.g. <code>AIS-catcher -v 10</code>:</p>
 <p><a class="md-button" href="../../usage/cli/">Command Line Run</a></p>

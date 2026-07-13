@@ -3356,13 +3356,13 @@ in 16-bit integers performed in parallel for the I and Q channels using only 32-
 
 <p>This feature can activated with the <code>-F</code> switch and is only available for RTL-SDR running at a rate 1536K per second (the default). 
 To give an idea of the performance improvement on a Raspberry Pi Model B Rev 2 (700 MHz), I used the following command to decode from a file on the aforementioned Raspberry Pi:</p>
-<p><div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-r<span class="w"> </span>posterholt.raw<span class="w"> </span>-s<span class="w"> </span>1536K<span class="w"> </span>-b<span class="w"> </span>-q<span class="w"> </span>-v
+<p><div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-r<span class="w"> </span>posterholt.raw<span class="w"> </span>-s<span class="w"> </span>1536K<span class="w"> </span>-b<span class="w"> </span>-q<span class="w"> </span>-v
 </code></pre></div>
 Resulting in 38 messages and the <code>-b</code> switch prints the timing used for decoding:
-<div class="highlight"><pre><span></span><code>[AIS engine v0.31]  : 17312.1 ms
+<div class="language-text highlight"><pre><span></span><code>[AIS engine v0.31]  : 17312.1 ms
 </code></pre></div>
 Adding the <code>-F</code> switch yielded the same number of messages but the timing is now:
-<div class="highlight"><pre><span></span><code>[AIS engine (speed optimized) v0.31]    : 7722.32 ms
+<div class="language-text highlight"><pre><span></span><code>[AIS engine (speed optimized) v0.31]    : 7722.32 ms
 </code></pre></div>
 On an RPI Zero W this will bring down CPU load to ~40% and avoid buffer overruns.</p>
 

@@ -3429,22 +3429,22 @@
 </div>
 
 <p>In general we recommend to use the built-in drivers for supported SDR  devices. However, AIS-catcher also supports a wide variety of other devices via the <a href="https://github.com/pothosware/SoapySDR/wiki">SoapySDR library</a> which is an independent SDR support library. SoapySDR is not included by default in the standard build. To enable SoapySDR support follow the build instructions below but replace the <code>cmake</code> call with:
-<div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>..<span class="w"> </span>-DSOAPYSDR<span class="o">=</span>ON
+<div class="language-bash highlight"><pre><span></span><code>cmake<span class="w"> </span>..<span class="w"> </span>-DSOAPYSDR<span class="o">=</span>ON
 </code></pre></div>
 The result is that AIS-catcher adds a few additional "devices" to the device list (<code>-l</code>): a generic SoapySDR device and one device for each receiving channel for each device, e.g. with one RTL-SDR dongle connected this would look like:
-<div class="highlight"><pre><span></span><code>Found 3 device(s):
+<div class="language-text highlight"><pre><span></span><code>Found 3 device(s):
 0: Realtek, RTL2838UHIDIR, SN: 00000001
 1: SOAPYSDR, 1 device(s), SN: SOAPYSDR
 2: SOAPYSDR, driver=rtlsdr,serial=00000001, SN: SCH0-00000001
 </code></pre></div>
 To start streaming via Soapy we can use:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-d<span class="w"> </span>SCH0-00000001
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-d<span class="w"> </span>SCH0-00000001
 </code></pre></div>
 Note that the serial number has a prefix of <code>SCH0</code> (short for SoapySDR Channel 0) to distinguish it from the device accessed via the native SDR library. Alternatively, we can use a device-string to select the device: 
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-d<span class="w"> </span>SOAPYSDR<span class="w"> </span>-gu<span class="w"> </span>device<span class="w"> </span><span class="s2">&quot;serial=00000001,driver=rtlsdr&quot;</span><span class="w"> </span>-s<span class="w"> </span>1536K
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-d<span class="w"> </span>SOAPYSDR<span class="w"> </span>-gu<span class="w"> </span>device<span class="w"> </span><span class="s2">&quot;serial=00000001,driver=rtlsdr&quot;</span><span class="w"> </span>-s<span class="w"> </span>1536K
 </code></pre></div>
 Stream arguments and gain arguments can be set similarly via <code>-gu STREAM</code> and <code>-gu GAIN</code> followed by an argument string (if it contains spaces use ""). Please note that SoapySDR does not signal if the input parameters for the device are not set properly. We therefore added the <code>-gu PROBE on</code> switch which displays the actual settings used, e.g.
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-d<span class="w"> </span>SOAPYSDR<span class="w"> </span>-s<span class="w"> </span>1536K<span class="w"> </span>-gu<span class="w"> </span>GAIN<span class="w"> </span><span class="s2">&quot;TUNER=37.3&quot;</span><span class="w"> </span>PROBE<span class="w"> </span>on<span class="w"> </span>SETTINGS<span class="w"> </span><span class="s2">&quot;biastee=true&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-d<span class="w"> </span>SOAPYSDR<span class="w"> </span>-s<span class="w"> </span>1536K<span class="w"> </span>-gu<span class="w"> </span>GAIN<span class="w"> </span><span class="s2">&quot;TUNER=37.3&quot;</span><span class="w"> </span>PROBE<span class="w"> </span>on<span class="w"> </span>SETTINGS<span class="w"> </span><span class="s2">&quot;biastee=true&quot;</span>
 </code></pre></div>
 To complete the example, this command also sets the tuner gain for the RTL-SDR to 37.3 and switches on the bias-tee via the SETTING command giving access to the device's extra settings.</p>
 <p>If the sample rates for a device are not supported by AIS-catcher, the SOXR functionality could be considered (e.g. <code>-go SOXR on</code>). Again, we advise to use the built-in drivers and include resampling functionality where possible.  </p>

@@ -3884,20 +3884,20 @@
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <h3 id="install-homebrew">Install Homebrew<a class="headerlink" href="#install-homebrew" title="Permanent link">&para;</a></h3>
 <p>If you don't already have Homebrew installed, you can install it by opening a terminal and running:</p>
-<div class="highlight"><pre><span></span><code>/bin/bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code>/bin/bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&quot;</span>
 </code></pre></div>
 <p>Follow the on-screen instructions to complete the installation. After installation, you may need to add Homebrew to your PATH as instructed.</p>
 <h2 id="installation-steps">Installation Steps<a class="headerlink" href="#installation-steps" title="Permanent link">&para;</a></h2>
 <h3 id="1-install-build-dependencies">1. Install Build Dependencies<a class="headerlink" href="#1-install-build-dependencies" title="Permanent link">&para;</a></h3>
 <p>First, ensure you have the necessary build tools and dependencies:</p>
-<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>update
+<div class="language-bash highlight"><pre><span></span><code>brew<span class="w"> </span>update
 brew<span class="w"> </span>upgrade
 
 brew<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>make<span class="w"> </span>gcc<span class="w"> </span>cmake<span class="w"> </span>pkg-config<span class="w"> </span>sqlite3
 </code></pre></div>
 <h3 id="2-install-sdr-hardware-libraries">2. Install SDR Hardware Libraries<a class="headerlink" href="#2-install-sdr-hardware-libraries" title="Permanent link">&para;</a></h3>
 <p>Depending on your SDR hardware, install the appropriate drivers. For RTL-SDR dongles (most common):</p>
-<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>librtlsdr
+<div class="language-bash highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>librtlsdr
 </code></pre></div>
 <p>For other hardware types, install the corresponding libraries:</p>
 <table>
@@ -3931,11 +3931,11 @@ brew<span class="w"> </span>install<span class="w"> </span>git<span class="w"> <
 </tbody>
 </table>
 <p>For example, to install support for Airspy and HackRF:</p>
-<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>airspy<span class="w"> </span>hackrf
+<div class="language-bash highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>airspy<span class="w"> </span>hackrf
 </code></pre></div>
 <h3 id="3-build-and-install-ais-catcher">3. Build and Install AIS-catcher<a class="headerlink" href="#3-build-and-install-ais-catcher" title="Permanent link">&para;</a></h3>
 <p>Once the dependencies are in place, clone the repository and build AIS-catcher:</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jvde-github/AIS-catcher.git<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span>
+<div class="language-bash highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jvde-github/AIS-catcher.git<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span>
 <span class="nb">cd</span><span class="w"> </span>AIS-catcher
 mkdir<span class="w"> </span>build
 <span class="nb">cd</span><span class="w"> </span>build
@@ -3953,12 +3953,12 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 <div class="steps">
 <div class="step">
 <p><strong>Start AIS-catcher in managed mode</strong></p>
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-E<span class="w"> </span>~/aiscatcher.json<span class="w"> </span><span class="m">127</span>.0.0.1:8118
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-E<span class="w"> </span>~/aiscatcher.json<span class="w"> </span><span class="m">127</span>.0.0.1:8118
 </code></pre></div>
 </div>
 <div class="step">
 <p><strong>Complete the setup wizard</strong><br />
-Open the dashboard in your browser at <code>http://localhost:8118</code>. On first use, the setup wizard walks you through configuring your input device and outputs, and starts the receiver:</p>
+Open the dashboard in your browser at <code class="address">http://localhost:8118</code>. On first use, the setup wizard walks you through configuring your input device and outputs, and starts the receiver:</p>
 <p><a class="md-button md-button--primary" href="../../managed/setup-wizard/">Setup Wizard</a></p>
 </div>
 </div>
@@ -3966,7 +3966,7 @@ Open the dashboard in your browser at <code>http://localhost:8118</code>. On fir
 </div>
 <h2 id="manual-mode">Manual Mode<a class="headerlink" href="#manual-mode" title="Permanent link">&para;</a></h2>
 <p>Alternatively, start receiving AIS messages with your RTL-SDR dongle directly from the command line:</p>
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-v<span class="w"> </span><span class="m">10</span>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-v<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
 <p><a class="md-button" href="../../usage/cli/">Command Line Run</a></p>
 <h2 id="running-as-a-background-service">Running as a Background Service<a class="headerlink" href="#running-as-a-background-service" title="Permanent link">&para;</a></h2>
@@ -3975,18 +3975,18 @@ Open the dashboard in your browser at <code>http://localhost:8118</code>. On fir
 <ol>
 <li>First, verify the installation path of AIS-catcher:</li>
 </ol>
-<div class="highlight"><pre><span></span><code>which<span class="w"> </span>AIS-catcher
+<div class="language-bash highlight"><pre><span></span><code>which<span class="w"> </span>AIS-catcher
 </code></pre></div>
 <p>This will return either <code>/usr/local/bin/AIS-catcher</code> (Intel Macs) or <code>/opt/homebrew/bin/AIS-catcher</code> (Apple Silicon Macs). Use this path in the next step.</p>
 <ol>
 <li>Create a launch agent plist file (note: do <strong>not</strong> use <code>sudo</code> for this):</li>
 </ol>
-<div class="highlight"><pre><span></span><code>nano<span class="w"> </span>~/Library/LaunchAgents/com.aiscatcher.plist
+<div class="language-bash highlight"><pre><span></span><code>nano<span class="w"> </span>~/Library/LaunchAgents/com.aiscatcher.plist
 </code></pre></div>
 <ol>
 <li>Add the following content, adjusting the path and parameters for your setup:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="language-xml highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="cp">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span>
 <span class="nt">&lt;plist</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;dict&gt;</span>
@@ -4022,26 +4022,26 @@ Open the dashboard in your browser at <code>http://localhost:8118</code>. On fir
 <ol>
 <li>Load the launch agent:</li>
 </ol>
-<div class="highlight"><pre><span></span><code>launchctl<span class="w"> </span>load<span class="w"> </span>~/Library/LaunchAgents/com.aiscatcher.plist
+<div class="language-bash highlight"><pre><span></span><code>launchctl<span class="w"> </span>load<span class="w"> </span>~/Library/LaunchAgents/com.aiscatcher.plist
 </code></pre></div>
 <ol>
 <li>To start the service immediately:</li>
 </ol>
-<div class="highlight"><pre><span></span><code>launchctl<span class="w"> </span>start<span class="w"> </span>com.aiscatcher
+<div class="language-bash highlight"><pre><span></span><code>launchctl<span class="w"> </span>start<span class="w"> </span>com.aiscatcher
 </code></pre></div>
 <ol>
 <li>To stop the service:</li>
 </ol>
-<div class="highlight"><pre><span></span><code>launchctl<span class="w"> </span>stop<span class="w"> </span>com.aiscatcher
+<div class="language-bash highlight"><pre><span></span><code>launchctl<span class="w"> </span>stop<span class="w"> </span>com.aiscatcher
 </code></pre></div>
 <ol>
 <li>To unload the service (if you need to make changes to the plist):</li>
 </ol>
-<div class="highlight"><pre><span></span><code>launchctl<span class="w"> </span>unload<span class="w"> </span>~/Library/LaunchAgents/com.aiscatcher.plist
+<div class="language-bash highlight"><pre><span></span><code>launchctl<span class="w"> </span>unload<span class="w"> </span>~/Library/LaunchAgents/com.aiscatcher.plist
 </code></pre></div>
 <h2 id="updating-ais-catcher">Updating AIS-catcher<a class="headerlink" href="#updating-ais-catcher" title="Permanent link">&para;</a></h2>
 <p>To update to the latest version, navigate to your AIS-catcher directory and rebuild:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>AIS-catcher
+<div class="language-bash highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>AIS-catcher
 git<span class="w"> </span>pull
 <span class="nb">cd</span><span class="w"> </span>build
 cmake<span class="w"> </span>..
@@ -4051,7 +4051,7 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="command-not-found">Command Not Found<a class="headerlink" href="#command-not-found" title="Permanent link">&para;</a></h3>
 <p>If you get a "command not found" error after installation, ensure <code>/usr/local/bin</code> is in your PATH. Add this to your <code>~/.zshrc</code> or <code>~/.bash_profile</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
 </code></pre></div>
 <h3 id="cmake-not-found">CMake Not Found<a class="headerlink" href="#cmake-not-found" title="Permanent link">&para;</a></h3>
 <p>If cmake is not found, ensure Homebrew is properly installed and in your PATH. After installing Homebrew, you may need to run the commands shown at the end of the Homebrew installation.</p>
@@ -4061,25 +4061,25 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 <p>While this guide focuses on Homebrew, AIS-catcher can also be built using MacPorts. The following instructions were contributed by the community (credit: <a href="https://github.com/jvde-github/AIS-catcher/discussions/500">GitHub Discussion #500</a>).</p>
 <h3 id="prerequisites_1">Prerequisites<a class="headerlink" href="#prerequisites_1" title="Permanent link">&para;</a></h3>
 <p>First, install Xcode command line tools:</p>
-<div class="highlight"><pre><span></span><code>xcode-select<span class="w"> </span>--install
+<div class="language-bash highlight"><pre><span></span><code>xcode-select<span class="w"> </span>--install
 </code></pre></div>
 <p>Download and install MacPorts from <a href="https://www.macports.org/install.php">macports.org/install.php</a>, choosing the version specific to your macOS release.</p>
 <h3 id="installation-steps_1">Installation Steps<a class="headerlink" href="#installation-steps_1" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Install base prerequisites via MacPorts:</li>
 </ol>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>port<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>make<span class="w"> </span>gcc<span class="w"> </span>cmake<span class="w"> </span>sqlite3
+<div class="language-bash highlight"><pre><span></span><code>sudo<span class="w"> </span>port<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>make<span class="w"> </span>gcc<span class="w"> </span>cmake<span class="w"> </span>sqlite3
 </code></pre></div>
 <ol>
 <li>Install your SDR device driver. For RTL-SDR dongles:</li>
 </ol>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>port<span class="w"> </span>install<span class="w"> </span>rtl-sdr
+<div class="language-bash highlight"><pre><span></span><code>sudo<span class="w"> </span>port<span class="w"> </span>install<span class="w"> </span>rtl-sdr
 </code></pre></div>
 <p>For other hardware, install the corresponding MacPorts package.</p>
 <ol>
 <li>Download, build, and install AIS-catcher:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span>
+<div class="language-bash highlight"><pre><span></span><code><span class="nb">cd</span>
 git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jvde-github/AIS-catcher.git<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span>
 <span class="nb">cd</span><span class="w"> </span>~/AIS-catcher
 mkdir<span class="w"> </span>~/AIS-catcher/build
@@ -4089,7 +4089,7 @@ make
 sudo<span class="w"> </span>make<span class="w"> </span>install
 </code></pre></div>
 <p>After installation, verify it works by running:</p>
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-L
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-L
 </code></pre></div>
 
 

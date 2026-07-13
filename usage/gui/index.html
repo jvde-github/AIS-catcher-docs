@@ -3488,13 +3488,14 @@
 </div>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <p>First install AIS-catcher itself via the <a href="../../installation/raspberrypi/">install script</a>, then install AIS-catcher-control as a separate service:</p>
-<div class="highlight"><pre><span></span><code><span class="go">sudo bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/main/install_ais_catcher_control.sh)&quot;</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">sudo bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/main/install_ais_catcher_control.sh)&quot;</span>
 </code></pre></div>
 <h2 id="accessing-the-interface">Accessing the Interface<a class="headerlink" href="#accessing-the-interface" title="Permanent link">&para;</a></h2>
-<p>Open your web browser and navigate to the machine's address on port <strong>8110</strong>, for example:</p>
-<div class="highlight"><pre><span></span><code>http://raspberrypi.local:8110
-</code></pre></div>
-<p>Log in with the password — you will be asked to set one on first access.</p>
+<p>Open your web browser and navigate to the machine's address on port <strong>8110</strong>, for example: <code class="address">http://raspberrypi.local:8110</code></p>
+<div class="admonition note">
+<p class="admonition-title">Default password</p>
+<p>Log in with the default password <code>admin</code> — you will be asked to set your own password right after. Systems upgraded from an earlier installation keep their previously set password.</p>
+</div>
 <h2 id="controlling-the-service">Controlling the Service<a class="headerlink" href="#controlling-the-service" title="Permanent link">&para;</a></h2>
 <p>Navigate to <strong>Control</strong> to manage the AIS-catcher service:</p>
 <ul>

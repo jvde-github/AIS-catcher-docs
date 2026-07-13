@@ -3528,12 +3528,12 @@
 <p><a href="https://pypi.org/project/aiscat/"><code>aiscat</code></a> is a Python package that exposes the AIS-catcher decoder as a library. Output dictionaries match the <a href="../../references/JSON-decoding/">AIS-catcher JSON format</a> field-for-field, so anything you've built around the documented JSON output works the same when the source becomes a Python iterator.</p>
 <p>It is built for fast, complete decoding of AIS NMEA from Python: all standard message types (1–28), multi-part AIVDM reassembly, country-code resolution from MMSI prefix, lookup-table text fields populated from the same tables AIS-catcher uses, and decoding of binary application messages (type 6 and 8 ASMs across IMO, IALA, USA, and inland-waterway DAC/FID payloads).</p>
 <h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>aiscat
+<div class="language-bash highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>aiscat
 </code></pre></div>
 <p>Pre-built wheels are published on PyPI for Linux (x86_64, aarch64, armv7l), macOS (Apple Silicon), and Windows (x86_64, ARM64), Python 3.9–3.14.</p>
 <h2 id="quickstart">Quickstart<a class="headerlink" href="#quickstart" title="Permanent link">&para;</a></h2>
 <p>One-shot decoding:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">aiscat</span>
+<div class="language-python highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">aiscat</span>
 
 <span class="n">aiscat</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;!AIVDM,1,1,,A,15MgK45P3@G?fl0E`JbR0OwT0@MS,0*4E&quot;</span><span class="p">)</span>
 <span class="c1"># {&#39;type&#39;: 1, &#39;mmsi&#39;: 366730000, &#39;channel&#39;: &#39;A&#39;, &#39;rxuxtime&#39;: 1777739134.027,</span>
@@ -3541,7 +3541,7 @@
 <span class="c1">#  &#39;status&#39;: 5, &#39;status_text&#39;: &#39;Moored&#39;, ...}</span>
 </code></pre></div>
 <p>Streaming from a file, stdin, TCP, or UDP source — the helpers wire up the I/O loop and yield decoded messages:</p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">aiscat</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s2">&quot;session.nmea&quot;</span><span class="p">):</span>
+<div class="language-python highlight"><pre><span></span><code><span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">aiscat</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s2">&quot;session.nmea&quot;</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">[</span><span class="s2">&quot;mmsi&quot;</span><span class="p">],</span> <span class="n">msg</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">],</span> <span class="n">msg</span><span class="p">[</span><span class="s2">&quot;lon&quot;</span><span class="p">])</span>
 
 <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">aiscat</span><span class="o">.</span><span class="n">from_tcp</span><span class="p">(</span><span class="s2">&quot;ais.example.com&quot;</span><span class="p">,</span> <span class="mi">4001</span><span class="p">):</span>

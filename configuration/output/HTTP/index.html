@@ -3430,10 +3430,10 @@
 </div>
 
 <p>Some cloud services collecting AIS data prefer messages to be periodically posted via the HTTP protocol, for example, <a href="https://aprs.fi">APRS.fi</a>. As per version 0.29, AIS-catcher can do this directly via the <code>-H</code> switch. For example:
-<div class="highlight"><pre><span></span><code><span class="go">AIS-catcher -r posterholt.raw -v 60 -H http://localhost:8000 interval 10 id MyStation</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">AIS-catcher -r posterholt.raw -v 60 -H http://localhost:8000 interval 10 id MyStation</span>
 </code></pre></div>
 will post JSON with the following layout every 10 seconds:</p>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<p><div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;protocol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jsonaiscatcher&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;encodetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20221102171325&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;stationid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MyStation&quot;</span><span class="p">,</span>
@@ -3457,15 +3457,15 @@ will post JSON with the following layout every 10 seconds:</p>
 <span class="p">}</span>
 </code></pre></div>
 We can use this functionality to submit data to <a href="https://aprs.fi">APRS.fi</a> directly without the need of middleware:
-<div class="highlight"><pre><span></span><code><span class="go">AIS-catcher -H http://aprs.fi/jsonais/post/secret-key id callsign protocol aprs interval 30 -q</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">AIS-catcher -H http://aprs.fi/jsonais/post/secret-key id callsign protocol aprs interval 30 -q</span>
 </code></pre></div>
 Where <code>secret-key</code> should be your password and <code>callsign</code> your callsign.  The <code>PROTOCOL</code> setting instructs AIS-catcher to submit JSON in a form that is accepted by APRS.fi which is a multi-form HTTP message. The response from the server will be printed on screen, if you want to show this message only in case of an error, add <code>RESPONSE OFF</code> to the argument.</p>
 <p>Another example of this HTTP feed functionality is to provide data to <a href="https://adsb.chaos-consulting.de/map/">Chaos Consulting</a> without the need to install any additional scripts. The Chaos Consulting server has been set up so that it can read the AIS-catcher JSON format as per above:
-<div class="highlight"><pre><span></span><code><span class="go">AIS-catcher -H https://ais.chaos-consulting.de/shipin/index.php userpwd Station:Password gzip on interval 5</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">AIS-catcher -H https://ais.chaos-consulting.de/shipin/index.php userpwd Station:Password gzip on interval 5</span>
 </code></pre></div>
 Notice that this server requires authentication with a station name and password and accepts JSON with gzip encoding which significantly reduces bandwidth. </p>
 <p><strong>Important</strong>: to use and build AIS-catcher with HTTP support, please install the following libraries before running cmake:
-<div class="highlight"><pre><span></span><code><span class="go">sudo apt install libssl-dev zlib1g-dev</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">sudo apt install libssl-dev zlib1g-dev</span>
 </code></pre></div>
 This step is only required if you want to ZIP content and post data to secure servers.</p>
 <p>The supported protocol switches are <code>AISCATCHER</code> (default), <code>MINIMAL</code> (NMEA lines and metadata in JSON), <code>LIST</code> (one JSON message per line), <code>AIRFRAMES</code> (Airframes.io minimal feed), <code>APRS</code> (to submit to APRS.fi), <code>NMEA</code> (simple NMEA).</p>

@@ -3449,18 +3449,18 @@
 <li><code>/etc/AIS-catcher/config.cmd</code> (command line parameters)</li>
 </ul>
 <p>The simplest approach is to edit <code>/etc/AIS-catcher/config.cmd</code> to capture your settings. Lines starting with <code>#</code> are considered comments and ignored. The file can be modified using a text editor, for example:</p>
-<div class="highlight"><pre><span></span><code><span class="go">sudo nano /etc/AIS-catcher/config.cmd</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">sudo nano /etc/AIS-catcher/config.cmd</span>
 </code></pre></div>
 <p>Please note that <code>config.json</code> takes precedence over <code>config.cmd</code>.</p>
 <h2 id="service-control">Service Control<a class="headerlink" href="#service-control" title="Permanent link">&para;</a></h2>
 <p>To start AIS-catcher as a background service:</p>
-<div class="highlight"><pre><span></span><code><span class="go">sudo systemctl start ais-catcher.service</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">sudo systemctl start ais-catcher.service</span>
 </code></pre></div>
 <p>To view the status of the service:</p>
-<div class="highlight"><pre><span></span><code><span class="go">sudo systemctl status ais-catcher.service</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">sudo systemctl status ais-catcher.service</span>
 </code></pre></div>
 <p>To ensure AIS-catcher starts automatically at boot time, enable the service with:</p>
-<div class="highlight"><pre><span></span><code><span class="go">sudo systemctl enable ais-catcher.service</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">sudo systemctl enable ais-catcher.service</span>
 </code></pre></div>
 
 

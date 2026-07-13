@@ -3507,10 +3507,8 @@
 <!-- TODO screenshot: dashboard-overview.webp — the full dashboard with map, control buttons and menus visible; ideally annotated -->
 
 <h2 id="opening-the-dashboard">Opening the Dashboard<a class="headerlink" href="#opening-the-dashboard" title="Permanent link">&para;</a></h2>
-<p>Managed mode is simply AIS-catcher started with the <code>-E</code> option — the same program, serving its own dashboard. Each <a href="../../installation/overview/">installation</a> ends with AIS-catcher already running this way, so you can open the dashboard right away in a browser on the machine AIS-catcher runs on:</p>
-<div class="highlight"><pre><span></span><code>http://localhost:8118
-</code></pre></div>
-<p>From another device on your network, use the receiver's address instead, e.g. <code>http://raspberrypi.local:8118</code> or <code>http://192.168.1.50:8118</code> — this requires AIS-catcher to be reachable from the network and a password, see <a href="../remote-access/">Remote Access and Security</a>.</p>
+<p>Managed mode is simply AIS-catcher started with the <code>-E</code> option — the same program, serving its own dashboard. Each <a href="../../installation/overview/">installation</a> ends with AIS-catcher already running this way, so you can open the dashboard right away in a browser on the machine AIS-catcher runs on: <code class="address">http://localhost:8118</code></p>
+<p>From another device on your network, use the receiver's address instead, e.g. <code class="address">http://raspberrypi.local:8118</code> or <code class="address">http://192.168.1.50:8118</code> — this requires AIS-catcher to be reachable from the network and a password, see <a href="../remote-access/">Remote Access and Security</a>.</p>
 <p>On first use, a short <a href="../setup-wizard/">setup wizard</a> walks you through configuring your station.</p>
 <h2 id="the-map">The Map<a class="headerlink" href="#the-map" title="Permanent link">&para;</a></h2>
 <p>The dashboard shows the vessels you are receiving live on a map, so you can see at a glance that your station is working and what your coverage looks like.</p>
@@ -3537,16 +3535,11 @@
 
 <p>Every underlying setting is documented in detail in the <a href="../../configuration/overview/">Settings reference</a>.</p>
 <h2 id="starting-managed-mode-yourself">Starting Managed Mode Yourself<a class="headerlink" href="#starting-managed-mode-yourself" title="Permanent link">&para;</a></h2>
-<p>The <a href="../../installation/overview/">installation</a> for each platform normally leaves AIS-catcher running in managed mode, so this section is only needed as a backup — for example after a manual install or when running from a terminal.</p>
-<p>Managed mode is the default: start AIS-catcher without any command-line options and it comes up in managed mode.</p>
-<div class="highlight"><pre><span></span><code><span class="go">AIS-catcher</span>
+<p>Each platform's <a href="../../installation/overview/">installation</a> normally leaves AIS-catcher running in managed mode, so starting it yourself is rarely necessary — typically only after a manual installation or when running AIS-catcher from a terminal.</p>
+<p>Managed mode is not the default: it must be enabled explicitly with the <code>-E</code> switch, which takes the configuration file and the address the dashboard listens on:</p>
+<div class="language-console highlight"><pre><span></span><code><span class="go">AIS-catcher -E /etc/AIS-catcher/config.json 127.0.0.1:8118</span>
 </code></pre></div>
-<!-- TODO: confirm final behaviour and defaults — config file location and listen address when started bare, and from which release this is the default -->
-
-<p>The configuration file and listen address can be set explicitly with the <code>-E</code> switch:</p>
-<div class="highlight"><pre><span></span><code><span class="go">AIS-catcher -E /etc/AIS-catcher/config.json 127.0.0.1:8118</span>
-</code></pre></div>
-<p>As soon as any other command-line option is given, AIS-catcher runs in <a href="../../usage/overview/">manual mode</a> instead and behaves as the classic command-line tool: it does exactly what you type, and the dashboard and its configuration file are not in play.</p>
+<p>When any other command-line option is supplied, AIS-catcher runs in <a href="../../usage/overview/">manual mode</a> instead and behaves as the classic command-line tool: it executes exactly what you type, and neither the dashboard nor its configuration file is used.</p>
 
 
 

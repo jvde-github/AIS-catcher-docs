@@ -3431,10 +3431,10 @@
 
 <p>The HydraSDR requires careful gain configuration similar to the AirSpy devices.  There are three different gain modes: linearity, sensitivity and so-called free. These can be set via the <code>-gm</code> switch when using the HydraSDR. </p>
 <p>We can activate 'linearity' mode with gain <code>10</code> using the following <code>AIS-catcher</code> command line:</p>
-<p><div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-gm<span class="w"> </span>linearity<span class="w"> </span><span class="m">10</span>
+<p><div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-gm<span class="w"> </span>linearity<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
 Settings can also be provided per stage:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-gm<span class="w"> </span>lna<span class="w"> </span>AUTO<span class="w"> </span>vga<span class="w"> </span><span class="m">12</span><span class="w"> </span>mixer<span class="w"> </span><span class="m">12</span>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-gm<span class="w"> </span>lna<span class="w"> </span>AUTO<span class="w"> </span>vga<span class="w"> </span><span class="m">12</span><span class="w"> </span>mixer<span class="w"> </span><span class="m">12</span>
 </code></pre></div></p>
 <p>On the command line, setting names and boolean-ish values are not case-sensitive (e.g. <code>LINEARITY 10</code> equals <code>linearity 10</code>). In JSON configuration, keys are case-sensitive and must be lowercase.</p>
 <h4 id="summary-settings">Summary Settings<a class="headerlink" href="#summary-settings" title="Permanent link">&para;</a></h4>

@@ -3349,7 +3349,7 @@
 
 <h1 id="remote-access-and-security">Remote Access and Security<a class="headerlink" href="#remote-access-and-security" title="Permanent link">&para;</a></h1>
 <p>By default the dashboard is only reachable from the machine AIS-catcher runs on (<code>127.0.0.1</code>). To administer it from another machine on your network, bind to all interfaces:</p>
-<div class="highlight"><pre><span></span><code><span class="go">AIS-catcher -E /etc/AIS-catcher/config.json 0.0.0.0:8118</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">AIS-catcher -E /etc/AIS-catcher/config.json 0.0.0.0:8118</span>
 </code></pre></div>
 <p>When bound to anything other than <code>127.0.0.1</code>/<code>localhost</code>, a <strong>password is required</strong>: on first access the dashboard asks you to set one, and every subsequent session requires logging in.</p>
 <!-- TODO screenshot: install-password.webp — the set-a-password screen on first access -->

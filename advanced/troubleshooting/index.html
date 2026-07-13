@@ -3493,10 +3493,10 @@
 <p>The Web Viewer include plots of what is called the <code>frequency shift</code>. The <code>frequency shift</code> is the frequency correction from the central frequencies that AIS-catcher has used to decode the signal. This value is related to  the frequency offset of the RTL-SDR dongle as discussed above but also depends on the deviations in the equipment of the sender. The number is in ppm (parts-per-million, so 1ppm ~ 162 Hz) and in some tables and in screen output the quantity is referred to as <code>ppm</code>.  Long-running averages can be used to determine the optimal ppm correction for the receiver setup. These deviations can be corrected with <code>-p</code>. Deviations between -3 and +3 will usually not impact reception quality so for modern dongles with frequency stabilization no action is required.</p>
 <h2 id="system-usb-performance">System USB performance<a class="headerlink" href="#system-usb-performance" title="Permanent link">&para;</a></h2>
 <p>On some laptops we observed that Windows was struggling with the high volume of data transferred from the RTL SDR dongle to the PC. I am not sure why (likely some driver issue as Ubuntu on the same machine worked fine) but it is worthwhile to check if your system supports transferring from the dongle at a sampling rate of 1.536 MHz with the following command which is part of the osmocom rtl-sdr package:
-<div class="highlight"><pre><span></span><code><span class="go">rtl_test -s 1536000</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">rtl_test -s 1536000</span>
 </code></pre></div>
 In case you observe a high number of lost data, the advice is to run AIS-catcher at a lower sampling rate for RTL SDR dongles:
-<div class="highlight"><pre><span></span><code><span class="go">AIS-catcher -s 288000</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">AIS-catcher -s 288000</span>
 </code></pre></div>
 If your system allows for it you might opt to run <code>AIS-catcher</code> at a sample rate of <code>2304000</code>. </p>
 <h2 id="known-issues">Known issues<a class="headerlink" href="#known-issues" title="Permanent link">&para;</a></h2>

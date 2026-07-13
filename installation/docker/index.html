@@ -3478,12 +3478,12 @@
 <div class="step">
 <p><strong>Pull the image</strong><br />
 With Docker installed:</p>
-<div class="highlight"><pre><span></span><code><span class="go">docker pull ghcr.io/jvde-github/ais-catcher:edge</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">docker pull ghcr.io/jvde-github/ais-catcher:edge</span>
 </code></pre></div>
 </div>
 <div class="step">
 <p><strong>Run it in managed mode</strong></p>
-<div class="highlight"><pre><span></span><code><span class="go">docker run --rm -it --network=host --device-cgroup-rule=&#39;c 189:* rmw&#39; -v /dev/bus/usb:/dev/bus/usb -v ais-config:/config ghcr.io/jvde-github/ais-catcher:edge -E /config/config.json 127.0.0.1:8118</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">docker run --rm -it --network=host --device-cgroup-rule=&#39;c 189:* rmw&#39; -v /dev/bus/usb:/dev/bus/usb -v ais-config:/config ghcr.io/jvde-github/ais-catcher:edge -E /config/config.json 127.0.0.1:8118</span>
 </code></pre></div>
 <p>A quick tour of the options:</p>
 <ul>
@@ -3495,7 +3495,7 @@ With Docker installed:</p>
 </div>
 <div class="step">
 <p><strong>Complete the setup wizard</strong><br />
-Open the dashboard in your browser at <code>http://localhost:8118</code>. On first use, the setup wizard walks you through configuring your input device and outputs, and starts the receiver:</p>
+Open the dashboard in your browser at <code class="address">http://localhost:8118</code>. On first use, the setup wizard walks you through configuring your input device and outputs, and starts the receiver:</p>
 <p><a class="md-button md-button--primary" href="../../managed/setup-wizard/">Setup Wizard</a></p>
 </div>
 </div>
@@ -3503,7 +3503,7 @@ Open the dashboard in your browser at <code>http://localhost:8118</code>. On fir
 </div>
 <h2 id="manual-mode">Manual Mode<a class="headerlink" href="#manual-mode" title="Permanent link">&para;</a></h2>
 <p>Run the container with any AIS-catcher command-line options:</p>
-<div class="highlight"><pre><span></span><code><span class="go">docker run --rm -it --pull always --device /dev/bus/usb ghcr.io/jvde-github/ais-catcher:latest &lt;ais-catcher command line options&gt;</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">docker run --rm -it --pull always --device /dev/bus/usb ghcr.io/jvde-github/ais-catcher:latest &lt;ais-catcher command line options&gt;</span>
 </code></pre></div>
 <p>Notice that if you want to run a web viewer (<code>-N 8100</code>) you need to make that port available on the host system with <code>-p 8100:8100</code>, or use <code>--network=host</code>.</p>
 <p><a class="md-button" href="../../usage/cli/">Command Line Run</a></p>
@@ -3513,7 +3513,7 @@ Open the dashboard in your browser at <code>http://localhost:8118</code>. On fir
 </div>
 <h2 id="updating">Updating<a class="headerlink" href="#updating" title="Permanent link">&para;</a></h2>
 <p>To update to the latest image, simply pull it again:</p>
-<div class="highlight"><pre><span></span><code><span class="go">docker pull ghcr.io/jvde-github/ais-catcher:edge</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">docker pull ghcr.io/jvde-github/ais-catcher:edge</span>
 </code></pre></div>
 
 

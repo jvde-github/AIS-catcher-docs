@@ -3725,7 +3725,7 @@
 <h2 id="web-control-configuration">Web Control Configuration<a class="headerlink" href="#web-control-configuration" title="Permanent link">&para;</a></h2>
 <p>For users running AIS-catcher with the <a href="../../../usage/gui/">Visual Web Control</a> interface (available for Linux and Docker), you can configure the <strong>dAISy catcher</strong> through the web interface:</p>
 <ol>
-<li>Access the Visual Web Control at <code>http://your-device:8110</code> (default credentials: admin/admin)</li>
+<li>Access the Visual Web Control at <code class="address">http://your-device:8110</code> (default credentials: admin/admin)</li>
 <li>Navigate to the <strong>Input</strong> section</li>
 <li>In the <strong>Device Type</strong> dropdown, select <strong>SERIAL</strong></li>
 <li>For the <strong>Port</strong> field:</li>
@@ -3742,11 +3742,11 @@
 <h2 id="command-line-configuration">Command Line Configuration<a class="headerlink" href="#command-line-configuration" title="Permanent link">&para;</a></h2>
 <h4 id="using-hat-connection-gpio-serial">Using HAT Connection (GPIO Serial)<a class="headerlink" href="#using-hat-connection-gpio-serial" title="Permanent link">&para;</a></h4>
 <p>On Raspberry Pi, the <strong>dAISy catcher</strong> connected via HAT uses the GPIO serial port. The port path varies by model (e.g., <code>/dev/serial0</code> on Raspberry Pi 4):</p>
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-e<span class="w"> </span><span class="m">115200</span><span class="w"> </span>/dev/serial0<span class="w"> </span>-ge<span class="w"> </span>init_seq<span class="w"> </span>co2,v
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-e<span class="w"> </span><span class="m">115200</span><span class="w"> </span>/dev/serial0<span class="w"> </span>-ge<span class="w"> </span>init_seq<span class="w"> </span>co2,v
 </code></pre></div>
 <h4 id="using-usb-connection">Using USB Connection<a class="headerlink" href="#using-usb-connection" title="Permanent link">&para;</a></h4>
 <p>When connected via USB, use the device by-id path for a persistent connection:</p>
-<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>/dev/serial/by-id/
+<div class="language-bash highlight"><pre><span></span><code>ls<span class="w"> </span>/dev/serial/by-id/
 AIS-catcher<span class="w"> </span>-e<span class="w"> </span><span class="m">115200</span><span class="w"> </span>/dev/serial/by-id/usb-...<span class="w"> </span>-ge<span class="w"> </span>init_seq<span class="w"> </span>co2,v
 </code></pre></div>
 <h3 id="initialization-sequence">Initialization Sequence<a class="headerlink" href="#initialization-sequence" title="Permanent link">&para;</a></h3>
@@ -3758,15 +3758,15 @@ AIS-catcher<span class="w"> </span>-e<span class="w"> </span><span class="m">115
 <p>This provides additional diagnostic information that can be useful for monitoring reception quality.</p>
 <h3 id="example-with-output-options">Example with Output Options<a class="headerlink" href="#example-with-output-options" title="Permanent link">&para;</a></h3>
 <p>To run the <strong>dAISy catcher</strong> with JSON output and signal quality information:</p>
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-e<span class="w"> </span><span class="m">115200</span><span class="w"> </span>/dev/serial0<span class="w"> </span>-ge<span class="w"> </span>init_seq<span class="w"> </span>co2,v<span class="w"> </span>-o<span class="w"> </span><span class="m">5</span>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-e<span class="w"> </span><span class="m">115200</span><span class="w"> </span>/dev/serial0<span class="w"> </span>-ge<span class="w"> </span>init_seq<span class="w"> </span>co2,v<span class="w"> </span>-o<span class="w"> </span><span class="m">5</span>
 </code></pre></div>
 <h3 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">&para;</a></h3>
 <p>To view the raw NMEA data being received from the device:</p>
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-e<span class="w"> </span><span class="m">115200</span><span class="w"> </span>/dev/serial0<span class="w"> </span>-ge<span class="w"> </span>print<span class="w"> </span>on
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-e<span class="w"> </span><span class="m">115200</span><span class="w"> </span>/dev/serial0<span class="w"> </span>-ge<span class="w"> </span>print<span class="w"> </span>on
 </code></pre></div>
 <h2 id="json-configuration">JSON Configuration<a class="headerlink" href="#json-configuration" title="Permanent link">&para;</a></h2>
 <p>The <strong>dAISy catcher</strong> can also be configured using JSON:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;serial&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/dev/serial0&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;baudrate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">115200</span><span class="p">,</span>
@@ -3775,7 +3775,7 @@ AIS-catcher<span class="w"> </span>-e<span class="w"> </span><span class="m">115
 <span class="p">}</span>
 </code></pre></div>
 <p>For USB connection:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;serial&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/dev/serial/by-id/usb-...&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;baudrate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">115200</span><span class="p">,</span>

@@ -4799,7 +4799,7 @@
 <h2 id="edge">Edge<a class="headerlink" href="#edge" title="Permanent link">&para;</a></h2>
 <h3 id="built-in-control-panel">Built-in control panel<a class="headerlink" href="#built-in-control-panel" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Configure AIS-catcher from the browser</strong> — a new managed mode (<code>AIS-catcher -E [config file] [address:port]</code>) starts a built-in control panel, by default on <code>http://localhost:8118</code>. A setup wizard walks you through input device and output configuration on first use, and the <strong>Input</strong> and <strong>Output</strong> tabs let you fine-tune everything afterwards — no config file editing needed. See <a href="../managed/dashboard/">Managed Mode</a>.</li>
+<li><strong>Configure AIS-catcher from the browser</strong> — a new managed mode (<code>AIS-catcher -E [config file] [address:port]</code>) starts a built-in control panel, by default on <code class="address">http://localhost:8118</code>. A setup wizard walks you through input device and output configuration on first use, and the <strong>Input</strong> and <strong>Output</strong> tabs let you fine-tune everything afterwards — no config file editing needed. See <a href="../managed/dashboard/">Managed Mode</a>.</li>
 <li><strong>Remote administration with password protection</strong> — bind to <code>0.0.0.0</code> to manage the station from another machine; the panel then requires setting a password on first access.</li>
 <li><strong>Managed web viewer</strong> — in managed mode the web viewer is started automatically on the port above the control panel (8119 by default).</li>
 <li><strong>Easy install</strong> — the install script's new <code>-M</code>/<code>--managed</code> option sets up the systemd service in managed mode, and the Windows zip includes <code>start-GUI.bat</code> to launch AIS-catcher with the control panel.</li>
@@ -4920,13 +4920,13 @@
 <p>HydraSDR is now a supported input device. See the <a href="../configuration/input/hydrasdr/">HydraSDR input page</a> for details.</p>
 <h4 id="duplicate-removal">Duplicate Removal<a class="headerlink" href="#duplicate-removal" title="Permanent link">&para;</a></h4>
 <p>When combining multiple input streams, overlapping reception can result in duplicate messages. To remove duplicates from output channels, use the <code>unique</code> option. For example, the following removes duplicates from both console and a UDP stream:</p>
-<div class="highlight"><pre><span></span><code>AIS-catcher -o 1 unique on -u 127.0.0.1 5012 unique on
+<div class="language-text highlight"><pre><span></span><code>AIS-catcher -o 1 unique on -u 127.0.0.1 5012 unique on
 </code></pre></div>
 <p>In JSON, set the <code>unique</code> key to <code>true</code> (remove duplicates) or <code>false</code> (default). Note that this could come at a performance cost that increases with the number of MMSIs so keep an eye on that.</p>
 <h4 id="downsampling-options">Downsampling Options<a class="headerlink" href="#downsampling-options" title="Permanent link">&para;</a></h4>
 <p>Two additional options, <code>position_interval</code> and <code>own_interval</code>, downsample position messages and VDO messages by limiting each MMSI to at most one update per specified interval (in seconds). Both default to <code>0</code> or, equivalent, <code>false</code> (disabled).</p>
 <p><strong>Example:</strong>
-<div class="highlight"><pre><span></span><code>AIS-catcher -u 127.0.0.1 5012 position_interval 30
+<div class="language-text highlight"><pre><span></span><code>AIS-catcher -u 127.0.0.1 5012 position_interval 30
 </code></pre></div></p>
 <p>Alternatively, these options are available in the Visual Web Control interface:</p>
 <p><img width="909" height="513" alt="image" src="https://github.com/user-attachments/assets/728f4675-ff13-4337-b615-d1ac728e4866" /></p>
@@ -5049,7 +5049,7 @@
 <li><strong>Verbose JSON Output</strong> (<code>-o 6</code>): Enhanced JSON format with detailed field descriptions (WIP)</li>
 <li><strong>Debian Trixie Support</strong>: Compatibility with Debian 13 (Trixie)</li>
 <li><strong>Filesystem-based Map Tiles</strong>:
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="c1"># Serve map tiles from filesystem</span>
+<div class="language-bash highlight"><pre><span></span><code><span class="w">  </span><span class="c1"># Serve map tiles from filesystem</span>
 <span class="w">  </span>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>FSTILES<span class="w"> </span>/path/to/tiles
 <span class="w">  </span><span class="c1"># Filesystem overlay maps</span>
 <span class="w">  </span>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>FSOVERLAY<span class="w"> </span>/path/to/overlay
@@ -5059,7 +5059,7 @@
 <h2 id="version-062">Version 0.62<a class="headerlink" href="#version-062" title="Permanent link">&para;</a></h2>
 <h3 id="adsb-integration">ADSB Integration<a class="headerlink" href="#adsb-integration" title="Permanent link">&para;</a></h3>
 <p>Connect to ADSB feeds to visualize aircraft alongside vessels:
-<div class="highlight"><pre><span></span><code><span class="c1"># Beast format</span>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Beast format</span>
 AIS-catcher<span class="w"> </span>-t<span class="w"> </span>beast<span class="w"> </span>localhost<span class="w"> </span><span class="m">30003</span><span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span>
 
 <span class="c1"># BaseStation format</span>
@@ -5068,7 +5068,7 @@ AIS-catcher<span class="w"> </span>-t<span class="w"> </span>basestation<span cl
 <h3 id="binary-message-decoding">Binary Message Decoding<a class="headerlink" href="#binary-message-decoding" title="Permanent link">&para;</a></h3>
 <p>The WebViewer now decodes and displays regional binary AIS messages (availability varies by location).</p>
 <h3 id="offline-mapping">Offline Mapping<a class="headerlink" href="#offline-mapping" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># MBTiles format support</span>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># MBTiles format support</span>
 AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>MBTILES<span class="w"> </span>map.mbtiles
 <span class="c1"># Or as overlay</span>
 AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>MBOVERLAY<span class="w"> </span>map.mbtiles
@@ -5082,7 +5082,7 @@ AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">810
 </ul>
 <h2 id="version-061">Version 0.61<a class="headerlink" href="#version-061" title="Permanent link">&para;</a></h2>
 <h3 id="mqtt-integration">MQTT Integration<a class="headerlink" href="#mqtt-integration" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># Publish messages</span>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Publish messages</span>
 AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://127.0.0.1:1883
 AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>wsmqtt://127.0.0.1:1883
 AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://127.0.0.1:1883<span class="w"> </span>admin<span class="w"> </span>MSGFORMAT<span class="w"> </span>JSON_FULL<span class="w"> </span>TOPIC<span class="w"> </span>data/ais

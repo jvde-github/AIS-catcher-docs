@@ -4205,12 +4205,12 @@
 <h1 id="json-configuration">JSON Configuration<a class="headerlink" href="#json-configuration" title="Permanent link">&para;</a></h1>
 <p>AIS-catcher (v0.41+) supports extensive configuration through JSON files. This guide describes the JSON structure, key settings, and common patterns.</p>
 <p>To start AIS-catcher with a JSON configuration file, use the <code>-C</code> option followed by the path to your <code>config.json</code> file:</p>
-<p><div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-C<span class="w"> </span>config.json
+<p><div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-C<span class="w"> </span>config.json
 </code></pre></div>
 This loads and applies the settings from the JSON file.</p>
 <h2 id="basic-structure">Basic Structure<a class="headerlink" href="#basic-structure" title="Permanent link">&para;</a></h2>
 <p>A JSON configuration file always starts with the configuration header:
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aiscatcher&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="p">}</span>
@@ -4222,7 +4222,7 @@ This loads and applies the settings from the JSON file.</p>
 </ul>
 <p>This is the absolute minimal structure (just the first two keys). If no receiver is configured, AIS-catcher will use the default behaviour for selecting an input device.</p>
 <p>To select the RTL-SDR as an input device:
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aiscatcher&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;receiver&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -4417,7 +4417,7 @@ This loads and applies the settings from the JSON file.</p>
 </table>
 <h5 id="multi-receiver-example">Multi-receiver example<a class="headerlink" href="#multi-receiver-example" title="Permanent link">&para;</a></h5>
 <p>Example with two receivers:
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aiscatcher&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;receiver&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -4445,7 +4445,7 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;rtlsdr&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;rtlagc&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
@@ -4461,7 +4461,7 @@ This loads and applies the settings from the JSON file.</p>
 <h3 id="airspy-airspy">Airspy (<code>airspy</code>)<a class="headerlink" href="#airspy-airspy" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;airspy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;sample_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3000K&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;linearity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
@@ -4474,7 +4474,7 @@ This loads and applies the settings from the JSON file.</p>
 <h3 id="hydrasdr-hydrasdr">HydraSDR (<code>hydrasdr</code>)<a class="headerlink" href="#hydrasdr-hydrasdr" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;hydrasdr&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;sample_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3000K&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;linearity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
@@ -4487,7 +4487,7 @@ This loads and applies the settings from the JSON file.</p>
 <h3 id="airspy-hf-airspyhf">Airspy HF+ (<code>airspyhf</code>)<a class="headerlink" href="#airspy-hf-airspyhf" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;airspyhf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;sample_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192k&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;low&quot;</span><span class="p">,</span>
@@ -4501,7 +4501,7 @@ This loads and applies the settings from the JSON file.</p>
 <h3 id="hackrf-hackrf">HackRF (<code>hackrf</code>)<a class="headerlink" href="#hackrf-hackrf" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;hackrf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;sample_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6144k&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;lna&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
@@ -4515,7 +4515,7 @@ This loads and applies the settings from the JSON file.</p>
 <h3 id="sdrplay-sdrplay">SDRPlay (<code>sdrplay</code>)<a class="headerlink" href="#sdrplay-sdrplay" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;sdrplay&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;sample_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2304K&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;agc&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
@@ -4529,7 +4529,7 @@ This loads and applies the settings from the JSON file.</p>
 <h3 id="soapysdr-soapysdr">SoapySDR (<code>soapysdr</code>)<a class="headerlink" href="#soapysdr-soapysdr" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;soapysdr&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;device&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;driver=rtlsdr&quot;</span><span class="p">,</span>
@@ -4542,7 +4542,7 @@ This loads and applies the settings from the JSON file.</p>
 <h3 id="serial-port-input-serialport">Serial Port Input (<code>serialport</code>)<a class="headerlink" href="#serial-port-input-serialport" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;serialport&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;baudrate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">38400</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/dev/tty0&quot;</span>
@@ -4554,7 +4554,7 @@ This loads and applies the settings from the JSON file.</p>
 <h3 id="nmea2000-nmea2000">NMEA2000 (<code>nmea2000</code>)<a class="headerlink" href="#nmea2000-nmea2000" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;nmea2000&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;can0&quot;</span>
@@ -4567,7 +4567,7 @@ This loads and applies the settings from the JSON file.</p>
 <h3 id="wav-file-wavfile">WAV File (<code>wavfile</code>)<a class="headerlink" href="#wav-file-wavfile" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;wavfile&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;recording.wav&quot;</span>
@@ -4579,7 +4579,7 @@ This loads and applies the settings from the JSON file.</p>
 <h3 id="raw-file-file">Raw File (<code>file</code>)<a class="headerlink" href="#raw-file-file" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data.raw&quot;</span>
@@ -4592,7 +4592,7 @@ This loads and applies the settings from the JSON file.</p>
 <h3 id="tcp-client-rtltcp">TCP Client (<code>rtltcp</code>)<a class="headerlink" href="#tcp-client-rtltcp" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;rtltcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.1.100&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span>
@@ -4604,7 +4604,7 @@ This loads and applies the settings from the JSON file.</p>
 <h3 id="spyserver-spyserver">SpyServer (<code>spyserver</code>)<a class="headerlink" href="#spyserver-spyserver" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;spyserver&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;server.example.com&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5555</span>
@@ -4616,7 +4616,7 @@ This loads and applies the settings from the JSON file.</p>
 <h3 id="udp-server-udpserver">UDP Server (<code>udpserver</code>)<a class="headerlink" href="#udp-server-udpserver" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;udpserver&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10110</span>
@@ -4628,7 +4628,7 @@ This loads and applies the settings from the JSON file.</p>
 <h3 id="zmq-zmq">ZMQ (<code>zmq</code>)<a class="headerlink" href="#zmq-zmq" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;zmq&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tcp://localhost:5555&quot;</span>
@@ -4642,7 +4642,7 @@ This loads and applies the settings from the JSON file.</p>
 <h3 id="web-viewer-server">Web Viewer (<code>server</code>)<a class="headerlink" href="#web-viewer-server" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;server&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
@@ -4660,7 +4660,7 @@ This loads and applies the settings from the JSON file.</p>
 <h3 id="udp-output-udp">UDP Output (<code>udp</code>)<a class="headerlink" href="#udp-output-udp" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;udp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
@@ -4677,7 +4677,7 @@ This loads and applies the settings from the JSON file.</p>
 <h3 id="tcp-output-client-tcp">TCP  Output (Client) (<code>tcp</code>)<a class="headerlink" href="#tcp-output-client-tcp" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;tcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
@@ -4693,7 +4693,7 @@ This loads and applies the settings from the JSON file.</p>
 <h3 id="tcp-output-server-tcp_listener">TCP  Output (Server) (<code>tcp_listener</code>)<a class="headerlink" href="#tcp-output-server-tcp_listener" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;tcp_listener&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
@@ -4707,7 +4707,7 @@ This loads and applies the settings from the JSON file.</p>
 <h3 id="http-output-http">HTTP Output (<code>http</code>)<a class="headerlink" href="#http-output-http" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;http&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
@@ -4723,7 +4723,7 @@ This loads and applies the settings from the JSON file.</p>
 <h3 id="mqtt-output-mqtt">MQTT Output (<code>mqtt</code>)<a class="headerlink" href="#mqtt-output-mqtt" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;mqtt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>

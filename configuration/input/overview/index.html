@@ -3563,7 +3563,7 @@
 <h1 id="input-configuration">Input Configuration<a class="headerlink" href="#input-configuration" title="Permanent link">&para;</a></h1>
 <h2 id="device-selection-and-discovery">Device Selection and Discovery<a class="headerlink" href="#device-selection-and-discovery" title="Permanent link">&para;</a></h2>
 <p>To list all connected compatible hardware devices:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-l
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-l
 </code></pre></div>
 To select a specific device, use either:</p>
 <p><code>-d:N</code> where N is the device number from the list
@@ -3624,12 +3624,12 @@ To select a specific device, use either:</p>
 </tbody>
 </table>
 <p>For example, to set the sample rate to 1536K, frequency offset of your device to 1 ppm and bandwidth to 192K:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-s<span class="w"> </span>1536K<span class="w"> </span>-a<span class="w"> </span>192K<span class="w"> </span>-p<span class="w"> </span><span class="m">1</span>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-s<span class="w"> </span>1536K<span class="w"> </span>-a<span class="w"> </span>192K<span class="w"> </span>-p<span class="w"> </span><span class="m">1</span>
 </code></pre></div></p>
 <p>The format option sets the data type for the input source. This is less relevant for SDRs but is useful when reading raw data from file or an internet connection.</p>
 <h2 id="ais-channel-selection-c">AIS channel selection (<code>-c</code>)<a class="headerlink" href="#ais-channel-selection-c" title="Permanent link">&para;</a></h2>
 <p>The <code>-c</code> option selects which AIS channel pair a receiver tunes to:</p>
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-d<span class="w"> </span>serial1<span class="w"> </span>-c<span class="w"> </span>CD
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-d<span class="w"> </span>serial1<span class="w"> </span>-c<span class="w"> </span>CD
 </code></pre></div>
 <ul>
 <li><strong><code>-c AB</code></strong> (default) — the standard maritime AIS channels A (161.975 MHz) and B (162.025 MHz); the SDR is tuned to a 162.000 MHz centre frequency.</li>
@@ -3637,16 +3637,16 @@ To select a specific device, use either:</p>
 </ul>
 <p>Because <code>-c</code> changes the <strong>tuning frequency of the radio</strong>, it only has an effect for SDR/RF inputs (RTL-SDR, AirSpy, HackRF, SDRplay, SoapySDR, SpyServer, RTL-TCP, raw I/Q files, …). For inputs that already carry decoded NMEA — text files, <code>txt://</code> TCP feeds, UDP, serial NMEA — the channel is taken from the sentence itself and <code>-c</code> does not retune anything.</p>
 <p>Optionally a second argument overrides the <strong>NMEA channel designation</strong> written into the output (the letters reported in the AIVDM sentence), without changing the tuning:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Tune to the A/B frequencies but label the output channels C and D</span>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Tune to the A/B frequencies but label the output channels C and D</span>
 AIS-catcher<span class="w"> </span>-c<span class="w"> </span>AB<span class="w"> </span>CD
 </code></pre></div>
 <p>When omitted, the designation follows the selected pair (<code>AB</code> → <code>A</code>/<code>B</code>, <code>CD</code> → <code>C</code>/<code>D</code>).</p>
 <h2 id="multiple-device-input">Multiple device input<a class="headerlink" href="#multiple-device-input" title="Permanent link">&para;</a></h2>
 <p>We can run with multiple receivers in parallel. For example, one dongle for channel A+B and one dongle for channel C+D. To run with two receivers in parallel you can use a command like:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-d<span class="w"> </span>serial1<span class="w"> </span>-v<span class="w"> </span>-d<span class="w"> </span>serial2<span class="w"> </span>-c<span class="w"> </span>CD<span class="w"> </span>-v<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-d<span class="w"> </span>serial1<span class="w"> </span>-v<span class="w"> </span>-d<span class="w"> </span>serial2<span class="w"> </span>-c<span class="w"> </span>CD<span class="w"> </span>-v<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span>
 </code></pre></div></p>
 <p>Similarly, this functionality allows to receive input from an AIS receiver over UDP via a UDP server and a connected GPS device in parallel, e.g.:
-<div class="highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-e<span class="w"> </span><span class="m">38400</span><span class="w"> </span>/dev/serial/by-id/usb-u-blox_AG_-_www.u-blox.com_u-blox_7_-_GPS_GNSS_Receiver-if00<span class="w"> </span>-x<span class="w"> </span><span class="m">192</span>.168.1.235<span class="w"> </span><span class="m">4002</span>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-e<span class="w"> </span><span class="m">38400</span><span class="w"> </span>/dev/serial/by-id/usb-u-blox_AG_-_www.u-blox.com_u-blox_7_-_GPS_GNSS_Receiver-if00<span class="w"> </span>-x<span class="w"> </span><span class="m">192</span>.168.1.235<span class="w"> </span><span class="m">4002</span>
 </code></pre></div>
 The first receiver (<code>-e ...</code>) reads from a GPS device that is connected and emits NMEA lines. The second receiver (<code>-x</code>) reads AIS NMEA lines at port 4002 coming from another instance of AIS-catcher. The station is now plotted on the map with the location as provided
 by the GPS coordinates. The web page has an option to fix the center of the map on the location of the receiving station (right-click on the station icon on the map).</p>
