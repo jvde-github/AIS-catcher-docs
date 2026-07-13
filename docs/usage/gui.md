@@ -15,13 +15,10 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-cat
 
 ## Accessing the Interface
 
-Open your web browser and navigate to the machine's address on port **8110**, for example:
+Open your web browser and navigate to the machine's address on port **8110**, for example: `http://raspberrypi.local:8110`{ .address }
 
-```
-http://raspberrypi.local:8110
-```
-
-Log in with the password — you will be asked to set one on first access.
+!!! note "Default password"
+    Log in with the default password `admin` — you will be asked to set your own password right after. Systems upgraded from an earlier installation keep their previously set password.
 
 ## Controlling the Service
 

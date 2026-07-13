@@ -159,6 +159,12 @@
     transition: all 0.2s ease-in-out;
 }
 
+.cmd-flag,
+.cmd-value,
+.cmd-setting {
+    white-space: nowrap;
+}
+
 /* Steps: vertical timeline for the happy path */
 .steps {
     counter-reset: step;
@@ -267,6 +273,7 @@
     border-radius: 8px;
     margin: 4px 8px 4px 0;
     transition: all 0.15s ease-in-out;
+    box-shadow: 0 1px 4px rgba(18, 54, 94, 0.14);
 }
 
 .md-typeset .md-button--primary {
@@ -280,14 +287,14 @@
 }
 
 .md-typeset .md-button--muted {
-    background-color: #eef2f7;
-    border-color: #eef2f7;
+    background-color: #f7fafd;
+    border-color: #c9d6e6;
     color: #42566e;
 }
 
 .md-typeset .md-button--muted:hover {
-    background-color: #e2e9f2;
-    border-color: #e2e9f2;
+    background-color: #eef4fb;
+    border-color: #9fb8d4;
     color: #12365e;
 }
 
@@ -348,8 +355,11 @@
 }
 
 .md-typeset table:not([class]) th {
-    background: #f5f9fe;
-    color: #12365e;
+    background: #eef4fb;
+    color: #5b7392;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.62rem;
 }
 
 .md-typeset table:not([class]) tbody tr:nth-child(even) {
@@ -361,13 +371,33 @@
     box-shadow: none;
 }
 
-.md-typeset .input-table table:not([class]) {
+/* Tables fill the content width */
+.md-typeset__table {
     width: 100%;
 }
 
-.md-typeset .input-table .md-typeset__table {
+.md-typeset .md-typeset__table table:not([class]) {
+    display: table;
     width: 100%;
-    display: block;
+}
+
+/* Settings tables: group rows (no setting chip in the first cell) as section bands */
+.md-typeset table:not([class]):has(.cmd-setting) tbody tr:not(:has(.cmd-setting)) {
+    background: #f5f9fe;
+}
+
+.md-typeset table:not([class]):has(.cmd-setting) tbody tr:not(:has(.cmd-setting)) td {
+    font-weight: 700;
+    color: #12365e;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding-top: 0.6em;
+    padding-bottom: 0.6em;
+}
+
+.md-typeset table:not([class]):has(.cmd-setting) tbody tr:not(:has(.cmd-setting)):hover {
+    background: #f5f9fe;
 }
 
 /* Settings overview: flow diagram and profile cards */
@@ -539,3 +569,177 @@
   .md-typeset details pre {
     margin: 1rem;
   }
+/* ---------------------------------------------------------------- */
+/* Code blocks                                                      */
+/* ---------------------------------------------------------------- */
+
+/* All code blocks: soft rounding and border to match the site panels */
+.md-typeset .highlight pre {
+    border-radius: 8px;
+    border: 1px solid #e3e9f1;
+}
+
+/* Shell blocks (bash/console): terminal window look */
+.md-typeset div.highlight.language-bash,
+.md-typeset div.highlight.language-console {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(18, 54, 94, 0.16);
+    margin: 1em 0;
+}
+
+/* Title bar with traffic-light dots */
+.md-typeset div.highlight.language-bash::before,
+.md-typeset div.highlight.language-console::before {
+    content: "";
+    display: block;
+    height: 30px;
+    background:
+        radial-gradient(circle 5.5px at 18px 15px, #ff5f57 99%, transparent) ,
+        radial-gradient(circle 5.5px at 38px 15px, #febc2e 99%, transparent),
+        radial-gradient(circle 5.5px at 58px 15px, #28c840 99%, transparent),
+        #232e42;
+}
+
+.md-typeset div.highlight.language-bash pre,
+.md-typeset div.highlight.language-console pre {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    background: #1a2334;
+}
+
+.md-typeset div.highlight.language-bash code,
+.md-typeset div.highlight.language-console code {
+    color: #e6edf7;
+    background: transparent;
+}
+
+/* Dark-friendly token colours (Pygments emits light-theme colours) */
+.md-typeset div.highlight.language-bash .k,
+.md-typeset div.highlight.language-bash .nb,
+.md-typeset div.highlight.language-console .k,
+.md-typeset div.highlight.language-console .nb {
+    color: #7cc7ff;
+}
+
+.md-typeset div.highlight.language-bash .s,
+.md-typeset div.highlight.language-bash .s1,
+.md-typeset div.highlight.language-bash .s2,
+.md-typeset div.highlight.language-bash .sb,
+.md-typeset div.highlight.language-console .s,
+.md-typeset div.highlight.language-console .s1,
+.md-typeset div.highlight.language-console .s2,
+.md-typeset div.highlight.language-console .sb {
+    color: #f2c97d;
+}
+
+.md-typeset div.highlight.language-bash .nv,
+.md-typeset div.highlight.language-bash .si,
+.md-typeset div.highlight.language-console .nv,
+.md-typeset div.highlight.language-console .si {
+    color: #c8a6ff;
+}
+
+.md-typeset div.highlight.language-bash .c,
+.md-typeset div.highlight.language-bash .c1,
+.md-typeset div.highlight.language-console .c,
+.md-typeset div.highlight.language-console .c1 {
+    color: #7a889c;
+    font-style: italic;
+}
+
+.md-typeset div.highlight.language-bash .go,
+.md-typeset div.highlight.language-console .go {
+    color: #e6edf7;
+}
+
+/* Console prompt: accent colour, excluded from copy/selection */
+.md-typeset div.highlight.language-console .gp {
+    color: #6ee7a0;
+    user-select: none;
+}
+
+/* Copy button: move into the title bar, drop the light pill background */
+.md-typeset div.highlight.language-bash .md-code__nav,
+.md-typeset div.highlight.language-console .md-code__nav {
+    background: transparent;
+    top: -28px;
+    right: 6px;
+}
+
+.md-typeset div.highlight.language-bash pre:hover > .md-code__nav,
+.md-typeset div.highlight.language-console pre:hover > .md-code__nav {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.md-typeset div.highlight.language-bash .md-code__button,
+.md-typeset div.highlight.language-console .md-code__button {
+    color: #8fa3bd;
+}
+
+.md-typeset div.highlight.language-bash .md-code__button:hover,
+.md-typeset div.highlight.language-console .md-code__button:hover {
+    color: #ffffff;
+}
+
+/* Browser-address pill: URLs the user types into the address bar */
+.md-typeset code.address {
+    background: #ffffff;
+    border: 1px solid #c9d6e6;
+    border-radius: 999px;
+    padding: 0.25em 0.9em 0.25em 2.1em;
+    color: #12365e;
+    box-shadow: inset 0 1px 2px rgba(18, 54, 94, 0.06);
+    position: relative;
+    white-space: nowrap;
+}
+
+.md-typeset code.address::before {
+    content: "";
+    position: absolute;
+    left: 0.75em;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1em;
+    height: 1em;
+    background-color: #7a889c;
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="black" stroke-width="2"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></g></svg>') no-repeat center / contain;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="black" stroke-width="2"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></g></svg>') no-repeat center / contain;
+}
+
+/* JSON blocks: light "config file" card */
+.md-typeset div.highlight.language-json {
+    border: 1px solid #dbe7f5;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 1em 0;
+}
+
+.md-typeset div.highlight.language-json::before {
+    content: "{ } JSON";
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 14px;
+    background: #eef4fb;
+    color: #5b7392;
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid #dbe7f5;
+}
+
+.md-typeset div.highlight.language-json pre {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    background: #f9fbfe;
+}
+
+.md-typeset div.highlight.language-json .md-code__nav {
+    background: transparent;
+    top: -28px;
+    right: 6px;
+}

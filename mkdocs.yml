@@ -147,9 +147,9 @@ nav:
 markdown_extensions:
   - admonition
   - attr_list
-  - codehilite
   - pymdownx.superfences
-  - pymdownx.highlight
+  - pymdownx.highlight:
+      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.details
   - pymdownx.magiclink

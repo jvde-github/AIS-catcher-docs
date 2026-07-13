@@ -6,13 +6,9 @@ In managed mode, AIS-catcher hosts a **dashboard**: a web interface from which y
 
 ## Opening the Dashboard
 
-Managed mode is simply AIS-catcher started with the `-E` option — the same program, serving its own dashboard. Each [installation](../installation/overview.md) ends with AIS-catcher already running this way, so you can open the dashboard right away in a browser on the machine AIS-catcher runs on:
+Managed mode is simply AIS-catcher started with the `-E` option — the same program, serving its own dashboard. Each [installation](../installation/overview.md) ends with AIS-catcher already running this way, so you can open the dashboard right away in a browser on the machine AIS-catcher runs on: `http://localhost:8118`{ .address }
 
-```
-http://localhost:8118
-```
-
-From another device on your network, use the receiver's address instead, e.g. `http://raspberrypi.local:8118` or `http://192.168.1.50:8118` — this requires AIS-catcher to be reachable from the network and a password, see [Remote Access and Security](remote-access.md).
+From another device on your network, use the receiver's address instead, e.g. `http://raspberrypi.local:8118`{ .address } or `http://192.168.1.50:8118`{ .address } — this requires AIS-catcher to be reachable from the network and a password, see [Remote Access and Security](remote-access.md).
 
 On first use, a short [setup wizard](setup-wizard.md) walks you through configuring your station.
 
@@ -48,20 +44,12 @@ Every underlying setting is documented in detail in the [Settings reference](../
 
 ## Starting Managed Mode Yourself
 
-The [installation](../installation/overview.md) for each platform normally leaves AIS-catcher running in managed mode, so this section is only needed as a backup — for example after a manual install or when running from a terminal.
+Each platform's [installation](../installation/overview.md) normally leaves AIS-catcher running in managed mode, so starting it yourself is rarely necessary — typically only after a manual installation or when running AIS-catcher from a terminal.
 
-Managed mode is the default: start AIS-catcher without any command-line options and it comes up in managed mode.
-
-```console
-AIS-catcher
-```
-
-<!-- TODO: confirm final behaviour and defaults — config file location and listen address when started bare, and from which release this is the default -->
-
-The configuration file and listen address can be set explicitly with the `-E` switch:
+Managed mode is not the default: it must be enabled explicitly with the `-E` switch, which takes the configuration file and the address the dashboard listens on:
 
 ```console
 AIS-catcher -E /etc/AIS-catcher/config.json 127.0.0.1:8118
 ```
 
-As soon as any other command-line option is given, AIS-catcher runs in [manual mode](../usage/overview.md) instead and behaves as the classic command-line tool: it does exactly what you type, and the dashboard and its configuration file are not in play.
+When any other command-line option is supplied, AIS-catcher runs in [manual mode](../usage/overview.md) instead and behaves as the classic command-line tool: it executes exactly what you type, and neither the dashboard nor its configuration file is used.

@@ -60,7 +60,7 @@ Create a web viewer accessible from your local network to visualize AIS data:
 AIS-catcher -N 8100
 ```
 
-The web viewer will be available at `http://localhost:8100`. It can also be accessed from any device on the same network using the machine's IP address and defined port number.
+The web viewer will be available at `http://localhost:8100`{ .address }. It can also be accessed from any device on the same network using the machine's IP address and defined port number.
 
 Customization options for the web viewer are available in the [configuration settings](../configuration/output/web-viewer.md).
 

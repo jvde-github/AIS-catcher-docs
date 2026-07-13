@@ -40,7 +40,7 @@ Double-click `start-GUI.bat` in the unzipped folder to start AIS-catcher in mana
 <div class="step" markdown>
 
 **Complete the setup wizard**  
-Open the dashboard in your browser at `http://localhost:8118`. On first use, the setup wizard walks you through configuring your input device and outputs, and starts the receiver:
+Open the dashboard in your browser at `http://localhost:8118`{ .address }. On first use, the setup wizard walks you through configuring your input device and outputs, and starts the receiver:
 
 [Setup Wizard](../managed/setup-wizard.md){ .md-button .md-button--primary }
 

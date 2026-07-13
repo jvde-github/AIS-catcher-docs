@@ -19,7 +19,7 @@ Make sure you use the latest version and start the web viewer as follows:
 ```bash
 AIS-catcher -N 8100
 ```
-where ``8100`` is the port number. If your machine network name is raspberrypi, e.g.,  then enter ``raspberrypi:8100`` in your browser.  On the web page, you will find several sections with information related to the station and received messages.
+where ``8100`` is the port number. If your machine network name is raspberrypi, e.g.,  then enter `raspberrypi:8100`{ .address } in your browser.  On the web page, you will find several sections with information related to the station and received messages.
 
 For users wishing to include a station name and a link to an external website in the Statistics section:
 ```bash

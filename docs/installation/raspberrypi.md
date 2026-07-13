@@ -25,12 +25,15 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-cat
 
 If `curl` is not available on your device, install it with `sudo apt install curl`.
 
+!!! warning "Coming from a manual install?"
+    Settings from manual mode (`/etc/AIS-catcher/config.json` and `config.cmd`) are **not** converted to managed mode. Back up these files before installing and re-enter your settings via the setup wizard.
+
 </div>
 
 <div class="step" markdown>
 
 **Complete the setup wizard**  
-Open the dashboard in your browser on port **8118**, e.g. `http://raspberrypi.local:8118`. On first use, the setup wizard walks you through configuring your input device and outputs, and starts the receiver:
+Open the dashboard in your browser on port **8118**, e.g. `http://raspberrypi.local:8118`{ .address }. On first use, the setup wizard walks you through configuring your input device and outputs, and starts the receiver:
 
 [Setup Wizard](../managed/setup-wizard.md){ .md-button .md-button--primary }
 
@@ -73,4 +76,8 @@ To update AIS-catcher to the latest version, simply run the install command agai
 
 ## Remote Start/Stop and Host Management
 
-The separate [AIS-catcher-control](../usage/gui.md) package adds browser-based control of the AIS-catcher process (start and stop, live log) and of the host itself (one-click updates, reboot).
+The separate [AIS-catcher-control](../usage/gui.md) package adds browser-based control of the AIS-catcher process (start and stop, live log) and of the host itself (one-click updates, reboot). It is ***not*** included in the install above — install it with:
+
+```console
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/main/install_ais_catcher_control.sh)"
+```

@@ -28,7 +28,7 @@ Device paths by operating system:
 
 For users running AIS-catcher with the [Visual Web Control](../../usage/gui.md) interface (available for Linux and Docker), you can configure the **dAISy catcher** through the web interface:
 
-1. Access the Visual Web Control at `http://your-device:8110` (default credentials: admin/admin)
+1. Access the Visual Web Control at `http://your-device:8110`{ .address } (default credentials: admin/admin)
 2. Navigate to the **Input** section
 3. In the **Device Type** dropdown, select **SERIAL**
 4. For the **Port** field:

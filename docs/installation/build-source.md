@@ -86,7 +86,7 @@ Once built and installed, there are two ways to run your station.
 AIS-catcher -E ~/aiscatcher.json 127.0.0.1:8118
 ```
 
-Then open `http://localhost:8118` in a browser — the [setup wizard](../managed/setup-wizard.md) walks you through the configuration and starts the receiver. See [Getting Around the Dashboard](../managed/dashboard.md) to monitor and fine-tune your station.
+Then open `http://localhost:8118`{ .address } in a browser — the [setup wizard](../managed/setup-wizard.md) walks you through the configuration and starts the receiver. See [Getting Around the Dashboard](../managed/dashboard.md) to monitor and fine-tune your station.
 
 </div>
 

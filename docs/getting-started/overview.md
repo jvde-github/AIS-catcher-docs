@@ -4,6 +4,8 @@ AIS-catcher turns an inexpensive SDR dongle into a complete AIS receiving statio
 
 Only the first two steps happen on this page: connect your hardware and press **Start Installation**. Everything from step 3 onward continues in the browser.
 
+<div class="recommended" markdown>
+
 ## From Dongle to Ships on the Map
 
 <div class="steps" markdown>
@@ -20,7 +22,7 @@ Plug the SDR dongle into your computer and connect the AIS antenna
 <div class="step" markdown>
 
 **Install AIS-catcher**  
-One action per platform: a one-line install script, an unzip or a single `docker run`
+Install and start the program
 
 [Start Installation](../installation/overview.md){ .md-button .md-button--primary }
 
@@ -29,7 +31,7 @@ One action per platform: a one-line install script, an unzip or a single `docker
 <div class="step" markdown>
 
 **Open the dashboard**  
-Browse to your receiver on port 8118, e.g. `http://raspberrypi.local:8118`, and set a password
+Browse to your receiver on port 8118, e.g. `http://raspberrypi.local:8118`{ .address }, and set a password
 
 [Getting Around the Dashboard](../managed/dashboard.md){ .md-button .md-button--muted }
 
@@ -59,6 +61,8 @@ A separate tool for Raspberry Pi, Ubuntu and Debian to manage the AIS-catcher pr
 Register your station at **aiscatcher.org** to track your station's performance and contribute to the global feed
 
 [Community](../community.md){ .md-button .md-button--muted }
+
+</div>
 
 </div>
 
