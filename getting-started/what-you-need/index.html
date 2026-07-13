@@ -629,6 +629,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What You’ll Need
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -645,6 +663,69 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-sdr-receiver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The SDR Receiver
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-antenna" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Antenna
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-computer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Computer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-location" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Location
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3329,6 +3410,58 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-sdr-receiver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The SDR Receiver
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-antenna" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Antenna
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-computer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Computer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-location" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Location
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3347,29 +3480,84 @@
   
 
 
-<h1 id="what-youll-need">What You’ll Need<a class="headerlink" href="#what-youll-need" title="Permanent link">&para;</a></h1>
-<p>Before getting started, ensure you have the following:</p>
-<ol>
-<li>
-<p><strong>Compatible Hardware Setup</strong>:<br />
-    A USB-based RTL-SDR device or another supported SDR receiver.
-    An AIS antenna for optimal data reception.</p>
-</li>
-<li>
-<p><strong>Computer or Server</strong>:<br />
-    Windows, Raspberry Pi, Linux, or macOS.</p>
-</li>
-<li>
-<p><strong>Internet Connection</strong>:  <br />
-    Essential for installation and accessing online resources.</p>
-</li>
-<li>
-<p><strong>Line of Sight to Ships</strong>:<br />
-   Position yourself near water with active vessel traffic to receive AIS signals effectively.</p>
-</li>
-</ol>
+<h1 id="what-youll-need">What You'll Need<a class="headerlink" href="#what-youll-need" title="Permanent link">&para;</a></h1>
+<p>A complete AIS receiving station needs three pieces of hardware — roughly €60 when starting from nothing, and chances are you already own half of it.</p>
+<div class="gear-grid">
+  <div class="gear-card">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#1976d2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="5" width="18" height="12" rx="1.5"/>
+      <path d="M12 17v3M8 20h8"/>
+    </svg>
+    <div class="gear-title">Computer</div>
+    <div class="gear-desc">Raspberry Pi, PC or Mac</div>
+  </div>
+  <div class="gear-card">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#1976d2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="8" width="6" height="13" rx="1.5"/>
+      <rect x="10.5" y="3" width="3" height="5" rx="0.5"/>
+    </svg>
+    <div class="gear-title">SDR receiver</div>
+    <div class="gear-desc">RTL-SDR or dAISy-catcher</div>
+  </div>
+  <div class="gear-card">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#1976d2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="9" r="1.4" fill="#1976d2" stroke="none"/>
+      <path d="M12 10.5V20"/>
+      <path d="M8.5 12.5a4.9 4.9 0 0 1 0-7"/>
+      <path d="M15.5 12.5a4.9 4.9 0 0 0 0-7"/>
+      <path d="M6 14.5a8 8 0 0 1 0-11"/>
+      <path d="M18 14.5a8 8 0 0 0 0-11"/>
+    </svg>
+    <div class="gear-title">VHF antenna</div>
+    <div class="gear-desc">tuned for ~162 MHz</div>
+  </div>
+</div>
+
+<h2 id="the-sdr-receiver">The SDR Receiver<a class="headerlink" href="#the-sdr-receiver" title="Permanent link">&para;</a></h2>
+<p>An <strong>RTL-SDR dongle</strong> is the standard choice: inexpensive, well supported and more than capable — a single dongle receives both AIS channels simultaneously. When buying new, pick a current model (RTL-SDR Blog v3 or v4) with a <strong>TCXO</strong> (temperature-compensated oscillator, ±1 ppm): the very cheapest DVB-T sticks drift with temperature, which costs sensitivity on AIS.</p>
+<p>Already have other receiving hardware? AIS-catcher also supports AirSpy, AirSpy HF+, SDRPlay, HackRF and several network sources — see the <a href="../../configuration/input/overview/">input options</a>.</p>
+<h2 id="the-antenna">The Antenna<a class="headerlink" href="#the-antenna" title="Permanent link">&para;</a></h2>
+<p>The antenna — and where you put it — determines what you will receive far more than any other component.</p>
+<ul>
+<li><strong>Starting out</strong>: the telescopic antenna included with most SDR bundles, extended to about 44 cm (a quarter wavelength at 162 MHz) and placed at a window facing the water, is enough to see your first ships in a busy area.</li>
+<li><strong>Upgrading</strong>: a dedicated AIS or marine VHF antenna mounted outside — as high as you can manage, with a clear view of the water — is the single most effective improvement you can make. <a href="../ais-basics/#how-far-will-you-receive">Height beats everything</a>: the radio horizon grows with antenna height, not with amplifier gain.</li>
+<li><strong>The cable counts too</strong>: coax loss at 162 MHz adds up quickly, so keep the run short and the cable quality high — see <a href="../ais-basics/#antenna-and-cable">Antenna and Cable</a>. Or skip the problem: mount the computer near the antenna and run a network cable instead.</li>
+</ul>
+<h2 id="the-computer">The Computer<a class="headerlink" href="#the-computer" title="Permanent link">&para;</a></h2>
+<p>Almost anything works — AIS decoding is light work:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Raspberry Pi</strong></td>
+<td>The classic choice for a 24/7 station: a Pi Zero 2 W is sufficient, a Pi 3 or newer is comfortable. Draws only 2–3 W.</td>
+</tr>
+<tr>
+<td><strong>Linux / Windows / macOS</strong></td>
+<td>Native packages and builds for all of them.</td>
+</tr>
+<tr>
+<td><strong>Docker</strong></td>
+<td>Ready-made images for containerized setups.</td>
+</tr>
+</tbody>
+</table>
+<p>An internet connection is needed for installation and for <a href="../../community/">sharing your data</a> — the receiving and decoding itself runs entirely locally.</p>
+<h2 id="the-location">The Location<a class="headerlink" href="#the-location" title="Permanent link">&para;</a></h2>
+<p>VHF signals travel line of sight: water you can see (or nearly see) is water you can receive.</p>
+<ul>
+<li><strong>Distance to shipping</strong>: a station near a harbour, river or shipping lane sees traffic even with modest equipment; far inland, even a perfect setup has nothing to hear.</li>
+<li><strong>Elevation and obstructions</strong>: every metre of height extends your <a href="../ais-basics/#how-far-will-you-receive">radio horizon</a>, and buildings or hills between you and the water block signals. A rooftop or attic facing the water beats a ground-floor window on the wrong side.</li>
+<li><strong>What to expect</strong>: a rooftop antenna at 5–10 m typically receives large ships out to 25–30 km (14–16 nmi) — and considerably farther from an elevated site.</li>
+</ul>
 <hr />
-<p><a class="md-button md-button--primary" href="../../installation/overview/">Start Installation</a></p>
+<p><a class="md-button md-button--primary" href="../../installation/overview/">Start Installation</a>
+<a class="md-button md-button--muted" href="../ais-basics/#how-far-will-you-receive">Estimate Your Range</a></p>
 
 
 

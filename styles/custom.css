@@ -685,12 +685,12 @@
 
 /* Browser-address pill: URLs the user types into the address bar */
 .md-typeset code.address {
-    background: #ffffff;
-    border: 1px solid #c9d6e6;
+    background: #e3edf9;
+    border: 1px solid #9fb8d4;
     border-radius: 999px;
     padding: 0.25em 0.9em 0.25em 2.1em;
-    color: #12365e;
-    box-shadow: inset 0 1px 2px rgba(18, 54, 94, 0.06);
+    color: #0d3a66;
+    box-shadow: inset 0 1px 2px rgba(18, 54, 94, 0.10);
     position: relative;
     white-space: nowrap;
 }
@@ -703,7 +703,7 @@
     transform: translateY(-50%);
     width: 1em;
     height: 1em;
-    background-color: #7a889c;
+    background-color: #42566e;
     -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="black" stroke-width="2"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></g></svg>') no-repeat center / contain;
     mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="black" stroke-width="2"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></g></svg>') no-repeat center / contain;
 }
@@ -742,4 +742,120 @@
     background: transparent;
     top: -28px;
     right: 6px;
+}
+
+/* Fact tiles and horizon figure (AIS Basics) */
+.md-typeset .fact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin: 24px 0 28px;
+}
+
+.md-typeset .fact-card {
+    border: 1px solid #dbe7f5;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #ffffff 0%, #f5f9fe 100%);
+    padding: 16px 18px;
+    text-align: center;
+}
+
+.md-typeset .fact-card .value {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: #1976d2;
+    margin-bottom: 4px;
+    white-space: nowrap;
+}
+
+.md-typeset .fact-card .label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #5b7392;
+}
+
+.md-typeset .horizon-figure {
+    display: block;
+    width: 100%;
+    margin: 24px 0;
+    text-align: center;
+}
+
+.md-typeset .horizon-figure svg {
+    display: block;
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.md-typeset .horizon-figure figcaption {
+    margin-top: 8px;
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.75rem;
+    color: #42566e;
+}
+
+/* Gear cards: icon shopping list (What You'll Need) */
+.md-typeset .gear-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 14px;
+    margin: 24px 0 28px;
+}
+
+.md-typeset .gear-card {
+    border: 1px solid #dbe7f5;
+    border-radius: 12px;
+    background: #fff;
+    padding: 22px 16px 18px;
+    text-align: center;
+}
+
+.md-typeset .gear-card svg {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 10px;
+}
+
+.md-typeset .gear-card .gear-title {
+    font-weight: 700;
+    color: #12365e;
+    margin-bottom: 3px;
+}
+
+.md-typeset .gear-card .gear-desc {
+    font-size: 0.72rem;
+    color: #5b7392;
+}
+
+/* Headings: navy ink, accent bar under section titles */
+.md-typeset h1 {
+    color: #12365e;
+    font-weight: 700;
+}
+
+.md-typeset h2 {
+    color: #12365e;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.md-typeset h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 44px;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #1976d2, #7cc0f4);
+}
+
+.md-typeset h3 {
+    color: #12365e;
+    font-weight: 600;
 }
