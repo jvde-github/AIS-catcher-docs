@@ -6,7 +6,7 @@ Only the first two steps happen on this page: connect your hardware and press **
 
 <div class="recommended" markdown>
 
-## From Dongle to Ships on the Map
+## Your Station in Six Steps
 
 <div class="steps" markdown>
 

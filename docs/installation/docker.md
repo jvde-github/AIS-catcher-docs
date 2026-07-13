@@ -73,7 +73,7 @@ Notice that if you want to run a web viewer (`-N 8100`) you need to make that po
 [Command Line Run](../usage/cli.md){ .md-button }
 
 !!! tip "docker-shipfeeder"
-    An excellent Docker set-up is the [docker-shipfeeder](https://github.com/sdr-enthusiasts/docker-shipfeeder) that provides a user friendly way to feed various aggregators with excellent documentation and user support by the sdr-enthusiasts community.
+    For manual-mode setups focused on feeding aggregators, [docker-shipfeeder](https://github.com/sdr-enthusiasts/docker-shipfeeder) by the sdr-enthusiasts community is a user-friendly alternative with excellent documentation and support. Note that it runs AIS-catcher in manual mode and does not offer the managed-mode dashboard.
 
 ## Updating
 
