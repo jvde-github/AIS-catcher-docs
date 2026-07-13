@@ -2,20 +2,45 @@
 
 On first use, a short setup wizard walks you through the configuration of your station:
 
-1. **Welcome** — read the intro and press **Get started**. You can skip the wizard at any time and change everything later.
+<div class="steps" markdown>
 
-    ![Setup wizard — welcome](../assets/qs-w1-welcome.webp)
+<div class="step" markdown>
 
-2. **Pick your input device** — choose your RTL-SDR (detected automatically), a dAISy-catcher, or another serial receiver.
+**Welcome**  
+Read the intro and press **Get started**. You can skip the wizard at any time and change everything later.
 
-    ![Setup wizard — input device](../assets/qs-w2-input.webp)
+![Setup wizard — welcome](../assets/qs-w1-welcome.webp)
 
-3. **Enable output sources** (optional) — share your data to pre-defined feeds like [aiscatcher.org](https://aiscatcher.org) and AISHub. Leave blank and press **Skip** to set this up later.
+</div>
 
-    ![Setup wizard — output sources](../assets/qs-w3-output.webp)
+<div class="step" markdown>
 
-4. **Save & Close** — review the summary. With *Start the receiver after saving* ticked, AIS-catcher starts automatically.
+**Pick your input device**  
+Choose your RTL-SDR (detected automatically), a dAISy-catcher, or another serial receiver.
 
-    ![Setup wizard — summary](../assets/qs-w4-summary.webp)
+![Setup wizard — input device](../assets/qs-w2-input.webp)
 
-Your station is now running and received vessels appear on the [dashboard map](dashboard.md#the-map). Anything the wizard set up can be fine-tuned later from the [Input](input.md) and [Output](output.md) settings.
+</div>
+
+<div class="step" markdown>
+
+**Enable output sources**  
+Optional — share your data to pre-defined feeds like [aiscatcher.org](https://aiscatcher.org) and AISHub. Leave blank and press **Skip** to set this up later.
+
+![Setup wizard — output sources](../assets/qs-w3-output.webp)
+
+</div>
+
+<div class="step" markdown>
+
+**Save & Close**  
+Review the summary. With *Start the receiver after saving* ticked, AIS-catcher starts automatically.
+
+![Setup wizard — summary](../assets/qs-w4-summary.webp)
+
+</div>
+
+</div>
+
+!!! success "Your station is running"
+    Received vessels now appear on the [dashboard map](dashboard.md#the-map). Anything the wizard set up can be fine-tuned later from the [Input](input.md) and [Output](output.md) settings.

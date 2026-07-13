@@ -25,8 +25,8 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-cat
 
 If `curl` is not available on your device, install it with `sudo apt install curl`.
 
-!!! warning "Coming from a manual install?"
-    Settings from manual mode (`/etc/AIS-catcher/config.json` and `config.cmd`) are **not** converted to managed mode. Back up these files before installing and re-enter your settings via the setup wizard.
+!!! warning "Upgrading an existing install?"
+    Switching from manual mode to managed mode starts with fresh settings: your existing configuration (`/etc/AIS-catcher/config.json` and `config.cmd`) is **not** carried over. The files themselves are left untouched, so you can refer to them when re-entering your settings via the setup wizard. Re-running the installer on an existing **managed** installation is just an update — your settings are kept.
 
 </div>
 

@@ -859,3 +859,8 @@
     color: #12365e;
     font-weight: 600;
 }
+
+/* Hero title keeps the logo blue (overrides the global navy h1) */
+.md-typeset .hero h1 {
+    color: #1976d2;
+}
