@@ -7,12 +7,12 @@ AIS-catcher -N 8100 share_loc on
 This option is switched off by default for privacy reasons in case the web viewer is shared externally.
 The NMEA decoder accepts NMEA lines from a GPS device (NMEA lines GPRMC, GPGLL and GPGGA):
 ```bash
-echo '$GPGGA, 161229.487, 3723.2475, N, 12158.3416, W, 1, 07, 1.0, 9.0, M, , , , 0000*18' | ./AIS-catcher -r txt .
+echo '$GPGGA,161229.487,3723.2475,N,12158.3416,W,1,07,1.0,9.0,M,,,,0000*18' | ./AIS-catcher -r txt .
 ```
 These GPS coordinates will be used to set the location of the station. In this way, the station can be visualized and tracked while on the move. This is useful if you use AIS-catcher to read from a hardware AIS receiver that has a built-in GPS.
-Another approach is to read from a GPSD server, e.g. when GPSD listens on post 2947 of the local PC: 
+Another approach is to read from a GPSD server, e.g. when GPSD listens on port 2947 of the local PC: 
 ```bash
-AIS-catcher -t gpsd localhost 2947 -N 8100 share_loc on` 
+AIS-catcher -t gpsd localhost 2947 -N 8100 share_loc on
 ```
 or from a serial device:
 ```bash
