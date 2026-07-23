@@ -25,15 +25,15 @@
       
       
       <link rel="icon" href="../../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Ubuntu and Debian - AIS-catcher Docs</title>
+        <title>Ubuntu, Debian and Fedora - AIS-catcher Docs</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ubuntudebianraspberry-pi-installation" class="md-skip">
+        <a href="#linux-installation-ubuntu-debian-raspberry-pi-fedora" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ubuntu and Debian
+              Ubuntu, Debian and Fedora
             
           </span>
         </div>
@@ -1004,7 +1004,7 @@
   <span class="md-ellipsis">
     
   
-    Ubuntu and Debian
+    Ubuntu, Debian and Fedora
   
 
     
@@ -1022,7 +1022,7 @@
   <span class="md-ellipsis">
     
   
-    Ubuntu and Debian
+    Ubuntu, Debian and Fedora
   
 
     
@@ -3561,12 +3561,13 @@
   
 
 
-<h1 id="ubuntudebianraspberry-pi-installation">Ubuntu/Debian/Raspberry Pi Installation<a class="headerlink" href="#ubuntudebianraspberry-pi-installation" title="Permanent link">&para;</a></h1>
+<h1 id="linux-installation-ubuntu-debian-raspberry-pi-fedora">Linux Installation (Ubuntu, Debian, Raspberry Pi, Fedora)<a class="headerlink" href="#linux-installation-ubuntu-debian-raspberry-pi-fedora" title="Permanent link">&para;</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Disclaimer</p>
 <p><strong>AIS-catcher is intended for hobbyist and research projects only. It is NOT approved for use in navigation or safety-of-life applications.</strong> <a href="../../disclaimer/">Read the full disclaimer</a>.</p>
 </div>
-<p>AIS-catcher is installed with a single script that installs all dependencies, sets up a background service and starts it. There are two ways to run your station:</p>
+<p>AIS-catcher is installed with a single script that installs all dependencies, sets up a background service and starts it. The script works on Debian-based systems (Debian, Ubuntu, Raspberry Pi OS) and on <strong>Fedora</strong>, detecting <code>apt</code> or <code>dnf</code> automatically.</p>
+<p>There are two ways to run your station:</p>
 <ul>
 <li><strong><a href="#managed-mode">Managed mode</a></strong> (recommended) — configure and control your station from the browser.</li>
 <li><strong><a href="#manual-mode">Manual mode</a></strong> — configure via the command line or configuration files.</li>
@@ -3579,7 +3580,7 @@
 Open a terminal or log in via SSH, then run:</p>
 <div class="language-console highlight"><pre><span></span><code><span class="go">sudo bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) -p -M&quot;</span>
 </code></pre></div>
-<p>If <code>curl</code> is not available on your device, install it with <code>sudo apt install curl</code>.</p>
+<p>If <code>curl</code> is not available on your device, install it with <code>sudo apt install curl</code> (or <code>sudo dnf install curl</code> on Fedora).</p>
 <div class="admonition warning">
 <p class="admonition-title">Upgrading an existing install?</p>
 <p>Switching from manual mode to managed mode starts with fresh settings: your existing configuration (<code>/etc/AIS-catcher/config.json</code> and <code>config.cmd</code>) is <strong>not</strong> carried over. The files themselves are left untouched, so you can refer to them when re-entering your settings via the setup wizard. Re-running the installer on an existing <strong>managed</strong> installation is just an update — your settings are kept.</p>
@@ -3600,7 +3601,7 @@ Open the dashboard in your browser on port <strong>8118</strong>, e.g. <code cla
 <p>The background service infrastructure is still set up — see <a href="../../usage/service/">Running as a Service</a> for the configuration files and service commands.</p>
 <p><a class="md-button" href="../../usage/cli/">Command Line Run</a></p>
 <h2 id="install-from-source">Install from Source<a class="headerlink" href="#install-from-source" title="Permanent link">&para;</a></h2>
-<p>Both commands above install the latest pre-built Debian package (the <code>-p</code> option). Leave out <code>-p</code> to build AIS-catcher from source instead:</p>
+<p>Both commands above install the latest pre-built package (the <code>-p</code> option) — a <code>.deb</code> on Debian-based systems, or an <code>.rpm</code> on Fedora. Pre-built RPMs are provided for <strong>Fedora 43 and 44</strong> on <code>x86_64</code> and <code>aarch64</code>; on other Fedora releases use the source build below. Leave out <code>-p</code> to build AIS-catcher from source instead:</p>
 <div class="language-console highlight"><pre><span></span><code><span class="go">sudo bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) -M&quot;</span>
 </code></pre></div>
 <p>Building from source optimizes the executable for your hardware but can take a significant amount of time (20 minutes on a Raspberry Pi 4). It is required if you need PostgreSQL support, which is not included in the pre-built packages.</p>
@@ -3726,7 +3727,7 @@ Open the dashboard in your browser on port <strong>8118</strong>, e.g. <code cla
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
