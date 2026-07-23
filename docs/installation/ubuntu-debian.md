@@ -1,9 +1,11 @@
-#  Ubuntu/Debian/Raspberry Pi Installation
+#  Linux Installation (Ubuntu, Debian, Raspberry Pi, Fedora)
 
 !!! warning "Disclaimer"
     **AIS-catcher is intended for hobbyist and research projects only. It is NOT approved for use in navigation or safety-of-life applications.** [Read the full disclaimer](../disclaimer.md).
 
-AIS-catcher is installed with a single script that installs all dependencies, sets up a background service and starts it. There are two ways to run your station:
+AIS-catcher is installed with a single script that installs all dependencies, sets up a background service and starts it. The script works on Debian-based systems (Debian, Ubuntu, Raspberry Pi OS) and on **Fedora**, detecting `apt` or `dnf` automatically.
+
+There are two ways to run your station:
 
 - **[Managed mode](#managed-mode)** (recommended) — configure and control your station from the browser.
 - **[Manual mode](#manual-mode)** — configure via the command line or configuration files.
@@ -23,7 +25,7 @@ Open a terminal or log in via SSH, then run:
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) -p -M"
 ```
 
-If `curl` is not available on your device, install it with `sudo apt install curl`.
+If `curl` is not available on your device, install it with `sudo apt install curl` (or `sudo dnf install curl` on Fedora).
 
 !!! warning "Upgrading an existing install?"
     Switching from manual mode to managed mode starts with fresh settings: your existing configuration (`/etc/AIS-catcher/config.json` and `config.cmd`) is **not** carried over. The files themselves are left untouched, so you can refer to them when re-entering your settings via the setup wizard. Re-running the installer on an existing **managed** installation is just an update — your settings are kept.
@@ -59,7 +61,7 @@ The background service infrastructure is still set up — see [Running as a Serv
 
 ## Install from Source
 
-Both commands above install the latest pre-built Debian package (the `-p` option). Leave out `-p` to build AIS-catcher from source instead:
+Both commands above install the latest pre-built package (the `-p` option) — a `.deb` on Debian-based systems, or an `.rpm` on Fedora. Pre-built RPMs are provided for **Fedora 43 and 44** on `x86_64` and `aarch64`; on other Fedora releases use the source build below. Leave out `-p` to build AIS-catcher from source instead:
 
 ```console
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) -M"

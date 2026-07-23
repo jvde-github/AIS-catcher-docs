@@ -72,7 +72,7 @@ nav:
       - Windows: installation/windows.md
       - Android: installation/android.md
       - Build from Source: installation/build-source.md
-      - Ubuntu and Debian: installation/ubuntu-debian.md
+      - Ubuntu, Debian and Fedora: installation/ubuntu-debian.md
   - Managed Mode:
       - Getting Around: managed/dashboard.md
       - Setup Wizard: managed/setup-wizard.md

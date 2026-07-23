@@ -10,6 +10,10 @@
 - **Easy install** — the install script's new `-M`/`--managed` option sets up the systemd service in managed mode, and the Windows zip includes `start-GUI.bat` to launch AIS-catcher with the control panel.
 - See also the new [Quick Start guide](https://www.aiscatcher.org/quickstart) on aiscatcher.org — from zero to a running station in six steps.
 
+### Installation
+
+- **Fedora support** — the install script now detects `dnf` alongside `apt`, so the same one-line command works on Fedora as well as on Debian, Ubuntu and Raspberry Pi OS. Pre-built RPMs are provided for Fedora 43 and 44 (`x86_64` and `aarch64`); other releases build from source.
+
 ### Web viewer
 
 - **Refreshed interface** — tighter tables, a modern search bar, a redesigned column toolbar on the Ships tab, and smaller map count/measure icons for a cleaner map.
