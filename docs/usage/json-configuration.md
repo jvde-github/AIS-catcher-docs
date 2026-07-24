@@ -74,7 +74,7 @@ General (mostly optional) settings define fundamental aspects of AIS-catcher's o
 | **Output channels** |
 | `server` | array | Web viewer configuration | [Web Viewer](../configuration/output/web-viewer.md) |
 | `udp` | array | UDP output configuration | [UDP Output](../configuration/output/UDP.md) |
-| `tcp` | array | TCP output configuration (client) | [TCP Output](../configuration/output/TCP-server.md) |
+| `tcp` | array | TCP output configuration (client) | [TCP Output](../configuration/output/TCP-client.md) |
 | `tcp_listener` | array | TCP output configuration (server) | [TCP Output](../configuration/output/TCP-server.md) |
 | `http` | array | HTTP output configuration | [HTTP Output](../configuration/output/HTTP.md) |
 | `mqtt` | array | MQTT output configuration | [MQTT Output](../configuration/output/MQTT.md) |
@@ -419,7 +419,7 @@ AIS-catcher supports various output channels. Each output channel has specific c
 }
 ```
 </details>
-[Full TCP Documentation](../configuration/output/TCP-server.md)
+[Full TCP Documentation](../configuration/output/TCP-client.md)
 
 ### TCP  Output (Server) (`tcp_listener`)
 <details>
