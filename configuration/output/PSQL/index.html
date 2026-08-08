@@ -3708,9 +3708,8 @@ The three logs rotate daily, so deleting old files is how retention works. `ais_
 </table>
 <p><strong>Only <code>ais_state</code> and <code>ais_stats_hourly</code> are written by default</strong>, and neither grows without bound: the first holds one row per distinct MMSI, the second one row per hour. A default install can therefore be left running indefinitely without filling the disk.</p>
 <p><code>position</code> and <code>static</code> are the history tables and are opt-in, because they grow with every message received. <code>ais_position</code> for a single MMSI, ordered by time, is that vessel's track.</p>
-<p><code>ais_message</code> is written whenever any of the three needs it, since <code>ais_position</code> and <code>ais_static</code> hold only payload columns and reference it through <code>msg_id</code>. Deleting from <code>ais_message</code> cascades to both, so retention is a single statement:</p>
-<div class="language-sql highlight"><pre><span></span><code><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">ais_message</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">received_at</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">interval</span><span class="w"> </span><span class="s1">&#39;30 days&#39;</span><span class="p">;</span>
-</code></pre></div>
+<p><code>ais_message</code> is written whenever any of the three needs it, since <code>ais_position</code> and <code>ais_static</code> hold only payload columns and reference it through <code>msg_id</code>. Deleting from <code>ais_message</code> cascades to both.</p>
+<p>Retention is built in: set <code>retention</code> to a number of days and every backend prunes daily — the SQL backends delete expired messages, stats and state rows in small chunks, CSV deletes expired daily log files and stats hours. The default <code>0</code> keeps everything.</p>
 <h2 id="controlling-volume">Controlling volume<a class="headerlink" href="#controlling-volume" title="Permanent link">&para;</a></h2>
 <p>The history tables can produce a lot of rows. The message filter settings apply to <code>-D</code> like any other output and are the intended way to keep them manageable:</p>
 <div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-D<span class="w"> </span><span class="nv">dbname</span><span class="o">=</span>ais<span class="w"> </span>position<span class="w"> </span>on<span class="w"> </span>unique<span class="w"> </span>on<span class="w"> </span>position_interval<span class="w"> </span><span class="m">60</span>
@@ -3842,6 +3841,12 @@ The three logs rotate daily, so deleting old files is how retention works. `ais_
 <td>Store the raw sentences alongside each message</td>
 </tr>
 <tr>
+<td><span class="cmd-setting">retention</span></td>
+<td>integer</td>
+<td><span class="cmd-value">0</span></td>
+<td>Days of history kept, pruned daily; 0 keeps everything</td>
+</tr>
+<tr>
 <td></td>
 <td></td>
 <td></td>
@@ -3865,6 +3870,7 @@ The three logs rotate daily, so deleting old files is how retention works. `ais_
 <div class="admonition note">
 <p class="admonition-title">CSV differences</p>
 <p><code>ais_state.csv</code> is bounded by <code>capacity</code> and recycles the least recently heard target, where the SQL backends keep a row per MMSI indefinitely. Message ids restart with the process, which is why the log files carry a date. Newlines inside a multipart sentence are written as spaces so every record stays one line.</p>
+<p>The state and stats tables are journalled: changes are appended to a <code>.csv.journal</code> sidecar and merged back into the always-deduplicated main file at startup, at clean shutdown and at the day rollover. After a crash the journal is simply replayed, so at most the final line of it can be lost.</p>
 </div>
 
 
