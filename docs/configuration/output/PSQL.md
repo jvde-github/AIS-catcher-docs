@@ -58,7 +58,12 @@ AIS-catcher -D csv:/var/log/ais/
 
 === "CSV"
 
-    Nothing to create. Point it at a directory that already exists and the files appear:
+    Point it at a directory that already exists and is writable **by the user AIS-catcher runs as** — the managed/systemd install runs as `aiscatcher`, which cannot write into a home directory:
+    ```bash
+    sudo mkdir -p /var/lib/ais-catcher/csv
+    sudo chown aiscatcher: /var/lib/ais-catcher/csv
+    ```
+    The files then appear on the first flush:
     ```
     ais_message-2026-08-08.csv
     ais_position-2026-08-08.csv
