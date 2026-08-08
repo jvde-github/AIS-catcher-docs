@@ -145,7 +145,7 @@ AIS-catcher -D dbname=ais position on static on nmea on
 
 The `station_id` setting is optional and stamps every row, so several feeders can share one database.
 
-If the connection drops during decoding the program reconnects and re-prepares its statements. `max_fails` sets how many consecutive failures are tolerated before AIS-catcher terminates; at 1000 it never gives up.
+A failing database never stops the receiver: the output keeps retrying with exponential backoff (up to five minutes between attempts), reconnects and re-prepares its statements when the database returns, and drops only its own oldest queued messages in the meantime.
 
 ## Summary Settings
 
@@ -156,7 +156,6 @@ If the connection drops during decoding the program reconnects and re-prepares i
 | <span class="cmd-setting">conn_str</span> | string | <span class="cmd-value">dbname=ais</span> | libpq connection string, SQLite file path, or CSV directory |
 | <span class="cmd-setting">station_id</span> | integer | <span class="cmd-value">0</span> | Station identifier stamped on every row, lets multiple feeders share one database |
 | <span class="cmd-setting">interval</span> | integer | <span class="cmd-value">60</span> | Database write interval in seconds (5-1800) |
-| <span class="cmd-setting">max_fails</span> | integer | <span class="cmd-value">10</span> | Max failed reconnect attempts before terminating (1000 = never give up) |
 | <span class="cmd-setting">groups_in</span> | integer | <span class="cmd-value">all</span> | Bitmask of input groups feeding this output |
 | | | | |
 | Table Options | | | |
