@@ -3754,7 +3754,7 @@ The three logs rotate daily, so deleting old files is how retention works. `ais_
 <div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-D<span class="w"> </span><span class="nv">dbname</span><span class="o">=</span>ais<span class="w"> </span>position<span class="w"> </span>on<span class="w"> </span>static<span class="w"> </span>on<span class="w"> </span>nmea<span class="w"> </span>on
 </code></pre></div></p>
 <p>The <code>station_id</code> setting is optional and stamps every row, so several feeders can share one database.</p>
-<p>A failing database never stops the receiver: the output keeps retrying with exponential backoff (up to five minutes between attempts), reconnects and re-prepares its statements when the database returns, and drops only its own oldest queued messages in the meantime.</p>
+<p>A failing database never stops the receiver, even when it is unavailable at startup: the output keeps retrying with exponential backoff (up to five minutes between attempts), reconnects and re-prepares its statements when the database returns, and drops only its own oldest queued messages in the meantime.</p>
 <h2 id="summary-settings">Summary Settings<a class="headerlink" href="#summary-settings" title="Permanent link">&para;</a></h2>
 <div class="input-table">
 <table>
