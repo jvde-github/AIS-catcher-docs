@@ -84,11 +84,9 @@ The two SQL scripts live in the `DBMS` directory of the source tree, or in `/etc
 
 `position` and `static` are the history tables and are opt-in, because they grow with every message received. `ais_position` for a single MMSI, ordered by time, is that vessel's track.
 
-`ais_message` is written whenever any of the three needs it, since `ais_position` and `ais_static` hold only payload columns and reference it through `msg_id`. Deleting from `ais_message` cascades to both, so retention is a single statement:
+`ais_message` is written whenever any of the three needs it, since `ais_position` and `ais_static` hold only payload columns and reference it through `msg_id`. Deleting from `ais_message` cascades to both.
 
-```sql
-DELETE FROM ais_message WHERE received_at < now() - interval '30 days';
-```
+Retention is built in: set `retention` to a number of days and every backend prunes daily — the SQL backends delete expired messages, stats and state rows in small chunks, CSV deletes expired daily log files and stats hours. The default `0` keeps everything.
 
 ## Controlling volume
 
@@ -167,6 +165,7 @@ If the connection drops during decoding the program reconnects and re-prepares i
 | <span class="cmd-setting">position</span> | boolean | <span class="cmd-value">false</span> | Log position reports, grows with traffic |
 | <span class="cmd-setting">static</span> | boolean | <span class="cmd-value">false</span> | Log static and voyage reports, grows with traffic |
 | <span class="cmd-setting">nmea</span> | boolean | <span class="cmd-value">false</span> | Store the raw sentences alongside each message |
+| <span class="cmd-setting">retention</span> | integer | <span class="cmd-value">0</span> | Days of history kept, pruned daily; 0 keeps everything |
 | | | | |
 | CSV Only | | | |
 | <span class="cmd-setting">capacity</span> | integer | <span class="cmd-value">8192</span> | Targets kept in `ais_state.csv` before the least recently heard is dropped |
@@ -174,3 +173,5 @@ If the connection drops during decoding the program reconnects and re-prepares i
 
 !!! note "CSV differences"
     `ais_state.csv` is bounded by `capacity` and recycles the least recently heard target, where the SQL backends keep a row per MMSI indefinitely. Message ids restart with the process, which is why the log files carry a date. Newlines inside a multipart sentence are written as spaces so every record stays one line.
+
+    The state and stats tables are journalled: changes are appended to a `.csv.journal` sidecar and merged back into the always-deduplicated main file at startup, at clean shutdown and at the day rollover. After a crash the journal is simply replayed, so at most the final line of it can be lost.
