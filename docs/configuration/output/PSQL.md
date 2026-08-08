@@ -1,79 +1,176 @@
-# Writing AIS messages to a Postgres Database
+# Writing AIS messages to a database
 
 <div class="command-container">
       <div class="command-syntax">
         <span class="cmd-name">AIS-catcher</span>
         <span class="cmd-flag">-D</span>
-        <span class="cmd-value">url</span>
+        <span class="cmd-value">connection string</span>
         [<span class="cmd-setting">setting</span> <span class="cmd-value">value</span>]
         ...
     </div>
 </div>
 
+AIS-catcher can write decoded messages to a database. Three backends are supported and all three write the same tables with the same settings:
 
-As per full release `v0.45`, there is functionality to write messages to a database (PostgreSQL). The setup is fairly flexible and can be tailored to the particular needs. First create an empty PostgreSQL database, e.g on an Ubuntu distribution (this might be different on your system):
-```bash
-sudo -u postgres createdb ais
-```
-Set up the necessary tables from the AIS-catcher directory:
-```bash
-sudo -u postgres psql ais < create.sql
-```
-The file `create.sql` is in the directory DBMS in the AIS-catcher source directory. If you installed via the install script for Ububtu/Debian/Raspberry Pi it can be found in the directory `/etc/AIS-catcher/DBMS`.
+| backend | for |
+| :--- | :--- |
+| **PostgreSQL** | a shared or networked database |
+| **SQLite** | a local file, no server to run |
+| **CSV** | plain files, no database at all |
 
-Make sure you build the latest version of AIS-catcher with this dependency:
+All three are compiled into the official packages and the Docker image, so there is nothing to install or rebuild. If you build from source, `libpq-dev` and `libsqlite3-dev` need to be present at configure time; the `PSQL` and `SQLITE` CMake options are on by default. CSV has no dependency.
+
+On the command line the backend follows from the connection string. A plain string is a PostgreSQL connection; a `sqlite:` or `csv:` prefix selects the other two:
+
 ```bash
-sudo apt install libpq-dev
+AIS-catcher -D dbname=ais
+AIS-catcher -D sqlite:/var/lib/ais/ais.db
+AIS-catcher -D csv:/var/log/ais/
 ```
 
-> For writing to a PSQL database from AIS-catcher, ensure that the user running the program is set up for writing to 
-> a PSQL database or specify the user explicitly in the connection string.
+!!! warning "Schema change"
+    The schema was reorganised and the old per-message-type tables (`ais_vessel_pos`, `ais_basestation`, `ais_sar_position`, `ais_aton`, `ais_vessel_static`, `ais_vessel`, `ais_property`, `ais_keys`) were replaced. The settings that selected them (`v`, `msgs`, `vp`, `vs`, `bs`, `sar`, `aton`) were removed and now produce an error naming their replacement. Run the new `create_pg.sql` to migrate; it drops the old tables for you.
 
-Ensure that the Now AIS-catcher can write the received messages to the database:
-```bash
-AIS-catcher -D dbname=ais STATION_ID 17
-```
-or when more details, like username and password, are required:
-```bash
-AIS-catcher -D postgresql://[user[:password]@][netloc][:port][/dbname]
-```
-The `STATION_ID` setting is optional but will populate the entries in the database with the specified ID so multiple feeders can write to one database.
-There are a few settings for the new `-D` switch of which the first is the connection string that specifies the database. If you want to use a space in the string use quotation marks around the string. There are other settings that define how tables will be populated:
+## Setting up
 
-| Table | Description | Settings | Default |
+=== "PostgreSQL"
+
+    Create an empty database, e.g. on Ubuntu:
+    ```bash
+    sudo -u postgres createdb ais
+    ```
+    Create the tables:
+    ```bash
+    sudo -u postgres psql ais < create_pg.sql
+    ```
+    Make sure the user running AIS-catcher may write to the database, or give credentials in the connection string:
+    ```bash
+    AIS-catcher -D postgresql://[user[:password]@][netloc][:port][/dbname]
+    ```
+
+=== "SQLite"
+
+    Create the file and its tables in one step:
+    ```bash
+    sqlite3 /var/lib/ais/ais.db < create_sqlite.sql
+    ```
+    No server, no user setup. The file is created if it does not exist, but the tables are not, so run the script first.
+
+=== "CSV"
+
+    Nothing to create. Point it at a directory that already exists and the files appear:
+    ```
+    ais_message-2026-08-08.csv
+    ais_position-2026-08-08.csv
+    ais_static-2026-08-08.csv
+    ais_state.csv
+    ais_stats_hourly.csv
+    ```
+    The three logs rotate daily, so deleting old files is how retention works. `ais_state.csv` and `ais_stats_hourly.csv` are rewritten whole on each flush rather than appended, because a per-MMSI row is merged in place and an hourly bucket is corrected until its hour ends.
+
+The two SQL scripts live in the `DBMS` directory of the source tree, or in `/etc/AIS-catcher/DBMS` if you installed from a package or with the install script.
+
+## Tables
+
+| Table | Description | Setting | Default |
 | :--- | :--- | :--- | :--- |
-| ais_vessel | last received data per MMSI | V on/off | **on**  |
-| ais_message | received messages with meta data  | MSGS on/off | off  |
-| ais_nmea | nmea sentences | NMEA on/off | off |
-| ais_basestation | basestation messages from type 4 | BS on/off | off |
-| ais_sar_position | sar positions from type 9 | SAR on/off | off |
-| ais_aton | aton messages from type 21 | ATON on/off | off |
-| ais_vessel_pos | vessel position messages from type 1-3, 18, 19, 27 | VP on/off | off |
-| ais_vessel_static | vessel static data from type 5, 19 | VS on/off | off |
-| ais_property | specific key/value pairs with link to message  | fill with keys specified in the table ais_keys | empty |
+| `ais_state` | one row per MMSI with the latest known values, merged across every message type, plus counters | `state` | **on** |
+| `ais_stats_hourly` | reception statistics per hour: message and vessel counts, per channel counts, signal level range | `stats` | **on** |
+| `ais_message` | one row per received message with its metadata, and the raw sentences when `nmea` is on | written when any of `position`, `static` or `nmea` is on | |
+| `ais_position` | dynamic fields from types 1, 2, 3, 4, 9, 18, 19, 21 and 27 | `position` | off |
+| `ais_static` | static and voyage fields from types 5, 19, 21 and 24 | `static` | off |
 
-From hereon it is fairly straightforward to pick up this data and start analysis. If the connection fails during the decoding, for whatever reason, the program will try to reconnect to the database every 2 seconds. The maximum number of failed connection attempts before the program terminates is set with `MAX_FAILS` (<1000) and is set on the command line. If `MAX_FAILS` is 1000 the program will not terminate if the connection fails.  
+**Only `ais_state` and `ais_stats_hourly` are written by default**, and neither grows without bound: the first holds one row per distinct MMSI, the second one row per hour. A default install can therefore be left running indefinitely without filling the disk.
 
-I hope this is sufficient to get you experimenting! Unfortunately, the options cannot yet be set from the JSON configuration file which is work in progress.
+`position` and `static` are the history tables and are opt-in, because they grow with every message received. `ais_position` for a single MMSI, ordered by time, is that vessel's track.
+
+`ais_message` is written whenever any of the three needs it, since `ais_position` and `ais_static` hold only payload columns and reference it through `msg_id`. Deleting from `ais_message` cascades to both, so retention is a single statement:
+
+```sql
+DELETE FROM ais_message WHERE received_at < now() - interval '30 days';
+```
+
+## Controlling volume
+
+The history tables can produce a lot of rows. The message filter settings apply to `-D` like any other output and are the intended way to keep them manageable:
+
+```bash
+AIS-catcher -D dbname=ais position on unique on position_interval 60
+```
+
+`unique on` drops messages repeated within three seconds, and `position_interval 60` keeps at most one position per MMSI per minute. On a busy capture the two together reduced stored positions by around 95% while leaving tracks perfectly usable.
+
+## Configuration file
+
+All backends share the `db` key and name themselves with `type`. It is an array, so several can run at once:
+
+```json
+{
+    "db": [
+        {
+            "active": true,
+            "type": "postgres",
+            "conn_str": "dbname=ais",
+            "station_id": 17,
+            "position": true,
+            "static": true
+        },
+        {
+            "active": true,
+            "type": "sqlite",
+            "conn_str": "/var/lib/ais/ais.db",
+            "position": true,
+            "position_interval": 60
+        }
+    ]
+}
+```
+
+`type` defaults to `postgres`. The `sqlite:` and `csv:` prefixes are a command-line convenience only — in a configuration file `type` already says which backend it is, so `conn_str` is just the path or connection string.
+
+## Examples
+
+Default, a bounded snapshot and hourly statistics only:
+```bash
+AIS-catcher -D dbname=ais station_id 17
+```
+
+Full history to a local file, thinned to one position per vessel per minute:
+```bash
+AIS-catcher -D sqlite:ais.db position on static on position_interval 60
+```
+
+Everything including raw sentences:
+```bash
+AIS-catcher -D dbname=ais position on static on nmea on
+```
+
+The `station_id` setting is optional and stamps every row, so several feeders can share one database.
+
+If the connection drops during decoding the program reconnects and re-prepares its statements. `max_fails` sets how many consecutive failures are tolerated before AIS-catcher terminates; at 1000 it never gives up.
 
 ## Summary Settings
 
 <div class="input-table" markdown>
 | Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
-| <span class="cmd-setting">conn_str</span> | string | <span class="cmd-value">dbname=ais</span> | PostgreSQL connection string |
-| <span class="cmd-setting">station_id</span> | integer | <span class="cmd-value">0</span> | Station identifier (column value, lets multiple feeders share one DB) |
-| <span class="cmd-setting">interval</span> | integer | <span class="cmd-value">10</span> | Database write interval in seconds (5-1800) |
+| <span class="cmd-setting">type</span> | enum | <span class="cmd-value">postgres</span> | Backend: `postgres`, `sqlite` or `csv` (configuration file only) |
+| <span class="cmd-setting">conn_str</span> | string | <span class="cmd-value">dbname=ais</span> | libpq connection string, SQLite file path, or CSV directory |
+| <span class="cmd-setting">station_id</span> | integer | <span class="cmd-value">0</span> | Station identifier stamped on every row, lets multiple feeders share one database |
+| <span class="cmd-setting">interval</span> | integer | <span class="cmd-value">60</span> | Database write interval in seconds (5-1800) |
 | <span class="cmd-setting">max_fails</span> | integer | <span class="cmd-value">10</span> | Max failed reconnect attempts before terminating (1000 = never give up) |
 | <span class="cmd-setting">groups_in</span> | integer | <span class="cmd-value">all</span> | Bitmask of input groups feeding this output |
 | | | | |
 | Table Options | | | |
-| <span class="cmd-setting">v</span> | boolean | <span class="cmd-value">true</span> | Enable vessel table logging |
-| <span class="cmd-setting">msgs</span> | boolean | <span class="cmd-value">false</span> | Enable message table logging |
-| <span class="cmd-setting">nmea</span> | boolean | <span class="cmd-value">false</span> | Enable NMEA sentence logging |
-| <span class="cmd-setting">bs</span> | boolean | <span class="cmd-value">false</span> | Enable basestation logging |
-| <span class="cmd-setting">sar</span> | boolean | <span class="cmd-value">false</span> | Enable SAR position logging |
-| <span class="cmd-setting">aton</span> | boolean | <span class="cmd-value">false</span> | Enable AtoN logging |
-| <span class="cmd-setting">vp</span> | boolean | <span class="cmd-value">false</span> | Enable vessel position logging |
-| <span class="cmd-setting">vs</span> | boolean | <span class="cmd-value">false</span> | Enable vessel static data logging |
+| <span class="cmd-setting">state</span> | boolean | <span class="cmd-value">true</span> | Latest known values per MMSI, bounded by the number of distinct targets |
+| <span class="cmd-setting">stats</span> | boolean | <span class="cmd-value">true</span> | Hourly reception statistics |
+| <span class="cmd-setting">position</span> | boolean | <span class="cmd-value">false</span> | Log position reports, grows with traffic |
+| <span class="cmd-setting">static</span> | boolean | <span class="cmd-value">false</span> | Log static and voyage reports, grows with traffic |
+| <span class="cmd-setting">nmea</span> | boolean | <span class="cmd-value">false</span> | Store the raw sentences alongside each message |
+| | | | |
+| CSV Only | | | |
+| <span class="cmd-setting">capacity</span> | integer | <span class="cmd-value">8192</span> | Targets kept in `ais_state.csv` before the least recently heard is dropped |
 </div>
+
+!!! note "CSV differences"
+    `ais_state.csv` is bounded by `capacity` and recycles the least recently heard target, where the SQL backends keep a row per MMSI indefinitely. Message ids restart with the process, which is why the log files carry a date. Newlines inside a multipart sentence are written as spaces so every record stays one line.

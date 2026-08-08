@@ -121,7 +121,7 @@ nav:
           - MQTT: configuration/output/MQTT.md
         - Web Viewer: configuration/output/web-viewer.md
         - NMEA2000: configuration/output/NMEA2000.md
-        - PostgreSQL: configuration/output/PSQL.md
+        - Database (PostgreSQL / SQLite): configuration/output/PSQL.md
   - Tools:
       - AIS-catcher-control: usage/gui.md
       - Python (aiscat): tools/python.md

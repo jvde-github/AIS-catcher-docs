@@ -384,6 +384,32 @@ AIS-catcher supports various output channels. Each output channel has specific c
 </details>
 [Full Web Server Documentation](../configuration/output/web-viewer.md)
 
+### Database Output (`db`)
+<details>
+<summary>Example</summary>
+```json
+{
+    "db": [
+        {
+            "active": true,
+            "type": "postgres",
+            "conn_str": "dbname=ais",
+            "station_id": 17,
+            "position": true,
+            "static": true
+        },
+        {
+            "active": true,
+            "type": "csv",
+            "conn_str": "/var/log/ais"
+        }
+    ]
+}
+```
+</details>
+
+[Full Database Documentation](../configuration/output/PSQL.md)
+
 ### UDP Output (`udp`)
 <details>
 <summary>Example</summary>

@@ -2,6 +2,11 @@
 
 ## Edge
 
+### Track replay
+
+- **Play back vessel movements** — the web viewer gained a replay bar: replay received traffic on the map, scrub the timeline, and vary playback speed from 10× up to 3600×. On by default.
+- **Two settings control the history** — `track_time` sets how many seconds of tracks and replay the server serves (default 3600, 0 for no limit), and `track_memory` sets the memory budget in KB that stores them: full detail for roughly the last hour, thinned history beyond it. Both are also in the control panel's Viewer settings.
+
 ### Built-in control panel
 
 - **Configure AIS-catcher from the browser** — a new managed mode (`AIS-catcher -E [config file] [address:port]`) starts a built-in control panel, by default on `http://localhost:8118`{ .address }. A setup wizard walks you through input device and output configuration on first use, and the **Input** and **Output** tabs let you fine-tune everything afterwards — no config file editing needed. See [Managed Mode](managed/dashboard.md).
@@ -10,6 +15,11 @@
 - **Easy install** — the install script's new `-M`/`--managed` option sets up the systemd service in managed mode, and the Windows zip includes `start-GUI.bat` to launch AIS-catcher with the control panel.
 - See also the new [Quick Start guide](https://www.aiscatcher.org/quickstart) on aiscatcher.org — from zero to a running station in six steps.
 
+### Database output
+
+- **Reworked `-D` output with three backends** — one shared 5-table schema written to **PostgreSQL**, **SQLite** (`-D sqlite:file.db`) or **CSV files** (`-D csv:directory`), so a database no longer requires a server. Defaults are bounded — latest state per vessel plus hourly reception statistics — and full position/static history is opt-in. See [Database output](configuration/output/PSQL.md).
+- **Configurable from the control panel** — a new **Database** output channel with a backend selector, and in the config file a single `db` array with a `type` field.
+
 ### Installation
 
 - **Fedora support** — the install script now detects `dnf` alongside `apt`, so the same one-line command works on Fedora as well as on Debian, Ubuntu and Raspberry Pi OS. Pre-built RPMs are provided for Fedora 43 and 44 (`x86_64` and `aarch64`); other releases build from source.
@@ -17,13 +27,10 @@
 ### Web viewer
 
 - **Refreshed interface** — tighter tables, a modern search bar, a redesigned column toolbar on the Ships tab, and smaller map count/measure icons for a cleaner map.
-- **Restyled map controls** — the controls are grouped into a rounded pill, the attribution folds out instead of always showing, and **Measure** is now available from the right-click context menu.
-- **Better labels in busy areas** — the selected vessel's label is kept on top in dense clusters, with a new **Prioritize selected label** option (on by default) and a **Show label only for selected vessel** option. The selected vessel's icon is also drawn above surrounding labels.
-- **Ship card docking** — the ship card can now be placed in the top-left corner with floating-card styling.
-- **Automatic station location** — when no station latitude/longitude is configured, the web viewer falls back to the receiver location (`-Z`) so your station still shows on the map.
 
 ### Devices
 
+- **SDRplay RSPduo** — tuner selection (`TUNER A`/`B`) and slave mode, so AIS-catcher can run on one tuner while another application uses the other.
 - **SDRplay** — no longer crashes or aborts when the SDRplay API v3 service is not running, with more robust device open and antenna validation.
 
 ### NMEA 2000
