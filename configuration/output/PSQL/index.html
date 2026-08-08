@@ -3652,7 +3652,12 @@ sqlite3 /var/lib/ais/ais.db &lt; create_sqlite.sql
 No server, no user setup. The file is created if it does not exist, but the tables are not, so run the script first.
 </code></pre></div>
 <p>=== "CSV"</p>
-<div class="language-text highlight"><pre><span></span><code>Nothing to create. Point it at a directory that already exists and the files appear:
+<div class="language-text highlight"><pre><span></span><code>Point it at a directory that already exists and is writable **by the user AIS-catcher runs as** — the managed/systemd install runs as `aiscatcher`, which cannot write into a home directory:
+```bash
+sudo mkdir -p /var/lib/ais-catcher/csv
+sudo chown aiscatcher: /var/lib/ais-catcher/csv
+```
+The files then appear on the first flush:
 ```
 ais_message-2026-08-08.csv
 ais_position-2026-08-08.csv
