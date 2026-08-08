@@ -150,7 +150,7 @@ AIS-catcher -D dbname=ais position on static on nmea on
 
 The `station_id` setting is optional and stamps every row, so several feeders can share one database.
 
-A failing database never stops the receiver: the output keeps retrying with exponential backoff (up to five minutes between attempts), reconnects and re-prepares its statements when the database returns, and drops only its own oldest queued messages in the meantime.
+A failing database never stops the receiver, even when it is unavailable at startup: the output keeps retrying with exponential backoff (up to five minutes between attempts), reconnects and re-prepares its statements when the database returns, and drops only its own oldest queued messages in the meantime.
 
 ## Summary Settings
 
