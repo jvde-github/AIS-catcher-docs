@@ -697,10 +697,32 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#track-replay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Track replay
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#built-in-control-panel" class="md-nav__link">
     <span class="md-ellipsis">
       
         Built-in control panel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database output
       
     </span>
   </a>
@@ -3413,7 +3435,7 @@
   <span class="md-ellipsis">
     
   
-    PostgreSQL
+    Database (PostgreSQL / SQLite)
   
 
     
@@ -4154,10 +4176,32 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#track-replay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Track replay
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#built-in-control-panel" class="md-nav__link">
     <span class="md-ellipsis">
       
         Built-in control panel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database output
       
     </span>
   </a>
@@ -4878,6 +4922,11 @@
 
 <h1 id="whats-new">What's New?<a class="headerlink" href="#whats-new" title="Permanent link">&para;</a></h1>
 <h2 id="edge">Edge<a class="headerlink" href="#edge" title="Permanent link">&para;</a></h2>
+<h3 id="track-replay">Track replay<a class="headerlink" href="#track-replay" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Play back vessel movements</strong> — the web viewer gained a replay bar: replay received traffic on the map, scrub the timeline, and vary playback speed from 10× up to 3600×. On by default.</li>
+<li><strong>Two settings control the history</strong> — <code>track_time</code> sets how many seconds of tracks and replay the server serves (default 3600, 0 for no limit), and <code>track_memory</code> sets the memory budget in KB that stores them: full detail for roughly the last hour, thinned history beyond it. Both are also in the control panel's Viewer settings.</li>
+</ul>
 <h3 id="built-in-control-panel">Built-in control panel<a class="headerlink" href="#built-in-control-panel" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Configure AIS-catcher from the browser</strong> — a new managed mode (<code>AIS-catcher -E [config file] [address:port]</code>) starts a built-in control panel, by default on <code class="address">http://localhost:8118</code>. A setup wizard walks you through input device and output configuration on first use, and the <strong>Input</strong> and <strong>Output</strong> tabs let you fine-tune everything afterwards — no config file editing needed. See <a href="../managed/dashboard/">Managed Mode</a>.</li>
@@ -4886,6 +4935,11 @@
 <li><strong>Easy install</strong> — the install script's new <code>-M</code>/<code>--managed</code> option sets up the systemd service in managed mode, and the Windows zip includes <code>start-GUI.bat</code> to launch AIS-catcher with the control panel.</li>
 <li>See also the new <a href="https://www.aiscatcher.org/quickstart">Quick Start guide</a> on aiscatcher.org — from zero to a running station in six steps.</li>
 </ul>
+<h3 id="database-output">Database output<a class="headerlink" href="#database-output" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Reworked <code>-D</code> output with three backends</strong> — one shared 5-table schema written to <strong>PostgreSQL</strong>, <strong>SQLite</strong> (<code>-D sqlite:file.db</code>) or <strong>CSV files</strong> (<code>-D csv:directory</code>), so a database no longer requires a server. Defaults are bounded — latest state per vessel plus hourly reception statistics — and full position/static history is opt-in. See <a href="../configuration/output/PSQL/">Database output</a>.</li>
+<li><strong>Configurable from the control panel</strong> — a new <strong>Database</strong> output channel with a backend selector, and in the config file a single <code>db</code> array with a <code>type</code> field.</li>
+</ul>
 <h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Fedora support</strong> — the install script now detects <code>dnf</code> alongside <code>apt</code>, so the same one-line command works on Fedora as well as on Debian, Ubuntu and Raspberry Pi OS. Pre-built RPMs are provided for Fedora 43 and 44 (<code>x86_64</code> and <code>aarch64</code>); other releases build from source.</li>
@@ -4893,13 +4947,10 @@
 <h3 id="web-viewer">Web viewer<a class="headerlink" href="#web-viewer" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Refreshed interface</strong> — tighter tables, a modern search bar, a redesigned column toolbar on the Ships tab, and smaller map count/measure icons for a cleaner map.</li>
-<li><strong>Restyled map controls</strong> — the controls are grouped into a rounded pill, the attribution folds out instead of always showing, and <strong>Measure</strong> is now available from the right-click context menu.</li>
-<li><strong>Better labels in busy areas</strong> — the selected vessel's label is kept on top in dense clusters, with a new <strong>Prioritize selected label</strong> option (on by default) and a <strong>Show label only for selected vessel</strong> option. The selected vessel's icon is also drawn above surrounding labels.</li>
-<li><strong>Ship card docking</strong> — the ship card can now be placed in the top-left corner with floating-card styling.</li>
-<li><strong>Automatic station location</strong> — when no station latitude/longitude is configured, the web viewer falls back to the receiver location (<code>-Z</code>) so your station still shows on the map.</li>
 </ul>
 <h3 id="devices">Devices<a class="headerlink" href="#devices" title="Permanent link">&para;</a></h3>
 <ul>
+<li><strong>SDRplay RSPduo</strong> — tuner selection (<code>TUNER A</code>/<code>B</code>) and slave mode, so AIS-catcher can run on one tuner while another application uses the other.</li>
 <li><strong>SDRplay</strong> — no longer crashes or aborts when the SDRplay API v3 service is not running, with more robust device open and antenna validation.</li>
 </ul>
 <h3 id="nmea-2000">NMEA 2000<a class="headerlink" href="#nmea-2000" title="Permanent link">&para;</a></h3>

@@ -1731,6 +1731,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#database-output-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Output (db)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#udp-output-udp" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3108,7 +3119,7 @@
   <span class="md-ellipsis">
     
   
-    PostgreSQL
+    Database (PostgreSQL / SQLite)
   
 
     
@@ -4182,6 +4193,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#database-output-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Output (db)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#udp-output-udp" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4716,6 +4738,30 @@ This loads and applies the settings from the JSON file.</p>
 </code></pre></div>
 </details>
 <p><a href="../../configuration/output/web-viewer/">Full Web Server Documentation</a></p>
+<h3 id="database-output-db">Database Output (<code>db</code>)<a class="headerlink" href="#database-output-db" title="Permanent link">&para;</a></h3>
+<details>
+<summary>Example</summary>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;db&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;postgres&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;conn_str&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dbname=ais&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;station_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;static&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;csv&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;conn_str&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/var/log/ais&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+
+<p><a href="../../configuration/output/PSQL/">Full Database Documentation</a></p>
 <h3 id="udp-output-udp">UDP Output (<code>udp</code>)<a class="headerlink" href="#udp-output-udp" title="Permanent link">&para;</a></h3>
 <details>
 <summary>Example</summary>

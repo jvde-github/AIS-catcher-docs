@@ -29,7 +29,7 @@
     
     
       
-        <title>PostgreSQL - AIS-catcher Docs</title>
+        <title>Database (PostgreSQL / SQLite) - AIS-catcher Docs</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#writing-ais-messages-to-a-postgres-database" class="md-skip">
+        <a href="#writing-ais-messages-to-a-database" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              PostgreSQL
+              Database (PostgreSQL / SQLite)
             
           </span>
         </div>
@@ -2667,7 +2667,7 @@
   <span class="md-ellipsis">
     
   
-    PostgreSQL
+    Database (PostgreSQL / SQLite)
   
 
     
@@ -2685,7 +2685,7 @@
   <span class="md-ellipsis">
     
   
-    PostgreSQL
+    Database (PostgreSQL / SQLite)
   
 
     
@@ -2709,6 +2709,61 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting up
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controlling-volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controlling volume
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration file
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#summary-settings" class="md-nav__link">
@@ -3445,6 +3500,61 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#setting-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting up
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controlling-volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controlling volume
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration file
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3475,107 +3585,172 @@
   
 
 
-<h1 id="writing-ais-messages-to-a-postgres-database">Writing AIS messages to a Postgres Database<a class="headerlink" href="#writing-ais-messages-to-a-postgres-database" title="Permanent link">&para;</a></h1>
+<h1 id="writing-ais-messages-to-a-database">Writing AIS messages to a database<a class="headerlink" href="#writing-ais-messages-to-a-database" title="Permanent link">&para;</a></h1>
 <div class="command-container">
       <div class="command-syntax">
         <span class="cmd-name">AIS-catcher</span>
         <span class="cmd-flag">-D</span>
-        <span class="cmd-value">url</span>
+        <span class="cmd-value">connection string</span>
         [<span class="cmd-setting">setting</span> <span class="cmd-value">value</span>]
         ...
     </div>
 </div>
 
-<p>As per full release <code>v0.45</code>, there is functionality to write messages to a database (PostgreSQL). The setup is fairly flexible and can be tailored to the particular needs. First create an empty PostgreSQL database, e.g on an Ubuntu distribution (this might be different on your system):
-<div class="language-bash highlight"><pre><span></span><code>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>createdb<span class="w"> </span>ais
+<p>AIS-catcher can write decoded messages to a database. Three backends are supported and all three write the same tables with the same settings:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">backend</th>
+<th style="text-align: left;">for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>PostgreSQL</strong></td>
+<td style="text-align: left;">a shared or networked database</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>SQLite</strong></td>
+<td style="text-align: left;">a local file, no server to run</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CSV</strong></td>
+<td style="text-align: left;">plain files, no database at all</td>
+</tr>
+</tbody>
+</table>
+<p>All three are compiled into the official packages and the Docker image, so there is nothing to install or rebuild. If you build from source, <code>libpq-dev</code> and <code>libsqlite3-dev</code> need to be present at configure time; the <code>PSQL</code> and <code>SQLITE</code> CMake options are on by default. CSV has no dependency.</p>
+<p>On the command line the backend follows from the connection string. A plain string is a PostgreSQL connection; a <code>sqlite:</code> or <code>csv:</code> prefix selects the other two:</p>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-D<span class="w"> </span><span class="nv">dbname</span><span class="o">=</span>ais
+AIS-catcher<span class="w"> </span>-D<span class="w"> </span>sqlite:/var/lib/ais/ais.db
+AIS-catcher<span class="w"> </span>-D<span class="w"> </span>csv:/var/log/ais/
 </code></pre></div>
-Set up the necessary tables from the AIS-catcher directory:
-<div class="language-bash highlight"><pre><span></span><code>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>ais<span class="w"> </span>&lt;<span class="w"> </span>create.sql
+<div class="admonition warning">
+<p class="admonition-title">Schema change</p>
+<p>The schema was reorganised and the old per-message-type tables (<code>ais_vessel_pos</code>, <code>ais_basestation</code>, <code>ais_sar_position</code>, <code>ais_aton</code>, <code>ais_vessel_static</code>, <code>ais_vessel</code>, <code>ais_property</code>, <code>ais_keys</code>) were replaced. The settings that selected them (<code>v</code>, <code>msgs</code>, <code>vp</code>, <code>vs</code>, <code>bs</code>, <code>sar</code>, <code>aton</code>) were removed and now produce an error naming their replacement. Run the new <code>create_pg.sql</code> to migrate; it drops the old tables for you.</p>
+</div>
+<h2 id="setting-up">Setting up<a class="headerlink" href="#setting-up" title="Permanent link">&para;</a></h2>
+<p>=== "PostgreSQL"</p>
+<div class="language-text highlight"><pre><span></span><code>Create an empty database, e.g. on Ubuntu:
+```bash
+sudo -u postgres createdb ais
+```
+Create the tables:
+```bash
+sudo -u postgres psql ais &lt; create_pg.sql
+```
+Make sure the user running AIS-catcher may write to the database, or give credentials in the connection string:
+```bash
+AIS-catcher -D postgresql://[user[:password]@][netloc][:port][/dbname]
+```
 </code></pre></div>
-The file <code>create.sql</code> is in the directory DBMS in the AIS-catcher source directory. If you installed via the install script for Ububtu/Debian/Raspberry Pi it can be found in the directory <code>/etc/AIS-catcher/DBMS</code>.</p>
-<p>Make sure you build the latest version of AIS-catcher with this dependency:
-<div class="language-bash highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libpq-dev
-</code></pre></div></p>
-<blockquote>
-<p>For writing to a PSQL database from AIS-catcher, ensure that the user running the program is set up for writing to 
-a PSQL database or specify the user explicitly in the connection string.</p>
-</blockquote>
-<p>Ensure that the Now AIS-catcher can write the received messages to the database:
-<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-D<span class="w"> </span><span class="nv">dbname</span><span class="o">=</span>ais<span class="w"> </span>STATION_ID<span class="w"> </span><span class="m">17</span>
+<p>=== "SQLite"</p>
+<div class="language-text highlight"><pre><span></span><code>Create the file and its tables in one step:
+```bash
+sqlite3 /var/lib/ais/ais.db &lt; create_sqlite.sql
+```
+No server, no user setup. The file is created if it does not exist, but the tables are not, so run the script first.
 </code></pre></div>
-or when more details, like username and password, are required:
-<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-D<span class="w"> </span>postgresql://<span class="o">[</span>user<span class="o">[</span>:password<span class="o">]</span>@<span class="o">][</span>netloc<span class="o">][</span>:port<span class="o">][</span>/dbname<span class="o">]</span>
+<p>=== "CSV"</p>
+<div class="language-text highlight"><pre><span></span><code>Nothing to create. Point it at a directory that already exists and the files appear:
+```
+ais_message-2026-08-08.csv
+ais_position-2026-08-08.csv
+ais_static-2026-08-08.csv
+ais_state.csv
+ais_stats_hourly.csv
+```
+The three logs rotate daily, so deleting old files is how retention works. `ais_state.csv` and `ais_stats_hourly.csv` are rewritten whole on each flush rather than appended, because a per-MMSI row is merged in place and an hourly bucket is corrected until its hour ends.
 </code></pre></div>
-The <code>STATION_ID</code> setting is optional but will populate the entries in the database with the specified ID so multiple feeders can write to one database.
-There are a few settings for the new <code>-D</code> switch of which the first is the connection string that specifies the database. If you want to use a space in the string use quotation marks around the string. There are other settings that define how tables will be populated:</p>
+<p>The two SQL scripts live in the <code>DBMS</code> directory of the source tree, or in <code>/etc/AIS-catcher/DBMS</code> if you installed from a package or with the install script.</p>
+<h2 id="tables">Tables<a class="headerlink" href="#tables" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">Table</th>
 <th style="text-align: left;">Description</th>
-<th style="text-align: left;">Settings</th>
+<th style="text-align: left;">Setting</th>
 <th style="text-align: left;">Default</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">ais_vessel</td>
-<td style="text-align: left;">last received data per MMSI</td>
-<td style="text-align: left;">V on/off</td>
+<td style="text-align: left;"><code>ais_state</code></td>
+<td style="text-align: left;">one row per MMSI with the latest known values, merged across every message type, plus counters</td>
+<td style="text-align: left;"><code>state</code></td>
 <td style="text-align: left;"><strong>on</strong></td>
 </tr>
 <tr>
-<td style="text-align: left;">ais_message</td>
-<td style="text-align: left;">received messages with meta data</td>
-<td style="text-align: left;">MSGS on/off</td>
+<td style="text-align: left;"><code>ais_stats_hourly</code></td>
+<td style="text-align: left;">reception statistics per hour: message and vessel counts, per channel counts, signal level range</td>
+<td style="text-align: left;"><code>stats</code></td>
+<td style="text-align: left;"><strong>on</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ais_message</code></td>
+<td style="text-align: left;">one row per received message with its metadata, and the raw sentences when <code>nmea</code> is on</td>
+<td style="text-align: left;">written when any of <code>position</code>, <code>static</code> or <code>nmea</code> is on</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ais_position</code></td>
+<td style="text-align: left;">dynamic fields from types 1, 2, 3, 4, 9, 18, 19, 21 and 27</td>
+<td style="text-align: left;"><code>position</code></td>
 <td style="text-align: left;">off</td>
 </tr>
 <tr>
-<td style="text-align: left;">ais_nmea</td>
-<td style="text-align: left;">nmea sentences</td>
-<td style="text-align: left;">NMEA on/off</td>
+<td style="text-align: left;"><code>ais_static</code></td>
+<td style="text-align: left;">static and voyage fields from types 5, 19, 21 and 24</td>
+<td style="text-align: left;"><code>static</code></td>
 <td style="text-align: left;">off</td>
-</tr>
-<tr>
-<td style="text-align: left;">ais_basestation</td>
-<td style="text-align: left;">basestation messages from type 4</td>
-<td style="text-align: left;">BS on/off</td>
-<td style="text-align: left;">off</td>
-</tr>
-<tr>
-<td style="text-align: left;">ais_sar_position</td>
-<td style="text-align: left;">sar positions from type 9</td>
-<td style="text-align: left;">SAR on/off</td>
-<td style="text-align: left;">off</td>
-</tr>
-<tr>
-<td style="text-align: left;">ais_aton</td>
-<td style="text-align: left;">aton messages from type 21</td>
-<td style="text-align: left;">ATON on/off</td>
-<td style="text-align: left;">off</td>
-</tr>
-<tr>
-<td style="text-align: left;">ais_vessel_pos</td>
-<td style="text-align: left;">vessel position messages from type 1-3, 18, 19, 27</td>
-<td style="text-align: left;">VP on/off</td>
-<td style="text-align: left;">off</td>
-</tr>
-<tr>
-<td style="text-align: left;">ais_vessel_static</td>
-<td style="text-align: left;">vessel static data from type 5, 19</td>
-<td style="text-align: left;">VS on/off</td>
-<td style="text-align: left;">off</td>
-</tr>
-<tr>
-<td style="text-align: left;">ais_property</td>
-<td style="text-align: left;">specific key/value pairs with link to message</td>
-<td style="text-align: left;">fill with keys specified in the table ais_keys</td>
-<td style="text-align: left;">empty</td>
 </tr>
 </tbody>
 </table>
-<p>From hereon it is fairly straightforward to pick up this data and start analysis. If the connection fails during the decoding, for whatever reason, the program will try to reconnect to the database every 2 seconds. The maximum number of failed connection attempts before the program terminates is set with <code>MAX_FAILS</code> (&lt;1000) and is set on the command line. If <code>MAX_FAILS</code> is 1000 the program will not terminate if the connection fails.  </p>
-<p>I hope this is sufficient to get you experimenting! Unfortunately, the options cannot yet be set from the JSON configuration file which is work in progress.</p>
+<p><strong>Only <code>ais_state</code> and <code>ais_stats_hourly</code> are written by default</strong>, and neither grows without bound: the first holds one row per distinct MMSI, the second one row per hour. A default install can therefore be left running indefinitely without filling the disk.</p>
+<p><code>position</code> and <code>static</code> are the history tables and are opt-in, because they grow with every message received. <code>ais_position</code> for a single MMSI, ordered by time, is that vessel's track.</p>
+<p><code>ais_message</code> is written whenever any of the three needs it, since <code>ais_position</code> and <code>ais_static</code> hold only payload columns and reference it through <code>msg_id</code>. Deleting from <code>ais_message</code> cascades to both, so retention is a single statement:</p>
+<div class="language-sql highlight"><pre><span></span><code><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">ais_message</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">received_at</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">interval</span><span class="w"> </span><span class="s1">&#39;30 days&#39;</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="controlling-volume">Controlling volume<a class="headerlink" href="#controlling-volume" title="Permanent link">&para;</a></h2>
+<p>The history tables can produce a lot of rows. The message filter settings apply to <code>-D</code> like any other output and are the intended way to keep them manageable:</p>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-D<span class="w"> </span><span class="nv">dbname</span><span class="o">=</span>ais<span class="w"> </span>position<span class="w"> </span>on<span class="w"> </span>unique<span class="w"> </span>on<span class="w"> </span>position_interval<span class="w"> </span><span class="m">60</span>
+</code></pre></div>
+<p><code>unique on</code> drops messages repeated within three seconds, and <code>position_interval 60</code> keeps at most one position per MMSI per minute. On a busy capture the two together reduced stored positions by around 95% while leaving tracks perfectly usable.</p>
+<h2 id="configuration-file">Configuration file<a class="headerlink" href="#configuration-file" title="Permanent link">&para;</a></h2>
+<p>All backends share the <code>db</code> key and name themselves with <code>type</code>. It is an array, so several can run at once:</p>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;db&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;postgres&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;conn_str&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dbname=ais&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;station_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;static&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sqlite&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;conn_str&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/var/lib/ais/ais.db&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;position_interval&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>type</code> defaults to <code>postgres</code>. The <code>sqlite:</code> and <code>csv:</code> prefixes are a command-line convenience only — in a configuration file <code>type</code> already says which backend it is, so <code>conn_str</code> is just the path or connection string.</p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<p>Default, a bounded snapshot and hourly statistics only:
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-D<span class="w"> </span><span class="nv">dbname</span><span class="o">=</span>ais<span class="w"> </span>station_id<span class="w"> </span><span class="m">17</span>
+</code></pre></div></p>
+<p>Full history to a local file, thinned to one position per vessel per minute:
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-D<span class="w"> </span>sqlite:ais.db<span class="w"> </span>position<span class="w"> </span>on<span class="w"> </span>static<span class="w"> </span>on<span class="w"> </span>position_interval<span class="w"> </span><span class="m">60</span>
+</code></pre></div></p>
+<p>Everything including raw sentences:
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-D<span class="w"> </span><span class="nv">dbname</span><span class="o">=</span>ais<span class="w"> </span>position<span class="w"> </span>on<span class="w"> </span>static<span class="w"> </span>on<span class="w"> </span>nmea<span class="w"> </span>on
+</code></pre></div></p>
+<p>The <code>station_id</code> setting is optional and stamps every row, so several feeders can share one database.</p>
+<p>If the connection drops during decoding the program reconnects and re-prepares its statements. <code>max_fails</code> sets how many consecutive failures are tolerated before AIS-catcher terminates; at 1000 it never gives up.</p>
 <h2 id="summary-settings">Summary Settings<a class="headerlink" href="#summary-settings" title="Permanent link">&para;</a></h2>
 <div class="input-table">
 <table>
@@ -3589,21 +3764,27 @@ There are a few settings for the new <code>-D</code> switch of which the first i
 </thead>
 <tbody>
 <tr>
+<td><span class="cmd-setting">type</span></td>
+<td>enum</td>
+<td><span class="cmd-value">postgres</span></td>
+<td>Backend: <code>postgres</code>, <code>sqlite</code> or <code>csv</code> (configuration file only)</td>
+</tr>
+<tr>
 <td><span class="cmd-setting">conn_str</span></td>
 <td>string</td>
 <td><span class="cmd-value">dbname=ais</span></td>
-<td>PostgreSQL connection string</td>
+<td>libpq connection string, SQLite file path, or CSV directory</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">station_id</span></td>
 <td>integer</td>
 <td><span class="cmd-value">0</span></td>
-<td>Station identifier (column value, lets multiple feeders share one DB)</td>
+<td>Station identifier stamped on every row, lets multiple feeders share one database</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">interval</span></td>
 <td>integer</td>
-<td><span class="cmd-value">10</span></td>
+<td><span class="cmd-value">60</span></td>
 <td>Database write interval in seconds (5-1800)</td>
 </tr>
 <tr>
@@ -3631,55 +3812,59 @@ There are a few settings for the new <code>-D</code> switch of which the first i
 <td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">v</span></td>
+<td><span class="cmd-setting">state</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">true</span></td>
-<td>Enable vessel table logging</td>
+<td>Latest known values per MMSI, bounded by the number of distinct targets</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">msgs</span></td>
+<td><span class="cmd-setting">stats</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">true</span></td>
+<td>Hourly reception statistics</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">position</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
-<td>Enable message table logging</td>
+<td>Log position reports, grows with traffic</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">static</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">false</span></td>
+<td>Log static and voyage reports, grows with traffic</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">nmea</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
-<td>Enable NMEA sentence logging</td>
+<td>Store the raw sentences alongside each message</td>
 </tr>
 <tr>
-<td><span class="cmd-setting">bs</span></td>
-<td>boolean</td>
-<td><span class="cmd-value">false</span></td>
-<td>Enable basestation logging</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">sar</span></td>
-<td>boolean</td>
-<td><span class="cmd-value">false</span></td>
-<td>Enable SAR position logging</td>
+<td>CSV Only</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td><span class="cmd-setting">aton</span></td>
-<td>boolean</td>
-<td><span class="cmd-value">false</span></td>
-<td>Enable AtoN logging</td>
-</tr>
-<tr>
-<td><span class="cmd-setting">vp</span></td>
-<td>boolean</td>
-<td><span class="cmd-value">false</span></td>
-<td>Enable vessel position logging</td>
-</tr>
-<tr>
-<td><span class="cmd-setting">vs</span></td>
-<td>boolean</td>
-<td><span class="cmd-value">false</span></td>
-<td>Enable vessel static data logging</td>
+<td><span class="cmd-setting">capacity</span></td>
+<td>integer</td>
+<td><span class="cmd-value">8192</span></td>
+<td>Targets kept in <code>ais_state.csv</code> before the least recently heard is dropped</td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">CSV differences</p>
+<p><code>ais_state.csv</code> is bounded by <code>capacity</code> and recycles the least recently heard target, where the SQL backends keep a row per MMSI indefinitely. Message ids restart with the process, which is why the log files carry a date. Newlines inside a multipart sentence are written as spaces so every record stays one line.</p>
 </div>
 
 
