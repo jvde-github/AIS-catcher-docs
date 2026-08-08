@@ -38,7 +38,7 @@ To dump the raw input from the serial device on-screen use `-ge dump on`.
 | <span class="cmd-setting">baudrate</span> | integer | <span class="cmd-value">38400</span> | Serial port speed |
 | <span class="cmd-setting">port</span> | string | <span class="cmd-value">-</span> | Serial port device path/name (Windows `COMx` is auto-prefixed) |
 | <span class="cmd-setting">dump</span> | boolean | <span class="cmd-value">false</span> | Print raw bytes received from the serial device |
-| <span class="cmd-setting">dump_file</span> | string | <span class="cmd-value">-</span> | Write raw bytes to file (also enables `dump`) |
+| <span class="cmd-setting">dump_file</span> | string | <span class="cmd-value">-</span> | Append raw bytes to file (also enables `dump`) |
 | <span class="cmd-setting">init_seq</span> | string | <span class="cmd-value">-</span> | Initialization commands sent to the device on open |
 | <span class="cmd-setting">flowcontrol</span> | enum | <span class="cmd-value">NONE</span> | Flow control (`NONE`, `HARDWARE`, or `SOFTWARE`) |
 | <span class="cmd-setting">print</span> | boolean | <span class="cmd-value">false</span> | **Deprecated** alias for `dump` |
