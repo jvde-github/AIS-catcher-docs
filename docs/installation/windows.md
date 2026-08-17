@@ -5,7 +5,7 @@
 
 ## Installation
 
-Pre-built Windows binaries are available below, with and without SDRPlay support. There are two ways to run your station:
+Pre-built Windows binaries are available below. There are two ways to run your station:
 
 - **[Managed mode](#managed-mode)** (recommended) — configure and control your station from the browser.
 - **[Manual mode](#manual-mode)** — configure via command-line options.
@@ -68,8 +68,13 @@ The AIS-catcher executables are built with the latest Windows MSVC compiler. Ple
 
 | Version | Win32 | x64 | Win32 + SDRPlay | x64 + SDRPlay |
 | :------ | :---- | :--: | :-------------- | :------------ |
-| Edge    | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/Edge/AIS-catcher.x86.zip) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/Edge/AIS-catcher.x64.zip) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/Edge/AIS-catcher.SDRPLAY.x86.zip) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/Edge/AIS-catcher.SDRPLAY.x64.zip) |
+| Edge    | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/Edge/AIS-catcher.x86.zip) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/Edge/AIS-catcher.x64.zip) | not shipped | not shipped |
 | v0.70   | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/v0.70/AIS-catcher.x86.zip) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/v0.70/AIS-catcher.x64.zip) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/v0.70/AIS-catcher.SDRPLAY.x86.zip) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/v0.70/AIS-catcher.SDRPLAY.x64.zip) |
 
 If you are looking for a Windows version for the latest development version, it is automatically produced by the standard workflow and referenced in the table above as **Edge**.
+
+!!! note "SDRPlay builds for Windows"
+    **v0.70 is the last Windows release with SDRPlay support.** The SDRPlay API installer can no longer be downloaded from an automated build, so these binaries are no longer produced. The v0.70 downloads above remain available.
+
+    SDRPlay support itself has not been removed: it is still part of AIS-catcher and is available on Linux and macOS, where the API is installed separately. On Windows you can still [build from source](build-source.md) after installing the SDRPlay API yourself.
 
