@@ -3408,7 +3408,7 @@
 
 <h1 id="input-from-fm-discriminator">Input from FM discriminator<a class="headerlink" href="#input-from-fm-discriminator" title="Permanent link">&para;</a></h1>
 <p>We can run AIS-catcher on a RAW audio file as in this <a href="https://github.com/freerange/ais-on-sdr/wiki/Testing-GNU-AIS">tutorial</a>:
-<div class="language-bash highlight"><pre><span></span><code>wget<span class="w"> </span><span class="s2">&quot;https://github.com/freerange/ais-on-sdr/wiki/example-data/helsinki-210-messages.raw&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code>wget<span class="w"> </span><span class="s2">"https://github.com/freerange/ais-on-sdr/wiki/example-data/helsinki-210-messages.raw"</span>
 AIS-catcher<span class="w">  </span>-m<span class="w"> </span><span class="m">3</span><span class="w"> </span>-v<span class="w"> </span>-s<span class="w"> </span>48K<span class="w"> </span>-r<span class="w"> </span>cs16<span class="w"> </span>helsinki-210-messages.raw
 </code></pre></div>
 On this file we should extract roughly <code>362</code> AIVDM lines. Notice that with switch <code>-m 3</code> on the command line AIS-catcher runs a decoding model that assumes the input is the output of an FM discriminator. In this case, the program is similar to the following usage of GNUAIS:

@@ -3723,21 +3723,21 @@ The three logs rotate daily, so deleting old files is how retention works. `ais_
 <h2 id="configuration-file">Configuration file<a class="headerlink" href="#configuration-file" title="Permanent link">&para;</a></h2>
 <p>All backends share the <code>db</code> key and name themselves with <code>type</code>. It is an array, so several can run at once:</p>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;db&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"db"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;postgres&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;conn_str&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dbname=ais&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;station_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;static&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">            </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"postgres"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"conn_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dbname=ais"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"station_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"static"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sqlite&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;conn_str&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/var/lib/ais/ais.db&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;position_interval&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span>
+<span class="w">            </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sqlite"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"conn_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/var/lib/ais/ais.db"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"position_interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>

@@ -3943,7 +3943,7 @@
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <h3 id="install-homebrew">Install Homebrew<a class="headerlink" href="#install-homebrew" title="Permanent link">&para;</a></h3>
 <p>If you don't already have Homebrew installed, you can install it by opening a terminal and running:</p>
-<div class="language-bash highlight"><pre><span></span><code>/bin/bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code>/bin/bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">"</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">"</span>
 </code></pre></div>
 <p>Follow the on-screen instructions to complete the installation. After installation, you may need to add Homebrew to your PATH as instructed.</p>
 <h2 id="installation-steps">Installation Steps<a class="headerlink" href="#installation-steps" title="Permanent link">&para;</a></h2>
@@ -4045,9 +4045,9 @@ Open the dashboard in your browser at <code class="address">http://localhost:811
 <ol>
 <li>Add the following content, adjusting the path and parameters for your setup:</li>
 </ol>
-<div class="language-xml highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="cp">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span>
-<span class="nt">&lt;plist</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+<div class="language-xml highlight"><pre><span></span><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="cp">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span>
+<span class="nt">&lt;plist</span><span class="w"> </span><span class="na">version=</span><span class="s">"1.0"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;dict&gt;</span>
 <span class="w">    </span><span class="nt">&lt;key&gt;</span>Label<span class="nt">&lt;/key&gt;</span>
 <span class="w">    </span><span class="nt">&lt;string&gt;</span>com.aiscatcher<span class="nt">&lt;/string&gt;</span>
@@ -4110,7 +4110,7 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="command-not-found">Command Not Found<a class="headerlink" href="#command-not-found" title="Permanent link">&para;</a></h3>
 <p>If you get a "command not found" error after installation, ensure <code>/usr/local/bin</code> is in your PATH. Add this to your <code>~/.zshrc</code> or <code>~/.bash_profile</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"/usr/local/bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
 </code></pre></div>
 <h3 id="cmake-not-found">CMake Not Found<a class="headerlink" href="#cmake-not-found" title="Permanent link">&para;</a></h3>
 <p>If cmake is not found, ensure Homebrew is properly installed and in your PATH. After installing Homebrew, you may need to run the commands shown at the end of the Homebrew installation.</p>

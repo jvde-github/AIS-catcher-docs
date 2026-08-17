@@ -3594,16 +3594,16 @@
 <p>One-shot decoding:</p>
 <div class="language-python highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">aiscat</span>
 
-<span class="n">aiscat</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;!AIVDM,1,1,,A,15MgK45P3@G?fl0E`JbR0OwT0@MS,0*4E&quot;</span><span class="p">)</span>
-<span class="c1"># {&#39;type&#39;: 1, &#39;mmsi&#39;: 366730000, &#39;channel&#39;: &#39;A&#39;, &#39;rxuxtime&#39;: 1777739134.027,</span>
-<span class="c1">#  &#39;lat&#39;: 37.803802, &#39;lon&#39;: -122.392532, &#39;speed&#39;: 20.8, &#39;course&#39;: 51.3,</span>
-<span class="c1">#  &#39;status&#39;: 5, &#39;status_text&#39;: &#39;Moored&#39;, ...}</span>
+<span class="n">aiscat</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"!AIVDM,1,1,,A,15MgK45P3@G?fl0E`JbR0OwT0@MS,0*4E"</span><span class="p">)</span>
+<span class="c1"># {'type': 1, 'mmsi': 366730000, 'channel': 'A', 'rxuxtime': 1777739134.027,</span>
+<span class="c1">#  'lat': 37.803802, 'lon': -122.392532, 'speed': 20.8, 'course': 51.3,</span>
+<span class="c1">#  'status': 5, 'status_text': 'Moored', ...}</span>
 </code></pre></div>
 <p>Streaming from a file, stdin, TCP, or UDP source — the helpers wire up the I/O loop and yield decoded messages:</p>
-<div class="language-python highlight"><pre><span></span><code><span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">aiscat</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s2">&quot;session.nmea&quot;</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">[</span><span class="s2">&quot;mmsi&quot;</span><span class="p">],</span> <span class="n">msg</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">],</span> <span class="n">msg</span><span class="p">[</span><span class="s2">&quot;lon&quot;</span><span class="p">])</span>
+<div class="language-python highlight"><pre><span></span><code><span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">aiscat</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s2">"session.nmea"</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">[</span><span class="s2">"mmsi"</span><span class="p">],</span> <span class="n">msg</span><span class="p">[</span><span class="s2">"lat"</span><span class="p">],</span> <span class="n">msg</span><span class="p">[</span><span class="s2">"lon"</span><span class="p">])</span>
 
-<span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">aiscat</span><span class="o">.</span><span class="n">from_tcp</span><span class="p">(</span><span class="s2">&quot;ais.example.com&quot;</span><span class="p">,</span> <span class="mi">4001</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">aiscat</span><span class="o">.</span><span class="n">from_tcp</span><span class="p">(</span><span class="s2">"ais.example.com"</span><span class="p">,</span> <span class="mi">4001</span><span class="p">):</span>
     <span class="n">handle</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 </code></pre></div>
 <p>For full control, use <code>Decoder</code> directly: <code>feed(bytes)</code> parses NMEA / JSON / binary input out of the buffer, and <code>next()</code> pops one decoded message.</p>

@@ -4292,8 +4292,8 @@ This loads and applies the settings from the JSON file.</p>
 <h2 id="basic-structure">Basic Structure<a class="headerlink" href="#basic-structure" title="Permanent link">&para;</a></h2>
 <p>A JSON configuration file always starts with the configuration header:
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aiscatcher&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aiscatcher"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="p">}</span>
 </code></pre></div></p>
 <p>Where:</p>
@@ -4304,11 +4304,11 @@ This loads and applies the settings from the JSON file.</p>
 <p>This is the absolute minimal structure (just the first two keys). If no receiver is configured, AIS-catcher will use the default behaviour for selecting an input device.</p>
 <p>To select the RTL-SDR as an input device:
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aiscatcher&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;receiver&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aiscatcher"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;input&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rtlsdr&quot;</span>
+<span class="w">            </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rtlsdr"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
@@ -4499,21 +4499,21 @@ This loads and applies the settings from the JSON file.</p>
 <h5 id="multi-receiver-example">Multi-receiver example<a class="headerlink" href="#multi-receiver-example" title="Permanent link">&para;</a></h5>
 <p>Example with two receivers:
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aiscatcher&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;receiver&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aiscatcher"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;input&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;airspy&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;serial&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;airspy&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;airspy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;sample_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3000K&quot;</span>
+<span class="w">            </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"airspy"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"serial"</span><span class="p">:</span><span class="w"> </span><span class="s2">"airspy"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"airspy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"sample_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3000K"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;input&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rtlsdr&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;serial&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ais&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;rtlsdr&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;bandwidth&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192k&quot;</span>
+<span class="w">            </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rtlsdr"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"serial"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ais"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"rtlsdr"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"bandwidth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192k"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
@@ -4527,13 +4527,13 @@ This loads and applies the settings from the JSON file.</p>
 <summary>Example</summary>
 
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;rtlsdr&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;rtlagc&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;tuner&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;bandwidth&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192K&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;sample_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1536K&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;biastee&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="nt">"rtlsdr"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"rtlagc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"tuner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"bandwidth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192K"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"sample_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1536K"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"biastee"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -4543,10 +4543,10 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;airspy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;sample_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3000K&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;linearity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;biastee&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="nt">"airspy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"sample_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3000K"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"linearity"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"biastee"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -4556,10 +4556,10 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;hydrasdr&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;sample_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3000K&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;linearity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;biastee&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="nt">"hydrasdr"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"sample_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3000K"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"linearity"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"biastee"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -4569,10 +4569,10 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;airspyhf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;sample_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192k&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;low&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;preamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="nt">"airspyhf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"sample_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192k"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"low"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"preamp"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -4583,11 +4583,11 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;hackrf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;sample_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6144k&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;lna&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;vga&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;preamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="nt">"hackrf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"sample_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6144k"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"lna"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"vga"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"preamp"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -4597,11 +4597,11 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;sdrplay&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;sample_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2304K&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;agc&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;lnastate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;grdb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span>
+<span class="w">    </span><span class="nt">"sdrplay"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"sample_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2304K"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"agc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"lnastate"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"grdb"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -4611,10 +4611,10 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;soapysdr&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;device&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;driver=rtlsdr&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;sample_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1536K&quot;</span>
+<span class="w">    </span><span class="nt">"soapysdr"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"device"</span><span class="p">:</span><span class="w"> </span><span class="s2">"driver=rtlsdr"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"sample_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1536K"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -4624,9 +4624,9 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;serialport&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;baudrate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">38400</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/dev/tty0&quot;</span>
+<span class="w">    </span><span class="nt">"serialport"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"baudrate"</span><span class="p">:</span><span class="w"> </span><span class="mi">38400</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/dev/tty0"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -4636,9 +4636,9 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;nmea2000&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;can0&quot;</span>
+<span class="w">    </span><span class="nt">"nmea2000"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"can0"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -4649,9 +4649,9 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;wavfile&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;recording.wav&quot;</span>
+<span class="w">    </span><span class="nt">"wavfile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recording.wav"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -4661,9 +4661,9 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data.raw&quot;</span>
+<span class="w">    </span><span class="nt">"file"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data.raw"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -4674,9 +4674,9 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;rtltcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.1.100&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span>
+<span class="w">    </span><span class="nt">"rtltcp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"host"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.1.100"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -4686,9 +4686,9 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;spyserver&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;server.example.com&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5555</span>
+<span class="w">    </span><span class="nt">"spyserver"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"host"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server.example.com"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">5555</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -4698,9 +4698,9 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;udpserver&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10110</span>
+<span class="w">    </span><span class="nt">"udpserver"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">10110</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -4710,9 +4710,9 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;zmq&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tcp://localhost:5555&quot;</span>
+<span class="w">    </span><span class="nt">"zmq"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tcp://localhost:5555"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -4724,14 +4724,14 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;server&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"server"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8100</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;station&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My Station&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;share_loc&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;lat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">52</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;lon&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.3</span>
+<span class="w">            </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">8100</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"station"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Station"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"share_loc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mi">52</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.3</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
@@ -4742,19 +4742,19 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;db&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"db"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;postgres&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;conn_str&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dbname=ais&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;station_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;static&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">            </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"postgres"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"conn_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dbname=ais"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"station_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"static"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;csv&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;conn_str&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/var/log/ais&quot;</span>
+<span class="w">            </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"csv"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"conn_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/var/log/ais"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
@@ -4766,13 +4766,13 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;udp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"udp"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.1.235&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4002</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;allow_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1,2,3,5,18,19,24&quot;</span>
+<span class="w">            </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"host"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.1.235"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">4002</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"filter"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"allow_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1,2,3,5,18,19,24"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
@@ -4783,12 +4783,12 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;tcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"tcp"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5.9.207.224&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;keep_alive&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">            </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"host"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.9.207.224"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"keep_alive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
@@ -4799,10 +4799,10 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;tcp_listener&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"tcp_listener"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5012</span>
+<span class="w">            </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">5012</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
@@ -4813,12 +4813,12 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;http&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"http"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://example.com/ais&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;interval&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;response&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;json&quot;</span>
+<span class="w">            </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/ais"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"json"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
@@ -4829,14 +4829,14 @@ This loads and applies the settings from the JSON file.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;mqtt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"mqtt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mqtt.example.com&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1883</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ais/messages&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pass&quot;</span>
+<span class="w">            </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"host"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mqtt.example.com"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">1883</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ais/messages"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pass"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>

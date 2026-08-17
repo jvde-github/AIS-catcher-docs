@@ -3608,26 +3608,26 @@ cat<span class="w"> </span>&gt;<span class="w"> </span>docker-compose.yml
 <details>
   <summary>&lt;&dash;&dash; Click the arrow to see the <code>docker-compose.yml</code> text</summary>
 
-<div class="language-yaml highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.9&#39;</span>
+<div class="language-yaml highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">'3.9'</span>
 
 <span class="nt">volumes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">grafana</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
 <span class="w">    </span><span class="nt">driver_opts</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
-<span class="w">      </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/opt/grafana/grafana/appdata&quot;</span>
+<span class="w">      </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="s">"/opt/grafana/grafana/appdata"</span>
 <span class="w">      </span><span class="nt">o</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bind</span>
 <span class="w">  </span><span class="nt">prom-config</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
 <span class="w">    </span><span class="nt">driver_opts</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
-<span class="w">      </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/opt/grafana/prometheus/config&quot;</span>
+<span class="w">      </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="s">"/opt/grafana/prometheus/config"</span>
 <span class="w">      </span><span class="nt">o</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bind</span>
 <span class="w">  </span><span class="nt">prom-data</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
 <span class="w">    </span><span class="nt">driver_opts</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
-<span class="w">      </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/opt/grafana/prometheus/data&quot;</span>
+<span class="w">      </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="s">"/opt/grafana/prometheus/data"</span>
 <span class="w">      </span><span class="nt">o</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bind</span>
 
 <span class="nt">services</span><span class="p">:</span>
@@ -3677,7 +3677,7 @@ cat<span class="w"> </span>&gt;<span class="w"> </span>docker-compose.yml
 </ul>
 <h2 id="step-3-configuring-prometheus">Step 3: Configuring Prometheus<a class="headerlink" href="#step-3-configuring-prometheus" title="Permanent link">&para;</a></h2>
 <p>Prometheus needs to be told where to look for the data from AIS-catcher. We will create a target prometheus configuration file that does this, please copy and paste the following. Make sure to replace <code>ip_of_AIS-catcher_machine:8100</code> with the IP address or hostname of the machine and the web port where <code>AIS-catcher</code> is running:</p>
-<div class="language-bash highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>prometheus<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;echo -e \&quot;  - job_name: &#39;ais&#39;\n    static_configs:\n      - targets: [&#39;ip_of_AIS-catcher_machine:8100&#39;]\&quot; &gt;&gt; /etc/prometheus/prometheus.yml&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>prometheus<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">"echo -e \"  - job_name: 'ais'\n    static_configs:\n      - targets: ['ip_of_AIS-catcher_machine:8100']\" &gt;&gt; /etc/prometheus/prometheus.yml"</span>
 docker<span class="w"> </span>restart<span class="w"> </span>prometheus
 </code></pre></div>
 <p>(If you screw this up, <strong>do NOT</strong> re-run the command. Instead, try <code>sudo nano /opt/grafana/prometheus/config/prometheus.yml</code> and fix it that way.)</p>

@@ -3696,10 +3696,10 @@ AIS-catcher<span class="w"> </span>-Q<span class="w"> </span>mqtt://localhost:18
 - <code>ais/123456789/data</code></p>
 <p>This allows MQTT clients to subscribe to specific vessels:
 <div class="language-bash highlight"><pre><span></span><code><span class="c1"># Subscribe to specific vessel</span>
-mosquitto_sub<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-t<span class="w"> </span><span class="s2">&quot;ais/367191000/data&quot;</span>
+mosquitto_sub<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-t<span class="w"> </span><span class="s2">"ais/367191000/data"</span>
 
 <span class="c1"># Subscribe to all vessels using wildcards</span>
-mosquitto_sub<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-t<span class="w"> </span><span class="s2">&quot;ais/+/data&quot;</span>
+mosquitto_sub<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-t<span class="w"> </span><span class="s2">"ais/+/data"</span>
 </code></pre></div></p>
 <h3 id="benefits">Benefits<a class="headerlink" href="#benefits" title="Permanent link">&para;</a></h3>
 <ul>

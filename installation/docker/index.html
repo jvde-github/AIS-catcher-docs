@@ -3542,7 +3542,7 @@ With Docker installed:</p>
 </div>
 <div class="step">
 <p><strong>Run it in managed mode</strong></p>
-<div class="language-console highlight"><pre><span></span><code><span class="go">docker run --rm -it --network=host --device-cgroup-rule=&#39;c 189:* rmw&#39; -v /dev/bus/usb:/dev/bus/usb -v ais-config:/config ghcr.io/jvde-github/ais-catcher:edge -E /config/config.json 127.0.0.1:8118</span>
+<div class="language-console highlight"><pre><span></span><code><span class="go">docker run --rm -it --network=host --device-cgroup-rule='c 189:* rmw' -v /dev/bus/usb:/dev/bus/usb -v ais-config:/config ghcr.io/jvde-github/ais-catcher:edge -E /config/config.json 127.0.0.1:8118</span>
 </code></pre></div>
 <p>A quick tour of the options:</p>
 <ul>
