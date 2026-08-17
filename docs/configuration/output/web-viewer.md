@@ -130,6 +130,20 @@ AIS-catcher -N 8100 prome on
 
 For more information on how to configure Prometheus and Grafana to get an initial dashboard, see [README-grafana.md](../../advanced/grafana.md).
 
+## Multiple receivers in one viewer
+
+When a viewer receives from more than one receiver, it keeps a combined view called **All** plus a separate view per receiver, and a **Select Receiver** button appears in the header to switch between them.
+
+Set `split off` to keep only the combined view:
+
+```bash
+AIS-catcher -N 8100 split off
+```
+
+The per-receiver views are then never created. The **Select Receiver** button disappears, and requests such as `/api/stat.json?receiver=2` return the combined data. This is useful for a public viewer where visitors should see the overall picture rather than the individual receivers, and it also lowers memory use, since each per-receiver view keeps its own vessel database and track history.
+
+To restrict a viewer to a subset of receivers instead of combining all of them, use `zone` or `groups_in`. A viewer that ends up with a single receiver has no **Select Receiver** button either.
+
 ## Cross-origin access (CORS)
 
 The data endpoints intended for external consumers send an `Access-Control-Allow-Origin: *` header so that browser-based dashboards and other web pages can fetch them directly without a proxy. The HTML pages and other resources served by the web viewer are deliberately *not* CORS-exposed.
@@ -167,6 +181,7 @@ Server Options:
 | <span class="cmd-setting">frame_ancestors</span> | string | <span class="cmd-value">-</span> | CSP `frame-ancestors` value; set to allow embedding the viewer in an `<iframe>` |
 | <span class="cmd-setting">groups_in</span> | integer | <span class="cmd-value">all</span> | Bitmask of input groups feeding the viewer |
 | <span class="cmd-setting">zone</span> | string | <span class="cmd-value">-</span> | Comma-separated zone tags routed to this viewer |
+| <span class="cmd-setting">split</span> | boolean | <span class="cmd-value">true</span> | Track each receiver separately next to the combined view; set to `off` for a combined view only |
 | | | | |
 | Location Settings | | | |
 | <span class="cmd-setting">lat</span> | float | <span class="cmd-value">-</span> | Station latitude |
