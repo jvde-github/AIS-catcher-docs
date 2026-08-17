@@ -32,6 +32,8 @@
 
 - **SDRplay RSPduo** — tuner selection (`TUNER A`/`B`) and slave mode, so AIS-catcher can run on one tuner while another application uses the other.
 - **SDRplay** — no longer crashes or aborts when the SDRplay API v3 service is not running, with more robust device open and antenna validation.
+- **SDRplay RSP1B and RSPdxR2** — now reported by name instead of as `UNKNOWN`.
+- **SDRplay on Windows** — pre-built Windows binaries with SDRplay support are no longer published, as the SDRplay API installer can no longer be downloaded from an automated build. [v0.70](installation/windows.md) is the last Windows release that includes them. SDRplay support is unchanged on Linux and macOS, and can still be built from source on Windows.
 
 ### NMEA 2000
 
