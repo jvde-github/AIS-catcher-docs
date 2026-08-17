@@ -2749,6 +2749,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#multiple-receivers-in-one-viewer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple receivers in one viewer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cross-origin-access-cors" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3644,6 +3655,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#multiple-receivers-in-one-viewer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple receivers in one viewer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cross-origin-access-cors" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3813,6 +3835,13 @@ or as an overlay
 <div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>prome<span class="w"> </span>on
 </code></pre></div>
 <p>For more information on how to configure Prometheus and Grafana to get an initial dashboard, see <a href="../../../advanced/grafana/">README-grafana.md</a>.</p>
+<h2 id="multiple-receivers-in-one-viewer">Multiple receivers in one viewer<a class="headerlink" href="#multiple-receivers-in-one-viewer" title="Permanent link">&para;</a></h2>
+<p>When a viewer receives from more than one receiver, it keeps a combined view called <strong>All</strong> plus a separate view per receiver, and a <strong>Select Receiver</strong> button appears in the header to switch between them.</p>
+<p>Set <code>split off</code> to keep only the combined view:</p>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>split<span class="w"> </span>off
+</code></pre></div>
+<p>The per-receiver views are then never created. The <strong>Select Receiver</strong> button disappears, and requests such as <code>/api/stat.json?receiver=2</code> return the combined data. This is useful for a public viewer where visitors should see the overall picture rather than the individual receivers, and it also lowers memory use, since each per-receiver view keeps its own vessel database and track history.</p>
+<p>To restrict a viewer to a subset of receivers instead of combining all of them, use <code>zone</code> or <code>groups_in</code>. A viewer that ends up with a single receiver has no <strong>Select Receiver</strong> button either.</p>
 <h2 id="cross-origin-access-cors">Cross-origin access (CORS)<a class="headerlink" href="#cross-origin-access-cors" title="Permanent link">&para;</a></h2>
 <p>The data endpoints intended for external consumers send an <code>Access-Control-Allow-Origin: *</code> header so that browser-based dashboards and other web pages can fetch them directly without a proxy. The HTML pages and other resources served by the web viewer are deliberately <em>not</em> CORS-exposed.</p>
 <p>CORS is enabled on:</p>
@@ -3907,6 +3936,12 @@ or as an overlay
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Comma-separated zone tags routed to this viewer</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">split</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">true</span></td>
+<td>Track each receiver separately next to the combined view; set to <code>off</code> for a combined view only</td>
 </tr>
 <tr>
 <td></td>
