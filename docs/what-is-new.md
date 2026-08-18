@@ -30,6 +30,7 @@
 - **Refreshed interface** — tighter tables, a modern search bar, a redesigned column toolbar on the Ships tab, and smaller map count/measure icons for a cleaner map.
 - **Redesigned ship card** — now split into collapsible sections, with charts of recent speed and reported draught, a scale drawing of the hull marking where the AIS antenna sits, and a timeline of changes to draught, status, name, callsign, destination and ETA (also on `api/changes.json`).
 - **Tracks coloured by speed** — under **Settings → Line Colors**, colour tracks by speed instead of ship type, with six palettes and an adjustable scale maximum.
+- **Vessel filter** — narrow the map, the ships table and replay to the vessels you care about: by sender (class A/B, AtoN, base station, SART, aircraft), reported type, speed, distance, navigation status, age of the last message, validation state and whether a repeater passed the message on. Groups can be switched straight from the counters card, which greys out what it is holding back and keeps showing how many vessels that is; everything else lives under **Settings → Filter**, reachable from the funnel on the map and next to **Columns** on the Ships tab.
 
 ### Devices
 
