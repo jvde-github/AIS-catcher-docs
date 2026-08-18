@@ -6,6 +6,7 @@
 
 - **Play back vessel movements** — the web viewer gained a replay bar: replay received traffic on the map, scrub the timeline, and vary playback speed from 10× up to 3600×. On by default.
 - **Two settings control the history** — `track_time` sets how many seconds of tracks and replay the server serves (default 3600, 0 for no limit), and `track_memory` sets the memory budget in KB that stores them: full detail for roughly the last hour, thinned history beyond it. Both are also in the control panel's Viewer settings.
+- **Vessel shapes during replay** — vessels that report their dimensions are drawn as hulls turned to their heading, and keep their marker when too small to make out. Track points now also store course, heading and speed.
 
 ### Built-in control panel
 
@@ -27,6 +28,8 @@
 ### Web viewer
 
 - **Refreshed interface** — tighter tables, a modern search bar, a redesigned column toolbar on the Ships tab, and smaller map count/measure icons for a cleaner map.
+- **Redesigned ship card** — now split into collapsible sections, with charts of recent speed and reported draught, a scale drawing of the hull marking where the AIS antenna sits, and a timeline of changes to draught, status, name, callsign, destination and ETA (also on `api/changes.json`).
+- **Tracks coloured by speed** — under **Settings → Line Colors**, colour tracks by speed instead of ship type, with six palettes and an adjustable scale maximum.
 
 ### Devices
 
