@@ -1913,6 +1913,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#secure-websocket-and-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secure WebSocket and authentication
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3447,6 +3458,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#secure-websocket-and-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secure WebSocket and authentication
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3542,6 +3564,12 @@
 <td style="text-align: left;">RTL-TCP server (raw I/Q)</td>
 </tr>
 <tr>
+<td style="text-align: left;"><code>wss</code></td>
+<td style="text-align: left;">WebSocket over TLS</td>
+<td></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
 <td style="text-align: left;"><code>basestation</code></td>
 <td style="text-align: left;">BaseStation (ADS-B SBS-1)</td>
 <td><code>beast</code></td>
@@ -3556,6 +3584,14 @@
 </tbody>
 </table>
 <p>Use the appropriate protocol based on your server's configuration and data format. </p>
+<h3 id="secure-websocket-and-authentication">Secure WebSocket and authentication<a class="headerlink" href="#secure-websocket-and-authentication" title="Permanent link">&para;</a></h3>
+<p><code>wss://</code> connects over TLS (port 443 unless given) and sends the URL's path and query with the handshake, so services that select a feed by URL parameters work directly. Credentials in the URL become an <code>Authorization</code> header: <code>user:password@</code> sends HTTP Basic, a bare <code>token@</code> sends <code>Bearer</code>. For example, to read the NMEA stream of <a href="https://openwaters.io/ais/">Open Waters</a> for a bounding box with a personal token:
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-t<span class="w"> </span><span class="s2">"wss://&lt;token&gt;@ais.openwaters.io/v1/nmea?bbox=59.75,29.4,60.15,30.4"</span>
+</code></pre></div>
+The same can be given as settings instead of a URL — <code>username</code> alone sends a Bearer token, <code>username</code> with <code>password</code> sends Basic:
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-t<span class="w"> </span>ais.openwaters.io<span class="w"> </span><span class="m">443</span><span class="w"> </span>protocol<span class="w"> </span>wss<span class="w"> </span>username<span class="w"> </span>&lt;token&gt;
+</code></pre></div>
+Each sentence's NMEA 4.10 TAG block (<code>s:</code> station, <code>c:</code> time) is parsed as usual, so the source's time arrives in <code>toa</code>. For a <code>wss://</code> endpoint with a self-signed certificate add <code>ssl_verify off</code>. Credentials are never written to the log.</p>
 <h3 id="summary-settings">Summary Settings<a class="headerlink" href="#summary-settings" title="Permanent link">&para;</a></h3>
 <div class="input-table">
 <table>
@@ -3614,13 +3650,19 @@
 <td><span class="cmd-setting">protocol</span></td>
 <td>string</td>
 <td><span class="cmd-value">rtltcp</span></td>
-<td>Protocol (rtltcp/txt/mqtt/wsmqtt/ws/gpsd/basestation/beast/raw1090)</td>
+<td>Protocol (rtltcp/txt/mqtt/wsmqtt/ws/wss/gpsd/basestation/beast/raw1090)</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">url</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
-<td>Complete URL including protocol and credentials</td>
+<td>Complete URL: protocol, optional <code>user:password@</code> or <code>token@</code>, host, port, path and query</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">ssl_verify</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">true</span></td>
+<td>Verify the TLS certificate on <code>wss://</code></td>
 </tr>
 <tr>
 <td></td>
@@ -3687,6 +3729,18 @@
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Origin header for WebSocket</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">username</span></td>
+<td>string</td>
+<td><span class="cmd-value">-</span></td>
+<td>With <code>ws</code>/<code>wss</code>: sent as <code>Authorization: Bearer</code> when no password is set</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">password</span></td>
+<td>string</td>
+<td><span class="cmd-value">-</span></td>
+<td>With <code>ws</code>/<code>wss</code>: <code>username:password</code> sent as HTTP Basic</td>
 </tr>
 <tr>
 <td></td>

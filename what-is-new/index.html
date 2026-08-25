@@ -752,6 +752,39 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#http-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP output
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#community-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Community sharing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#devices" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -907,7 +940,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#input" class="md-nav__link">
+  <a href="#input_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Input
@@ -4231,6 +4264,39 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#http-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP output
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#community-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Community sharing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#devices" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4386,7 +4452,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#input" class="md-nav__link">
+  <a href="#input_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Input
@@ -4951,6 +5017,19 @@
 <li><strong>Redesigned ship card</strong> — now split into collapsible sections, with charts of recent speed and reported draught, a scale drawing of the hull marking where the AIS antenna sits, and a timeline of changes to draught, status, name, callsign, destination and ETA (also on <code>api/changes.json</code>).</li>
 <li><strong>Tracks coloured by speed</strong> — under <strong>Settings → Line Colors</strong>, colour tracks by speed instead of ship type, with six palettes and an adjustable scale maximum.</li>
 <li><strong>Vessel filter</strong> — narrow the map, the ships table and replay to the vessels you care about: by sender (class A/B, AtoN, base station, SART, aircraft), reported type, speed, distance, navigation status, age of the last message, validation state and whether a repeater passed the message on. Groups can be switched straight from the counters card, which greys out what it is holding back and keeps showing how many vessels that is; everything else lives under <strong>Settings → Filter</strong>, reachable from the funnel on the map and next to <strong>Columns</strong> on the Ships tab.</li>
+<li><strong>Vessel type filter covers every class</strong> — Class B / pleasure craft got their own entry and "Other / not reported" catches everything without one (aircraft, base stations, AtoN, SART), so selecting Cargo alone hides everything else.</li>
+</ul>
+<h3 id="http-output">HTTP output<a class="headerlink" href="#http-output" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Credentials in the URL</strong> — <code>-H https://user:password@host/</code> sends HTTP Basic and <code>-H https://&lt;token&gt;@host/</code> sends a Bearer token, alongside the existing <code>userpwd</code> setting. Credentials are kept out of the log and the posted metadata.</li>
+</ul>
+<h3 id="community-sharing">Community sharing<a class="headerlink" href="#community-sharing" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Sharing is opt-in</strong> — saying nothing on <code>-X</code> no longer enables the community feed; a hint in the log encourages <code>-X on</code> when there is something to share. Managed mode is unchanged: the config file created by the control panel enables sharing.</li>
+</ul>
+<h3 id="input">Input<a class="headerlink" href="#input" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Secure WebSocket input</strong> — <code>-t wss://host/path</code> reads NMEA over WebSocket with TLS (port 443 by default), passing the URL's path and query to the server. Credentials in the URL become an <code>Authorization</code> header — <code>user:password@</code> for Basic, a bare <code>token@</code> for Bearer — or use the <code>username</code>/<code>password</code> settings; <code>ssl_verify off</code> accepts self-signed certificates. Reads the <a href="https://openwaters.io/ais/">Open Waters</a> NMEA stream directly. See <a href="../configuration/input/tcp/">Input over TCP</a>.</li>
 </ul>
 <h3 id="devices">Devices<a class="headerlink" href="#devices" title="Permanent link">&para;</a></h3>
 <ul>
@@ -5026,7 +5105,7 @@
 <ul>
 <li><strong>Per-route CORS allow-origin</strong> flag, enabled by default on the <code>JSON</code>, <code>GeoJSON</code>, <code>KML</code>, and <code>metrics</code> endpoints so dashboards and external consumers can fetch directly from a browser. CSP also now allows <code>http</code>/<code>ws</code> schemes so LAN deployments work without a custom policy.</li>
 </ul>
-<h3 id="input">Input<a class="headerlink" href="#input" title="Permanent link">&para;</a></h3>
+<h3 id="input_1">Input<a class="headerlink" href="#input_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Lossless mode</strong> for file and TCP inputs. <code>-ga LOSSLESS on/off</code> (FileRAW) and <code>-gt LOSSLESS on/off</code> (RTLTCP) control whether the input blocks or drops samples on overflow. Defaults preserve current behaviour: file replay is lossless (block), live TCP is lossy (drop). The current setting is shown in <code>-v</code> output.</li>
 <li><strong>Simpler inline settings</strong> for input flags. <code>-t</code>, <code>-r</code>, <code>-x</code>, <code>-z</code>, <code>-i</code>, <code>-w</code>, and <code>-e</code> now accept trailing key/value pairs after their positional arguments, so you can write <code>-t HOST PORT lossless on</code> instead of having to repeat the device subletter via <code>-gt</code>.</li>

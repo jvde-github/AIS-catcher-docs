@@ -3523,6 +3523,10 @@ Where <code>secret-key</code> should be your password and <code>callsign</code> 
 <div class="language-console highlight"><pre><span></span><code><span class="go">AIS-catcher -H https://ais.chaos-consulting.de/shipin/index.php userpwd Station:Password gzip on interval 5</span>
 </code></pre></div>
 Notice that this server requires authentication with a station name and password and accepts JSON with gzip encoding which significantly reduces bandwidth. </p>
+<p>Credentials can also be part of the URL: <code>https://user:password@host/path</code> sends HTTP Basic (the same as <code>userpwd user:password</code>), and a bare token — <code>https://&lt;token&gt;@host/path</code> — sends an <code>Authorization: Bearer</code> header. URL credentials and the <code>userpwd</code> setting fill the same fields; whichever is given last wins. For example, feeding <a href="https://openwaters.io/ais/">Open Waters</a> with a personal token:
+<div class="language-console highlight"><pre><span></span><code><span class="go">AIS-catcher -H https://&lt;token&gt;@ais.openwaters.io/v1/receive gzip on interval 15</span>
+</code></pre></div>
+Credentials never appear in the log or in the posted metadata; only the URL without them does.</p>
 <p><strong>Important</strong>: to use and build AIS-catcher with HTTP support, please install the following libraries before running cmake:
 <div class="language-console highlight"><pre><span></span><code><span class="go">sudo apt install libssl-dev zlib1g-dev</span>
 </code></pre></div>
@@ -3543,13 +3547,13 @@ This step is only required if you want to ZIP content and post data to secure se
 <td><span class="cmd-setting">url</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
-<td>Target HTTP endpoint URL</td>
+<td>Target HTTP endpoint URL, optionally with <code>user:password@</code> (Basic) or <code>token@</code> (Bearer)</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">userpwd</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
-<td>Authentication credentials (<code>user:password</code>)</td>
+<td>Authentication credentials (<code>user:password</code>); the same fields a URL's <code>user:password@</code> fills</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">ssl_verify</span></td>
