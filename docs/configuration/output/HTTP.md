@@ -54,6 +54,12 @@ AIS-catcher -H https://ais.chaos-consulting.de/shipin/index.php userpwd Station:
 ```
 Notice that this server requires authentication with a station name and password and accepts JSON with gzip encoding which significantly reduces bandwidth. 
 
+Credentials can also be part of the URL: `https://user:password@host/path` sends HTTP Basic (the same as `userpwd user:password`), and a bare token — `https://<token>@host/path` — sends an `Authorization: Bearer` header. URL credentials and the `userpwd` setting fill the same fields; whichever is given last wins. For example, feeding [Open Waters](https://openwaters.io/ais/) with a personal token:
+```console
+AIS-catcher -H https://<token>@ais.openwaters.io/v1/receive gzip on interval 15
+```
+Credentials never appear in the log or in the posted metadata; only the URL without them does.
+
 **Important**: to use and build AIS-catcher with HTTP support, please install the following libraries before running cmake:
 ```console
 sudo apt install libssl-dev zlib1g-dev
@@ -66,8 +72,8 @@ The supported protocol switches are ``AISCATCHER`` (default), ``MINIMAL`` (NMEA 
 
 | Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
-| <span class="cmd-setting">url</span> | string | <span class="cmd-value">-</span> | Target HTTP endpoint URL |
-| <span class="cmd-setting">userpwd</span> | string | <span class="cmd-value">-</span> | Authentication credentials (`user:password`) |
+| <span class="cmd-setting">url</span> | string | <span class="cmd-value">-</span> | Target HTTP endpoint URL, optionally with `user:password@` (Basic) or `token@` (Bearer) |
+| <span class="cmd-setting">userpwd</span> | string | <span class="cmd-value">-</span> | Authentication credentials (`user:password`); the same fields a URL's `user:password@` fills |
 | <span class="cmd-setting">ssl_verify</span> | boolean | <span class="cmd-value">true</span> | Verify TLS certificates on `https://` endpoints |
 | <span class="cmd-setting">stationid</span> | string | <span class="cmd-value">-</span> | Station identifier (aliases: `id`, `callsign`) |
 | <span class="cmd-setting">interval</span> | integer | <span class="cmd-value">60</span> | Post interval in seconds (1-86400) |

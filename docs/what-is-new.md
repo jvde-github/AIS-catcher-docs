@@ -31,6 +31,19 @@
 - **Redesigned ship card** — now split into collapsible sections, with charts of recent speed and reported draught, a scale drawing of the hull marking where the AIS antenna sits, and a timeline of changes to draught, status, name, callsign, destination and ETA (also on `api/changes.json`).
 - **Tracks coloured by speed** — under **Settings → Line Colors**, colour tracks by speed instead of ship type, with six palettes and an adjustable scale maximum.
 - **Vessel filter** — narrow the map, the ships table and replay to the vessels you care about: by sender (class A/B, AtoN, base station, SART, aircraft), reported type, speed, distance, navigation status, age of the last message, validation state and whether a repeater passed the message on. Groups can be switched straight from the counters card, which greys out what it is holding back and keeps showing how many vessels that is; everything else lives under **Settings → Filter**, reachable from the funnel on the map and next to **Columns** on the Ships tab.
+- **Vessel type filter covers every class** — Class B / pleasure craft got their own entry and "Other / not reported" catches everything without one (aircraft, base stations, AtoN, SART), so selecting Cargo alone hides everything else.
+
+### HTTP output
+
+- **Credentials in the URL** — `-H https://user:password@host/` sends HTTP Basic and `-H https://<token>@host/` sends a Bearer token, alongside the existing `userpwd` setting. Credentials are kept out of the log and the posted metadata.
+
+### Community sharing
+
+- **Sharing is opt-in** — saying nothing on `-X` no longer enables the community feed; a hint in the log encourages `-X on` when there is something to share. Managed mode is unchanged: the config file created by the control panel enables sharing.
+
+### Input
+
+- **Secure WebSocket input** — `-t wss://host/path` reads NMEA over WebSocket with TLS (port 443 by default), passing the URL's path and query to the server. Credentials in the URL become an `Authorization` header — `user:password@` for Basic, a bare `token@` for Bearer — or use the `username`/`password` settings; `ssl_verify off` accepts self-signed certificates. Reads the [Open Waters](https://openwaters.io/ais/) NMEA stream directly. See [Input over TCP](configuration/input/tcp.md).
 
 ### Devices
 

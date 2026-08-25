@@ -42,10 +42,23 @@ Various protocols are supported as input. The table below lists the available pr
 | `txt`    | NMEA0183                                     | `mqtt`   | MQTT                                       |
 | `gpsd`   | GPSD server                                  | `wsmqtt` | MQTT over WebSocket                       |
 | `ws`     | Plain WebSocket                              | `rtltcp` | RTL-TCP server (raw I/Q)                    |
+| `wss`    | WebSocket over TLS                           |          |                                              |
 | `basestation` | BaseStation (ADS-B SBS-1)              | `beast` | Beast binary (ADS-B)                          |
 | `raw1090`| Raw 1090 MHz frames (ADS-B)                  |          |                                              |
 
 Use the appropriate protocol based on your server's configuration and data format. 
+
+### Secure WebSocket and authentication
+
+`wss://` connects over TLS (port 443 unless given) and sends the URL's path and query with the handshake, so services that select a feed by URL parameters work directly. Credentials in the URL become an `Authorization` header: `user:password@` sends HTTP Basic, a bare `token@` sends `Bearer`. For example, to read the NMEA stream of [Open Waters](https://openwaters.io/ais/) for a bounding box with a personal token:
+```bash
+AIS-catcher -t "wss://<token>@ais.openwaters.io/v1/nmea?bbox=59.75,29.4,60.15,30.4"
+```
+The same can be given as settings instead of a URL — `username` alone sends a Bearer token, `username` with `password` sends Basic:
+```bash
+AIS-catcher -t ais.openwaters.io 443 protocol wss username <token>
+```
+Each sentence's NMEA 4.10 TAG block (`s:` station, `c:` time) is parsed as usual, so the source's time arrives in `toa`. For a `wss://` endpoint with a self-signed certificate add `ssl_verify off`. Credentials are never written to the log.
 
 ### Summary Settings
 
@@ -59,8 +72,9 @@ Use the appropriate protocol based on your server's configuration and data forma
 | Specific Options | | | |
 | <span class="cmd-setting">host</span> | string | <span class="cmd-value">-</span> | Remote host address |
 | <span class="cmd-setting">port</span> | string | <span class="cmd-value">-</span> | Remote port number |
-| <span class="cmd-setting">protocol</span> | string | <span class="cmd-value">rtltcp</span> | Protocol (rtltcp/txt/mqtt/wsmqtt/ws/gpsd/basestation/beast/raw1090) |
-| <span class="cmd-setting">url</span> | string | <span class="cmd-value">-</span> | Complete URL including protocol and credentials |
+| <span class="cmd-setting">protocol</span> | string | <span class="cmd-value">rtltcp</span> | Protocol (rtltcp/txt/mqtt/wsmqtt/ws/wss/gpsd/basestation/beast/raw1090) |
+| <span class="cmd-setting">url</span> | string | <span class="cmd-value">-</span> | Complete URL: protocol, optional `user:password@` or `token@`, host, port, path and query |
+| <span class="cmd-setting">ssl_verify</span> | boolean | <span class="cmd-value">true</span> | Verify the TLS certificate on `wss://` |
 | | | | |
 | TCP Options | | | |
 | <span class="cmd-setting">persist</span> | boolean | <span class="cmd-value">true</span> | Keep reconnecting after errors |
@@ -72,6 +86,8 @@ Use the appropriate protocol based on your server's configuration and data forma
 | <span class="cmd-setting">protocols</span> | string | <span class="cmd-value">-</span> | WebSocket sub-protocols (forced to `mqtt` for `wsmqtt`) |
 | <span class="cmd-setting">binary</span> | boolean | <span class="cmd-value">off</span> | Enable binary WebSocket mode (forced on for `wsmqtt`) |
 | <span class="cmd-setting">origin</span> | string | <span class="cmd-value">-</span> | Origin header for WebSocket |
+| <span class="cmd-setting">username</span> | string | <span class="cmd-value">-</span> | With `ws`/`wss`: sent as `Authorization: Bearer` when no password is set |
+| <span class="cmd-setting">password</span> | string | <span class="cmd-value">-</span> | With `ws`/`wss`: `username:password` sent as HTTP Basic |
 | | | | |
 | MQTT Options | | | |
 | <span class="cmd-setting">topic</span> | string | <span class="cmd-value">ais/data</span> | MQTT topic |
