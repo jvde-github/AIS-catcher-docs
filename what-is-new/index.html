@@ -5010,6 +5010,7 @@
 <h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Fedora support</strong> — the install script now detects <code>dnf</code> alongside <code>apt</code>, so the same one-line command works on Fedora as well as on Debian, Ubuntu and Raspberry Pi OS. Pre-built RPMs are provided for Fedora 43 and 44 (<code>x86_64</code> and <code>aarch64</code>); other releases build from source.</li>
+<li><strong>Docker image on Debian trixie</strong> — the published image moved from Debian bookworm to trixie (Debian 13), matching the base image the feeder containers that build on top of it already use.</li>
 </ul>
 <h3 id="web-viewer">Web viewer<a class="headerlink" href="#web-viewer" title="Permanent link">&para;</a></h3>
 <ul>
@@ -5018,6 +5019,7 @@
 <li><strong>Tracks coloured by speed</strong> — under <strong>Settings → Line Colors</strong>, colour tracks by speed instead of ship type, with six palettes and an adjustable scale maximum.</li>
 <li><strong>Vessel filter</strong> — narrow the map, the ships table and replay to the vessels you care about: by sender (class A/B, AtoN, base station, SART, aircraft), reported type, speed, distance, navigation status, age of the last message, validation state and whether a repeater passed the message on. Groups can be switched straight from the counters card, which greys out what it is holding back and keeps showing how many vessels that is; everything else lives under <strong>Settings → Filter</strong>, reachable from the funnel on the map and next to <strong>Columns</strong> on the Ships tab.</li>
 <li><strong>Vessel type filter covers every class</strong> — Class B / pleasure craft got their own entry and "Other / not reported" catches everything without one (aircraft, base stations, AtoN, SART), so selecting Cargo alone hides everything else.</li>
+<li><strong>New map backgrounds</strong> — the CARTO backgrounds (Positron, Dark Matter, Voyager) now require an API key from CARTO and show an "API key required" watermark without one, so they are replaced by <a href="https://openfreemap.org">OpenFreeMap</a> vector maps: <strong>Positron</strong>, <strong>Bright</strong>, <strong>Liberty</strong> and <strong>Dark</strong>, with label-free versions of Positron and Dark. These need no key and no account, and are sharper at every zoom level. Anyone who prefers CARTO can get a free key at <a href="https://carto.com/basemaps/apikey">carto.com/basemaps/apikey</a> and paste it into the <code>carto_basemaps</code> plugin, which brings all six back.</li>
 </ul>
 <h3 id="http-output">HTTP output<a class="headerlink" href="#http-output" title="Permanent link">&para;</a></h3>
 <ul>
