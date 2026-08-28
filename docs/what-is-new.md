@@ -24,6 +24,7 @@
 ### Installation
 
 - **Fedora support** — the install script now detects `dnf` alongside `apt`, so the same one-line command works on Fedora as well as on Debian, Ubuntu and Raspberry Pi OS. Pre-built RPMs are provided for Fedora 43 and 44 (`x86_64` and `aarch64`); other releases build from source.
+- **Docker image on Debian trixie** — the published image moved from Debian bookworm to trixie (Debian 13), matching the base image the feeder containers that build on top of it already use.
 
 ### Web viewer
 
@@ -32,6 +33,7 @@
 - **Tracks coloured by speed** — under **Settings → Line Colors**, colour tracks by speed instead of ship type, with six palettes and an adjustable scale maximum.
 - **Vessel filter** — narrow the map, the ships table and replay to the vessels you care about: by sender (class A/B, AtoN, base station, SART, aircraft), reported type, speed, distance, navigation status, age of the last message, validation state and whether a repeater passed the message on. Groups can be switched straight from the counters card, which greys out what it is holding back and keeps showing how many vessels that is; everything else lives under **Settings → Filter**, reachable from the funnel on the map and next to **Columns** on the Ships tab.
 - **Vessel type filter covers every class** — Class B / pleasure craft got their own entry and "Other / not reported" catches everything without one (aircraft, base stations, AtoN, SART), so selecting Cargo alone hides everything else.
+- **New map backgrounds** — the CARTO backgrounds (Positron, Dark Matter, Voyager) now require an API key from CARTO and show an "API key required" watermark without one, so they are replaced by [OpenFreeMap](https://openfreemap.org) vector maps: **Positron**, **Bright**, **Liberty** and **Dark**, with label-free versions of Positron and Dark. These need no key and no account, and are sharper at every zoom level. Anyone who prefers CARTO can get a free key at [carto.com/basemaps/apikey](https://carto.com/basemaps/apikey) and paste it into the `carto_basemaps` plugin, which brings all six back.
 
 ### HTTP output
 
