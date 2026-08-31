@@ -29,7 +29,7 @@
     
     
       
-        <title>TCP - AIS-catcher Docs</title>
+        <title>TCP Client - AIS-catcher Docs</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#input-over-tcp" class="md-skip">
+        <a href="#input-as-tcp-client" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              TCP
+              TCP Client
             
           </span>
         </div>
@@ -1869,7 +1869,7 @@
   <span class="md-ellipsis">
     
   
-    TCP
+    TCP Client
   
 
     
@@ -1887,7 +1887,7 @@
   <span class="md-ellipsis">
     
   
-    TCP
+    TCP Client
   
 
     
@@ -3521,7 +3521,7 @@
   
 
 
-<h1 id="input-over-tcp">Input over TCP<a class="headerlink" href="#input-over-tcp" title="Permanent link">&para;</a></h1>
+<h1 id="input-as-tcp-client">Input as TCP client<a class="headerlink" href="#input-as-tcp-client" title="Permanent link">&para;</a></h1>
 <div class="command-container">
       <div class="command-syntax">
         <span class="cmd-name">AIS-catcher</span>
@@ -3553,7 +3553,7 @@
     </div>
 </div>
 
-<p>Input over TCP with various protocols can be done with <code>-t</code> followed by the URL of the server. As an example, to read raw NMEA from a TCP server we can use:
+<p>Input over TCP with various protocols can be done with <code>-t</code> followed by the URL of the server. AIS-catcher connects out to that server; to receive a feed that is pushed to you instead, see <a href="../udp/">Input as UDP server</a>. As an example, to read raw NMEA from a TCP server we can use:
 <div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-t<span class="w"> </span>txt://192.168.1.120:5011
 </code></pre></div></p>
 <p>Various protocols are supported as input. The table below lists the available protocols and their descriptions:</p>
