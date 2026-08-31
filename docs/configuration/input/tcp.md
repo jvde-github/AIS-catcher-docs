@@ -42,7 +42,7 @@ Various protocols are supported as input. The table below lists the available pr
 | `txt`    | NMEA0183                                     | `mqtt`   | MQTT                                       |
 | `gpsd`   | GPSD server                                  | `wsmqtt` | MQTT over WebSocket                       |
 | `ws`     | Plain WebSocket                              | `rtltcp` | RTL-TCP server (raw I/Q)                    |
-| `wss`    | WebSocket over TLS                           |          |                                              |
+| `wss`    | WebSocket over TLS                           | `none`   | Raw sample stream, no protocol layer          |
 | `basestation` | BaseStation (ADS-B SBS-1)              | `beast` | Beast binary (ADS-B)                          |
 | `raw1090`| Raw 1090 MHz frames (ADS-B)                  |          |                                              |
 
@@ -60,6 +60,27 @@ AIS-catcher -t ais.openwaters.io 443 protocol wss username <token>
 ```
 Each sentence's NMEA 4.10 TAG block (`s:` station, `c:` time) is parsed as usual, so the source's time arrives in `toa`. For a `wss://` endpoint with a self-signed certificate add `ssl_verify off`. Credentials are never written to the log.
 
+### Raw sample streams without a protocol
+
+Some servers simply pipe raw I/Q samples down a socket, with no handshake and no framing. Select `none` — the connection is then a plain socket — and state the sample format and rate yourself:
+```bash
+AIS-catcher -t none 192.168.1.20 1234 format cs16 -s 1536K
+```
+
+With the default protocol (`rtltcp`) AIS-catcher performs the rtl_tcp handshake instead: it sends tuner commands and expects a 12-byte `RTL0` header in return. A raw stream provides neither, so the connection is closed with `RTLTCP: no or invalid response, likely not an rtl-tcp server.`
+
+Two things to keep in mind:
+
+- **Give `format` after `protocol`.** Selecting a protocol also sets the format that protocol implies — `none` implies NMEA text — so `-t 192.168.1.20 1234 protocol none format cs16` is right and the reverse order silently leaves the text parser in place.
+- **The sample rate is not part of the stream.** Set it with `-s` to whatever the server sends; the device default is 288K.
+
+A URL takes no settings after it (`-t` reads a lone argument as the URL), so pass them with `-gt`:
+```bash
+AIS-catcher -t none://192.168.1.20:1234 -gt format cs16 -s 1536K
+```
+
+Note the difference with file input, where the format is a positional argument: `AIS-catcher -r CS16 file.raw`.
+
 ### Summary Settings
 
 <div class="input-table" markdown>
@@ -72,8 +93,9 @@ Each sentence's NMEA 4.10 TAG block (`s:` station, `c:` time) is parsed as usual
 | Specific Options | | | |
 | <span class="cmd-setting">host</span> | string | <span class="cmd-value">-</span> | Remote host address |
 | <span class="cmd-setting">port</span> | string | <span class="cmd-value">-</span> | Remote port number |
-| <span class="cmd-setting">protocol</span> | string | <span class="cmd-value">rtltcp</span> | Protocol (rtltcp/txt/mqtt/wsmqtt/ws/wss/gpsd/basestation/beast/raw1090) |
+| <span class="cmd-setting">protocol</span> | string | <span class="cmd-value">rtltcp</span> | Protocol (rtltcp/txt/mqtt/wsmqtt/ws/wss/gpsd/basestation/beast/raw1090/none) |
 | <span class="cmd-setting">url</span> | string | <span class="cmd-value">-</span> | Complete URL: protocol, optional `user:password@` or `token@`, host, port, path and query |
+| <span class="cmd-setting">format</span> | string | <span class="cmd-value">CU8</span> | Format of the incoming data: `CU8`, `CS8`, `CS16` or `CF32` for raw I/Q, or `TXT`, `BASESTATION`, `BEAST`, `RAW1090`. Implied by `protocol`, so set it after that setting — see [Raw sample streams without a protocol](#raw-sample-streams-without-a-protocol) |
 | <span class="cmd-setting">ssl_verify</span> | boolean | <span class="cmd-value">true</span> | Verify the TLS certificate on `wss://` |
 | | | | |
 | TCP Options | | | |
