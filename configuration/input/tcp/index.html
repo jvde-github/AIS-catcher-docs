@@ -1924,6 +1924,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#raw-sample-streams-without-a-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Raw sample streams without a protocol
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3469,6 +3480,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#raw-sample-streams-without-a-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Raw sample streams without a protocol
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3566,8 +3588,8 @@
 <tr>
 <td style="text-align: left;"><code>wss</code></td>
 <td style="text-align: left;">WebSocket over TLS</td>
-<td></td>
-<td style="text-align: left;"></td>
+<td><code>none</code></td>
+<td style="text-align: left;">Raw sample stream, no protocol layer</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>basestation</code></td>
@@ -3592,6 +3614,20 @@ The same can be given as settings instead of a URL — <code>username</code> alo
 <div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-t<span class="w"> </span>ais.openwaters.io<span class="w"> </span><span class="m">443</span><span class="w"> </span>protocol<span class="w"> </span>wss<span class="w"> </span>username<span class="w"> </span>&lt;token&gt;
 </code></pre></div>
 Each sentence's NMEA 4.10 TAG block (<code>s:</code> station, <code>c:</code> time) is parsed as usual, so the source's time arrives in <code>toa</code>. For a <code>wss://</code> endpoint with a self-signed certificate add <code>ssl_verify off</code>. Credentials are never written to the log.</p>
+<h3 id="raw-sample-streams-without-a-protocol">Raw sample streams without a protocol<a class="headerlink" href="#raw-sample-streams-without-a-protocol" title="Permanent link">&para;</a></h3>
+<p>Some servers simply pipe raw I/Q samples down a socket, with no handshake and no framing. Select <code>none</code> — the connection is then a plain socket — and state the sample format and rate yourself:
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-t<span class="w"> </span>none<span class="w"> </span><span class="m">192</span>.168.1.20<span class="w"> </span><span class="m">1234</span><span class="w"> </span>format<span class="w"> </span>cs16<span class="w"> </span>-s<span class="w"> </span>1536K
+</code></pre></div></p>
+<p>With the default protocol (<code>rtltcp</code>) AIS-catcher performs the rtl_tcp handshake instead: it sends tuner commands and expects a 12-byte <code>RTL0</code> header in return. A raw stream provides neither, so the connection is closed with <code>RTLTCP: no or invalid response, likely not an rtl-tcp server.</code></p>
+<p>Two things to keep in mind:</p>
+<ul>
+<li><strong>Give <code>format</code> after <code>protocol</code>.</strong> Selecting a protocol also sets the format that protocol implies — <code>none</code> implies NMEA text — so <code>-t 192.168.1.20 1234 protocol none format cs16</code> is right and the reverse order silently leaves the text parser in place.</li>
+<li><strong>The sample rate is not part of the stream.</strong> Set it with <code>-s</code> to whatever the server sends; the device default is 288K.</li>
+</ul>
+<p>A URL takes no settings after it (<code>-t</code> reads a lone argument as the URL), so pass them with <code>-gt</code>:
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-t<span class="w"> </span>none://192.168.1.20:1234<span class="w"> </span>-gt<span class="w"> </span>format<span class="w"> </span>cs16<span class="w"> </span>-s<span class="w"> </span>1536K
+</code></pre></div></p>
+<p>Note the difference with file input, where the format is a positional argument: <code>AIS-catcher -r CS16 file.raw</code>.</p>
 <h3 id="summary-settings">Summary Settings<a class="headerlink" href="#summary-settings" title="Permanent link">&para;</a></h3>
 <div class="input-table">
 <table>
@@ -3650,13 +3686,19 @@ Each sentence's NMEA 4.10 TAG block (<code>s:</code> station, <code>c:</code> ti
 <td><span class="cmd-setting">protocol</span></td>
 <td>string</td>
 <td><span class="cmd-value">rtltcp</span></td>
-<td>Protocol (rtltcp/txt/mqtt/wsmqtt/ws/wss/gpsd/basestation/beast/raw1090)</td>
+<td>Protocol (rtltcp/txt/mqtt/wsmqtt/ws/wss/gpsd/basestation/beast/raw1090/none)</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">url</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Complete URL: protocol, optional <code>user:password@</code> or <code>token@</code>, host, port, path and query</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">format</span></td>
+<td>string</td>
+<td><span class="cmd-value">CU8</span></td>
+<td>Format of the incoming data: <code>CU8</code>, <code>CS8</code>, <code>CS16</code> or <code>CF32</code> for raw I/Q, or <code>TXT</code>, <code>BASESTATION</code>, <code>BEAST</code>, <code>RAW1090</code>. Implied by <code>protocol</code>, so set it after that setting — see <a href="#raw-sample-streams-without-a-protocol">Raw sample streams without a protocol</a></td>
 </tr>
 <tr>
 <td><span class="cmd-setting">ssl_verify</span></td>
