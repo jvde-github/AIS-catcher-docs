@@ -1,4 +1,4 @@
-# Input over TCP
+# Input as TCP client
 <div class="command-container">
       <div class="command-syntax">
         <span class="cmd-name">AIS-catcher</span>
@@ -30,7 +30,7 @@
     </div>
 </div>
 
-Input over TCP with various protocols can be done with `-t` followed by the URL of the server. As an example, to read raw NMEA from a TCP server we can use:
+Input over TCP with various protocols can be done with `-t` followed by the URL of the server. AIS-catcher connects out to that server; to receive a feed that is pushed to you instead, see [Input as UDP server](udp.md). As an example, to read raw NMEA from a TCP server we can use:
 ```bash
 AIS-catcher -t txt://192.168.1.120:5011
 ```

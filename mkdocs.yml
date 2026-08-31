@@ -97,7 +97,7 @@ nav:
               - SDRPlay: configuration/input/sdrplay.md
               - SoapySDR: configuration/input/soapysdr.md
             - Network Input:
-              - TCP: configuration/input/tcp.md
+              - TCP Client: configuration/input/tcp.md
               - UDP: configuration/input/udp.md
               - SpyServer: configuration/input/spyserver.md
             - File Input:
