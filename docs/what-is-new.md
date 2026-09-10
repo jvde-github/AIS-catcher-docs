@@ -35,6 +35,13 @@
 - **Vessel type filter covers every class** — Class B / pleasure craft got their own entry and "Other / not reported" catches everything without one (aircraft, base stations, AtoN, SART), so selecting Cargo alone hides everything else.
 - **New map backgrounds** — the CARTO backgrounds (Positron, Dark Matter, Voyager) now require an API key from CARTO and show an "API key required" watermark without one, so they are replaced by [OpenFreeMap](https://openfreemap.org) vector maps: **Positron**, **Bright**, **Liberty** and **Dark**, with label-free versions of Positron and Dark. These need no key and no account, and are sharper at every zoom level. Anyone who prefers CARTO can get a free key at [carto.com/basemaps/apikey](https://carto.com/basemaps/apikey) and paste it into the `carto_basemaps` plugin, which brings all six back.
 
+- **Region** — the sea, gulf, strait or lake a ship is in now comes from a polygon table instead of a grid.
+
+### Places
+
+- **Editable place catalogue** — ports, berths, anchorages and custom geographic features now live in an editable catalogue instead of a static, built-in port table. A new **Places** tab in the control panel lets you draw and reshape points and polygons, search, and import/export individual features. Point the server at a catalogue directory with `control.viewer.places` or the standalone viewer setting `-N 8100 PLACES /path/to/places`; managed installs create one automatically. Ports carry a UN/LOCODE and a size class (small/medium/large) that scales their map marker; berths and anchorages link to a port, and everything else is a custom place with its own category and map glyph.
+- **Visits, not just current location** — a ship's stay in a place, current or past, is tracked as a visit and shown in a new **Visits** section of its history. Clicking a place marker on the map opens a dialog listing ships **Inside**, recently **Arrived**/**Left**, past **Visits**, and — for ports — **Expected**, based on matched destination.
+
 ### HTTP output
 
 - **Credentials in the URL** — `-H https://user:password@host/` sends HTTP Basic and `-H https://<token>@host/` sends a Bearer token, alongside the existing `userpwd` setting. Credentials are kept out of the log and the posted metadata.
