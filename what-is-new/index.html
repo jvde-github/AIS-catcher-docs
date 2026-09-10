@@ -752,6 +752,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#places" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Places
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#http-output" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4264,6 +4275,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#places" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Places
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#http-output" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5019,7 +5041,17 @@
 <li><strong>Tracks coloured by speed</strong> — under <strong>Settings → Line Colors</strong>, colour tracks by speed instead of ship type, with six palettes and an adjustable scale maximum.</li>
 <li><strong>Vessel filter</strong> — narrow the map, the ships table and replay to the vessels you care about: by sender (class A/B, AtoN, base station, SART, aircraft), reported type, speed, distance, navigation status, age of the last message, validation state and whether a repeater passed the message on. Groups can be switched straight from the counters card, which greys out what it is holding back and keeps showing how many vessels that is; everything else lives under <strong>Settings → Filter</strong>, reachable from the funnel on the map and next to <strong>Columns</strong> on the Ships tab.</li>
 <li><strong>Vessel type filter covers every class</strong> — Class B / pleasure craft got their own entry and "Other / not reported" catches everything without one (aircraft, base stations, AtoN, SART), so selecting Cargo alone hides everything else.</li>
-<li><strong>New map backgrounds</strong> — the CARTO backgrounds (Positron, Dark Matter, Voyager) now require an API key from CARTO and show an "API key required" watermark without one, so they are replaced by <a href="https://openfreemap.org">OpenFreeMap</a> vector maps: <strong>Positron</strong>, <strong>Bright</strong>, <strong>Liberty</strong> and <strong>Dark</strong>, with label-free versions of Positron and Dark. These need no key and no account, and are sharper at every zoom level. Anyone who prefers CARTO can get a free key at <a href="https://carto.com/basemaps/apikey">carto.com/basemaps/apikey</a> and paste it into the <code>carto_basemaps</code> plugin, which brings all six back.</li>
+<li>
+<p><strong>New map backgrounds</strong> — the CARTO backgrounds (Positron, Dark Matter, Voyager) now require an API key from CARTO and show an "API key required" watermark without one, so they are replaced by <a href="https://openfreemap.org">OpenFreeMap</a> vector maps: <strong>Positron</strong>, <strong>Bright</strong>, <strong>Liberty</strong> and <strong>Dark</strong>, with label-free versions of Positron and Dark. These need no key and no account, and are sharper at every zoom level. Anyone who prefers CARTO can get a free key at <a href="https://carto.com/basemaps/apikey">carto.com/basemaps/apikey</a> and paste it into the <code>carto_basemaps</code> plugin, which brings all six back.</p>
+</li>
+<li>
+<p><strong>Region</strong> — the sea, gulf, strait or lake a ship is in now comes from a polygon table instead of a grid.</p>
+</li>
+</ul>
+<h3 id="places">Places<a class="headerlink" href="#places" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Editable place catalogue</strong> — ports, berths, anchorages and custom geographic features now live in an editable catalogue instead of a static, built-in port table. A new <strong>Places</strong> tab in the control panel lets you draw and reshape points and polygons, search, and import/export individual features. Point the server at a catalogue directory with <code>control.viewer.places</code> or the standalone viewer setting <code>-N 8100 PLACES /path/to/places</code>; managed installs create one automatically. Ports carry a UN/LOCODE and a size class (small/medium/large) that scales their map marker; berths and anchorages link to a port, and everything else is a custom place with its own category and map glyph.</li>
+<li><strong>Visits, not just current location</strong> — a ship's stay in a place, current or past, is tracked as a visit and shown in a new <strong>Visits</strong> section of its history. Clicking a place marker on the map opens a dialog listing ships <strong>Inside</strong>, recently <strong>Arrived</strong>/<strong>Left</strong>, past <strong>Visits</strong>, and — for ports — <strong>Expected</strong>, based on matched destination.</li>
 </ul>
 <h3 id="http-output">HTTP output<a class="headerlink" href="#http-output" title="Permanent link">&para;</a></h3>
 <ul>
