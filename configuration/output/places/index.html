@@ -12,31 +12,31 @@
         <meta name="author" content="jvde.github@gmail.com">
       
       
-        <link rel="canonical" href="https://aiscatcher.org/docs/advanced/Low-spec-devices/">
+        <link rel="canonical" href="https://aiscatcher.org/docs/configuration/output/places/">
       
       
-        <link rel="prev" href="../GPS/">
+        <link rel="prev" href="../web-viewer/">
       
       
-        <link rel="next" href="../GNUradio/">
+        <link rel="next" href="../NMEA2000/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/logo.svg">
+      <link rel="icon" href="../../../assets/logo.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Performance Tuning - AIS-catcher Docs</title>
+        <title>Places - AIS-catcher Docs</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,9 +55,9 @@
       
     
     
-      <link rel="stylesheet" href="../../styles/custom.css">
+      <link rel="stylesheet" href="../../../styles/custom.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#running-on-rpi-zero-w-and-other-devices-with-performance-limitations" class="md-skip">
+        <a href="#places" class="md-skip">
           Skip to content
         </a>
       
@@ -96,9 +96,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="AIS-catcher Docs" class="md-header__button md-logo" aria-label="AIS-catcher Docs" data-md-component="logo">
+    <a href="../../.." title="AIS-catcher Docs" class="md-header__button md-logo" aria-label="AIS-catcher Docs" data-md-component="logo">
       
-  <img src="../../assets/logo.svg" alt="logo">
+  <img src="../../../assets/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Performance Tuning
+              Places
             
           </span>
         </div>
@@ -196,7 +196,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../.." class="md-tabs__link">
+        <a href="../../.." class="md-tabs__link">
           
   
   
@@ -214,7 +214,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../what-is-new/" class="md-tabs__link">
+      <a href="../../../what-is-new/" class="md-tabs__link">
         
   
   
@@ -235,7 +235,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../getting-started/overview/" class="md-tabs__link">
+        <a href="../../../getting-started/overview/" class="md-tabs__link">
           
   
   
@@ -255,7 +255,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../installation/overview/" class="md-tabs__link">
+        <a href="../../../installation/overview/" class="md-tabs__link">
           
   
   
@@ -275,7 +275,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../managed/dashboard/" class="md-tabs__link">
+        <a href="../../../managed/dashboard/" class="md-tabs__link">
           
   
   
@@ -295,7 +295,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../usage/overview/" class="md-tabs__link">
+        <a href="../../../usage/overview/" class="md-tabs__link">
           
   
   
@@ -311,11 +311,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../configuration/overview/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../overview/" class="md-tabs__link">
           
   
   
@@ -335,7 +337,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../usage/gui/" class="md-tabs__link">
+        <a href="../../../usage/gui/" class="md-tabs__link">
           
   
   
@@ -351,13 +353,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../offline/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../advanced/offline/" class="md-tabs__link">
           
   
   
@@ -375,7 +375,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../community/" class="md-tabs__link">
+      <a href="../../../community/" class="md-tabs__link">
         
   
   
@@ -394,7 +394,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../faq/" class="md-tabs__link">
+      <a href="../../../faq/" class="md-tabs__link">
         
   
   
@@ -415,7 +415,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../getting-started/features/" class="md-tabs__link">
+        <a href="../../../getting-started/features/" class="md-tabs__link">
           
   
   
@@ -455,9 +455,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="AIS-catcher Docs" class="md-nav__button md-logo" aria-label="AIS-catcher Docs" data-md-component="logo">
+    <a href="../../.." title="AIS-catcher Docs" class="md-nav__button md-logo" aria-label="AIS-catcher Docs" data-md-component="logo">
       
-  <img src="../../assets/logo.svg" alt="logo">
+  <img src="../../../assets/logo.svg" alt="logo">
 
     </a>
     AIS-catcher Docs
@@ -534,7 +534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -562,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ais-basics/" class="md-nav__link">
+      <a href="../../../ais-basics/" class="md-nav__link">
         
   
   
@@ -590,7 +590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../what-you-need/" class="md-nav__link">
+      <a href="../../../what-you-need/" class="md-nav__link">
         
   
   
@@ -625,7 +625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../what-is-new/" class="md-nav__link">
+      <a href="../../../what-is-new/" class="md-nav__link">
         
   
   
@@ -702,7 +702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/overview/" class="md-nav__link">
+      <a href="../../../getting-started/overview/" class="md-nav__link">
         
   
   
@@ -787,7 +787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/overview/" class="md-nav__link">
+      <a href="../../../installation/overview/" class="md-nav__link">
         
   
   
@@ -815,7 +815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/docker/" class="md-nav__link">
+      <a href="../../../installation/docker/" class="md-nav__link">
         
   
   
@@ -843,7 +843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/raspberrypi/" class="md-nav__link">
+      <a href="../../../installation/raspberrypi/" class="md-nav__link">
         
   
   
@@ -871,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/macos/" class="md-nav__link">
+      <a href="../../../installation/macos/" class="md-nav__link">
         
   
   
@@ -899,7 +899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/windows/" class="md-nav__link">
+      <a href="../../../installation/windows/" class="md-nav__link">
         
   
   
@@ -927,7 +927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/android/" class="md-nav__link">
+      <a href="../../../installation/android/" class="md-nav__link">
         
   
   
@@ -955,7 +955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/build-source/" class="md-nav__link">
+      <a href="../../../installation/build-source/" class="md-nav__link">
         
   
   
@@ -983,7 +983,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/ubuntu-debian/" class="md-nav__link">
+      <a href="../../../installation/ubuntu-debian/" class="md-nav__link">
         
   
   
@@ -1068,7 +1068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../managed/dashboard/" class="md-nav__link">
+      <a href="../../../managed/dashboard/" class="md-nav__link">
         
   
   
@@ -1096,7 +1096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../managed/setup-wizard/" class="md-nav__link">
+      <a href="../../../managed/setup-wizard/" class="md-nav__link">
         
   
   
@@ -1124,7 +1124,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../managed/input/" class="md-nav__link">
+      <a href="../../../managed/input/" class="md-nav__link">
         
   
   
@@ -1152,7 +1152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../managed/output/" class="md-nav__link">
+      <a href="../../../managed/output/" class="md-nav__link">
         
   
   
@@ -1180,7 +1180,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../managed/remote-access/" class="md-nav__link">
+      <a href="../../../managed/remote-access/" class="md-nav__link">
         
   
   
@@ -1265,7 +1265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../usage/overview/" class="md-nav__link">
+      <a href="../../../usage/overview/" class="md-nav__link">
         
   
   
@@ -1293,7 +1293,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../usage/cli/" class="md-nav__link">
+      <a href="../../../usage/cli/" class="md-nav__link">
         
   
   
@@ -1321,7 +1321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../usage/json-configuration/" class="md-nav__link">
+      <a href="../../../usage/json-configuration/" class="md-nav__link">
         
   
   
@@ -1349,7 +1349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../usage/service/" class="md-nav__link">
+      <a href="../../../usage/service/" class="md-nav__link">
         
   
   
@@ -1381,24 +1381,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
             
   
   
@@ -1416,7 +1421,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1434,7 +1439,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/overview/" class="md-nav__link">
+      <a href="../../overview/" class="md-nav__link">
         
   
   
@@ -1512,7 +1517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/input/overview/" class="md-nav__link">
+      <a href="../../input/overview/" class="md-nav__link">
         
   
   
@@ -1590,7 +1595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/input/rtlsdr/" class="md-nav__link">
+      <a href="../../input/rtlsdr/" class="md-nav__link">
         
   
   
@@ -1618,7 +1623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/input/airspy/" class="md-nav__link">
+      <a href="../../input/airspy/" class="md-nav__link">
         
   
   
@@ -1646,7 +1651,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/input/airspyhf/" class="md-nav__link">
+      <a href="../../input/airspyhf/" class="md-nav__link">
         
   
   
@@ -1674,7 +1679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/input/hackrf/" class="md-nav__link">
+      <a href="../../input/hackrf/" class="md-nav__link">
         
   
   
@@ -1702,7 +1707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/input/hydrasdr/" class="md-nav__link">
+      <a href="../../input/hydrasdr/" class="md-nav__link">
         
   
   
@@ -1730,7 +1735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/input/sdrplay/" class="md-nav__link">
+      <a href="../../input/sdrplay/" class="md-nav__link">
         
   
   
@@ -1758,7 +1763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/input/soapysdr/" class="md-nav__link">
+      <a href="../../input/soapysdr/" class="md-nav__link">
         
   
   
@@ -1844,7 +1849,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/input/tcp/" class="md-nav__link">
+      <a href="../../input/tcp/" class="md-nav__link">
         
   
   
@@ -1872,7 +1877,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/input/udp/" class="md-nav__link">
+      <a href="../../input/udp/" class="md-nav__link">
         
   
   
@@ -1900,7 +1905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/input/spyserver/" class="md-nav__link">
+      <a href="../../input/spyserver/" class="md-nav__link">
         
   
   
@@ -1986,7 +1991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/input/file/" class="md-nav__link">
+      <a href="../../input/file/" class="md-nav__link">
         
   
   
@@ -2014,7 +2019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/input/wav/" class="md-nav__link">
+      <a href="../../input/wav/" class="md-nav__link">
         
   
   
@@ -2100,7 +2105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/input/serial/" class="md-nav__link">
+      <a href="../../input/serial/" class="md-nav__link">
         
   
   
@@ -2128,7 +2133,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/input/daisy-catcher/" class="md-nav__link">
+      <a href="../../input/daisy-catcher/" class="md-nav__link">
         
   
   
@@ -2156,7 +2161,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/input/NMEA2000/" class="md-nav__link">
+      <a href="../../input/NMEA2000/" class="md-nav__link">
         
   
   
@@ -2200,7 +2205,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/model/" class="md-nav__link">
+      <a href="../../model/" class="md-nav__link">
         
   
   
@@ -2225,6 +2230,8 @@
                 
   
   
+    
+  
   
   
     
@@ -2235,11 +2242,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" checked>
         
           
           <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
@@ -2260,7 +2267,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2278,7 +2285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/output/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -2306,7 +2313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/output/message-filtering/" class="md-nav__link">
+      <a href="../message-filtering/" class="md-nav__link">
         
   
   
@@ -2334,7 +2341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/output/community-feed/" class="md-nav__link">
+      <a href="../community-feed/" class="md-nav__link">
         
   
   
@@ -2362,7 +2369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/output/console/" class="md-nav__link">
+      <a href="../console/" class="md-nav__link">
         
   
   
@@ -2440,7 +2447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/output/TCP-server/" class="md-nav__link">
+      <a href="../TCP-server/" class="md-nav__link">
         
   
   
@@ -2468,7 +2475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/output/TCP-client/" class="md-nav__link">
+      <a href="../TCP-client/" class="md-nav__link">
         
   
   
@@ -2496,7 +2503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/output/UDP/" class="md-nav__link">
+      <a href="../UDP/" class="md-nav__link">
         
   
   
@@ -2524,7 +2531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/output/HTTP/" class="md-nav__link">
+      <a href="../HTTP/" class="md-nav__link">
         
   
   
@@ -2552,7 +2559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/output/MQTT/" class="md-nav__link">
+      <a href="../MQTT/" class="md-nav__link">
         
   
   
@@ -2588,7 +2595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/output/web-viewer/" class="md-nav__link">
+      <a href="../web-viewer/" class="md-nav__link">
         
   
   
@@ -2613,10 +2620,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../configuration/output/places/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Places
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2632,6 +2666,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#files-and-editing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Files and editing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-and-map-delivery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime and map delivery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ships-and-destination-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ships and destination matching
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verification
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2644,7 +2742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/output/NMEA2000/" class="md-nav__link">
+      <a href="../NMEA2000/" class="md-nav__link">
         
   
   
@@ -2672,7 +2770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/output/PSQL/" class="md-nav__link">
+      <a href="../PSQL/" class="md-nav__link">
         
   
   
@@ -2765,7 +2863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../usage/gui/" class="md-nav__link">
+      <a href="../../../usage/gui/" class="md-nav__link">
         
   
   
@@ -2793,7 +2891,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/python/" class="md-nav__link">
+      <a href="../../../tools/python/" class="md-nav__link">
         
   
   
@@ -2825,29 +2923,24 @@
       
   
   
-    
   
   
-  
     
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   
@@ -2865,7 +2958,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2883,7 +2976,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../offline/" class="md-nav__link">
+      <a href="../../../advanced/offline/" class="md-nav__link">
         
   
   
@@ -2911,7 +3004,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ADSB/" class="md-nav__link">
+      <a href="../../../advanced/ADSB/" class="md-nav__link">
         
   
   
@@ -2939,7 +3032,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../FM-decoding/" class="md-nav__link">
+      <a href="../../../advanced/FM-decoding/" class="md-nav__link">
         
   
   
@@ -2967,7 +3060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GPS/" class="md-nav__link">
+      <a href="../../../advanced/GPS/" class="md-nav__link">
         
   
   
@@ -2992,19 +3085,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../advanced/Low-spec-devices/" class="md-nav__link">
         
   
   
@@ -3020,7 +3104,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -3033,7 +3116,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GNUradio/" class="md-nav__link">
+      <a href="../../../advanced/GNUradio/" class="md-nav__link">
         
   
   
@@ -3061,7 +3144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../long-range/" class="md-nav__link">
+      <a href="../../../advanced/long-range/" class="md-nav__link">
         
   
   
@@ -3089,7 +3172,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../samplerate/" class="md-nav__link">
+      <a href="../../../advanced/samplerate/" class="md-nav__link">
         
   
   
@@ -3117,7 +3200,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../grafana/" class="md-nav__link">
+      <a href="../../../advanced/grafana/" class="md-nav__link">
         
   
   
@@ -3145,7 +3228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../validation/" class="md-nav__link">
+      <a href="../../../advanced/validation/" class="md-nav__link">
         
   
   
@@ -3173,7 +3256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/" class="md-nav__link">
+      <a href="../../../advanced/troubleshooting/" class="md-nav__link">
         
   
   
@@ -3208,7 +3291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../community/" class="md-nav__link">
+      <a href="../../../community/" class="md-nav__link">
         
   
   
@@ -3235,7 +3318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../faq/" class="md-nav__link">
+      <a href="../../../faq/" class="md-nav__link">
         
   
   
@@ -3312,7 +3395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/features/" class="md-nav__link">
+      <a href="../../../getting-started/features/" class="md-nav__link">
         
   
   
@@ -3340,7 +3423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/JSON-decoding/" class="md-nav__link">
+      <a href="../../../references/JSON-decoding/" class="md-nav__link">
         
   
   
@@ -3368,7 +3451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/license/" class="md-nav__link">
+      <a href="../../../references/license/" class="md-nav__link">
         
   
   
@@ -3416,6 +3499,58 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#files-and-editing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Files and editing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-and-map-delivery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime and map delivery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ships-and-destination-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ships and destination matching
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verification
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3434,24 +3569,168 @@
   
 
 
-<h1 id="running-on-rpi-zero-w-and-other-devices-with-performance-limitations">Running on RPI Zero W and other devices with performance limitations<a class="headerlink" href="#running-on-rpi-zero-w-and-other-devices-with-performance-limitations" title="Permanent link">&para;</a></h1>
-<p>AIS-catcher implements a trick to speed up downsampling for RTLSDR input at 1536K samples/second by using fixed point calculations (<code>-F</code>). In essence, the downsampling is done 
-in 16-bit integers performed in parallel for the I and Q channels using only 32-bit integers.</p>
-<p align="center">
-<img src="https://raw.githubusercontent.com/jvde-github/AIS-catcher/media/media/raspberry.jpg" width=40% height=40%>
-</p>
-
-<p>This feature can activated with the <code>-F</code> switch and is only available for RTL-SDR running at a rate 1536K per second (the default). 
-To give an idea of the performance improvement on a Raspberry Pi Model B Rev 2 (700 MHz), I used the following command to decode from a file on the aforementioned Raspberry Pi:</p>
-<p><div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-r<span class="w"> </span>posterholt.raw<span class="w"> </span>-s<span class="w"> </span>1536K<span class="w"> </span>-b<span class="w"> </span>-q<span class="w"> </span>-v
+<h1 id="places">Places<a class="headerlink" href="#places" title="Permanent link">&para;</a></h1>
+<p>Places are the local catalogue of ports, berths, anchorages and custom geographic
+features. Configure a directory with <code>control.viewer.places</code>, or use the standalone
+viewer setting <code>-N 8100 PLACES /path/to/places</code>. Managed installations create a
+<code>places</code> directory beside the configuration. The top-level Places tab edits this catalogue.
+There is no separate port file, PORTS setting, or port editor.</p>
+<h2 id="files-and-editing">Files and editing<a class="headerlink" href="#files-and-editing" title="Permanent link">&para;</a></h2>
+<p>A <code>.geojson</code> file contains a Feature or a FeatureCollection. Each Feature has a
+unique lowercase UUID, a name, schema_version 1, revision, and place_type. Geometry
+is WGS84 Point, Polygon or MultiPolygon. Coordinates are longitude, latitude.</p>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"Feature"</span><span class="p">,</span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"b2345678-1234-4234-8234-123456789abc"</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">"properties"</span><span class="p">:{</span><span class="nt">"schema_version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">"revision"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Rotterdam"</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">"place_type"</span><span class="p">:</span><span class="s2">"port"</span><span class="p">,</span><span class="nt">"unlocode"</span><span class="p">:</span><span class="s2">"NLRTM"</span><span class="p">,</span><span class="nt">"size"</span><span class="p">:</span><span class="mi">3</span><span class="p">},</span>
+<span class="w"> </span><span class="nt">"geometry"</span><span class="p">:{</span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"Point"</span><span class="p">,</span><span class="nt">"coordinates"</span><span class="p">:[</span><span class="mf">4.48</span><span class="p">,</span><span class="mf">51.9</span><span class="p">]}}</span>
 </code></pre></div>
-Resulting in 38 messages and the <code>-b</code> switch prints the timing used for decoding:
-<div class="language-text highlight"><pre><span></span><code>[AIS engine v0.31]  : 17312.1 ms
-</code></pre></div>
-Adding the <code>-F</code> switch yielded the same number of messages but the timing is now:
-<div class="language-text highlight"><pre><span></span><code>[AIS engine (speed optimized) v0.31]    : 7722.32 ms
-</code></pre></div>
-On an RPI Zero W this will bring down CPU load to ~40% and avoid buffer overruns.</p>
+<p>Ports require a unique UN/LOCODE. Berths and anchorages refer to a port through
+port_unlocode; that port need not be installed. Custom places have a category.
+Ports can specify parent_unlocode and size (0 unknown, 1 small, 2 medium, 3 large).
+Several polygon parts of one port belong in one MultiPolygon Feature. Parts may
+touch; overlapping interiors are rejected. Holes, self-intersections, duplicate
+vertices and unsplit antimeridian crossings are validated.</p>
+<p>Files are authoritative. Editing or deleting a Feature atomically rewrites its
+owning file, preserving the other Features in a collection. New Features get their
+own UUID-named file. Duplicate UUIDs and duplicate port codes are load errors:
+the offending file is skipped with a diagnostic, rather than merged or overridden.
+There are no override files or tombstones. Regeneration replaces manual changes;
+put lasting corrections in the generator's input.</p>
+<p>New edits use revision 0. A successful save increments revision. Saves/deletes
+check UUID and revision under the same lock as the file rewrite, preventing lost
+updates to collection siblings. External file changes require a restart or a
+configured-directory change; there is no file watcher. Back up files before
+editing them externally while the server is running.</p>
+<p>The editor supports drawing points and polygons, moving points, reshaping polygon
+rings, import/export of individual Features, and search. Lists show up to 200
+matches; narrow the search for larger catalogues. The list transfers representative
+points; selecting a polygon fetches its complete definition. The existing managed
+session and origin checks protect mutations.</p>
+<h2 id="runtime-and-map-delivery">Runtime and map delivery<a class="headerlink" href="#runtime-and-map-delivery" title="Permanent link">&para;</a></h2>
+<p>Runtime place IDs are uint32_t, with UINT32_MAX reserved for missing membership.
+IDs remain stable through managed edits/deletions; reloading may renumber them.
+Consumers associate IDs with place_version. UUIDs remain in files; startup uses
+temporary identity sets and admin edits scan source records.</p>
+<p>The catalogue publishes immutable snapshots with ID, port-code and normalized-name
+lookups. A separate polygon-only candidate list is sorted smallest-first. Queries
+scan its bounding boxes, then part bounds and rings. Point Features never enter
+containment queries. A spatial grid is deliberately not part of the base backend.</p>
+<p>Each place has a representative point. Point Features use their coordinates;
+polygons use an interior point outside holes. The map-object feed sends kind 10
+markers and deletion IDs, without polygon payloads. Hover fetches a boundary from
+<code>api/place.json?id=&lt;runtime-id&gt;&amp;version=&lt;place-version&gt;</code> and displays it temporarily.
+A stale version returns an empty object. The client retains at most 64 boundary
+responses and invalidates them on catalogue version changes.</p>
+<p><code>/api/places.json</code> on the viewer and <code>/api/places</code> on control return the same
+summary rows as the map feed, under <code>objects</code>, with <code>place_version</code>. The summary
+writer uses compiled metadata directly; it never reparses saved GeoJSON. Both
+hosts expose <code>/api/place.json?id=&lt;runtime-id&gt;&amp;version=&lt;place-version&gt;</code> for one
+complete Feature. The editor uses that GET for selection and export; there is no
+POST read, duplicate viewer collection alias, or full-collection read endpoint.
+Saves and deletes continue to check the Feature's UUID and revision.</p>
+<p>Source records, snapshots and visit history share one immutable metadata object
+per definition. Historical metadata does not retain geometry. Feed sequences are
+indexed by runtime ID; deletions retain numeric ID/sequence pairs. Destination
+matching uses the catalogue's code/name maps, with a transient port metadata view
+only when serializing a ship card. No parallel port vector or provider remains.
+Validation canonicalizes a save once, including its incremented revision.</p>
+<p>Polygon storage is limited to 4 million compiled vertices and 256 MiB of retained
+polygon definitions plus point buffers. Point records do not consume those budgets.
+Each Feature is limited to 2,000 vertices and 128 KiB; each file is limited to
+256 MiB. There is no 1,000-object limit. Point metadata still consumes memory.
+Status reports loaded/skipped definitions, polygon parts, vertices and storage bytes.</p>
+<h2 id="ships-and-destination-matching">Ships and destination matching<a class="headerlink" href="#ships-and-destination-matching" title="Permanent link">&para;</a></h2>
+<p><code>VisitTracker</code> owns all membership, confirmation and visit state, outside <code>Ship</code>.
+Each ship slot has exactly five visit records. Repeat visits use separate records.
+A visit stores two uint32 timestamps and inside/pending flags; the pending
+crossing's timestamp is tentative until confirmed. Zero means unknown. Accepted
+visit timestamps range from Unix second 1 through UINT32_MAX (February 2106);
+out-of-range reports cannot wrap the tracker clock, and such backup times are
+rejected. Shared historical metadata is retained across renames, deletions and
+restarts. On the 64-bit build a visit is 32 bytes and a five-visit record is 168
+bytes, down from 56 and 288 respectively. At 500,000 slots the record array is
+84 MB, excluding relationship edges, reverse buckets and shared metadata.</p>
+<p>Five records and their forward edges are allocated for every configured ship slot;
+reverse buckets grow with retained relationships. There is no per-ship history
+container. Hub memory and throughput measurements remain a separate step.
+Current containment updates immediately; a subsequent accepted position at least
+10 seconds later confirms a crossing at its first observation time. Stale and
+copied reports cannot confirm crossings. Startup, position expiry, operator edits,
+changed boundaries and reception gaps over 10 minutes establish a baseline without
+inventing entry or exit times. A reception gap closes the previous observation
+without an exit and starts a fresh baseline if still inside.</p>
+<p>Empty records are used first, then the oldest completed record. If all five are
+active or pending, current containment takes priority over pending exits, then
+smaller places win (runtime ID breaks size ties). Dropping a record for capacity
+never produces an exit event. Crossing detection is therefore limited to those
+five records; it does not promise detection for every overlapping polygon.
+Ticker events are emitted for ports only. Berth, anchorage and custom visits still
+appear in the visit list and vessel history.</p>
+<p>The compact ship row retains place_ids at index 14. Each retained visit is encoded
+as <code>2 * runtime_id + inside_now</code>, including repeated IDs. JavaScript decodes using
+arithmetic, avoiding signed bitwise truncation. The viewer derives distinct current
+IDs for its place filter. Responses carry place_version. Vessel details expose
+one <code>visits</code> list with runtime ID (null for a deleted place), historical name,
+inside/pending status and confirmed entry/exit timestamps. There is no separate
+current <code>places</code> list. The summary derives the current location name from visits without a visit preview. The History tab puts Visits and
+Reported changes before the Speed and Draught charts, in separate sections, showing the latest item with an ellipsis
+pill to reveal the rest. Empty sections are hidden. Visits are ordered
+by newest known entry, with unknown entries last; Entry, Exit and Duration use three columns
+with labels above their values; visits under a minute show seconds. The client computes duration from timestamps
+and the response's server <code>time</code>, never its local clock. Unknown times/durations
+remain unknown; observation gaps show “Observation ended; exit unknown”.
+Crossing history is derived from the same five records, not a separate event deque.</p>
+<p>Both forward and reverse relationships use <code>RelationshipIndex&lt;Key, N&gt;</code>: fixed
+slot-indexed edges, compact reverse buckets and swap-removal with back-references.
+Reverse place membership includes retained completed visits, deduplicated by ship.
+Deduplication belongs to the relationship primitive. Visit IDs are reindexed only
+on allocation, clearing or remapping; flag/time changes need no bucket changes.
+Reindexing and compact-row packing use fixed arrays without temporary heap storage.
+Deletion and slot recycling clear these relationships together. Catalogue changes
+remap all retained IDs by UUID; deleted places retain historical metadata and times
+but lose their runtime ID and reverse membership. Only ships in changed polygon
+bounds need new containment tests; metadata-only edits keep crossing state.
+Historical records share immutable metadata, never polygon geometry.</p>
+<p>DB backup version 2 adds a sparse visit section keyed by MMSI with one shared
+metadata/UUID table and small table references per visit. Entry/exit times survive
+restart; current containment is recomputed from restored positions. Unconfirmed
+crossings restart from a baseline. Backups omit pending entries and inactive
+records without confirmed times; established inside baselines with unknown entry
+times are retained. The same rule selects metadata, ship counts and visit rows.
+Version 1 backups still restore ship fields.
+The entire section is validated before applying ships or visits to the DB.</p>
+<p>Local destination matching uses port places only: exact normalized code, then a
+unique normalized name. Ambiguous and partial names are not guessed. Builds with
+libport keep their broader matcher, including matches without a local place.
+Being inside a place does not set the reported destination. <code>DestinationIndex</code>
+interns destination codes and owns slot-to-code and reverse membership, matching, and a single retry when an
+unmatched ship first gets a valid position. Catalogue changes rematch local-only
+builds; libport matches remain independent of local catalogue edits. Hub port
+queries and CSV exports read this same index.</p>
+<p>Matched codes are derived state, absent from <code>Ship</code> and new ship backups (version
+6). Loading recomputes them from destination text and restored position. Version 5
+ship records remain readable: their old nine-byte matched code is discarded.
+Versions 3 and 4 also remain readable. Old binaries cannot read version 6 records.</p>
+<h2 id="verification">Verification<a class="headerlink" href="#verification" title="Permanent link">&para;</a></h2>
+<p>Run <code>npm test</code> in frontend/shared; browser tests accept PUPPETEER_MODULE and
+CHROME_PATH.</p>
+<p><code>PlaceMarkers</code> owns the immutable catalogue snapshot, per-marker feed sequences,
+and deletion records. It adopts catalogue changes, emits marker rows and removals,
+and returns old/new polygon bounds for containment refresh. DB coordinates visit
+remapping, destination rematching and affected ships; the feed sequence remains
+shared with binary objects and stations. <code>full_refresh_at</code> remains DB-owned because
+imports, restores, station changes and expiry also invalidate ship deltas.</p>
+<p>Place markers open the shared ship-list dialog. Inside shows current containment;
+Arrived and Left show one latest confirmed crossing per ship;
+Visits keeps repeat visit rows. Ports also offer Expected: matched destinations
+excluding current containment in that port. Point ports cannot exclude containment
+and the dialog says so. History includes all records available in the five-visit tracker.
+The dialog shares the binary message dialog’s fixed top position across tabs. Each tab shows its total and the ten
+newest rows; Inside and Expected sort by last report. Runtime-ID requests include
+the catalogue version and fail clearly if the marker has become stale.
+The viewer's place filter and side-table selector are removed; place activity is
+explored through the marker dialog. Pending crossing times display Confirming…,
+with a dash for duration until confirmation.</p>
 
 
 
@@ -3561,10 +3840,10 @@ On an RPI Zero W this will bring down CPU load to ~40% and avoid buffer overruns
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

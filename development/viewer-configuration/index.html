@@ -12,13 +12,9 @@
         <meta name="author" content="jvde.github@gmail.com">
       
       
-        <link rel="canonical" href="https://aiscatcher.org/docs/advanced/Low-spec-devices/">
+        <link rel="canonical" href="https://aiscatcher.org/docs/development/viewer-configuration/">
       
       
-        <link rel="prev" href="../GPS/">
-      
-      
-        <link rel="next" href="../GNUradio/">
       
       
         
@@ -29,7 +25,7 @@
     
     
       
-        <title>Performance Tuning - AIS-catcher Docs</title>
+        <title>Viewer configuration ownership - AIS-catcher Docs</title>
       
     
     
@@ -80,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#running-on-rpi-zero-w-and-other-devices-with-performance-limitations" class="md-skip">
+        <a href="#viewer-configuration-ownership" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Performance Tuning
+              Viewer configuration ownership
             
           </span>
         </div>
@@ -351,13 +347,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../offline/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../advanced/offline/" class="md-tabs__link">
           
   
   
@@ -2825,29 +2819,24 @@
       
   
   
-    
   
   
-  
     
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   
@@ -2865,7 +2854,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2883,7 +2872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../offline/" class="md-nav__link">
+      <a href="../../advanced/offline/" class="md-nav__link">
         
   
   
@@ -2911,7 +2900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ADSB/" class="md-nav__link">
+      <a href="../../advanced/ADSB/" class="md-nav__link">
         
   
   
@@ -2939,7 +2928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../FM-decoding/" class="md-nav__link">
+      <a href="../../advanced/FM-decoding/" class="md-nav__link">
         
   
   
@@ -2967,7 +2956,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GPS/" class="md-nav__link">
+      <a href="../../advanced/GPS/" class="md-nav__link">
         
   
   
@@ -2992,19 +2981,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../advanced/Low-spec-devices/" class="md-nav__link">
         
   
   
@@ -3020,7 +3000,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -3033,7 +3012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GNUradio/" class="md-nav__link">
+      <a href="../../advanced/GNUradio/" class="md-nav__link">
         
   
   
@@ -3061,7 +3040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../long-range/" class="md-nav__link">
+      <a href="../../advanced/long-range/" class="md-nav__link">
         
   
   
@@ -3089,7 +3068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../samplerate/" class="md-nav__link">
+      <a href="../../advanced/samplerate/" class="md-nav__link">
         
   
   
@@ -3117,7 +3096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../grafana/" class="md-nav__link">
+      <a href="../../advanced/grafana/" class="md-nav__link">
         
   
   
@@ -3145,7 +3124,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../validation/" class="md-nav__link">
+      <a href="../../advanced/validation/" class="md-nav__link">
         
   
   
@@ -3173,7 +3152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/" class="md-nav__link">
+      <a href="../../advanced/troubleshooting/" class="md-nav__link">
         
   
   
@@ -3434,24 +3413,59 @@
   
 
 
-<h1 id="running-on-rpi-zero-w-and-other-devices-with-performance-limitations">Running on RPI Zero W and other devices with performance limitations<a class="headerlink" href="#running-on-rpi-zero-w-and-other-devices-with-performance-limitations" title="Permanent link">&para;</a></h1>
-<p>AIS-catcher implements a trick to speed up downsampling for RTLSDR input at 1536K samples/second by using fixed point calculations (<code>-F</code>). In essence, the downsampling is done 
-in 16-bit integers performed in parallel for the I and Q channels using only 32-bit integers.</p>
-<p align="center">
-<img src="https://raw.githubusercontent.com/jvde-github/AIS-catcher/media/media/raspberry.jpg" width=40% height=40%>
-</p>
-
-<p>This feature can activated with the <code>-F</code> switch and is only available for RTL-SDR running at a rate 1536K per second (the default). 
-To give an idea of the performance improvement on a Raspberry Pi Model B Rev 2 (700 MHz), I used the following command to decode from a file on the aforementioned Raspberry Pi:</p>
-<p><div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-r<span class="w"> </span>posterholt.raw<span class="w"> </span>-s<span class="w"> </span>1536K<span class="w"> </span>-b<span class="w"> </span>-q<span class="w"> </span>-v
-</code></pre></div>
-Resulting in 38 messages and the <code>-b</code> switch prints the timing used for decoding:
-<div class="language-text highlight"><pre><span></span><code>[AIS engine v0.31]  : 17312.1 ms
-</code></pre></div>
-Adding the <code>-F</code> switch yielded the same number of messages but the timing is now:
-<div class="language-text highlight"><pre><span></span><code>[AIS engine (speed optimized) v0.31]    : 7722.32 ms
-</code></pre></div>
-On an RPI Zero W this will bring down CPU load to ~40% and avoid buffer overruns.</p>
+<h1 id="viewer-configuration-ownership">Viewer configuration ownership<a class="headerlink" href="#viewer-configuration-ownership" title="Permanent link">&para;</a></h1>
+<p><code>ViewerConfiguration.h</code> defines the shared three-stage rule: parse values and
+paths, prepare resources, then apply effects. Parsing opens no tile or plugin
+files. <code>prepare()</code> resolves resources before <code>applySettings()</code> changes databases,
+workers or listener options. Startup, live configuration and receiver attachment
+use the same effects path. <code>configuration.values</code> holds requested values;
+<code>settings</code> holds the effective values, including restart restrictions.</p>
+<p>Receiver attachment reads the request and resolves its receiver zone mask. It
+does not overwrite effective settings. Immutable tile handles may be reused
+between configurations; place files reload when the configured directory changes.</p>
+<p>The managed service loop owns configuration application and receiver attachment.
+HTTP handlers save files under the control file mutex, then set change flags.
+They do not call receiver or viewer reconfiguration while holding control locks.
+The loop consumes those flags and applies changes. The embedded host must also
+serialize its attachment calls through the viewer API.</p>
+<p><code>WebViewer::state_mtx</code> protects configuration, effective settings, receiver
+trackers and published frontend state. Applying changes acquires that lock,
+then each DB's <code>configuration_mtx</code>, which excludes incoming decoding while
+tracking configuration changes. The DB's own <code>mtx</code> protects ships, port membership
+index, history and events. DB callbacks execute under <code>mtx</code>: they must remain
+short and must not re-enter DB or acquire viewer/control locks.</p>
+<p>Place snapshots are immutable and published by shared pointer. Control edits
+produce a new snapshot; the managed loop installs it in each DB, rematches
+stationary ships and updates the map-object sequence. Place markers use kind
+10 in the delta feed. Full geometry remains available for editing and is fetched
+on hover for map display.</p>
+<p>The place generation token remains in the map and vessel feeds solely to guard
+against matching compact place IDs from different snapshots. It no longer
+triggers a separate geometry download. Removing that guard would make a stale
+vessel feed temporarily match unrelated polygons after a reload.</p>
+<p>Measured locally with the nationwide dataset: 470 loaded, 0 skipped, 3,143 parts,
+39,050 vertices; point buffers 312,400 bytes, retained canonical definitions
+1,585,322 bytes. Whole process memory was 16,285,696 bytes on this macOS build;
+this is not an isolated PlaceCatalogue allocation measurement or a Pi measurement.</p>
+<p>Compatibility and review decisions:</p>
+<ul>
+<li>Control <code>/api/places</code> and viewer <code>/api/places.json</code> return summaries.
+  Both hosts use the version-checked <code>/api/place.json</code> GET for a full Feature.</li>
+<li>Per-part bounds and compilation during validation were already implemented.
+  The exact boundary check stays in the single ring pass: outer boundaries count
+  as inside and hole boundaries as outside.</li>
+<li>Voyage entries already share metadata. Keeping it preserves historical names
+  after an area edit/deletion; an eight-byte entry cannot also retain the current
+  timestamp and crossing coordinates.</li>
+<li>The hub private PortIndex is removed. Its query adapter uses the DB index
+  when available, and a read-only scan with its currently pinned older upstream.
+  Updating that dependency activates the indexed path without another migration.</li>
+<li>A blanket data licence and automatic shipment of mixed-source area datasets
+  are intentionally not added without verified provenance.</li>
+</ul>
+<p>Control assigns its shared area store explicitly through <code>setPlaceCatalogue()</code> during
+startup and from the managed update loop. Directory changes and disabling places
+replace that assignment; no viewer callback reads ControlCore on demand.</p>
 
 
 

@@ -12,13 +12,9 @@
         <meta name="author" content="jvde.github@gmail.com">
       
       
-        <link rel="canonical" href="https://aiscatcher.org/docs/advanced/Low-spec-devices/">
+        <link rel="canonical" href="https://aiscatcher.org/docs/development/viewer-settings/">
       
       
-        <link rel="prev" href="../GPS/">
-      
-      
-        <link rel="next" href="../GNUradio/">
       
       
         
@@ -29,7 +25,7 @@
     
     
       
-        <title>Performance Tuning - AIS-catcher Docs</title>
+        <title>Live viewer settings - AIS-catcher Docs</title>
       
     
     
@@ -80,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#running-on-rpi-zero-w-and-other-devices-with-performance-limitations" class="md-skip">
+        <a href="#live-viewer-settings" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Performance Tuning
+              Live viewer settings
             
           </span>
         </div>
@@ -351,13 +347,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../offline/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../advanced/offline/" class="md-tabs__link">
           
   
   
@@ -2825,29 +2819,24 @@
       
   
   
-    
   
   
-  
     
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   
@@ -2865,7 +2854,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2883,7 +2872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../offline/" class="md-nav__link">
+      <a href="../../advanced/offline/" class="md-nav__link">
         
   
   
@@ -2911,7 +2900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ADSB/" class="md-nav__link">
+      <a href="../../advanced/ADSB/" class="md-nav__link">
         
   
   
@@ -2939,7 +2928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../FM-decoding/" class="md-nav__link">
+      <a href="../../advanced/FM-decoding/" class="md-nav__link">
         
   
   
@@ -2967,7 +2956,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GPS/" class="md-nav__link">
+      <a href="../../advanced/GPS/" class="md-nav__link">
         
   
   
@@ -2992,19 +2981,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../advanced/Low-spec-devices/" class="md-nav__link">
         
   
   
@@ -3020,7 +3000,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -3033,7 +3012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GNUradio/" class="md-nav__link">
+      <a href="../../advanced/GNUradio/" class="md-nav__link">
         
   
   
@@ -3061,7 +3040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../long-range/" class="md-nav__link">
+      <a href="../../advanced/long-range/" class="md-nav__link">
         
   
   
@@ -3089,7 +3068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../samplerate/" class="md-nav__link">
+      <a href="../../advanced/samplerate/" class="md-nav__link">
         
   
   
@@ -3117,7 +3096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../grafana/" class="md-nav__link">
+      <a href="../../advanced/grafana/" class="md-nav__link">
         
   
   
@@ -3145,7 +3124,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../validation/" class="md-nav__link">
+      <a href="../../advanced/validation/" class="md-nav__link">
         
   
   
@@ -3173,7 +3152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/" class="md-nav__link">
+      <a href="../../advanced/troubleshooting/" class="md-nav__link">
         
   
   
@@ -3434,24 +3413,87 @@
   
 
 
-<h1 id="running-on-rpi-zero-w-and-other-devices-with-performance-limitations">Running on RPI Zero W and other devices with performance limitations<a class="headerlink" href="#running-on-rpi-zero-w-and-other-devices-with-performance-limitations" title="Permanent link">&para;</a></h1>
-<p>AIS-catcher implements a trick to speed up downsampling for RTLSDR input at 1536K samples/second by using fixed point calculations (<code>-F</code>). In essence, the downsampling is done 
-in 16-bit integers performed in parallel for the I and Q channels using only 32-bit integers.</p>
-<p align="center">
-<img src="https://raw.githubusercontent.com/jvde-github/AIS-catcher/media/media/raspberry.jpg" width=40% height=40%>
-</p>
-
-<p>This feature can activated with the <code>-F</code> switch and is only available for RTL-SDR running at a rate 1536K per second (the default). 
-To give an idea of the performance improvement on a Raspberry Pi Model B Rev 2 (700 MHz), I used the following command to decode from a file on the aforementioned Raspberry Pi:</p>
-<p><div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-r<span class="w"> </span>posterholt.raw<span class="w"> </span>-s<span class="w"> </span>1536K<span class="w"> </span>-b<span class="w"> </span>-q<span class="w"> </span>-v
-</code></pre></div>
-Resulting in 38 messages and the <code>-b</code> switch prints the timing used for decoding:
-<div class="language-text highlight"><pre><span></span><code>[AIS engine v0.31]  : 17312.1 ms
-</code></pre></div>
-Adding the <code>-F</code> switch yielded the same number of messages but the timing is now:
-<div class="language-text highlight"><pre><span></span><code>[AIS engine (speed optimized) v0.31]    : 7722.32 ms
-</code></pre></div>
-On an RPI Zero W this will bring down CPU load to ~40% and avoid buffer overruns.</p>
+<h1 id="live-viewer-settings">Live viewer settings<a class="headerlink" href="#live-viewer-settings" title="Permanent link">&para;</a></h1>
+<p>Managed Control saves the normal <code>control.viewer</code> JSON. The viewer owner checks
+for changes while idle and while the receiver runs. It prepares the desired
+settings first, then applies them under its state lock, synchronizing with AIS
+input processing before changing tracking configuration or stream connections.
+Invalid viewer settings are rejected by Control before the configuration is saved.
+The HTTP listener, ships and statistics remain available; map updates do not use
+the old stop/reset/start cycle.</p>
+<p>The backend has one configuration pipeline:</p>
+<ol>
+<li><code>ViewerConfiguration</code> holds requested values and prepared resources. Its
+   <code>SetKey()</code> is shared by CLI parsing, JSON loading and validation. It does not
+   modify a live database, listener, log subscription or backup worker. Managed
+   startup and live saves also share <code>prepareManagedConfig()</code>; no temporary
+   WebViewer is constructed to validate or prepare settings.</li>
+<li><code>ViewerSettings.cpp</code> owns <code>applySettings()</code>. Startup, live updates, receiver
+   attachment and catalogue refresh all use this entry point. It resolves restart
+   restrictions, computes <code>SettingsChanges</code>, initializes only fresh trackers,
+   applies the effects and publishes effective frontend features.</li>
+<li>Requested values remain separate from effective values. A deferred storage
+   change keeps its restart notice through unrelated edits and receiver restarts;
+   it cannot silently disappear because an application overwrote the request.</li>
+</ol>
+<p>The application modes express lifecycle permissions: Start activates services,
+Live retains receiver subscriptions, and Attach accepts the subscriptions just
+wired by the engine. Database allocation and backup restore happen only once;
+reused trackers are never initialized again. Stop only suspends workers and log
+subscriptions. It does not reset the configuration comparison baseline.</p>
+<p>To add a setting, put its value/default and parser in <code>ViewerConfiguration</code>, then
+add any resource comparison to <code>SettingsChanges</code> and its effect to <code>applySettings</code>.
+Expose browser-facing values in <code>FrontendConfig</code> where necessary. Do not put
+runtime effects in <code>SetKey</code>, <code>startServing</code>, <code>endAttach</code> or the managed save path.
+The API lifecycle regression compares live settings, receiver restart and service
+restart, including retained/restored vessels and pending storage changes.</p>
+<p><code>/viewer/api/config.json</code> (or <code>/api/config.json</code> on a standalone viewer) returns
+only browser-facing settings, not the Control configuration or credentials.
+<code>config_version</code> is also included at the top level of <code>api/ships_array.json</code>.
+The managed sharing-state heartbeat also announces it, so updates reach other
+tabs and replay mode even when vessel polling is paused. The version is a content digest: saving identical settings does not invalidate
+browser caches. The browser fetches the small complete configuration document
+when its version changes and applies differences in place. Failed and stale
+responses are retried on a later vessel poll.</p>
+<p>The bootstrap module fetches this JSON before initializing controls, with the
+embedded configuration as a fallback. The frontend updater handles tab visibility,
+station title, receiver choices, about content and server map sources. Map-source
+settings are JSON descriptors, rather than generated plugin code. Unchanged
+OpenLayers sources are retained, and existing map position and preferences survive
+settings updates. Place geometry keeps its own <code>place_version</code> and fetch path;
+changing an area's boundary does not download unrelated settings or reload the page.</p>
+<p><code>plugin_version</code> identifies the JavaScript and stylesheet content loaded by the
+page. Adding, removing or changing plugins produces a Reload prompt. Plugins are
+not executed a second time in the current page. Reload saves viewer preferences,
+map position and the selected ship. Saving configuration re-reads plugins, so a
+plugin file edit can be applied by saving the configuration; there is no filesystem
+watcher. Place files edited outside Control still require reloading the directory
+or restarting, as before.</p>
+<p>Tracking storage sizing requires a service restart; receiver subscription/split
+changes require a receiver restart. Both are reported in <code>restart_required</code> and
+retain their effective values in the meantime. Stopping and starting reception
+does not discard the existing tracking database to resize it. Managed listener binding continues to belong to Control; this update
+path does not rebind its socket. Other engine settings still use the normal receiver
+restart workflow. A browser reload for plugins is separate from a receiver restart.</p>
+<p>Validation:</p>
+<ul>
+<li><code>node --test frontend/shared/test/server-config.test.js</code>: unchanged versions,
+  failed requests and superseded in-flight replies.</li>
+</ul>
+<p>Station position changes (configuration, GPS or own-vessel reports) recalculate
+cached distances and bearings for existing vessels once the station has moved
+about 100 m from the position they were computed for; GPS jitter below that
+changes the reported station position only. Missing coordinates clear those
+values. The compact feed marks a forced refresh with <code>full: true</code>; clients then
+replace their cached fleet rather than merge it. Place catalogue changes explicitly
+rematch existing ships and establish fresh crossing baselines. Database reads no
+longer poll an area provider. Backup restores also recompute derived fields.</p>
+<p>GeoJSON and KML capabilities are versioned with the frontend settings and their
+routes switch immediately. Disabling realtime also closes background streams.
+Backup interval changes reschedule the worker; zero disables periodic writes.
+An empty filename disables saving, including shutdown. A configured file is read
+once during startup; changing its name while running redirects future writes and
+never restores over live state. Shutdown still saves a nonempty filename.</p>
 
 
 

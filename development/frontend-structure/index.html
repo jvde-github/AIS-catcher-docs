@@ -12,13 +12,9 @@
         <meta name="author" content="jvde.github@gmail.com">
       
       
-        <link rel="canonical" href="https://aiscatcher.org/docs/advanced/Low-spec-devices/">
+        <link rel="canonical" href="https://aiscatcher.org/docs/development/frontend-structure/">
       
       
-        <link rel="prev" href="../GPS/">
-      
-      
-        <link rel="next" href="../GNUradio/">
       
       
         
@@ -29,7 +25,7 @@
     
     
       
-        <title>Performance Tuning - AIS-catcher Docs</title>
+        <title>Frontend ownership - AIS-catcher Docs</title>
       
     
     
@@ -80,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#running-on-rpi-zero-w-and-other-devices-with-performance-limitations" class="md-skip">
+        <a href="#frontend-ownership" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Performance Tuning
+              Frontend ownership
             
           </span>
         </div>
@@ -351,13 +347,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../offline/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../advanced/offline/" class="md-tabs__link">
           
   
   
@@ -2825,29 +2819,24 @@
       
   
   
-    
   
   
-  
     
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   
@@ -2865,7 +2854,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2883,7 +2872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../offline/" class="md-nav__link">
+      <a href="../../advanced/offline/" class="md-nav__link">
         
   
   
@@ -2911,7 +2900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ADSB/" class="md-nav__link">
+      <a href="../../advanced/ADSB/" class="md-nav__link">
         
   
   
@@ -2939,7 +2928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../FM-decoding/" class="md-nav__link">
+      <a href="../../advanced/FM-decoding/" class="md-nav__link">
         
   
   
@@ -2967,7 +2956,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GPS/" class="md-nav__link">
+      <a href="../../advanced/GPS/" class="md-nav__link">
         
   
   
@@ -2992,19 +2981,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../advanced/Low-spec-devices/" class="md-nav__link">
         
   
   
@@ -3020,7 +3000,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -3033,7 +3012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GNUradio/" class="md-nav__link">
+      <a href="../../advanced/GNUradio/" class="md-nav__link">
         
   
   
@@ -3061,7 +3040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../long-range/" class="md-nav__link">
+      <a href="../../advanced/long-range/" class="md-nav__link">
         
   
   
@@ -3089,7 +3068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../samplerate/" class="md-nav__link">
+      <a href="../../advanced/samplerate/" class="md-nav__link">
         
   
   
@@ -3117,7 +3096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../grafana/" class="md-nav__link">
+      <a href="../../advanced/grafana/" class="md-nav__link">
         
   
   
@@ -3145,7 +3124,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../validation/" class="md-nav__link">
+      <a href="../../advanced/validation/" class="md-nav__link">
         
   
   
@@ -3173,7 +3152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/" class="md-nav__link">
+      <a href="../../advanced/troubleshooting/" class="md-nav__link">
         
   
   
@@ -3434,24 +3413,28 @@
   
 
 
-<h1 id="running-on-rpi-zero-w-and-other-devices-with-performance-limitations">Running on RPI Zero W and other devices with performance limitations<a class="headerlink" href="#running-on-rpi-zero-w-and-other-devices-with-performance-limitations" title="Permanent link">&para;</a></h1>
-<p>AIS-catcher implements a trick to speed up downsampling for RTLSDR input at 1536K samples/second by using fixed point calculations (<code>-F</code>). In essence, the downsampling is done 
-in 16-bit integers performed in parallel for the I and Q channels using only 32-bit integers.</p>
-<p align="center">
-<img src="https://raw.githubusercontent.com/jvde-github/AIS-catcher/media/media/raspberry.jpg" width=40% height=40%>
-</p>
-
-<p>This feature can activated with the <code>-F</code> switch and is only available for RTL-SDR running at a rate 1536K per second (the default). 
-To give an idea of the performance improvement on a Raspberry Pi Model B Rev 2 (700 MHz), I used the following command to decode from a file on the aforementioned Raspberry Pi:</p>
-<p><div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-r<span class="w"> </span>posterholt.raw<span class="w"> </span>-s<span class="w"> </span>1536K<span class="w"> </span>-b<span class="w"> </span>-q<span class="w"> </span>-v
-</code></pre></div>
-Resulting in 38 messages and the <code>-b</code> switch prints the timing used for decoding:
-<div class="language-text highlight"><pre><span></span><code>[AIS engine v0.31]  : 17312.1 ms
-</code></pre></div>
-Adding the <code>-F</code> switch yielded the same number of messages but the timing is now:
-<div class="language-text highlight"><pre><span></span><code>[AIS engine (speed optimized) v0.31]    : 7722.32 ms
-</code></pre></div>
-On an RPI Zero W this will bring down CPU load to ~40% and avoid buffer overruns.</p>
+<h1 id="frontend-ownership">Frontend ownership<a class="headerlink" href="#frontend-ownership" title="Permanent link">&para;</a></h1>
+<p>The viewer starts in <code>frontend/src/bootstrap.js</code>. It loads current server
+settings through <code>features/server-config.js</code> before importing the viewer.
+That module owns the configuration request, difference detection, publication
+and feature visibility. <code>script.js</code> supplies effects on the active tabs, title,
+selection and map. <code>features/server-maps.js</code> manages configured tile layers.</p>
+<p><code>features/mapobjects.js</code> adapts viewer transport and settings to
+<code>frontend/shared/mapobjects.js</code>, which owns object rendering and interaction.
+Binary-message settings retain their existing names; the object layer and
+transport use <code>objectLayer</code> and <code>fetchObjects</code>.</p>
+<p>Managed control starts in the bundled <code>control-app.js</code>, whose source is
+<code>frontend/control/js/app.js</code>. It directly imports <code>createPlaceEditor</code> from <code>places-editor.js</code> and owns its
+instance. Places is a top-level tab without a redundant sub-tab. The shared
+<code>places.js</code> helper converts summary rows into editable GeoJSON metadata. Their CSS lives in
+<code>frontend/control/css/locations.css</code>, after the base control styles.</p>
+<p>Vite keeps shared configuration and its preload helper outside entry chunks.
+Importing shared code must not import and execute a bootstrap entry point.
+The control bundle reuses OpenLayers; copied editor source files are excluded
+from the baked assets.</p>
+<p><code>script.js</code> still contains substantial legacy UI and map orchestration. Extract
+those by responsibility as they change; do not introduce a general framework
+or move everything behind one opaque controller.</p>
 
 
 
