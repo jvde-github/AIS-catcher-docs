@@ -120,6 +120,7 @@ nav:
           - HTTP: configuration/output/HTTP.md
           - MQTT: configuration/output/MQTT.md
         - Web Viewer: configuration/output/web-viewer.md
+        - Places: configuration/output/places.md
         - NMEA2000: configuration/output/NMEA2000.md
         - Database (PostgreSQL / SQLite): configuration/output/PSQL.md
   - Tools:
@@ -144,6 +145,10 @@ nav:
       - JSON AIS format: references/JSON-decoding.md
       - License: references/license.md
 
+
+# Notes for contributors: versioned here, deliberately not on the site.
+not_in_nav: |
+  /development/*
 
 markdown_extensions:
   - admonition
