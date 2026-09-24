@@ -3821,6 +3821,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../references/config-keys/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Keys
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../references/license/" class="md-nav__link">
         
   
@@ -4354,7 +4382,7 @@ This loads and applies the settings from the JSON file.</p>
 <li>Outputs like <code>udp</code> are arrays to support multiple output channels.</li>
 </ul>
 <h2 id="configuration-keys">Configuration Keys<a class="headerlink" href="#configuration-keys" title="Permanent link">&para;</a></h2>
-<p>Configuration keys are grouped below by purpose.</p>
+<p>Configuration keys are grouped below by purpose. The complete list of keys the managed hub edits, with types, defaults and ranges, is on <a href="../../references/config-keys/">Configuration Keys</a>.</p>
 <h3 id="general-overview">General Overview<a class="headerlink" href="#general-overview" title="Permanent link">&para;</a></h3>
 <p>General (mostly optional) settings define fundamental aspects of AIS-catcher's operation.</p>
 <h4 id="root-level-keys">Root-level keys<a class="headerlink" href="#root-level-keys" title="Permanent link">&para;</a></h4>
@@ -4397,6 +4425,18 @@ This loads and applies the settings from the JSON file.</p>
 <td>string</td>
 <td>Community feed key</td>
 <td><a href="../../configuration/output/community-feed/">Community Feed</a></td>
+</tr>
+<tr>
+<td><code>screen</code></td>
+<td>number</td>
+<td>Screen output mode (0-5), one for all receivers</td>
+<td><a href="../../configuration/output/console/">Console Output</a></td>
+</tr>
+<tr>
+<td><code>verbose_time</code></td>
+<td>number</td>
+<td>Verbose update interval in seconds, one for all receivers</td>
+<td><a href="../../configuration/output/console/">Console Output</a></td>
 </tr>
 <tr>
 <td><strong>Receiver array</strong></td>
@@ -4484,18 +4524,6 @@ This loads and applies the settings from the JSON file.</p>
 <td><code>verbose</code></td>
 <td>boolean</td>
 <td>Enable verbose output for this receiver</td>
-<td><a href="../../configuration/output/console/">Console Output</a></td>
-</tr>
-<tr>
-<td><code>verbose_time</code></td>
-<td>number</td>
-<td>Verbose update interval (seconds) for this receiver</td>
-<td><a href="../../configuration/output/console/">Console Output</a></td>
-</tr>
-<tr>
-<td><code>screen</code></td>
-<td>number</td>
-<td>Screen output mode (0-5) for this receiver</td>
 <td><a href="../../configuration/output/console/">Console Output</a></td>
 </tr>
 <tr>

@@ -12,13 +12,13 @@
         <meta name="author" content="jvde.github@gmail.com">
       
       
-        <link rel="canonical" href="https://aiscatcher.org/docs/advanced/samplerate/">
+        <link rel="canonical" href="https://aiscatcher.org/docs/references/config-keys/">
       
       
-        <link rel="prev" href="../long-range/">
+        <link rel="prev" href="../JSON-decoding/">
       
       
-        <link rel="next" href="../grafana/">
+        <link rel="next" href="../license/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Setting Sample Rate - AIS-catcher Docs</title>
+        <title>Configuration Keys - AIS-catcher Docs</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#a-note-on-device-sample-rates" class="md-skip">
+        <a href="#configuration-keys" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Setting Sample Rate
+              Configuration Keys
             
           </span>
         </div>
@@ -351,13 +351,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../offline/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../advanced/offline/" class="md-tabs__link">
           
   
   
@@ -411,10 +409,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../getting-started/features/" class="md-tabs__link">
           
   
@@ -2825,29 +2825,24 @@
       
   
   
-    
   
   
-  
     
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   
@@ -2865,7 +2860,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2883,7 +2878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../offline/" class="md-nav__link">
+      <a href="../../advanced/offline/" class="md-nav__link">
         
   
   
@@ -2911,7 +2906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ADSB/" class="md-nav__link">
+      <a href="../../advanced/ADSB/" class="md-nav__link">
         
   
   
@@ -2939,7 +2934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../FM-decoding/" class="md-nav__link">
+      <a href="../../advanced/FM-decoding/" class="md-nav__link">
         
   
   
@@ -2967,7 +2962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GPS/" class="md-nav__link">
+      <a href="../../advanced/GPS/" class="md-nav__link">
         
   
   
@@ -2995,7 +2990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Low-spec-devices/" class="md-nav__link">
+      <a href="../../advanced/Low-spec-devices/" class="md-nav__link">
         
   
   
@@ -3023,7 +3018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GNUradio/" class="md-nav__link">
+      <a href="../../advanced/GNUradio/" class="md-nav__link">
         
   
   
@@ -3051,7 +3046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../long-range/" class="md-nav__link">
+      <a href="../../advanced/long-range/" class="md-nav__link">
         
   
   
@@ -3076,19 +3071,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../advanced/samplerate/" class="md-nav__link">
         
   
   
@@ -3104,7 +3090,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -3117,7 +3102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../grafana/" class="md-nav__link">
+      <a href="../../advanced/grafana/" class="md-nav__link">
         
   
   
@@ -3145,7 +3130,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../validation/" class="md-nav__link">
+      <a href="../../advanced/validation/" class="md-nav__link">
         
   
   
@@ -3173,7 +3158,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/" class="md-nav__link">
+      <a href="../../advanced/troubleshooting/" class="md-nav__link">
         
   
   
@@ -3259,24 +3244,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
         
           
-          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="">
             
   
   
@@ -3294,7 +3284,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_12">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3340,7 +3330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/JSON-decoding/" class="md-nav__link">
+      <a href="../JSON-decoding/" class="md-nav__link">
         
   
   
@@ -3365,10 +3355,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../references/config-keys/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Keys
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -3384,6 +3401,297 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#main-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main section
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#receiver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Receiver
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Receiver">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#engines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Engines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Device sections
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Device sections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rtlsdr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rtlsdr
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#airspyhf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        airspyhf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#airspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        airspy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hydrasdr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hydrasdr
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rtltcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rtltcp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serialport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        serialport
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#udpserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        udpserver
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hackrf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hackrf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spyserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spyserver
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nmea2000" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nmea2000
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outputs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Outputs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UDP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mqtt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MQTT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP Client
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Viewer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managed-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Managed mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3396,7 +3704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/license/" class="md-nav__link">
+      <a href="../license/" class="md-nav__link">
         
   
   
@@ -3444,6 +3752,285 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#main-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main section
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#receiver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Receiver
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Receiver">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#engines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Engines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Device sections
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Device sections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rtlsdr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rtlsdr
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#airspyhf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        airspyhf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#airspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        airspy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hydrasdr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hydrasdr
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rtltcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rtltcp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serialport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        serialport
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#udpserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        udpserver
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hackrf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hackrf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spyserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spyserver
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nmea2000" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nmea2000
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outputs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Outputs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UDP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mqtt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MQTT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP Client
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Viewer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managed-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Managed mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3462,63 +4049,1605 @@
   
 
 
-<h1 id="a-note-on-device-sample-rates">A note on device sample rates<a class="headerlink" href="#a-note-on-device-sample-rates" title="Permanent link">&para;</a></h1>
-<p>AIS-catcher automatically sets an appropriate sample rate depending on your device but provides the option to overwrite this default using the <code>-s</code> switch. For performance reasons, you can decide to use a lower rate or improve the sensitivity by picking a higher rate than the default. The decoding model supports most sample rates above 96K but will internally upsample a signal, if needed, to one of the following rates:
-<div class="language-text highlight"><pre><span></span><code>96K, 192K, 288K, 384K, 768K, 1536K, 3072K, 6144K, 12288K 
-</code></pre></div>
-There is no efficiency advantage of using other rates than in this list apart from limiting the bandwidth and data throughput. Ideally, consider using an option from the list as it avoids upsampling (and additional noise) but it is not required and the model works well with other sampling rates.</p>
-<p>In recent versions of AIS-catcher you can use the <code>SOXR</code> or <code>libsamplerate</code> (SRC) library for downsampling. In fact, you can compare the four different downsampling approaches with a command like:
-<div class="language-console highlight"><pre><span></span><code><span class="go">AIS-catcher -r posterholt.raw -m 2 -m 2 -go FP_DS on  -m 2 -go SOXR on -m 2 -go SRC on -b -q -v</span>
-</code></pre></div>
-which produces:
-<div class="language-text highlight"><pre><span></span><code>[AIS engine v0.35 ]:                     41 msgs at 4.1 msg/s
-[AIS engine v0.35 FP-DS ]:               41 msgs at 4.1 msg/s
-[AIS engine v0.35 SOXR ]:                41 msgs at 4.1 msg/s
-[AIS engine v0.35 SRC]:                  41 msgs at 4.1 msg/s
-</code></pre></div>
-with the following timings:
-<div class="language-text highlight"><pre><span></span><code>[AIS engine v0.35 ]:                     320.624 ms
-[AIS engine v0.35 FP-DS ]:               254.341 ms
-[AIS engine v0.35 SOXR ]:                653.716 ms
-[AIS engine v0.35 SRC]:                  3762.6 ms
-</code></pre></div>
-Some libraries will require significant hardware resources. The advice is to use the native built-in downsampling functionality but it is fun to experiment.</p>
-<p>The default downsampler uses a simple but efficient CIC5 filter. To mitigate some of the drawbacks of this method, version 0.39 onwards uses by default a simple droop compensator in the form of a fast 3 tap filter which can be switched off with the switch <code>-go DROOP off</code>. 
-The following results are from my home station running for a few hours with the various methods running in parallel and counting the number of messages:</p>
+<!-- generated by configReference() in frontend/control/js/schema.js, do not edit by hand -->
+<h1 id="configuration-keys">Configuration Keys<a class="headerlink" href="#configuration-keys" title="Permanent link">&para;</a></h1>
+<p>The keys the managed hub edits, generated from its editor schema. They live in the <code>config.json</code> that
+<code>-C</code> reads and managed mode (<code>-E</code>) keeps; <a href="../../usage/json-configuration/">JSON Configuration</a> shows the
+structure with examples, and the command line accepts more than is listed here: see the settings page
+linked from each section. "Only with" marks a key that applies for one choice of another key in the
+same object.</p>
+<h2 id="main-section">Main section<a class="headerlink" href="#main-section" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Downsampler</th>
-<th style="text-align: left;">RTL-SDR @ 1536K</th>
-<th style="text-align: left;">AirSpy HF+ @ 192K</th>
-<th style="text-align: left;">SDRPlay RSPdx @ 3072K</th>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>-go DROOP off</code></td>
-<td style="text-align: left;">94219</td>
-<td style="text-align: left;">16022</td>
-<td style="text-align: left;">16530</td>
+<td><code>config</code></td>
+<td>string</td>
+<td>–</td>
+<td><code>"aiscatcher"</code></td>
+<td>Identifies the file; required</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>-go DROOP on</code> (default)</td>
-<td style="text-align: left;">98176 (+4.20%)</td>
-<td style="text-align: left;">16265 (+1.52%)</td>
-<td style="text-align: left;">17190 (+3.99%)</td>
+<td><code>version</code></td>
+<td>number</td>
+<td>–</td>
+<td><code>1</code></td>
+<td>Format version; required</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>-go SOXR on</code> (SOX downsampling)</td>
-<td style="text-align: left;">97652 (+3.64%)</td>
-<td style="text-align: left;">16209 (+1.17%)</td>
-<td style="text-align: left;">17049 (+3.14%)</td>
+<td><code>receiver</code></td>
+<td>object[]</td>
+<td>–</td>
+<td></td>
+<td>One object per receiver, see <a href="#receiver">Receiver</a></td>
+</tr>
+<tr>
+<td><code>udp</code></td>
+<td>object[]</td>
+<td>–</td>
+<td></td>
+<td>UDP outputs, see <a href="#udp">UDP</a></td>
+</tr>
+<tr>
+<td><code>http</code></td>
+<td>object[]</td>
+<td>–</td>
+<td></td>
+<td>HTTP outputs, see <a href="#http">HTTP</a></td>
+</tr>
+<tr>
+<td><code>mqtt</code></td>
+<td>object[]</td>
+<td>–</td>
+<td></td>
+<td>MQTT outputs, see <a href="#mqtt">MQTT</a></td>
+</tr>
+<tr>
+<td><code>tcp</code></td>
+<td>object[]</td>
+<td>–</td>
+<td></td>
+<td>TCP Client outputs, see <a href="#tcp-client">TCP Client</a></td>
+</tr>
+<tr>
+<td><code>tcp_listener</code></td>
+<td>object[]</td>
+<td>–</td>
+<td></td>
+<td>TCP Server outputs, see <a href="#tcp-server">TCP Server</a></td>
+</tr>
+<tr>
+<td><code>db</code></td>
+<td>object[]</td>
+<td>–</td>
+<td></td>
+<td>Database outputs, see <a href="#database">Database</a></td>
+</tr>
+<tr>
+<td><code>server</code></td>
+<td>object[]</td>
+<td>–</td>
+<td></td>
+<td>Viewer outputs, see <a href="#viewer">Viewer</a></td>
+</tr>
+<tr>
+<td><code>engine</code></td>
+<td>string</td>
+<td><code>"off"</code></td>
+<td><code>on</code> · <code>off</code></td>
+<td>Managed mode: whether the receivers run; the Start and Stop buttons write it</td>
+</tr>
+<tr>
+<td><code>control</code></td>
+<td>object</td>
+<td>–</td>
+<td></td>
+<td>Managed mode, see <a href="#managed-mode">Managed mode</a></td>
+</tr>
+<tr>
+<td><code>sharing</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Share messages with the community map</td>
+</tr>
+<tr>
+<td><code>sharing_key</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Leave empty to share anonymously</td>
+</tr>
+<tr>
+<td><code>sharing_zone</code></td>
+<td>string[]</td>
+<td><code>[]</code></td>
+<td></td>
+<td>No zones — receives from all inputs</td>
+</tr>
+<tr>
+<td><code>timeout</code></td>
+<td>false or number</td>
+<td><code>false</code> (60 when set)</td>
+<td>1 – 3600</td>
+<td>Stop the receiver after this many seconds</td>
+</tr>
+<tr>
+<td><code>timeout_only_when_idle</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Watchdog: counts only while input is idle</td>
+</tr>
+<tr>
+<td><code>screen</code></td>
+<td>string</td>
+<td><code>"0"</code></td>
+<td><code>0</code> Off · <code>1</code> NMEA · <code>2</code> NMEA + details · <code>3</code> JSON with NMEA · <code>4</code> JSON (compact) · <code>5</code> JSON (full)</td>
+<td>Messages written to standard output: the journal under systemd, the container log under Docker</td>
+</tr>
+<tr>
+<td><code>verbose_time</code></td>
+<td>number</td>
+<td><code>3</code></td>
+<td>1 – 3600</td>
+<td>How often a receiver with Verbose on logs its message counts; one interval for all receivers</td>
 </tr>
 </tbody>
 </table>
-<p>For reference, the command line instruction to test is:
-<div class="language-console highlight"><pre><span></span><code><span class="go">AIS-catcher  -v 10 -gr rtlagc on -m 2 -go droop off -m 2 -m 2 -go soxr on</span>
-</code></pre></div>
-Please note that the runs are performed on different days over different time spans so this does not represent a comparison of devices but you can compare within a column.</p>
+<h2 id="receiver">Receiver<a class="headerlink" href="#receiver" title="Permanent link">&para;</a></h2>
+<p>Each entry of <code>receiver</code> is one object. <code>input</code> selects the device and the device section of the same
+name inside the object configures it.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>input</code></td>
+<td>string</td>
+<td>–</td>
+<td><code>RTLSDR</code> · <code>AIRSPY</code> · <code>AIRSPYHF</code> · <code>HACKRF</code> · <code>HYDRASDR</code> HydraSDR · <code>SERIALPORT</code> SERIAL · <code>UDPSERVER</code> UDP Server · <code>RTLTCP</code> TCP Client · <code>SPYSERVER</code> · <code>NMEA2000</code></td>
+<td>Device Type</td>
+</tr>
+<tr>
+<td><code>channel</code></td>
+<td>string</td>
+<td><code>"AB"</code></td>
+<td><code>AB</code> · <code>CD</code></td>
+<td>AB is standard, CD the long-range pair. Only with <code>input</code> = <code>RTLSDR</code> or <code>AIRSPY</code> or <code>AIRSPYHF</code> or <code>HACKRF</code> or <code>HYDRASDR</code></td>
+</tr>
+<tr>
+<td><code>nmea_channel</code></td>
+<td>string</td>
+<td>–</td>
+<td><code>AB</code></td>
+<td>Channel letters in the NMEA output; AB for software that only knows A and B. Only with <code>channel</code> = <code>CD</code></td>
+</tr>
+<tr>
+<td><code>serial</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Pick a device by serial number. Only with <code>input</code> = <code>RTLSDR</code> or <code>AIRSPY</code> or <code>AIRSPYHF</code> or <code>HYDRASDR</code> or <code>HACKRF</code></td>
+</tr>
+<tr>
+<td><code>active</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td></td>
+<td>Active</td>
+</tr>
+<tr>
+<td><code>verbose</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Log message counts at the interval set under Output › Screen</td>
+</tr>
+<tr>
+<td><code>zone</code></td>
+<td>string[]</td>
+<td><code>[]</code></td>
+<td></td>
+<td>Routes this receiver to outputs sharing a zone</td>
+</tr>
+</tbody>
+</table>
+<h3 id="engines">Engines<a class="headerlink" href="#engines" title="Permanent link">&para;</a></h3>
+<p>A second engine compares decoders and doubles CPU. <code>engines</code> is an optional array; each entry has a <code>type</code>, an optional <code>zone</code>
+(string[]) of its own and an optional <code>settings</code> object.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td><code>auto</code> Auto · <code>v1_base</code> AIS Engine v1 Base · <code>v1_high</code> AIS Engine v1 High · <code>v2_base</code> AIS Engine v2 Base (experimental)</td>
+<td>Decoder</td>
+</tr>
+<tr>
+<td><code>zone</code></td>
+<td>string[]</td>
+<td></td>
+<td>Routes this engine to outputs sharing a zone</td>
+</tr>
+<tr>
+<td><code>settings.fp_ds</code></td>
+<td>boolean</td>
+<td><code>v1_base</code> · <code>v1_high</code> · <code>v2_base</code></td>
+<td>Integer downsampling of 1536K input: less CPU on low-end hardware</td>
+</tr>
+</tbody>
+</table>
+<h3 id="device-sections">Device sections<a class="headerlink" href="#device-sections" title="Permanent link">&para;</a></h3>
+<h4 id="rtlsdr"><code>rtlsdr</code><a class="headerlink" href="#rtlsdr" title="Permanent link">&para;</a></h4>
+<p>With <code>input</code> = <code>RTLSDR</code>. <a href="../../configuration/input/rtlsdr/">Documentation</a></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tuner</code></td>
+<td>"auto" or number</td>
+<td><code>"auto"</code></td>
+<td>0 – 50</td>
+<td>Gain in dB, or auto for AGC</td>
+</tr>
+<tr>
+<td><code>bandwidth</code></td>
+<td>integer</td>
+<td><code>0</code></td>
+<td>e.g. <code>0</code>, <code>192000</code>; 0 – 1000000</td>
+<td>Tuner filter bandwidth; Off uses the device default</td>
+</tr>
+<tr>
+<td><code>sample_rate</code></td>
+<td>integer</td>
+<td><code>1536000</code></td>
+<td>e.g. <code>288000</code>, <code>1536000</code>; 96000 – 3200000</td>
+<td>1536000 Hz (1536K) is recommended; 288K reduces CPU load on small devices</td>
+</tr>
+<tr>
+<td><code>freqoffset</code></td>
+<td>number</td>
+<td><code>0</code></td>
+<td>-150 – 150</td>
+<td>Correct the dongle frequency error in ppm</td>
+</tr>
+<tr>
+<td><code>biastee</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Powers an external LNA over the cable</td>
+</tr>
+<tr>
+<td><code>rtlagc</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td></td>
+<td>RTL2832U internal AGC</td>
+</tr>
+</tbody>
+</table>
+<h4 id="airspyhf"><code>airspyhf</code><a class="headerlink" href="#airspyhf" title="Permanent link">&para;</a></h4>
+<p>With <code>input</code> = <code>AIRSPYHF</code>. <a href="../../configuration/input/airspyhf/">Documentation</a></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sample_rate</code></td>
+<td>integer</td>
+<td><code>192000</code></td>
+<td>e.g. <code>192000</code>, <code>256000</code>, <code>384000</code>, <code>768000</code>; 192000 – 768000</td>
+<td>Sample Rate (Hz)</td>
+</tr>
+<tr>
+<td><code>threshold</code></td>
+<td>string</td>
+<td><code>"low"</code></td>
+<td><code>low</code> Low · <code>high</code> High</td>
+<td>Automatic gain control threshold</td>
+</tr>
+<tr>
+<td><code>preamp</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Enable the built-in preamplifier</td>
+</tr>
+</tbody>
+</table>
+<h4 id="airspy"><code>airspy</code><a class="headerlink" href="#airspy" title="Permanent link">&para;</a></h4>
+<p>With <code>input</code> = <code>AIRSPY</code>. <a href="../../configuration/input/airspy/">Documentation</a></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gain_mode</code></td>
+<td>string</td>
+<td><code>"linearity"</code></td>
+<td><code>free</code> Free · <code>linearity</code> Linearity · <code>sensitivity</code> Sensitivity</td>
+<td>Free sets LNA, mixer and VGA individually</td>
+</tr>
+<tr>
+<td><code>vga</code></td>
+<td>number</td>
+<td><code>10</code></td>
+<td>0 – 14</td>
+<td>VGA. Only with <code>gain_mode</code> = <code>free</code></td>
+</tr>
+<tr>
+<td><code>mixer</code></td>
+<td>"auto" or integer</td>
+<td><code>"auto"</code></td>
+<td>0 – 14</td>
+<td>Mixer. Only with <code>gain_mode</code> = <code>free</code></td>
+</tr>
+<tr>
+<td><code>lna</code></td>
+<td>"auto" or integer</td>
+<td><code>"auto"</code></td>
+<td>0 – 14</td>
+<td>LNA. Only with <code>gain_mode</code> = <code>free</code></td>
+</tr>
+<tr>
+<td><code>linearity</code></td>
+<td>number</td>
+<td><code>17</code></td>
+<td>0 – 21</td>
+<td>Linearity. Only with <code>gain_mode</code> = <code>linearity</code></td>
+</tr>
+<tr>
+<td><code>sensitivity</code></td>
+<td>number</td>
+<td><code>17</code></td>
+<td>0 – 21</td>
+<td>Sensitivity. Only with <code>gain_mode</code> = <code>sensitivity</code></td>
+</tr>
+<tr>
+<td><code>biastee</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Powers an external LNA over the cable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="hydrasdr"><code>hydrasdr</code><a class="headerlink" href="#hydrasdr" title="Permanent link">&para;</a></h4>
+<p>With <code>input</code> = <code>HYDRASDR</code>. <a href="../../configuration/input/hydrasdr/">Documentation</a></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gain_mode</code></td>
+<td>string</td>
+<td><code>"linearity"</code></td>
+<td><code>free</code> Free · <code>linearity</code> Linearity · <code>sensitivity</code> Sensitivity</td>
+<td>Free sets LNA, mixer and VGA individually</td>
+</tr>
+<tr>
+<td><code>vga</code></td>
+<td>number</td>
+<td><code>10</code></td>
+<td>0 – 14</td>
+<td>VGA. Only with <code>gain_mode</code> = <code>free</code></td>
+</tr>
+<tr>
+<td><code>mixer</code></td>
+<td>"auto" or integer</td>
+<td><code>"auto"</code></td>
+<td>0 – 14</td>
+<td>Mixer. Only with <code>gain_mode</code> = <code>free</code></td>
+</tr>
+<tr>
+<td><code>lna</code></td>
+<td>"auto" or integer</td>
+<td><code>"auto"</code></td>
+<td>0 – 14</td>
+<td>LNA. Only with <code>gain_mode</code> = <code>free</code></td>
+</tr>
+<tr>
+<td><code>linearity</code></td>
+<td>number</td>
+<td><code>17</code></td>
+<td>0 – 21</td>
+<td>Linearity. Only with <code>gain_mode</code> = <code>linearity</code></td>
+</tr>
+<tr>
+<td><code>sensitivity</code></td>
+<td>number</td>
+<td><code>17</code></td>
+<td>0 – 21</td>
+<td>Sensitivity. Only with <code>gain_mode</code> = <code>sensitivity</code></td>
+</tr>
+<tr>
+<td><code>biastee</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Powers an external LNA over the cable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="rtltcp"><code>rtltcp</code><a class="headerlink" href="#rtltcp" title="Permanent link">&para;</a></h4>
+<p>With <code>input</code> = <code>RTLTCP</code>. <a href="../../configuration/input/tcp/">Documentation</a></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>protocol</code></td>
+<td>string</td>
+<td><code>"rtltcp"</code></td>
+<td><code>txt</code> NMEA · <code>none</code> Raw · <code>rtltcp</code> RTLTCP · <code>ws</code> WS · <code>wss</code> WSS · <code>wsmqtt</code> WSMQTT · <code>mqtt</code> MQTT · <code>gpsd</code> GPSD · <code>beast</code> BEAST · <code>basestation</code> BASESTATION · <code>raw1090</code> RAW1090</td>
+<td>How the remote server is reached and what it sends</td>
+</tr>
+<tr>
+<td><code>host</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Host. Only with <code>protocol</code> = <code>txt</code> or <code>none</code> or <code>rtltcp</code> or <code>wsmqtt</code> or <code>mqtt</code> or <code>gpsd</code> or <code>beast</code> or <code>basestation</code> or <code>raw1090</code></td>
+</tr>
+<tr>
+<td><code>port</code></td>
+<td>number</td>
+<td>–</td>
+<td></td>
+<td>Port. Only with <code>protocol</code> = <code>txt</code> or <code>none</code> or <code>rtltcp</code> or <code>wsmqtt</code> or <code>mqtt</code> or <code>gpsd</code> or <code>beast</code> or <code>basestation</code> or <code>raw1090</code></td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Port 443 (wss) or 80 (ws) unless given; user:password@ sends HTTP Basic, token@ a Bearer token. Only with <code>protocol</code> = <code>ws</code> or <code>wss</code></td>
+</tr>
+<tr>
+<td><code>ssl_verify</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td></td>
+<td>Verify Certificate. Only with <code>protocol</code> = <code>wss</code></td>
+</tr>
+<tr>
+<td><code>sample_rate</code></td>
+<td>number</td>
+<td><code>288000</code></td>
+<td>0 – 20000000</td>
+<td>Sample Rate (Hz). Only with <code>protocol</code> = <code>rtltcp</code></td>
+</tr>
+<tr>
+<td><code>bandwidth</code></td>
+<td>number</td>
+<td><code>0</code></td>
+<td>0 – 1000000</td>
+<td>Bandwidth (Hz). Only with <code>protocol</code> = <code>rtltcp</code></td>
+</tr>
+<tr>
+<td><code>freqoffset</code></td>
+<td>number</td>
+<td><code>0</code></td>
+<td>-150 – 150</td>
+<td>Frequency Offset (PPM). Only with <code>protocol</code> = <code>rtltcp</code></td>
+</tr>
+<tr>
+<td><code>tuner</code></td>
+<td>"auto" or number</td>
+<td><code>"auto"</code></td>
+<td>0 – 50</td>
+<td>Gain in dB, or auto for AGC. Only with <code>protocol</code> = <code>rtltcp</code></td>
+</tr>
+<tr>
+<td><code>rtlagc</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>RTL AGC. Only with <code>protocol</code> = <code>rtltcp</code></td>
+</tr>
+<tr>
+<td><code>protocols</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Protocols. Only with <code>protocol</code> = <code>ws</code> or <code>wss</code></td>
+</tr>
+<tr>
+<td><code>binary</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Binary Mode. Only with <code>protocol</code> = <code>ws</code> or <code>wss</code></td>
+</tr>
+<tr>
+<td><code>origin</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Origin. Only with <code>protocol</code> = <code>ws</code> or <code>wss</code> or <code>wsmqtt</code></td>
+</tr>
+<tr>
+<td><code>topic</code></td>
+<td>string</td>
+<td><code>"ais/data"</code></td>
+<td></td>
+<td>Topic. Only with <code>protocol</code> = <code>mqtt</code> or <code>wsmqtt</code></td>
+</tr>
+<tr>
+<td><code>client_id</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Client ID. Only with <code>protocol</code> = <code>mqtt</code> or <code>wsmqtt</code></td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Username. Only with <code>protocol</code> = <code>mqtt</code> or <code>wsmqtt</code> or <code>ws</code> or <code>wss</code></td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Password. Only with <code>protocol</code> = <code>mqtt</code> or <code>wsmqtt</code> or <code>ws</code> or <code>wss</code></td>
+</tr>
+<tr>
+<td><code>qos</code></td>
+<td>string</td>
+<td><code>"0"</code></td>
+<td><code>0</code> · <code>1</code> · <code>2</code></td>
+<td>QoS Level. Only with <code>protocol</code> = <code>mqtt</code> or <code>wsmqtt</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="serialport"><code>serialport</code><a class="headerlink" href="#serialport" title="Permanent link">&para;</a></h4>
+<p>With <code>input</code> = <code>SERIALPORT</code>. <a href="../../configuration/input/serial/">Documentation</a></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>port</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Port</td>
+</tr>
+<tr>
+<td><code>baudrate</code></td>
+<td>string</td>
+<td><code>"38400"</code></td>
+<td><code>9600</code> · <code>19200</code> · <code>38400</code> · <code>57600</code> · <code>115200</code></td>
+<td>38400 is standard for AIS equipment</td>
+</tr>
+<tr>
+<td><code>init_seq</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Commands sent to the device on open</td>
+</tr>
+<tr>
+<td><code>dump_file</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Append raw bytes to this file (also enables dump)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="udpserver"><code>udpserver</code><a class="headerlink" href="#udpserver" title="Permanent link">&para;</a></h4>
+<p>With <code>input</code> = <code>UDPSERVER</code>. <a href="../../configuration/input/udp/">Documentation</a></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>server</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Local address the UDP server listens on</td>
+</tr>
+<tr>
+<td><code>port</code></td>
+<td>number</td>
+<td>–</td>
+<td></td>
+<td>Port</td>
+</tr>
+</tbody>
+</table>
+<h4 id="hackrf"><code>hackrf</code><a class="headerlink" href="#hackrf" title="Permanent link">&para;</a></h4>
+<p>With <code>input</code> = <code>HACKRF</code>. <a href="../../configuration/input/hackrf/">Documentation</a></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lna</code></td>
+<td>number</td>
+<td><code>8</code></td>
+<td>0 – 40</td>
+<td>LNA Gain</td>
+</tr>
+<tr>
+<td><code>vga</code></td>
+<td>number</td>
+<td><code>20</code></td>
+<td>0 – 62</td>
+<td>VGA Gain</td>
+</tr>
+<tr>
+<td><code>preamp</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Enable the built-in preamplifier</td>
+</tr>
+</tbody>
+</table>
+<h4 id="spyserver"><code>spyserver</code><a class="headerlink" href="#spyserver" title="Permanent link">&para;</a></h4>
+<p>With <code>input</code> = <code>SPYSERVER</code>. <a href="../../configuration/input/spyserver/">Documentation</a></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gain</code></td>
+<td>number</td>
+<td><code>0</code></td>
+<td>0 – 50</td>
+<td>Tuner Gain</td>
+</tr>
+<tr>
+<td><code>host</code></td>
+<td>string</td>
+<td><code>"localhost"</code></td>
+<td></td>
+<td>Host</td>
+</tr>
+<tr>
+<td><code>port</code></td>
+<td>number</td>
+<td><code>"1234"</code></td>
+<td></td>
+<td>Port</td>
+</tr>
+</tbody>
+</table>
+<h4 id="nmea2000"><code>nmea2000</code><a class="headerlink" href="#nmea2000" title="Permanent link">&para;</a></h4>
+<p>With <code>input</code> = <code>NMEA2000</code>. <a href="../../configuration/input/NMEA2000/">Documentation</a></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>interface</code></td>
+<td>string</td>
+<td><code>"can0"</code></td>
+<td></td>
+<td>socketCAN interface, Linux only</td>
+</tr>
+</tbody>
+</table>
+<h2 id="outputs">Outputs<a class="headerlink" href="#outputs" title="Permanent link">&para;</a></h2>
+<h3 id="udp">UDP<a class="headerlink" href="#udp" title="Permanent link">&para;</a></h3>
+<p><code>udp</code> is an array, one object per output. <a href="../../configuration/output/UDP/">Documentation</a></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Description</td>
+</tr>
+<tr>
+<td><code>link</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Link</td>
+</tr>
+<tr>
+<td><code>host</code></td>
+<td>string</td>
+<td><code>"127.0.0.1"</code></td>
+<td></td>
+<td>Host</td>
+</tr>
+<tr>
+<td><code>port</code></td>
+<td>number</td>
+<td><code>10110</code></td>
+<td></td>
+<td>Port</td>
+</tr>
+<tr>
+<td><code>active</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td></td>
+<td>Pause without removing</td>
+</tr>
+<tr>
+<td><code>broadcast</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Allow sending to broadcast addresses</td>
+</tr>
+<tr>
+<td><code>msgformat</code></td>
+<td>string</td>
+<td><code>"NMEA"</code></td>
+<td><code>NMEA</code> · <code>NMEA_TAG</code> NMEA + TAG · <code>JSON_NMEA</code> JSON with NMEA · <code>JSON_SPARSE</code> JSON (compact) · <code>JSON_FULL</code> JSON (full) · <code>JSON_ANNOTATED</code> JSON (annotated) · <code>BINARY_NMEA</code> Binary</td>
+<td>Format of forwarded messages</td>
+</tr>
+<tr>
+<td><code>unique</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Drops a message identical to one seen in the last 3 seconds</td>
+</tr>
+<tr>
+<td><code>position_interval</code></td>
+<td>false or integer</td>
+<td><code>false</code> (60 when set)</td>
+<td>0 – 3600</td>
+<td>Off forwards every position; on keeps at most one per vessel within the seconds set (0-3600)</td>
+</tr>
+<tr>
+<td><code>zone</code></td>
+<td>string[]</td>
+<td><code>[]</code></td>
+<td></td>
+<td>No zones — receives from all inputs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="http">HTTP<a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
+<p><code>http</code> is an array, one object per output. <a href="../../configuration/output/HTTP/">Documentation</a></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Description</td>
+</tr>
+<tr>
+<td><code>link</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Link</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>URL</td>
+</tr>
+<tr>
+<td><code>interval</code></td>
+<td>number</td>
+<td><code>60</code></td>
+<td>1 – 86400</td>
+<td>How often messages are posted</td>
+</tr>
+<tr>
+<td><code>active</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td></td>
+<td>Pause without removing</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Station identifier in the feed</td>
+</tr>
+<tr>
+<td><code>userpwd</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Sent as user:password</td>
+</tr>
+<tr>
+<td><code>gzip</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Compress posted data</td>
+</tr>
+<tr>
+<td><code>response</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td></td>
+<td>Log the server response</td>
+</tr>
+<tr>
+<td><code>protocol</code></td>
+<td>string</td>
+<td><code>"AISCATCHER"</code></td>
+<td><code>AISCATCHER</code> · <code>MINIMAL</code> · <code>APRS</code> · <code>LIST</code> · <code>AIRFRAMES</code> · <code>NMEA</code></td>
+<td>Submission format expected by the server</td>
+</tr>
+<tr>
+<td><code>unique</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Drops a message identical to one seen in the last 3 seconds</td>
+</tr>
+<tr>
+<td><code>position_interval</code></td>
+<td>false or integer</td>
+<td><code>false</code> (60 when set)</td>
+<td>0 – 3600</td>
+<td>Off forwards every position; on keeps at most one per vessel within the seconds set (0-3600)</td>
+</tr>
+<tr>
+<td><code>zone</code></td>
+<td>string[]</td>
+<td><code>[]</code></td>
+<td></td>
+<td>No zones — receives from all inputs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mqtt">MQTT<a class="headerlink" href="#mqtt" title="Permanent link">&para;</a></h3>
+<p><code>mqtt</code> is an array, one object per output. <a href="../../configuration/output/MQTT/">Documentation</a></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Description</td>
+</tr>
+<tr>
+<td><code>link</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Link</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>URL</td>
+</tr>
+<tr>
+<td><code>active</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td></td>
+<td>Pause without removing</td>
+</tr>
+<tr>
+<td><code>topic</code></td>
+<td>string</td>
+<td><code>"ais/data"</code></td>
+<td></td>
+<td>Supports %mmsi%, %type% and %channel% placeholders</td>
+</tr>
+<tr>
+<td><code>client_id</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Client ID</td>
+</tr>
+<tr>
+<td><code>qos</code></td>
+<td>string</td>
+<td><code>"0"</code></td>
+<td><code>0</code> 0 - At most once · <code>1</code> 1 - At least once · <code>2</code> 2 - Exactly once</td>
+<td>QoS</td>
+</tr>
+<tr>
+<td><code>msgformat</code></td>
+<td>string</td>
+<td><code>"JSON_FULL"</code></td>
+<td><code>NMEA</code> · <code>NMEA_TAG</code> NMEA + TAG · <code>JSON_NMEA</code> JSON with NMEA · <code>JSON_SPARSE</code> JSON (compact) · <code>JSON_FULL</code> JSON (full) · <code>JSON_ANNOTATED</code> JSON (annotated) · <code>BINARY_NMEA</code> Binary</td>
+<td>Format of forwarded messages</td>
+</tr>
+<tr>
+<td><code>unique</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Drops a message identical to one seen in the last 3 seconds</td>
+</tr>
+<tr>
+<td><code>position_interval</code></td>
+<td>false or integer</td>
+<td><code>false</code> (60 when set)</td>
+<td>0 – 3600</td>
+<td>Off forwards every position; on keeps at most one per vessel within the seconds set (0-3600)</td>
+</tr>
+<tr>
+<td><code>zone</code></td>
+<td>string[]</td>
+<td><code>[]</code></td>
+<td></td>
+<td>No zones — receives from all inputs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tcp-client">TCP Client<a class="headerlink" href="#tcp-client" title="Permanent link">&para;</a></h3>
+<p><code>tcp</code> is an array, one object per output. <a href="../../configuration/output/TCP-client/">Documentation</a></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Description</td>
+</tr>
+<tr>
+<td><code>link</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Link</td>
+</tr>
+<tr>
+<td><code>host</code></td>
+<td>string</td>
+<td><code>"127.0.0.1"</code></td>
+<td></td>
+<td>Host</td>
+</tr>
+<tr>
+<td><code>port</code></td>
+<td>number</td>
+<td><code>10110</code></td>
+<td></td>
+<td>Port</td>
+</tr>
+<tr>
+<td><code>active</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td></td>
+<td>Pause without removing</td>
+</tr>
+<tr>
+<td><code>persist</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td></td>
+<td>Reconnect automatically after failures</td>
+</tr>
+<tr>
+<td><code>keep_alive</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Enable TCP keep-alive probes</td>
+</tr>
+<tr>
+<td><code>msgformat</code></td>
+<td>string</td>
+<td><code>"NMEA"</code></td>
+<td><code>NMEA</code> · <code>NMEA_TAG</code> NMEA + TAG · <code>JSON_NMEA</code> JSON with NMEA · <code>JSON_SPARSE</code> JSON (compact) · <code>JSON_FULL</code> JSON (full) · <code>JSON_ANNOTATED</code> JSON (annotated) · <code>BINARY_NMEA</code> Binary</td>
+<td>Format of forwarded messages</td>
+</tr>
+<tr>
+<td><code>unique</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Drops a message identical to one seen in the last 3 seconds</td>
+</tr>
+<tr>
+<td><code>position_interval</code></td>
+<td>false or integer</td>
+<td><code>false</code> (60 when set)</td>
+<td>0 – 3600</td>
+<td>Off forwards every position; on keeps at most one per vessel within the seconds set (0-3600)</td>
+</tr>
+<tr>
+<td><code>zone</code></td>
+<td>string[]</td>
+<td><code>[]</code></td>
+<td></td>
+<td>No zones — receives from all inputs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tcp-server">TCP Server<a class="headerlink" href="#tcp-server" title="Permanent link">&para;</a></h3>
+<p><code>tcp_listener</code> is an array, one object per output. <a href="../../configuration/output/TCP-server/">Documentation</a></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Description</td>
+</tr>
+<tr>
+<td><code>link</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Link</td>
+</tr>
+<tr>
+<td><code>port</code></td>
+<td>number</td>
+<td><code>5010</code></td>
+<td></td>
+<td>Port clients connect to, max 64</td>
+</tr>
+<tr>
+<td><code>active</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td></td>
+<td>Pause without removing</td>
+</tr>
+<tr>
+<td><code>msgformat</code></td>
+<td>string</td>
+<td><code>"NMEA"</code></td>
+<td><code>NMEA</code> · <code>NMEA_TAG</code> NMEA + TAG · <code>JSON_NMEA</code> JSON with NMEA · <code>JSON_SPARSE</code> JSON (compact) · <code>JSON_FULL</code> JSON (full) · <code>JSON_ANNOTATED</code> JSON (annotated) · <code>BINARY_NMEA</code> Binary</td>
+<td>Format of forwarded messages</td>
+</tr>
+<tr>
+<td><code>unique</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Drops a message identical to one seen in the last 3 seconds</td>
+</tr>
+<tr>
+<td><code>position_interval</code></td>
+<td>false or integer</td>
+<td><code>false</code> (60 when set)</td>
+<td>0 – 3600</td>
+<td>Off forwards every position; on keeps at most one per vessel within the seconds set (0-3600)</td>
+</tr>
+<tr>
+<td><code>zone</code></td>
+<td>string[]</td>
+<td><code>[]</code></td>
+<td></td>
+<td>No zones — receives from all inputs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="database">Database<a class="headerlink" href="#database" title="Permanent link">&para;</a></h3>
+<p><code>db</code> is an array, one object per output. <a href="../../configuration/output/PSQL/">Documentation</a></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Description</td>
+</tr>
+<tr>
+<td><code>link</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Link</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td><code>"sqlite"</code></td>
+<td><code>sqlite</code> SQLite (local file) · <code>postgres</code> PostgreSQL · <code>csv</code> CSV files</td>
+<td>Database</td>
+</tr>
+<tr>
+<td><code>conn_str</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>File for SQLite, libpq connection string for PostgreSQL, directory for CSV</td>
+</tr>
+<tr>
+<td><code>retention</code></td>
+<td>number</td>
+<td><code>0</code></td>
+<td>0 – …</td>
+<td>Days of history kept, pruned daily; 0 keeps everything</td>
+</tr>
+<tr>
+<td><code>capacity</code></td>
+<td>number</td>
+<td><code>8192</code></td>
+<td>64 – 1000000</td>
+<td>CSV only: how many targets the state file keeps before the least recently heard is dropped. Only with <code>type</code> = <code>csv</code></td>
+</tr>
+<tr>
+<td><code>station_id</code></td>
+<td>number</td>
+<td>–</td>
+<td>0 – …</td>
+<td>Stamped on every row so several feeders can share one database</td>
+</tr>
+<tr>
+<td><code>active</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td></td>
+<td>Pause without removing</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td></td>
+<td>Latest values per MMSI, one row per vessel</td>
+</tr>
+<tr>
+<td><code>stats</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td></td>
+<td>Hourly reception statistics, one row per hour</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Log every position report; grows with traffic</td>
+</tr>
+<tr>
+<td><code>static</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Log static and voyage reports; grows with traffic</td>
+</tr>
+<tr>
+<td><code>nmea</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Store the raw sentences with each message</td>
+</tr>
+<tr>
+<td><code>interval</code></td>
+<td>number</td>
+<td><code>60</code></td>
+<td>5 – 1800</td>
+<td>Write Interval (seconds)</td>
+</tr>
+<tr>
+<td><code>unique</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Drops a message identical to one seen in the last 3 seconds</td>
+</tr>
+<tr>
+<td><code>position_interval</code></td>
+<td>false or integer</td>
+<td><code>false</code> (60 when set)</td>
+<td>0 – 3600</td>
+<td>Off forwards every position; on keeps at most one per vessel within the seconds set (0-3600)</td>
+</tr>
+<tr>
+<td><code>zone</code></td>
+<td>string[]</td>
+<td><code>[]</code></td>
+<td></td>
+<td>No zones — receives from all inputs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="viewer">Viewer<a class="headerlink" href="#viewer" title="Permanent link">&para;</a></h3>
+<p><code>server</code> is an array, one object per output. <a href="../../configuration/output/web-viewer/">Documentation</a></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>port</code></td>
+<td>number</td>
+<td><code>8100</code></td>
+<td>1 – 65535</td>
+<td>Port the viewer is served on</td>
+</tr>
+<tr>
+<td><code>station</code></td>
+<td>string</td>
+<td><code>"My Station"</code></td>
+<td></td>
+<td>Station name shown in the web viewer</td>
+</tr>
+<tr>
+<td><code>station_link</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>External website linked from the station name</td>
+</tr>
+<tr>
+<td><code>lat</code></td>
+<td>number</td>
+<td><code>0</code></td>
+<td>-90 – 90</td>
+<td>Station latitude in decimal degrees</td>
+</tr>
+<tr>
+<td><code>lon</code></td>
+<td>number</td>
+<td><code>0</code></td>
+<td>-180 – 180</td>
+<td>Station longitude in decimal degrees</td>
+</tr>
+<tr>
+<td><code>places</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Directory containing saved port, berth, anchorage, and custom area definitions</td>
+</tr>
+<tr>
+<td><code>plugin_dir</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Directory with .pjs/.pss plugins injected into the viewer</td>
+</tr>
+<tr>
+<td><code>mbtiles</code></td>
+<td>string[]</td>
+<td>–</td>
+<td></td>
+<td>Base map, one file per line</td>
+</tr>
+<tr>
+<td><code>mboverlay</code></td>
+<td>string[]</td>
+<td>–</td>
+<td></td>
+<td>Overlay, one file per line</td>
+</tr>
+<tr>
+<td><code>fstiles</code></td>
+<td>string[]</td>
+<td>–</td>
+<td></td>
+<td>Base map, one directory per line</td>
+</tr>
+<tr>
+<td><code>fsoverlay</code></td>
+<td>string[]</td>
+<td>–</td>
+<td></td>
+<td>Overlay, one directory per line</td>
+</tr>
+<tr>
+<td><code>webcontrol_http</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>URL of this Web Control, linked from the viewer menu</td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Keeps statistics across restarts, empty to disable</td>
+</tr>
+<tr>
+<td><code>backup</code></td>
+<td>number</td>
+<td><code>10</code></td>
+<td>0 – 2880</td>
+<td>Minutes between backups: 0 disables periodic writes; otherwise at least 5. The file is still saved on shutdown.</td>
+</tr>
+<tr>
+<td><code>history</code></td>
+<td>number</td>
+<td><code>1800</code></td>
+<td>5 – 43200</td>
+<td>Hides ships with no messages for this long</td>
+</tr>
+<tr>
+<td><code>track_memory</code></td>
+<td>number</td>
+<td><code>1024</code></td>
+<td>16 – 262144</td>
+<td>More memory keeps longer track history</td>
+</tr>
+<tr>
+<td><code>replay</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td></td>
+<td>Visitors can animate tracks</td>
+</tr>
+<tr>
+<td><code>split</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td></td>
+<td>Visitors can pick one receiver</td>
+</tr>
+<tr>
+<td><code>track_time</code></td>
+<td>number</td>
+<td><code>3600</code></td>
+<td>0 – 604800</td>
+<td>How far back tracks and replay reach, 0 for no limit</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td>string</td>
+<td><code>"settings"</code></td>
+<td></td>
+<td>Browser storage key; separates viewers</td>
+</tr>
+<tr>
+<td><code>active</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td></td>
+<td>Serve the viewer on this port</td>
+</tr>
+<tr>
+<td><code>share_loc</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Show station location and range on the map</td>
+</tr>
+<tr>
+<td><code>use_gps</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td></td>
+<td>Let GPS update the station location</td>
+</tr>
+<tr>
+<td><code>expire</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Clear data not reconfirmed by new messages</td>
+</tr>
+<tr>
+<td><code>realtime</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Stream live NMEA to the viewer</td>
+</tr>
+<tr>
+<td><code>msg</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Keep recent NMEA per ship for the ship card</td>
+</tr>
+<tr>
+<td><code>geojson</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Enable GeoJSON endpoints</td>
+</tr>
+<tr>
+<td><code>prome</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Metrics served at /metrics</td>
+</tr>
+<tr>
+<td><code>log</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Show the log tab in the viewer</td>
+</tr>
+<tr>
+<td><code>decoder</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td></td>
+<td>Enable the NMEA decoder tab</td>
+</tr>
+<tr>
+<td><code>zone</code></td>
+<td>string[]</td>
+<td><code>[]</code></td>
+<td></td>
+<td>No zones — receives from all inputs</td>
+</tr>
+</tbody>
+</table>
+<h2 id="managed-mode">Managed mode<a class="headerlink" href="#managed-mode" title="Permanent link">&para;</a></h2>
+<p><code>control.viewer</code> configures the viewer that managed mode serves next to the hub. It takes these keys of a
+<a href="#viewer">Viewer</a> entry: <code>station</code>, <code>station_link</code>, <code>webcontrol_http</code>, <code>lat</code>, <code>lon</code>, <code>share_loc</code>, <code>use_gps</code>, <code>history</code>, <code>track_memory</code>, <code>track_time</code>, <code>expire</code>, <code>replay</code>, <code>split</code>, <code>file</code>, <code>backup</code>, <code>places</code>, <code>plugin_dir</code>, <code>context</code>, <code>mbtiles</code>, <code>mboverlay</code>, <code>fstiles</code>, <code>fsoverlay</code>, <code>realtime</code>, <code>msg</code>, <code>decoder</code>, <code>log</code>, <code>geojson</code>, <code>prome</code>, <code>zone</code>.
+A <code>port</code> pins the viewer to that port; without one the system assigns it. <code>control.wizard</code> (boolean) shows
+the setup wizard on the next visit. The hub stores its password under <code>control</code> itself; leave those keys alone.</p>
 
 
 

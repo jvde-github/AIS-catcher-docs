@@ -3460,6 +3460,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../references/config-keys/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Keys
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../references/license/" class="md-nav__link">
         
   
@@ -3634,12 +3662,12 @@ Open the dashboard in your browser on port <strong>8118</strong>, e.g. <code cla
 <p>Building from source optimizes the executable for your hardware but can take a significant amount of time (20 minutes on a Raspberry Pi 4). It is required if you need PostgreSQL support, which is not included in the pre-built packages.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The pre-built packages statically link the latest Osmocom library to guarantee support for the RTL-SDR V4, and are <strong><em>not compatible with</em></strong> the first versions of the Raspberry Pi and Zero due to their limited support for floating point hardware acceleration.</p>
+<p>The pre-built packages statically link the latest Osmocom library to guarantee support for the RTL-SDR V4, and are <em><strong>not compatible with</strong></em> the first versions of the Raspberry Pi and Zero due to their limited support for floating point hardware acceleration.</p>
 </div>
 <h2 id="updating">Updating<a class="headerlink" href="#updating" title="Permanent link">&para;</a></h2>
-<p>To update AIS-catcher to the latest version, simply run the install command again. It will <strong><em>not</em></strong> overwrite any configuration files when these are available on the system.</p>
+<p>To update AIS-catcher to the latest version, simply run the install command again. It will <em><strong>not</strong></em> overwrite any configuration files when these are available on the system.</p>
 <h2 id="remote-startstop-and-host-management">Remote Start/Stop and Host Management<a class="headerlink" href="#remote-startstop-and-host-management" title="Permanent link">&para;</a></h2>
-<p>The separate <a href="../../usage/gui/">AIS-catcher-control</a> package adds browser-based control of the AIS-catcher process (start and stop, live log) and of the host itself (one-click updates, reboot). It is <strong><em>not</em></strong> included in the install above — install it with:</p>
+<p>The separate <a href="../../usage/gui/">AIS-catcher-control</a> package adds browser-based control of the AIS-catcher process (start and stop, live log) and of the host itself (one-click updates, reboot). It is <em><strong>not</strong></em> included in the install above — install it with:</p>
 <div class="language-console highlight"><pre><span></span><code><span class="go">sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/main/install_ais_catcher_control.sh)"</span>
 </code></pre></div>
 
