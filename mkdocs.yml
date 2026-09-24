@@ -143,6 +143,7 @@ nav:
   - References:
       - Features: getting-started/features.md
       - JSON AIS format: references/JSON-decoding.md
+      - Configuration Keys: references/config-keys.md
       - License: references/license.md
 
 

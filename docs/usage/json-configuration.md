@@ -54,7 +54,7 @@ To select the RTL-SDR as an input device:
 
 ## Configuration Keys
 
-Configuration keys are grouped below by purpose.
+Configuration keys are grouped below by purpose. The complete list of keys the managed hub edits, with types, defaults and ranges, is on [Configuration Keys](../references/config-keys.md).
 
 ### General Overview
 
@@ -69,6 +69,8 @@ General (mostly optional) settings define fundamental aspects of AIS-catcher's o
 | `version` | number | 1 | |
 | `sharing` | boolean | Enable community feed sharing | [Community Feed](../configuration/output/community-feed.md) |
 | `sharing_key` | string | Community feed key | [Community Feed](../configuration/output/community-feed.md) |
+| `screen` | number | Screen output mode (0-5), one for all receivers | [Console Output](../configuration/output/console.md) |
+| `verbose_time` | number | Verbose update interval in seconds, one for all receivers | [Console Output](../configuration/output/console.md) |
 | **Receiver array** |
 | `receiver` | array | List of receiver objects (recommended even for a single receiver) [^legacy-root-receiver] | [Receiver configuration](#receiver-configuration-receiver-array) |
 | **Output channels** |
@@ -92,8 +94,6 @@ Each entry in the root-level `receiver` array is a receiver object. These keys l
 | `input` | string | Selects the input device type for this receiver (e.g. `rtlsdr`, `airspy`, `hydrasdr`, `spyserver`, ...) | [Input Overview](../configuration/input/overview.md) |
 | `serial` | string/number | Receiver identifier (recommended; also used to target per-receiver CLI overrides in some setups) | |
 | `verbose` | boolean | Enable verbose output for this receiver | [Console Output](../configuration/output/console.md) |
-| `verbose_time` | number | Verbose update interval (seconds) for this receiver | [Console Output](../configuration/output/console.md) |
-| `screen` | number | Screen output mode (0-5) for this receiver | [Console Output](../configuration/output/console.md) |
 | `meta` | string | Metadata tags (T/D/M) for this receiver | [Console Output](../configuration/output/console.md) |
 | `own_mmsi` | number | Own MMSI of receiver station | |
 | `<device section>` | object | Device-specific configuration object matching `input` (e.g. `rtlsdr`, `airspy`, `hydrasdr`, ...). See examples in [Input Device Settings](#input-device-settings). | [Input Overview](../configuration/input/overview.md) |
