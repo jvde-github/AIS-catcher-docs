@@ -3783,10 +3783,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fid-16-persons-on-board-msg-6-vts-targets-msg-8" class="md-nav__link">
+  <a href="#fid-16-persons-on-board-msg-6-also-fid-40-vts-targets-msg-8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        FID = 16: Persons on board (msg 6) / VTS targets (msg 8)
+        FID = 16: Persons on board (msg 6, also FID 40) / VTS targets (msg 8)
       
     </span>
   </a>
@@ -3827,10 +3827,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fid-22-23-area-notice-broadcast-msg-8-fid-22-and-addressed-msg-6-fid-23-itu-r-m1371-5" class="md-nav__link">
+  <a href="#fid-22-23-area-notice-broadcast-msg-8-fid-22-and-addressed-msg-6-fid-23-itu-r-m1371-5-imo-circ289-5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        FID = 22 / 23: Area notice — broadcast (msg 8, FID 22) and addressed (msg 6, FID 23) — ITU-R M.1371-5
+        FID = 22 / 23: Area notice — broadcast (msg 8, FID 22) and addressed (msg 6, FID 23) — ITU-R M.1371-5 / IMO Circ.289 §5
       
     </span>
   </a>
@@ -4159,10 +4159,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fid-2-lock-scheduling-and-fid-32-specific-only-message_id-is-decoded" class="md-nav__link">
+  <a href="#fid-2-lock-scheduling-msg-8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        FID = 2 (lock scheduling) and FID = 32 (specific): only message_id is decoded.
+        FID = 2: Lock scheduling (msg 8)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fid-32-seaway-version-msg-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FID = 32: Seaway version (msg 8)
       
     </span>
   </a>
@@ -4754,10 +4765,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fid-16-persons-on-board-msg-6-vts-targets-msg-8" class="md-nav__link">
+  <a href="#fid-16-persons-on-board-msg-6-also-fid-40-vts-targets-msg-8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        FID = 16: Persons on board (msg 6) / VTS targets (msg 8)
+        FID = 16: Persons on board (msg 6, also FID 40) / VTS targets (msg 8)
       
     </span>
   </a>
@@ -4798,10 +4809,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fid-22-23-area-notice-broadcast-msg-8-fid-22-and-addressed-msg-6-fid-23-itu-r-m1371-5" class="md-nav__link">
+  <a href="#fid-22-23-area-notice-broadcast-msg-8-fid-22-and-addressed-msg-6-fid-23-itu-r-m1371-5-imo-circ289-5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        FID = 22 / 23: Area notice — broadcast (msg 8, FID 22) and addressed (msg 6, FID 23) — ITU-R M.1371-5
+        FID = 22 / 23: Area notice — broadcast (msg 8, FID 22) and addressed (msg 6, FID 23) — ITU-R M.1371-5 / IMO Circ.289 §5
       
     </span>
   </a>
@@ -5130,10 +5141,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fid-2-lock-scheduling-and-fid-32-specific-only-message_id-is-decoded" class="md-nav__link">
+  <a href="#fid-2-lock-scheduling-msg-8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        FID = 2 (lock scheduling) and FID = 32 (specific): only message_id is decoded.
+        FID = 2: Lock scheduling (msg 8)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fid-32-seaway-version-msg-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FID = 32: Seaway version (msg 8)
       
     </span>
   </a>
@@ -5256,7 +5278,8 @@
 <h1 id="complete-ais-message-json-documentation">Complete AIS Message JSON Documentation<a class="headerlink" href="#complete-ais-message-json-documentation" title="Permanent link">&para;</a></h1>
 <h2 id="json-format">JSON Format<a class="headerlink" href="#json-format" title="Permanent link">&para;</a></h2>
 <p>Below documents the JSON format used for decoding AIS messages. Depending on the settings for JSON decoding fields may or may not be included in the outcome.
-With format <code>JSON_NMEA</code> only the common fields will be included in the JSON package. The AIS message details are still included in the NMEA array embedded in the JSON. With format <code>JSON_FULL</code> the program will perform a full decoding of the AIS messages and include in the JSON. The output format is largely compatible with <code>gpsdecode</code>.</p>
+With format <code>JSON_NMEA</code> only the common fields will be included in the JSON package. The AIS message details are still included in the NMEA array embedded in the JSON. With format <code>JSON_FULL</code> the program will perform a full decoding of the AIS messages and include in the JSON. The output format is largely compatible with <code>gpsdecode</code>. <code>JSON_SPARSE</code> writes the same decode with a reduced key dictionary, and <code>JSON_ANNOTATED</code> wraps each value as an object with <code>value</code> plus the <code>unit</code>, <code>description</code> and lookup <code>text</code> of the key where defined.</p>
+<p><strong>Not-available values.</strong> A field whose wire value is the standard's "not available" code is omitted from the JSON rather than emitted as a sentinel: position 181°/91°, speed 102.3 kn, course 360°, heading 511, second 60, ETA month/day 0 and hour 24/minute 60, IMO 0, draught 0, and the equivalent codes in binary application messages. The tables name the sentinel where it matters. Two fields keep the raw code: <code>turn_unscaled</code> and the type 5 <code>eta</code> string.</p>
 <h2 id="message-types-index">Message types index<a class="headerlink" href="#message-types-index" title="Permanent link">&para;</a></h2>
 <p><strong>Position reports</strong>
 <a href="#type-123">1, 2, 3 — Class A</a> ·
@@ -5317,9 +5340,9 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 </tr>
 <tr>
 <td>version</td>
-<td>String</td>
-<td>AIS-catcher version that produced this output</td>
-<td>"v0.68"</td>
+<td>Integer</td>
+<td>AIS-catcher version number that produced this output</td>
+<td>70</td>
 </tr>
 <tr>
 <td>driver</td>
@@ -5419,10 +5442,10 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>Station identifier (numeric, or 7-char ASCII for SLS).</td>
 </tr>
 <tr>
-<td>error</td>
+<td>quality</td>
 <td>Integer</td>
 <td>–</td>
-<td>Decode error code (only present when a decode error was flagged).</td>
+<td>Quality flags, present only when non-zero. Error flags: checksum <code>0x0200</code>, undersized <code>0x0400</code>, oversized <code>0x0800</code>. Bits 0–5 carry reception-quality marks (plausible, confirmed, suspect, duplicate, echo, late, dense). A flagged message is still forwarded to every output unless that output's filter is on (<code>FILTER on</code>, default exclusions <code>undersized,checksum</code>).</td>
 </tr>
 <tr>
 <td>country</td>
@@ -5465,19 +5488,19 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>turn</td>
 <td>Integer</td>
 <td>±720 °/min</td>
-<td>Rate of turn (scaled). 128 = N/A; ±127 = &gt;5°/30s</td>
+<td>Rate of turn (scaled, °/min). Omitted when not available (raw -128); ±127 = turning right/left at more than 5°/30 s without a turn indicator</td>
 </tr>
 <tr>
 <td>turn_unscaled</td>
 <td>Integer</td>
 <td>-128..127</td>
-<td>Raw ROT field (-128 = N/A)</td>
+<td>Raw ROT field, always present (-128 = not available)</td>
 </tr>
 <tr>
 <td>speed</td>
 <td>Float</td>
 <td>0–102.2 knots</td>
-<td>Speed over ground</td>
+<td>Speed over ground; omitted when not available (102.3)</td>
 </tr>
 <tr>
 <td>accuracy</td>
@@ -5489,43 +5512,37 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>lon</td>
 <td>Float</td>
 <td>±180°</td>
-<td>Longitude</td>
+<td>Longitude; omitted when not available (181°)</td>
 </tr>
 <tr>
 <td>lat</td>
 <td>Float</td>
 <td>±90°</td>
-<td>Latitude</td>
+<td>Latitude; omitted when not available (91°)</td>
 </tr>
 <tr>
 <td>course</td>
 <td>Float</td>
 <td>0–359.9°</td>
-<td>Course over ground</td>
+<td>Course over ground; omitted when not available (360)</td>
 </tr>
 <tr>
 <td>heading</td>
 <td>Integer</td>
 <td>0–359°</td>
-<td>True heading (511 = N/A)</td>
+<td>True heading; omitted when not available (511)</td>
 </tr>
 <tr>
 <td>second</td>
 <td>Integer</td>
-<td>0–59</td>
-<td>UTC second (60 = N/A; 61 = manual; 62 = dead reckoning; 63 = inoperative)</td>
+<td>0–59, 61–63</td>
+<td>UTC second; omitted when not available (60); 61 = manual input, 62 = dead reckoning, 63 = positioning system inoperative</td>
 </tr>
 <tr>
 <td>maneuver</td>
 <td>Integer</td>
 <td>0–2</td>
 <td>Maneuver indicator</td>
-</tr>
-<tr>
-<td>spare</td>
-<td>Integer</td>
-<td>–</td>
-<td>Spare/reserved bits</td>
 </tr>
 <tr>
 <td>power</td>
@@ -5568,37 +5585,37 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>year</td>
 <td>Integer</td>
 <td>YYYY</td>
-<td>UTC year</td>
+<td>UTC year; omitted when not available (0)</td>
 </tr>
 <tr>
 <td>month</td>
 <td>Integer</td>
 <td>1–12</td>
-<td>UTC month</td>
+<td>UTC month; omitted when not available (0)</td>
 </tr>
 <tr>
 <td>day</td>
 <td>Integer</td>
 <td>1–31</td>
-<td>UTC day</td>
+<td>UTC day; omitted when not available (0)</td>
 </tr>
 <tr>
 <td>hour</td>
 <td>Integer</td>
 <td>0–23</td>
-<td>UTC hour</td>
+<td>UTC hour; omitted when not available (24)</td>
 </tr>
 <tr>
 <td>minute</td>
 <td>Integer</td>
 <td>0–59</td>
-<td>UTC minute</td>
+<td>UTC minute; omitted when not available (60)</td>
 </tr>
 <tr>
 <td>second</td>
 <td>Integer</td>
 <td>0–59</td>
-<td>UTC second</td>
+<td>UTC second; omitted when not available (60)</td>
 </tr>
 <tr>
 <td>accuracy</td>
@@ -5610,13 +5627,13 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>lon</td>
 <td>Float</td>
 <td>±180°</td>
-<td>Longitude</td>
+<td>Longitude; omitted when not available (181°)</td>
 </tr>
 <tr>
 <td>lat</td>
 <td>Float</td>
 <td>±90°</td>
-<td>Latitude</td>
+<td>Latitude; omitted when not available (91°)</td>
 </tr>
 <tr>
 <td>epfd</td>
@@ -5635,12 +5652,6 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>Boolean</td>
 <td>–</td>
 <td>Transmission control for satellite broadcast (M.1371-6 Table 49; 0 = stop msg 27 within base coverage, 1 = transmit msg 27). Was part of <code>spare</code> in pre-M.1371-6 revisions.</td>
-</tr>
-<tr>
-<td>spare</td>
-<td>Integer</td>
-<td>–</td>
-<td>Spare/reserved bits</td>
 </tr>
 <tr>
 <td>raim</td>
@@ -5677,7 +5688,7 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>imo</td>
 <td>Integer</td>
 <td>1–999999999</td>
-<td>IMO number</td>
+<td>IMO number; omitted when not available (0)</td>
 </tr>
 <tr>
 <td>callsign</td>
@@ -5743,37 +5754,37 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>eta</td>
 <td>String</td>
 <td><code>MM-DDTHH:MMZ</code></td>
-<td>Estimated time of arrival (UTC)</td>
+<td>Estimated time of arrival (UTC), always present; <code>00-00T24:60Z</code> when not available</td>
 </tr>
 <tr>
 <td>month</td>
 <td>Integer</td>
 <td>1–12</td>
-<td>ETA month (also exposed individually)</td>
+<td>ETA month (also exposed individually); omitted when not available (0)</td>
 </tr>
 <tr>
 <td>day</td>
 <td>Integer</td>
 <td>1–31</td>
-<td>ETA day</td>
+<td>ETA day; omitted when not available (0)</td>
 </tr>
 <tr>
 <td>hour</td>
 <td>Integer</td>
 <td>0–23</td>
-<td>ETA hour</td>
+<td>ETA hour; omitted when not available (24)</td>
 </tr>
 <tr>
 <td>minute</td>
 <td>Integer</td>
 <td>0–59</td>
-<td>ETA minute</td>
+<td>ETA minute; omitted when not available (60)</td>
 </tr>
 <tr>
 <td>draught</td>
 <td>Float</td>
 <td>0–25.5 m</td>
-<td>Draught in metres</td>
+<td>Draught in metres; omitted when not available (0)</td>
 </tr>
 <tr>
 <td>destination</td>
@@ -5786,12 +5797,6 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>Boolean</td>
 <td>–</td>
 <td>Data terminal equipment ready (0 = ready)</td>
-</tr>
-<tr>
-<td>spare</td>
-<td>Integer</td>
-<td>–</td>
-<td>Spare/reserved bit</td>
 </tr>
 </tbody>
 </table>
@@ -5825,12 +5830,6 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>Retransmit flag</td>
 </tr>
 <tr>
-<td>spare</td>
-<td>Integer</td>
-<td>–</td>
-<td>Spare bit</td>
-</tr>
-<tr>
 <td>dac</td>
 <td>Integer</td>
 <td>–</td>
@@ -5862,12 +5861,6 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>spare</td>
-<td>Integer</td>
-<td>–</td>
-<td>Spare bits</td>
-</tr>
 <tr>
 <td>mmsi1</td>
 <td>Integer</td>
@@ -5964,14 +5957,14 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <tr>
 <td>alt</td>
 <td>Integer</td>
-<td>0–4095 m</td>
-<td>Altitude (4095 = N/A)</td>
+<td>0–4094 m</td>
+<td>Altitude; omitted when not available (4095)</td>
 </tr>
 <tr>
 <td>speed</td>
 <td>Integer</td>
-<td>0–1023 knots</td>
-<td>Speed over ground</td>
+<td>0–1022 knots</td>
+<td>Speed over ground; omitted when not available (1023)</td>
 </tr>
 <tr>
 <td>accuracy</td>
@@ -5983,37 +5976,31 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>lon</td>
 <td>Float</td>
 <td>±180°</td>
-<td>Longitude</td>
+<td>Longitude; omitted when not available (181°)</td>
 </tr>
 <tr>
 <td>lat</td>
 <td>Float</td>
 <td>±90°</td>
-<td>Latitude</td>
+<td>Latitude; omitted when not available (91°)</td>
 </tr>
 <tr>
 <td>course</td>
 <td>Float</td>
 <td>0–359.9°</td>
-<td>Course over ground</td>
+<td>Course over ground; omitted when not available (360)</td>
 </tr>
 <tr>
 <td>second</td>
 <td>Integer</td>
 <td>0–59</td>
-<td>UTC second</td>
+<td>UTC second; omitted when not available (60)</td>
 </tr>
 <tr>
 <td>alt_sensor</td>
 <td>Boolean</td>
 <td>–</td>
 <td>Altitude sensor (M.1371-6 Table 57; 0 = GNSS, 1 = barometric). Was part of <code>regional</code> in pre-M.1371-6 revisions.</td>
-</tr>
-<tr>
-<td>spare</td>
-<td>Integer</td>
-<td>–</td>
-<td>Spare bits</td>
 </tr>
 <tr>
 <td>dte</td>
@@ -6245,13 +6232,13 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>lon</td>
 <td>Float</td>
 <td>±180°</td>
-<td>Longitude (1/600 degree resolution)</td>
+<td>Longitude (1/600 degree resolution); omitted when not available (181°)</td>
 </tr>
 <tr>
 <td>lat</td>
 <td>Float</td>
 <td>±90°</td>
-<td>Latitude (1/600 degree resolution)</td>
+<td>Latitude (1/600 degree resolution); omitted when not available (91°)</td>
 </tr>
 <tr>
 <td>data</td>
@@ -6282,7 +6269,7 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>speed</td>
 <td>Float</td>
 <td>0–102.2 knots</td>
-<td>Speed over ground</td>
+<td>Speed over ground; omitted when not available (102.3)</td>
 </tr>
 <tr>
 <td>accuracy</td>
@@ -6294,43 +6281,37 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>lon</td>
 <td>Float</td>
 <td>±180°</td>
-<td>Longitude</td>
+<td>Longitude; omitted when not available (181°)</td>
 </tr>
 <tr>
 <td>lat</td>
 <td>Float</td>
 <td>±90°</td>
-<td>Latitude</td>
+<td>Latitude; omitted when not available (91°)</td>
 </tr>
 <tr>
 <td>course</td>
 <td>Float</td>
 <td>0–359.9°</td>
-<td>Course over ground</td>
+<td>Course over ground; omitted when not available (360)</td>
 </tr>
 <tr>
 <td>heading</td>
 <td>Integer</td>
 <td>0–359°</td>
-<td>True heading</td>
+<td>True heading; omitted when not available (511)</td>
 </tr>
 <tr>
 <td>second</td>
 <td>Integer</td>
 <td>0–59</td>
-<td>UTC second</td>
+<td>UTC second; omitted when not available (60)</td>
 </tr>
 <tr>
 <td>power</td>
 <td>Boolean</td>
 <td>–</td>
 <td>Transmit power flag (M.1371-6 Table 68; 0 = high, 1 = low). Was part of <code>regional</code> in pre-M.1371-6 revisions.</td>
-</tr>
-<tr>
-<td>spare</td>
-<td>Integer</td>
-<td>–</td>
-<td>Spare bit</td>
 </tr>
 <tr>
 <td>cs</td>
@@ -6395,16 +6376,10 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 </thead>
 <tbody>
 <tr>
-<td>spare</td>
-<td>Integer</td>
-<td>–</td>
-<td>Spare bits</td>
-</tr>
-<tr>
 <td>speed</td>
 <td>Float</td>
 <td>0–102.2 knots</td>
-<td>Speed over ground</td>
+<td>Speed over ground; omitted when not available (102.3)</td>
 </tr>
 <tr>
 <td>accuracy</td>
@@ -6416,31 +6391,31 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>lon</td>
 <td>Float</td>
 <td>±180°</td>
-<td>Longitude</td>
+<td>Longitude; omitted when not available (181°)</td>
 </tr>
 <tr>
 <td>lat</td>
 <td>Float</td>
 <td>±90°</td>
-<td>Latitude</td>
+<td>Latitude; omitted when not available (91°)</td>
 </tr>
 <tr>
 <td>course</td>
 <td>Float</td>
 <td>0–359.9°</td>
-<td>Course over ground</td>
+<td>Course over ground; omitted when not available (360)</td>
 </tr>
 <tr>
 <td>heading</td>
 <td>Integer</td>
 <td>0–359°</td>
-<td>True heading</td>
+<td>True heading; omitted when not available (511)</td>
 </tr>
 <tr>
 <td>second</td>
 <td>Integer</td>
 <td>0–59</td>
-<td>UTC second</td>
+<td>UTC second; omitted when not available (60)</td>
 </tr>
 <tr>
 <td>shipname</td>
@@ -6664,13 +6639,13 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>lon</td>
 <td>Float</td>
 <td>±180°</td>
-<td>Longitude</td>
+<td>Longitude; omitted when not available (181°)</td>
 </tr>
 <tr>
 <td>lat</td>
 <td>Float</td>
 <td>±90°</td>
-<td>Latitude</td>
+<td>Latitude; omitted when not available (91°)</td>
 </tr>
 <tr>
 <td>to_bow</td>
@@ -6712,7 +6687,7 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>second</td>
 <td>Integer</td>
 <td>0–59</td>
-<td>UTC second</td>
+<td>UTC second; omitted when not available (60)</td>
 </tr>
 <tr>
 <td>off_position</td>
@@ -7155,25 +7130,25 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>lon</td>
 <td>Float</td>
 <td>±180°</td>
-<td>Longitude (1/600 degree resolution)</td>
+<td>Longitude (1/600 degree resolution); omitted when not available (181°)</td>
 </tr>
 <tr>
 <td>lat</td>
 <td>Float</td>
 <td>±90°</td>
-<td>Latitude (1/600 degree resolution)</td>
+<td>Latitude (1/600 degree resolution); omitted when not available (91°)</td>
 </tr>
 <tr>
 <td>speed</td>
 <td>Integer</td>
 <td>0–62 knots</td>
-<td>Speed over ground</td>
+<td>Speed over ground; omitted when not available (63)</td>
 </tr>
 <tr>
 <td>course</td>
 <td>Integer</td>
 <td>0–359°</td>
-<td>Course over ground</td>
+<td>Course over ground; omitted when not available (511)</td>
 </tr>
 <tr>
 <td>gnss</td>
@@ -7199,19 +7174,19 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>second</td>
 <td>Integer</td>
 <td>0–59</td>
-<td>UTC second</td>
+<td>UTC second; omitted when not available (60)</td>
 </tr>
 <tr>
 <td>lon</td>
 <td>Float</td>
 <td>±180°</td>
-<td>Longitude (1/600000° resolution)</td>
+<td>Longitude (1/600000° resolution); omitted when not available (181°)</td>
 </tr>
 <tr>
 <td>lat</td>
 <td>Float</td>
 <td>±90°</td>
-<td>Latitude (1/600000° resolution)</td>
+<td>Latitude (1/600000° resolution); omitted when not available (91°)</td>
 </tr>
 <tr>
 <td>restricted_use</td>
@@ -7290,12 +7265,6 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>Integer</td>
 <td>0–255</td>
 <td>AtoN status bits (8-bit, AtoN-specific status per IALA R0126)</td>
-</tr>
-<tr>
-<td>spare</td>
-<td>Integer</td>
-<td>–</td>
-<td>Spare bit</td>
 </tr>
 <tr>
 <td>auth_flag</td>
@@ -7381,11 +7350,6 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>Integer</td>
 <td>Designated Area Code requested</td>
 </tr>
-<tr>
-<td>spare</td>
-<td>Integer</td>
-<td>Spare bits</td>
-</tr>
 </tbody>
 </table>
 <h4 id="fid-4-capability-reply-msg-6">FID = 4: Capability reply (msg 6)<a class="headerlink" href="#fid-4-capability-reply-msg-6" title="Permanent link">&para;</a></h4>
@@ -7407,7 +7371,7 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 </table>
 <h4 id="fid-11-legacy-meteorologicalhydrological-msg-8-imo-sncirc236">FID = 11: Legacy meteorological/hydrological (msg 8, IMO SN/Circ.236)<a class="headerlink" href="#fid-11-legacy-meteorologicalhydrological-msg-8-imo-sncirc236" title="Permanent link">&para;</a></h4>
 <p>Same fields as FID = 31 below (legacy encoding; superseded by FID = 31).</p>
-<h4 id="fid-16-persons-on-board-msg-6-vts-targets-msg-8">FID = 16: Persons on board (msg 6) / VTS targets (msg 8)<a class="headerlink" href="#fid-16-persons-on-board-msg-6-vts-targets-msg-8" title="Permanent link">&para;</a></h4>
+<h4 id="fid-16-persons-on-board-msg-6-also-fid-40-vts-targets-msg-8">FID = 16: Persons on board (msg 6, also FID 40) / VTS targets (msg 8)<a class="headerlink" href="#fid-16-persons-on-board-msg-6-also-fid-40-vts-targets-msg-8" title="Permanent link">&para;</a></h4>
 <p>The same <code>(DAC=1, FID=16)</code> slot is reused for two different payloads depending on message type.</p>
 <p>In <strong>msg 6</strong> (number of persons on board, also FID = 40):</p>
 <table>
@@ -7448,12 +7412,6 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>Integer or String</td>
 <td>–</td>
 <td>Target identifier (string when id_type = 2; numeric otherwise)</td>
-</tr>
-<tr>
-<td>spare</td>
-<td>Integer</td>
-<td>–</td>
-<td>Spare bits</td>
 </tr>
 <tr>
 <td>vts_target_lat</td>
@@ -7619,16 +7577,10 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>degrees</td>
 <td>Berth latitude</td>
 </tr>
-<tr>
-<td>spare</td>
-<td>Integer</td>
-<td>–</td>
-<td>Spare bit</td>
-</tr>
 </tbody>
 </table>
-<h4 id="fid-22-23-area-notice-broadcast-msg-8-fid-22-and-addressed-msg-6-fid-23-itu-r-m1371-5">FID = 22 / 23: Area notice — broadcast (msg 8, FID 22) and addressed (msg 6, FID 23) — ITU-R M.1371-5<a class="headerlink" href="#fid-22-23-area-notice-broadcast-msg-8-fid-22-and-addressed-msg-6-fid-23-itu-r-m1371-5" title="Permanent link">&para;</a></h4>
-<p>Both FIDs share the same payload layout (header + axis-aligned bounding box). The per-shape sub-area entries that may follow are not currently expanded.</p>
+<h4 id="fid-22-23-area-notice-broadcast-msg-8-fid-22-and-addressed-msg-6-fid-23-itu-r-m1371-5-imo-circ289-5">FID = 22 / 23: Area notice — broadcast (msg 8, FID 22) and addressed (msg 6, FID 23) — ITU-R M.1371-5 / IMO Circ.289 §5<a class="headerlink" href="#fid-22-23-area-notice-broadcast-msg-8-fid-22-and-addressed-msg-6-fid-23-itu-r-m1371-5-imo-circ289-5" title="Permanent link">&para;</a></h4>
+<p>Both FIDs share the same layout: a header followed by up to ten sub-areas of 87 bits. Circle, rectangle and sector sub-areas are decoded into <code>area_shapes</code>, text sub-areas are joined into <code>area_notice_name</code>, polyline and polygon sub-areas are skipped.</p>
 <table>
 <thead>
 <tr>
@@ -7640,52 +7592,70 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 </thead>
 <tbody>
 <tr>
+<td>linkage_id</td>
+<td>Integer</td>
+<td>–</td>
+<td>Message linkage ID; omitted when 0</td>
+</tr>
+<tr>
 <td>area_notice_type</td>
 <td>Integer</td>
 <td>–</td>
-<td>Area notice type</td>
+<td>Area notice type (0–127, IMO Circ.289 Table 5.2)</td>
+</tr>
+<tr>
+<td>month</td>
+<td>Integer</td>
+<td>1–12</td>
+<td>Start month (UTC); omitted when not available (0)</td>
+</tr>
+<tr>
+<td>day</td>
+<td>Integer</td>
+<td>1–31</td>
+<td>Start day; omitted when not available (0)</td>
+</tr>
+<tr>
+<td>hour</td>
+<td>Integer</td>
+<td>0–23</td>
+<td>Start hour; omitted when not available (24)</td>
+</tr>
+<tr>
+<td>minute</td>
+<td>Integer</td>
+<td>0–59</td>
+<td>Start minute; omitted when not available (60)</td>
 </tr>
 <tr>
 <td>area_notice_duration</td>
 <td>Integer</td>
 <td>minutes</td>
-<td>Notice duration</td>
+<td>Duration; omitted when not available (262143)</td>
 </tr>
 <tr>
-<td>area_notice_priority</td>
-<td>Boolean</td>
+<td>area_notice_lat</td>
+<td>Float</td>
+<td>degrees</td>
+<td>Latitude of the first decoded shape</td>
+</tr>
+<tr>
+<td>area_notice_lon</td>
+<td>Float</td>
+<td>degrees</td>
+<td>Longitude of the first decoded shape</td>
+</tr>
+<tr>
+<td>area_shapes</td>
+<td>String</td>
 <td>–</td>
-<td>Priority (0 = default, 1 = urgent)</td>
-</tr>
-<tr>
-<td>area_notice_lon1</td>
-<td>Float</td>
-<td>degrees</td>
-<td>NE corner longitude</td>
-</tr>
-<tr>
-<td>area_notice_lat1</td>
-<td>Float</td>
-<td>degrees</td>
-<td>NE corner latitude</td>
-</tr>
-<tr>
-<td>area_notice_lon2</td>
-<td>Float</td>
-<td>degrees</td>
-<td>SW corner longitude</td>
-</tr>
-<tr>
-<td>area_notice_lat2</td>
-<td>Float</td>
-<td>degrees</td>
-<td>SW corner latitude</td>
+<td>Sub-areas separated by <code>;</code>. Circle: <code>c,lon,lat,radius_m</code>. Rectangle: <code>r,lon,lat,east_m,north_m,orientation_deg</code>. Sector: <code>s,lon,lat,radius_m,left_bound_deg,right_bound_deg</code>. Sizes are already multiplied by the sub-area's scale factor.</td>
 </tr>
 <tr>
 <td>area_notice_name</td>
 <td>String</td>
 <td>–</td>
-<td>Notice name/description (when present)</td>
+<td>Text of the text sub-areas, joined with spaces (when present)</td>
 </tr>
 </tbody>
 </table>
@@ -7773,12 +7743,6 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>Float</td>
 <td>tonnes</td>
 <td>Total hazard quantity on board</td>
-</tr>
-<tr>
-<td>spare</td>
-<td>Integer</td>
-<td>–</td>
-<td>Spare bit</td>
 </tr>
 </tbody>
 </table>
@@ -8412,12 +8376,6 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>–</td>
 <td>Off-position status</td>
 </tr>
-<tr>
-<td>spare</td>
-<td>Integer</td>
-<td>–</td>
-<td>Spare bits</td>
-</tr>
 </tbody>
 </table>
 <h3 id="asm-flagtext">Flag-state text telegrams (DAC = 210 / 248 / 353)<a class="headerlink" href="#asm-flagtext" title="Permanent link">&para;</a></h3>
@@ -8602,7 +8560,7 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>eta</td>
 <td>String</td>
 <td>UTC</td>
-<td>Estimated time of arrival (<code>MM-DD HH:MM</code>)</td>
+<td>Estimated time of arrival (<code>MM-DDTHH:MMZ</code>)</td>
 </tr>
 <tr>
 <td>tugboats</td>
@@ -8663,7 +8621,7 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>rta</td>
 <td>String</td>
 <td>UTC</td>
-<td>Recommended time of arrival (<code>MM-DD HH:MM</code>)</td>
+<td>Recommended time of arrival (<code>MM-DDTHH:MMZ</code>)</td>
 </tr>
 <tr>
 <td>lock_status</td>
@@ -8739,12 +8697,6 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>Warning type (0 = unknown … 9 = forest fire)</td>
 </tr>
 <tr>
-<td>emma_warning_type_text</td>
-<td>String</td>
-<td>–</td>
-<td>Warning type description (when defined)</td>
-</tr>
-<tr>
 <td>min_value</td>
 <td>Integer</td>
 <td>–</td>
@@ -8761,12 +8713,6 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>Integer</td>
 <td>–</td>
 <td>Severity (0 = unknown, 1 = slight, 2 = medium, 3 = strong/heavy)</td>
-</tr>
-<tr>
-<td>emma_severity_text</td>
-<td>String</td>
-<td>–</td>
-<td>Severity description (when defined)</td>
 </tr>
 <tr>
 <td>wind_direction</td>
@@ -9092,12 +9038,6 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>–</td>
 <td>Off-position flag</td>
 </tr>
-<tr>
-<td>spare</td>
-<td>Integer</td>
-<td>–</td>
-<td>Spare bits</td>
-</tr>
 </tbody>
 </table>
 <h3 id="asm-sls">St Lawrence Seaway (DAC = 316 CA / 366 US)<a class="headerlink" href="#asm-sls" title="Permanent link">&para;</a></h3>
@@ -9178,50 +9118,50 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <tr>
 <td>wspeed</td>
 <td>Float</td>
-<td>m/s</td>
-<td>Wind speed</td>
+<td>knots</td>
+<td>Wind speed (0.1 kn); omitted above 101.3 kn (1014 and 1023 are not-available codes)</td>
 </tr>
 <tr>
 <td>wgust</td>
 <td>Float</td>
 <td>knots</td>
-<td>Wind gust</td>
+<td>Wind gust (0.1 kn); omitted above 101.3 kn (1014 and 1023 are not-available codes)</td>
 </tr>
 <tr>
 <td>wdir</td>
 <td>Integer</td>
 <td>degrees</td>
-<td>Wind direction</td>
+<td>Wind direction; omitted when not available (511)</td>
 </tr>
 <tr>
 <td>barometric_pressure</td>
-<td>Integer</td>
+<td>Float</td>
 <td>hPa</td>
-<td>Barometric pressure</td>
+<td>Barometric pressure (0.1 hPa); omitted when not available (16383)</td>
 </tr>
 <tr>
 <td>air_temperature</td>
 <td>Float</td>
 <td>°C</td>
-<td>Air temperature</td>
+<td>Air temperature; omitted when not available</td>
 </tr>
 <tr>
 <td>dew_point</td>
 <td>Float</td>
 <td>°C</td>
-<td>Dew point</td>
+<td>Dew point; omitted when not available</td>
 </tr>
 <tr>
 <td>visibility_km</td>
 <td>Float</td>
 <td>km</td>
-<td>Horizontal visibility</td>
+<td>Horizontal visibility; omitted when not available (255)</td>
 </tr>
 <tr>
 <td>watertemp</td>
 <td>Float</td>
 <td>°C</td>
-<td>Water temperature</td>
+<td>Water temperature; omitted when not available</td>
 </tr>
 </tbody>
 </table>
@@ -9240,25 +9180,19 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>wind_speed_avg</td>
 <td>Float</td>
 <td>knots</td>
-<td>Average wind speed</td>
+<td>Average wind speed (0.1 kn); omitted above 101.3 kn</td>
 </tr>
 <tr>
 <td>wind_gust_speed</td>
 <td>Float</td>
 <td>knots</td>
-<td>Wind gust speed</td>
+<td>Wind gust speed (0.1 kn); omitted above 101.3 kn</td>
 </tr>
 <tr>
 <td>wind_direction_avg</td>
 <td>Integer</td>
 <td>degrees</td>
-<td>Average wind direction</td>
-</tr>
-<tr>
-<td>spare</td>
-<td>Integer</td>
-<td>–</td>
-<td>Spare bits</td>
+<td>Average wind direction; omitted when not available (511)</td>
 </tr>
 </tbody>
 </table>
@@ -9297,12 +9231,6 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>–</td>
 <td>Reading type</td>
 </tr>
-<tr>
-<td>spare</td>
-<td>Integer</td>
-<td>–</td>
-<td>Spare bits</td>
-</tr>
 </tbody>
 </table>
 <p><code>message_id = 6</code> (water flow) adds:</p>
@@ -9322,15 +9250,181 @@ With format <code>JSON_NMEA</code> only the common fields will be included in th
 <td>–</td>
 <td>Water flow</td>
 </tr>
+</tbody>
+</table>
+<h4 id="fid-2-lock-scheduling-msg-8">FID = 2: Lock scheduling (msg 8)<a class="headerlink" href="#fid-2-lock-scheduling-msg-8" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
 <tr>
-<td>spare</td>
+<th>Field</th>
+<th>Type</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message_id</td>
 <td>Integer</td>
 <td>–</td>
-<td>Spare bits</td>
+<td>Sub-message: 1 = lock schedule, 2 = vessel lock ETA. Other values expose only <code>message_id</code>.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="fid-2-lock-scheduling-and-fid-32-specific-only-message_id-is-decoded">FID = 2 (lock scheduling) and FID = 32 (specific): only <code>message_id</code> is decoded.<a class="headerlink" href="#fid-2-lock-scheduling-and-fid-32-specific-only-message_id-is-decoded" title="Permanent link">&para;</a></h4>
+<p><code>message_id = 1</code> (lock schedule) adds:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>month</td>
+<td>Integer</td>
+<td>1–12</td>
+<td>Schedule month (UTC); omitted when not available (0)</td>
+</tr>
+<tr>
+<td>day</td>
+<td>Integer</td>
+<td>1–31</td>
+<td>Schedule day; omitted when not available (0)</td>
+</tr>
+<tr>
+<td>hour</td>
+<td>Integer</td>
+<td>0–23</td>
+<td>Schedule hour; omitted when not available (24)</td>
+</tr>
+<tr>
+<td>minute</td>
+<td>Integer</td>
+<td>0–59</td>
+<td>Schedule minute; omitted when not available (60)</td>
+</tr>
+<tr>
+<td>lock_id</td>
+<td>String</td>
+<td>–</td>
+<td>Lock name (7 chars); omitted when empty</td>
+</tr>
+<tr>
+<td>lon</td>
+<td>Float</td>
+<td>degrees</td>
+<td>Lock longitude (1/60000°); omitted when not available</td>
+</tr>
+<tr>
+<td>lat</td>
+<td>Float</td>
+<td>degrees</td>
+<td>Lock latitude (1/60000°); omitted when not available</td>
+</tr>
+<tr>
+<td>lock_schedule</td>
+<td>String</td>
+<td>–</td>
+<td>Up to six entries separated by <code>;</code>, each <code>name,direction,MM-DDTHH:MMZ</code> with the direction bit as sent (0 or 1). Entries with an empty name are skipped.</td>
+</tr>
+</tbody>
+</table>
+<p><code>message_id = 2</code> (vessel lock ETA) adds the same <code>month</code>, <code>day</code>, <code>hour</code> and <code>minute</code> and:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vessel_name</td>
+<td>String</td>
+<td>–</td>
+<td>Vessel name (15 chars)</td>
+</tr>
+<tr>
+<td>last_location</td>
+<td>String</td>
+<td>–</td>
+<td>Last reported location (7 chars)</td>
+</tr>
+<tr>
+<td>last_ata</td>
+<td>String</td>
+<td>UTC</td>
+<td>Actual time of arrival there (<code>MM-DDTHH:MMZ</code>); omitted when the month is 0</td>
+</tr>
+<tr>
+<td>first_lock</td>
+<td>String</td>
+<td>–</td>
+<td>Next lock (7 chars)</td>
+</tr>
+<tr>
+<td>first_lock_eta</td>
+<td>String</td>
+<td>UTC</td>
+<td>ETA at the next lock; omitted when the month is 0</td>
+</tr>
+<tr>
+<td>second_lock</td>
+<td>String</td>
+<td>–</td>
+<td>Lock after that (7 chars)</td>
+</tr>
+<tr>
+<td>second_lock_eta</td>
+<td>String</td>
+<td>UTC</td>
+<td>ETA at the second lock; omitted when the month is 0</td>
+</tr>
+<tr>
+<td>delay_lock</td>
+<td>String</td>
+<td>–</td>
+<td>Lock where a delay is expected (7 chars)</td>
+</tr>
+</tbody>
+</table>
+<p>Seaway text fields pack several tokens into one field with <code>@</code> separators; <code>@</code> is read as a space, so <code>B@ N@ D@</code> becomes <code>B N D</code>. Empty strings are omitted.</p>
+<h4 id="fid-32-seaway-version-msg-8">FID = 32: Seaway version (msg 8)<a class="headerlink" href="#fid-32-seaway-version-msg-8" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message_id</td>
+<td>Integer</td>
+<td>–</td>
+<td>Sub-message; only 1 is decoded further</td>
+</tr>
+<tr>
+<td>major_version</td>
+<td>Integer</td>
+<td>–</td>
+<td>Seaway ASM major version (<code>message_id = 1</code>)</td>
+</tr>
+<tr>
+<td>minor_version</td>
+<td>Integer</td>
+<td>–</td>
+<td>Seaway ASM minor version (<code>message_id = 1</code>)</td>
+</tr>
+</tbody>
+</table>
 <h3 id="asm-us">US Environmental Sensor Report (DAC = 367, FID = 33, msg 8)<a class="headerlink" href="#asm-us" title="Permanent link">&para;</a></h3>
 <p>Common header:</p>
 <table>
