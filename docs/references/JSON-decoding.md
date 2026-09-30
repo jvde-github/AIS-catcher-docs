@@ -2,7 +2,9 @@
 
 ## JSON Format
 Below documents the JSON format used for decoding AIS messages. Depending on the settings for JSON decoding fields may or may not be included in the outcome.
-With format `JSON_NMEA` only the common fields will be included in the JSON package. The AIS message details are still included in the NMEA array embedded in the JSON. With format `JSON_FULL` the program will perform a full decoding of the AIS messages and include in the JSON. The output format is largely compatible with `gpsdecode`.
+With format `JSON_NMEA` only the common fields will be included in the JSON package. The AIS message details are still included in the NMEA array embedded in the JSON. With format `JSON_FULL` the program will perform a full decoding of the AIS messages and include in the JSON. The output format is largely compatible with `gpsdecode`. `JSON_SPARSE` writes the same decode with a reduced key dictionary, and `JSON_ANNOTATED` wraps each value as an object with `value` plus the `unit`, `description` and lookup `text` of the key where defined.
+
+**Not-available values.** A field whose wire value is the standard's "not available" code is omitted from the JSON rather than emitted as a sentinel: position 181°/91°, speed 102.3 kn, course 360°, heading 511, second 60, ETA month/day 0 and hour 24/minute 60, IMO 0, draught 0, and the equivalent codes in binary application messages. The tables name the sentinel where it matters. Two fields keep the raw code: `turn_unscaled` and the type 5 `eta` string.
 
 ## Message types index
 
@@ -52,7 +54,7 @@ These fields are present in every emitted message:
 |-------|------|-------------|---------|
 | class | String | Always "AIS" | "AIS" |
 | device | String | Always "AIS-catcher" | "AIS-catcher" |
-| version | String | AIS-catcher version that produced this output | "v0.68" |
+| version | Integer | AIS-catcher version number that produced this output | 70 |
 | driver | Integer | Numeric device driver identifier | 3 |
 | hardware | String | Hardware/device product name reported by the driver | "RTL-SDR" |
 | scaled | Boolean | Values scaled to engineering units | true |
@@ -72,7 +74,7 @@ Optional fields, added depending on input mode and message contents:
 | ppm | Float | ppm | Estimated frequency offset of the receiver during decoding. Added with `signalpower`. |
 | toa | Float | seconds | Upstream time of arrival, if the input carried one. For JSON input that is the source's `toa` or `rxuxtime` field (`toa` wins when both are present); for NMEA it is the tag-block `c:` timestamp. Omitted when the input had no upstream time. |
 | station_id | Integer or String | – | Station identifier (numeric, or 7-char ASCII for SLS). |
-| error | Integer | – | Decode error code (only present when a decode error was flagged). |
+| quality | Integer | – | Quality flags, present only when non-zero. Error flags: checksum `0x0200`, undersized `0x0400`, oversized `0x0800`. Bits 0–5 carry reception-quality marks (plausible, confirmed, suspect, duplicate, echo, late, dense). A flagged message is still forwarded to every output unless that output's filter is on (`FILTER on`, default exclusions `undersized,checksum`). |
 | country | String | – | Flag country name derived from MMSI MID. Added with `-M M`. |
 | country_code | String | – | ISO-3166 alpha-2 country code derived from MMSI MID. Added with `-M M`. |
 
@@ -82,17 +84,16 @@ Optional fields, added depending on input mode and message contents:
 |-------|------|-------------|-------------|
 | status | Integer | 0–15 | Navigation status |
 | status_text | String | See note 1 | Navigation status description |
-| turn | Integer | ±720 °/min | Rate of turn (scaled). 128 = N/A; ±127 = >5°/30s |
-| turn_unscaled | Integer | -128..127 | Raw ROT field (-128 = N/A) |
-| speed | Float | 0–102.2 knots | Speed over ground |
+| turn | Integer | ±720 °/min | Rate of turn (scaled, °/min). Omitted when not available (raw -128); ±127 = turning right/left at more than 5°/30 s without a turn indicator |
+| turn_unscaled | Integer | -128..127 | Raw ROT field, always present (-128 = not available) |
+| speed | Float | 0–102.2 knots | Speed over ground; omitted when not available (102.3) |
 | accuracy | Boolean | – | Position accuracy flag (1 = DGPS <10 m) |
-| lon | Float | ±180° | Longitude |
-| lat | Float | ±90° | Latitude |
-| course | Float | 0–359.9° | Course over ground |
-| heading | Integer | 0–359° | True heading (511 = N/A) |
-| second | Integer | 0–59 | UTC second (60 = N/A; 61 = manual; 62 = dead reckoning; 63 = inoperative) |
+| lon | Float | ±180° | Longitude; omitted when not available (181°) |
+| lat | Float | ±90° | Latitude; omitted when not available (91°) |
+| course | Float | 0–359.9° | Course over ground; omitted when not available (360) |
+| heading | Integer | 0–359° | True heading; omitted when not available (511) |
+| second | Integer | 0–59, 61–63 | UTC second; omitted when not available (60); 61 = manual input, 62 = dead reckoning, 63 = positioning system inoperative |
 | maneuver | Integer | 0–2 | Maneuver indicator |
-| spare | Integer | – | Spare/reserved bits |
 | power | Boolean | – | Transmit power flag (M.1371-6 Table 46; 0 = high, 1 = low). Was part of `spare` in pre-M.1371-6 revisions. |
 | raim | Boolean | – | RAIM flag |
 | radio | Integer | – | Radio status (19-bit SOTDMA/ITDMA state). When non-zero, sub-fields are also decoded — see note 5. |
@@ -102,19 +103,18 @@ Optional fields, added depending on input mode and message contents:
 | Field | Type | Range | Description |
 |-------|------|-------|-------------|
 | timestamp | String | ISO-8601 | UTC timestamp (`YYYY-MM-DDTHH:MM:SSZ`) |
-| year | Integer | YYYY | UTC year |
-| month | Integer | 1–12 | UTC month |
-| day | Integer | 1–31 | UTC day |
-| hour | Integer | 0–23 | UTC hour |
-| minute | Integer | 0–59 | UTC minute |
-| second | Integer | 0–59 | UTC second |
+| year | Integer | YYYY | UTC year; omitted when not available (0) |
+| month | Integer | 1–12 | UTC month; omitted when not available (0) |
+| day | Integer | 1–31 | UTC day; omitted when not available (0) |
+| hour | Integer | 0–23 | UTC hour; omitted when not available (24) |
+| minute | Integer | 0–59 | UTC minute; omitted when not available (60) |
+| second | Integer | 0–59 | UTC second; omitted when not available (60) |
 | accuracy | Boolean | – | Position accuracy flag |
-| lon | Float | ±180° | Longitude |
-| lat | Float | ±90° | Latitude |
+| lon | Float | ±180° | Longitude; omitted when not available (181°) |
+| lat | Float | ±90° | Latitude; omitted when not available (91°) |
 | epfd | Integer | 0–8 | EPFD type |
 | epfd_text | String | See note 2 | EPFD description |
 | transmission_control | Boolean | – | Transmission control for satellite broadcast (M.1371-6 Table 49; 0 = stop msg 27 within base coverage, 1 = transmit msg 27). Was part of `spare` in pre-M.1371-6 revisions. |
-| spare | Integer | – | Spare/reserved bits |
 | raim | Boolean | – | RAIM flag |
 | radio | Integer | – | Radio status. See note 5 for sub-fields. |
 
@@ -123,7 +123,7 @@ Optional fields, added depending on input mode and message contents:
 | Field | Type | Range | Description |
 |-------|------|-------|-------------|
 | ais_version | Integer | 0–3 | AIS version |
-| imo | Integer | 1–999999999 | IMO number |
+| imo | Integer | 1–999999999 | IMO number; omitted when not available (0) |
 | callsign | String | 7 chars | Radio callsign |
 | shipname | String | 20 chars | Vessel name |
 | shiptype | Integer | 0–99 | Ship type code |
@@ -134,15 +134,14 @@ Optional fields, added depending on input mode and message contents:
 | to_starboard | Integer | 0–63 m | Dimension to starboard |
 | epfd | Integer | 0–8 | EPFD type |
 | epfd_text | String | See note 2 | EPFD description |
-| eta | String | `MM-DDTHH:MMZ` | Estimated time of arrival (UTC) |
-| month | Integer | 1–12 | ETA month (also exposed individually) |
-| day | Integer | 1–31 | ETA day |
-| hour | Integer | 0–23 | ETA hour |
-| minute | Integer | 0–59 | ETA minute |
-| draught | Float | 0–25.5 m | Draught in metres |
+| eta | String | `MM-DDTHH:MMZ` | Estimated time of arrival (UTC), always present; `00-00T24:60Z` when not available |
+| month | Integer | 1–12 | ETA month (also exposed individually); omitted when not available (0) |
+| day | Integer | 1–31 | ETA day; omitted when not available (0) |
+| hour | Integer | 0–23 | ETA hour; omitted when not available (24) |
+| minute | Integer | 0–59 | ETA minute; omitted when not available (60) |
+| draught | Float | 0–25.5 m | Draught in metres; omitted when not available (0) |
 | destination | String | 20 chars | Destination port |
 | dte | Boolean | – | Data terminal equipment ready (0 = ready) |
-| spare | Integer | – | Spare/reserved bit |
 
 ### Type 6: Binary Addressed Message {#type-6}
 
@@ -151,7 +150,6 @@ Optional fields, added depending on input mode and message contents:
 | seqno | Integer | 0–3 | Sequence number |
 | dest_mmsi | Integer | 9 digits | Destination MMSI |
 | retransmit | Boolean | – | Retransmit flag |
-| spare | Integer | – | Spare bit |
 | dac | Integer | – | Designated Area Code |
 | fid | Integer | – | Functional Identifier |
 | data | String | hex | Raw binary payload (only when no decoder matched) |
@@ -162,7 +160,6 @@ When the (DAC, FID) pair is recognised, the payload is decoded into structured f
 
 | Field | Type | Range | Description |
 |-------|------|-------|-------------|
-| spare | Integer | – | Spare bits |
 | mmsi1 | Integer | 9 digits | MMSI number 1 |
 | mmsiseq1 | Integer | 0–3 | Sequence for MMSI 1 |
 | mmsi2 | Integer | 9 digits | MMSI number 2 (if present) |
@@ -186,15 +183,14 @@ When the (DAC, FID) pair is recognised, the payload is decoded into structured f
 
 | Field | Type | Range | Description |
 |-------|------|-------|-------------|
-| alt | Integer | 0–4095 m | Altitude (4095 = N/A) |
-| speed | Integer | 0–1023 knots | Speed over ground |
+| alt | Integer | 0–4094 m | Altitude; omitted when not available (4095) |
+| speed | Integer | 0–1022 knots | Speed over ground; omitted when not available (1023) |
 | accuracy | Boolean | – | Position accuracy |
-| lon | Float | ±180° | Longitude |
-| lat | Float | ±90° | Latitude |
-| course | Float | 0–359.9° | Course over ground |
-| second | Integer | 0–59 | UTC second |
+| lon | Float | ±180° | Longitude; omitted when not available (181°) |
+| lat | Float | ±90° | Latitude; omitted when not available (91°) |
+| course | Float | 0–359.9° | Course over ground; omitted when not available (360) |
+| second | Integer | 0–59 | UTC second; omitted when not available (60) |
 | alt_sensor | Boolean | – | Altitude sensor (M.1371-6 Table 57; 0 = GNSS, 1 = barometric). Was part of `regional` in pre-M.1371-6 revisions. |
-| spare | Integer | – | Spare bits |
 | dte | Boolean | – | DTE flag |
 | assigned | Boolean | – | Assigned mode flag |
 | raim | Boolean | – | RAIM flag |
@@ -255,8 +251,8 @@ Same fields as [Type 7](#type-7).
 
 | Field | Type | Range | Description |
 |-------|------|-------|-------------|
-| lon | Float | ±180° | Longitude (1/600 degree resolution) |
-| lat | Float | ±90° | Latitude (1/600 degree resolution) |
+| lon | Float | ±180° | Longitude (1/600 degree resolution); omitted when not available (181°) |
+| lat | Float | ±90° | Latitude (1/600 degree resolution); omitted when not available (91°) |
 | data | String | hex | DGNSS data |
 
 ### Type 18: Standard Class B CS Position Report {#type-18}
@@ -264,15 +260,14 @@ Same fields as [Type 7](#type-7).
 | Field | Type | Range | Description |
 |-------|------|-------|-------------|
 | reserved | Integer | – | Reserved |
-| speed | Float | 0–102.2 knots | Speed over ground |
+| speed | Float | 0–102.2 knots | Speed over ground; omitted when not available (102.3) |
 | accuracy | Boolean | – | Position accuracy |
-| lon | Float | ±180° | Longitude |
-| lat | Float | ±90° | Latitude |
-| course | Float | 0–359.9° | Course over ground |
-| heading | Integer | 0–359° | True heading |
-| second | Integer | 0–59 | UTC second |
+| lon | Float | ±180° | Longitude; omitted when not available (181°) |
+| lat | Float | ±90° | Latitude; omitted when not available (91°) |
+| course | Float | 0–359.9° | Course over ground; omitted when not available (360) |
+| heading | Integer | 0–359° | True heading; omitted when not available (511) |
+| second | Integer | 0–59 | UTC second; omitted when not available (60) |
 | power | Boolean | – | Transmit power flag (M.1371-6 Table 68; 0 = high, 1 = low). Was part of `regional` in pre-M.1371-6 revisions. |
-| spare | Integer | – | Spare bit |
 | cs | Boolean | – | Class B unit type flag (false = SOTDMA, true = Carrier Sense) |
 | display | Boolean | – | Display flag |
 | dsc | Boolean | – | DSC flag |
@@ -288,14 +283,13 @@ Aligned to M.1371-6 Table 69: the 8-bit reserved and 4-bit regional fields are n
 
 | Field | Type | Range | Description |
 |-------|------|-------|-------------|
-| spare | Integer | – | Spare bits |
-| speed | Float | 0–102.2 knots | Speed over ground |
+| speed | Float | 0–102.2 knots | Speed over ground; omitted when not available (102.3) |
 | accuracy | Boolean | – | Position accuracy |
-| lon | Float | ±180° | Longitude |
-| lat | Float | ±90° | Latitude |
-| course | Float | 0–359.9° | Course over ground |
-| heading | Integer | 0–359° | True heading |
-| second | Integer | 0–59 | UTC second |
+| lon | Float | ±180° | Longitude; omitted when not available (181°) |
+| lat | Float | ±90° | Latitude; omitted when not available (91°) |
+| course | Float | 0–359.9° | Course over ground; omitted when not available (360) |
+| heading | Integer | 0–359° | True heading; omitted when not available (511) |
+| second | Integer | 0–59 | UTC second; omitted when not available (60) |
 | shipname | String | 20 chars | Vessel name |
 | shiptype | Integer | 0–99 | Ship type code |
 | shiptype_text | String | See note 3 | Ship type description |
@@ -338,15 +332,15 @@ Aligned to M.1371-6 Table 69: the 8-bit reserved and 4-bit regional fields are n
 | aid_type_text | String | See note 4 | Aid type description |
 | name | String | 20 chars | Name of aid |
 | accuracy | Boolean | – | Position accuracy |
-| lon | Float | ±180° | Longitude |
-| lat | Float | ±90° | Latitude |
+| lon | Float | ±180° | Longitude; omitted when not available (181°) |
+| lat | Float | ±90° | Latitude; omitted when not available (91°) |
 | to_bow | Integer | 0–511 m | Dimension to bow |
 | to_stern | Integer | 0–511 m | Dimension to stern |
 | to_port | Integer | 0–63 m | Dimension to port |
 | to_starboard | Integer | 0–63 m | Dimension to starboard |
 | epfd | Integer | 0–8 | EPFD type |
 | epfd_text | String | See note 2 | EPFD description |
-| second | Integer | 0–59 | UTC second |
+| second | Integer | 0–59 | UTC second; omitted when not available (60) |
 | off_position | Boolean | – | Off position indicator |
 | aton_status | Integer | 0–255 | AtoN status bits (M.1371-6 Table 71, 8-bit, AtoN-specific status per IALA R0126). Was named `regional` in pre-M.1371-6 revisions. |
 | raim | Boolean | – | RAIM flag |
@@ -448,10 +442,10 @@ When the `(dac, fid)` pair is recognised the structured ASM fields are emitted i
 | raim | Boolean | – | RAIM flag |
 | status | Integer | 0–15 | Navigation status |
 | status_text | String | See note 1 | Navigation status description |
-| lon | Float | ±180° | Longitude (1/600 degree resolution) |
-| lat | Float | ±90° | Latitude (1/600 degree resolution) |
-| speed | Integer | 0–62 knots | Speed over ground |
-| course | Integer | 0–359° | Course over ground |
+| lon | Float | ±180° | Longitude (1/600 degree resolution); omitted when not available (181°) |
+| lat | Float | ±90° | Latitude (1/600 degree resolution); omitted when not available (91°) |
+| speed | Integer | 0–62 knots | Speed over ground; omitted when not available (63) |
+| course | Integer | 0–359° | Course over ground; omitted when not available (511) |
 | gnss | Boolean | – | Position latency (M.1371-6; 0 = reported position latency <5 s, 1 = ≥5 s, default). Was named "GNSS position status" in pre-M.1371-6 revisions; field name kept for backward compatibility. |
 
 ### Type 28: AtoN Report (single-slot) {#type-28}
@@ -460,9 +454,9 @@ ITU-R M.1371-6 §A7-3.26, Table 84.
 
 | Field | Type | Range | Description |
 |-------|------|-------|-------------|
-| second | Integer | 0–59 | UTC second |
-| lon | Float | ±180° | Longitude (1/600000° resolution) |
-| lat | Float | ±90° | Latitude (1/600000° resolution) |
+| second | Integer | 0–59 | UTC second; omitted when not available (60) |
+| lon | Float | ±180° | Longitude (1/600000° resolution); omitted when not available (181°) |
+| lat | Float | ±90° | Latitude (1/600000° resolution); omitted when not available (91°) |
 | restricted_use | Integer | 0–3 | Restricted use flag (0 = default; 1..3 reserved for restricted use) |
 | aton_station_type | Integer | 0–7 | AtoN station type (3-bit; lookup) |
 | virtual_aid | Boolean | – | Virtual AtoN flag — true when `aton_station_type == 4` |
@@ -476,7 +470,6 @@ ITU-R M.1371-6 §A7-3.26, Table 84.
 | charted_status | Boolean | – | Charted status (0 = not charted, 1 = charted) |
 | on_station_status | Integer | 0–15 | On-station status (4-bit; lookup) |
 | aton_status | Integer | 0–255 | AtoN status bits (8-bit, AtoN-specific status per IALA R0126) |
-| spare | Integer | – | Spare bit |
 | auth_flag | Boolean | – | Authentication flag (1 = transmission authenticated) |
 
 ## ASM payloads (Type 6 / Type 8) {#asm}
@@ -515,7 +508,6 @@ For Type 6 and Type 8 messages, AIS-catcher decodes selected Application-Specifi
 | Field | Type | Description |
 |-------|------|-------------|
 | requested_dac | Integer | Designated Area Code requested |
-| spare | Integer | Spare bits |
 
 #### FID = 4: Capability reply (msg 6)
 
@@ -527,7 +519,7 @@ For Type 6 and Type 8 messages, AIS-catcher decodes selected Application-Specifi
 
 Same fields as FID = 31 below (legacy encoding; superseded by FID = 31).
 
-#### FID = 16: Persons on board (msg 6) / VTS targets (msg 8)
+#### FID = 16: Persons on board (msg 6, also FID 40) / VTS targets (msg 8)
 
 The same `(DAC=1, FID=16)` slot is reused for two different payloads depending on message type.
 
@@ -543,7 +535,6 @@ In **msg 8** (VTS targets, IMO Circ.289 §6):
 |-------|------|------|-------------|
 | vts_target_id_type | Integer | – | Target ID type |
 | vts_target_id | Integer or String | – | Target identifier (string when id_type = 2; numeric otherwise) |
-| spare | Integer | – | Spare bits |
 | vts_target_lat | Float | degrees | Target latitude |
 | vts_target_lon | Float | degrees | Target longitude |
 | vts_target_cog | Integer | degrees | Target course over ground |
@@ -582,22 +573,24 @@ Up to four synthetic targets (120 bits each) are decoded and packed into a singl
 | berth_departure_time | Integer | UTC | Expected departure time |
 | berth_lon | Float | degrees | Berth longitude |
 | berth_lat | Float | degrees | Berth latitude |
-| spare | Integer | – | Spare bit |
 
-#### FID = 22 / 23: Area notice — broadcast (msg 8, FID 22) and addressed (msg 6, FID 23) — ITU-R M.1371-5
+#### FID = 22 / 23: Area notice — broadcast (msg 8, FID 22) and addressed (msg 6, FID 23) — ITU-R M.1371-5 / IMO Circ.289 §5
 
-Both FIDs share the same payload layout (header + axis-aligned bounding box). The per-shape sub-area entries that may follow are not currently expanded.
+Both FIDs share the same layout: a header followed by up to ten sub-areas of 87 bits. Circle, rectangle and sector sub-areas are decoded into `area_shapes`, text sub-areas are joined into `area_notice_name`, polyline and polygon sub-areas are skipped.
 
 | Field | Type | Unit | Description |
 |-------|------|------|-------------|
-| area_notice_type | Integer | – | Area notice type |
-| area_notice_duration | Integer | minutes | Notice duration |
-| area_notice_priority | Boolean | – | Priority (0 = default, 1 = urgent) |
-| area_notice_lon1 | Float | degrees | NE corner longitude |
-| area_notice_lat1 | Float | degrees | NE corner latitude |
-| area_notice_lon2 | Float | degrees | SW corner longitude |
-| area_notice_lat2 | Float | degrees | SW corner latitude |
-| area_notice_name | String | – | Notice name/description (when present) |
+| linkage_id | Integer | – | Message linkage ID; omitted when 0 |
+| area_notice_type | Integer | – | Area notice type (0–127, IMO Circ.289 Table 5.2) |
+| month | Integer | 1–12 | Start month (UTC); omitted when not available (0) |
+| day | Integer | 1–31 | Start day; omitted when not available (0) |
+| hour | Integer | 0–23 | Start hour; omitted when not available (24) |
+| minute | Integer | 0–59 | Start minute; omitted when not available (60) |
+| area_notice_duration | Integer | minutes | Duration; omitted when not available (262143) |
+| area_notice_lat | Float | degrees | Latitude of the first decoded shape |
+| area_notice_lon | Float | degrees | Longitude of the first decoded shape |
+| area_shapes | String | – | Sub-areas separated by `;`. Circle: `c,lon,lat,radius_m`. Rectangle: `r,lon,lat,east_m,north_m,orientation_deg`. Sector: `s,lon,lat,radius_m,left_bound_deg,right_bound_deg`. Sizes are already multiplied by the sub-area's scale factor. |
+| area_notice_name | String | – | Text of the text sub-areas, joined with spaces (when present) |
 
 #### FID = 24: Extended ship static and voyage-related data (msg 8, IMO Circ.289 §4 Table 4.1)
 
@@ -620,7 +613,6 @@ The 52-bit SOLAS equipment-status block is not decoded.
 | cargo_hazard_category | Integer | – | IMDG sub-class category |
 | cargo_hazard_id | Integer | – | UN hazmat ID number |
 | cargo_hazard_quantity | Float | tonnes | Total hazard quantity on board |
-| spare | Integer | – | Spare bit |
 
 #### FID = 21: Weather observation from ship (msg 8, IMO Circ.289 §10)
 
@@ -759,7 +751,6 @@ Three current-prediction points are packed into a compact string. Each point giv
 | asm_light_status | Boolean | – | Light status |
 | asm_battery_status | Boolean | – | Battery status |
 | asm_off_position_status | Boolean | – | Off-position status |
-| spare | Integer | – | Spare bits |
 
 ### Flag-state text telegrams (DAC = 210 / 248 / 353) {#asm-flagtext}
 
@@ -816,7 +807,7 @@ Inland AIS DAC = 200 messages follow the CCNR/UNECE [Vessel Tracking and Tracing
 | fairway_section | String | – | Fairway section identifier |
 | terminal_code | String | – | Terminal code |
 | fairway_hectometre | String | – | Fairway hectometre |
-| eta | String | UTC | Estimated time of arrival (`MM-DD HH:MM`) |
+| eta | String | UTC | Estimated time of arrival (`MM-DDTHH:MMZ`) |
 | tugboats | Integer | – | Number of assisting tugboats (0–6) |
 | air_draught | Float | metres | Maximum present static air draught |
 
@@ -829,7 +820,7 @@ Inland AIS DAC = 200 messages follow the CCNR/UNECE [Vessel Tracking and Tracing
 | fairway_section | String | – | Fairway section identifier |
 | terminal_code | String | – | Terminal code |
 | fairway_hectometre | String | – | Fairway hectometre |
-| rta | String | UTC | Recommended time of arrival (`MM-DD HH:MM`) |
+| rta | String | UTC | Recommended time of arrival (`MM-DDTHH:MMZ`) |
 | lock_status | Integer | – | Lock/bridge/terminal status (0 = operational, 1 = limited, 2 = out of order) |
 
 #### FID = 23: EMMA safety warning, broadcast (msg 8, Table 2.11)
@@ -845,11 +836,9 @@ Inland AIS DAC = 200 messages follow the CCNR/UNECE [Vessel Tracking and Tracing
 | end_lon | Float | degrees | End longitude of the affected area |
 | end_lat | Float | degrees | End latitude of the affected area |
 | emma_warning_type | Integer | – | Warning type (0 = unknown … 9 = forest fire) |
-| emma_warning_type_text | String | – | Warning type description (when defined) |
 | min_value | Integer | – | Minimum parameter value (signed; units depend on warning type). Omitted when set to the "not available" sentinel. |
 | max_value | Integer | – | Maximum parameter value (signed). Omitted when set to "not available". |
 | emma_severity | Integer | – | Severity (0 = unknown, 1 = slight, 2 = medium, 3 = strong/heavy) |
-| emma_severity_text | String | – | Severity description (when defined) |
 | wind_direction | Integer | – | Wind direction (4-bit code per Table 2.11) |
 
 #### FID = 24: Water level data (msg 8, Table 2.15)
@@ -930,7 +919,6 @@ Used by IALA UK & NI (235), IALA ROI (250), and the US St Lawrence Seaway / USCG
 | lon | Float | degrees | Longitude |
 | lat | Float | degrees | Latitude |
 | off_position | Boolean | – | Off-position flag |
-| spare | Integer | – | Spare bits |
 
 ### St Lawrence Seaway (DAC = 316 CA / 366 US) {#asm-sls}
 
@@ -955,23 +943,22 @@ Common header (all variants):
 
 | Field | Type | Unit | Description |
 |-------|------|------|-------------|
-| wspeed | Float | m/s | Wind speed |
-| wgust | Float | knots | Wind gust |
-| wdir | Integer | degrees | Wind direction |
-| barometric_pressure | Integer | hPa | Barometric pressure |
-| air_temperature | Float | °C | Air temperature |
-| dew_point | Float | °C | Dew point |
-| visibility_km | Float | km | Horizontal visibility |
-| watertemp | Float | °C | Water temperature |
+| wspeed | Float | knots | Wind speed (0.1 kn); omitted above 101.3 kn (1014 and 1023 are not-available codes) |
+| wgust | Float | knots | Wind gust (0.1 kn); omitted above 101.3 kn (1014 and 1023 are not-available codes) |
+| wdir | Integer | degrees | Wind direction; omitted when not available (511) |
+| barometric_pressure | Float | hPa | Barometric pressure (0.1 hPa); omitted when not available (16383) |
+| air_temperature | Float | °C | Air temperature; omitted when not available |
+| dew_point | Float | °C | Dew point; omitted when not available |
+| visibility_km | Float | km | Horizontal visibility; omitted when not available (255) |
+| watertemp | Float | °C | Water temperature; omitted when not available |
 
 `message_id = 2` (wind) adds:
 
 | Field | Type | Unit | Description |
 |-------|------|------|-------------|
-| wind_speed_avg | Float | knots | Average wind speed |
-| wind_gust_speed | Float | knots | Wind gust speed |
-| wind_direction_avg | Integer | degrees | Average wind direction |
-| spare | Integer | – | Spare bits |
+| wind_speed_avg | Float | knots | Average wind speed (0.1 kn); omitted above 101.3 kn |
+| wind_gust_speed | Float | knots | Wind gust speed (0.1 kn); omitted above 101.3 kn |
+| wind_direction_avg | Integer | degrees | Average wind direction; omitted when not available (511) |
 
 `message_id = 3` (water level) adds:
 
@@ -981,16 +968,54 @@ Common header (all variants):
 | waterlevel | Float | metres | Water level |
 | reference_datum | Integer | – | Reference datum |
 | reading_type | Integer | – | Reading type |
-| spare | Integer | – | Spare bits |
 
 `message_id = 6` (water flow) adds:
 
 | Field | Type | Unit | Description |
 |-------|------|------|-------------|
 | water_flow | Integer | – | Water flow |
-| spare | Integer | – | Spare bits |
 
-#### FID = 2 (lock scheduling) and FID = 32 (specific): only `message_id` is decoded.
+#### FID = 2: Lock scheduling (msg 8)
+
+| Field | Type | Unit | Description |
+|-------|------|------|-------------|
+| message_id | Integer | – | Sub-message: 1 = lock schedule, 2 = vessel lock ETA. Other values expose only `message_id`. |
+
+`message_id = 1` (lock schedule) adds:
+
+| Field | Type | Unit | Description |
+|-------|------|------|-------------|
+| month | Integer | 1–12 | Schedule month (UTC); omitted when not available (0) |
+| day | Integer | 1–31 | Schedule day; omitted when not available (0) |
+| hour | Integer | 0–23 | Schedule hour; omitted when not available (24) |
+| minute | Integer | 0–59 | Schedule minute; omitted when not available (60) |
+| lock_id | String | – | Lock name (7 chars); omitted when empty |
+| lon | Float | degrees | Lock longitude (1/60000°); omitted when not available |
+| lat | Float | degrees | Lock latitude (1/60000°); omitted when not available |
+| lock_schedule | String | – | Up to six entries separated by `;`, each `name,direction,MM-DDTHH:MMZ` with the direction bit as sent (0 or 1). Entries with an empty name are skipped. |
+
+`message_id = 2` (vessel lock ETA) adds the same `month`, `day`, `hour` and `minute` and:
+
+| Field | Type | Unit | Description |
+|-------|------|------|-------------|
+| vessel_name | String | – | Vessel name (15 chars) |
+| last_location | String | – | Last reported location (7 chars) |
+| last_ata | String | UTC | Actual time of arrival there (`MM-DDTHH:MMZ`); omitted when the month is 0 |
+| first_lock | String | – | Next lock (7 chars) |
+| first_lock_eta | String | UTC | ETA at the next lock; omitted when the month is 0 |
+| second_lock | String | – | Lock after that (7 chars) |
+| second_lock_eta | String | UTC | ETA at the second lock; omitted when the month is 0 |
+| delay_lock | String | – | Lock where a delay is expected (7 chars) |
+
+Seaway text fields pack several tokens into one field with `@` separators; `@` is read as a space, so `B@ N@ D@` becomes `B N D`. Empty strings are omitted.
+
+#### FID = 32: Seaway version (msg 8)
+
+| Field | Type | Unit | Description |
+|-------|------|------|-------------|
+| message_id | Integer | – | Sub-message; only 1 is decoded further |
+| major_version | Integer | – | Seaway ASM major version (`message_id = 1`) |
+| minor_version | Integer | – | Seaway ASM minor version (`message_id = 1`) |
 
 ### US Environmental Sensor Report (DAC = 367, FID = 33, msg 8) {#asm-us}
 
