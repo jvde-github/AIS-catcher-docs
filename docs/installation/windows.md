@@ -19,7 +19,7 @@ Pre-built Windows binaries are available below. There are two ways to run your s
 <div class="step" markdown>
 
 **Download and unpack**  
-Download the **Edge** build from the [releases table](#recent-releases) below and unpack the ZIP file to a directory
+Download the **Edge** build from the [releases table](#recent-releases) below and unpack the ZIP file to a directory. Edge is the name of the latest AIS-catcher build, not the Microsoft Edge browser. Managed mode needs this build: v0.70 is older and does not have it
 
 </div>
 
@@ -68,10 +68,13 @@ The AIS-catcher executables are built with the latest Windows MSVC compiler. Ple
 
 | Version | Win32 | x64 | Win32 + SDRPlay | x64 + SDRPlay |
 | :------ | :---- | :--: | :-------------- | :------------ |
-| Edge    | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/Edge/AIS-catcher.x86.zip) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/Edge/AIS-catcher.x64.zip) | not shipped | not shipped |
-| v0.70   | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/v0.70/AIS-catcher.x86.zip) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/v0.70/AIS-catcher.x64.zip) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/v0.70/AIS-catcher.SDRPLAY.x86.zip) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/v0.70/AIS-catcher.SDRPLAY.x64.zip) |
+| **Edge** (latest, recommended) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/Edge/AIS-catcher.x86.zip) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/Edge/AIS-catcher.x64.zip) | not shipped | not shipped |
+| v0.70 (older, no managed mode) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/v0.70/AIS-catcher.x86.zip) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/v0.70/AIS-catcher.x64.zip) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/v0.70/AIS-catcher.SDRPLAY.x86.zip) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/v0.70/AIS-catcher.SDRPLAY.x64.zip) |
 
-If you are looking for a Windows version for the latest development version, it is automatically produced by the standard workflow and referenced in the table above as **Edge**.
+!!! note "Edge is the latest build, not the browser"
+    **Edge** is the latest build of AIS-catcher, produced automatically from the `main` branch each time the code changes. It is the recommended download and the only Windows build with managed mode and `start-GUI.bat`. The name refers to the build, not the Microsoft Edge browser.
+
+    v0.70 is an older release, kept for its SDRPlay builds (see below). It predates managed mode, so started with `-E` it stops with `Option -E is obsolete`.
 
 !!! note "SDRPlay builds for Windows"
     **v0.70 is the last Windows release with SDRPlay support.** The SDRPlay API installer can no longer be downloaded from an automated build, so these binaries are no longer produced. The v0.70 downloads above remain available.
