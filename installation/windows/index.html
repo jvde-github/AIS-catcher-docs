@@ -3611,7 +3611,7 @@
 <div class="steps">
 <div class="step">
 <p><strong>Download and unpack</strong><br />
-Download the <strong>Edge</strong> build from the <a href="#recent-releases">releases table</a> below and unpack the ZIP file to a directory</p>
+Download the <strong>Edge</strong> build from the <a href="#recent-releases">releases table</a> below and unpack the ZIP file to a directory. Edge is the name of the latest AIS-catcher build, not the Microsoft Edge browser. Managed mode needs this build: v0.70 is older and does not have it</p>
 </div>
 <div class="step">
 <p><strong>Set up the dongle driver</strong><br />
@@ -3650,14 +3650,14 @@ Open the dashboard in your browser at <code class="address">http://localhost:811
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Edge</td>
+<td style="text-align: left;"><strong>Edge</strong> (latest, recommended)</td>
 <td style="text-align: left;"><a href="https://github.com/jvde-github/AIS-catcher/releases/download/Edge/AIS-catcher.x86.zip">ZIP</a></td>
 <td style="text-align: center;"><a href="https://github.com/jvde-github/AIS-catcher/releases/download/Edge/AIS-catcher.x64.zip">ZIP</a></td>
 <td style="text-align: left;">not shipped</td>
 <td style="text-align: left;">not shipped</td>
 </tr>
 <tr>
-<td style="text-align: left;">v0.70</td>
+<td style="text-align: left;">v0.70 (older, no managed mode)</td>
 <td style="text-align: left;"><a href="https://github.com/jvde-github/AIS-catcher/releases/download/v0.70/AIS-catcher.x86.zip">ZIP</a></td>
 <td style="text-align: center;"><a href="https://github.com/jvde-github/AIS-catcher/releases/download/v0.70/AIS-catcher.x64.zip">ZIP</a></td>
 <td style="text-align: left;"><a href="https://github.com/jvde-github/AIS-catcher/releases/download/v0.70/AIS-catcher.SDRPLAY.x86.zip">ZIP</a></td>
@@ -3665,7 +3665,11 @@ Open the dashboard in your browser at <code class="address">http://localhost:811
 </tr>
 </tbody>
 </table>
-<p>If you are looking for a Windows version for the latest development version, it is automatically produced by the standard workflow and referenced in the table above as <strong>Edge</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Edge is the latest build, not the browser</p>
+<p><strong>Edge</strong> is the latest build of AIS-catcher, produced automatically from the <code>main</code> branch each time the code changes. It is the recommended download and the only Windows build with managed mode and <code>start-GUI.bat</code>. The name refers to the build, not the Microsoft Edge browser.</p>
+<p>v0.70 is an older release, kept for its SDRPlay builds (see below). It predates managed mode, so started with <code>-E</code> it stops with <code>Option -E is obsolete</code>.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">SDRPlay builds for Windows</p>
 <p><strong>v0.70 is the last Windows release with SDRPlay support.</strong> The SDRPlay API installer can no longer be downloaded from an automated build, so these binaries are no longer produced. The v0.70 downloads above remain available.</p>
