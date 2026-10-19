@@ -123,6 +123,10 @@ nav:
         - Places: configuration/output/places.md
         - NMEA2000: configuration/output/NMEA2000.md
         - Database (PostgreSQL / SQLite): configuration/output/PSQL.md
+  - API:
+      - Overview: api/overview.md
+      - Webhooks: api/webhooks.md
+      - Home Assistant: api/home-assistant.md
   - Tools:
       - AIS-catcher-control: usage/gui.md
       - Python (aiscat): tools/python.md

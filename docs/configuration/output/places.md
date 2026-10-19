@@ -1,191 +1,177 @@
 # Places
 
-Places are the local catalogue of ports, berths, anchorages and custom geographic
-features. Configure a directory with `control.viewer.places`, or use the standalone
-viewer setting `-N 8100 PLACES /path/to/places`. Managed installations create a
-`places` directory beside the configuration. The top-level Places tab edits this catalogue.
-There is no separate port file, PORTS setting, or port editor.
+A place is a named piece of the map: a port, a berth, an anchorage, a stretch of water, or a zone you want to keep an eye on. Give AIS-catcher a directory of place files and the web viewer will show them on the map, tell you which ships are in each one, keep a record of every ship's visits, and announce arrivals and departures.
 
-## Files and editing
+Places are optional. Without a place directory the viewer works as before.
 
-A `.geojson` file contains a Feature or a FeatureCollection. Each Feature has a
-unique lowercase UUID, a name, schema_version 1, revision, and place_type. Geometry
-is WGS84 Point, Polygon or MultiPolygon. Coordinates are longitude, latitude.
+## Switching places on
+
+<div class="command-container">
+      <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-N</span>
+        <span class="cmd-value">8100</span>
+        <span class="cmd-setting">PLACES</span>
+        <span class="cmd-value">/path/to/places</span>
+    </div>
+</div>
+
+On the command line, `PLACES` is a setting of the web viewer (`-N`). In a JSON configuration it is the key `places` of the `server` object.
+
+In managed mode, open the **Places** tab of the dashboard. The first time, it asks whether to enable places and creates a `places` directory beside the configuration file. The directory can be changed later under the viewer's settings (**Storage → Place Directory**).
+
+## What you get
+
+- **On the map.** Every place has a marker, and its outline appears when you point at it. Large ports show from far out, berths only close in (see [Place types](#place-types)).
+- **On a ship's card.** The card says where the ship is now ("Gate Terminal") and lists its recent visits with entry time, exit time and duration.
+- **On a place.** Clicking a marker opens the ships of that place, in tabs: **Inside**, **Left**, **Arrived**, **Visits**, **Nearby**, and for a port **Expected**, the ships that report it as their destination.
+- **In the ticker.** A ship entering or leaving a port, a guard zone, a sector or a water is announced.
+
+## A place file
+
+A place is a GeoJSON Feature in a file ending in `.geojson`. This is a complete one:
 
 ```json
-{"type":"Feature","id":"b2345678-1234-4234-8234-123456789abc",
- "properties":{"schema_version":1,"revision":1,"name":"Rotterdam",
- "place_type":"port","unlocode":"NLRTM","size":3},
- "geometry":{"type":"Point","coordinates":[4.48,51.9]}}
+{
+  "type": "Feature",
+  "id": "0f2e6b1a-3c4d-4e5f-8a9b-0c1d2e3f4a5b",
+  "properties": {
+    "schema_version": 3,
+    "revision": 1,
+    "name": "Kade 1",
+    "place_type": "berth"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [[[4.05, 52.05], [4.06, 52.05], [4.06, 52.06], [4.05, 52.05]]]
+  }
+}
 ```
 
-Ports require a unique UN/LOCODE. Berths and anchorages refer to a port through
-port_unlocode; that port need not be installed. Custom places have a category.
-Ports can specify parent_unlocode and size (0 unknown, 1 small, 2 medium, 3 large).
-Several polygon parts of one port belong in one MultiPolygon Feature. Parts may
-touch; overlapping interiors are rejected. Holes, self-intersections, duplicate
-vertices and unsplit antimeridian crossings are validated.
+One place per file is the usual layout, with the file named after the place's `id`. A file may also be a `FeatureCollection` holding many places. Coordinates are longitude, then latitude, in WGS84.
 
-Files are authoritative. Editing or deleting a Feature atomically rewrites its
-owning file, preserving the other Features in a collection. New Features get their
-own UUID-named file. Duplicate UUIDs and duplicate port codes are load errors:
-the offending file is skipped with a diagnostic, rather than merged or overridden.
-There are no override files or tombstones. Regeneration replaces manual changes;
-put lasting corrections in the generator's input.
+And a port with everything a port usually carries:
 
-New edits use revision 0. A successful save increments revision. Saves/deletes
-check UUID and revision under the same lock as the file rewrite, preventing lost
-updates to collection siblings. External file changes require a restart or a
-configured-directory change; there is no file watcher. Back up files before
-editing them externally while the server is running.
+```json
+{
+  "type": "Feature",
+  "id": "b47898d6-5dfc-4334-88a0-ad1ff96355ff",
+  "properties": {
+    "schema_version": 3,
+    "revision": 1,
+    "name": "Rotterdam",
+    "place_type": "port",
+    "codes": { "unlocode": ["NLRTM"] },
+    "aliases": ["Rotterdam Europoort"],
+    "rank": 3
+  },
+  "geometry": { "type": "Polygon", "coordinates": [[[3.95, 51.88], [4.55, 51.88], [4.55, 52.0], [3.95, 52.0], [3.95, 51.88]]] }
+}
+```
 
-The editor supports drawing points and polygons, moving points, reshaping polygon
-rings, import/export of individual Features, and search. Lists show up to 200
-matches; narrow the search for larger catalogues. The list transfers representative
-points; selecting a polygon fetches its complete definition. The existing managed
-session and origin checks protect mutations.
+## Properties
 
-## Runtime and map delivery
+The same rules are published as a JSON Schema in the source tree, [`frontend/packages/core/place.schema.json`](https://github.com/jvde-github/AIS-catcher/blob/main/frontend/packages/core/place.schema.json), for tools that write place files.
 
-Runtime place IDs are uint32_t, with UINT32_MAX reserved for missing membership.
-IDs remain stable through managed edits/deletions; reloading may renumber them.
-Consumers associate IDs with place_version. UUIDs remain in files; startup uses
-temporary identity sets and admin edits scan source records.
+<div class="input-table" markdown>
 
-The catalogue publishes immutable snapshots with ID, port-code and normalized-name
-lookups. A separate polygon-only candidate list is sorted smallest-first. Queries
-scan its bounding boxes, then part bounds and rings. Point Features never enter
-containment queries. A spatial grid is deliberately not part of the base backend.
+| Property | Required | Description |
+|---------|------|-------------|
+| <span class="cmd-setting">id</span> | yes | A UUID in lowercase. It is the place's identity: the name, the type and the outline may all change, the `id` never does. Generate one with `uuidgen` (and lowercase it) or `python3 -c "import uuid; print(uuid.uuid4())"`. It sits beside `properties`, not inside it. |
+| <span class="cmd-setting">schema_version</span> | yes | Always <span class="cmd-value">3</span>. |
+| <span class="cmd-setting">revision</span> | yes | <span class="cmd-value">1</span> in a file you write yourself. The editor raises it on every save. |
+| <span class="cmd-setting">name</span> | yes | Up to 120 characters. |
+| <span class="cmd-setting">place_type</span> | yes | One of the [place types](#place-types). |
+| <span class="cmd-setting">part_of</span> | no | The `id` of the place this one lies in: a berth in its terminal, a terminal in its port. |
+| <span class="cmd-setting">codes</span> | no | Codes by scheme, each a list. `unlocode` is the one AIS-catcher uses: only a port may have it, and no two places may claim the same code. Other schemes are kept as written. |
+| <span class="cmd-setting">aliases</span> | no | Other names of a port, up to 64, matched against the destinations ships report. |
+| <span class="cmd-setting">category</span> | no | A free label of up to 60 characters, such as `sea`, `strait` or `restricted`. Shown in place of the type name for guard zones, sectors and waters. |
+| <span class="cmd-setting">rank</span> | no | <span class="cmd-value">0</span> to <span class="cmd-value">3</span>: how prominent the place is on the map. See [Place types](#place-types). |
+| <span class="cmd-setting">country</span> | no | Two capital letters. Without it a port takes the first two letters of its UN/LOCODE, and any other place the country of what it is part of. |
+| <span class="cmd-setting">redirect_to</span> | no | The `id` of the place that replaced this one. See [Changing the catalogue](#changing-the-catalogue). |
+| <span class="cmd-setting">no</span> | no | A number the editor gives a place on its first save and never changes. Leave it out of files you write yourself. |
 
-Each place has a representative point. Point Features use their coordinates;
-polygons use an interior point outside holes. The map-object feed sends kind 10
-markers and deletion IDs, without polygon payloads. Hover fetches a boundary from
-`api/place.json?id=<runtime-id>&version=<place-version>` and displays it temporarily.
-A stale version returns an empty object. The client retains at most 64 boundary
-responses and invalidates them on catalogue version changes.
+</div>
 
-`/api/places.json` on the viewer and `/api/places` on control return the same
-summary rows as the map feed, under `objects`, with `place_version`. The summary
-writer uses compiled metadata directly; it never reparses saved GeoJSON. Both
-hosts expose `/api/place.json?id=<runtime-id>&version=<place-version>` for one
-complete Feature. The editor uses that GET for selection and export; there is no
-POST read, duplicate viewer collection alias, or full-collection read endpoint.
-Saves and deletes continue to check the Feature's UUID and revision.
+Anything else you put in `properties` (an `attributes` object with notes, a source, references) is kept exactly as written and ignored by AIS-catcher, so a place file can also carry your own documentation.
 
-Source records, snapshots and visit history share one immutable metadata object
-per definition. Historical metadata does not retain geometry. Feed sequences are
-indexed by runtime ID; deletions retain numeric ID/sequence pairs. Destination
-matching uses the catalogue's code/name maps, with a transient port metadata view
-only when serializing a ship card. No parallel port vector or provider remains.
-Validation canonicalizes a save once, including its incremented revision.
+## Place types
 
-Polygon storage is limited to 4 million compiled vertices and 256 MiB of retained
-polygon definitions plus point buffers. Point records do not consume those budgets.
-Each Feature is limited to 2,000 vertices and 128 KiB; each file is limited to
-256 MiB. There is no 1,000-object limit. Point metadata still consumes memory.
-Status reports loaded/skipped definitions, polygon parts, vertices and storage bytes.
+The type decides three things: whether a stay needs the ship to stop before it counts, whether a crossing is announced in the ticker and at which level, and from which zoom the marker shows.
 
-## Ships and destination matching
+<div class="input-table" markdown>
 
-`VisitTracker` owns all membership, confirmation and visit state, outside `Ship`.
-Each ship slot has exactly five visit records. Repeat visits use separate records.
-A visit stores two uint32 timestamps and inside/pending flags; the pending
-crossing's timestamp is tentative until confirmed. Zero means unknown. Accepted
-visit timestamps range from Unix second 1 through UINT32_MAX (February 2106);
-out-of-range reports cannot wrap the tracker clock, and such backup times are
-rejected. Shared historical metadata is retained across renames, deletions and
-restarts. On the 64-bit build a visit is 32 bytes and a five-visit record is 168
-bytes, down from 56 and 288 respectively. At 500,000 slots the record array is
-84 MB, excluding relationship edges, reverse buckets and shared metadata.
+| Type | For | A visit needs a stop | Announced | Marker from zoom |
+|---------|------|------|------|-------------|
+| <span class="cmd-setting">berth</span> | One place alongside | yes | no | 14 |
+| <span class="cmd-setting">mooring</span> | Buoys, dolphins, a mooring field | yes | no | 12 |
+| <span class="cmd-setting">terminal</span> | A terminal, a yard, a quay with one operator | yes | no | 12 |
+| <span class="cmd-setting">marina</span> | A yacht harbour | yes | no | rank-based |
+| <span class="cmd-setting">anchorage</span> | Where ships wait at anchor | yes | no | rank-based |
+| <span class="cmd-setting">section</span> | A basin or district of a port | yes | no | 13 |
+| <span class="cmd-setting">port</span> | The port as a whole | yes | routine | rank-based |
+| <span class="cmd-setting">guardzone</span> | Any zone you draw to be told who enters and leaves | no | notice | rank-based |
+| <span class="cmd-setting">sector</span> | A traffic or VTS sector | no | routine | rank-based |
+| <span class="cmd-setting">water</span> | A sea, strait, lake, river or canal | no | routine | no marker |
 
-Five records and their forward edges are allocated for every configured ship slot;
-reverse buckets grow with retained relationships. There is no per-ship history
-container. Hub memory and throughput measurements remain a separate step.
-Current containment updates immediately; a subsequent accepted position at least
-10 seconds later confirms a crossing at its first observation time. Stale and
-copied reports cannot confirm crossings. Startup, position expiry, operator edits,
-changed boundaries and reception gaps over 10 minutes establish a baseline without
-inventing entry or exit times. A reception gap closes the previous observation
-without an exit and starts a fresh baseline if still inside.
+</div>
 
-Empty records are used first, then the oldest completed record. If all five are
-active or pending, current containment takes priority over pending exits, then
-smaller places win (runtime ID breaks size ties). Dropping a record for capacity
-never produces an exit event. Crossing detection is therefore limited to those
-five records; it does not promise detection for every overlapping polygon.
-Ticker events are emitted for ports only. Berth, anchorage and custom visits still
-appear in the visit list and vessel history.
+The ticker has three levels. A **routine** event is shown in its turn. A **notice** is marked with ⚠ and holds the strip longer: that is what a ship entering or leaving a guard zone gets, since a guard zone is what you asked to be told about. **Urgent** is kept for distress messages and never used for places.
 
-The compact ship row retains place_ids at index 14. Each retained visit is encoded
-as `2 * runtime_id + inside_now`, including repeated IDs. JavaScript decodes using
-arithmetic, avoiding signed bitwise truncation. The viewer derives distinct current
-IDs for its place filter. Responses carry place_version. Vessel details expose
-one `visits` list with runtime ID (null for a deleted place), historical name,
-inside/pending status and confirmed entry/exit timestamps. There is no separate
-current `places` list. The summary derives the current location name from visits without a visit preview. The History tab puts Visits and
-Reported changes before the Speed and Draught charts, in separate sections, showing the latest item with an ellipsis
-pill to reveal the rest. Empty sections are hidden. Visits are ordered
-by newest known entry, with unknown entries last; Entry, Exit and Duration use three columns
-with labels above their values; visits under a minute show seconds. The client computes duration from timestamps
-and the response's server `time`, never its local clock. Unknown times/durations
-remain unknown; observation gaps show “Observation ended; exit unknown”.
-Crossing history is derived from the same five records, not a separate event deque.
+Rank-based means the place's own `rank` decides: 3 shows the marker from zoom 7, 2 from zoom 9, 1 from zoom 11 and 0 (the default) from zoom 12. Give an anchorage the rank of its port if the two should appear together. The types with a fixed zoom ignore `rank`. A place with a drawn outline shows its marker from zoom 10 at the latest, whatever its rank. A water has no marker: its outline is drawn when you select it, for example from a ship's card.
 
-Both forward and reverse relationships use `RelationshipIndex<Key, N>`: fixed
-slot-indexed edges, compact reverse buckets and swap-removal with back-references.
-Reverse place membership includes retained completed visits, deduplicated by ship.
-Deduplication belongs to the relationship primitive. Visit IDs are reindexed only
-on allocation, clearing or remapping; flag/time changes need no bucket changes.
-Reindexing and compact-row packing use fixed arrays without temporary heap storage.
-Deletion and slot recycling clear these relationships together. Catalogue changes
-remap all retained IDs by UUID; deleted places retain historical metadata and times
-but lose their runtime ID and reverse membership. Only ships in changed polygon
-bounds need new containment tests; metadata-only edits keep crossing state.
-Historical records share immutable metadata, never polygon geometry.
+Where a ship is inside several places at once, the card names them in the order of the table: the berth before the terminal, the terminal before the port, the port before the water, and the smaller place first among two of the same type.
 
-DB backup version 2 adds a sparse visit section keyed by MMSI with one shared
-metadata/UUID table and small table references per visit. Entry/exit times survive
-restart; current containment is recomputed from restored positions. Unconfirmed
-crossings restart from a baseline. Backups omit pending entries and inactive
-records without confirmed times; established inside baselines with unknown entry
-times are retained. The same rule selects metadata, ship counts and visit rows.
-Version 1 backups still restore ship fields.
-The entire section is validated before applying ships or visits to the DB.
+## Outlines
 
-Local destination matching uses port places only: exact normalized code, then a
-unique normalized name. Ambiguous and partial names are not guessed. Builds with
-libport keep their broader matcher, including matches without a local place.
-Being inside a place does not set the reported destination. `DestinationIndex`
-interns destination codes and owns slot-to-code and reverse membership, matching, and a single retry when an
-unmatched ship first gets a valid position. Catalogue changes rematch local-only
-builds; libport matches remain independent of local catalogue edits. Hub port
-queries and CSV exports read this same index.
+`geometry` is a `Polygon`, a `MultiPolygon`, or a `Point`.
 
-Matched codes are derived state, absent from `Ship` and new ship backups (version
-6). Loading recomputes them from destination text and restored position. Version 5
-ship records remain readable: their old nine-byte matched code is discarded.
-Versions 3 and 4 also remain readable. Old binaries cannot read version 6 records.
+- A **polygon** is what makes a place work: ships are inside it or not. Each ring is closed (the last position repeats the first), has at least three corners, and does not cross or touch itself. A hole lies inside its polygon.
+- A **multipolygon** is one place in several parts, such as a port on both banks of a river.
+- A **point** gives a marker and nothing more. No ship is ever inside a point, so it has no visits; its dialog shows the ships nearby and, for a port, the ships bound for it.
+- An outline that crosses the 180° meridian is split there into two parts.
 
-## Verification
+A place holds up to 2,000 corners. A water may be larger: 2,000 per part and 16,000 in all. One place is limited to 512 KiB, the whole catalogue to four million corners.
 
-Run `npm test` in frontend/shared; browser tests accept PUPPETEER_MODULE and
-CHROME_PATH.
+## How visits are counted
 
-`PlaceMarkers` owns the immutable catalogue snapshot, per-marker feed sequences,
-and deletion records. It adopts catalogue changes, emits marker rows and removals,
-and returns old/new polygon bounds for containment refresh. DB coordinates visit
-remapping, destination rematching and affected ships; the feed sequence remains
-shared with binary objects and stations. `full_refresh_at` remains DB-owned because
-imports, restores, station changes and expiry also invalidate ship deltas.
+- **A position has to be believable.** Only a validated position is used: one the ship can have reached from its previous one at no more than 60 knots, and, for a ship that reported itself stopped, one no more than 200 m from where it lay minutes before. A position that does not fit is left out; if the next one agrees with it, the ship really has moved and carries on from there. A single corrupted message with a wrong MMSI, a jump across the map, or an old position delivered late therefore never puts a ship in your port or takes it out of its berth.
+- **A crossing is confirmed by the next position.** A ship enters when two positions in a row, at least ten seconds apart, are inside; the entry time is that of the first. Leaving works the same way, and one stray position across the line changes nothing.
+- **Silence does not end a stay.** A ship that reports again after an hour or more is taken as found: if it is still inside, the stay goes on with its original entry time; if it has gone, the stay ended at the last position inside. No crossing time is made up for what nobody saw: in a place's list of ships such a time is shown as a bound, with `<` or `>`.
+- **A call needs a stop.** At a port and everything in it, a stay counts as a call once the ship has been seen stopped for a minute: slower than 0.5 knots, or slower than 1 knot while reporting itself moored or at anchor. A ship steaming through a port without stopping leaves no call behind. In a guard zone, a sector or a water every passage counts.
+- **Ten visits per ship** are kept: the places it is in now and its most recent calls. When the viewer keeps a backup file, they are saved in it and survive a restart.
 
-Place markers open the shared ship-list dialog. Inside shows current containment;
-Arrived and Left show one latest confirmed crossing per ship;
-Visits keeps repeat visit rows. Ports also offer Expected: matched destinations
-excluding current containment in that port. Point ports cannot exclude containment
-and the dialog says so. History includes all records available in the five-visit tracker.
-The dialog shares the binary message dialog’s fixed top position across tabs. Each tab shows its total and the ten
-newest rows; Inside and Expected sort by last report. Runtime-ID requests include
-the catalogue version and fail clearly if the marker has become stale.
-The viewer's place filter and side-table selector are removed; place activity is
-explored through the marker dialog. Pending crossing times display Confirming…,
-with a dash for duration until confirmation.
+## Destinations
+
+A ship's reported destination is matched to your ports: first by UN/LOCODE, then by a name or alias that fits exactly one port. Matching ignores case, spaces and punctuation, and never guesses from part of a name. The **Expected** tab of a port lists the ships that match and are not yet inside.
+
+## Changing the catalogue
+
+In managed mode the **Places** tab is an editor: draw or reshape an outline, set the type and the port a place belongs to. A save takes effect at once, on the map and for every ship inside the changed outline.
+
+**Import place** takes a GeoJSON Feature from anywhere. What it recognises is carried over (the name, the type, codes, the port a place belongs to, category and rank, in their current or an older spelling), everything else in the file is kept, and a Feature that says nothing about itself becomes a guard zone. The result opens for review and is stored when you save. **Import shape** and **Paste shape** replace only the outline of the place you are editing.
+
+Files you edit by hand are read when AIS-catcher starts. There is no file watcher, so restart after changing them. A file that breaks a rule is skipped whole and the log says why:
+
+```
+Places: skipped 0f2e6b1a-3c4d-4e5f-8a9b-0c1d2e3f4a5b.geojson: Polygon edges cross or touch themselves
+Places: loaded 412 definitions from /etc/AIS-catcher/places
+```
+
+Files written by earlier releases, with `schema_version` 1 or 2, load as they are. An `area` or a `custom` place is read as a guard zone, `size` as `rank` and `area_subtype` as `category`, and a port named by its UN/LOCODE becomes the place's parent once every file is loaded. The file itself changes only when the place is next saved in the editor, which writes it as schema 3. To convert a whole directory at once, run `scripts/migrate-places.py` from the source tree.
+
+Two things to know before removing a place:
+
+- **Deleting** a place also deletes the visits ships made to it.
+- **Replacing** it keeps them. Leave the old file where it is and add `"redirect_to": "<id of the new place>"` to its properties. The old place disappears from the map, and its visits, including stays under way, continue at the new one. Use this when two outlines of the same place are merged into one.
+
+## Summary Settings
+
+<div class="input-table" markdown>
+
+| Setting (JSON key / CLI setting name) | Type | Default | Description |
+|---------|------|---------|-------------|
+| <span class="cmd-setting">places</span> | string | <span class="cmd-value">-</span> | Directory of place files for the web viewer (CLI: `-N <port> PLACES <directory>`; managed mode: `control.viewer.places`) |
+| <span class="cmd-setting">place_geometry</span> | boolean | <span class="cmd-value">on</span> | Serve each place's outline to the map. Off keeps the outlines private to this installation: markers, lists and visits still work (CLI: `-N <port> PLACE_GEOMETRY off`) |
+
+</div>
