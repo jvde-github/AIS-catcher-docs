@@ -147,8 +147,8 @@ Each entry of `stations` has a number and may have a name, a position and an alt
 | `name` | string | Shown in the viewer; `Station <id>` when left out |
 | `lat`, `lon` | number | Decimal degrees; both or neither |
 | `alt` | number | Height of the antenna in metres |
-| `mmsi` | number | The vessel the station is on: it is wherever that vessel last reported |
-| `gps` | boolean | Whether GPS sentences on its receivers' inputs move the station; on unless set to `false` |
+| `mmsi` | number | The vessel the station is on: it is wherever that vessel last reported, and `gps` does not apply |
+| `gps` | boolean | Whether GPS sentences move the station; off unless set to `true`. Its `lat` and `lon` are then where it stands until the first fix |
 | `share_loc` | boolean | Whether the station's position may leave this machine. Off unless set: no server, API or map then shows where it is, nor which vessel it rides |
 
 Stations are optional. A receiver that names none is a station of its own: it takes its place in the `receiver` list as its number (or the next free number, when `stations` already uses that one), its `description` as its name, and its own `lat` and `lon` as the position. Old configurations therefore work unchanged. A station without a position takes the position of the receiver that names it; when both have one, the station's is used and the log says so.
@@ -178,13 +178,14 @@ Receiver 2: station 1 "Harbour mast" at 52.099998, 4.270000
 Receiver 3: station 3 "Pier" at 52.080002, 4.300000
 ```
 
-In managed mode the **Stations** tab edits this list, and each input's Station field is under its advanced settings.
+In managed mode the **Stations** tab edits this list. Its first entry is the own station: where each input that names no station stands, kept in the viewer's `station` (also the viewer's title), `station_link`, `lat`, `lon`, `use_gps` and `share_loc`. Each input picks its station under **Station** on the Input tab, or none. An input that names a station `stations` does not define stops the engine from starting; the panel will not save one, and the Input tab offers to create a station that a hand-edited file names.
 
-**A station that moves.** A receiver on a boat, or one with a GPS attached, does not stay where the file puts it:
+**A station that moves.** A receiver on a boat, or one with a GPS attached, does not stay where the file puts it. A station's position comes from one source at a time: the vessel its `mmsi` names, else GPS when `gps` is `true`, else its `lat` and `lon`.
 
-- GPS sentences (`$GPRMC`, `$GPGGA` and the like) arriving on a receiver's input move the station of that receiver, and only that one. A station whose position must stay as written takes `"gps": false`.
 - A station with an `mmsi` rides that vessel: each position the vessel reports, heard by any receiver, moves the station there.
-- The position in the file is where the station starts, until the first fix. Ships are measured from where the station was when it heard them. The last fix is kept in the tracking backup, so a restart does not send a station back to its configured position.
+- A station with `"gps": true` moves with the GPS sentences (`$GPRMC`, `$GPGGA` and the like) arriving on the inputs of the receivers that name it. When no receiver names it, GPS on any input moves it.
+- A receiver that names no station is moved by GPS on its own input; in managed mode, unless the viewer's `use_gps` is off.
+- The position in the file is where a moving station starts, until the first fix. Ships are measured from where the station was when it heard them. The last fix is kept in the tracking backup, so a restart does not send a station back to its configured position.
 
 These apply to the stations of the tracker and the servers [below](#tracking-and-servers-tracking-servers), which report each station's position with its source (`configured`, `gps` or `vessel`) and the time of the last fix. The viewer under `server` keeps its own single position, set by `lat`, `lon`, `use_gps` and `own_mmsi` as before.
 
