@@ -1,5 +1,8 @@
 # Input Configuration
 
+!!! tip "Step-by-step guide"
+    **[Connect your receivers](https://www.aiscatcher.org/guides/receiver)** on aiscatcher.org walks through this with screenshots: in the control panel, in the configuration file and on the command line.
+
 ## Device Selection and Discovery
 
 To list all connected compatible hardware devices:

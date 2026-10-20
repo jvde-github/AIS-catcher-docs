@@ -1,20 +1,27 @@
 # API
 
+!!! tip "Step-by-step guides"
+    **[Ask your station: the API](https://www.aiscatcher.org/guides/api)** and **[Let an AI assistant read your station](https://www.aiscatcher.org/guides/mcp)** on aiscatcher.org walk through this with screenshots: in the control panel, in the configuration file and on the command line.
+
 AIS-catcher answers questions about what it hears over HTTP: which vessels are around, where a vessel went, who called at a port, what happened lately, and how the receivers are doing. Programs use the **read API** under `/api/v1`; assistants such as Claude use the same data through **MCP**; monitoring tools use **health** and the **system** service.
 
-All of it is offered by the `servers` of the [JSON configuration](../usage/json-configuration.md#tracking-and-servers-tracking-servers), one service per name:
+All of it is offered by the `services` of the [JSON configuration](../usage/json-configuration.md#tracking-and-services-tracking-services), one service per name:
 
 | Service | What it offers | Key scope |
 |---------|----------------|-----------|
 | `api` | The read API: stations, statistics, vessels with their tracks and visits, places, events, aircraft; `/api/v1/openapi.json` describes it | `data` |
 | `mcp` | The same data as tools for an assistant, on `POST /mcp` | `data` |
 | `system` | The installation: receivers, outputs, health, the log and its own events | `system` |
+| `geojson` | The ships as GeoJSON at `/geojson`, their tracks at `/allpath.geojson` | `data` |
+| `metrics` | Message counts for Prometheus at `/metrics` | `data` |
 | `ui` | The web viewer | none |
 
+A viewer's `geojson` and `prome` switches, as `-N` and the `server` section have them, offer `geojson` and `metrics` on the viewer's port as before. On a server without `keys` they are open, as they always were; a server with keys guards them like the API, unless it is `public`.
+
 ```json
-"servers": [
-    { "port": 8110, "services": ["ui", "api", "mcp", "system"] },
-    { "port": 8111, "bind": "0.0.0.0", "services": ["api", "mcp", "system"],
+"services": [
+    { "port": 8110, "serve": ["ui", "api", "mcp", "system"] },
+    { "port": 8111, "bind": "0.0.0.0", "serve": ["api", "mcp", "system"],
       "keys": [
           { "name": "home-assistant", "sha256": "<SHA-256 of its key>", "scopes": ["data", "system"] },
           { "name": "claude", "sha256": "<SHA-256 of its key>", "scopes": ["data"] }
@@ -26,7 +33,7 @@ All of it is offered by the `servers` of the [JSON configuration](../usage/json-
 
 A server listens on `127.0.0.1` unless `bind` says otherwise, and then only programs on this machine reach it: no key is needed. A server that listens beyond this machine and offers `api`, `mcp` or `system` needs `keys`, or `"public": true` to say its data is for anyone; AIS-catcher refuses to start otherwise. A public server never offers `system` without keys.
 
-A key is a long random text you make yourself; the configuration holds only its SHA-256, so the file does not give the key away:
+A key is a long random text; the configuration holds only its SHA-256, so the file does not give the key away. In managed mode, **New key** on a server's page under **Servers** makes one and shows it once. By hand:
 
 ```sh
 KEY=$(openssl rand -hex 24); echo "$KEY"                 # give this to the program, once
@@ -78,6 +85,15 @@ With `mcp` among its services a server speaks the [Model Context Protocol](https
 | `find_places`, `get_place`, `place_visits` | Ports and other places, who is inside, who came and went |
 | `list_stations`, `data_status` | The stations, and how fresh the data is |
 | `recent_events` | Safety messages, new destinations and statuses, arrivals and departures |
+
+On a server that also offers `system`, and for a caller that may read it (a server without keys, or a key with the `system` scope), the installation's own tools come with them, so an assistant asks the station rather than reading its configuration:
+
+| Tool | What it answers |
+|------|-----------------|
+| `system_status` | Version, uptime, memory, whether the engine runs |
+| `list_receivers`, `list_outputs` | Each input with its station and state; each output and how it fares |
+| `health` | pass, warn or fail, with the checks behind it |
+| `read_log`, `system_events` | The log, and the installation's own events |
 
 For Claude Code, on the station itself:
 

@@ -337,8 +337,12 @@ With `input` = `NMEA2000`. [Documentation](../configuration/input/NMEA2000.md)
 
 ## Managed mode
 
-`control.viewer` configures the viewer that managed mode serves next to the hub. It takes these keys of a
-[Viewer](#viewer) entry: `station`, `station_link`, `webcontrol_http`, `lat`, `lon`, `share_loc`, `use_gps`, `history`, `track_memory`, `track_time`, `expire`, `replay`, `split`, `file`, `backup`, `places`, `plugin_dir`, `context`, `mbtiles`, `mboverlay`, `fstiles`, `fsoverlay`, `realtime`, `msg`, `decoder`, `log`, `geojson`, `prome`, `zone`.
-A `port` pins the viewer to that port; without one the system assigns it. `control.wizard` (boolean) shows
-the setup wizard on the next visit. The hub stores its password under `control` itself; leave those keys alone.
+Managed mode (`-E`) reads the same file. The server beside the control panel, on the panel's port plus one, is the entry of
+`services` marked `"main": true`: it takes a server's keys (`serve`, `keys`, `public`, `filter`, `place_geometry`) and the
+[Viewer](#viewer) options (`realtime`, `replay`, `msg`, `decoder`, `log`, `station`, `station_link`, `webcontrol_http`,
+`mbtiles`, `plugin_dir`, …), never a `port`; the map is always on it. How ships are kept is `tracking` (`file`, `backup`,
+`history`, `track_time`, `track_memory`, `expire`, `max_ships`, `cutoff`, `places`), and the default station is station 0
+of `stations`. `control.wizard` (boolean) shows the setup wizard on the next visit; the hub stores its password under
+`control` itself; leave those keys alone. A file from before, with the viewer under `control.viewer`, is read as it is and
+brought to this layout by the panel when it saves.
 

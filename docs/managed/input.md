@@ -1,5 +1,8 @@
 # Input Settings
 
+!!! tip "Step-by-step guide"
+    **[Connect your receivers](https://www.aiscatcher.org/guides/receiver)** on aiscatcher.org walks through this with screenshots: in the control panel, in the configuration file and on the command line.
+
 The **Input** menu adjusts the receiver: device type, channels, tuner gain, sample rate, bandwidth and high-sensitivity mode.
 
 ![Dashboard — input settings](../assets/qs-input-settings.webp)

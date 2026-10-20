@@ -130,13 +130,27 @@ AIS-catcher -N 8100 prome on
 
 For more information on how to configure Prometheus and Grafana to get an initial dashboard, see [README-grafana.md](../../advanced/grafana.md).
 
+## The API beside the viewer
+
+The viewer keeps its own ships, from the receivers that feed it. The [API](../../api/overview.md), MCP and the system service run on the station's own tracker instead, on a server of their own: `-J` on the command line, an entry of `services` in a configuration file. For example, the viewer on port 8100 and the API and MCP on port 8101:
+
+```bash
+AIS-catcher -N 8100 -J 8101 serve api,mcp
+```
+
 ## Multiple receivers in one viewer
 
-Every receiver is a [station](../../usage/json-configuration.md#stations-stations-array), and every viewer reads one picture of everything they hear. Click a station on the map to see how it is doing, and choose **Show only this station** to look through it alone: the map, the statistics, the plots and the ship table then show what that station heard, and its name stands in the header until you click it to show all again. Stations that keep their position private are not on the map; right-click the map and choose **Station…** to pick one from the list.
+When a viewer receives from more than one receiver, it keeps a combined view called **All** plus a separate view per receiver, and a **Select Receiver** button appears in the header to switch between them.
 
-All viewers share that one picture, so a second viewer costs no extra memory for ships or tracks. The `split` setting is no longer needed and is ignored.
+Set `split off` to keep only the combined view:
 
-To restrict a viewer to some receivers, use `zone` or `groups_in`: the viewer then shows the ships the stations of those receivers heard, and only those stations.
+```bash
+AIS-catcher -N 8100 split off
+```
+
+The per-receiver views are then never created. The **Select Receiver** button disappears, and requests such as `/api/stat.json?receiver=2` return the combined data. This is useful for a public viewer where visitors should see the overall picture rather than the individual receivers, and it also lowers memory use, since each per-receiver view keeps its own vessel database and track history.
+
+To restrict a viewer to a subset of receivers instead of combining all of them, use `zone` or `groups_in`. A viewer that ends up with a single receiver has no **Select Receiver** button either.
 
 ## Cross-origin access (CORS)
 
@@ -175,7 +189,7 @@ Server Options:
 | <span class="cmd-setting">frame_ancestors</span> | string | <span class="cmd-value">-</span> | CSP `frame-ancestors` value; set to allow embedding the viewer in an `<iframe>` |
 | <span class="cmd-setting">groups_in</span> | integer | <span class="cmd-value">all</span> | Bitmask of input groups feeding the viewer |
 | <span class="cmd-setting">zone</span> | string | <span class="cmd-value">-</span> | Comma-separated zone tags routed to this viewer |
-| <span class="cmd-setting">split</span> | boolean | <span class="cmd-value">-</span> | No longer needed: every station can be looked through on its own. Ignored |
+| <span class="cmd-setting">split</span> | boolean | <span class="cmd-value">true</span> | Track each receiver separately next to the combined view; set to `off` for a combined view only |
 | | | | |
 | Location Settings | | | |
 | <span class="cmd-setting">lat</span> | float | <span class="cmd-value">-</span> | Station latitude |
@@ -214,4 +228,4 @@ Server Options:
 | <span class="cmd-setting">about</span> | string | <span class="cmd-value">-</span> | About page path |
 </div>
 
-Of the [message-filtering](message-filtering.md) settings a viewer accepts, `allow_mmsi` and `block_mmsi` (with `filter on`) still limit the ships it shows. The others (message types, channels, repeats) no longer apply to a viewer and are reported once in the log: a viewer shows every ship that is kept. To show a selection, run a server with a [filter](../../usage/json-configuration.md#tracking-and-servers-tracking-servers) instead.
+In addition to the options above, the web viewer accepts the standard [message-filtering](message-filtering.md) settings (e.g. `FILTER on`, allow/block by message type or channel). These restrict which messages reach this particular viewer.

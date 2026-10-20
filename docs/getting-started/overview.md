@@ -68,7 +68,7 @@ Register your station at **aiscatcher.org** to track your station's performance 
 
 </div>
 
-For a complete guided walk-through, see the [Quick Start on aiscatcher.org](https://www.aiscatcher.org/quickstart).
+For a complete guided walk-through, see the [Quick Start on aiscatcher.org](https://www.aiscatcher.org/quickstart). Once it runs, the [guides to setting up your own station](https://www.aiscatcher.org/guides) take it further a job at a time: its location, more receivers, your chart plotter, the API, AI assistants and Home Assistant.
 
 ## Prefer the Command Line?
 

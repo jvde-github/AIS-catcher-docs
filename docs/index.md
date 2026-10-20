@@ -16,6 +16,7 @@
 ## Resources
 
 - [**Quick Start Guide**](https://www.aiscatcher.org/quickstart): From zero to a running station in six steps — install, then finalize the configuration in the browser.
+- [**Set up your own station**](https://www.aiscatcher.org/guides): Short guides on aiscatcher.org, a job at a time: your station's location, receivers, chart plotter, community map, the API, AI assistants and Home Assistant, each in the control panel, in JSON and on the command line.
 - [**Complete User Guide**](getting-started/overview.md): Detailed instructions and feature walkthroughs.
 - [**Community and Support**](community.md): Join the AIS-Catcher community at [aiscatcher.org](https://aiscatcher.org) to track your station's performance, share insights and get help.
 - [**AIS Basics**](ais-basics.md): An introduction to the Automatic Identification System.

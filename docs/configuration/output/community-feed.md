@@ -2,6 +2,9 @@
 
 The Community Feed allows you to share received AIS messages with the AIS-catcher community.
 
+!!! tip "Step-by-step guide"
+    **[Share with the community map](https://www.aiscatcher.org/guides/community)** on aiscatcher.org walks through this with screenshots: in the control panel, in the configuration file and on the command line.
+
 <div class="command-container">
       <div class="command-syntax">
         <span class="cmd-name">AIS-catcher</span>

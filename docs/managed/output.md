@@ -1,5 +1,8 @@
 # Output Settings
 
+!!! tip "Step-by-step guides"
+    On aiscatcher.org: **[Send AIS to your chart plotter](https://www.aiscatcher.org/guides/udp)** and **[Share with the community map](https://www.aiscatcher.org/guides/community)**, with screenshots, in the control panel, in the configuration file and on the command line.
+
 The **Output** menu defines where your data goes. Add or edit outputs without touching a configuration file — each output is defined by a few fields, for example an HTTP feed with its protocol, URL and posting interval.
 
 ![Dashboard — HTTP output](../assets/qs-output-http.webp)

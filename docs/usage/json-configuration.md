@@ -74,8 +74,8 @@ General (mostly optional) settings define fundamental aspects of AIS-catcher's o
 | **Receiver array** |
 | `receiver` | array | List of receiver objects (recommended even for a single receiver) [^legacy-root-receiver] | [Receiver configuration](#receiver-configuration-receiver-array) |
 | `stations` | array | Where the antennas stand: a number, name, position and altitude for each, and a vessel or GPS when they move | [Stations](#stations-stations-array) |
-| `tracking` | object | How the tracker keeps ships: backup file and interval, history, table size | [Tracking and servers](#tracking-and-servers-tracking-servers) |
-| `servers` | array | Servers reading the tracker: port, address, services and filter | [Tracking and servers](#tracking-and-servers-tracking-servers) |
+| `tracking` | object | How the tracker keeps ships: backup file and interval, history, table size | [Tracking and services](#tracking-and-services-tracking-services) |
+| `services` | array | Servers reading the tracker: port, address, what each serves and its filter | [Tracking and services](#tracking-and-services-tracking-services) |
 | `webhooks` | array | Addresses each event is posted to | [Webhooks](../api/webhooks.md) |
 | `mqtt_state` | object | The station's state on an MQTT broker, for Home Assistant | [Home Assistant](../api/home-assistant.md) |
 | **Output channels** |
@@ -137,13 +137,16 @@ In this example, each receiver selects a device via `input`, is optionally named
 
 #### Stations (`stations` array)
 
+!!! tip "Step-by-step guide"
+    **[Locate your station](https://www.aiscatcher.org/guides/station)** on aiscatcher.org walks through this with screenshots: in the control panel, in the configuration file and on the command line.
+
 A station is where an antenna stands. Every ship's distance and bearing, and the range figures, are measured from the station that heard the ship, so receivers at different places each measure from their own. The viewer's own `lat` and `lon` are only used for a receiver that has no position.
 
 Each entry of `stations` has a number and may have a name, a position and an altitude:
 
 | Key | Type | Description |
 |-----|------|-------------|
-| `id` | number | 1 or more, unique; what a receiver names in its `station` key |
+| `id` | number | Unique; what a receiver names in its `station` key. `0` is the **default station**: where every receiver stands that names none |
 | `name` | string | Shown in the viewer; `Station <id>` when left out |
 | `lat`, `lon` | number | Decimal degrees; both or neither |
 | `alt` | number | Height of the antenna in metres |
@@ -151,9 +154,7 @@ Each entry of `stations` has a number and may have a name, a position and an alt
 | `gps` | boolean | Whether GPS sentences move the station; off unless set to `true`. Its `lat` and `lon` are then where it stands until the first fix |
 | `share_loc` | boolean | Whether the station's position may leave this machine. Off unless set: no server, API or map then shows where it is, nor which vessel it rides |
 
-Stations are optional. A receiver that names none is a station of its own: it takes its place in the `receiver` list as its number (or the next free number, when `stations` already uses that one), its `description` as its name, and its own `lat` and `lon` as the position. Old configurations therefore work unchanged. A station without a position takes the position of the receiver that names it; when both have one, the station's is used and the log says so.
-
-In managed mode (`-E`), the viewer's `share_loc`, `use_gps` and `own_mmsi` settings apply to the stations the receivers make for themselves. A station listed in `stations` uses only its own keys, so a station without `share_loc` stays off the map even when the viewer's setting is on.
+Stations are optional. A receiver that names none stands at the default station, 0: list it to give it a name and a position like any other, or leave it out and it is made when the run starts, named after the one receiver standing on it when that has a `description`, else after the viewer's `station`, and placed where a receiver with `lat` and `lon` of its own is, else where the viewer section puts it (`lat`, `lon`, `alt`, `share_loc`, `use_gps`, `own_mmsi`). A receiver may also say `"station": 0`. Once the file has a `stations` list, every message carries the number of its station as `station_id`, 0 included.
 
 ```json
 {
@@ -165,33 +166,33 @@ In managed mode (`-E`), the viewer's `share_loc`, `use_gps` and `own_mmsi` setti
     "receiver": [
         { "input": "rtlsdr", "serial": "ab", "station": 1 },
         { "input": "rtlsdr", "serial": "cd", "station": 1, "channel": "CD" },
-        { "input": "udpserver", "udpserver": { "port": 10110 }, "description": "Pier", "lat": 52.08, "lon": 4.30 }
+        { "input": "udpserver", "udpserver": { "port": 10110 }, "description": "Pier" }
     ]
 }
 ```
 
-Here the two dongles share the antenna on the harbour mast, and the UDP input is a station of its own at the pier. The log lists what each receiver became:
+Here the two dongles share the antenna on the harbour mast, and the UDP input stands at the default station, named after it. The log lists what each receiver became:
 
 ```
 Receiver 1: station 1 "Harbour mast" at 52.099998, 4.270000
 Receiver 2: station 1 "Harbour mast" at 52.099998, 4.270000
-Receiver 3: station 3 "Pier" at 52.080002, 4.300000
+Receiver 3: station 0 "Pier", no position
 ```
 
-In managed mode the **Stations** tab edits this list. Its first entry is the own station: where each input that names no station stands, kept in the viewer's `station` (also the viewer's title), `station_link`, `lat`, `lon`, `use_gps` and `share_loc`. Each input picks its station under **Station** on the Input tab, or none. An input that names a station `stations` does not define stops the engine from starting; the panel will not save one, and the Input tab offers to create a station that a hand-edited file names.
+In managed mode the **Stations** page edits this list. Its first entry is the default station, always there under number 0, which cannot be deleted; every other station is numbered from 1. An input picks its station from the list on its own page, or creates one there. A file from before the default station was listed keeps working: the panel shows it from the viewer section's `station`, `lat`, `lon`, `share_loc`, `use_gps` and `own_mmsi`, and moves them into `stations` the first time Stations is saved.
 
 **A station that moves.** A receiver on a boat, or one with a GPS attached, does not stay where the file puts it. A station's position comes from one source at a time: the vessel its `mmsi` names, else GPS when `gps` is `true`, else its `lat` and `lon`.
 
 - A station with an `mmsi` rides that vessel: each position the vessel reports, heard by any receiver, moves the station there.
 - A station with `"gps": true` moves with the GPS sentences (`$GPRMC`, `$GPGGA` and the like) arriving on the inputs of the receivers that name it. When no receiver names it, GPS on any input moves it.
-- A receiver that names no station is moved by GPS on its own input; in managed mode, unless the viewer's `use_gps` is off.
+- The default station, when the file does not list it, moves with GPS on the inputs standing on it unless the viewer's `use_gps` is off; listed, it follows its own `gps` like any other.
 - The position in the file is where a moving station starts, until the first fix. Ships are measured from where the station was when it heard them. The last fix is kept in the tracking backup, so a restart does not send a station back to its configured position.
 
-These apply to the stations of the tracker and the servers [below](#tracking-and-servers-tracking-servers), which report each station's position with its source (`configured`, `gps` or `vessel`) and the time of the last fix. The viewer under `server` keeps its own single position, set by `lat`, `lon`, `use_gps` and `own_mmsi` as before.
+These apply to the stations of the tracker and the services [below](#tracking-and-services-tracking-services), which report each station's position with its source (`configured`, `gps` or `vessel`) and the time of the last fix. The viewer under `server` keeps its own single position, set by `lat`, `lon`, `use_gps` and `own_mmsi` as before.
 
-#### Tracking and servers (`tracking`, `servers`)
+#### Tracking and services (`tracking`, `services`)
 
-Beside the viewer under `server`, AIS-catcher can keep one picture of everything its receivers hear, the **tracker**, and offer it through **servers**. The tracker is built when the file has a `servers` list; without one nothing changes and nothing is kept. Both are part of the standard builds; a build made with `cmake -DAPI=OFF` leaves them out and refuses these keys.
+Beside the viewer under `server`, AIS-catcher can keep one picture of everything its receivers hear, the **tracker**, and offer it through **services**: a list of servers, each a port and what it serves. The tracker is built when the file has a `services` list; without one nothing changes and nothing is kept. Both are part of the standard builds; a build made with `cmake -DAPI=OFF` leaves them out and refuses these keys.
 
 ```json
 {
@@ -200,9 +201,9 @@ Beside the viewer under `server`, AIS-catcher can keep one picture of everything
     "stations": [ { "id": 1, "name": "Harbour mast", "lat": 52.10, "lon": 4.27 } ],
     "receiver": [ { "input": "rtlsdr", "station": 1 } ],
     "tracking": { "file": "/var/lib/ais-catcher/tracking.bin", "backup": 10 },
-    "servers": [
-        { "port": 8110, "services": ["ui", "api"] },
-        { "port": 8111, "bind": "0.0.0.0", "services": ["api"],
+    "services": [
+        { "port": 8110, "serve": ["ui", "api"] },
+        { "port": 8111, "bind": "0.0.0.0", "serve": ["api"],
           "filter": { "hidden_buckets": ["bm", "bs"], "seen": 30 } }
     ]
 }
@@ -218,20 +219,27 @@ Beside the viewer under `server`, AIS-catcher can keep one picture of everything
 | `track_time` | number | 3600 | Seconds of track kept per ship; 0 is no limit |
 | `max_ships` | number | 4096 | Size of the ship table |
 | `cutoff` | number | 2500 | Distance in nautical miles beyond which a ship does not count towards range |
+| `track_memory` | number | 1024 | Kilobytes of track kept per ship |
+| `expire` | boolean | false | Forget a ship's details when it leaves |
 | `lat`, `lon` | number | none | Where a message from no known station is measured from |
 | `places` | string | none | A directory of [place files](../configuration/output/places.md): the tracker then keeps every ship's visits, as the viewer does with its own `places` |
 
-Each entry of `servers`:
+Each entry of `services`, one server:
 
 | Key | Type | Description |
 |-----|------|-------------|
-| `port` | number | Required; one server per port |
+| `port` | number | Required; one server per port. Not on the entry marked `main` |
+| `main` | boolean | Managed mode (`-E`): the server beside the control panel, on its port, the map always on; one entry, which also takes the viewer's options |
 | `bind` | string | Address to listen on; `127.0.0.1` unless set, so a server is reachable from other machines only when you say so. Beyond this machine, a server with `api`, `mcp` or `system` needs `keys` or `public` |
-| `services` | array | What the server offers: `ui`, the web viewer; `api`, the read API under `/api/v1`: stations, statistics, vessels with their tracks and visits, places with the ships inside and their visits, aircraft, and events; `mcp`, the same for an assistant; `system`, receivers, outputs, health and the log. See [API](../api/overview.md). A server limited to some `stations` serves no aircraft, as aircraft are not kept by station |
+| `serve` | array | What the server offers: `ui`, the web viewer; `api`, the read API under `/api/v1`: stations, statistics, vessels with their tracks and visits, places with the ships inside and their visits, aircraft, and events; `mcp`, the same for an assistant; `system`, receivers, outputs, health and the log; `geojson`, the ships as GeoJSON; `metrics`, message counts for Prometheus. See [API](../api/overview.md). A server limited to some `stations` serves no aircraft, as aircraft are not kept by station |
 | `keys` | array | The keys the server accepts, each `{ "name", "sha256", "scopes" }`: see [Keys](../api/overview.md#keys) |
 | `public` | boolean | Its data is for anyone, without a key; never its `system` |
 | `filter` | object | Which ships this server shows; leave it out to show all. Not yet together with `ui` |
 | `place_geometry` | boolean | Serve the outlines of places; `false` keeps them on this machine, and places are served with their marker position only. On unless set |
+
+In managed mode (`-E`) the **Services** tab edits these: the built-in viewer beside the control panel first, then each server of `services`, with **Add server** for another. Each server's page switches its services on and off, says whether it listens on this machine or the network, gives its keys (**New key** makes one, shows it once, and keeps only its SHA-256), and, with the viewer on, the viewer's own settings. A saved server whose port another program has is marked as not listening. **Try the API** sends a request to any of them as a program would, made on the station itself, with the key given, and shows the answer and the curl line that repeats it; under **MCP** it lists a server's tools, calls one with its arguments as an assistant would, and gives the line that connects Claude Code to it. How long ships and tracks are kept, and the backup, are under **System › Settings › History & backup**. The built-in viewer is the entry marked `main`: it always serves the map, may add `api`, `mcp`, `system`, `geojson` and `metrics` to its `serve`, and takes `keys` and `public` as any server does, following the address the control panel listens on. A saved change to the servers applies at once, also while the receivers are stopped; a server cannot take the control panel's port or the viewer's.
+
+A viewer under `server` (`-N` on the command line) is the web viewer as it always was, with its own ships from the receivers that feed it. The API and the other services run on a server of `services`; on the command line `-J port [key value]...` makes one, with the keys an entry takes, a filter term going into its `filter`: `AIS-catcher -N 8100 -J 8101 serve api,mcp`.
 
 **The filter** uses the terms of the viewer's own filter (**Settings → Filter**), under the same names, so a filter you set up in the viewer can be copied here as it stands. It selects from everything the tracker keeps: the server shows nothing outside it, in any list, count or event.
 
