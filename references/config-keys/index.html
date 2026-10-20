@@ -335,6 +335,26 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../api/overview/" class="md-tabs__link">
+          
+  
+  
+  API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../usage/gui/" class="md-tabs__link">
           
   
@@ -2736,7 +2756,7 @@
   <span class="md-ellipsis">
     
   
-    Tools
+    API
   
 
     
@@ -2749,6 +2769,147 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/webhooks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Webhooks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/home-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2839,10 +3000,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
         
           
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
             
   
   
@@ -2860,8 +3021,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3263,10 +3424,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" checked>
         
           
-          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="">
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="">
             
   
   
@@ -3284,8 +3445,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_12">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5644,10 +5805,14 @@ name inside the object configures it.</p>
 </tbody>
 </table>
 <h2 id="managed-mode">Managed mode<a class="headerlink" href="#managed-mode" title="Permanent link">&para;</a></h2>
-<p><code>control.viewer</code> configures the viewer that managed mode serves next to the hub. It takes these keys of a
-<a href="#viewer">Viewer</a> entry: <code>station</code>, <code>station_link</code>, <code>webcontrol_http</code>, <code>lat</code>, <code>lon</code>, <code>share_loc</code>, <code>use_gps</code>, <code>history</code>, <code>track_memory</code>, <code>track_time</code>, <code>expire</code>, <code>replay</code>, <code>split</code>, <code>file</code>, <code>backup</code>, <code>places</code>, <code>plugin_dir</code>, <code>context</code>, <code>mbtiles</code>, <code>mboverlay</code>, <code>fstiles</code>, <code>fsoverlay</code>, <code>realtime</code>, <code>msg</code>, <code>decoder</code>, <code>log</code>, <code>geojson</code>, <code>prome</code>, <code>zone</code>.
-A <code>port</code> pins the viewer to that port; without one the system assigns it. <code>control.wizard</code> (boolean) shows
-the setup wizard on the next visit. The hub stores its password under <code>control</code> itself; leave those keys alone.</p>
+<p>Managed mode (<code>-E</code>) reads the same file. The server beside the control panel, on the panel's port plus one, is the entry of
+<code>services</code> marked <code>"main": true</code>: it takes a server's keys (<code>serve</code>, <code>keys</code>, <code>public</code>, <code>filter</code>, <code>place_geometry</code>) and the
+<a href="#viewer">Viewer</a> options (<code>realtime</code>, <code>replay</code>, <code>msg</code>, <code>decoder</code>, <code>log</code>, <code>station</code>, <code>station_link</code>, <code>webcontrol_http</code>,
+<code>mbtiles</code>, <code>plugin_dir</code>, …), never a <code>port</code>; the map is always on it. How ships are kept is <code>tracking</code> (<code>file</code>, <code>backup</code>,
+<code>history</code>, <code>track_time</code>, <code>track_memory</code>, <code>expire</code>, <code>max_ships</code>, <code>cutoff</code>, <code>places</code>), and the default station is station 0
+of <code>stations</code>. <code>control.wizard</code> (boolean) shows the setup wizard on the next visit; the hub stores its password under
+<code>control</code> itself; leave those keys alone. A file from before, with the viewer under <code>control.viewer</code>, is read as it is and
+brought to this layout by the panel when it saves.</p>
 
 
 

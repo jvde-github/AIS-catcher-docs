@@ -337,6 +337,26 @@
     
     
       <li class="md-tabs__item">
+        <a href="../api/overview/" class="md-tabs__link">
+          
+  
+  
+  API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../usage/gui/" class="md-tabs__link">
           
   
@@ -3564,7 +3584,7 @@
   <span class="md-ellipsis">
     
   
-    Tools
+    API
   
 
     
@@ -3577,6 +3597,147 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/webhooks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Webhooks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/home-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3667,10 +3828,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
         
           
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
             
   
   
@@ -3688,8 +3849,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -4086,10 +4247,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
         
           
-          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
             
   
   
@@ -4107,8 +4268,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_12">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5096,18 +5257,19 @@
 <li><strong>Redesigned ship card</strong> — now split into collapsible sections, with charts of recent speed and reported draught, a scale drawing of the hull marking where the AIS antenna sits, and a timeline of changes to draught, status, name, callsign, destination and ETA (also on <code>api/changes.json</code>).</li>
 <li><strong>Tracks coloured by speed</strong> — under <strong>Settings → Line Colors</strong>, colour tracks by speed instead of ship type, with six palettes and an adjustable scale maximum.</li>
 <li><strong>Vessel filter</strong> — narrow the map, the ships table and replay to the vessels you care about: by sender (class A/B, AtoN, base station, SART, aircraft), reported type, speed, distance, navigation status, age of the last message, validation state and whether a repeater passed the message on. Groups can be switched straight from the counters card, which greys out what it is holding back and keeps showing how many vessels that is; everything else lives under <strong>Settings → Filter</strong>, reachable from the funnel on the map and next to <strong>Columns</strong> on the Ships tab.</li>
+<li><strong>Position validation by speed</strong> — a position is validated when the ship can have reached it from its previous one at no more than 60 knots (aircraft 600), instead of lying within a fixed box around it; a ship that reported itself stopped is also not expected more than 200 m away within a quarter of an hour. A jump is flagged, and the ship is validated again once a second position agrees with it. This is what the validation state in the vessel filter shows.</li>
+<li><strong>Tracks from validated positions only</strong> — a jump, a position from a corrupted message or an old one delivered late no longer draws a spike in a vessel's track.</li>
 <li><strong>Vessel type filter covers every class</strong> — Class B / pleasure craft got their own entry and "Other / not reported" catches everything without one (aircraft, base stations, AtoN, SART), so selecting Cargo alone hides everything else.</li>
-<li>
-<p><strong>New map backgrounds</strong> — the CARTO backgrounds (Positron, Dark Matter, Voyager) now require an API key from CARTO and show an "API key required" watermark without one, so they are replaced by <a href="https://openfreemap.org">OpenFreeMap</a> vector maps: <strong>Positron</strong>, <strong>Bright</strong>, <strong>Liberty</strong> and <strong>Dark</strong>, with label-free versions of Positron and Dark. These need no key and no account, and are sharper at every zoom level. Anyone who prefers CARTO can get a free key at <a href="https://carto.com/basemaps/apikey">carto.com/basemaps/apikey</a> and paste it into the <code>carto_basemaps</code> plugin, which brings all six back.</p>
-</li>
-<li>
-<p><strong>Region</strong> — the sea, gulf, strait or lake a ship is in now comes from a polygon table instead of a grid.</p>
-</li>
+<li><strong>New map backgrounds</strong> — the CARTO backgrounds (Positron, Dark Matter, Voyager) now require an API key from CARTO and show an "API key required" watermark without one, so they are replaced by <a href="https://openfreemap.org">OpenFreeMap</a> vector maps: <strong>Positron</strong>, <strong>Bright</strong>, <strong>Liberty</strong> and <strong>Dark</strong>, with label-free versions of Positron and Dark. These need no key and no account, and are sharper at every zoom level. Anyone who prefers CARTO can get a free key at <a href="https://carto.com/basemaps/apikey">carto.com/basemaps/apikey</a> and paste it into the <code>carto_basemaps</code> plugin, which brings all six back.</li>
 </ul>
 <h3 id="places">Places<a class="headerlink" href="#places" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Editable place catalogue</strong> — ports, berths, anchorages and custom geographic features now live in an editable catalogue. A new <strong>Places</strong> tab in the control panel lets you draw and reshape points and polygons, search, and import/export individual features. Point the server at a catalogue directory with <code>control.viewer.places</code> or the standalone viewer setting <code>-N 8100 PLACES /path/to/places</code>; managed installs create one automatically. Ports carry a UN/LOCODE and a size class (small/medium/large) that scales their map marker; berths and anchorages link to a port, and everything else is a custom place with its own category and map glyph.</li>
-<li><strong>Visits, not just current location</strong> — a ship's stay in a place, current or past, is tracked as a visit and shown in a new <strong>Visits</strong> section of its history. Clicking a place marker on the map opens a dialog listing ships <strong>Inside</strong>, recently <strong>Arrived</strong>/<strong>Left</strong>, past <strong>Visits</strong>, and — for ports — <strong>Expected</strong>, based on matched destination.</li>
+<li><strong>A place catalogue</strong> — ports, terminals, berths, anchorages, waters, traffic sectors and your own guard zones are now places: GeoJSON files in a directory you point the viewer at with <code>-N 8100 PLACES /path/to/places</code>. In managed mode the new <strong>Places</strong> tab switches it on and is the editor: draw and reshape outlines, set the type and the port a place belongs to, search, and paste GeoJSON to import. See <a href="../configuration/output/places/">Places</a> for the file format and the rules.</li>
+<li><strong>Visits</strong> — a ship's stay in a place is tracked as a visit, with its entry and exit times. The ship card says where a ship is now, the berth before the terminal before the port, and lists its recent visits. In a port, a stay counts as a call once the ship has been stopped for a minute, so traffic steaming through is not mistaken for a call.</li>
+<li><strong>Ships of a place</strong> — clicking a place marker lists the ships <strong>Inside</strong>, recently <strong>Arrived</strong> and <strong>Left</strong>, past <strong>Visits</strong>, those <strong>Nearby</strong>, and for a port the ships <strong>Expected</strong>, from the destinations they report.</li>
+<li><strong>Guard zones in the ticker</strong> — draw a guard zone around anything you want to watch. A ship entering or leaving it is announced in the event ticker as a notice, marked with ⚠. Crossings of a port, a sector or a water are announced as routine events.</li>
+<li><strong>No phantom visitors</strong> — only a position the ship can have reached from its previous one is used, and a crossing counts once the next position confirms it. A corrupted message with a wrong MMSI never puts a ship in your port.</li>
+<li><strong>Coming from an earlier edge build?</strong> — place files written before this release use an older layout and are skipped at startup. <strong>Import place</strong> in the Places tab reads them one at a time and saves them in the current layout; <code>python3 scripts/migrate-places.py &lt;directory&gt; --write</code> converts a whole directory.</li>
 </ul>
 <h3 id="http-output">HTTP output<a class="headerlink" href="#http-output" title="Permanent link">&para;</a></h3>
 <ul>
