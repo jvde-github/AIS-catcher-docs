@@ -5,14 +5,14 @@ A webhook posts each event to an address as it happens: a safety message, a new 
 ```json
 "webhooks": [
     { "url": "http://homeassistant.local:8123/api/webhook/ais-events", "events": ["safety", "place_enter", "place_exit"] },
-    { "url": "https://example.org/hooks/ais", "events": ["system"], "secret": "whsec_MfKQ9r8GKYqrTwjUPD8ILPZIo2LaLaSw" }
+    { "url": "https://example.org/hooks/ais", "events": ["system"], "secret": "whsec_…" }
 ]
 ```
 
 In managed mode: **Services → Webhooks**. On the command line, `-W` takes the url and then the same keys, a list comma-separated; repeat it for more webhooks:
 
 ```bash
-AIS-catcher -d 00000001 -W https://example.org/hooks/ais EVENTS safety,place_enter SECRET whsec_MfKQ9r8GKYqrTwjUPD8ILPZIo2LaLaSw
+AIS-catcher -d 00000001 -W https://example.org/hooks/ais EVENTS safety,place_enter SECRET "$WEBHOOK_SECRET"
 ```
 
 | Key | Description |
