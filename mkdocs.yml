@@ -125,6 +125,7 @@ nav:
         - Database (PostgreSQL / SQLite): configuration/output/PSQL.md
   - API:
       - Overview: api/overview.md
+      - Reference: api/reference.md
       - Webhooks: api/webhooks.md
       - Home Assistant: api/home-assistant.md
   - Tools:

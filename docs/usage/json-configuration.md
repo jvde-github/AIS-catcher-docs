@@ -256,7 +256,7 @@ A viewer under `server` (`-N` on the command line) is the web viewer as it alway
 | `repeated` | string | `any`, `only` (passed on by a repeater) or `never` |
 | `mmsi_allow`, `mmsi_deny` | array | Only these MMSIs; never these |
 
-A request to `/api/v1/vessels` takes the same terms as query parameters, a list as comma-separated values (`?hidden_classes=2,6&speed_min=1`). They narrow what the server shows and never widen it.
+A request to `/api/v1/vessels` takes [filters of its own](../api/overview.md#vessels), named after the fields of a vessel (`?class=cargo,tanker&min_speed_kn=1`). They narrow what the server shows and never widen it.
 
 [^legacy-root-receiver]: Legacy configurations may use root-level `input` / `serial` to define a single receiver. This still works in some versions, but is discouraged and may be removed in a future release. Prefer putting `input` (and `serial`) inside each receiver object under `receiver`.
 
