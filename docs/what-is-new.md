@@ -48,6 +48,11 @@
 - **Large place catalogues** — a place's outline is read from its file when the map asks for it instead of kept in memory, so thousands of places load in less than half the time and take far less memory.
 - **Coming from an earlier edge build?** — place files written before this release use an older layout and are skipped at startup. **Import place** in the Places tab reads them one at a time and saves them in the current layout; `python3 scripts/migrate-places.py <directory> --write` converts a whole directory.
 
+### Stations
+
+- **A private station gives no distances** — a vessel's distance and bearing from a station tell where that station is, so they are only shown when the station that heard the vessel shares its position (`share_loc on`). This holds for the viewer, the API and every other output; turn `share_loc` on to get the distance column and the distance filters back.
+- **The viewer's GeoJSON copies are gone** — `/api/path.geojson` and `/api/allpath.geojson` are no longer served by the viewer. The `geojson` service answers `/geojson` and `/allpath.geojson` as before, and `/api/v1/vessels/{mmsi}/track?format=geojson` gives one vessel's track.
+
 ### HTTP output
 
 - **Credentials in the URL** — `-H https://user:password@host/` sends HTTP Basic and `-H https://<token>@host/` sends a Bearer token, alongside the existing `userpwd` setting. Credentials are kept out of the log and the posted metadata.

@@ -52,7 +52,9 @@ curl -H "Authorization: Bearer $KEY" http://station.local:8111/api/v1/vessels?li
 | `sha256` | The SHA-256 of the key, 64 hex digits |
 | `scopes` | `data` (the `api` and `mcp` services), `system` (the `system` service and health); `data` unless set |
 
-A request without a key, or with one the server does not know, gets `401`; a key without the scope gets `403`. After 30 wrong keys in a minute the server answers `429` for a minute. The viewer (`ui`) is not behind keys: give a server with keys only the services that need them.
+A request without a key, or with one the server does not know, gets `401`; a key without the scope gets `403`. A key made with **New key** in the control panel is 48 random hex digits, which no one can guess however often they try, so a key you write yourself should be just as long and random. The viewer (`ui`) is not behind keys: give a server with keys only the services that need them.
+
+A key travels in the `Authorization` header over plain HTTP, so anyone who can watch the connection can read it. Beyond your own network, put a TLS reverse proxy (Caddy, nginx) or a VPN (WireGuard, Tailscale) in front of the server; the proxy is also the place to limit how many requests a client may make.
 
 ## The read API
 

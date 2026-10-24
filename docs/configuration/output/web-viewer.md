@@ -146,7 +146,7 @@ The receivers of one AIS-catcher stand at stations (`stations` in a configuratio
 
 A message that names a station itself, as a feed from a hub does in its tag block (`\s:s1001*hh\`), counts at that station when `stations` lists it; otherwise at the input's station. So one input from a hub can serve many stations from one ship table.
 
-`station_id` on a `-N` makes a viewer of one station: the station is listed from the line, with its `station`, `lat`, `lon`, `share_loc`, `use_gps` and `own_mmsi`, unless `stations` already has it, and the viewer shows that station alone: its map, its figures, and its live NMEA, signal and Prometheus streams. Several ids separated by commas show those together; the line describes the first. For example, two feeders of a hub, each on a viewer of its own, reading one ship table:
+`station_id` on a `-N` makes a viewer of one station: the station is listed from the line, with its `station`, `lat`, `lon`, `share_loc`, `use_gps` and `own_mmsi`, unless `stations` already has it, and the viewer shows that station alone: its map and its figures. Its live NMEA, signal and Prometheus streams carry every station's messages. Several ids separated by commas show those together; the line describes the first. For example, two feeders of a hub, each on a viewer of its own, reading one ship table:
 
 ```bash
 AIS-catcher -t txt 127.0.0.1 14999 -N 8100 station_id 1001 station Southwood lat 52.08 lon 4.33 share_loc on -N 8101 station_id 1351 station Tyreso lat 59.24 lon 18.24 share_loc on
@@ -167,11 +167,10 @@ CORS is enabled on:
 - `/api/binmsgs.json`
 - `/api/history_full.json`
 - `/api/stat.json`, `/stat.json`
-- `/api/path.json`, `/api/allpath.json`, `/api/path.geojson`, `/api/allpath.geojson`
+- `/api/path.json`, `/api/allpath.json`
 - `/api/message`, `/api/vessel` (per-vessel last message and details)
 - `/api/decode` (when `decoder` is enabled)
 - `/kml`
-- `/metrics` (Prometheus)
 
 The Content-Security-Policy served by the web viewer also accepts `http`/`ws` schemes in `img-src` and `connect-src` so LAN deployments work without a custom policy.
 

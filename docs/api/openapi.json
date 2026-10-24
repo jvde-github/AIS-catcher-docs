@@ -1357,7 +1357,7 @@
      },
      "title": {
       "type": "string",
-      "description": "The kind of problem, the same for every problem of its kind: Bad request, Unauthorized, Forbidden, Not found, Method not allowed, Gone, Too many requests"
+      "description": "The kind of problem, the same for every problem of its kind: Bad request, Unauthorized, Forbidden, Not found, Method not allowed, Gone"
      },
      "status": {
       "type": "integer",

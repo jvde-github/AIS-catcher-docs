@@ -172,6 +172,6 @@ Two things to know before removing a place:
 | Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
 | <span class="cmd-setting">places</span> | string | <span class="cmd-value">-</span> | Directory of place files for the web viewer (CLI: `-N <port> PLACES <directory>`; managed mode: `control.viewer.places`) |
-| <span class="cmd-setting">place_geometry</span> | boolean | <span class="cmd-value">on</span> | Serve each place's outline to the map. Off keeps the outlines private to this installation: markers, lists and visits still work (CLI: `-N <port> PLACE_GEOMETRY off`) |
+| <span class="cmd-setting">place_geometry</span> | boolean | <span class="cmd-value">on</span> | Serve each place's outline to the map. Off keeps the outlines private to this installation: markers, lists and visits still work. A term of a server's view: `"view": { "place_geometry": false }` (CLI: `-N <port> PLACE_GEOMETRY off`) |
 
 </div>

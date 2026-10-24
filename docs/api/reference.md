@@ -267,7 +267,7 @@ Answers the document as `application/json`. Operation `getOpenAPI`.
 | Field | Type | Description |
 |---|---|---|
 | `type` | string | about:blank: the title says what kind of problem it is |
-| `title` | string | The kind of problem, the same for every problem of its kind: Bad request, Unauthorized, Forbidden, Not found, Method not allowed, Gone, Too many requests |
+| `title` | string | The kind of problem, the same for every problem of its kind: Bad request, Unauthorized, Forbidden, Not found, Method not allowed, Gone |
 | `status` | integer | The HTTP status |
 | `detail` | string | What went wrong with this request, for people |
 
