@@ -23,11 +23,11 @@ where ``8100`` is the port number. If your machine network name is raspberrypi, 
 
 For users wishing to include a station name and a link to an external website in the Statistics section:
 ```bash
-AIS-catcher -N station Southwood station_link http://example.com
+AIS-catcher -N 8100 station Southwood station_link http://example.com
 ```
 This could be a useful option if you want to offer the interface externally. To display the reception range and distances from your station, provide the program with the station coordinates and permission to share the location with the web viewer:
 ```bash
-AIS-catcher -N lat 50 lon 3.141592 share_loc on
+AIS-catcher -N 8100 lat 50 lon 3.141592 share_loc on
 ```
 The last option `share_loc` (default is off) will allow the web viewer to access and display the location.
 
@@ -171,6 +171,8 @@ CORS is enabled on:
 - `/api/message`, `/api/vessel` (per-vessel last message and details)
 - `/api/decode` (when `decoder` is enabled)
 - `/kml`
+- `/geojson` and `/allpath.geojson` (when `geojson` is enabled)
+- `/metrics` (when `prome` is enabled)
 
 The Content-Security-Policy served by the web viewer also accepts `http`/`ws` schemes in `img-src` and `connect-src` so LAN deployments work without a custom policy.
 
