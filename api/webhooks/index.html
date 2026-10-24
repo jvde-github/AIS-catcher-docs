@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://aiscatcher.org/docs/api/webhooks/">
       
       
-        <link rel="prev" href="../overview/">
+        <link rel="prev" href="../reference/">
       
       
         <link rel="next" href="../home-assistant/">
@@ -2815,6 +2815,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -3627,11 +3655,11 @@
 <p>A webhook posts each event to an address as it happens: a safety message, a new destination or status, a vessel arriving at or leaving a place, or something about the installation itself (the engine starting or stopping, a receiver losing its device or getting it back, a backup failing). Home Assistant, Node-RED, n8n and most automation tools take webhooks as they come.</p>
 <div class="language-json highlight"><pre><span></span><code><span class="nt">"webhooks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://homeassistant.local:8123/api/webhook/ais-events"</span><span class="p">,</span><span class="w"> </span><span class="nt">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"safety"</span><span class="p">,</span><span class="w"> </span><span class="s2">"place_enter"</span><span class="p">,</span><span class="w"> </span><span class="s2">"place_exit"</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.org/hooks/ais"</span><span class="p">,</span><span class="w"> </span><span class="nt">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"system"</span><span class="p">],</span><span class="w"> </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"whsec_MfKQ9r8GKYqrTwjUPD8ILPZIo2LaLaSw"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.org/hooks/ais"</span><span class="p">,</span><span class="w"> </span><span class="nt">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"system"</span><span class="p">],</span><span class="w"> </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"whsec_…"</span><span class="w"> </span><span class="p">}</span>
 <span class="p">]</span>
 </code></pre></div>
 <p>In managed mode: <strong>Services → Webhooks</strong>. On the command line, <code>-W</code> takes the url and then the same keys, a list comma-separated; repeat it for more webhooks:</p>
-<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-d<span class="w"> </span><span class="m">00000001</span><span class="w"> </span>-W<span class="w"> </span>https://example.org/hooks/ais<span class="w"> </span>EVENTS<span class="w"> </span>safety,place_enter<span class="w"> </span>SECRET<span class="w"> </span>whsec_MfKQ9r8GKYqrTwjUPD8ILPZIo2LaLaSw
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-d<span class="w"> </span><span class="m">00000001</span><span class="w"> </span>-W<span class="w"> </span>https://example.org/hooks/ais<span class="w"> </span>EVENTS<span class="w"> </span>safety,place_enter<span class="w"> </span>SECRET<span class="w"> </span><span class="s2">"</span><span class="nv">$WEBHOOK_SECRET</span><span class="s2">"</span>
 </code></pre></div>
 <table>
 <thead>
@@ -3650,8 +3678,8 @@
 <td>The kinds posted: <code>safety</code>, <code>destination</code>, <code>status</code>, <code>draught</code>, <code>place_enter</code>, <code>place_exit</code>, <code>system</code>. Every kind when left out</td>
 </tr>
 <tr>
-<td><code>filter</code></td>
-<td>A ship's event only for ships that pass it, in the terms of a <a href="../../usage/json-configuration/#tracking-and-services-tracking-services">server's filter</a></td>
+<td><code>view</code></td>
+<td>A ship's event only for ships that pass it, in the terms of a <a href="../../usage/json-configuration/#tracking-and-services-tracking-services">server's view</a></td>
 </tr>
 <tr>
 <td><code>batch</code></td>
@@ -3668,16 +3696,16 @@
 </tbody>
 </table>
 <p>The body is the event as <code>/api/v1/events</code> gives it:</p>
-<div class="language-json highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">1532</span><span class="p">,</span><span class="w"> </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-10-19T14:02:11Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"place_enter"</span><span class="p">,</span><span class="w"> </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notice"</span><span class="p">,</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"evt_1792751230_1532"</span><span class="p">,</span><span class="w"> </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-10-19T14:02:11Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"place_enter"</span><span class="p">,</span><span class="w"> </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notice"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"mmsi"</span><span class="p">:</span><span class="w"> </span><span class="mi">244123456</span><span class="p">,</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STORM"</span><span class="p">,</span><span class="w"> </span><span class="nt">"place"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3f2c…"</span><span class="p">,</span><span class="w"> </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rotterdam"</span><span class="p">,</span><span class="w"> </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">51.95</span><span class="p">,</span><span class="w"> </span><span class="nt">"lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.06</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <p>and an event of the installation:</p>
-<div class="language-json highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">1533</span><span class="p">,</span><span class="w"> </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-10-19T14:05:00Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system"</span><span class="p">,</span><span class="w"> </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urgent"</span><span class="p">,</span>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"evt_1792751230_1533"</span><span class="p">,</span><span class="w"> </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-10-19T14:05:00Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system"</span><span class="p">,</span><span class="w"> </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urgent"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"receiver_lost"</span><span class="p">,</span><span class="w"> </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Receiver 1 lost its device"</span><span class="p">,</span><span class="w"> </span><span class="nt">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">"station"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-<p>Every request carries <code>webhook-id</code> (the same on every try of one event, so a receiver can drop a repeat), <code>webhook-timestamp</code> and, with a <code>secret</code>, <code>webhook-signature</code>: <code>v1,</code> and the base64 HMAC-SHA256 of <code>id.timestamp.body</code> under the key. A secret starting with <code>whsec_</code> is the key in base64, as Standard Webhooks writes it; any other secret is the key itself. The libraries of <a href="https://github.com/standard-webhooks/standard-webhooks">Standard Webhooks</a> check it in one call.</p>
+<p>Every request carries <code>webhook-id</code>, the event's <code>id</code> (the same on every try of one event, so a receiver can drop a repeat; a batch has the first and the last number), <code>webhook-timestamp</code> and, with a <code>secret</code>, <code>webhook-signature</code>: <code>v1,</code> and the base64 HMAC-SHA256 of <code>id.timestamp.body</code> under the key. A secret starting with <code>whsec_</code> is the key in base64, as Standard Webhooks writes it; any other secret is the key itself. The libraries of <a href="https://github.com/standard-webhooks/standard-webhooks">Standard Webhooks</a> check it in one call.</p>
 <p>A safety message is posted once, not every time it is broadcast: a beacon or a coast station repeats its text every minute or so for hours. While the same sender keeps sending the same text it is posted again after 30 minutes, or after 10 for a distress call. The same holds for <code>/api/v1/events</code>, MCP and the MQTT events; the viewer's ticker shows the repeats as a count.</p>
-<p>An address that does not answer with 2xx is tried again from the event that failed: after 5 seconds, then 10, 30, a minute, and so on up to an hour between tries. The other webhooks go on meanwhile. A webhook starts at the newest event when AIS-catcher starts; events that happened while it was not running are in <code>/api/v1/events</code>.</p>
+<p>An address that does not answer with 2xx is tried again from the event that failed: after 5 seconds, then 10, 30, a minute, and so on up to an hour between tries. The other webhooks go on meanwhile. A webhook starts at the newest event when AIS-catcher starts; events that happened while it was not running are in <code>/api/v1/events</code>, after the <code>id</code> of the last event the receiver got: <code>/api/v1/events?cursor=evt_1792751230_1533</code>.</p>
 
 
 

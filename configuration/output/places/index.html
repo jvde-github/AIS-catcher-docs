@@ -2977,6 +2977,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../api/reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../api/webhooks/" class="md-nav__link">
         
   
@@ -4140,7 +4168,7 @@
 <h2 id="changing-the-catalogue">Changing the catalogue<a class="headerlink" href="#changing-the-catalogue" title="Permanent link">&para;</a></h2>
 <p>In managed mode the <strong>Places</strong> tab is an editor: draw or reshape an outline, set the type and the port a place belongs to. A save takes effect at once, on the map and for every ship inside the changed outline.</p>
 <p><strong>Import place</strong> takes a GeoJSON Feature from anywhere. What it recognises is carried over (the name, the type, codes, the port a place belongs to, category and rank, in their current or an older spelling), everything else in the file is kept, and a Feature that says nothing about itself becomes a guard zone. The result opens for review and is stored when you save. <strong>Import shape</strong> and <strong>Paste shape</strong> replace only the outline of the place you are editing.</p>
-<p>Files you edit by hand are read when AIS-catcher starts. There is no file watcher, so restart after changing them. A file that breaks a rule is skipped whole and the log says why:</p>
+<p>Files you edit by hand are read when AIS-catcher starts. There is no file watcher, so restart after changing them. Until then, a place whose file changed is matched as it was loaded but its outline is not served, and the log says so once. A file that breaks a rule is skipped whole and the log says why:</p>
 <div class="language-text highlight"><pre><span></span><code>Places: skipped 0f2e6b1a-3c4d-4e5f-8a9b-0c1d2e3f4a5b.geojson: Polygon edges cross or touch themselves
 Places: loaded 412 definitions from /etc/AIS-catcher/places
 </code></pre></div>

@@ -3641,6 +3641,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../api/reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../api/webhooks/" class="md-nav__link">
         
   
@@ -5261,6 +5289,7 @@
 <li><strong>Tracks from validated positions only</strong> — a jump, a position from a corrupted message or an old one delivered late no longer draws a spike in a vessel's track.</li>
 <li><strong>Vessel type filter covers every class</strong> — Class B / pleasure craft got their own entry and "Other / not reported" catches everything without one (aircraft, base stations, AtoN, SART), so selecting Cargo alone hides everything else.</li>
 <li><strong>New map backgrounds</strong> — the CARTO backgrounds (Positron, Dark Matter, Voyager) now require an API key from CARTO and show an "API key required" watermark without one, so they are replaced by <a href="https://openfreemap.org">OpenFreeMap</a> vector maps: <strong>Positron</strong>, <strong>Bright</strong>, <strong>Liberty</strong> and <strong>Dark</strong>, with label-free versions of Positron and Dark. These need no key and no account, and are sharper at every zoom level. Anyone who prefers CARTO can get a free key at <a href="https://carto.com/basemaps/apikey">carto.com/basemaps/apikey</a> and paste it into the <code>carto_basemaps</code> plugin, which brings all six back.</li>
+<li><strong>AIS-catcher Light and Dark</strong> — map backgrounds of our own on the OpenFreeMap data: borders blended into the land, only countries and large cities in a wide view, towns as you zoom in, and the names of seas, lakes and rivers. Dark is in neutral greys with the sea lighter than the land.</li>
 </ul>
 <h3 id="places">Places<a class="headerlink" href="#places" title="Permanent link">&para;</a></h3>
 <ul>
@@ -5269,6 +5298,7 @@
 <li><strong>Ships of a place</strong> — clicking a place marker lists the ships <strong>Inside</strong>, recently <strong>Arrived</strong> and <strong>Left</strong>, past <strong>Visits</strong>, those <strong>Nearby</strong>, and for a port the ships <strong>Expected</strong>, from the destinations they report.</li>
 <li><strong>Guard zones in the ticker</strong> — draw a guard zone around anything you want to watch. A ship entering or leaving it is announced in the event ticker as a notice, marked with ⚠. Crossings of a port, a sector or a water are announced as routine events.</li>
 <li><strong>No phantom visitors</strong> — only a position the ship can have reached from its previous one is used, and a crossing counts once the next position confirms it. A corrupted message with a wrong MMSI never puts a ship in your port.</li>
+<li><strong>Large place catalogues</strong> — a place's outline is read from its file when the map asks for it instead of kept in memory, so thousands of places load in less than half the time and take far less memory.</li>
 <li><strong>Coming from an earlier edge build?</strong> — place files written before this release use an older layout and are skipped at startup. <strong>Import place</strong> in the Places tab reads them one at a time and saves them in the current layout; <code>python3 scripts/migrate-places.py &lt;directory&gt; --write</code> converts a whole directory.</li>
 </ul>
 <h3 id="http-output">HTTP output<a class="headerlink" href="#http-output" title="Permanent link">&para;</a></h3>

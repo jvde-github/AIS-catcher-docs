@@ -3303,6 +3303,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../api/reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../api/webhooks/" class="md-nav__link">
         
   
@@ -4882,7 +4910,8 @@ This loads and applies the settings from the JSON file.</p>
 </tr>
 </tbody>
 </table>
-<p>Stations are optional. A receiver that names none stands at the default station, 0: list it to give it a name and a position like any other, or leave it out and it is made when the run starts, named after the one receiver standing on it when that has a <code>description</code>, else after the viewer's <code>station</code>, and placed where a receiver with <code>lat</code> and <code>lon</code> of its own is, else where the viewer section puts it (<code>lat</code>, <code>lon</code>, <code>alt</code>, <code>share_loc</code>, <code>use_gps</code>, <code>own_mmsi</code>). A receiver may also say <code>"station": 0</code>. Once the file has a <code>stations</code> list, every message carries the number of its station as <code>station_id</code>, 0 included.</p>
+<p>A message that names a station itself, as a feed from a hub does in its tag block, counts at that station when <code>stations</code> lists it, else at the input's.</p>
+<p>Stations are optional. A receiver that names none stands at the default station, 0: list it to give it a name and a position like any other, or leave it out and it is made when the run starts, named after the one receiver standing on it when that has a <code>description</code>, else after the viewer's <code>station</code>, and placed where a receiver with <code>lat</code> and <code>lon</code> of its own is, else where the viewer section puts it (<code>lat</code>, <code>lon</code>, <code>alt</code>, <code>share_loc</code>, <code>use_gps</code>, <code>own_mmsi</code>). A receiver may also say <code>"station": 0</code>. Once the file has a <code>stations</code> list, every message carries the number of its station as <code>station_id</code>, 0 included. An engine of a receiver may carry a station of its own (<code>"settings": { "station": 2 }</code>, <code>-go station 2</code> on the command line), so two decoders of one input are told apart: each then has its own figures, and <strong>Plots → Compare</strong> sets one against the other.</p>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aiscatcher"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
@@ -4911,7 +4940,7 @@ Receiver 3: station 0 "Pier", no position
 </ul>
 <p>These apply to the stations of the tracker and the services <a href="#tracking-and-services-tracking-services">below</a>, which report each station's position with its source (<code>configured</code>, <code>gps</code> or <code>vessel</code>) and the time of the last fix. The viewer under <code>server</code> keeps its own single position, set by <code>lat</code>, <code>lon</code>, <code>use_gps</code> and <code>own_mmsi</code> as before.</p>
 <h4 id="tracking-and-services-tracking-services">Tracking and services (<code>tracking</code>, <code>services</code>)<a class="headerlink" href="#tracking-and-services-tracking-services" title="Permanent link">&para;</a></h4>
-<p>Beside the viewer under <code>server</code>, AIS-catcher can keep one picture of everything its receivers hear, the <strong>tracker</strong>, and offer it through <strong>services</strong>: a list of servers, each a port and what it serves. The tracker is built when the file has a <code>services</code> list; without one nothing changes and nothing is kept. Both are part of the standard builds; a build made with <code>cmake -DAPI=OFF</code> leaves them out and refuses these keys.</p>
+<p>AIS-catcher keeps one picture of everything its receivers hear, the <strong>tracker</strong>, and offers it through <strong>services</strong>: a list of servers, each a port and what it serves: the web viewer, the API, MCP, the system service, GeoJSON, Prometheus. The tracker is built when the file has a server; without one nothing is kept. The viewer of <code>-N</code> and of a <code>server</code> section is such a server too. Both are part of the standard builds; a build made with <code>cmake -DAPI=OFF</code> leaves them out and refuses these keys.</p>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aiscatcher"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
@@ -4919,9 +4948,10 @@ Receiver 3: station 0 "Pier", no position
 <span class="w">    </span><span class="nt">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rtlsdr"</span><span class="p">,</span><span class="w"> </span><span class="nt">"station"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">],</span>
 <span class="w">    </span><span class="nt">"tracking"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/var/lib/ais-catcher/tracking.bin"</span><span class="p">,</span><span class="w"> </span><span class="nt">"backup"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">8110</span><span class="p">,</span><span class="w"> </span><span class="nt">"serve"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ui"</span><span class="p">,</span><span class="w"> </span><span class="s2">"api"</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">8111</span><span class="p">,</span><span class="w"> </span><span class="nt">"bind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0"</span><span class="p">,</span><span class="w"> </span><span class="nt">"serve"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"api"</span><span class="p">],</span>
-<span class="w">          </span><span class="nt">"filter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"hidden_buckets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"bm"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bs"</span><span class="p">],</span><span class="w"> </span><span class="nt">"seen"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">8110</span><span class="p">,</span><span class="w"> </span><span class="nt">"api"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">8111</span><span class="p">,</span><span class="w"> </span><span class="nt">"bind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0"</span><span class="p">,</span><span class="w"> </span><span class="nt">"ui"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">"api"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"view"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"hidden_buckets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"bm"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bs"</span><span class="p">],</span><span class="w"> </span><span class="nt">"seen"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="nt">"track_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">8112</span><span class="p">,</span><span class="w"> </span><span class="nt">"tracking"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"allow_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1,2,3"</span><span class="p">,</span><span class="w"> </span><span class="nt">"history"</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -4940,7 +4970,7 @@ Receiver 3: station 0 "Pier", no position
 <td><code>file</code></td>
 <td>string</td>
 <td>none</td>
-<td>Backup of ships, statistics, events and station fixes, read at start and written on exit. A backup the viewer wrote (the <code>file</code> of <code>server</code>) is read once and never written over: the tracker keeps its own beside it, with <code>.tracking</code> added to the name</td>
+<td>Backup of ships, statistics, events and station fixes, read at start and written on exit. A backup an earlier version wrote (the <code>file</code> of <code>server</code>, or of <code>-N</code>) is copied once to <code>&lt;file&gt;.before-upgrade</code>, imported, and from then on written over in this version's format. To go back to the earlier version, rename the copy back to the file's name</td>
 </tr>
 <tr>
 <td><code>backup</code></td>
@@ -5019,14 +5049,54 @@ Receiver 3: station 0 "Pier", no position
 <td>Managed mode (<code>-E</code>): the server beside the control panel, on its port, the map always on; one entry, which also takes the viewer's options</td>
 </tr>
 <tr>
+<td><code>active</code></td>
+<td>boolean</td>
+<td><code>false</code> switches the server off: it keeps its settings, which are still checked, but opens no port and keeps no ships. The main server always serves. On unless set</td>
+</tr>
+<tr>
 <td><code>bind</code></td>
 <td>string</td>
 <td>Address to listen on; <code>127.0.0.1</code> unless set, so a server is reachable from other machines only when you say so. Beyond this machine, a server with <code>api</code>, <code>mcp</code> or <code>system</code> needs <code>keys</code> or <code>public</code></td>
 </tr>
 <tr>
-<td><code>serve</code></td>
-<td>array</td>
-<td>What the server offers: <code>ui</code>, the web viewer; <code>api</code>, the read API under <code>/api/v1</code>: stations, statistics, vessels with their tracks and visits, places with the ships inside and their visits, aircraft, and events; <code>mcp</code>, the same for an assistant; <code>system</code>, receivers, outputs, health and the log; <code>geojson</code>, the ships as GeoJSON; <code>metrics</code>, message counts for Prometheus. See <a href="../../api/overview/">API</a>. A server limited to some <code>stations</code> serves no aircraft, as aircraft are not kept by station</td>
+<td><code>ui</code></td>
+<td>boolean</td>
+<td>The web viewer, on unless set <code>false</code>; with it the viewer's own options (<code>realtime</code>, <code>station</code>, <code>station_link</code>, <code>mbtiles</code>, …), see <a href="../../configuration/output/web-viewer/">Web Viewer</a></td>
+</tr>
+<tr>
+<td><code>api</code></td>
+<td>boolean</td>
+<td>The read API under <code>/api/v1</code>: stations, statistics, vessels with their tracks and visits, places with the ships inside and their visits, aircraft, and events. See <a href="../../api/overview/">API</a>. A server limited to some <code>stations</code> serves no aircraft, as aircraft are not kept by station</td>
+</tr>
+<tr>
+<td><code>mcp</code></td>
+<td>boolean</td>
+<td>The same for an assistant, at <code>/mcp</code></td>
+</tr>
+<tr>
+<td><code>system</code></td>
+<td>boolean</td>
+<td>Receivers, outputs, health and the log, under <code>/api/v1/system</code></td>
+</tr>
+<tr>
+<td><code>geojson</code></td>
+<td>boolean</td>
+<td>The ships as GeoJSON at <code>/geojson</code></td>
+</tr>
+<tr>
+<td><code>metrics</code></td>
+<td>boolean</td>
+<td>Message counts for Prometheus at <code>/metrics</code>; <code>prome</code> says the same</td>
+</tr>
+<tr>
+<td><code>station_id</code></td>
+<td>number or array</td>
+<td>The stations this server is about: its <code>view</code> shows only them, as <code>"view": { "stations": [...] }</code> says it too, and its live streams (NMEA, signal, Prometheus counts) carry only their messages; a <code>server</code> section, or <code>-N</code>, lists the first from its own station keys where <code>stations</code> does not have it</td>
+</tr>
+<tr>
+<td><code>tracking</code></td>
+<td>object</td>
+<td>Ships of the server's own, behind a filter on the messages: the terms of an output's filter (<code>allow_type</code>, <code>block_mmsi</code>, <code>stations</code>, <code>unique</code>, …) and <code>zone</code> or <code>groups_in</code> for the receivers that feed it, with <code>history</code> and <code>track_time</code> for what it keeps. The backup and the places are the site's. Without it the server reads the site's tracker</td>
 </tr>
 <tr>
 <td><code>keys</code></td>
@@ -5039,9 +5109,9 @@ Receiver 3: station 0 "Pier", no position
 <td>Its data is for anyone, without a key; never its <code>system</code></td>
 </tr>
 <tr>
-<td><code>filter</code></td>
+<td><code>view</code></td>
 <td>object</td>
-<td>Which ships this server shows; leave it out to show all. Not yet together with <code>ui</code></td>
+<td>Which ships this server shows of what its tracker keeps, and how far back: <code>stations</code>, <code>mmsi_allow</code>, <code>mmsi_deny</code>, <code>hidden_buckets</code>, <code>hidden_classes</code>, <code>hidden_statuses</code>, <code>speed_min</code>, <code>speed_max</code>, <code>distance_min</code>, <code>distance_max</code>, <code>seen</code> (minutes since heard), <code>validated</code>, <code>repeated</code>, and <code>track_time</code> (seconds of track served, at most what the tracker keeps). What it leaves out no route of the server sends: the map, the API, MCP and GeoJSON. A view never makes a tracker; only a message filter does (<code>filter</code> on with its terms, or <code>zone</code>, <code>groups_in</code>). Leave it out to show all</td>
 </tr>
 <tr>
 <td><code>place_geometry</code></td>
@@ -5050,8 +5120,8 @@ Receiver 3: station 0 "Pier", no position
 </tr>
 </tbody>
 </table>
-<p>In managed mode (<code>-E</code>) the <strong>Services</strong> tab edits these: the built-in viewer beside the control panel first, then each server of <code>services</code>, with <strong>Add server</strong> for another. Each server's page switches its services on and off, says whether it listens on this machine or the network, gives its keys (<strong>New key</strong> makes one, shows it once, and keeps only its SHA-256), and, with the viewer on, the viewer's own settings. A saved server whose port another program has is marked as not listening. <strong>Try the API</strong> sends a request to any of them as a program would, made on the station itself, with the key given, and shows the answer and the curl line that repeats it; under <strong>MCP</strong> it lists a server's tools, calls one with its arguments as an assistant would, and gives the line that connects Claude Code to it. How long ships and tracks are kept, and the backup, are under <strong>System › Settings › History &amp; backup</strong>. The built-in viewer is the entry marked <code>main</code>: it always serves the map, may add <code>api</code>, <code>mcp</code>, <code>system</code>, <code>geojson</code> and <code>metrics</code> to its <code>serve</code>, and takes <code>keys</code> and <code>public</code> as any server does, following the address the control panel listens on. A saved change to the servers applies at once, also while the receivers are stopped; a server cannot take the control panel's port or the viewer's.</p>
-<p>A viewer under <code>server</code> (<code>-N</code> on the command line) is the web viewer as it always was, with its own ships from the receivers that feed it. The API and the other services run on a server of <code>services</code>; on the command line <code>-J port [key value]...</code> makes one, with the keys an entry takes, a filter term going into its <code>filter</code>: <code>AIS-catcher -N 8100 -J 8101 serve api,mcp</code>.</p>
+<p>In managed mode (<code>-E</code>) the <strong>Services</strong> tab edits these: the built-in viewer beside the control panel first, then each server of <code>services</code>, with <strong>Add server</strong> for another. Each server's page switches its services on and off, says whether it listens on this machine or the network, gives its keys (<strong>New key</strong> makes one, shows it once, and keeps only its SHA-256), and, with the viewer on, the viewer's own settings. A saved server whose port another program has is marked as not listening. <strong>Try the API</strong> sends a request to any of them as a program would, made on the station itself, with the key given, and shows the answer and the curl line that repeats it; under <strong>MCP</strong> it lists a server's tools, calls one with its arguments as an assistant would, and gives the line that connects Claude Code to it. How long ships and tracks are kept, and the backup, are under <strong>System › Settings › History &amp; backup</strong>. The built-in viewer is the entry marked <code>main</code>: it always serves the map, may switch on <code>api</code>, <code>mcp</code>, <code>system</code>, <code>geojson</code> and <code>metrics</code>, and takes <code>keys</code> and <code>public</code> as any server does, following the address the control panel listens on. A saved change to the servers applies at once, also while the receivers are stopped; a server cannot take the control panel's port or the viewer's.</p>
+<p>A viewer under <code>server</code>, and <code>-N</code> on the command line, is read as an entry of <code>services</code>: the same server, with the same keys. One without a message filter shows the site's ships, and its <code>file</code>, <code>backup</code> and <code>history</code> are the site's <code>tracking</code>; one with <code>filter</code> on, or with <code>zone</code> or <code>groups_in</code>, keeps ships of its own behind that filter, as the viewer always did, while the backup stays the site's. On the command line the switches follow the port: <code>AIS-catcher -N 8100 api on mcp on</code>.</p>
 <p><strong>The filter</strong> uses the terms of the viewer's own filter (<strong>Settings → Filter</strong>), under the same names, so a filter you set up in the viewer can be copied here as it stands. It selects from everything the tracker keeps: the server shows nothing outside it, in any list, count or event.</p>
 <table>
 <thead>
@@ -5114,7 +5184,7 @@ Receiver 3: station 0 "Pier", no position
 </tr>
 </tbody>
 </table>
-<p>A request to <code>/api/v1/vessels</code> takes the same terms as query parameters, a list as comma-separated values (<code>?hidden_classes=2,6&amp;speed_min=1</code>). They narrow what the server shows and never widen it.</p>
+<p>A request to <code>/api/v1/vessels</code> takes <a href="../../api/overview/#vessels">filters of its own</a>, named after the fields of a vessel (<code>?class=cargo,tanker&amp;min_speed_kn=1</code>). They narrow what the server shows and never widen it.</p>
 <h2 id="input-device-settings">Input Device Settings<a class="headerlink" href="#input-device-settings" title="Permanent link">&para;</a></h2>
 <p>AIS-catcher supports various input devices. Each device type has specific configuration options. Below are the supported devices and their respective settings. The documentation of the relevant keys can be found in the <a href="../../configuration/input/overview/">Configuration</a> sections. Below we provide a few examples.</p>
 <h3 id="rtl-sdr-rtlsdr">RTL-SDR (<code>rtlsdr</code>)<a class="headerlink" href="#rtl-sdr-rtlsdr" title="Permanent link">&para;</a></h3>
@@ -5316,6 +5386,7 @@ Receiver 3: station 0 "Pier", no position
 <h2 id="output-settings">Output Settings<a class="headerlink" href="#output-settings" title="Permanent link">&para;</a></h2>
 <p>AIS-catcher supports various output channels. Each output channel has specific configuration options.  The documentation of the relevant keys can be found in the <a href="../../configuration/output/overview/">Configuration</a> sections with some JSON examples below.</p>
 <h3 id="web-viewer-server">Web Viewer (<code>server</code>)<a class="headerlink" href="#web-viewer-server" title="Permanent link">&para;</a></h3>
+<p>An entry of <code>server</code> is a server of <a href="#tracking-and-services-tracking-services"><code>services</code></a>, written the way the viewer always was.</p>
 <details>
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>

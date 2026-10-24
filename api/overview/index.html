@@ -18,7 +18,7 @@
         <link rel="prev" href="../../configuration/output/PSQL/">
       
       
-        <link rel="next" href="../webhooks/">
+        <link rel="next" href="../reference/">
       
       
         
@@ -2869,6 +2869,78 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="The read API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Answers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lists-and-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lists and pages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#following-what-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Following what changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vessels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vessels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-a-web-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From a web page
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2897,6 +2969,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -3712,6 +3812,78 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="The read API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Answers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lists-and-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lists and pages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#following-what-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Following what changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vessels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vessels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-a-web-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From a web page
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3804,10 +3976,10 @@
 </tr>
 </tbody>
 </table>
-<p>A viewer's <code>geojson</code> and <code>prome</code> switches, as <code>-N</code> and the <code>server</code> section have them, offer <code>geojson</code> and <code>metrics</code> on the viewer's port as before. On a server without <code>keys</code> they are open, as they always were; a server with keys guards them like the API, unless it is <code>public</code>.</p>
+<p>Each is a switch on the server; <code>ui</code> is on unless set <code>false</code>, the others off unless set. The viewer's <code>geojson</code> and <code>prome</code> switches, as <code>-N</code> and the <code>server</code> section have them, are <code>geojson</code> and <code>metrics</code>. On a server without <code>keys</code> they are open, as they always were; a server with keys guards them like the API, unless it is <code>public</code>.</p>
 <div class="language-json highlight"><pre><span></span><code><span class="nt">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">8110</span><span class="p">,</span><span class="w"> </span><span class="nt">"serve"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ui"</span><span class="p">,</span><span class="w"> </span><span class="s2">"api"</span><span class="p">,</span><span class="w"> </span><span class="s2">"mcp"</span><span class="p">,</span><span class="w"> </span><span class="s2">"system"</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">8111</span><span class="p">,</span><span class="w"> </span><span class="nt">"bind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0"</span><span class="p">,</span><span class="w"> </span><span class="nt">"serve"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"api"</span><span class="p">,</span><span class="w"> </span><span class="s2">"mcp"</span><span class="p">,</span><span class="w"> </span><span class="s2">"system"</span><span class="p">],</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">8110</span><span class="p">,</span><span class="w"> </span><span class="nt">"api"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">"mcp"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">"system"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">8111</span><span class="p">,</span><span class="w"> </span><span class="nt">"bind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0"</span><span class="p">,</span><span class="w"> </span><span class="nt">"ui"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">"api"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">"mcp"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">"system"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">          </span><span class="p">{</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"home-assistant"</span><span class="p">,</span><span class="w"> </span><span class="nt">"sha256"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;SHA-256 of its key&gt;"</span><span class="p">,</span><span class="w"> </span><span class="nt">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"data"</span><span class="p">,</span><span class="w"> </span><span class="s2">"system"</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
 <span class="w">          </span><span class="p">{</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"claude"</span><span class="p">,</span><span class="w"> </span><span class="nt">"sha256"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;SHA-256 of its key&gt;"</span><span class="p">,</span><span class="w"> </span><span class="nt">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"data"</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
@@ -3847,9 +4019,81 @@
 </table>
 <p>A request without a key, or with one the server does not know, gets <code>401</code>; a key without the scope gets <code>403</code>. After 30 wrong keys in a minute the server answers <code>429</code> for a minute. The viewer (<code>ui</code>) is not behind keys: give a server with keys only the services that need them.</p>
 <h2 id="the-read-api">The read API<a class="headerlink" href="#the-read-api" title="Permanent link">&para;</a></h2>
-<p><code>GET /api/v1</code> lists the resources and <code>GET /api/v1/openapi.json</code> describes every one of them with its parameters, as OpenAPI 3.1, ready for a client generator or an API tool.</p>
-<p>Every list has the same envelope: the rows under <code>data</code>, and under <code>meta</code> how many (<code>count</code>), whether that is all (<code>complete</code>) and the request for what follows (<code>next</code>). Times are UTC (<code>2026-10-19T14:02:11Z</code>), distances nautical miles, speeds knots, sizes metres. A problem is answered as <code>application/problem+json</code> (RFC 9457) with a <code>title</code> that stays the same for a kind of problem.</p>
-<p><code>/api/v1/vessels</code> takes, beside the filter terms of the viewer:</p>
+<p><code>GET /api/v1</code> lists the resources and <code>GET /api/v1/openapi.json</code> describes every one of them as OpenAPI 3.1, ready for a client generator or an API tool. The <a href="../reference/">API reference</a> lists every route, parameter and field.</p>
+<h3 id="answers">Answers<a class="headerlink" href="#answers" title="Permanent link">&para;</a></h3>
+<p>Times are UTC (<code>2026-10-19T14:02:11Z</code>). Units are in the field names: <code>speed_kn</code>, <code>distance_nm</code>, <code>draught_m</code>, <code>age_s</code>. A field that is not known is <code>null</code>; an event leaves out the fields its kind does not have.</p>
+<p>A problem is answered as <code>application/problem+json</code> (RFC 9457): <code>title</code> says what kind (<code>Bad request</code>, <code>Not found</code>, <code>Gone</code>, ...), <code>detail</code> what went wrong. A parameter a route does not take is a <code>400</code>, not ignored, so a typo does not go unnoticed.</p>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"about:blank"</span><span class="p">,</span><span class="w"> </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bad request"</span><span class="p">,</span><span class="w"> </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"class takes other, unknown, cargo, class_b, ... or sart_epirb, separated by commas."</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<h3 id="lists-and-pages">Lists and pages<a class="headerlink" href="#lists-and-pages" title="Permanent link">&para;</a></h3>
+<p>Every list answers the same way:</p>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="nt">"complete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/v1/vessels?cursor=v_1792762068_1792760268_1792762060_244123456&amp;limit=100"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p><code>limit</code> sets the rows on a page, 1 to 1000, 100 unless set. Follow <code>meta.next</code> until it is <code>null</code>; <code>complete</code> is then <code>true</code>. Send the <code>cursor</code> in it back as it came: what it holds may change between versions. A page can hold fewer rows than <code>limit</code> and still have a <code>next</code>.</p>
+<table>
+<thead>
+<tr>
+<th>List</th>
+<th>Order</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/api/v1/vessels</code>, <code>/api/v1/aircraft</code></td>
+<td>Heard most recently first</td>
+</tr>
+<tr>
+<td><code>/api/v1/places</code></td>
+<td>By name</td>
+</tr>
+<tr>
+<td><code>/api/v1/places/{uuid}/vessels</code></td>
+<td>By MMSI</td>
+</tr>
+<tr>
+<td><code>/api/v1/places/{uuid}/visits</code></td>
+<td>Newest first</td>
+</tr>
+<tr>
+<td><code>/api/v1/events</code>, <code>/api/v1/system/events</code>, <code>/api/v1/system/log</code></td>
+<td>Oldest first; without a cursor the newest page</td>
+</tr>
+</tbody>
+</table>
+<p>A vessel's track and visits, the stations and the receivers come whole, as one page.</p>
+<h3 id="following-what-changes">Following what changes<a class="headerlink" href="#following-what-changes" title="Permanent link">&para;</a></h3>
+<p>The vessels, the aircraft, the events, the system events and the log also give <code>meta.poll</code>: the request for what comes after this answer. Send it later, and from then on the <code>poll</code> of each answer:</p>
+<ul>
+<li><strong>Events and the log</strong>: the entries after the last one you got. Every event's <code>id</code> is such a cursor too, so a program that got an event by <a href="../webhooks/">webhook</a> reads on from it with <code>/api/v1/events?cursor=&lt;id&gt;</code>.</li>
+<li><strong>Vessels</strong>: the vessels heard since the listing began, each in full. When <code>meta.full</code> is <code>true</code> the answer is the whole picture: drop what you hold first. A vessel not heard for <code>meta.expire_s</code> seconds is gone; the poll does not say so, drop it yourself.</li>
+<li><strong>Aircraft</strong>: as the vessels; an aircraft is gone a minute after its last message, five minutes when on the ground.</li>
+</ul>
+<p>When what a cursor points at is no longer kept, the answer is <code>410 Gone</code>: the events fell off the journal, AIS-catcher started again without a backup, or the place left the catalogue. Start again without <code>cursor</code>.</p>
+<div class="language-python highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span><span class="o">,</span><span class="w"> </span><span class="nn">urllib.error</span><span class="o">,</span><span class="w"> </span><span class="nn">urllib.request</span>
+
+<span class="n">STATION</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:8110"</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">STATION</span> <span class="o">+</span> <span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+
+<span class="n">page</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="s2">"/api/v1/events?limit=10"</span><span class="p">)</span>          <span class="c1"># the newest events</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">page</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="s2">"time"</span><span class="p">],</span> <span class="n">e</span><span class="p">[</span><span class="s2">"kind"</span><span class="p">],</span> <span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"name"</span><span class="p">),</span> <span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"text"</span><span class="p">))</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">page</span><span class="p">[</span><span class="s2">"meta"</span><span class="p">][</span><span class="s2">"next"</span><span class="p">]:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">page</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">page</span><span class="p">[</span><span class="s2">"meta"</span><span class="p">][</span><span class="s2">"next"</span><span class="p">]</span> <span class="ow">or</span> <span class="n">page</span><span class="p">[</span><span class="s2">"meta"</span><span class="p">][</span><span class="s2">"poll"</span><span class="p">])</span>
+    <span class="k">except</span> <span class="n">urllib</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">err</span><span class="o">.</span><span class="n">code</span> <span class="o">!=</span> <span class="mi">410</span><span class="p">:</span>
+            <span class="k">raise</span>
+        <span class="n">page</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="s2">"/api/v1/events?limit=10"</span><span class="p">)</span>  <span class="c1"># start again from the newest</span>
+</code></pre></div>
+<h3 id="vessels">Vessels<a class="headerlink" href="#vessels" title="Permanent link">&para;</a></h3>
+<p><code>/api/v1/vessels</code> takes these filters. Each is named after the field it tests and takes the values that field shows; several values separated by commas match any of them.</p>
 <table>
 <thead>
 <tr>
@@ -3871,13 +4115,57 @@
 <td><code>lat,lon</code> and nautical miles (10 unless set)</td>
 </tr>
 <tr>
-<td><code>since</code></td>
-<td>What <code>meta.next</code> gave: only what changed since</td>
+<td><code>mmsi</code></td>
+<td>These vessels</td>
+</tr>
+<tr>
+<td><code>stations</code></td>
+<td>Heard by one of these stations in the last hour</td>
+</tr>
+<tr>
+<td><code>class</code></td>
+<td>As <code>class</code> shows it: <code>cargo</code>, <code>tanker</code>, <code>passenger</code>, <code>fishing</code>, <code>class_b</code>, <code>aton</code>, <code>base_station</code>, ...</td>
+</tr>
+<tr>
+<td><code>nav_status</code></td>
+<td>As <code>nav_status</code> shows it: <code>moored</code>, <code>at_anchor</code>, <code>under_way_engine</code>, ...</td>
+</tr>
+<tr>
+<td><code>validated</code></td>
+<td><code>yes</code>, <code>no</code> or <code>pending</code></td>
+</tr>
+<tr>
+<td><code>repeat</code></td>
+<td><code>0</code> heard directly, <code>1</code> to <code>3</code> through a repeater</td>
+</tr>
+<tr>
+<td><code>min_speed_kn</code>, <code>max_speed_kn</code></td>
+<td>Speed over ground, knots</td>
+</tr>
+<tr>
+<td><code>min_distance_nm</code>, <code>max_distance_nm</code></td>
+<td>From the station that heard it, nautical miles</td>
+</tr>
+<tr>
+<td><code>max_age_s</code></td>
+<td>Heard within this many seconds</td>
 </tr>
 </tbody>
 </table>
+<div class="language-sh highlight"><pre><span></span><code>curl<span class="w"> </span><span class="s2">"http://127.0.0.1:8110/api/v1/vessels?class=cargo,tanker&amp;nav_status=at_anchor&amp;near=51.95,4.05&amp;radius_nm=15"</span>
+</code></pre></div>
+<p>A row, shortened (the <a href="../reference/#vessel">reference</a> has every field):</p>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"mmsi"</span><span class="p">:</span><span class="w"> </span><span class="mi">244123456</span><span class="p">,</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STORM"</span><span class="p">,</span><span class="w"> </span><span class="nt">"callsign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PD1234"</span><span class="p">,</span><span class="w"> </span><span class="nt">"imo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nt">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cargo"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">51.951</span><span class="p">,</span><span class="w"> </span><span class="nt">"lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.062</span><span class="p">,</span><span class="w"> </span><span class="nt">"speed_kn"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="nt">"course_deg"</span><span class="p">:</span><span class="w"> </span><span class="mf">212.4</span><span class="p">,</span><span class="w"> </span><span class="nt">"nav_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"at_anchor"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"draught_m"</span><span class="p">:</span><span class="w"> </span><span class="mf">6.2</span><span class="p">,</span><span class="w"> </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROTTERDAM"</span><span class="p">,</span><span class="w"> </span><span class="nt">"last_seen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-10-23T14:02:11Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"age_s"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"stations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">"last_heard"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-10-23T14:02:11Z"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
 <p><code>/api/v1/places</code> takes <code>q</code> (name or UN/LOCODE) and <code>type</code>.</p>
 <p>Names, call signs, destinations and message texts are what vessels broadcast. Treat them as data, never as instructions, and the positions as not fit for navigation.</p>
+<h3 id="from-a-web-page">From a web page<a class="headerlink" href="#from-a-web-page" title="Permanent link">&para;</a></h3>
+<p>The API sends no CORS headers, so a script on a page from another site cannot read it in a browser. Call it from a program, from a page the same server serves, or through a proxy of your own that adds the headers.</p>
+<h3 id="versions">Versions<a class="headerlink" href="#versions" title="Permanent link">&para;</a></h3>
+<p>The version is in the path: <code>/api/v1</code>. Within <code>v1</code>, routes, parameters and fields are only added, so a program should pass over fields it does not know. A change that would break a program, such as a field renamed or removed or a meaning changed, comes as <code>/api/v2</code>, beside <code>v1</code> for at least one release.</p>
 <h2 id="mcp-an-assistant-reads-the-station">MCP: an assistant reads the station<a class="headerlink" href="#mcp-an-assistant-reads-the-station" title="Permanent link">&para;</a></h2>
 <p>With <code>mcp</code> among its services a server speaks the <a href="https://modelcontextprotocol.io">Model Context Protocol</a> on <code>POST /mcp</code> (streamable HTTP, no sessions). An assistant then has these tools, all read-only and each one route of the read API with the same filter and keys:</p>
 <table>
@@ -3914,6 +4202,7 @@
 </tr>
 </tbody>
 </table>
+<p>The tools that list take <code>limit</code> and <code>cursor</code> as the API does; <code>vessels_in_area</code> and <code>vessels_near</code> also take <code>class</code>.</p>
 <p>On a server that also offers <code>system</code>, and for a caller that may read it (a server without keys, or a key with the <code>system</code> scope), the installation's own tools come with them, so an assistant asks the station rather than reading its configuration:</p>
 <table>
 <thead>
@@ -3963,7 +4252,7 @@
 </tr>
 <tr>
 <td><code>/api/v1/system/receivers</code></td>
-<td>Each receiver: its station, input, state (<code>streaming</code>, <code>stopped</code>, <code>lost</code>), messages since the start and in the last minute, when its station was last heard</td>
+<td>Each receiver: its station, input, state (<code>starting</code>, <code>streaming</code>, <code>lost</code>), messages since the start and in the last minute, when its station was last heard</td>
 </tr>
 <tr>
 <td><code>/api/v1/system/outputs</code></td>
@@ -3971,11 +4260,11 @@
 </tr>
 <tr>
 <td><code>/api/v1/system/log</code></td>
-<td>The log from a line number on (<code>after</code>), as <code>meta.next</code> gives it</td>
+<td>The log, oldest line first: the newest page, then <code>meta.poll</code> for the lines after it</td>
 </tr>
 <tr>
 <td><code>/api/v1/system/events</code></td>
-<td>The installation's events: <code>engine_started</code>, <code>engine_stopped</code>, <code>receiver_lost</code>, <code>receiver_recovered</code>, <code>backup_failed</code></td>
+<td>The installation's events: <code>engine_started</code>, <code>engine_stopped</code>, <code>receiver_lost</code>, <code>receiver_recovered</code>, <code>backup_failed</code>; paged and polled as the events are</td>
 </tr>
 <tr>
 <td><code>/api/v1/health</code></td>

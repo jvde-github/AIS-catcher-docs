@@ -3015,6 +3015,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../api/reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../api/webhooks/" class="md-nav__link">
         
   
@@ -4062,8 +4090,7 @@ Fast downsampling uses approximations and comes at a very small performance degr
     [-m xx - run specific decoding model (default: 2), see README for more details]
     [-M xxx - set additional meta data to generate: T = NMEA timestamp, D = decoder related (signal power, ppm) (default: none)]
     [-n show NMEA messages on screen without detail (-o 1)]
-    [-N [optional: port][optional settings] - start http server at port, see README for details]
-    [-J port [key value]... - a server on the site's tracker: serve api,mcp,system,ui,geojson,metrics; public on; bind address; filter terms; keys as an entry of "services" in the configuration file]
+    [-N [optional: port][optional settings] - a web server at port: the map, and api, mcp, system, geojson or metrics switched on; with a message filter it keeps ships of its own, see README for details]
     [-o set output mode (0 = quiet, 1 = NMEA only, 2 = NMEA+, 3 = NMEA+ in JSON, 4 JSON Sparse, 5 JSON Full (default: 2)]
     [-O MMSI - sets the own mmsi of the receiver]
     [-p xxx - set frequency correction for device in PPM (default: zero)]

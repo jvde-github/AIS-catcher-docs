@@ -2769,10 +2769,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-api-beside-the-viewer" class="md-nav__link">
+  <a href="#the-api-on-the-same-port" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The API beside the viewer
+        The API on the same port
       
     </span>
   </a>
@@ -2780,10 +2780,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#multiple-receivers-in-one-viewer" class="md-nav__link">
+  <a href="#several-stations-in-one-viewer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Multiple receivers in one viewer
+        Several stations in one viewer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-viewer-with-ships-of-its-own" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A viewer with ships of its own
       
     </span>
   </a>
@@ -2985,6 +2996,34 @@
     
   
     Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
   
 
     
@@ -3883,10 +3922,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-api-beside-the-viewer" class="md-nav__link">
+  <a href="#the-api-on-the-same-port" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The API beside the viewer
+        The API on the same port
       
     </span>
   </a>
@@ -3894,10 +3933,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#multiple-receivers-in-one-viewer" class="md-nav__link">
+  <a href="#several-stations-in-one-viewer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Multiple receivers in one viewer
+        Several stations in one viewer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-viewer-with-ships-of-its-own" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A viewer with ships of its own
       
     </span>
   </a>
@@ -4074,17 +4124,19 @@ or as an overlay
 <div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>prome<span class="w"> </span>on
 </code></pre></div>
 <p>For more information on how to configure Prometheus and Grafana to get an initial dashboard, see <a href="../../../advanced/grafana/">README-grafana.md</a>.</p>
-<h2 id="the-api-beside-the-viewer">The API beside the viewer<a class="headerlink" href="#the-api-beside-the-viewer" title="Permanent link">&para;</a></h2>
-<p>The viewer keeps its own ships, from the receivers that feed it. The <a href="../../../api/overview/">API</a>, MCP and the system service run on the station's own tracker instead, on a server of their own: <code>-J</code> on the command line, an entry of <code>services</code> in a configuration file. For example, the viewer on port 8100 and the API and MCP on port 8101:</p>
-<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>-J<span class="w"> </span><span class="m">8101</span><span class="w"> </span>serve<span class="w"> </span>api,mcp
+<h2 id="the-api-on-the-same-port">The API on the same port<a class="headerlink" href="#the-api-on-the-same-port" title="Permanent link">&para;</a></h2>
+<p>The viewer is a server on the station's ships, the same server that offers the <a href="../../../api/overview/">API</a>, MCP, the system service, GeoJSON and Prometheus: each is a switch on <code>-N</code>. For example, the map, the API and MCP on port 8100:</p>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>api<span class="w"> </span>on<span class="w"> </span>mcp<span class="w"> </span>on
 </code></pre></div>
-<h2 id="multiple-receivers-in-one-viewer">Multiple receivers in one viewer<a class="headerlink" href="#multiple-receivers-in-one-viewer" title="Permanent link">&para;</a></h2>
-<p>When a viewer receives from more than one receiver, it keeps a combined view called <strong>All</strong> plus a separate view per receiver, and a <strong>Select Receiver</strong> button appears in the header to switch between them.</p>
-<p>Set <code>split off</code> to keep only the combined view:</p>
-<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>split<span class="w"> </span>off
+<p>A second <code>-N</code> is a second server on the same ships; <code>ui off</code> leaves the map out of one. A <code>-N</code> listens on every interface, as the viewer always did, so other machines on the network reach its map. One that serves the API, MCP or the system service stays on this machine instead, and says so in the log, unless it has keys, <code>public on</code>, or an <code>ip_bind</code> of its own; see <a href="../../../api/overview/#keys">Keys</a>. An entry of <code>services</code> in a configuration file listens on this machine unless its <code>bind</code> says otherwise.</p>
+<h2 id="several-stations-in-one-viewer">Several stations in one viewer<a class="headerlink" href="#several-stations-in-one-viewer" title="Permanent link">&para;</a></h2>
+<p>The receivers of one AIS-catcher stand at stations (<code>stations</code> in a configuration file, a receiver's <code>station</code>). The viewer shows every station's ships together, with the station that heard each vessel last on its card and in its hover; <strong>Filter → Station</strong> looks through one station alone, and <code>?stations=3,5</code> on the viewer's requests, or <code>/api/v1/vessels?stations=3</code>, asks the same of the server. Statistics and plots are kept per station: with several stations, the Statistics and Plots tabs get a row of sheets with the station whose figures show at its right end, all stations added up by default. Compare on the Plots tab sets a second station, or all of them, against the one chosen, to set one station, or one decoder, against another. A station on the map opens a card of its own, as on aiscatcher.org: its ships, rate and messages, its position, the last half hour of messages and a day of activity; while the card is open the page looks through that station, and closing it goes back to what was shown before.</p>
+<p>A message that names a station itself, as a feed from a hub does in its tag block (<code>\s:s1001*hh\</code>), counts at that station when <code>stations</code> lists it; otherwise at the input's station. So one input from a hub can serve many stations from one ship table.</p>
+<p><code>station_id</code> on a <code>-N</code> makes a viewer of one station: the station is listed from the line, with its <code>station</code>, <code>lat</code>, <code>lon</code>, <code>share_loc</code>, <code>use_gps</code> and <code>own_mmsi</code>, unless <code>stations</code> already has it, and the viewer shows that station alone: its map, its figures, and its live NMEA, signal and Prometheus streams. Several ids separated by commas show those together; the line describes the first. For example, two feeders of a hub, each on a viewer of its own, reading one ship table:</p>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-t<span class="w"> </span>txt<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="m">14999</span><span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>station_id<span class="w"> </span><span class="m">1001</span><span class="w"> </span>station<span class="w"> </span>Southwood<span class="w"> </span>lat<span class="w"> </span><span class="m">52</span>.08<span class="w"> </span>lon<span class="w"> </span><span class="m">4</span>.33<span class="w"> </span>share_loc<span class="w"> </span>on<span class="w"> </span>-N<span class="w"> </span><span class="m">8101</span><span class="w"> </span>station_id<span class="w"> </span><span class="m">1351</span><span class="w"> </span>station<span class="w"> </span>Tyreso<span class="w"> </span>lat<span class="w"> </span><span class="m">59</span>.24<span class="w"> </span>lon<span class="w"> </span><span class="m">18</span>.24<span class="w"> </span>share_loc<span class="w"> </span>on
 </code></pre></div>
-<p>The per-receiver views are then never created. The <strong>Select Receiver</strong> button disappears, and requests such as <code>/api/stat.json?receiver=2</code> return the combined data. This is useful for a public viewer where visitors should see the overall picture rather than the individual receivers, and it also lowers memory use, since each per-receiver view keeps its own vessel database and track history.</p>
-<p>To restrict a viewer to a subset of receivers instead of combining all of them, use <code>zone</code> or <code>groups_in</code>. A viewer that ends up with a single receiver has no <strong>Select Receiver</strong> button either.</p>
+<h2 id="a-viewer-with-ships-of-its-own">A viewer with ships of its own<a class="headerlink" href="#a-viewer-with-ships-of-its-own" title="Permanent link">&para;</a></h2>
+<p>A viewer with a message filter switched on (<code>filter on</code> with <code>allow_type</code>, <code>block_mmsi</code>, <code>stations</code> and the other terms an output takes), or that takes only some receivers (<code>zone</code>, <code>groups_in</code>), keeps a ship table of its own behind that filter, with its own <code>history</code> and <code>track_time</code>. The backup and the places are the station's: one <code>file</code>, written by the main tracker; a <code>file</code>, <code>backup</code> or <code>places</code> on such a viewer is reported and not used. Without a filter, a viewer's <code>file</code>, <code>backup</code> and <code>history</code> are the station's.</p>
 <h2 id="cross-origin-access-cors">Cross-origin access (CORS)<a class="headerlink" href="#cross-origin-access-cors" title="Permanent link">&para;</a></h2>
 <p>The data endpoints intended for external consumers send an <code>Access-Control-Allow-Origin: *</code> header so that browser-based dashboards and other web pages can fetch them directly without a proxy. The HTML pages and other resources served by the web viewer are deliberately <em>not</em> CORS-exposed.</p>
 <p>CORS is enabled on:</p>
@@ -4124,31 +4176,31 @@ or as an overlay
 <td><span class="cmd-setting">port_min</span></td>
 <td>integer</td>
 <td><span class="cmd-value">-</span></td>
-<td>Minimum port in binding range</td>
+<td>No longer used; a warning says so</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">port_max</span></td>
 <td>integer</td>
 <td><span class="cmd-value">-</span></td>
-<td>Maximum port in binding range</td>
+<td>No longer used; a warning says so</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">ip_bind</span></td>
 <td>string</td>
-<td><span class="cmd-value">-</span></td>
-<td>Server binding IP address</td>
+<td><span class="cmd-value">0.0.0.0</span></td>
+<td>The address the server listens on; every interface unless given, or this machine for a server with the API, MCP or the system service and no keys</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">reuse_port</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
-<td>Enable <code>SO_REUSEPORT</code> on the listening socket</td>
+<td>No longer used; a warning says so</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">zlib</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">true</span></td>
-<td>Enable response compression</td>
+<td>No longer used; a warning says so</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">server_mode</span></td>
@@ -4172,19 +4224,25 @@ or as an overlay
 <td><span class="cmd-setting">groups_in</span></td>
 <td>integer</td>
 <td><span class="cmd-value">all</span></td>
-<td>Bitmask of input groups feeding the viewer</td>
+<td>Bitmask of input groups feeding the viewer; set, the viewer keeps ships of its own from them</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">station_id</span></td>
+<td>integer[]</td>
+<td><span class="cmd-value">-</span></td>
+<td>The stations this viewer shows, listed from the line where <code>stations</code> does not; see <a href="#several-stations-in-one-viewer">Several stations in one viewer</a></td>
 </tr>
 <tr>
 <td><span class="cmd-setting">zone</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
-<td>Comma-separated zone tags routed to this viewer</td>
+<td>Comma-separated zone tags routed to this viewer; set, the viewer keeps ships of its own from them</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">split</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">true</span></td>
-<td>Track each receiver separately next to the combined view; set to <code>off</code> for a combined view only</td>
+<td>No longer used: every station is in one view, see <a href="#several-stations-in-one-viewer">Several stations in one viewer</a></td>
 </tr>
 <tr>
 <td></td>
@@ -4268,7 +4326,7 @@ or as an overlay
 <td><span class="cmd-setting">stats_on_close</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
-<td>Write/print statistics when the server shuts down</td>
+<td>No longer used; a warning says so</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">realtime</span></td>
@@ -4304,13 +4362,13 @@ or as an overlay
 <td><span class="cmd-setting">geojson</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
-<td>Enable GeoJSON output</td>
+<td>Serve the ships as GeoJSON at <code>/geojson</code></td>
 </tr>
 <tr>
 <td><span class="cmd-setting">prome</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
-<td>Enable Prometheus metrics</td>
+<td>Serve message counts for Prometheus at <code>/metrics</code>; <code>metrics</code> says the same</td>
 </tr>
 <tr>
 <td></td>
