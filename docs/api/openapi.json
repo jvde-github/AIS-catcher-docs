@@ -1253,7 +1253,7 @@
     "tags": [
      "System"
     ],
-    "summary": "The installation's events, oldest first: the engine started or stopped, a receiver lost or back, a backup failed.",
+    "summary": "The installation's events, oldest first: the engine started or stopped, a receiver lost or back, a station quiet or hearing again, a day of exceptional range, a backup failed.",
     "parameters": [
      {
       "name": "limit",
@@ -1626,6 +1626,8 @@
      "level_max_db",
      "ppm",
      "max_distance_nm",
+     "active_minutes",
+     "furthest",
      "channels",
      "message_types",
      "range_nm"
@@ -1691,6 +1693,45 @@
        "null"
       ],
       "description": "The farthest validated position, nautical miles"
+     },
+     "active_minutes": {
+      "type": "integer",
+      "description": "The minutes of the period in which a message came in, so the share of time the station heard; 0 in slots by the second. For several stations, the most of any one"
+     },
+     "furthest": {
+      "type": "array",
+      "description": "The farthest vessels of the period, each once, the farthest first, up to three; the farthest of total holds the station's range record",
+      "items": {
+       "type": "object",
+       "required": [
+        "mmsi",
+        "distance_nm",
+        "bearing_deg",
+        "time"
+       ],
+       "properties": {
+        "mmsi": {
+         "type": "integer",
+         "description": "The vessel's MMSI"
+        },
+        "distance_nm": {
+         "type": "number",
+         "description": "Its farthest validated position, nautical miles"
+        },
+        "bearing_deg": {
+         "type": [
+          "number",
+          "null"
+         ],
+         "description": "From the station, degrees"
+        },
+        "time": {
+         "type": "string",
+         "format": "date-time",
+         "description": "When it was there"
+        }
+       }
+      }
      },
      "channels": {
       "type": "object",
@@ -1774,7 +1815,10 @@
      "last_minute",
      "last_hour",
      "last_day",
-     "history"
+     "history",
+     "week",
+     "levels_by_distance",
+     "propagation"
     ],
     "properties": {
      "stations": {
@@ -1849,6 +1893,162 @@
         "description": "By the UTC day, the last 90 days"
        }
       }
+     },
+     "week": {
+      "type": "object",
+      "description": "The usual vessels an hour by UTC weekday and hour, from the hours a message came in: for each weekday 24 values, hour 0 first, null for an hour never heard in. Kept across restarts",
+      "properties": {
+       "monday": {
+        "type": "array",
+        "items": {
+         "type": [
+          "number",
+          "null"
+         ]
+        }
+       },
+       "tuesday": {
+        "type": "array",
+        "items": {
+         "type": [
+          "number",
+          "null"
+         ]
+        }
+       },
+       "wednesday": {
+        "type": "array",
+        "items": {
+         "type": [
+          "number",
+          "null"
+         ]
+        }
+       },
+       "thursday": {
+        "type": "array",
+        "items": {
+         "type": [
+          "number",
+          "null"
+         ]
+        }
+       },
+       "friday": {
+        "type": "array",
+        "items": {
+         "type": [
+          "number",
+          "null"
+         ]
+        }
+       },
+       "saturday": {
+        "type": "array",
+        "items": {
+         "type": [
+          "number",
+          "null"
+         ]
+        }
+       },
+       "sunday": {
+        "type": "array",
+        "items": {
+         "type": [
+          "number",
+          "null"
+         ]
+        }
+       }
+      }
+     },
+     "levels_by_distance": {
+      "type": "object",
+      "description": "The mean signal level by the distance a message came from, to tune an antenna by: validated positions heard directly, no aids to navigation",
+      "properties": {
+       "band_nm": {
+        "type": "integer",
+        "description": "The width of a band, nautical miles"
+       },
+       "total": {
+        "type": "array",
+        "items": {
+         "$ref": "#/components/schemas/LevelBand"
+        },
+        "description": "Since the figures were first kept"
+       },
+       "session": {
+        "type": "array",
+        "items": {
+         "$ref": "#/components/schemas/LevelBand"
+        },
+        "description": "Since AIS-catcher started, to compare before and after a change"
+       }
+      }
+     },
+     "propagation": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/PropagationDay"
+      },
+      "description": "The days of the last 90 with exceptional range, such as tropospheric ducting brings, oldest first: the day's farthest position at least twice the usual and 20 NM beyond it, and a third vessel beyond one and a half times the usual"
+     }
+    }
+   },
+   "LevelBand": {
+    "type": "object",
+    "required": [
+     "from_nm",
+     "to_nm",
+     "level_db",
+     "messages"
+    ],
+    "properties": {
+     "from_nm": {
+      "type": "integer",
+      "description": "Where the band begins, nautical miles"
+     },
+     "to_nm": {
+      "type": [
+       "integer",
+       "null"
+      ],
+      "description": "Where it ends; null for the last, which holds all beyond"
+     },
+     "level_db": {
+      "type": [
+       "number",
+       "null"
+      ],
+      "description": "The mean signal level, dB; null without messages"
+     },
+     "messages": {
+      "type": "integer",
+      "description": "The messages in the band"
+     }
+    }
+   },
+   "PropagationDay": {
+    "type": "object",
+    "required": [
+     "day",
+     "max_distance_nm",
+     "usual_nm"
+    ],
+    "properties": {
+     "day": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The UTC day, at its start"
+     },
+     "max_distance_nm": {
+      "type": "number",
+      "description": "Its farthest validated position, nautical miles"
+     },
+     "usual_nm": {
+      "type": "number",
+      "description": "The usual range: the median of the farthest positions of the 30 days before"
      }
     }
    },
@@ -2935,9 +3135,12 @@
        "engine_stopped",
        "receiver_lost",
        "receiver_recovered",
+       "station_quiet",
+       "station_heard",
+       "propagation",
        "backup_failed"
       ],
-      "description": "system: what happened to the installation"
+      "description": "system: what happened to the installation. station_quiet: a station heard nothing for 15 minutes while its receivers stream; station_heard: it hears again; propagation: a station hears exceptionally far today, once a day"
      },
      "receiver": {
       "type": "integer",
@@ -2945,7 +3148,7 @@
      },
      "station": {
       "type": "integer",
-      "description": "system: that receiver's station"
+      "description": "system: the station it concerns"
      }
     }
    },

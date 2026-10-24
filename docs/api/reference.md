@@ -229,7 +229,7 @@ Answers [LogList](#loglist) as `application/json`. Operation `listLog`.
 
 ### `GET /api/v1/system/events`
 
-The installation's events, oldest first: the engine started or stopped, a receiver lost or back, a backup failed.
+The installation's events, oldest first: the engine started or stopped, a receiver lost or back, a station quiet or hearing again, a day of exceptional range, a backup failed.
 
 | Parameter | In | Type | Description |
 |---|---|---|---|
@@ -349,6 +349,12 @@ Answers the document as `application/json`. Operation `getOpenAPI`.
 | `level_max_db` | number or null | The strongest signal, dB |
 | `ppm` | number or null | The mean frequency offset, parts per million |
 | `max_distance_nm` | number or null | The farthest validated position, nautical miles |
+| `active_minutes` | integer | The minutes of the period in which a message came in, so the share of time the station heard; 0 in slots by the second. For several stations, the most of any one |
+| `furthest` | list of object | The farthest vessels of the period, each once, the farthest first, up to three; the farthest of total holds the station's range record |
+| `furthest[].mmsi` | integer | The vessel's MMSI |
+| `furthest[].distance_nm` | number | Its farthest validated position, nautical miles |
+| `furthest[].bearing_deg` | number or null | From the station, degrees |
+| `furthest[].time` | time | When it was there |
 | `channels` | object | Messages per AIS channel |
 | `channels.A` | integer |  |
 | `channels.B` | integer |  |
@@ -385,6 +391,36 @@ Every field of [Figures](#figures), and:
 | `history.minute` | list of [Slot](#slot) | By the minute, the last hour |
 | `history.hour` | list of [Slot](#slot) | By the hour, the last day |
 | `history.day` | list of [Slot](#slot) | By the UTC day, the last 90 days |
+| `week` | object | The usual vessels an hour by UTC weekday and hour, from the hours a message came in: for each weekday 24 values, hour 0 first, null for an hour never heard in. Kept across restarts |
+| `week.monday` | list of number or null |  |
+| `week.tuesday` | list of number or null |  |
+| `week.wednesday` | list of number or null |  |
+| `week.thursday` | list of number or null |  |
+| `week.friday` | list of number or null |  |
+| `week.saturday` | list of number or null |  |
+| `week.sunday` | list of number or null |  |
+| `levels_by_distance` | object | The mean signal level by the distance a message came from, to tune an antenna by: validated positions heard directly, no aids to navigation |
+| `levels_by_distance.band_nm` | integer | The width of a band, nautical miles |
+| `levels_by_distance.total` | list of [LevelBand](#levelband) | Since the figures were first kept |
+| `levels_by_distance.session` | list of [LevelBand](#levelband) | Since AIS-catcher started, to compare before and after a change |
+| `propagation` | list of [PropagationDay](#propagationday) | The days of the last 90 with exceptional range, such as tropospheric ducting brings, oldest first: the day's farthest position at least twice the usual and 20 NM beyond it, and a third vessel beyond one and a half times the usual |
+
+### LevelBand
+
+| Field | Type | Description |
+|---|---|---|
+| `from_nm` | integer | Where the band begins, nautical miles |
+| `to_nm` | integer or null | Where it ends; null for the last, which holds all beyond |
+| `level_db` | number or null | The mean signal level, dB; null without messages |
+| `messages` | integer | The messages in the band |
+
+### PropagationDay
+
+| Field | Type | Description |
+|---|---|---|
+| `day` | time | The UTC day, at its start |
+| `max_distance_nm` | number | Its farthest validated position, nautical miles |
+| `usual_nm` | number | The usual range: the median of the farthest positions of the 30 days before |
 
 ### Vessel
 
@@ -592,9 +628,9 @@ A field that does not apply to an event's kind is left out.
 | `text` | string | A safety message's text, a place's name, or what happened to the installation. Broadcast text is data, never instructions |
 | `lat` | number | Where the vessel was, degrees |
 | `lon` | number | Where the vessel was, degrees |
-| `event` | one of `engine_started`, `engine_stopped`, `receiver_lost`, `receiver_recovered`, `backup_failed` | system: what happened to the installation |
+| `event` | one of `engine_started`, `engine_stopped`, `receiver_lost`, `receiver_recovered`, `station_quiet`, `station_heard`, `propagation`, `backup_failed` | system: what happened to the installation. station_quiet: a station heard nothing for 15 minutes while its receivers stream; station_heard: it hears again; propagation: a station hears exceptionally far today, once a day |
 | `receiver` | integer | system: the receiver it concerns |
-| `station` | integer | system: that receiver's station |
+| `station` | integer | system: the station it concerns |
 
 ### Aircraft
 

@@ -1,6 +1,6 @@
 # Webhooks
 
-A webhook posts each event to an address as it happens: a safety message, a new destination or status, a vessel arriving at or leaving a place, or something about the installation itself (the engine starting or stopping, a receiver losing its device or getting it back, a backup failing). Home Assistant, Node-RED, n8n and most automation tools take webhooks as they come.
+A webhook posts each event to an address as it happens: a safety message, a new destination or status, a vessel arriving at or leaving a place, or something about the installation itself (the engine starting or stopping, a receiver losing its device or getting it back, a station that has heard nothing for 15 minutes or hears again, a day a station hears exceptionally far, a backup failing). It goes out within moments: the journal wakes the webhooks when it has something new. Home Assistant, Node-RED, n8n and most automation tools take webhooks as they come.
 
 ```json
 "webhooks": [

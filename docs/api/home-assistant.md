@@ -33,12 +33,12 @@ AIS-catcher -d 00000001 -W mqtt://homeassistant.local:1883 USERNAME ais PASSWORD
 | Topic | Retained | Content |
 |-------|----------|---------|
 | `<topic>/availability` | yes | `online`, or `offline` when AIS-catcher stops; the broker says `offline` for it when the connection dies |
-| `<topic>/state` | yes | `vessels`, `messages_per_minute`, `engine_running`, `receivers` |
-| `<topic>/station/<id>` | yes | `name`, `online` (heard in the last five minutes), `vessels` heard in the last hour, `last_heard` |
+| `<topic>/state` | yes | `vessels`, `messages_per_minute`, `engine_running`, `receivers`, `range_24h_nm` (the farthest validated position of the last 24 hours), `range_record_nm` (of all time) |
+| `<topic>/station/<id>` | yes | `name`, `online` (heard in the last five minutes), `vessels` heard in the last hour, `range_24h_nm`, `last_heard` |
 | `<topic>/receiver/<n>` | yes | `state` (`streaming`, `stopped`, `lost`), `station`, `input`, `messages_per_minute` |
 | `<topic>/vessel/<mmsi>` | yes | `latitude`, `longitude`, `name`, `speed_kn`, `in_range`, `last_seen` |
 | `<topic>/event` | no | Each event as a [webhook](webhooks.md) gets it, with `event_type` for Home Assistant's event entity |
 
 Station positions are not published here. The state is sent when it changes, at most every 10 seconds, and in full every minute.
 
-In Home Assistant the device **AIS-catcher &lt;topic&gt;** then has: Vessels, Message rate, Receiving, and per station its online state and vessels, per receiver whether it streams, an Events entity to trigger automations on, and a device tracker per watched vessel.
+In Home Assistant the device **AIS-catcher &lt;topic&gt;** then has: Vessels, Message rate, Receiving, Range of the last 24 hours, Range record, and per station its online state, vessels and range, per receiver whether it streams, an Events entity to trigger automations on, and a device tracker per watched vessel.
