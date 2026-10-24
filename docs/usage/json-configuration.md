@@ -154,7 +154,9 @@ Each entry of `stations` has a number and may have a name, a position and an alt
 | `gps` | boolean | Whether GPS sentences move the station; off unless set to `true`. Its `lat` and `lon` are then where it stands until the first fix |
 | `share_loc` | boolean | Whether the station's position may leave this machine. Off unless set: no server, API or map then shows where it is, nor which vessel it rides |
 
-Stations are optional. A receiver that names none stands at the default station, 0: list it to give it a name and a position like any other, or leave it out and it is made when the run starts, named after the one receiver standing on it when that has a `description`, else after the viewer's `station`, and placed where a receiver with `lat` and `lon` of its own is, else where the viewer section puts it (`lat`, `lon`, `alt`, `share_loc`, `use_gps`, `own_mmsi`). A receiver may also say `"station": 0`. Once the file has a `stations` list, every message carries the number of its station as `station_id`, 0 included.
+A message that names a station itself, as a feed from a hub does in its tag block, counts at that station when `stations` lists it, else at the input's.
+
+Stations are optional. A receiver that names none stands at the default station, 0: list it to give it a name and a position like any other, or leave it out and it is made when the run starts, named after the one receiver standing on it when that has a `description`, else after the viewer's `station`, and placed where a receiver with `lat` and `lon` of its own is, else where the viewer section puts it (`lat`, `lon`, `alt`, `share_loc`, `use_gps`, `own_mmsi`). A receiver may also say `"station": 0`. Once the file has a `stations` list, every message carries the number of its station as `station_id`, 0 included. An engine of a receiver may carry a station of its own (`"settings": { "station": 2 }`, `-go station 2` on the command line), so two decoders of one input are told apart: each then has its own figures, and **Plots → Compare** sets one against the other.
 
 ```json
 {
@@ -192,7 +194,7 @@ These apply to the stations of the tracker and the services [below](#tracking-an
 
 #### Tracking and services (`tracking`, `services`)
 
-Beside the viewer under `server`, AIS-catcher can keep one picture of everything its receivers hear, the **tracker**, and offer it through **services**: a list of servers, each a port and what it serves. The tracker is built when the file has a `services` list; without one nothing changes and nothing is kept. Both are part of the standard builds; a build made with `cmake -DAPI=OFF` leaves them out and refuses these keys.
+AIS-catcher keeps one picture of everything its receivers hear, the **tracker**, and offers it through **services**: a list of servers, each a port and what it serves: the web viewer, the API, MCP, the system service, GeoJSON, Prometheus. The tracker is built when the file has a server; without one nothing is kept. The viewer of `-N` and of a `server` section is such a server too. Both are part of the standard builds; a build made with `cmake -DAPI=OFF` leaves them out and refuses these keys.
 
 ```json
 {
@@ -202,9 +204,10 @@ Beside the viewer under `server`, AIS-catcher can keep one picture of everything
     "receiver": [ { "input": "rtlsdr", "station": 1 } ],
     "tracking": { "file": "/var/lib/ais-catcher/tracking.bin", "backup": 10 },
     "services": [
-        { "port": 8110, "serve": ["ui", "api"] },
-        { "port": 8111, "bind": "0.0.0.0", "serve": ["api"],
-          "filter": { "hidden_buckets": ["bm", "bs"], "seen": 30 } }
+        { "port": 8110, "api": true },
+        { "port": 8111, "bind": "0.0.0.0", "ui": false, "api": true,
+          "view": { "hidden_buckets": ["bm", "bs"], "seen": 30, "track_time": 3600 } },
+        { "port": 8112, "tracking": { "allow_type": "1,2,3", "history": 3600 } }
     ]
 }
 ```
@@ -213,7 +216,7 @@ Beside the viewer under `server`, AIS-catcher can keep one picture of everything
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| `file` | string | none | Backup of ships, statistics, events and station fixes, read at start and written on exit. A backup the viewer wrote (the `file` of `server`) is read once and never written over: the tracker keeps its own beside it, with `.tracking` added to the name |
+| `file` | string | none | Backup of ships, statistics, events and station fixes, read at start and written on exit. A backup an earlier version wrote (the `file` of `server`, or of `-N`) is copied once to `<file>.before-upgrade`, imported, and from then on written over in this version's format. To go back to the earlier version, rename the copy back to the file's name |
 | `backup` | number | 10 | Minutes between backups to `file`; 0 writes only on exit |
 | `history` | number | 1800 | Seconds a ship is kept after its last message |
 | `track_time` | number | 3600 | Seconds of track kept per ship; 0 is no limit |
@@ -230,16 +233,24 @@ Each entry of `services`, one server:
 |-----|------|-------------|
 | `port` | number | Required; one server per port. Not on the entry marked `main` |
 | `main` | boolean | Managed mode (`-E`): the server beside the control panel, on its port, the map always on; one entry, which also takes the viewer's options |
+| `active` | boolean | `false` switches the server off: it keeps its settings, which are still checked, but opens no port and keeps no ships. The main server always serves. On unless set |
 | `bind` | string | Address to listen on; `127.0.0.1` unless set, so a server is reachable from other machines only when you say so. Beyond this machine, a server with `api`, `mcp` or `system` needs `keys` or `public` |
-| `serve` | array | What the server offers: `ui`, the web viewer; `api`, the read API under `/api/v1`: stations, statistics, vessels with their tracks and visits, places with the ships inside and their visits, aircraft, and events; `mcp`, the same for an assistant; `system`, receivers, outputs, health and the log; `geojson`, the ships as GeoJSON; `metrics`, message counts for Prometheus. See [API](../api/overview.md). A server limited to some `stations` serves no aircraft, as aircraft are not kept by station |
+| `ui` | boolean | The web viewer, on unless set `false`; with it the viewer's own options (`realtime`, `station`, `station_link`, `mbtiles`, …), see [Web Viewer](../configuration/output/web-viewer.md) |
+| `api` | boolean | The read API under `/api/v1`: stations, statistics, vessels with their tracks and visits, places with the ships inside and their visits, aircraft, and events. See [API](../api/overview.md). A server limited to some `stations` serves no aircraft, as aircraft are not kept by station |
+| `mcp` | boolean | The same for an assistant, at `/mcp` |
+| `system` | boolean | Receivers, outputs, health and the log, under `/api/v1/system` |
+| `geojson` | boolean | The ships as GeoJSON at `/geojson` |
+| `metrics` | boolean | Message counts for Prometheus at `/metrics`; `prome` says the same |
+| `station_id` | number or array | The stations this server is about: its `view` shows only them, as `"view": { "stations": [...] }` says it too, and its live streams (NMEA, signal, Prometheus counts) carry only their messages; a `server` section, or `-N`, lists the first from its own station keys where `stations` does not have it |
+| `tracking` | object | Ships of the server's own, behind a filter on the messages: the terms of an output's filter (`allow_type`, `block_mmsi`, `stations`, `unique`, …) and `zone` or `groups_in` for the receivers that feed it, with `history` and `track_time` for what it keeps. The backup and the places are the site's. Without it the server reads the site's tracker |
 | `keys` | array | The keys the server accepts, each `{ "name", "sha256", "scopes" }`: see [Keys](../api/overview.md#keys) |
 | `public` | boolean | Its data is for anyone, without a key; never its `system` |
-| `filter` | object | Which ships this server shows; leave it out to show all. Not yet together with `ui` |
+| `view` | object | Which ships this server shows of what its tracker keeps, and how far back: `stations`, `mmsi_allow`, `mmsi_deny`, `hidden_buckets`, `hidden_classes`, `hidden_statuses`, `speed_min`, `speed_max`, `distance_min`, `distance_max`, `seen` (minutes since heard), `validated`, `repeated`, and `track_time` (seconds of track served, at most what the tracker keeps). What it leaves out no route of the server sends: the map, the API, MCP and GeoJSON. A view never makes a tracker; only a message filter does (`filter` on with its terms, or `zone`, `groups_in`). Leave it out to show all |
 | `place_geometry` | boolean | Serve the outlines of places; `false` keeps them on this machine, and places are served with their marker position only. On unless set |
 
-In managed mode (`-E`) the **Services** tab edits these: the built-in viewer beside the control panel first, then each server of `services`, with **Add server** for another. Each server's page switches its services on and off, says whether it listens on this machine or the network, gives its keys (**New key** makes one, shows it once, and keeps only its SHA-256), and, with the viewer on, the viewer's own settings. A saved server whose port another program has is marked as not listening. **Try the API** sends a request to any of them as a program would, made on the station itself, with the key given, and shows the answer and the curl line that repeats it; under **MCP** it lists a server's tools, calls one with its arguments as an assistant would, and gives the line that connects Claude Code to it. How long ships and tracks are kept, and the backup, are under **System › Settings › History & backup**. The built-in viewer is the entry marked `main`: it always serves the map, may add `api`, `mcp`, `system`, `geojson` and `metrics` to its `serve`, and takes `keys` and `public` as any server does, following the address the control panel listens on. A saved change to the servers applies at once, also while the receivers are stopped; a server cannot take the control panel's port or the viewer's.
+In managed mode (`-E`) the **Services** tab edits these: the built-in viewer beside the control panel first, then each server of `services`, with **Add server** for another. Each server's page switches its services on and off, says whether it listens on this machine or the network, gives its keys (**New key** makes one, shows it once, and keeps only its SHA-256), and, with the viewer on, the viewer's own settings. A saved server whose port another program has is marked as not listening. **Try the API** sends a request to any of them as a program would, made on the station itself, with the key given, and shows the answer and the curl line that repeats it; under **MCP** it lists a server's tools, calls one with its arguments as an assistant would, and gives the line that connects Claude Code to it. How long ships and tracks are kept, and the backup, are under **System › Settings › History & backup**. The built-in viewer is the entry marked `main`: it always serves the map, may switch on `api`, `mcp`, `system`, `geojson` and `metrics`, and takes `keys` and `public` as any server does, following the address the control panel listens on. A saved change to the servers applies at once, also while the receivers are stopped; a server cannot take the control panel's port or the viewer's.
 
-A viewer under `server` (`-N` on the command line) is the web viewer as it always was, with its own ships from the receivers that feed it. The API and the other services run on a server of `services`; on the command line `-J port [key value]...` makes one, with the keys an entry takes, a filter term going into its `filter`: `AIS-catcher -N 8100 -J 8101 serve api,mcp`.
+A viewer under `server`, and `-N` on the command line, is read as an entry of `services`: the same server, with the same keys. One without a message filter shows the site's ships, and its `file`, `backup` and `history` are the site's `tracking`; one with `filter` on, or with `zone` or `groups_in`, keeps ships of its own behind that filter, as the viewer always did, while the backup stays the site's. On the command line the switches follow the port: `AIS-catcher -N 8100 api on mcp on`.
 
 **The filter** uses the terms of the viewer's own filter (**Settings → Filter**), under the same names, so a filter you set up in the viewer can be copied here as it stands. It selects from everything the tracker keeps: the server shows nothing outside it, in any list, count or event.
 
@@ -496,6 +507,7 @@ AIS-catcher supports various input devices. Each device type has specific config
 AIS-catcher supports various output channels. Each output channel has specific configuration options.  The documentation of the relevant keys can be found in the [Configuration](../configuration/output/overview.md) sections with some JSON examples below.
 
 ### Web Viewer (`server`)
+An entry of `server` is a server of [`services`](#tracking-and-services-tracking-services), written the way the viewer always was.
 <details>
 <summary>Example</summary>
 ```json

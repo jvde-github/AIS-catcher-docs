@@ -338,7 +338,7 @@ With `input` = `NMEA2000`. [Documentation](../configuration/input/NMEA2000.md)
 ## Managed mode
 
 Managed mode (`-E`) reads the same file. The server beside the control panel, on the panel's port plus one, is the entry of
-`services` marked `"main": true`: it takes a server's keys (`serve`, `keys`, `public`, `filter`, `place_geometry`) and the
+`services` marked `"main": true`: it takes a server's keys (`api`, `mcp`, `system`, `geojson`, `metrics`, `keys`, `public`, `view`, `place_geometry`) and the
 [Viewer](#viewer) options (`realtime`, `replay`, `msg`, `decoder`, `log`, `station`, `station_link`, `webcontrol_http`,
 `mbtiles`, `plugin_dir`, …), never a `port`; the map is always on it. How ships are kept is `tracking` (`file`, `backup`,
 `history`, `track_time`, `track_memory`, `expire`, `max_ships`, `cutoff`, `places`), and the default station is station 0

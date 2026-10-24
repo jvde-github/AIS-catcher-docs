@@ -36,6 +36,7 @@
 - **Tracks from validated positions only** — a jump, a position from a corrupted message or an old one delivered late no longer draws a spike in a vessel's track.
 - **Vessel type filter covers every class** — Class B / pleasure craft got their own entry and "Other / not reported" catches everything without one (aircraft, base stations, AtoN, SART), so selecting Cargo alone hides everything else.
 - **New map backgrounds** — the CARTO backgrounds (Positron, Dark Matter, Voyager) now require an API key from CARTO and show an "API key required" watermark without one, so they are replaced by [OpenFreeMap](https://openfreemap.org) vector maps: **Positron**, **Bright**, **Liberty** and **Dark**, with label-free versions of Positron and Dark. These need no key and no account, and are sharper at every zoom level. Anyone who prefers CARTO can get a free key at [carto.com/basemaps/apikey](https://carto.com/basemaps/apikey) and paste it into the `carto_basemaps` plugin, which brings all six back.
+- **AIS-catcher Light and Dark** — map backgrounds of our own on the OpenFreeMap data: borders blended into the land, only countries and large cities in a wide view, towns as you zoom in, and the names of seas, lakes and rivers. Dark is in neutral greys with the sea lighter than the land.
 
 ### Places
 
@@ -44,6 +45,7 @@
 - **Ships of a place** — clicking a place marker lists the ships **Inside**, recently **Arrived** and **Left**, past **Visits**, those **Nearby**, and for a port the ships **Expected**, from the destinations they report.
 - **Guard zones in the ticker** — draw a guard zone around anything you want to watch. A ship entering or leaving it is announced in the event ticker as a notice, marked with ⚠. Crossings of a port, a sector or a water are announced as routine events.
 - **No phantom visitors** — only a position the ship can have reached from its previous one is used, and a crossing counts once the next position confirms it. A corrupted message with a wrong MMSI never puts a ship in your port.
+- **Large place catalogues** — a place's outline is read from its file when the map asks for it instead of kept in memory, so thousands of places load in less than half the time and take far less memory.
 - **Coming from an earlier edge build?** — place files written before this release use an older layout and are skipped at startup. **Import place** in the Places tab reads them one at a time and saves them in the current layout; `python3 scripts/migrate-places.py <directory> --write` converts a whole directory.
 
 ### HTTP output

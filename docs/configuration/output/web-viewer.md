@@ -130,27 +130,31 @@ AIS-catcher -N 8100 prome on
 
 For more information on how to configure Prometheus and Grafana to get an initial dashboard, see [README-grafana.md](../../advanced/grafana.md).
 
-## The API beside the viewer
+## The API on the same port
 
-The viewer keeps its own ships, from the receivers that feed it. The [API](../../api/overview.md), MCP and the system service run on the station's own tracker instead, on a server of their own: `-J` on the command line, an entry of `services` in a configuration file. For example, the viewer on port 8100 and the API and MCP on port 8101:
-
-```bash
-AIS-catcher -N 8100 -J 8101 serve api,mcp
-```
-
-## Multiple receivers in one viewer
-
-When a viewer receives from more than one receiver, it keeps a combined view called **All** plus a separate view per receiver, and a **Select Receiver** button appears in the header to switch between them.
-
-Set `split off` to keep only the combined view:
+The viewer is a server on the station's ships, the same server that offers the [API](../../api/overview.md), MCP, the system service, GeoJSON and Prometheus: each is a switch on `-N`. For example, the map, the API and MCP on port 8100:
 
 ```bash
-AIS-catcher -N 8100 split off
+AIS-catcher -N 8100 api on mcp on
 ```
 
-The per-receiver views are then never created. The **Select Receiver** button disappears, and requests such as `/api/stat.json?receiver=2` return the combined data. This is useful for a public viewer where visitors should see the overall picture rather than the individual receivers, and it also lowers memory use, since each per-receiver view keeps its own vessel database and track history.
+A second `-N` is a second server on the same ships; `ui off` leaves the map out of one. A `-N` listens on every interface, as the viewer always did, so other machines on the network reach its map. One that serves the API, MCP or the system service stays on this machine instead, and says so in the log, unless it has keys, `public on`, or an `ip_bind` of its own; see [Keys](../../api/overview.md#keys). An entry of `services` in a configuration file listens on this machine unless its `bind` says otherwise.
 
-To restrict a viewer to a subset of receivers instead of combining all of them, use `zone` or `groups_in`. A viewer that ends up with a single receiver has no **Select Receiver** button either.
+## Several stations in one viewer
+
+The receivers of one AIS-catcher stand at stations (`stations` in a configuration file, a receiver's `station`). The viewer shows every station's ships together, with the station that heard each vessel last on its card and in its hover; **Filter → Station** looks through one station alone, and `?stations=3,5` on the viewer's requests, or `/api/v1/vessels?stations=3`, asks the same of the server. Statistics and plots are kept per station: with several stations, the Statistics and Plots tabs get a row of sheets with the station whose figures show at its right end, all stations added up by default. Compare on the Plots tab sets a second station, or all of them, against the one chosen, to set one station, or one decoder, against another. A station on the map opens a card of its own, as on aiscatcher.org: its ships, rate and messages, its position, the last half hour of messages and a day of activity; while the card is open the page looks through that station, and closing it goes back to what was shown before.
+
+A message that names a station itself, as a feed from a hub does in its tag block (`\s:s1001*hh\`), counts at that station when `stations` lists it; otherwise at the input's station. So one input from a hub can serve many stations from one ship table.
+
+`station_id` on a `-N` makes a viewer of one station: the station is listed from the line, with its `station`, `lat`, `lon`, `share_loc`, `use_gps` and `own_mmsi`, unless `stations` already has it, and the viewer shows that station alone: its map, its figures, and its live NMEA, signal and Prometheus streams. Several ids separated by commas show those together; the line describes the first. For example, two feeders of a hub, each on a viewer of its own, reading one ship table:
+
+```bash
+AIS-catcher -t txt 127.0.0.1 14999 -N 8100 station_id 1001 station Southwood lat 52.08 lon 4.33 share_loc on -N 8101 station_id 1351 station Tyreso lat 59.24 lon 18.24 share_loc on
+```
+
+## A viewer with ships of its own
+
+A viewer with a message filter switched on (`filter on` with `allow_type`, `block_mmsi`, `stations` and the other terms an output takes), or that takes only some receivers (`zone`, `groups_in`), keeps a ship table of its own behind that filter, with its own `history` and `track_time`. The backup and the places are the station's: one `file`, written by the main tracker; a `file`, `backup` or `places` on such a viewer is reported and not used. Without a filter, a viewer's `file`, `backup` and `history` are the station's.
 
 ## Cross-origin access (CORS)
 
@@ -179,17 +183,18 @@ Server Options:
 | Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
 | <span class="cmd-setting">port</span> | integer | <span class="cmd-value">-</span> | Single port for web server |
-| <span class="cmd-setting">port_min</span> | integer | <span class="cmd-value">-</span> | Minimum port in binding range |
-| <span class="cmd-setting">port_max</span> | integer | <span class="cmd-value">-</span> | Maximum port in binding range |
-| <span class="cmd-setting">ip_bind</span> | string | <span class="cmd-value">-</span> | Server binding IP address |
-| <span class="cmd-setting">reuse_port</span> | boolean | <span class="cmd-value">false</span> | Enable `SO_REUSEPORT` on the listening socket |
-| <span class="cmd-setting">zlib</span> | boolean | <span class="cmd-value">true</span> | Enable response compression |
+| <span class="cmd-setting">port_min</span> | integer | <span class="cmd-value">-</span> | No longer used; a warning says so |
+| <span class="cmd-setting">port_max</span> | integer | <span class="cmd-value">-</span> | No longer used; a warning says so |
+| <span class="cmd-setting">ip_bind</span> | string | <span class="cmd-value">0.0.0.0</span> | The address the server listens on; every interface unless given, or this machine for a server with the API, MCP or the system service and no keys |
+| <span class="cmd-setting">reuse_port</span> | boolean | <span class="cmd-value">false</span> | No longer used; a warning says so |
+| <span class="cmd-setting">zlib</span> | boolean | <span class="cmd-value">true</span> | No longer used; a warning says so |
 | <span class="cmd-setting">server_mode</span> | boolean | <span class="cmd-value">false</span> | Enable hardened multi-station server mode |
 | <span class="cmd-setting">log</span> | boolean | <span class="cmd-value">false</span> | Show the log view in the web viewer |
 | <span class="cmd-setting">frame_ancestors</span> | string | <span class="cmd-value">-</span> | CSP `frame-ancestors` value; set to allow embedding the viewer in an `<iframe>` |
-| <span class="cmd-setting">groups_in</span> | integer | <span class="cmd-value">all</span> | Bitmask of input groups feeding the viewer |
-| <span class="cmd-setting">zone</span> | string | <span class="cmd-value">-</span> | Comma-separated zone tags routed to this viewer |
-| <span class="cmd-setting">split</span> | boolean | <span class="cmd-value">true</span> | Track each receiver separately next to the combined view; set to `off` for a combined view only |
+| <span class="cmd-setting">groups_in</span> | integer | <span class="cmd-value">all</span> | Bitmask of input groups feeding the viewer; set, the viewer keeps ships of its own from them |
+| <span class="cmd-setting">station_id</span> | integer[] | <span class="cmd-value">-</span> | The stations this viewer shows, listed from the line where `stations` does not; see [Several stations in one viewer](#several-stations-in-one-viewer) |
+| <span class="cmd-setting">zone</span> | string | <span class="cmd-value">-</span> | Comma-separated zone tags routed to this viewer; set, the viewer keeps ships of its own from them |
+| <span class="cmd-setting">split</span> | boolean | <span class="cmd-value">true</span> | No longer used: every station is in one view, see [Several stations in one viewer](#several-stations-in-one-viewer) |
 | | | | |
 | Location Settings | | | |
 | <span class="cmd-setting">lat</span> | float | <span class="cmd-value">-</span> | Station latitude |
@@ -203,14 +208,14 @@ Server Options:
 | <span class="cmd-setting">cutoff</span> | integer | <span class="cmd-value">-</span> | Max Distance threshold (0-10000) | 
 | <span class="cmd-setting">backup</span> | integer | <span class="cmd-value">-1</span> | Backup interval (5-2880 min) |
 | <span class="cmd-setting">file</span> | string | <span class="cmd-value">-</span> | Statistics file path |
-| <span class="cmd-setting">stats_on_close</span> | boolean | <span class="cmd-value">false</span> | Write/print statistics when the server shuts down |
+| <span class="cmd-setting">stats_on_close</span> | boolean | <span class="cmd-value">false</span> | No longer used; a warning says so |
 | <span class="cmd-setting">realtime</span> | boolean | <span class="cmd-value">false</span> | Enable real-time updates |
 | <span class="cmd-setting">decoder</span> | boolean | <span class="cmd-value">false</span> | Enable online NMEA decoder |
 | | | | |
 | Output Formats | | | |
 | <span class="cmd-setting">kml</span> | boolean | <span class="cmd-value">false</span> | Enable KML output |
-| <span class="cmd-setting">geojson</span> | boolean | <span class="cmd-value">false</span> | Enable GeoJSON output |
-| <span class="cmd-setting">prome</span> | boolean | <span class="cmd-value">false</span> | Enable Prometheus metrics |
+| <span class="cmd-setting">geojson</span> | boolean | <span class="cmd-value">false</span> | Serve the ships as GeoJSON at `/geojson` |
+| <span class="cmd-setting">prome</span> | boolean | <span class="cmd-value">false</span> | Serve message counts for Prometheus at `/metrics`; `metrics` says the same |
 | | | | |
 | UI Customization | | | | 
 | <span class="cmd-setting">message</span> (alias <span class="cmd-setting">msg</span>) | boolean | <span class="cmd-value">false</span> | Store the latest decoded message per vessel, viewable via the **Show Last Message** item in the vessel's right-click menu |

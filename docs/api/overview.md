@@ -16,12 +16,12 @@ All of it is offered by the `services` of the [JSON configuration](../usage/json
 | `metrics` | Message counts for Prometheus at `/metrics` | `data` |
 | `ui` | The web viewer | none |
 
-A viewer's `geojson` and `prome` switches, as `-N` and the `server` section have them, offer `geojson` and `metrics` on the viewer's port as before. On a server without `keys` they are open, as they always were; a server with keys guards them like the API, unless it is `public`.
+Each is a switch on the server; `ui` is on unless set `false`, the others off unless set. The viewer's `geojson` and `prome` switches, as `-N` and the `server` section have them, are `geojson` and `metrics`. On a server without `keys` they are open, as they always were; a server with keys guards them like the API, unless it is `public`.
 
 ```json
 "services": [
-    { "port": 8110, "serve": ["ui", "api", "mcp", "system"] },
-    { "port": 8111, "bind": "0.0.0.0", "serve": ["api", "mcp", "system"],
+    { "port": 8110, "api": true, "mcp": true, "system": true },
+    { "port": 8111, "bind": "0.0.0.0", "ui": false, "api": true, "mcp": true, "system": true,
       "keys": [
           { "name": "home-assistant", "sha256": "<SHA-256 of its key>", "scopes": ["data", "system"] },
           { "name": "claude", "sha256": "<SHA-256 of its key>", "scopes": ["data"] }

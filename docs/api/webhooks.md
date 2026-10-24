@@ -19,7 +19,7 @@ AIS-catcher -d 00000001 -W https://example.org/hooks/ais EVENTS safety,place_ent
 |-----|-------------|
 | `url` | Where each event is posted, `http://` or `https://`. Redirects are not followed |
 | `events` | The kinds posted: `safety`, `destination`, `status`, `draught`, `place_enter`, `place_exit`, `system`. Every kind when left out |
-| `filter` | A ship's event only for ships that pass it, in the terms of a [server's filter](../usage/json-configuration.md#tracking-and-services-tracking-services) |
+| `view` | A ship's event only for ships that pass it, in the terms of a [server's view](../usage/json-configuration.md#tracking-and-services-tracking-services) |
 | `batch` | `true`: events that come together go in one request as `{"events": [...]}`, up to 100 |
 | `secret` | Signs each request as [Standard Webhooks](https://www.standardwebhooks.com) does |
 | `active` | `false` keeps the webhook in the file but sends nothing |

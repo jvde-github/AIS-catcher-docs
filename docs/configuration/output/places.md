@@ -151,7 +151,7 @@ In managed mode the **Places** tab is an editor: draw or reshape an outline, set
 
 **Import place** takes a GeoJSON Feature from anywhere. What it recognises is carried over (the name, the type, codes, the port a place belongs to, category and rank, in their current or an older spelling), everything else in the file is kept, and a Feature that says nothing about itself becomes a guard zone. The result opens for review and is stored when you save. **Import shape** and **Paste shape** replace only the outline of the place you are editing.
 
-Files you edit by hand are read when AIS-catcher starts. There is no file watcher, so restart after changing them. A file that breaks a rule is skipped whole and the log says why:
+Files you edit by hand are read when AIS-catcher starts. There is no file watcher, so restart after changing them. Until then, a place whose file changed is matched as it was loaded but its outline is not served, and the log says so once. A file that breaks a rule is skipped whole and the log says why:
 
 ```
 Places: skipped 0f2e6b1a-3c4d-4e5f-8a9b-0c1d2e3f4a5b.geojson: Polygon edges cross or touch themselves
