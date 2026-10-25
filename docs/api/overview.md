@@ -13,10 +13,11 @@ All of it is offered by the `services` of the [JSON configuration](../usage/json
 | `mcp` | The same data as tools for an assistant, on `POST /mcp` | `data` |
 | `system` | The installation: receivers, outputs, health, the log and its own events | `system` |
 | `geojson` | The ships as GeoJSON at `/geojson`, their tracks at `/allpath.geojson` | `data` |
+| `kml` | The ships as KML at `/kml`, for Google Earth | `data` |
 | `metrics` | Message counts for Prometheus at `/metrics` | `data` |
 | `ui` | The web viewer | none |
 
-Each is a switch on the server; `ui` is on unless set `false`, the others off unless set. The viewer's `geojson` and `prome` switches, as `-N` and the `server` section have them, are `geojson` and `metrics`. On a server without `keys` they are open, as they always were; a server with keys guards them like the API, unless it is `public`.
+Each is a switch on the server; `ui` is on unless set `false`, the others off unless set. The viewer's `geojson`, `kml` and `prome` switches, as `-N` and the `server` section have them, are `geojson`, `kml` and `metrics`. On a server without `keys` they are open, as they always were; a server with keys guards them like the API, unless it is `public`.
 
 ```json
 "services": [

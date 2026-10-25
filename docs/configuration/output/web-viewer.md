@@ -170,7 +170,7 @@ CORS is enabled on:
 - `/api/path.json`, `/api/allpath.json`
 - `/api/message`, `/api/vessel` (per-vessel last message and details)
 - `/api/decode` (when `decoder` is enabled)
-- `/kml`
+- `/kml` (when `kml` is enabled)
 - `/geojson` and `/allpath.geojson` (when `geojson` is enabled)
 - `/metrics` (when `prome` is enabled)
 
@@ -214,7 +214,7 @@ Server Options:
 | <span class="cmd-setting">decoder</span> | boolean | <span class="cmd-value">false</span> | Enable online NMEA decoder |
 | | | | |
 | Output Formats | | | |
-| <span class="cmd-setting">kml</span> | boolean | <span class="cmd-value">false</span> | Enable KML output |
+| <span class="cmd-setting">kml</span> | boolean | <span class="cmd-value">false</span> | Serve the ships as KML at `/kml`, for Google Earth |
 | <span class="cmd-setting">geojson</span> | boolean | <span class="cmd-value">false</span> | Serve the ships as GeoJSON at `/geojson` |
 | <span class="cmd-setting">prome</span> | boolean | <span class="cmd-value">false</span> | Serve message counts for Prometheus at `/metrics`; `metrics` says the same |
 | | | | |
