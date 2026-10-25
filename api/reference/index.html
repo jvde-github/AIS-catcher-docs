@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -3372,6 +3372,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#levelband" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LevelBand
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propagationday" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PropagationDay
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#vessel" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4989,6 +5011,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#levelband" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LevelBand
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propagationday" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PropagationDay
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#vessel" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5832,7 +5876,7 @@
 </table>
 <p>Answers <a href="#loglist">LogList</a> as <code>application/json</code>. Operation <code>listLog</code>.</p>
 <h3 id="get-apiv1systemevents"><code>GET /api/v1/system/events</code><a class="headerlink" href="#get-apiv1systemevents" title="Permanent link">&para;</a></h3>
-<p>The installation's events, oldest first: the engine started or stopped, a receiver lost or back, a backup failed.</p>
+<p>The installation's events, oldest first: the engine started or stopped, a receiver lost or back, a station quiet or hearing again, a day of exceptional range, a backup failed.</p>
 <table>
 <thead>
 <tr>
@@ -5888,7 +5932,7 @@
 <tr>
 <td><code>title</code></td>
 <td>string</td>
-<td>The kind of problem, the same for every problem of its kind: Bad request, Unauthorized, Forbidden, Not found, Method not allowed, Gone, Too many requests</td>
+<td>The kind of problem, the same for every problem of its kind: Bad request, Unauthorized, Forbidden, Not found, Method not allowed, Gone</td>
 </tr>
 <tr>
 <td><code>status</code></td>
@@ -6205,6 +6249,36 @@
 <td>The farthest validated position, nautical miles</td>
 </tr>
 <tr>
+<td><code>active_minutes</code></td>
+<td>integer</td>
+<td>The minutes of the period in which a message came in, so the share of time the station heard; 0 in slots by the second. For several stations, the most of any one</td>
+</tr>
+<tr>
+<td><code>furthest</code></td>
+<td>list of object</td>
+<td>The farthest vessels of the period, each once, the farthest first, up to three; the farthest of total holds the station's range record</td>
+</tr>
+<tr>
+<td><code>furthest[].mmsi</code></td>
+<td>integer</td>
+<td>The vessel's MMSI</td>
+</tr>
+<tr>
+<td><code>furthest[].distance_nm</code></td>
+<td>number</td>
+<td>Its farthest validated position, nautical miles</td>
+</tr>
+<tr>
+<td><code>furthest[].bearing_deg</code></td>
+<td>number or null</td>
+<td>From the station, degrees</td>
+</tr>
+<tr>
+<td><code>furthest[].time</code></td>
+<td>time</td>
+<td>When it was there</td>
+</tr>
+<tr>
 <td><code>channels</code></td>
 <td>object</td>
 <td>Messages per AIS channel</td>
@@ -6348,6 +6422,130 @@
 <td><code>history.day</code></td>
 <td>list of <a href="#slot">Slot</a></td>
 <td>By the UTC day, the last 90 days</td>
+</tr>
+<tr>
+<td><code>week</code></td>
+<td>object</td>
+<td>The usual vessels an hour by UTC weekday and hour, from the hours a message came in: for each weekday 24 values, hour 0 first, null for an hour never heard in. Kept across restarts</td>
+</tr>
+<tr>
+<td><code>week.monday</code></td>
+<td>list of number or null</td>
+<td></td>
+</tr>
+<tr>
+<td><code>week.tuesday</code></td>
+<td>list of number or null</td>
+<td></td>
+</tr>
+<tr>
+<td><code>week.wednesday</code></td>
+<td>list of number or null</td>
+<td></td>
+</tr>
+<tr>
+<td><code>week.thursday</code></td>
+<td>list of number or null</td>
+<td></td>
+</tr>
+<tr>
+<td><code>week.friday</code></td>
+<td>list of number or null</td>
+<td></td>
+</tr>
+<tr>
+<td><code>week.saturday</code></td>
+<td>list of number or null</td>
+<td></td>
+</tr>
+<tr>
+<td><code>week.sunday</code></td>
+<td>list of number or null</td>
+<td></td>
+</tr>
+<tr>
+<td><code>levels_by_distance</code></td>
+<td>object</td>
+<td>The mean signal level by the distance a message came from, to tune an antenna by: validated positions heard directly, no aids to navigation</td>
+</tr>
+<tr>
+<td><code>levels_by_distance.band_nm</code></td>
+<td>integer</td>
+<td>The width of a band, nautical miles</td>
+</tr>
+<tr>
+<td><code>levels_by_distance.total</code></td>
+<td>list of <a href="#levelband">LevelBand</a></td>
+<td>Since the figures were first kept</td>
+</tr>
+<tr>
+<td><code>levels_by_distance.session</code></td>
+<td>list of <a href="#levelband">LevelBand</a></td>
+<td>Since AIS-catcher started, to compare before and after a change</td>
+</tr>
+<tr>
+<td><code>propagation</code></td>
+<td>list of <a href="#propagationday">PropagationDay</a></td>
+<td>The days of the last 90 with exceptional range, such as tropospheric ducting brings, oldest first: the day's farthest position at least twice the usual and 20 NM beyond it, and a third vessel beyond one and a half times the usual</td>
+</tr>
+</tbody>
+</table>
+<h3 id="levelband">LevelBand<a class="headerlink" href="#levelband" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>from_nm</code></td>
+<td>integer</td>
+<td>Where the band begins, nautical miles</td>
+</tr>
+<tr>
+<td><code>to_nm</code></td>
+<td>integer or null</td>
+<td>Where it ends; null for the last, which holds all beyond</td>
+</tr>
+<tr>
+<td><code>level_db</code></td>
+<td>number or null</td>
+<td>The mean signal level, dB; null without messages</td>
+</tr>
+<tr>
+<td><code>messages</code></td>
+<td>integer</td>
+<td>The messages in the band</td>
+</tr>
+</tbody>
+</table>
+<h3 id="propagationday">PropagationDay<a class="headerlink" href="#propagationday" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>day</code></td>
+<td>time</td>
+<td>The UTC day, at its start</td>
+</tr>
+<tr>
+<td><code>max_distance_nm</code></td>
+<td>number</td>
+<td>Its farthest validated position, nautical miles</td>
+</tr>
+<tr>
+<td><code>usual_nm</code></td>
+<td>number</td>
+<td>The usual range: the median of the farthest positions of the 30 days before</td>
 </tr>
 </tbody>
 </table>
@@ -7176,8 +7374,8 @@
 </tr>
 <tr>
 <td><code>event</code></td>
-<td>one of <code>engine_started</code>, <code>engine_stopped</code>, <code>receiver_lost</code>, <code>receiver_recovered</code>, <code>backup_failed</code></td>
-<td>system: what happened to the installation</td>
+<td>one of <code>engine_started</code>, <code>engine_stopped</code>, <code>receiver_lost</code>, <code>receiver_recovered</code>, <code>station_quiet</code>, <code>station_heard</code>, <code>propagation</code>, <code>backup_failed</code></td>
+<td>system: what happened to the installation. station_quiet: a station heard nothing for 15 minutes while its receivers stream; station_heard: it hears again; propagation: a station hears exceptionally far today, once a day</td>
 </tr>
 <tr>
 <td><code>receiver</code></td>
@@ -7187,7 +7385,7 @@
 <tr>
 <td><code>station</code></td>
 <td>integer</td>
-<td>system: that receiver's station</td>
+<td>system: the station it concerns</td>
 </tr>
 </tbody>
 </table>
@@ -7620,10 +7818,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

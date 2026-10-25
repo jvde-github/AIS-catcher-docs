@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -3726,12 +3726,12 @@
 <tr>
 <td><code>&lt;topic&gt;/state</code></td>
 <td>yes</td>
-<td><code>vessels</code>, <code>messages_per_minute</code>, <code>engine_running</code>, <code>receivers</code></td>
+<td><code>vessels</code>, <code>messages_per_minute</code>, <code>engine_running</code>, <code>receivers</code>, <code>range_24h_nm</code> (the farthest validated position of the last 24 hours), <code>range_record_nm</code> (of all time)</td>
 </tr>
 <tr>
 <td><code>&lt;topic&gt;/station/&lt;id&gt;</code></td>
 <td>yes</td>
-<td><code>name</code>, <code>online</code> (heard in the last five minutes), <code>vessels</code> heard in the last hour, <code>last_heard</code></td>
+<td><code>name</code>, <code>online</code> (heard in the last five minutes), <code>vessels</code> heard in the last hour, <code>range_24h_nm</code>, <code>last_heard</code></td>
 </tr>
 <tr>
 <td><code>&lt;topic&gt;/receiver/&lt;n&gt;</code></td>
@@ -3751,7 +3751,7 @@
 </tbody>
 </table>
 <p>Station positions are not published here. The state is sent when it changes, at most every 10 seconds, and in full every minute.</p>
-<p>In Home Assistant the device <strong>AIS-catcher &lt;topic&gt;</strong> then has: Vessels, Message rate, Receiving, and per station its online state and vessels, per receiver whether it streams, an Events entity to trigger automations on, and a device tracker per watched vessel.</p>
+<p>In Home Assistant the device <strong>AIS-catcher &lt;topic&gt;</strong> then has: Vessels, Message rate, Receiving, Range of the last 24 hours, Range record, and per station its online state, vessels and range, per receiver whether it streams, an Events entity to trigger automations on, and a device tracker per watched vessel.</p>
 
 
 
@@ -3861,10 +3861,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -776,6 +776,17 @@
     <span class="md-ellipsis">
       
         Places
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stations
       
     </span>
   </a>
@@ -4531,6 +4542,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#stations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#http-output" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5301,6 +5323,11 @@
 <li><strong>Large place catalogues</strong> — a place's outline is read from its file when the map asks for it instead of kept in memory, so thousands of places load in less than half the time and take far less memory.</li>
 <li><strong>Coming from an earlier edge build?</strong> — place files written before this release use an older layout and are skipped at startup. <strong>Import place</strong> in the Places tab reads them one at a time and saves them in the current layout; <code>python3 scripts/migrate-places.py &lt;directory&gt; --write</code> converts a whole directory.</li>
 </ul>
+<h3 id="stations">Stations<a class="headerlink" href="#stations" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>A private station gives no distances</strong> — a vessel's distance and bearing from a station tell where that station is, so they are only shown when the station that heard the vessel shares its position (<code>share_loc on</code>). This holds for the viewer, the API and every other output; turn <code>share_loc</code> on to get the distance column and the distance filters back.</li>
+<li><strong>The viewer's GeoJSON copies are gone</strong> — <code>/api/path.geojson</code> and <code>/api/allpath.geojson</code> are no longer served by the viewer. The <code>geojson</code> service answers <code>/geojson</code> and <code>/allpath.geojson</code> as before, and <code>/api/v1/vessels/{mmsi}/track?format=geojson</code> gives one vessel's track.</li>
+</ul>
 <h3 id="http-output">HTTP output<a class="headerlink" href="#http-output" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Credentials in the URL</strong> — <code>-H https://user:password@host/</code> sends HTTP Basic and <code>-H https://&lt;token&gt;@host/</code> sends a Bearer token, alongside the existing <code>userpwd</code> setting. Credentials are kept out of the log and the posted metadata.</li>
@@ -5725,10 +5752,10 @@ AIS-catcher<span class="w"> </span>-t<span class="w"> </span>mqtt://username:pas
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

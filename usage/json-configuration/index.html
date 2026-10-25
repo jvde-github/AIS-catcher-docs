@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -4906,7 +4906,7 @@ This loads and applies the settings from the JSON file.</p>
 <tr>
 <td><code>share_loc</code></td>
 <td>boolean</td>
-<td>Whether the station's position may leave this machine. Off unless set: no server, API or map then shows where it is, nor which vessel it rides</td>
+<td>Whether the station's position may leave this machine. Off unless set: no server, API or map then shows where it is, nor which vessel it rides, nor how far or in which direction a vessel it heard lies from it</td>
 </tr>
 </tbody>
 </table>
@@ -5091,7 +5091,7 @@ Receiver 3: station 0 "Pier", no position
 <tr>
 <td><code>station_id</code></td>
 <td>number or array</td>
-<td>The stations this server is about: its <code>view</code> shows only them, as <code>"view": { "stations": [...] }</code> says it too, and its live streams (NMEA, signal, Prometheus counts) carry only their messages; a <code>server</code> section, or <code>-N</code>, lists the first from its own station keys where <code>stations</code> does not have it</td>
+<td>The stations this server is about: its <code>view</code> shows only them, as <code>"view": { "stations": [...] }</code> says it too (its live streams, NMEA, signal and Prometheus counts, carry every station's messages); a <code>server</code> section, or <code>-N</code>, lists the first from its own station keys where <code>stations</code> does not have it</td>
 </tr>
 <tr>
 <td><code>tracking</code></td>
@@ -5111,12 +5111,7 @@ Receiver 3: station 0 "Pier", no position
 <tr>
 <td><code>view</code></td>
 <td>object</td>
-<td>Which ships this server shows of what its tracker keeps, and how far back: <code>stations</code>, <code>mmsi_allow</code>, <code>mmsi_deny</code>, <code>hidden_buckets</code>, <code>hidden_classes</code>, <code>hidden_statuses</code>, <code>speed_min</code>, <code>speed_max</code>, <code>distance_min</code>, <code>distance_max</code>, <code>seen</code> (minutes since heard), <code>validated</code>, <code>repeated</code>, and <code>track_time</code> (seconds of track served, at most what the tracker keeps). What it leaves out no route of the server sends: the map, the API, MCP and GeoJSON. A view never makes a tracker; only a message filter does (<code>filter</code> on with its terms, or <code>zone</code>, <code>groups_in</code>). Leave it out to show all</td>
-</tr>
-<tr>
-<td><code>place_geometry</code></td>
-<td>boolean</td>
-<td>Serve the outlines of places; <code>false</code> keeps them on this machine, and places are served with their marker position only. On unless set</td>
+<td>Which ships this server shows of what its tracker keeps, and how far back: <code>stations</code>, <code>mmsi_allow</code>, <code>mmsi_deny</code>, <code>hidden_buckets</code>, <code>hidden_classes</code>, <code>hidden_statuses</code>, <code>speed_min</code>, <code>speed_max</code>, <code>distance_min</code>, <code>distance_max</code>, <code>seen</code> (minutes since heard), <code>validated</code>, <code>repeated</code>, <code>track_time</code> (seconds of track served, at most what the tracker keeps), and <code>place_geometry</code> (<code>false</code> serves places with their marker position only, keeping their outlines on this machine; on unless set). What it leaves out no route of the server sends: the map, the API, MCP and GeoJSON. A view never makes a tracker; only a message filter does (<code>filter</code> on with its terms, or <code>zone</code>, <code>groups_in</code>). Leave it out to show all</td>
 </tr>
 </tbody>
 </table>
@@ -5626,10 +5621,10 @@ Receiver 3: station 0 "Pier", no position
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

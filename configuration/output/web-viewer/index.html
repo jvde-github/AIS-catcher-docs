@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -4014,10 +4014,10 @@
 </code></pre></div>
 where <code>8100</code> is the port number. If your machine network name is raspberrypi, e.g.,  then enter <code class="address">raspberrypi:8100</code> in your browser.  On the web page, you will find several sections with information related to the station and received messages.</p>
 <p>For users wishing to include a station name and a link to an external website in the Statistics section:
-<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span>station<span class="w"> </span>Southwood<span class="w"> </span>station_link<span class="w"> </span>http://example.com
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>station<span class="w"> </span>Southwood<span class="w"> </span>station_link<span class="w"> </span>http://example.com
 </code></pre></div>
 This could be a useful option if you want to offer the interface externally. To display the reception range and distances from your station, provide the program with the station coordinates and permission to share the location with the web viewer:
-<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span>lat<span class="w"> </span><span class="m">50</span><span class="w"> </span>lon<span class="w"> </span><span class="m">3</span>.141592<span class="w"> </span>share_loc<span class="w"> </span>on
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>lat<span class="w"> </span><span class="m">50</span><span class="w"> </span>lon<span class="w"> </span><span class="m">3</span>.141592<span class="w"> </span>share_loc<span class="w"> </span>on
 </code></pre></div>
 The last option <code>share_loc</code> (default is off) will allow the web viewer to access and display the location.</p>
 <p>The user can make a page in <a href="https://www.markdownguide.org/basic-syntax/">markdown format</a>. The content will be shown in the About tab of the web viewer:
@@ -4132,7 +4132,7 @@ or as an overlay
 <h2 id="several-stations-in-one-viewer">Several stations in one viewer<a class="headerlink" href="#several-stations-in-one-viewer" title="Permanent link">&para;</a></h2>
 <p>The receivers of one AIS-catcher stand at stations (<code>stations</code> in a configuration file, a receiver's <code>station</code>). The viewer shows every station's ships together, with the station that heard each vessel last on its card and in its hover; <strong>Filter → Station</strong> looks through one station alone, and <code>?stations=3,5</code> on the viewer's requests, or <code>/api/v1/vessels?stations=3</code>, asks the same of the server. Statistics and plots are kept per station: with several stations, the Statistics and Plots tabs get a row of sheets with the station whose figures show at its right end, all stations added up by default. Compare on the Plots tab sets a second station, or all of them, against the one chosen, to set one station, or one decoder, against another. A station on the map opens a card of its own, as on aiscatcher.org: its ships, rate and messages, its position, the last half hour of messages and a day of activity; while the card is open the page looks through that station, and closing it goes back to what was shown before.</p>
 <p>A message that names a station itself, as a feed from a hub does in its tag block (<code>\s:s1001*hh\</code>), counts at that station when <code>stations</code> lists it; otherwise at the input's station. So one input from a hub can serve many stations from one ship table.</p>
-<p><code>station_id</code> on a <code>-N</code> makes a viewer of one station: the station is listed from the line, with its <code>station</code>, <code>lat</code>, <code>lon</code>, <code>share_loc</code>, <code>use_gps</code> and <code>own_mmsi</code>, unless <code>stations</code> already has it, and the viewer shows that station alone: its map, its figures, and its live NMEA, signal and Prometheus streams. Several ids separated by commas show those together; the line describes the first. For example, two feeders of a hub, each on a viewer of its own, reading one ship table:</p>
+<p><code>station_id</code> on a <code>-N</code> makes a viewer of one station: the station is listed from the line, with its <code>station</code>, <code>lat</code>, <code>lon</code>, <code>share_loc</code>, <code>use_gps</code> and <code>own_mmsi</code>, unless <code>stations</code> already has it, and the viewer shows that station alone: its map and its figures. Its live NMEA, signal and Prometheus streams carry every station's messages. Several ids separated by commas show those together; the line describes the first. For example, two feeders of a hub, each on a viewer of its own, reading one ship table:</p>
 <div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-t<span class="w"> </span>txt<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="m">14999</span><span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>station_id<span class="w"> </span><span class="m">1001</span><span class="w"> </span>station<span class="w"> </span>Southwood<span class="w"> </span>lat<span class="w"> </span><span class="m">52</span>.08<span class="w"> </span>lon<span class="w"> </span><span class="m">4</span>.33<span class="w"> </span>share_loc<span class="w"> </span>on<span class="w"> </span>-N<span class="w"> </span><span class="m">8101</span><span class="w"> </span>station_id<span class="w"> </span><span class="m">1351</span><span class="w"> </span>station<span class="w"> </span>Tyreso<span class="w"> </span>lat<span class="w"> </span><span class="m">59</span>.24<span class="w"> </span>lon<span class="w"> </span><span class="m">18</span>.24<span class="w"> </span>share_loc<span class="w"> </span>on
 </code></pre></div>
 <h2 id="a-viewer-with-ships-of-its-own">A viewer with ships of its own<a class="headerlink" href="#a-viewer-with-ships-of-its-own" title="Permanent link">&para;</a></h2>
@@ -4146,11 +4146,12 @@ or as an overlay
 <li><code>/api/binmsgs.json</code></li>
 <li><code>/api/history_full.json</code></li>
 <li><code>/api/stat.json</code>, <code>/stat.json</code></li>
-<li><code>/api/path.json</code>, <code>/api/allpath.json</code>, <code>/api/path.geojson</code>, <code>/api/allpath.geojson</code></li>
+<li><code>/api/path.json</code>, <code>/api/allpath.json</code></li>
 <li><code>/api/message</code>, <code>/api/vessel</code> (per-vessel last message and details)</li>
 <li><code>/api/decode</code> (when <code>decoder</code> is enabled)</li>
-<li><code>/kml</code></li>
-<li><code>/metrics</code> (Prometheus)</li>
+<li><code>/kml</code> (when <code>kml</code> is enabled)</li>
+<li><code>/geojson</code> and <code>/allpath.geojson</code> (when <code>geojson</code> is enabled)</li>
+<li><code>/metrics</code> (when <code>prome</code> is enabled)</li>
 </ul>
 <p>The Content-Security-Policy served by the web viewer also accepts <code>http</code>/<code>ws</code> schemes in <code>img-src</code> and <code>connect-src</code> so LAN deployments work without a custom policy.</p>
 <h2 id="summary-settings">Summary Settings<a class="headerlink" href="#summary-settings" title="Permanent link">&para;</a></h2>
@@ -4356,7 +4357,7 @@ or as an overlay
 <td><span class="cmd-setting">kml</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">false</span></td>
-<td>Enable KML output</td>
+<td>Serve the ships as KML at <code>/kml</code>, for Google Earth</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">geojson</span></td>
@@ -4573,10 +4574,10 @@ or as an overlay
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "content.code.copy", "content.code.wrap"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>
