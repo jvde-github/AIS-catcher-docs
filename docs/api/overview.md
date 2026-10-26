@@ -17,7 +17,7 @@ All of it is offered by the `services` of the [JSON configuration](../usage/json
 | `metrics` | Message counts for Prometheus at `/metrics` | `data` |
 | `ui` | The web viewer | none |
 
-Each is a switch on the server; `ui` is on unless set `false`, the others off unless set. The viewer's `geojson`, `kml` and `prome` switches, as `-N` and the `server` section have them, are `geojson`, `kml` and `metrics`. On a server without `keys` they are open, as they always were; a server with keys guards them like the API, unless it is `public`.
+Each is a switch on the server; `ui` is on unless set `false`, the others off unless set. The viewer's `geojson`, `kml` and `prome` switches, as `-N` and the `server` section have them, are `geojson`, `kml` and `metrics`. On a server without `keys` they are open, as they always were; a server with keys guards them like the API.
 
 ```json
 "services": [
@@ -32,9 +32,9 @@ Each is a switch on the server; `ui` is on unless set `false`, the others off un
 
 ## Keys
 
-A server listens on `127.0.0.1` unless `bind` says otherwise, and then only programs on this machine reach it: no key is needed. A server that listens beyond this machine and offers `api`, `mcp` or `system` needs `keys`, or `"public": true` to say its data is for anyone; AIS-catcher refuses to start otherwise. A public server never offers `system` without keys.
+A server listens on `127.0.0.1` unless `bind` says otherwise, and then only programs on this machine reach it: no key is needed. A server that listens beyond this machine and offers `api`, `mcp` or `system` needs `keys`, or `"public": true` to say that anyone who reaches it may read it; AIS-catcher refuses to start otherwise. A server is one or the other, never both, and a public server on the network never offers `system`: that takes keys.
 
-A key is a long random text; the configuration holds only its SHA-256, so the file does not give the key away. In managed mode, **New key** on a server's page under **Servers** makes one and shows it once. By hand:
+A key is a long random text; the configuration holds only its SHA-256, so the file does not give the key away. In managed mode a server's page under **Servers** says whether it is **Open** or takes **Keys**, which is where a server on the network starts, and **New key** there makes one and shows it once. By hand:
 
 ```sh
 KEY=$(openssl rand -hex 24); echo "$KEY"                 # give this to the program, once
@@ -193,10 +193,12 @@ With `mcp` among its services a server speaks the [Model Context Protocol](https
 |------|-----------------|
 | `search_vessels` | Vessels by name, call sign, MMSI or IMO |
 | `vessels_in_area`, `vessels_near` | Vessels in a box, or near a point |
-| `get_vessel`, `vessel_track`, `vessel_visits` | One vessel in full, where it went, where it called |
+| `list_vessels` | Vessels by any of the API's filters together: status, class, speed, distance, age, station, MMSIs, box, point |
+| `get_vessel`, `vessel_track`, `vessel_visits` | One vessel in full, where it went (300 points unless `limit` says otherwise, `step` seconds apart), where it called |
 | `find_places`, `get_place`, `place_visits` | Ports and other places, who is inside, who came and went |
-| `list_stations`, `data_status` | The stations, and how fresh the data is |
+| `list_stations`, `station_statistics`, `data_status` | The stations, one station's figures, and how fresh the data is |
 | `recent_events` | Safety messages, new destinations and statuses, arrivals and departures |
+| `list_aircraft`, `get_aircraft` | The aircraft an ADS-B receiver hears, and one of them |
 
 The tools that list take `limit` and `cursor` as the API does; `vessels_in_area` and `vessels_near` also take `class`.
 

@@ -544,7 +544,7 @@
     "tags": [
      "Vessels"
     ],
-    "summary": "Where a vessel went: its positions with speed, course and heading, oldest first.",
+    "summary": "Where a vessel went: its positions with speed, course and heading, oldest first. The whole track unless step or limit thins it; a thinned track says so in meta.",
     "parameters": [
      {
       "name": "mmsi",
@@ -564,6 +564,28 @@
       "description": "From this UTC time, such as 2026-10-19T14:00:00Z, or seconds since 1970",
       "schema": {
        "type": "string"
+      }
+     },
+     {
+      "name": "step",
+      "in": "query",
+      "required": false,
+      "description": "One point per this many seconds: the first of each step, from the first point on",
+      "schema": {
+       "type": "integer",
+       "minimum": 1,
+       "maximum": 86400
+      }
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "description": "At most this many points: a longer track is thinned evenly to fit",
+      "schema": {
+       "type": "integer",
+       "minimum": 1,
+       "maximum": 100000
       }
      },
      {
@@ -1391,6 +1413,41 @@
        "null"
       ],
       "description": "The request for the next page; null on the last"
+     }
+    }
+   },
+   "TrackMeta": {
+    "type": "object",
+    "required": [
+     "count",
+     "complete",
+     "next",
+     "points",
+     "step_s"
+    ],
+    "properties": {
+     "count": {
+      "type": "integer",
+      "description": "The points given"
+     },
+     "complete": {
+      "type": "boolean",
+      "description": "True when every point of the track is here; false when step or limit left some out"
+     },
+     "next": {
+      "type": "null",
+      "description": "A track is one answer: always null"
+     },
+     "points": {
+      "type": "integer",
+      "description": "The points the track has, before any were left out"
+     },
+     "step_s": {
+      "type": [
+       "integer",
+       "null"
+      ],
+      "description": "The seconds between the points kept when some were left out: the step given, or the typical spacing after limit; null otherwise"
      }
     }
    },
@@ -3394,7 +3451,7 @@
      },
      "label": {
       "type": "string",
-      "description": "The device or the receiver's own name"
+      "description": "The receiver's own name, else its kind of device and number among those, as RTL-SDR #1"
      },
      "state": {
       "enum": [
@@ -3560,7 +3617,7 @@
       }
      },
      "meta": {
-      "$ref": "#/components/schemas/ListMeta"
+      "$ref": "#/components/schemas/TrackMeta"
      }
     }
    },

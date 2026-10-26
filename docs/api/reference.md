@@ -46,12 +46,14 @@ Answers [VesselDetail](#vesseldetail) as `application/json`. Operation `getVesse
 
 ### `GET /api/v1/vessels/{mmsi}/track`
 
-Where a vessel went: its positions with speed, course and heading, oldest first.
+Where a vessel went: its positions with speed, course and heading, oldest first. The whole track unless step or limit thins it; a thinned track says so in meta.
 
 | Parameter | In | Type | Description |
 |---|---|---|---|
 | `mmsi` | path | integer; 0 to 999999999 | The vessel's MMSI |
 | `since` | query | string | From this UTC time, such as 2026-10-19T14:00:00Z, or seconds since 1970 |
+| `step` | query | integer; 1 to 86400 | One point per this many seconds: the first of each step, from the first point on |
+| `limit` | query | integer; 1 to 100000 | At most this many points: a longer track is thinned evenly to fit |
 | `format` | query | one of `json`, `geojson`; json unless set | geojson answers one GeoJSON Feature as application/geo+json |
 
 Answers [Track](#track) as `application/json` or [TrackFeature](#trackfeature) as `application/geo+json`. Operation `getVesselTrack`.
@@ -278,6 +280,16 @@ Answers the document as `application/json`. Operation `getOpenAPI`.
 | `count` | integer | The rows on this page |
 | `complete` | boolean | True on the last page, where next is null |
 | `next` | string or null | The request for the next page; null on the last |
+
+### TrackMeta
+
+| Field | Type | Description |
+|---|---|---|
+| `count` | integer | The points given |
+| `complete` | boolean | True when every point of the track is here; false when step or limit left some out |
+| `next` | any or null | A track is one answer: always null |
+| `points` | integer | The points the track has, before any were left out |
+| `step_s` | integer or null | The seconds between the points kept when some were left out: the step given, or the typical spacing after limit; null otherwise |
 
 ### FeedMeta
 
@@ -681,7 +693,7 @@ A field that does not apply to an event's kind is left out.
 | `index` | integer | Its place among the inputs |
 | `station` | integer | The station it belongs to |
 | `input` | string | The kind of input |
-| `label` | string | The device or the receiver's own name |
+| `label` | string | The receiver's own name, else its kind of device and number among those, as RTL-SDR #1 |
 | `state` | one of `starting`, `streaming`, `lost` | starting until its device delivers, lost when it stopped by itself |
 | `messages` | integer | Messages since the engine started |
 | `messages_last_minute` | integer | Messages in the last minute |
@@ -720,7 +732,7 @@ A list: `data` holds [Vessel](#vessel) rows, `meta` is [VesselListMeta](#vessell
 
 ### Track
 
-A list: `data` holds [TrackPoint](#trackpoint) rows, `meta` is [ListMeta](#listmeta).
+A list: `data` holds [TrackPoint](#trackpoint) rows, `meta` is [TrackMeta](#trackmeta).
 
 ### VesselVisitList
 
