@@ -4003,7 +4003,7 @@
 </tr>
 </tbody>
 </table>
-<p>Each is a switch on the server; <code>ui</code> is on unless set <code>false</code>, the others off unless set. The viewer's <code>geojson</code>, <code>kml</code> and <code>prome</code> switches, as <code>-N</code> and the <code>server</code> section have them, are <code>geojson</code>, <code>kml</code> and <code>metrics</code>. On a server without <code>keys</code> they are open, as they always were; a server with keys guards them like the API, unless it is <code>public</code>.</p>
+<p>Each is a switch on the server; <code>ui</code> is on unless set <code>false</code>, the others off unless set. The viewer's <code>geojson</code>, <code>kml</code> and <code>prome</code> switches, as <code>-N</code> and the <code>server</code> section have them, are <code>geojson</code>, <code>kml</code> and <code>metrics</code>. On a server without <code>keys</code> they are open, as they always were; a server with keys guards them like the API.</p>
 <div class="language-json highlight"><pre><span></span><code><span class="nt">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">8110</span><span class="p">,</span><span class="w"> </span><span class="nt">"api"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">"mcp"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">"system"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">8111</span><span class="p">,</span><span class="w"> </span><span class="nt">"bind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0"</span><span class="p">,</span><span class="w"> </span><span class="nt">"ui"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">"api"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">"mcp"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">"system"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
@@ -4014,8 +4014,8 @@
 <span class="p">]</span>
 </code></pre></div>
 <h2 id="keys">Keys<a class="headerlink" href="#keys" title="Permanent link">&para;</a></h2>
-<p>A server listens on <code>127.0.0.1</code> unless <code>bind</code> says otherwise, and then only programs on this machine reach it: no key is needed. A server that listens beyond this machine and offers <code>api</code>, <code>mcp</code> or <code>system</code> needs <code>keys</code>, or <code>"public": true</code> to say its data is for anyone; AIS-catcher refuses to start otherwise. A public server never offers <code>system</code> without keys.</p>
-<p>A key is a long random text; the configuration holds only its SHA-256, so the file does not give the key away. In managed mode, <strong>New key</strong> on a server's page under <strong>Servers</strong> makes one and shows it once. By hand:</p>
+<p>A server listens on <code>127.0.0.1</code> unless <code>bind</code> says otherwise, and then only programs on this machine reach it: no key is needed. A server that listens beyond this machine and offers <code>api</code>, <code>mcp</code> or <code>system</code> needs <code>keys</code>, or <code>"public": true</code> to say that anyone who reaches it may read it; AIS-catcher refuses to start otherwise. A server is one or the other, never both, and a public server on the network never offers <code>system</code>: that takes keys.</p>
+<p>A key is a long random text; the configuration holds only its SHA-256, so the file does not give the key away. In managed mode a server's page under <strong>Servers</strong> says whether it is <strong>Open</strong> or takes <strong>Keys</strong>, which is where a server on the network starts, and <strong>New key</strong> there makes one and shows it once. By hand:</p>
 <div class="language-sh highlight"><pre><span></span><code><span class="nv">KEY</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>rand<span class="w"> </span>-hex<span class="w"> </span><span class="m">24</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$KEY</span><span class="s2">"</span><span class="w">                 </span><span class="c1"># give this to the program, once</span>
 <span class="nb">printf</span><span class="w"> </span><span class="s1">'%s'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$KEY</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sha256sum<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="s1">' '</span><span class="w"> </span>-f1<span class="w">           </span><span class="c1"># put this in "sha256"</span>
 </code></pre></div>
@@ -4046,6 +4046,7 @@
 </table>
 <p>A request without a key, or with one the server does not know, gets <code>401</code>; a key without the scope gets <code>403</code>. A key made with <strong>New key</strong> in the control panel is 48 random hex digits, which no one can guess however often they try, so a key you write yourself should be just as long and random. The viewer (<code>ui</code>) is not behind keys: give a server with keys only the services that need them.</p>
 <p>A key travels in the <code>Authorization</code> header over plain HTTP, so anyone who can watch the connection can read it. Beyond your own network, put a TLS reverse proxy (Caddy, nginx) or a VPN (WireGuard, Tailscale) in front of the server; the proxy is also the place to limit how many requests a client may make.</p>
+<p>A server switched to <code>limited</code> answers the short form whoever asks, with or without keys: lists of 25 rows at most, vessel rows without the station that heard them, one vessel in full but without its stations, and 25 data calls an hour from one address, after which one <code>429</code> says when the hour turns and further calls get no answer. The API's index, its OpenAPI document, and MCP's handshake and tool list are not counted. Off unless set; in managed mode it is the <strong>Limited</strong> switch under <strong>Access</strong>. It does not cap the v0.70 ship lists (<code>/ships.json</code> and the others, see <a href="../../configuration/output/web-viewer/#the-ship-list-for-scripts-api-v0">The ship list for scripts</a>), which answer every ship in full: switch <code>api_v0</code> off on a limited server that should not give them.</p>
 <h2 id="the-read-api">The read API<a class="headerlink" href="#the-read-api" title="Permanent link">&para;</a></h2>
 <p><code>GET /api/v1</code> lists the resources and <code>GET /api/v1/openapi.json</code> describes every one of them as OpenAPI 3.1, ready for a client generator or an API tool. The <a href="../reference/">API reference</a> lists every route, parameter and field.</p>
 <h3 id="answers">Answers<a class="headerlink" href="#answers" title="Permanent link">&para;</a></h3>
@@ -4059,7 +4060,7 @@
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">],</span>
 <span class="w">  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="nt">"complete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/v1/vessels?cursor=v_1792762068_1792760268_1792762060_244123456&amp;limit=100"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-<p><code>limit</code> sets the rows on a page, 1 to 1000, 100 unless set. Follow <code>meta.next</code> until it is <code>null</code>; <code>complete</code> is then <code>true</code>. Send the <code>cursor</code> in it back as it came: what it holds may change between versions. A page can hold fewer rows than <code>limit</code> and still have a <code>next</code>.</p>
+<p><code>limit</code> sets the rows on a page, 1 to 1000, 100 unless set, and 25 at most on a limited server. Follow <code>meta.next</code> until it is <code>null</code>; <code>complete</code> is then <code>true</code>. Send the <code>cursor</code> in it back as it came: what it holds may change between versions. A page can hold fewer rows than <code>limit</code> and still have a <code>next</code>.</p>
 <table>
 <thead>
 <tr>
@@ -4188,6 +4189,7 @@
 <span class="w">  </span><span class="nt">"draught_m"</span><span class="p">:</span><span class="w"> </span><span class="mf">6.2</span><span class="p">,</span><span class="w"> </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROTTERDAM"</span><span class="p">,</span><span class="w"> </span><span class="nt">"last_seen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-10-23T14:02:11Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"age_s"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"stations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">"last_heard"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-10-23T14:02:11Z"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
+<p><code>view=brief</code> answers a short row instead: <code>mmsi</code>, <code>name</code>, <code>class</code>, <code>country</code>, <code>lat</code>, <code>lon</code>, <code>speed_kn</code>, <code>course_deg</code>, <code>heading_deg</code>, <code>nav_status</code>, <code>length_m</code>, <code>destination</code>, <code>bound_for</code>, <code>station_id</code>, <code>last_seen</code> and <code>age_s</code>, with <code>distance_nm</code> and <code>near_nm</code> where they apply. A limited server answers only this form, without <code>station_id</code>, and refuses <code>view=full</code>; one vessel, <code>/api/v1/vessels/{mmsi}</code>, is always in full.</p>
 <p><code>/api/v1/places</code> takes <code>q</code> (name or UN/LOCODE) and <code>type</code>.</p>
 <h3 id="statistics">Statistics<a class="headerlink" href="#statistics" title="Permanent link">&para;</a></h3>
 <p><code>/api/v1/statistics</code>, and <code>/api/v1/stations/{id}/statistics</code> for one station, give the figures since they were first kept (<code>total</code>), since AIS-catcher started (<code>session</code>), of the last whole minute, hour and day, and by the second, minute, hour and day. Each period has its messages, vessels, signal and range, and:</p>
@@ -4226,24 +4228,32 @@
 <td>Vessels in a box, or near a point</td>
 </tr>
 <tr>
+<td><code>list_vessels</code></td>
+<td>Vessels by any of the API's filters together: status, class, speed, distance, age, station, MMSIs, box, point</td>
+</tr>
+<tr>
 <td><code>get_vessel</code>, <code>vessel_track</code>, <code>vessel_visits</code></td>
-<td>One vessel in full, where it went, where it called</td>
+<td>One vessel in full, where it went (100 points unless <code>limit</code> says otherwise, <code>step</code> seconds apart), where it called</td>
 </tr>
 <tr>
 <td><code>find_places</code>, <code>get_place</code>, <code>place_visits</code></td>
 <td>Ports and other places, who is inside, who came and went</td>
 </tr>
 <tr>
-<td><code>list_stations</code>, <code>data_status</code></td>
-<td>The stations, and how fresh the data is</td>
+<td><code>list_stations</code>, <code>station_statistics</code>, <code>data_status</code></td>
+<td>The stations, one station's figures, and how fresh the data is</td>
 </tr>
 <tr>
 <td><code>recent_events</code></td>
 <td>Safety messages, new destinations and statuses, arrivals and departures</td>
 </tr>
+<tr>
+<td><code>list_aircraft</code>, <code>get_aircraft</code></td>
+<td>The aircraft an ADS-B receiver hears, and one of them</td>
+</tr>
 </tbody>
 </table>
-<p>The tools that list take <code>limit</code> and <code>cursor</code> as the API does; <code>vessels_in_area</code> and <code>vessels_near</code> also take <code>class</code>.</p>
+<p>The tools that list take <code>limit</code> and <code>cursor</code> as the API does; the vessel tools answer 25 short rows unless <code>limit</code> says otherwise, the others 30, and <code>vessels_in_area</code> and <code>vessels_near</code> also take <code>class</code>. On a limited server the handshake and the tool list are free and each tool call is one of the hour's data calls.</p>
 <p>On a server that also offers <code>system</code>, and for a caller that may read it (a server without keys, or a key with the <code>system</code> scope), the installation's own tools come with them, so an assistant asks the station rather than reading its configuration:</p>
 <table>
 <thead>
@@ -4271,6 +4281,7 @@
 </tr>
 </tbody>
 </table>
+<p>A model running on your own machine needs room for the tools: their definitions take about 2,200 tokens. Give it a context of 8k tokens or more, and 16k in Open WebUI, which adds tools of its own. With less, the tool list is cut off before the model sees it, and it calls the wrong tool or none.</p>
 <p>For Claude Code, on the station itself:</p>
 <div class="language-sh highlight"><pre><span></span><code>claude<span class="w"> </span>mcp<span class="w"> </span>add<span class="w"> </span>--transport<span class="w"> </span>http<span class="w"> </span>ais<span class="w"> </span>http://127.0.0.1:8110/mcp
 </code></pre></div>

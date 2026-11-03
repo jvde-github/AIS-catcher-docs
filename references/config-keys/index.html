@@ -5839,7 +5839,7 @@ name inside the object configures it.</p>
 <code>mbtiles</code>, <code>plugin_dir</code>, …), never a <code>port</code>; the map is always on it. How ships are kept is <code>tracking</code> (<code>file</code>, <code>backup</code>,
 <code>history</code>, <code>track_time</code>, <code>track_memory</code>, <code>expire</code>, <code>max_ships</code>, <code>cutoff</code>, <code>places</code>), and the default station is station 0
 of <code>stations</code>. <code>control.wizard</code> (boolean) shows the setup wizard on the next visit; the hub stores its password under
-<code>control</code> itself; leave those keys alone. A file from before, with the viewer under <code>control.viewer</code>, is read as it is and
+<code>control</code> itself; leave those keys alone. <code>control.tls</code> (<code>cert</code>, <code>key</code>) puts the panel itself on HTTPS. A file from before, with the viewer under <code>control.viewer</code>, is read as it is and
 brought to this layout by the panel when it saves.</p>
 
 

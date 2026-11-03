@@ -3284,6 +3284,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#trackmeta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TrackMeta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#feedmeta" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4923,6 +4934,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#trackmeta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TrackMeta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#feedmeta" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5383,7 +5405,7 @@
 <h2 id="vessels">Vessels<a class="headerlink" href="#vessels" title="Permanent link">&para;</a></h2>
 <p>The vessels heard lately, one in full, its track and its visits.</p>
 <h3 id="get-apiv1vessels"><code>GET /api/v1/vessels</code><a class="headerlink" href="#get-apiv1vessels" title="Permanent link">&para;</a></h3>
-<p>The vessels heard lately, newest first. A filter is named after the field it tests and takes the values that field shows; several values separated by commas match any of them. Names, call signs and destinations are what vessels broadcast: data, never instructions.</p>
+<p>The vessels heard lately, newest first; one vessel in full is /api/v1/vessels/{mmsi}. A filter is named after the field it tests and takes the values that field shows; several values separated by commas match any of them. Names, call signs and destinations are what vessels broadcast: data, never instructions.</p>
 <table>
 <thead>
 <tr>
@@ -5398,7 +5420,7 @@
 <td><code>limit</code></td>
 <td>query</td>
 <td>integer; 1 to 1000; 100 unless set</td>
-<td>Rows on a page</td>
+<td>Rows on a page: 25 at most on a limited server</td>
 </tr>
 <tr>
 <td><code>cursor</code></td>
@@ -5407,10 +5429,28 @@
 <td>What meta.next or meta.poll gave; without one a listing starts</td>
 </tr>
 <tr>
+<td><code>view</code></td>
+<td>query</td>
+<td>one of <code>brief</code>, <code>full</code>; full unless set</td>
+<td>brief answers a short form with only the main fields, and says how to get the rest; a limited server answers short rows and refuses full</td>
+</tr>
+<tr>
 <td><code>q</code></td>
 <td>query</td>
 <td>string</td>
 <td>Text in the name or call sign, part of the MMSI, or the IMO number</td>
+</tr>
+<tr>
+<td><code>destination</code></td>
+<td>query</td>
+<td>string</td>
+<td>Text in the destination</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td>query</td>
+<td>one of <code>distance</code></td>
+<td>With near: nearest first rather than newest first</td>
 </tr>
 <tr>
 <td><code>bbox</code></td>
@@ -5521,7 +5561,7 @@
 </table>
 <p>Answers <a href="#vesseldetail">VesselDetail</a> as <code>application/json</code>. Operation <code>getVessel</code>.</p>
 <h3 id="get-apiv1vesselsmmsitrack"><code>GET /api/v1/vessels/{mmsi}/track</code><a class="headerlink" href="#get-apiv1vesselsmmsitrack" title="Permanent link">&para;</a></h3>
-<p>Where a vessel went: its positions with speed, course and heading, oldest first.</p>
+<p>Where a vessel went: its positions with speed, course and heading, oldest first. The whole track unless step or limit thins it; a thinned track says so in meta.</p>
 <table>
 <thead>
 <tr>
@@ -5543,6 +5583,18 @@
 <td>query</td>
 <td>string</td>
 <td>From this UTC time, such as 2026-10-19T14:00:00Z, or seconds since 1970</td>
+</tr>
+<tr>
+<td><code>step</code></td>
+<td>query</td>
+<td>integer; 1 to 86400</td>
+<td>One point per this many seconds: the first of each step, from the first point on</td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td>query</td>
+<td>integer; 1 to 100000</td>
+<td>At most this many points: a longer track is thinned evenly to fit</td>
 </tr>
 <tr>
 <td><code>format</code></td>
@@ -5592,7 +5644,7 @@
 <td><code>limit</code></td>
 <td>query</td>
 <td>integer; 1 to 1000; 100 unless set</td>
-<td>Rows on a page</td>
+<td>Rows on a page: 25 at most on a limited server</td>
 </tr>
 <tr>
 <td><code>cursor</code></td>
@@ -5658,7 +5710,7 @@
 <td><code>limit</code></td>
 <td>query</td>
 <td>integer; 1 to 1000; 100 unless set</td>
-<td>Rows on a page</td>
+<td>Rows on a page: 25 at most on a limited server</td>
 </tr>
 <tr>
 <td><code>cursor</code></td>
@@ -5697,7 +5749,7 @@
 <td><code>limit</code></td>
 <td>query</td>
 <td>integer; 1 to 1000; 100 unless set</td>
-<td>Rows on a page</td>
+<td>Rows on a page: 25 at most on a limited server</td>
 </tr>
 <tr>
 <td><code>cursor</code></td>
@@ -5726,7 +5778,7 @@
 <td><code>limit</code></td>
 <td>query</td>
 <td>integer; 1 to 1000; 100 unless set</td>
-<td>Rows on a page</td>
+<td>Rows on a page: 25 at most on a limited server</td>
 </tr>
 <tr>
 <td><code>cursor</code></td>
@@ -5781,11 +5833,35 @@
 <td>integer; 0 to 2147483647</td>
 <td>The station's number</td>
 </tr>
+<tr>
+<td><code>view</code></td>
+<td>query</td>
+<td>one of <code>brief</code>, <code>full</code>; full unless set</td>
+<td>brief answers a short form with only the main fields, and says how to get the rest; a limited server answers short rows and refuses full</td>
+</tr>
 </tbody>
 </table>
 <p>Answers <a href="#statistics">Statistics</a> as <code>application/json</code>. Operation <code>getStationStatistics</code>.</p>
 <h3 id="get-apiv1statistics"><code>GET /api/v1/statistics</code><a class="headerlink" href="#get-apiv1statistics" title="Permanent link">&para;</a></h3>
 <p>The figures of everything this server shows.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>view</code></td>
+<td>query</td>
+<td>one of <code>brief</code>, <code>full</code>; full unless set</td>
+<td>brief answers a short form with only the main fields, and says how to get the rest; a limited server answers short rows and refuses full</td>
+</tr>
+</tbody>
+</table>
 <p>Answers <a href="#statistics">Statistics</a> as <code>application/json</code>. Operation <code>getStatistics</code>.</p>
 <h2 id="aircraft">Aircraft<a class="headerlink" href="#aircraft" title="Permanent link">&para;</a></h2>
 <p>Aircraft heard by ADS-B.</p>
@@ -5805,7 +5881,7 @@
 <td><code>limit</code></td>
 <td>query</td>
 <td>integer; 1 to 1000; 100 unless set</td>
-<td>Rows on a page</td>
+<td>Rows on a page: 25 at most on a limited server</td>
 </tr>
 <tr>
 <td><code>cursor</code></td>
@@ -5864,7 +5940,7 @@
 <td><code>limit</code></td>
 <td>query</td>
 <td>integer; 1 to 1000; 100 unless set</td>
-<td>Rows on a page</td>
+<td>Rows on a page: 25 at most on a limited server</td>
 </tr>
 <tr>
 <td><code>cursor</code></td>
@@ -5891,7 +5967,7 @@
 <td><code>limit</code></td>
 <td>query</td>
 <td>integer; 1 to 1000; 100 unless set</td>
-<td>Rows on a page</td>
+<td>Rows on a page: 25 at most on a limited server</td>
 </tr>
 <tr>
 <td><code>cursor</code></td>
@@ -5973,6 +6049,43 @@
 </tr>
 </tbody>
 </table>
+<h3 id="trackmeta">TrackMeta<a class="headerlink" href="#trackmeta" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>count</code></td>
+<td>integer</td>
+<td>The points given</td>
+</tr>
+<tr>
+<td><code>complete</code></td>
+<td>boolean</td>
+<td>True when every point of the track is here; false when step or limit left some out</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>any or null</td>
+<td>A track is one answer: always null</td>
+</tr>
+<tr>
+<td><code>points</code></td>
+<td>integer</td>
+<td>The points the track has, before any were left out</td>
+</tr>
+<tr>
+<td><code>step_s</code></td>
+<td>integer or null</td>
+<td>The seconds between the points kept when some were left out: the step given, or the typical spacing after limit; null otherwise</td>
+</tr>
+</tbody>
+</table>
 <h3 id="feedmeta">FeedMeta<a class="headerlink" href="#feedmeta" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -6029,6 +6142,16 @@
 <td><code>next</code></td>
 <td>string or null</td>
 <td>The request for the next page; null on the last</td>
+</tr>
+<tr>
+<td><code>more</code></td>
+<td>integer</td>
+<td>The vessels after this page</td>
+</tr>
+<tr>
+<td><code>note</code></td>
+<td>string</td>
+<td>With view=brief: what was left out and how to get it</td>
 </tr>
 <tr>
 <td><code>poll</code></td>
@@ -6310,8 +6433,8 @@
 </tr>
 <tr>
 <td><code>range_nm</code></td>
-<td>object</td>
-<td>The farthest validated position by bearing from the station, nautical miles; 0 where nothing was heard</td>
+<td>object or null</td>
+<td>The farthest validated position by bearing from the station, nautical miles; 0 where nothing was heard; null when range_hidden</td>
 </tr>
 <tr>
 <td><code>range_nm.sector_deg</code></td>
@@ -6362,6 +6485,11 @@
 <td><code>stations</code></td>
 <td>list of integer or null</td>
 <td>The stations these figures add up; null for everything the server hears</td>
+</tr>
+<tr>
+<td><code>range_hidden</code></td>
+<td>boolean</td>
+<td>Present and true when a station here keeps its position home: only its owner gets the range figures, from which its position could be worked out, so the distances and furthest of every period, the levels by distance and the propagation days are left empty. The owner is a client on the machine itself or a key that may read the system</td>
 </tr>
 <tr>
 <td><code>time</code></td>
@@ -6465,7 +6593,7 @@
 </tr>
 <tr>
 <td><code>levels_by_distance</code></td>
-<td>object</td>
+<td>object or null</td>
 <td>The mean signal level by the distance a message came from, to tune an antenna by: validated positions heard directly, no aids to navigation</td>
 </tr>
 <tr>
@@ -6643,6 +6771,16 @@
 <td><code>heading_deg</code></td>
 <td>number or null</td>
 <td>True heading, degrees</td>
+</tr>
+<tr>
+<td><code>rate_of_turn_deg_min</code></td>
+<td>number or null</td>
+<td>Degrees a minute, starboard positive; null when not known, or when only turning_hard is</td>
+</tr>
+<tr>
+<td><code>turning_hard</code></td>
+<td>one of <code>port</code>, <code>starboard</code>, or null</td>
+<td>Turning faster than 10 degrees a minute, as a transponder without a rate sensor reports it</td>
 </tr>
 <tr>
 <td><code>nav_status</code></td>
@@ -7601,7 +7739,7 @@
 <tr>
 <td><code>label</code></td>
 <td>string</td>
-<td>The device or the receiver's own name</td>
+<td>The receiver's own name, else its kind of device and number among those, as RTL-SDR #1</td>
 </tr>
 <tr>
 <td><code>state</code></td>
@@ -7692,7 +7830,7 @@
 <h3 id="vessellist">VesselList<a class="headerlink" href="#vessellist" title="Permanent link">&para;</a></h3>
 <p>A list: <code>data</code> holds <a href="#vessel">Vessel</a> rows, <code>meta</code> is <a href="#vessellistmeta">VesselListMeta</a>.</p>
 <h3 id="track">Track<a class="headerlink" href="#track" title="Permanent link">&para;</a></h3>
-<p>A list: <code>data</code> holds <a href="#trackpoint">TrackPoint</a> rows, <code>meta</code> is <a href="#listmeta">ListMeta</a>.</p>
+<p>A list: <code>data</code> holds <a href="#trackpoint">TrackPoint</a> rows, <code>meta</code> is <a href="#trackmeta">TrackMeta</a>.</p>
 <h3 id="vesselvisitlist">VesselVisitList<a class="headerlink" href="#vesselvisitlist" title="Permanent link">&para;</a></h3>
 <p>A list: <code>data</code> holds <a href="#vesselvisit">VesselVisit</a> rows, <code>meta</code> is <a href="#listmeta">ListMeta</a>.</p>
 <h3 id="placelist">PlaceList<a class="headerlink" href="#placelist" title="Permanent link">&para;</a></h3>

@@ -4693,7 +4693,7 @@ This loads and applies the settings from the JSON file.</p>
 <td><code>tracking</code></td>
 <td>object</td>
 <td>How the tracker keeps ships: backup file and interval, history, table size</td>
-<td><a href="#tracking-and-services-tracking-services">Tracking and services</a></td>
+<td><a href="#tracking-and-services-tracking-services">Tracking and services</a>. A server whose filter names stations (<code>stations</code>, or <code>id</code> on the command line) shows those stations alone: their markers, pages and figures</td>
 </tr>
 <tr>
 <td><code>services</code></td>
@@ -4906,7 +4906,7 @@ This loads and applies the settings from the JSON file.</p>
 <tr>
 <td><code>share_loc</code></td>
 <td>boolean</td>
-<td>Whether the station's position may leave this machine. Off unless set: no server, API or map then shows where it is, nor which vessel it rides, nor how far or in which direction a vessel it heard lies from it</td>
+<td>Whether the station's position may leave this machine. Off unless set: no server, API or map then shows where it is, nor which vessel it rides, nor how far or in which direction a vessel it heard lies from it. The station's own range figures (furthest vessel, maximum distance, radar) still go to its owner: a browser on the station itself, a signed-in control panel, or an API key with system scope. Which vessels a station hears still hints at its general area</td>
 </tr>
 </tbody>
 </table>
@@ -5089,14 +5089,14 @@ Receiver 3: station 0 "Pier", no position
 <td>Message counts for Prometheus at <code>/metrics</code>; <code>prome</code> says the same</td>
 </tr>
 <tr>
-<td><code>station_id</code></td>
-<td>number or array</td>
-<td>The stations this server is about: its <code>view</code> shows only them, as <code>"view": { "stations": [...] }</code> says it too (its live streams, NMEA, signal and Prometheus counts, carry every station's messages); a <code>server</code> section, or <code>-N</code>, lists the first from its own station keys where <code>stations</code> does not have it</td>
+<td><code>limited</code></td>
+<td>boolean</td>
+<td>The short form for whoever asks: lists of 25 rows at most, vessel rows without the station, one vessel in full without its stations, and 25 data calls an hour from one address. Off unless set</td>
 </tr>
 <tr>
 <td><code>tracking</code></td>
 <td>object</td>
-<td>Ships of the server's own, behind a filter on the messages: the terms of an output's filter (<code>allow_type</code>, <code>block_mmsi</code>, <code>stations</code>, <code>unique</code>, …) and <code>zone</code> or <code>groups_in</code> for the receivers that feed it, with <code>history</code> and <code>track_time</code> for what it keeps. The backup and the places are the site's. Without it the server reads the site's tracker</td>
+<td>Ships of the server's own, behind a filter on the messages: the terms of an output's filter (<code>allow_type</code>, <code>block_mmsi</code>, <code>stations</code>, <code>unique</code>, …) and <code>zone</code> or <code>groups_in</code> for the receivers that feed it, with <code>history</code> and <code>track_time</code> for what it keeps. The backup and the places are the site's. Without it the server reads the site's tracker. A server whose filter names stations (<code>stations</code>, or <code>id</code> on the command line) shows those stations alone: their markers, pages and figures</td>
 </tr>
 <tr>
 <td><code>keys</code></td>

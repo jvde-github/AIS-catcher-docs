@@ -3756,8 +3756,8 @@
     </div>
 </div>
 
-<p>Sharing is <strong>not enabled by default</strong>. On the CLI, <code>-X</code> enables sharing: if you provide a sharing key (created at <a href="https://aiscatcher.org/addstation_ac">aiscatcher.org</a>), the station is linked to your account; if omitted, sharing is anonymous. <code>-X off</code> explicitly switches sharing off, overriding an enabled setting in the configuration.</p>
-<p>In managed mode, sharing is configured in the dashboard under <strong>Output → Community</strong>: enter your sharing key and make sure sharing is enabled.</p>
+<p>On the command line sharing is <strong>off by default</strong>; in managed mode anonymous sharing is <strong>on by default</strong>. On the CLI, <code>-X</code> enables sharing: if you provide a sharing key (created at <a href="https://aiscatcher.org/addstation_ac">aiscatcher.org</a>), the station is linked to your account; if omitted, sharing is anonymous. <code>-X off</code> explicitly switches sharing off, overriding an enabled setting in the configuration.</p>
+<p>In managed mode, sharing is configured in the dashboard under <strong>Output → Community</strong>: enter your sharing key to link the station to your account, or switch sharing off.</p>
 <p>In JSON configuration, Community Feed settings are configured via the root-level keys <code>sharing</code> and <code>sharing_key</code> (they are not part of an output array like <code>udp</code>).</p>
 <h2 id="live-community-map-in-the-viewer">Live community map in the viewer<a class="headerlink" href="#live-community-map-in-the-viewer" title="Permanent link">&para;</a></h2>
 <p>In the web viewer, the community map is no longer drawn as an overlay on the local map. Opening the community map pops up a pane connected to <a href="https://aiscatcher.org/livemap">aiscatcher.org/livemap</a>. Pan and zoom are kept in sync in both directions, and vessels seen by the local receiver are pushed to the community view in real time.</p>

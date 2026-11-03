@@ -717,6 +717,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTPS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#track-replay" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4476,6 +4487,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTPS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#track-replay" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5277,6 +5299,10 @@
 
 <h1 id="whats-new">What's New?<a class="headerlink" href="#whats-new" title="Permanent link">&para;</a></h1>
 <h2 id="edge">Edge<a class="headerlink" href="#edge" title="Permanent link">&para;</a></h2>
+<h3 id="https">HTTPS<a class="headerlink" href="#https" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Optional HTTPS</strong> — a server with <code>tls</code> (<code>cert</code>, <code>key</code>), or <code>-N ... TLS_CERT file TLS_KEY file</code>, serves over HTTPS. The control panel takes its own from Settings → System → Access, <code>control.tls</code> or <code>-E ... TLS_CERT file TLS_KEY file</code>.</li>
+</ul>
 <h3 id="track-replay">Track replay<a class="headerlink" href="#track-replay" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Play back vessel movements</strong> — the web viewer gained a replay bar: replay received traffic on the map, scrub the timeline, and vary playback speed from 10× up to 3600×. On by default.</li>
@@ -5326,7 +5352,11 @@
 <h3 id="stations">Stations<a class="headerlink" href="#stations" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>A private station gives no distances</strong> — a vessel's distance and bearing from a station tell where that station is, so they are only shown when the station that heard the vessel shares its position (<code>share_loc on</code>). This holds for the viewer, the API and every other output; turn <code>share_loc</code> on to get the distance column and the distance filters back.</li>
+<li><strong>A station's marker says how it is doing</strong> — green while it receives, grey when it has heard nothing for 15 minutes (the same rule as the <code>station_quiet</code> event and the health check), and grey with a red edge when every receiver naming it has lost its device; on the station's own map a slow red ring pulses around it then. The station's hover and card say "Quiet since 14:05" or "Receiver down". The orange marker five minutes after the page opened is gone: the state is decided by the station's host and sent to the map only when it changes.</li>
 <li><strong>The viewer's GeoJSON copies are gone</strong> — <code>/api/path.geojson</code> and <code>/api/allpath.geojson</code> are no longer served by the viewer. The <code>geojson</code> service answers <code>/geojson</code> and <code>/allpath.geojson</code> as before, and <code>/api/v1/vessels/{mmsi}/track?format=geojson</code> gives one vessel's track.</li>
+<li><strong>A viewer of some stations is a filter</strong> — a server whose filter names stations with <code>id</code> (<code>-N 8100 filter on id 1001</code>) shows those stations alone, with a ship table of its own that keeps its own backup <code>file</code>; the stations' names and positions come from <code>stations</code> in the configuration file. <code>station_id</code> on a server is refused. See <a href="../configuration/output/web-viewer/#several-stations-in-one-viewer">Several stations in one viewer</a>.</li>
+<li><strong>The v0.70 ship lists are a switch, <code>api_v0</code></strong> — <code>/ships.json</code>, <code>/api/ships.json</code>, <code>/api/ships_full.json</code> and <code>/stat.json</code> stay on for a <code>-N</code> and a <code>server</code> section; an entry of <code>services</code> serves them only with <code>"api_v0": true</code> (in managed mode the <strong>API v0</strong> line under <strong>Serves</strong>); <code>limited</code> does not cap them. A configuration the control panel moves from the old viewer or <code>server</code> section keeps them on. See <a href="../configuration/output/web-viewer/#the-ship-list-for-scripts-api-v0">The ship list for scripts</a>.</li>
+<li><strong>Prometheus per input and per output</strong> — <code>/metrics</code> adds <code>ais_input_*</code> (messages, bytes, up, last message, errors, connections) and <code>ais_output_*</code> (messages, bytes, dropped, connections) rows, labelled with the input or output, its type and description. See <a href="../configuration/output/web-viewer/#sending-data-to-prometheus-for-use-in-grafana-dashboards">Sending data to Prometheus</a>.</li>
 </ul>
 <h3 id="http-output">HTTP output<a class="headerlink" href="#http-output" title="Permanent link">&para;</a></h3>
 <ul>

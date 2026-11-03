@@ -1214,6 +1214,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Access and Security
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1230,6 +1248,36 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#https-for-the-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTPS for the dashboard
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3633,6 +3681,25 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#https-for-the-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTPS for the dashboard
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3662,6 +3729,20 @@
 <p class="admonition-title">Warning</p>
 <p>The dashboard is intended for use on your local network. If you want to expose your station's data publicly, do not expose the dashboard — share your data via the <a href="../../configuration/output/community-feed/">community feed</a> or add a <a href="../output/#web-viewer">web viewer</a> instead.</p>
 </div>
+<h2 id="https-for-the-dashboard">HTTPS for the dashboard<a class="headerlink" href="#https-for-the-dashboard" title="Permanent link">&para;</a></h2>
+<p>The password travels over this connection, so give the dashboard HTTPS when it is reached over a network. You need a certificate as PEM files without a passphrase, readable by the service's user.</p>
+<ul>
+<li><strong>In the dashboard:</strong> Settings → System → Access. Enter the two files, which must be in the configuration's folder, and press <em>Apply HTTPS</em>. The files are checked first, the dashboard moves to <code>https://</code> at once and asks for the password again. Leave both empty to go back to plain HTTP.</li>
+<li>
+<p><strong>On the command line:</strong> for that run only, not saved in the file.</p>
+<div class="language-console highlight"><pre><span></span><code><span class="go">AIS-catcher -E /etc/AIS-catcher/aiscatcher.json 0.0.0.0:8118 TLS_CERT fullchain.pem TLS_KEY privkey.pem</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>In the configuration file:</strong> <code>"control": { "tls": { "cert": "fullchain.pem", "key": "privkey.pem" } }</code>.</p>
+</li>
+</ul>
+<p>A renewed certificate is taken within a minute. The dashboard answers on one scheme only and never falls back to HTTP. If the files stop loading, the Access page says why; if they do not load at start, AIS-catcher stops with the reason in the log until they are fixed, or <code>tls</code> is taken out of the file. The map's own port has its own HTTPS setting, under Services.</p>
 
 
 
