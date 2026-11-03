@@ -57,6 +57,8 @@ A request without a key, or with one the server does not know, gets `401`; a key
 
 A key travels in the `Authorization` header over plain HTTP, so anyone who can watch the connection can read it. Beyond your own network, put a TLS reverse proxy (Caddy, nginx) or a VPN (WireGuard, Tailscale) in front of the server; the proxy is also the place to limit how many requests a client may make.
 
+A server switched to `limited` answers the short form whoever asks, with or without keys: lists of 25 rows at most, vessel rows without the station that heard them, one vessel in full but without its stations, and 25 data calls an hour from one address, after which one `429` says when the hour turns and further calls get no answer. The API's index, its OpenAPI document, and MCP's handshake and tool list are not counted. Off unless set; in managed mode it is the **Limited** switch under **Access**. It does not cap the v0.70 ship lists (`/ships.json` and the others, see [The ship list for scripts](../configuration/output/web-viewer.md#the-ship-list-for-scripts-api-v0)), which answer every ship in full: switch `api_v0` off on a limited server that should not give them.
+
 ## The read API
 
 `GET /api/v1` lists the resources and `GET /api/v1/openapi.json` describes every one of them as OpenAPI 3.1, ready for a client generator or an API tool. The [API reference](reference.md) lists every route, parameter and field.
@@ -81,7 +83,7 @@ Every list answers the same way:
   "meta": { "count": 100, "complete": false, "next": "/api/v1/vessels?cursor=v_1792762068_1792760268_1792762060_244123456&limit=100" } }
 ```
 
-`limit` sets the rows on a page, 1 to 1000, 100 unless set. Follow `meta.next` until it is `null`; `complete` is then `true`. Send the `cursor` in it back as it came: what it holds may change between versions. A page can hold fewer rows than `limit` and still have a `next`.
+`limit` sets the rows on a page, 1 to 1000, 100 unless set, and 25 at most on a limited server. Follow `meta.next` until it is `null`; `complete` is then `true`. Send the `cursor` in it back as it came: what it holds may change between versions. A page can hold fewer rows than `limit` and still have a `next`.
 
 | List | Order |
 |------|-------|
@@ -158,6 +160,8 @@ A row, shortened (the [reference](reference.md#vessel) has every field):
   "stations": [ { "id": 1, "last_heard": "2026-10-23T14:02:11Z" } ] }
 ```
 
+`view=brief` answers a short row instead: `mmsi`, `name`, `class`, `country`, `lat`, `lon`, `speed_kn`, `course_deg`, `heading_deg`, `nav_status`, `length_m`, `destination`, `bound_for`, `station_id`, `last_seen` and `age_s`, with `distance_nm` and `near_nm` where they apply. A limited server answers only this form, without `station_id`, and refuses `view=full`; one vessel, `/api/v1/vessels/{mmsi}`, is always in full.
+
 `/api/v1/places` takes `q` (name or UN/LOCODE) and `type`.
 
 ### Statistics
@@ -194,13 +198,13 @@ With `mcp` among its services a server speaks the [Model Context Protocol](https
 | `search_vessels` | Vessels by name, call sign, MMSI or IMO |
 | `vessels_in_area`, `vessels_near` | Vessels in a box, or near a point |
 | `list_vessels` | Vessels by any of the API's filters together: status, class, speed, distance, age, station, MMSIs, box, point |
-| `get_vessel`, `vessel_track`, `vessel_visits` | One vessel in full, where it went (300 points unless `limit` says otherwise, `step` seconds apart), where it called |
+| `get_vessel`, `vessel_track`, `vessel_visits` | One vessel in full, where it went (100 points unless `limit` says otherwise, `step` seconds apart), where it called |
 | `find_places`, `get_place`, `place_visits` | Ports and other places, who is inside, who came and went |
 | `list_stations`, `station_statistics`, `data_status` | The stations, one station's figures, and how fresh the data is |
 | `recent_events` | Safety messages, new destinations and statuses, arrivals and departures |
 | `list_aircraft`, `get_aircraft` | The aircraft an ADS-B receiver hears, and one of them |
 
-The tools that list take `limit` and `cursor` as the API does; `vessels_in_area` and `vessels_near` also take `class`.
+The tools that list take `limit` and `cursor` as the API does; the vessel tools answer 25 short rows unless `limit` says otherwise, the others 30, and `vessels_in_area` and `vessels_near` also take `class`. On a limited server the handshake and the tool list are free and each tool call is one of the hour's data calls.
 
 On a server that also offers `system`, and for a caller that may read it (a server without keys, or a key with the `system` scope), the installation's own tools come with them, so an assistant asks the station rather than reading its configuration:
 
@@ -210,6 +214,8 @@ On a server that also offers `system`, and for a caller that may read it (a serv
 | `list_receivers`, `list_outputs` | Each input with its station and state; each output and how it fares |
 | `health` | pass, warn or fail, with the checks behind it |
 | `read_log`, `system_events` | The log, and the installation's own events |
+
+A model running on your own machine needs room for the tools: their definitions take about 2,200 tokens. Give it a context of 8k tokens or more, and 16k in Open WebUI, which adds tools of its own. With less, the tool list is cut off before the model sees it, and it calls the wrong tool or none.
 
 For Claude Code, on the station itself:
 

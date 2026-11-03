@@ -74,7 +74,7 @@ General (mostly optional) settings define fundamental aspects of AIS-catcher's o
 | **Receiver array** |
 | `receiver` | array | List of receiver objects (recommended even for a single receiver) [^legacy-root-receiver] | [Receiver configuration](#receiver-configuration-receiver-array) |
 | `stations` | array | Where the antennas stand: a number, name, position and altitude for each, and a vessel or GPS when they move | [Stations](#stations-stations-array) |
-| `tracking` | object | How the tracker keeps ships: backup file and interval, history, table size | [Tracking and services](#tracking-and-services-tracking-services) |
+| `tracking` | object | How the tracker keeps ships: backup file and interval, history, table size | [Tracking and services](#tracking-and-services-tracking-services). A server whose filter names stations (`stations`, or `id` on the command line) shows those stations alone: their markers, pages and figures |
 | `services` | array | Servers reading the tracker: port, address, what each serves and its filter | [Tracking and services](#tracking-and-services-tracking-services) |
 | `webhooks` | array | Addresses each event is posted to | [Webhooks](../api/webhooks.md) |
 | `mqtt_state` | object | The station's state on an MQTT broker, for Home Assistant | [Home Assistant](../api/home-assistant.md) |
@@ -152,7 +152,7 @@ Each entry of `stations` has a number and may have a name, a position and an alt
 | `alt` | number | Height of the antenna in metres |
 | `mmsi` | number | The vessel the station is on: it is wherever that vessel last reported, and `gps` does not apply |
 | `gps` | boolean | Whether GPS sentences move the station; off unless set to `true`. Its `lat` and `lon` are then where it stands until the first fix |
-| `share_loc` | boolean | Whether the station's position may leave this machine. Off unless set: no server, API or map then shows where it is, nor which vessel it rides, nor how far or in which direction a vessel it heard lies from it |
+| `share_loc` | boolean | Whether the station's position may leave this machine. Off unless set: no server, API or map then shows where it is, nor which vessel it rides, nor how far or in which direction a vessel it heard lies from it. The station's own range figures (furthest vessel, maximum distance, radar) still go to its owner: a browser on the station itself, a signed-in control panel, or an API key with system scope. Which vessels a station hears still hints at its general area |
 
 A message that names a station itself, as a feed from a hub does in its tag block, counts at that station when `stations` lists it, else at the input's.
 
@@ -241,8 +241,8 @@ Each entry of `services`, one server:
 | `system` | boolean | Receivers, outputs, health and the log, under `/api/v1/system` |
 | `geojson` | boolean | The ships as GeoJSON at `/geojson` |
 | `metrics` | boolean | Message counts for Prometheus at `/metrics`; `prome` says the same |
-| `station_id` | number or array | The stations this server is about: its `view` shows only them, as `"view": { "stations": [...] }` says it too (its live streams, NMEA, signal and Prometheus counts, carry every station's messages); a `server` section, or `-N`, lists the first from its own station keys where `stations` does not have it |
-| `tracking` | object | Ships of the server's own, behind a filter on the messages: the terms of an output's filter (`allow_type`, `block_mmsi`, `stations`, `unique`, …) and `zone` or `groups_in` for the receivers that feed it, with `history` and `track_time` for what it keeps. The backup and the places are the site's. Without it the server reads the site's tracker |
+| `limited` | boolean | The short form for whoever asks: lists of 25 rows at most, vessel rows without the station, one vessel in full without its stations, and 25 data calls an hour from one address. Off unless set |
+| `tracking` | object | Ships of the server's own, behind a filter on the messages: the terms of an output's filter (`allow_type`, `block_mmsi`, `stations`, `unique`, …) and `zone` or `groups_in` for the receivers that feed it, with `history` and `track_time` for what it keeps. The backup and the places are the site's. Without it the server reads the site's tracker. A server whose filter names stations (`stations`, or `id` on the command line) shows those stations alone: their markers, pages and figures |
 | `keys` | array | The keys the server accepts, each `{ "name", "sha256", "scopes" }`: see [Keys](../api/overview.md#keys) |
 | `public` | boolean | Its data is for anyone, without a key; never its `system` |
 | `view` | object | Which ships this server shows of what its tracker keeps, and how far back: `stations`, `mmsi_allow`, `mmsi_deny`, `hidden_buckets`, `hidden_classes`, `hidden_statuses`, `speed_min`, `speed_max`, `distance_min`, `distance_max`, `seen` (minutes since heard), `validated`, `repeated`, `track_time` (seconds of track served, at most what the tracker keeps), and `place_geometry` (`false` serves places with their marker position only, keeping their outlines on this machine; on unless set). What it leaves out no route of the server sends: the map, the API, MCP and GeoJSON. A view never makes a tracker; only a message filter does (`filter` on with its terms, or `zone`, `groups_in`). Leave it out to show all |

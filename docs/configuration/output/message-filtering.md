@@ -78,7 +78,7 @@ Generic filtering options requiring 'filter' set to 'true' or 'on' to be active:
 | <span class="cmd-setting">block_mmsi</span> | list | <span class="cmd-value">none</span> | Block messages from specific MMSI numbers |
 | <span class="cmd-setting">allow_channel</span> | string | <span class="cmd-value">all</span> | Only allow messages from specific AIS channels (e.g. `AB`); alias `select_channel` |
 | <span class="cmd-setting">id</span> | list | <span class="cmd-value">all</span> | Comma-separated list of station IDs to allow (0-999999); alias `select_id` |
-| <span class="cmd-setting">gps</span> | boolean | <span class="cmd-value">true</span> | Include GPS messages in output |
+| <span class="cmd-setting">gps</span> | boolean | <span class="cmd-value">true</span> | Include GPS messages in output. Takes effect only with the filter on: `FILTER on GPS off` |
 | <span class="cmd-setting">ais</span> | boolean | <span class="cmd-value">true</span> | Include AIS messages in output |
 | <span class="cmd-setting">remove_empty</span> | boolean | <span class="cmd-value">false</span> | Drop messages whose JSON payload is empty after decoding |
 </div>

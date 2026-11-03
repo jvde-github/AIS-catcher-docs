@@ -44,7 +44,8 @@ Various protocols are supported as input. The table below lists the available pr
 | `ws`     | Plain WebSocket                              | `rtltcp` | RTL-TCP server (raw I/Q)                    |
 | `wss`    | WebSocket over TLS                           | `none`   | Raw sample stream, no protocol layer          |
 | `basestation` | BaseStation (ADS-B SBS-1)              | `beast` | Beast binary (ADS-B)                          |
-| `raw1090`| Raw 1090 MHz frames (ADS-B)                  |          |                                              |
+| `raw1090`| Raw 1090 MHz frames (ADS-B)                  | `tls`    | NMEA0183 over TLS                             |
+| `mqtts`  | MQTT over TLS (port 8883 unless given)       | `wssmqtt` | MQTT over WebSocket and TLS (port 443 unless given) |
 
 Use the appropriate protocol based on your server's configuration and data format. 
 
@@ -93,20 +94,19 @@ Note the difference with file input, where the format is a positional argument: 
 | Specific Options | | | |
 | <span class="cmd-setting">host</span> | string | <span class="cmd-value">-</span> | Remote host address |
 | <span class="cmd-setting">port</span> | string | <span class="cmd-value">-</span> | Remote port number |
-| <span class="cmd-setting">protocol</span> | string | <span class="cmd-value">rtltcp</span> | Protocol (rtltcp/txt/mqtt/wsmqtt/ws/wss/gpsd/basestation/beast/raw1090/none) |
+| <span class="cmd-setting">protocol</span> | string | <span class="cmd-value">rtltcp</span> | Protocol (rtltcp/txt/tls/mqtt/mqtts/wsmqtt/wssmqtt/ws/wss/gpsd/basestation/beast/raw1090/none) |
 | <span class="cmd-setting">url</span> | string | <span class="cmd-value">-</span> | Complete URL: protocol, optional `user:password@` or `token@`, host, port, path and query |
 | <span class="cmd-setting">format</span> | string | <span class="cmd-value">CU8</span> | Format of the incoming data: `CU8`, `CS8`, `CS16` or `CF32` for raw I/Q, or `TXT`, `BASESTATION`, `BEAST`, `RAW1090`. Implied by `protocol`, so set it after that setting — see [Raw sample streams without a protocol](#raw-sample-streams-without-a-protocol) |
-| <span class="cmd-setting">ssl_verify</span> | boolean | <span class="cmd-value">true</span> | Verify the TLS certificate on `wss://` |
+| <span class="cmd-setting">ssl_verify</span> | boolean | <span class="cmd-value">true</span> | Verify the TLS certificate on `wss`, `tls`, `mqtts` and `wssmqtt` |
 | | | | |
 | TCP Options | | | |
-| <span class="cmd-setting">persist</span> | boolean | <span class="cmd-value">true</span> | Keep reconnecting after errors |
 | <span class="cmd-setting">keep_alive</span> | boolean | <span class="cmd-value">true</span> | Enable TCP keepalive |
 | <span class="cmd-setting">reset</span> | integer | <span class="cmd-value">0</span> | Periodically reset the connection after N minutes to recover wedged links (0=never; range 0-3600). A ±10% random jitter is applied to avoid synchronised reconnects. |
 | <span class="cmd-setting">timeout</span> | integer | <span class="cmd-value">0</span> | Connection timeout in seconds (range 0-3600) |
 | | | | |
 | WebSocket Options | | | |
-| <span class="cmd-setting">protocols</span> | string | <span class="cmd-value">-</span> | WebSocket sub-protocols (forced to `mqtt` for `wsmqtt`) |
-| <span class="cmd-setting">binary</span> | boolean | <span class="cmd-value">off</span> | Enable binary WebSocket mode (forced on for `wsmqtt`) |
+| <span class="cmd-setting">protocols</span> | string | <span class="cmd-value">-</span> | WebSocket sub-protocols (forced to `mqtt` for `wsmqtt` and `wssmqtt`) |
+| <span class="cmd-setting">binary</span> | boolean | <span class="cmd-value">off</span> | Enable binary WebSocket mode (forced on for `wsmqtt` and `wssmqtt`) |
 | <span class="cmd-setting">origin</span> | string | <span class="cmd-value">-</span> | Origin header for WebSocket |
 | <span class="cmd-setting">username</span> | string | <span class="cmd-value">-</span> | With `ws`/`wss`: sent as `Authorization: Bearer` when no password is set |
 | <span class="cmd-setting">password</span> | string | <span class="cmd-value">-</span> | With `ws`/`wss`: `username:password` sent as HTTP Basic |

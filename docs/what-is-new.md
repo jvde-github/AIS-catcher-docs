@@ -2,6 +2,10 @@
 
 ## Edge
 
+### HTTPS
+
+- **Optional HTTPS** — a server with `tls` (`cert`, `key`), or `-N ... TLS_CERT file TLS_KEY file`, serves over HTTPS. The control panel takes its own from Settings → System → Access, `control.tls` or `-E ... TLS_CERT file TLS_KEY file`.
+
 ### Track replay
 
 - **Play back vessel movements** — the web viewer gained a replay bar: replay received traffic on the map, scrub the timeline, and vary playback speed from 10× up to 3600×. On by default.
@@ -51,7 +55,11 @@
 ### Stations
 
 - **A private station gives no distances** — a vessel's distance and bearing from a station tell where that station is, so they are only shown when the station that heard the vessel shares its position (`share_loc on`). This holds for the viewer, the API and every other output; turn `share_loc` on to get the distance column and the distance filters back.
+- **A station's marker says how it is doing** — green while it receives, grey when it has heard nothing for 15 minutes (the same rule as the `station_quiet` event and the health check), and grey with a red edge when every receiver naming it has lost its device; on the station's own map a slow red ring pulses around it then. The station's hover and card say "Quiet since 14:05" or "Receiver down". The orange marker five minutes after the page opened is gone: the state is decided by the station's host and sent to the map only when it changes.
 - **The viewer's GeoJSON copies are gone** — `/api/path.geojson` and `/api/allpath.geojson` are no longer served by the viewer. The `geojson` service answers `/geojson` and `/allpath.geojson` as before, and `/api/v1/vessels/{mmsi}/track?format=geojson` gives one vessel's track.
+- **A viewer of some stations is a filter** — a server whose filter names stations with `id` (`-N 8100 filter on id 1001`) shows those stations alone, with a ship table of its own that keeps its own backup `file`; the stations' names and positions come from `stations` in the configuration file. `station_id` on a server is refused. See [Several stations in one viewer](configuration/output/web-viewer.md#several-stations-in-one-viewer).
+- **The v0.70 ship lists are a switch, `api_v0`** — `/ships.json`, `/api/ships.json`, `/api/ships_full.json` and `/stat.json` stay on for a `-N` and a `server` section; an entry of `services` serves them only with `"api_v0": true` (in managed mode the **API v0** line under **Serves**); `limited` does not cap them. A configuration the control panel moves from the old viewer or `server` section keeps them on. See [The ship list for scripts](configuration/output/web-viewer.md#the-ship-list-for-scripts-api-v0).
+- **Prometheus per input and per output** — `/metrics` adds `ais_input_*` (messages, bytes, up, last message, errors, connections) and `ais_output_*` (messages, bytes, dropped, connections) rows, labelled with the input or output, its type and description. See [Sending data to Prometheus](configuration/output/web-viewer.md#sending-data-to-prometheus-for-use-in-grafana-dashboards).
 
 ### HTTP output
 

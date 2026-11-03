@@ -109,7 +109,6 @@ mosquitto_sub -h localhost -t "ais/+/data"
 | <span class="cmd-setting">protocol</span> | string | <span class="cmd-value">MQTT</span> | Transport (`MQTT`, `MQTTS`, `WSMQTT`, `WSSMQTT`, `WS`, `TCP`, `TLS`, `TXT`) |
 | | | | |
 | TCP options (forwarded to underlying transport) | | | |
-| <span class="cmd-setting">persist</span> | boolean | <span class="cmd-value">true</span> | Keep reconnecting after errors |
 | <span class="cmd-setting">keep_alive</span> | boolean | <span class="cmd-value">false</span> | Enable TCP keepalive |
 | <span class="cmd-setting">timeout</span> | integer | <span class="cmd-value">0</span> | TCP timeout in seconds (0-3600) |
 | <span class="cmd-setting">reset</span> | integer | <span class="cmd-value">0</span> | Reset connection after N minutes (0-3600; 0 = never) |

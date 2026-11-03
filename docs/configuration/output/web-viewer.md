@@ -128,6 +128,25 @@ You can add the option `PROME on` to the web configuration command to start rend
 AIS-catcher -N 8100 prome on
 ```
 
+Next to the station's figures (`ais_stat_*`, `ais_msg_*`), `/metrics` has a row per input and per output, labelled with `input` or `output` (its number), `type` and `description` (the `description` set on it, or a name such as `UDP #1`):
+
+| Metric | Type | Meaning |
+|--------|------|---------|
+| `ais_input_count` | counter | Messages decoded from the input |
+| `ais_input_bytes_in` | counter | Raw bytes received |
+| `ais_input_up` | gauge | 1 while the input streams, else 0 |
+| `ais_input_last_message_timestamp_seconds` | gauge | Unix time of the last message decoded, 0 before the first |
+| `ais_input_errors` | counter | Messages with errors, by `error`: `checksum`, `undersized`, `oversized` |
+| `ais_input_connect_ok`, `ais_input_connect_fail`, `ais_input_reconnects` | counter | Connections made, failed and made again, for an input that dials a server (`-t` rtl_tcp or a TCP feed, `-y` SpyServer) |
+| `ais_input_connected` | gauge | 1 while such an input is connected |
+| `ais_output_count` | counter | Messages passed to the output after its filter |
+| `ais_output_bytes_out`, `ais_output_bytes_in` | counter | Bytes sent and received |
+| `ais_output_dropped` | counter | Messages the output could not send: no connection, a full queue or a failed send |
+| `ais_output_connect_ok`, `ais_output_connect_fail`, `ais_output_reconnects` | counter | Connections made, failed and made again, for an output that holds connections |
+| `ais_output_connected` | gauge | Connections the output holds now |
+
+The connection rows appear only for inputs and outputs that hold a connection.
+
 For more information on how to configure Prometheus and Grafana to get an initial dashboard, see [README-grafana.md](../../advanced/grafana.md).
 
 ## The API on the same port
@@ -140,21 +159,66 @@ AIS-catcher -N 8100 api on mcp on
 
 A second `-N` is a second server on the same ships; `ui off` leaves the map out of one. A `-N` listens on every interface, as the viewer always did, so other machines on the network reach its map. One that serves the API, MCP or the system service stays on this machine instead, and says so in the log, unless it has keys, `public on`, or an `ip_bind` of its own; see [Keys](../../api/overview.md#keys). An entry of `services` in a configuration file listens on this machine unless its `bind` says otherwise.
 
+## The ship list for scripts (API v0)
+
+Next to the map, a server answers the ship list and the statistics as v0.70 did: `/ships.json`, `/api/ships.json`, `/api/ships_full.json` and `/stat.json`. The map does not read them; they are there for the scripts written against them. They are on for a `-N` and a `server` section, as before, and off for an entry of `services` unless it says `"api_v0": true`. `api_v0 off` takes them away from a `-N`. `limited` does not cap them: they answer every ship in full, so on a limited server switch `api_v0` off unless those lists are meant to be read. New scripts are better served by the [API](../../api/overview.md).
+
 ## Several stations in one viewer
 
 The receivers of one AIS-catcher stand at stations (`stations` in a configuration file, a receiver's `station`). The viewer shows every station's ships together, with the station that heard each vessel last on its card and in its hover; **Filter → Station** looks through one station alone, and `?stations=3,5` on the viewer's requests, or `/api/v1/vessels?stations=3`, asks the same of the server. Statistics and plots are kept per station: with several stations, the Statistics and Plots tabs get a row of sheets with the station whose figures show at its right end, all stations added up by default. Compare on the Plots tab sets a second station, or all of them, against the one chosen, to set one station, or one decoder, against another. A station on the map opens a card of its own, as on aiscatcher.org: its ships, rate and messages, its position, the last half hour of messages and a day of activity; while the card is open the page looks through that station, and closing it goes back to what was shown before.
 
 A message that names a station itself, as a feed from a hub does in its tag block (`\s:s1001*hh\`), counts at that station when `stations` lists it; otherwise at the input's station. So one input from a hub can serve many stations from one ship table.
 
-`station_id` on a `-N` makes a viewer of one station: the station is listed from the line, with its `station`, `lat`, `lon`, `share_loc`, `use_gps` and `own_mmsi`, unless `stations` already has it, and the viewer shows that station alone: its map and its figures. Its live NMEA, signal and Prometheus streams carry every station's messages. Several ids separated by commas show those together; the line describes the first. For example, two feeders of a hub, each on a viewer of its own, reading one ship table:
+A viewer whose filter names stations with `id` is a viewer of those stations: its station list, station cards, figures and plots show them alone, and its ships are the ones its filter lets through (see [A viewer with ships of its own](#a-viewer-with-ships-of-its-own)). Several ids, separated by commas or as a list, show those together. For example, two feeders of a hub, each on a viewer of its own, from one input:
 
 ```bash
-AIS-catcher -t txt 127.0.0.1 14999 -N 8100 station_id 1001 station Southwood lat 52.08 lon 4.33 share_loc on -N 8101 station_id 1351 station Tyreso lat 59.24 lon 18.24 share_loc on
+AIS-catcher -t txt 127.0.0.1 14999 -N 8100 filter on id 1001 -N 8101 filter on id 1351
 ```
+
+The stations themselves, with their name and position, are described in `stations` in a configuration file; a station that `stations` does not list is shown by its number, without a position, and the log says so. On a `-N` with such a filter, `lat`, `lon`, `share_loc`, `use_gps` and `own_mmsi` are left out with a note, and `station` is the viewer's title. The same two viewers with their stations named and placed:
+
+```json
+{
+  "config": "aiscatcher", "version": 1,
+  "stations": [
+    { "id": 1001, "name": "Southwood", "lat": 52.08, "lon": 4.33, "share_loc": true },
+    { "id": 1351, "name": "Tyreso", "lat": 59.24, "lon": 18.24, "share_loc": true }
+  ],
+  "receiver": [ { "input": "rtltcp", "rtltcp": { "protocol": "txt", "host": "127.0.0.1", "port": 14999 } } ],
+  "services": [
+    { "port": 8100, "filter": "on", "id": [1001] },
+    { "port": 8101, "filter": "on", "id": [1351] }
+  ]
+}
+```
+
+`station_id` on a server is refused: the error says to name the stations in the filter's `id`.
 
 ## A viewer with ships of its own
 
-A viewer with a message filter switched on (`filter on` with `allow_type`, `block_mmsi`, `stations` and the other terms an output takes), or that takes only some receivers (`zone`, `groups_in`), keeps a ship table of its own behind that filter, with its own `history` and `track_time`. The backup and the places are the station's: one `file`, written by the main tracker; a `file`, `backup` or `places` on such a viewer is reported and not used. Without a filter, a viewer's `file`, `backup` and `history` are the station's.
+A viewer with a message filter switched on (`filter on` with `id`, `allow_type`, `block_mmsi`, `stations` and the other terms an output takes), or that takes only some receivers (`zone`, `groups_in`), keeps a ship table of its own behind that filter, with its own `history` and `track_time`. Its `file` is its own backup: read at start and written as often as the station's `backup` says, and on exit. The places are the station's: every ship table reads the one catalogue, and `places` on such a viewer is reported and not used. Without a filter, a viewer's `file`, `backup` and `history` are the station's.
+
+## HTTPS
+
+A server stays on plain HTTP unless it is given a certificate you already have, as PEM files without a passphrase:
+
+```json
+{ "server": { "port": 8443, "tls": { "cert": "fullchain.pem", "key": "privkey.pem" } } }
+```
+
+or on the command line:
+
+```console
+AIS-catcher -N 8443 TLS_CERT fullchain.pem TLS_KEY privkey.pem
+```
+
+Relative paths are read from the configuration's folder. A renewed certificate is taken within a minute, without a restart. A file that does not load stops the start with the reason: a server never falls back to HTTP. An expired certificate still starts, with a warning in the log.
+
+The service's user must be able to read both files. Let's Encrypt's own folder usually is closed to it, so have a renewal hook copy the files to the configuration's folder.
+
+## Behind a reverse proxy
+
+A viewer treats a request from its own machine as coming from the station's owner, who may see the range figures of a station that does not share its position. A proxy on the same machine looks like that too, so it must say it is a proxy, with `proxy_set_header X-Forwarded-For $remote_addr;` in nginx or the same in another proxy. Without that header everyone who reaches the proxy counts as the owner. One address may hold 32 connections, and a proxy on another machine counts as one address.
 
 ## Cross-origin access (CORS)
 
@@ -191,9 +255,10 @@ Server Options:
 | <span class="cmd-setting">zlib</span> | boolean | <span class="cmd-value">true</span> | No longer used; a warning says so |
 | <span class="cmd-setting">server_mode</span> | boolean | <span class="cmd-value">false</span> | Enable hardened multi-station server mode |
 | <span class="cmd-setting">log</span> | boolean | <span class="cmd-value">false</span> | Show the log view in the web viewer |
+| <span class="cmd-setting">api_v0</span> | boolean | <span class="cmd-value">true</span> | `/ships.json`, `/stat.json`, `/api/ships.json` and `/api/ships_full.json` as v0.70 served them; off for an entry of `services` unless switched on; `limited` does not cap them; see [The ship list for scripts](#the-ship-list-for-scripts-api-v0) |
 | <span class="cmd-setting">frame_ancestors</span> | string | <span class="cmd-value">-</span> | CSP `frame-ancestors` value; set to allow embedding the viewer in an `<iframe>` |
 | <span class="cmd-setting">groups_in</span> | integer | <span class="cmd-value">all</span> | Bitmask of input groups feeding the viewer; set, the viewer keeps ships of its own from them |
-| <span class="cmd-setting">station_id</span> | integer[] | <span class="cmd-value">-</span> | The stations this viewer shows, listed from the line where `stations` does not; see [Several stations in one viewer](#several-stations-in-one-viewer) |
+| <span class="cmd-setting">station_id</span> | integer[] | <span class="cmd-value">-</span> | Refused on a server: the stations a viewer shows are the ones its filter names with `id`; see [Several stations in one viewer](#several-stations-in-one-viewer) |
 | <span class="cmd-setting">zone</span> | string | <span class="cmd-value">-</span> | Comma-separated zone tags routed to this viewer; set, the viewer keeps ships of its own from them |
 | <span class="cmd-setting">split</span> | boolean | <span class="cmd-value">true</span> | No longer used: every station is in one view, see [Several stations in one viewer](#several-stations-in-one-viewer) |
 | | | | |
@@ -231,7 +296,7 @@ Server Options:
 | <span class="cmd-setting">plugin</span> | string | <span class="cmd-value">-</span> | JavaScript plugin path |
 | <span class="cmd-setting">style</span> | string | <span class="cmd-value">-</span> | CSS style path |
 | <span class="cmd-setting">plugin_dir</span> | string | <span class="cmd-value">-</span> | Plugins directory |
-| <span class="cmd-setting">about</span> | string | <span class="cmd-value">-</span> | About page path |
+| <span class="cmd-setting">about</span> | string | <span class="cmd-value">-</span> | About page path. Markdown, and raw HTML in it is shown as written: use a file you trust |
 </div>
 
 In addition to the options above, the web viewer accepts the standard [message-filtering](message-filtering.md) settings (e.g. `FILTER on`, allow/block by message type or channel). These restrict which messages reach this particular viewer.

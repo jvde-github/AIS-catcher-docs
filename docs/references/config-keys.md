@@ -343,6 +343,6 @@ Managed mode (`-E`) reads the same file. The server beside the control panel, on
 `mbtiles`, `plugin_dir`, …), never a `port`; the map is always on it. How ships are kept is `tracking` (`file`, `backup`,
 `history`, `track_time`, `track_memory`, `expire`, `max_ships`, `cutoff`, `places`), and the default station is station 0
 of `stations`. `control.wizard` (boolean) shows the setup wizard on the next visit; the hub stores its password under
-`control` itself; leave those keys alone. A file from before, with the viewer under `control.viewer`, is read as it is and
+`control` itself; leave those keys alone. `control.tls` (`cert`, `key`) puts the panel itself on HTTPS. A file from before, with the viewer under `control.viewer`, is read as it is and
 brought to this layout by the panel when it saves.
 

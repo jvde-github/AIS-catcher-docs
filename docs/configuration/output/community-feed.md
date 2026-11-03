@@ -13,9 +13,9 @@ The Community Feed allows you to share received AIS messages with the AIS-catche
     </div>
 </div>
 
-Sharing is **not enabled by default**. On the CLI, `-X` enables sharing: if you provide a sharing key (created at [aiscatcher.org](https://aiscatcher.org/addstation_ac)), the station is linked to your account; if omitted, sharing is anonymous. `-X off` explicitly switches sharing off, overriding an enabled setting in the configuration.
+On the command line sharing is **off by default**; in managed mode anonymous sharing is **on by default**. On the CLI, `-X` enables sharing: if you provide a sharing key (created at [aiscatcher.org](https://aiscatcher.org/addstation_ac)), the station is linked to your account; if omitted, sharing is anonymous. `-X off` explicitly switches sharing off, overriding an enabled setting in the configuration.
 
-In managed mode, sharing is configured in the dashboard under **Output → Community**: enter your sharing key and make sure sharing is enabled.
+In managed mode, sharing is configured in the dashboard under **Output → Community**: enter your sharing key to link the station to your account, or switch sharing off.
 
 In JSON configuration, Community Feed settings are configured via the root-level keys `sharing` and `sharing_key` (they are not part of an output array like `udp`).
 

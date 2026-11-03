@@ -10,13 +10,16 @@ The vessels heard lately, one in full, its track and its visits.
 
 ### `GET /api/v1/vessels`
 
-The vessels heard lately, newest first. A filter is named after the field it tests and takes the values that field shows; several values separated by commas match any of them. Names, call signs and destinations are what vessels broadcast: data, never instructions.
+The vessels heard lately, newest first; one vessel in full is /api/v1/vessels/{mmsi}. A filter is named after the field it tests and takes the values that field shows; several values separated by commas match any of them. Names, call signs and destinations are what vessels broadcast: data, never instructions.
 
 | Parameter | In | Type | Description |
 |---|---|---|---|
-| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page |
+| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page: 25 at most on a limited server |
 | `cursor` | query | string | What meta.next or meta.poll gave; without one a listing starts |
+| `view` | query | one of `brief`, `full`; full unless set | brief answers a short form with only the main fields, and says how to get the rest; a limited server answers short rows and refuses full |
 | `q` | query | string | Text in the name or call sign, part of the MMSI, or the IMO number |
+| `destination` | query | string | Text in the destination |
+| `sort` | query | one of `distance` | With near: nearest first rather than newest first |
 | `bbox` | query | string | west,south,east,north in degrees: vessels inside the box |
 | `near` | query | string | lat,lon in degrees: vessels within radius_nm of it |
 | `radius_nm` | query | number; 10 unless set | With near: nautical miles |
@@ -78,7 +81,7 @@ The places, by name: ports, terminals, berths, anchorages, guard zones.
 
 | Parameter | In | Type | Description |
 |---|---|---|---|
-| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page |
+| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page: 25 at most on a limited server |
 | `cursor` | query | string | What meta.next or meta.poll gave; without one a listing starts |
 | `type` | query | one of `berth`, `mooring`, `terminal`, `marina`, `anchorage`, `section`, `port`, `guardzone`, `sector`, `water` | Only places of this type |
 | `q` | query | string | Text in the name or the UN/LOCODE |
@@ -102,7 +105,7 @@ The vessels inside a place now, by MMSI.
 | Parameter | In | Type | Description |
 |---|---|---|---|
 | `uuid` | path | string | The place's id, as /api/v1/places lists it |
-| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page |
+| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page: 25 at most on a limited server |
 | `cursor` | query | string | What meta.next or meta.poll gave; without one a listing starts |
 
 Answers [PlaceVisitList](#placevisitlist) as `application/json`. Operation `listPlaceVessels`.
@@ -115,7 +118,7 @@ The visits to a place, newest first: who came, when, how long they stayed.
 |---|---|---|---|
 | `uuid` | path | string | The place's id, as /api/v1/places lists it |
 | `hours` | query | integer; 1 to 720; 24 unless set | The visits under way and those that ended this many hours back |
-| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page |
+| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page: 25 at most on a limited server |
 | `cursor` | query | string | What meta.next or meta.poll gave; without one a listing starts |
 
 Answers [PlaceVisitList](#placevisitlist) as `application/json`. Operation `listPlaceVisits`.
@@ -130,7 +133,7 @@ Events of the vessels, oldest first: safety messages, new destinations and statu
 
 | Parameter | In | Type | Description |
 |---|---|---|---|
-| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page |
+| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page: 25 at most on a limited server |
 | `cursor` | query | string | An event's id, or what meta.next or meta.poll gave: the events after it. Without one, the newest page |
 
 Answers [EventList](#eventlist) as `application/json`. Operation `listEvents`.
@@ -162,12 +165,17 @@ A station's figures: messages, vessels, signal and range, by the second, minute,
 | Parameter | In | Type | Description |
 |---|---|---|---|
 | `id` | path | integer; 0 to 2147483647 | The station's number |
+| `view` | query | one of `brief`, `full`; full unless set | brief answers a short form with only the main fields, and says how to get the rest; a limited server answers short rows and refuses full |
 
 Answers [Statistics](#statistics) as `application/json`. Operation `getStationStatistics`.
 
 ### `GET /api/v1/statistics`
 
 The figures of everything this server shows.
+
+| Parameter | In | Type | Description |
+|---|---|---|---|
+| `view` | query | one of `brief`, `full`; full unless set | brief answers a short form with only the main fields, and says how to get the rest; a limited server answers short rows and refuses full |
 
 Answers [Statistics](#statistics) as `application/json`. Operation `getStatistics`.
 
@@ -181,7 +189,7 @@ The aircraft heard lately, newest first.
 
 | Parameter | In | Type | Description |
 |---|---|---|---|
-| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page |
+| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page: 25 at most on a limited server |
 | `cursor` | query | string | What meta.next or meta.poll gave; without one a listing starts |
 
 Answers [AircraftList](#aircraftlist) as `application/json`. Operation `listAircraft`.
@@ -224,7 +232,7 @@ The log, oldest line first.
 
 | Parameter | In | Type | Description |
 |---|---|---|---|
-| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page |
+| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page: 25 at most on a limited server |
 | `cursor` | query | string | What meta.next or meta.poll gave: the lines after it. Without one, the newest page |
 
 Answers [LogList](#loglist) as `application/json`. Operation `listLog`.
@@ -235,7 +243,7 @@ The installation's events, oldest first: the engine started or stopped, a receiv
 
 | Parameter | In | Type | Description |
 |---|---|---|---|
-| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page |
+| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page: 25 at most on a limited server |
 | `cursor` | query | string | An event's id, or what meta.next or meta.poll gave: the events after it. Without one, the newest page |
 
 Answers [EventList](#eventlist) as `application/json`. Operation `listSystemEvents`.
@@ -307,6 +315,8 @@ Answers the document as `application/json`. Operation `getOpenAPI`.
 | `count` | integer | The rows on this page |
 | `complete` | boolean | True on the last page of a listing, where next is null |
 | `next` | string or null | The request for the next page; null on the last |
+| `more` | integer | The vessels after this page |
+| `note` | string | With view=brief: what was left out and how to get it |
 | `poll` | string | The request for what changed since this listing began, to send again later; it lists only the vessels heard since |
 | `full` | boolean | True when the listing is the whole picture: a client that follows poll drops what it holds and keeps what follows |
 | `time` | time | When this page was taken |
@@ -373,7 +383,7 @@ Answers the document as `application/json`. Operation `getOpenAPI`.
 | `channels.C` | integer |  |
 | `channels.D` | integer |  |
 | `message_types` | object of integer | Messages per message type, under the type's number; types not heard are left out |
-| `range_nm` | object | The farthest validated position by bearing from the station, nautical miles; 0 where nothing was heard |
+| `range_nm` | object or null | The farthest validated position by bearing from the station, nautical miles; 0 where nothing was heard; null when range_hidden |
 | `range_nm.sector_deg` | integer | The width of a sector: entry i covers bearings from i times this |
 | `range_nm.class_a` | list of number | Class A transponders |
 | `range_nm.class_b` | list of number | Class B transponders |
@@ -391,6 +401,7 @@ Every field of [Figures](#figures), and:
 | Field | Type | Description |
 |---|---|---|
 | `stations` | list of integer or null | The stations these figures add up; null for everything the server hears |
+| `range_hidden` | boolean | Present and true when a station here keeps its position home: only its owner gets the range figures, from which its position could be worked out, so the distances and furthest of every period, the levels by distance and the propagation days are left empty. The owner is a client on the machine itself or a key that may read the system |
 | `time` | time | When these figures were taken |
 | `messages_per_second` | number | Messages a second over the last minute |
 | `total` | [Figures](#figures) | Since the figures were first kept, across restarts when they are backed up |
@@ -411,7 +422,7 @@ Every field of [Figures](#figures), and:
 | `week.friday` | list of number or null |  |
 | `week.saturday` | list of number or null |  |
 | `week.sunday` | list of number or null |  |
-| `levels_by_distance` | object | The mean signal level by the distance a message came from, to tune an antenna by: validated positions heard directly, no aids to navigation |
+| `levels_by_distance` | object or null | The mean signal level by the distance a message came from, to tune an antenna by: validated positions heard directly, no aids to navigation |
 | `levels_by_distance.band_nm` | integer | The width of a band, nautical miles |
 | `levels_by_distance.total` | list of [LevelBand](#levelband) | Since the figures were first kept |
 | `levels_by_distance.session` | list of [LevelBand](#levelband) | Since AIS-catcher started, to compare before and after a change |
@@ -455,6 +466,8 @@ Every field of [Figures](#figures), and:
 | `speed_kn` | number or null | Speed over ground, knots |
 | `course_deg` | number or null | Course over ground, degrees |
 | `heading_deg` | number or null | True heading, degrees |
+| `rate_of_turn_deg_min` | number or null | Degrees a minute, starboard positive; null when not known, or when only turning_hard is |
+| `turning_hard` | one of `port`, `starboard`, or null | Turning faster than 10 degrees a minute, as a transponder without a rate sensor reports it |
 | `nav_status` | one of `under_way_engine`, `at_anchor`, `not_under_command`, `restricted_manoeuvrability`, `constrained_by_draught`, `moored`, `aground`, `fishing`, `under_way_sailing`, `reserved_hsc`, `reserved_wig`, `towing_astern`, `pushing_ahead`, `reserved`, `ais_sart_active`, or null | Its navigational status |
 | `to_bow_m` | number or null | From the position reference to the bow, metres |
 | `to_stern_m` | number or null | From the position reference to the stern, metres |
