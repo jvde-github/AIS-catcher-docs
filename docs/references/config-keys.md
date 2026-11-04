@@ -340,7 +340,7 @@ With `input` = `NMEA2000`. [Documentation](../configuration/input/NMEA2000.md)
 Managed mode (`-E`) reads the same file. The server beside the control panel, on the panel's port plus one, is the entry of
 `services` marked `"main": true`: it takes a server's keys (`api`, `mcp`, `system`, `geojson`, `kml`, `metrics`, `keys`, `public`, `view`) and the
 [Viewer](#viewer) options (`realtime`, `replay`, `msg`, `decoder`, `log`, `station`, `station_link`, `webcontrol_http`,
-`mbtiles`, `plugin_dir`, …), never a `port`; the map is always on it. How ships are kept is `tracking` (`file`, `backup`,
+`mbtiles`, …), never a `port`; the map is always on it. It loads no plugins and no about page, which go on another server, and has no `log`: the panel shows it. How ships are kept is `tracking` (`file`, `backup`,
 `history`, `track_time`, `track_memory`, `expire`, `max_ships`, `cutoff`, `places`), and the default station is station 0
 of `stations`. `control.wizard` (boolean) shows the setup wizard on the next visit; the hub stores its password under
 `control` itself; leave those keys alone. `control.tls` (`cert`, `key`) puts the panel itself on HTTPS. A file from before, with the viewer under `control.viewer`, is read as it is and

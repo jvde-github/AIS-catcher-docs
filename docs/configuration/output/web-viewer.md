@@ -108,6 +108,8 @@ AIS-catcher -N 8100 plugin_dir /usr/share/aiscatcher/plugins
 ```
 Files need to have the extension ``.pjs`` and ``.pss`` for respectively JavaScript and CSS style plugins. The repository includes a few example plugins that demonstrate how to add additional maps or cater to regional preferences. Examples of plugins can be found in [another](https://github.com/jvde-github/AIS-Catcher-PLUGINS) GitHub repository.
 
+A plugin runs in the browser of everyone who opens the map: install only plugins you trust. In managed mode the map beside the control panel (the `"main": true` server) loads no plugins and no about page, as the panel shows it on its own address; add a server under **Services** for them. It has no log tab either: the panel shows the log.
+
 ## Offline web viewer
 The web viewer runs without an internet connection out of the box: all web libraries are now bundled into AIS-catcher, so no online content is fetched to render the interface. This facilitates using the web interface whilst traveling.
 
@@ -196,7 +198,7 @@ The stations themselves, with their name and position, are described in `station
 
 ## A viewer with ships of its own
 
-A viewer with a message filter switched on (`filter on` with `id`, `allow_type`, `block_mmsi`, `stations` and the other terms an output takes), or that takes only some receivers (`zone`, `groups_in`), keeps a ship table of its own behind that filter, with its own `history` and `track_time`. Its `file` is its own backup: read at start and written as often as the station's `backup` says, and on exit. The places are the station's: every ship table reads the one catalogue, and `places` on such a viewer is reported and not used. Without a filter, a viewer's `file`, `backup` and `history` are the station's.
+A viewer with a message filter switched on (`filter on` with `id`, `allow_type`, `block_mmsi`, `stations` and the other terms an output takes), or that takes only some receivers (`zone`, `groups_in`), keeps a ship table of its own behind that filter, with its own `history` and `track_time`. Its `file` is its own backup: read at start and written as often as the station's `backup` says, and on exit. The places are the station's: every ship table reads the one catalogue, which `places` names on any viewer, this one included. Without a filter, a viewer's `file`, `backup` and `history` are the station's.
 
 ## HTTPS
 
