@@ -29,11 +29,14 @@ theme:
     - content.code.annotate
     - content.code.copy
     - content.code.wrap
+    - content.tabs.link
 
 repo_url: https://github.com/jvde-github/AIS-catcher
 repo_name: GitHub
 extra_css:
   - styles/custom.css
+extra_javascript:
+  - javascripts/stepper.js
 
 extra:
   social:
@@ -57,98 +60,96 @@ extra:
         url: 'disclaimer.md'
 
 nav:
-  - Home:
-      - Welcome: index.md
+  - Home: index.md
+  - Get Started:
       - What is AIS?: ais-basics.md
-      - What You’ll Need: what-you-need.md
-  - What is New?: what-is-new.md
-  - Getting Started:
-      - Overview: getting-started/overview.md
-  - Installation:
-      - Overview: installation/overview.md
-      - Docker: installation/docker.md
-      - Raspberry Pi: installation/raspberrypi.md
-      - macOS: installation/macos.md
-      - Windows: installation/windows.md
-      - Android: installation/android.md
-      - Build from Source: installation/build-source.md
-      - Ubuntu, Debian and Fedora: installation/ubuntu-debian.md
+      - What You Need: what-you-need.md
+      - Quick Start: getting-started/overview.md
+      - Install:
+          - All Installs: installation/overview.md
+          - Raspberry Pi and Linux: installation/ubuntu-debian.md
+          - Windows: installation/windows.md
+          - macOS: installation/macos.md
+          - Docker: installation/docker.md
+          - Build from Source: installation/build-source.md
+          - AIS-catcher-control: usage/gui.md
   - Managed Mode:
       - Getting Around: managed/dashboard.md
-      - Setup Wizard: managed/setup-wizard.md
-      - Input Settings: managed/input.md
-      - Output Settings: managed/output.md
+      - Receiver: managed/input.md
+      - Outputs: managed/output.md
       - Remote Access and Security: managed/remote-access.md
+      - Guides:
+          - Send Ships to Your Chart Plotter: managed/chart-plotter.md
   - Manual Mode:
-      - Overview: usage/overview.md
+      - How Manual Mode Works: usage/overview.md
       - Command Line: usage/cli.md
-      - JSON Configuration: usage/json-configuration.md
+      - Configuration File: usage/json-configuration.md
       - Running as a Service: usage/service.md
-  - Settings:
-      - Overview: configuration/overview.md
-      - Input Options:
-            - Overview: configuration/input/overview.md
-            - SDR Devices:
-              - RTL-SDR: configuration/input/rtlsdr.md
-              - AirSpy: configuration/input/airspy.md
-              - AirSpy HF+: configuration/input/airspyhf.md
-              - HackRF: configuration/input/hackrf.md
-              - HydraSDR: configuration/input/hydrasdr.md
-              - SDRPlay: configuration/input/sdrplay.md
-              - SoapySDR: configuration/input/soapysdr.md
-            - Network Input:
-              - TCP Client: configuration/input/tcp.md
-              - UDP: configuration/input/udp.md
-              - SpyServer: configuration/input/spyserver.md
-            - File Input:
-              - Raw Files: configuration/input/file.md
-              - WAV Files: configuration/input/wav.md
-            - Other Input:
-              - Serial Port: configuration/input/serial.md
-              - dAISy Catcher: configuration/input/daisy-catcher.md
-              - NMEA2000: configuration/input/NMEA2000.md
-      - Model: configuration/model.md
-      - Output Options:
-        - Overview: configuration/output/overview.md
-        - Message Filtering: configuration/output/message-filtering.md
-        - Community Feed: configuration/output/community-feed.md
-        - Console Output: configuration/output/console.md
-        - Network Output:
-          - TCP Server: configuration/output/TCP-server.md
-          - TCP Client: configuration/output/TCP-client.md
-          - UDP: configuration/output/UDP.md
-          - HTTP: configuration/output/HTTP.md
-          - MQTT: configuration/output/MQTT.md
-        - Web Viewer: configuration/output/web-viewer.md
-        - Places: configuration/output/places.md
-        - NMEA2000: configuration/output/NMEA2000.md
-        - Database (PostgreSQL / SQLite): configuration/output/PSQL.md
+      - Guides:
+          - Send Ships to Your Chart Plotter: usage/chart-plotter.md
+          - Location from GPS: advanced/GPS.md
+          - Offline Web Viewer: advanced/offline.md
+          - Aircraft (ADS-B): advanced/ADSB.md
+          - GNU Radio: advanced/GNUradio.md
+          - Grafana: advanced/grafana.md
+          - Small Computers: advanced/Low-spec-devices.md
+      - Reference:
+          - Overview: configuration/overview.md
+          - Inputs:
+                - Overview: configuration/input/overview.md
+                - SDR Devices:
+                  - RTL-SDR: configuration/input/rtlsdr.md
+                  - AirSpy: configuration/input/airspy.md
+                  - AirSpy HF+: configuration/input/airspyhf.md
+                  - HackRF: configuration/input/hackrf.md
+                  - HydraSDR: configuration/input/hydrasdr.md
+                  - SDRPlay: configuration/input/sdrplay.md
+                  - SoapySDR: configuration/input/soapysdr.md
+                - Network Input:
+                  - TCP Client: configuration/input/tcp.md
+                  - UDP: configuration/input/udp.md
+                  - SpyServer: configuration/input/spyserver.md
+                - File Input:
+                  - Raw Files: configuration/input/file.md
+                  - WAV Files: configuration/input/wav.md
+                  - FM Discriminator Audio: advanced/FM-decoding.md
+                - Other Input:
+                  - Serial Port: configuration/input/serial.md
+                  - dAISy Catcher: configuration/input/daisy-catcher.md
+                  - NMEA2000: configuration/input/NMEA2000.md
+          - Decoding:
+              - Model: configuration/model.md
+              - Sample Rate: advanced/samplerate.md
+          - Outputs:
+            - Overview: configuration/output/overview.md
+            - Message Filtering: configuration/output/message-filtering.md
+            - Community Feed: configuration/output/community-feed.md
+            - Console Output: configuration/output/console.md
+            - Network Output:
+              - TCP Server: configuration/output/TCP-server.md
+              - TCP Client: configuration/output/TCP-client.md
+              - UDP: configuration/output/UDP.md
+              - HTTP: configuration/output/HTTP.md
+              - MQTT: configuration/output/MQTT.md
+            - Web Viewer: configuration/output/web-viewer.md
+            - Places: configuration/output/places.md
+            - NMEA2000: configuration/output/NMEA2000.md
+            - Database (PostgreSQL / SQLite): configuration/output/PSQL.md
+          - Configuration Keys: references/config-keys.md
   - API:
       - Overview: api/overview.md
       - Reference: api/reference.md
       - Webhooks: api/webhooks.md
       - Home Assistant: api/home-assistant.md
-  - Tools:
-      - AIS-catcher-control: usage/gui.md
       - Python (aiscat): tools/python.md
-  - Advanced:
-      - Offline Web Viewer: advanced/offline.md
-      - Include ADSB feed: advanced/ADSB.md
-      - FM decoding: advanced/FM-decoding.md
-      - GPS: advanced/GPS.md
-      - Performance Tuning: advanced/Low-spec-devices.md
-      - Connecting to GNUradio: advanced/GNUradio.md
-      - Long Range AIS: advanced/long-range.md
-      - Setting Sample Rate: advanced/samplerate.md
-      - Grafana: advanced/grafana.md
-      - Validation: advanced/validation.md
+      - JSON AIS Format: references/JSON-decoding.md
+  - Help:
       - Troubleshooting: advanced/troubleshooting.md
-  - Community: community.md
-  - FAQ: faq.md
-  - References:
+      - Community: community.md
+      - What is New?: what-is-new.md
       - Features: getting-started/features.md
-      - JSON AIS format: references/JSON-decoding.md
-      - Configuration Keys: references/config-keys.md
+      - Long Range AIS: advanced/long-range.md
+      - Validation: advanced/validation.md
       - License: references/license.md
 
 
@@ -166,6 +167,8 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.magiclink
   - pymdownx.tasklist
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.tilde
   - pymdownx.extra
   - md_in_html
@@ -181,3 +184,12 @@ markdown_extensions:
 plugins:
   - search
   - awesome-pages
+  - redirects:
+      redirect_maps:
+        installation/raspberrypi.md: installation/ubuntu-debian.md
+        installation/android.md: https://github.com/jvde-github/AIS-catcher-for-Android
+        managed/setup-wizard.md: getting-started/overview.md
+        usage/online-configuration.md: managed/dashboard.md
+        faq.md: usage/chart-plotter.md
+        community/overview.md: community.md
+        references/overview.md: index.md

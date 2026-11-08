@@ -108,7 +108,7 @@ AIS-catcher -N 8100 plugin_dir /usr/share/aiscatcher/plugins
 ```
 Files need to have the extension ``.pjs`` and ``.pss`` for respectively JavaScript and CSS style plugins. The repository includes a few example plugins that demonstrate how to add additional maps or cater to regional preferences. Examples of plugins can be found in [another](https://github.com/jvde-github/AIS-Catcher-PLUGINS) GitHub repository.
 
-A plugin runs in the browser of everyone who opens the map: install only plugins you trust. In managed mode the map beside the control panel (the `"main": true` server) loads no plugins and no about page, as the panel shows it on its own address; add a server under **Services** for them. It has no log tab either: the panel shows the log.
+A plugin runs in the browser of everyone who opens the map: install only plugins you trust.
 
 ## Offline web viewer
 The web viewer runs without an internet connection out of the box: all web libraries are now bundled into AIS-catcher, so no online content is fetched to render the interface. This facilitates using the web interface whilst traveling.

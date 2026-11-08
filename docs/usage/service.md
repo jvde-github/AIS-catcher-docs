@@ -1,41 +1,29 @@
 # Running as a Service
 
-On Debian-based systems (including Raspberry Pi), the [install script](../installation/raspberrypi.md) sets up the infrastructure to run AIS-catcher as a systemd background service that starts automatically at boot.
+On Linux and the Raspberry Pi, the [install script](../installation/ubuntu-debian.md) without `-M` sets AIS-catcher up as a systemd service in manual mode. The service runs as the user `aiscatcher` and reads two files:
 
-!!! note
-    In managed mode this is all handled for you — the service runs the dashboard and you never touch these files. This page is for stations configured manually.
+- `/etc/AIS-catcher/config.json`, a [configuration file](json-configuration.md).
+- `/etc/AIS-catcher/config.cmd`, [command-line switches](cli.md), one or more per line. Lines starting with `#` are comments.
 
-## Configuration Files
-
-The background service reads two configuration files:
-
-- `/etc/AIS-catcher/config.json` (JSON configuration)
-- `/etc/AIS-catcher/config.cmd` (command line parameters)
-
-The simplest approach is to edit `/etc/AIS-catcher/config.cmd` to capture your settings. Lines starting with `#` are considered comments and ignored. The file can be modified using a text editor, for example:
+AIS-catcher reads `config.json` first, then the switches in `config.cmd`. Outputs in both files add up; a setting in both takes the value from `config.cmd`. Put your settings in whichever file you prefer:
 
 ```console
 sudo nano /etc/AIS-catcher/config.cmd
 ```
 
-Please note that `config.json` takes precedence over `config.cmd`.
+## Start, stop and check
 
-## Service Control
-
-To start AIS-catcher as a background service:
+Restart the service after changing either file:
 
 ```console
-sudo systemctl start ais-catcher.service
+sudo systemctl restart ais-catcher.service
 ```
 
-To view the status of the service:
-
-```console
-sudo systemctl status ais-catcher.service
-```
-
-To ensure AIS-catcher starts automatically at boot time, enable the service with:
-
-```console
-sudo systemctl enable ais-catcher.service
-```
+| Command | What it does |
+|---------|--------------|
+| `sudo systemctl start ais-catcher.service` | Start it |
+| `sudo systemctl stop ais-catcher.service` | Stop it |
+| `sudo systemctl enable ais-catcher.service` | Start it at boot |
+| `sudo systemctl disable ais-catcher.service` | Do not start it at boot |
+| `systemctl status ais-catcher.service` | Show whether it runs |
+| `journalctl -u ais-catcher.service -f` | Follow its log |

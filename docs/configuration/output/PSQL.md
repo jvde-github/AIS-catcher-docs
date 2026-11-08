@@ -58,7 +58,7 @@ AIS-catcher -D csv:/var/log/ais/
 
 === "CSV"
 
-    Point it at a directory that already exists and is writable **by the user AIS-catcher runs as** — the managed/systemd install runs as `aiscatcher`, which cannot write into a home directory:
+    Point it at a directory that already exists and is writable **by the user AIS-catcher runs as**. The service the install script sets up runs as `aiscatcher`, which cannot write into a home directory:
     ```bash
     sudo mkdir -p /var/lib/ais-catcher/csv
     sudo chown aiscatcher: /var/lib/ais-catcher/csv

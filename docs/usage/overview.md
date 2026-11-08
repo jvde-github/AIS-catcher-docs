@@ -1,20 +1,36 @@
-# Manual Mode
+# How Manual Mode Works
 
-Managed mode is the default, not the only way to run AIS-catcher. Started with command-line options, AIS-catcher behaves as the classic command-line tool it has always been: it does exactly what you type, and the [dashboard](../managed/dashboard.md) and its configuration file are not in play.
+In manual mode, AIS-catcher does exactly what you tell it when you start it: on the command line, or in a configuration file. There is no dashboard and nothing changes while it runs. To change a setting, stop AIS-catcher, change the command or the file, and start it again.
 
-```console
+## A first run
+
+```bash
 AIS-catcher -v 10
 ```
 
-That is a complete AIS receiver — decoding starts immediately and NMEA messages appear on screen, with statistics every 10 seconds.
+That is a complete AIS receiver. AIS-catcher starts the first receiver it finds, shows each message on the screen, and prints statistics every 10 seconds.
 
-Manual mode is the right choice when you want to script or integrate AIS-catcher, run a minimal headless setup, build complex multi-receiver configurations, or simply prefer the command line.
+## Command line or configuration file
 
-There are two equivalent ways to express a configuration:
+Both hold the same settings, so pick the one that suits the job:
 
-- [Command Line](cli.md) — every setting as a command-line switch. Start here for a first run and experimentation.
-- [JSON Configuration](json-configuration.md) — the same settings in a JSON file, loaded with `-C`. Better for larger configurations that you want to keep under version control or deploy to multiple stations.
+- **[Command line](cli.md)**: quick to type and to try. Good for a first run and for experiments.
+- **[Configuration file](json-configuration.md)**: one JSON file, loaded with `-C`. Good for a station that runs for months, for several receivers, and for keeping your settings in one place.
 
-For unattended operation, see [Running as a Service](service.md).
+To move from one to the other, let AIS-catcher write the file:
 
-Every setting is documented in the [Settings reference](../configuration/overview.md) with its command-line switch and JSON key side by side.
+```bash
+AIS-catcher -gr tuner auto -u 192.168.1.20 10110 -J config.json
+AIS-catcher -C config.json
+```
+
+`-J` writes the command line as a configuration file instead of running it, and `-C` runs the file.
+
+## Where to go next
+
+- [Command Line](cli.md): how a command line is built, and every switch.
+- [Configuration File](json-configuration.md): how the file is laid out.
+- [Running as a Service](service.md): start AIS-catcher at boot on Linux and the Raspberry Pi.
+- The reference: every setting of the [inputs](../configuration/input/overview.md), the [decoding](../configuration/model.md) and the [outputs](../configuration/output/overview.md).
+
+Set up from the dashboard in your browser instead? That is managed mode: see [the dashboard](../managed/dashboard.md).

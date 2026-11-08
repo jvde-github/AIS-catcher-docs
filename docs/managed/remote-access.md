@@ -11,7 +11,7 @@ When bound to anything other than `127.0.0.1`/`localhost`, a **password is requi
 <!-- TODO screenshot: install-password.webp — the set-a-password screen on first access -->
 
 !!! warning
-    The dashboard is intended for use on your local network. If you want to expose your station's data publicly, do not expose the dashboard — share your data via the [community feed](../configuration/output/community-feed.md) or add a [web viewer](output.md#web-viewer) instead.
+    The dashboard is intended for use on your local network. If you want to expose your station's data publicly, do not expose the dashboard — share your data via the [community feed](../configuration/output/community-feed.md) or add a [web viewer](output.md#maps-home-assistant-and-webhooks) instead.
 
 ## HTTPS for the dashboard
 

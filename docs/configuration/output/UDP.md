@@ -1,7 +1,7 @@
 # UDP 
 
 !!! tip "Step-by-step guide"
-    **[Send AIS to your chart plotter](https://www.aiscatcher.org/guides/udp)** on aiscatcher.org walks through this with screenshots: in the control panel, in the configuration file and on the command line.
+    **[Send ships to your chart plotter](../../usage/chart-plotter.md)** walks through this with a configuration file and on the command line.
 
 <div class="command-container">
       <div class="command-syntax">

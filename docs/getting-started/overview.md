@@ -1,75 +1,133 @@
-# Getting Started
+---
+hide:
+  - toc
+---
 
-AIS-catcher turns an inexpensive SDR dongle into a complete AIS receiving station, set up and run entirely from the browser. From plugging in the hardware to ships on the map takes six steps — no configuration files, no command-line options.
+# Quick Start
 
-Only the first two steps happen on this page: connect your hardware and press **Start Installation**. Everything from step 3 onward continues in the browser.
+From a receiver in its box to ships on your own map, in five steps. AIS-catcher runs in **managed mode**: it runs in the background, and you set it up in the dashboard in your browser. To run it with a configuration file or command-line options instead, see [Manual Mode](../usage/overview.md).
 
-<div class="recommended" markdown>
+<div class="stepper" markdown>
 
-## Your Station in Six Steps
+<div class="stepper-step" markdown>
 
-<div class="steps" markdown>
+## Before you start
 
-<div class="step" markdown>
+Have these ready:
 
-**Connect the hardware**  
-Plug the SDR dongle into your computer and connect the AIS antenna
+<div class="ready" markdown>
 
-[What You’ll Need](../what-you-need.md){ .md-button .md-button--muted }
+**Computer** A Raspberry Pi, a PC or a Mac
 
-</div>
+**Receiver** An RTL-SDR dongle or a dAISy-catcher
 
-<div class="step" markdown>
-
-**Install AIS-catcher**  
-Install and start the program
-
-[Start Installation](../installation/overview.md){ .md-button .md-button--primary }
+**Antenna** A VHF antenna, tuned to 162 MHz
 
 </div>
 
-<div class="step" markdown>
-
-**Open the dashboard**  
-Browse to your receiver on port 8118, e.g. `http://raspberrypi.local:8118`{ .address }, and set a password
-
-[Getting Around the Dashboard](../managed/dashboard.md){ .md-button .md-button--muted }
+Not sure what to get? See [What you need](../what-you-need.md). Connect the antenna to the receiver, and the receiver to the computer.
 
 </div>
 
-<div class="step" markdown>
+<div class="stepper-step" markdown>
 
-**Run the setup wizard**  
-Pick your input device, optionally enable output feeds, save and start
+## Install AIS-catcher
 
-[Setup Wizard](../managed/setup-wizard.md){ .md-button .md-button--muted }
+Pick your computer:
+
+=== "Raspberry Pi and Linux"
+
+    One command installs AIS-catcher and what it needs, and runs it in managed mode as a service that starts at boot:
+
+    ```console
+    sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) -p -M"
+    ```
+
+    It works on Raspberry Pi OS, Debian, Ubuntu and Fedora. See [Raspberry Pi and Linux](../installation/ubuntu-debian.md) for the details.
+
+=== "Windows"
+
+    1. Download the **Edge** build from the [downloads](../installation/windows.md#downloads) and unzip it.
+    2. With an RTL-SDR, use [Zadig](https://www.rtl-sdr.com/tag/zadig/) to give it the WinUSB driver, once per dongle.
+    3. Double-click `start-GUI.bat` in the unzipped folder.
+
+=== "macOS"
+
+    Build it with [Homebrew](https://brew.sh). This takes a few minutes:
+
+    ```bash
+    brew install git make gcc cmake pkg-config sqlite3 librtlsdr
+    git clone https://github.com/jvde-github/AIS-catcher.git --depth 1
+    cd AIS-catcher && mkdir build && cd build
+    cmake .. && make && sudo make install
+    ```
+
+    Then start it in managed mode:
+
+    ```bash
+    AIS-catcher -E ~/aiscatcher.json 127.0.0.1:8118
+    ```
+
+    See [macOS](../installation/macos.md) for other receivers.
+
+=== "Docker"
+
+    ```console
+    docker run --rm -it --network=host --device-cgroup-rule='c 189:* rmw' -v /dev/bus/usb:/dev/bus/usb -v ais-config:/config ghcr.io/jvde-github/ais-catcher:edge -E /config/config.json 127.0.0.1:8118
+    ```
+
+    The settings live in the `ais-config` volume, so they survive a restart. With a dAISy-catcher, add `--device /dev/ttyACM0`. See [Docker](../installation/docker.md).
+
+Something else, such as Android? See [all installs](../installation/overview.md).
 
 </div>
 
-<div class="step step--muted" markdown>
+<div class="stepper-step" markdown>
 
-**Optional: install AIS-catcher-control**  
-A separate tool for Raspberry Pi, Ubuntu and Debian to manage the AIS-catcher program from the browser: start and stop the service, and update with one click
+## Open the dashboard
 
-[AIS-catcher-control](../usage/gui.md){ .md-button .md-button--muted }
+In your browser, open port 8118 of the computer that runs AIS-catcher:
 
-</div>
+- `http://localhost:8118`{ .address } on that computer itself,
+- `http://raspberrypi.local:8118`{ .address }, or the computer's IP address, from another device.
 
-<div class="step" markdown>
-
-**Join the community**  
-Register your station at **aiscatcher.org** to track your station's performance and contribute to the global feed
-
-[Community](../community.md){ .md-button .md-button--muted }
+From another device, AIS-catcher first asks you to set a password. On macOS and in Docker, the commands in the previous step only let the computer itself in: replace `127.0.0.1` with `0.0.0.0` to open the dashboard from elsewhere.
 
 </div>
 
-</div>
+<div class="stepper-step" markdown>
+
+## Run the setup wizard
+
+The first time, a short wizard sets up the station. Every step can be skipped, and everything can be changed later under **Settings**.
+
+1. **Welcome:** press **Get started**.
+2. **Input Device:** pick your receiver. The wizard lists the SDRs it finds on the computer, the dAISy-catcher and other serial receivers.
+3. **AIS-catcher Community:** to put your station on the community map, press **Create station on aiscatcher.org**, register it and paste the station key you get. Your station then gets a name, coverage statistics and its own page. Or press **Skip**.
+4. **AISHub:** for the AISHub data exchange, if you are a member. Otherwise press **Skip**.
+5. **Summary:** check it, keep **Start the receiver after saving** ticked, and press **Save & Close**.
+
+![The setup wizard's summary](../assets/qs-w4-summary.webp){ width="560" }
 
 </div>
 
-For a complete guided walk-through, see the [Quick Start on aiscatcher.org](https://www.aiscatcher.org/quickstart). Once it runs, the [guides to setting up your own station](https://www.aiscatcher.org/guides) take it further a job at a time: its location, more receivers, your chart plotter, the API, AI assistants and Home Assistant.
+<div class="stepper-step" markdown>
 
-## Prefer the Command Line?
+## See your ships
 
-Managed mode is the default, not the only way to run AIS-catcher. Started with command-line options, AIS-catcher behaves as a classic command-line tool and does exactly what you type — see [Manual Mode](../usage/overview.md).
+In an area with traffic, the first ships appear on the dashboard map within a few minutes. Names can take longer: ships send them less often than their position.
+
+!!! question "No ships after a few minutes?"
+    - Check that the antenna is connected, and that the station can see water with traffic.
+    - Check that no other program uses the receiver.
+    - See [Troubleshooting](../advanced/troubleshooting.md).
+
+Where to go next:
+
+- [Getting Around the Dashboard](../managed/dashboard.md): the map, the receiver controls and the settings.
+- [Send Ships to Your Chart Plotter](../managed/chart-plotter.md).
+- [Outputs](../managed/output.md): the community map, other programs and services.
+
+</div>
+
+</div>

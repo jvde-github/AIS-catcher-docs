@@ -35,3 +35,15 @@ On the command line, setting names and boolean values are not case-sensitive. In
 |  <span class="cmd-setting">buffer_count</span> | integer | <span class="cmd-value">24</span>  | Number of FIFO buffers (1-100) |
 
 </div>
+
+## Finding good settings
+
+A good starting point:
+
+```bash
+AIS-catcher -gr rtlagc on tuner auto -a 192K
+```
+
+Then change one setting at a time and compare the message counts: `rtlagc` on or off, `tuner` on `auto` or a fixed gain between 0 and 50, and with and without the `-a 192K` bandwidth.
+
+On a slow computer, such as a Raspberry Pi Zero, `-F` lowers the load at a very small cost in reception: see [Small Computers](../../advanced/Low-spec-devices.md). If that is not enough, a sample rate of 288K (`-s 288K`) lowers it further, at a larger cost.

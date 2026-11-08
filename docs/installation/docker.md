@@ -1,83 +1,36 @@
-# Docker Container
+# Docker
 
-!!! warning "Disclaimer"
-    **AIS-catcher is intended for hobbyist and research projects only. It is NOT approved for use in navigation or safety-of-life applications.** [Read the full disclaimer](../disclaimer.md).
+Container images are on the GitHub Container Registry: `edge` is the latest build of the `main` branch, `latest` the latest release. See the [package page](https://github.com/jvde-github/AIS-catcher/pkgs/container/ais-catcher) for all tags. The images do not support SDRplay devices.
 
-Pre-built container images are available from the GitHub Container Registry, with `latest` (the latest release) and `edge` (the bleeding edge of the `main` branch) being the two main tags — see the [package's page](https://github.com/jvde-github/AIS-catcher/pkgs/container/ais-catcher) for all available tags. There are two ways to run your station:
-
-- **[Managed mode](#managed-mode)** (recommended) — configure and control your station from the browser.
-- **[Manual mode](#manual-mode)** — configure via command-line options.
-
-!!! note
-    SDRplay devices are currently not supported in the Docker images.
-
-<div class="recommended" markdown>
-
-## Managed Mode
-
-<div class="steps" markdown>
-
-<div class="step" markdown>
-
-**Pull the image**  
-With Docker installed:
-
-```console
-docker pull ghcr.io/jvde-github/ais-catcher:edge
-```
-
-</div>
-
-<div class="step" markdown>
-
-**Run it in managed mode**
+## Managed mode
 
 ```console
 docker run --rm -it --network=host --device-cgroup-rule='c 189:* rmw' -v /dev/bus/usb:/dev/bus/usb -v ais-config:/config ghcr.io/jvde-github/ais-catcher:edge -E /config/config.json 127.0.0.1:8118
 ```
 
-A quick tour of the options:
+- `--device-cgroup-rule` and `-v /dev/bus/usb` pass USB receivers through to the container, and keep them working when one is plugged in again.
+- With a dAISy-catcher or another serial receiver, add `--device /dev/ttyACM0` instead.
+- The settings live in the `ais-config` volume, so they survive a restart.
+- To open the dashboard from another computer, replace `127.0.0.1` with `0.0.0.0`. It then asks for a password.
 
-- `--device-cgroup-rule` and `-v /dev/bus/usb` pass USB SDRs through to the container, and keep working when a device is re-plugged.
-- Using a dAISy-catcher or other serial receiver? Add `--device /dev/ttyACM0` instead.
-- Your settings live in the `ais-config` volume (created automatically), so they persist across restarts.
-- To administer the station from another machine, replace `127.0.0.1` with `0.0.0.0` — a password is then required.
+Then open the dashboard in your browser, as in the [Quick Start](../getting-started/overview.md#open-the-dashboard).
 
-</div>
+## Manual mode
 
-<div class="step" markdown>
-
-**Complete the setup wizard**  
-Open the dashboard in your browser at `http://localhost:8118`{ .address }. On first use, the setup wizard walks you through configuring your input device and outputs, and starts the receiver:
-
-[Setup Wizard](../managed/setup-wizard.md){ .md-button .md-button--primary }
-
-</div>
-
-</div>
-
-That's it — your station is up and running. See [Getting Around the Dashboard](../managed/dashboard.md) to monitor and fine-tune it.
-
-</div>
-
-## Manual Mode
-
-Run the container with any AIS-catcher command-line options:
+Run the container with your AIS-catcher options at the end:
 
 ```console
-docker run --rm -it --pull always --device /dev/bus/usb ghcr.io/jvde-github/ais-catcher:latest <ais-catcher command line options>
+docker run --rm -it --pull always --device /dev/bus/usb ghcr.io/jvde-github/ais-catcher:latest <options>
 ```
 
-Notice that if you want to run a web viewer (`-N 8100`) you need to make that port available on the host system with `-p 8100:8100`, or use `--network=host`.
-
-[Command Line Run](../usage/cli.md){ .md-button }
+For the web viewer (`-N 8100`), make its port available with `-p 8100:8100`, or use `--network=host`. See [Manual Mode](../usage/overview.md).
 
 !!! tip "docker-shipfeeder"
-    For manual-mode setups focused on feeding aggregators, [docker-shipfeeder](https://github.com/sdr-enthusiasts/docker-shipfeeder) by the sdr-enthusiasts community is a user-friendly alternative with excellent documentation and support. Note that it runs AIS-catcher in manual mode and does not offer the managed-mode dashboard.
+    To feed aggregators, [docker-shipfeeder](https://github.com/sdr-enthusiasts/docker-shipfeeder) from the sdr-enthusiasts community runs AIS-catcher in manual mode, with its own documentation and support.
 
 ## Updating
 
-To update to the latest image, simply pull it again:
+Pull the image again:
 
 ```console
 docker pull ghcr.io/jvde-github/ais-catcher:edge

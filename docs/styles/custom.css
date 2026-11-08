@@ -541,6 +541,17 @@
     border-radius: 999px;
 }
 
+/* the home page's two modes: two wide cards, the badge beside the title */
+.install-grid.mode-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.mode-grid .install-card .install-badge {
+    position: static;
+    margin-left: 6px;
+    vertical-align: 2px;
+}
+
 .md-typeset details {
     border: 1px solid #E3E7F3;
     border-radius: 0.5rem;
@@ -798,37 +809,283 @@
     color: #42566e;
 }
 
-/* Gear cards: icon shopping list (What You'll Need) */
-.md-typeset .gear-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-    gap: 14px;
-    margin: 24px 0 28px;
+/* What you need: the kit laid out as the signal chain it is, antenna to receiver to
+   computer. The joints borrow the dAISy drawing's lead line and dot, and name the
+   connection, which is what tells you the cable or adapter to buy. */
+.md-typeset .kit-wrap {
+    container: kit / inline-size;
+    margin: 1.4rem 0 1.6rem;
 }
 
-.md-typeset .gear-card {
+.md-typeset .kit {
+    --kit-line: #1668dc;
+    --kit-dot: #f97316;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 4rem minmax(0, 1.3fr) 4rem minmax(0, 1fr);
+}
+
+.md-typeset .kit-part {
+    display: flex;
+    flex-direction: column;
     border: 1px solid #dbe7f5;
     border-radius: 12px;
     background: #fff;
-    padding: 22px 16px 18px;
+    padding: 0.9rem 1rem 0.85rem;
+}
+
+.md-typeset .kit-pick {
+    border: 2px solid #1976d2;
+    background: #f7fafe;
+    padding: calc(0.9rem - 1px) calc(1rem - 1px) calc(0.85rem - 1px);
+}
+
+.md-typeset .kit-role {
+    margin: 0;
+    font-size: 0.66rem;
+    color: #5b7392;
+}
+
+.md-typeset .kit-chip {
+    margin-left: 0.35rem;
+    padding: 0.08rem 0.5rem;
+    border-radius: 999px;
+    background: #1976d2;
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: 600;
+}
+
+.md-typeset .kit-part h3 {
+    margin: 0.2rem 0 0.45rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.md-typeset .kit-part p {
+    margin: 0 0 0.6rem;
+    font-size: 0.7rem;
+    line-height: 1.55;
+}
+
+.md-typeset .kit-buy {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.6rem;
+    border-top: 1px solid #e6edf6;
+}
+
+.md-typeset .kit-price {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #12365e;
+    font-variant-numeric: tabular-nums;
+}
+
+.md-typeset .kit-price small {
+    font-size: 0.66rem;
+    font-weight: 500;
+    color: #5b7392;
+}
+
+.md-typeset .kit-buy a,
+.md-typeset .kit-where {
+    font-size: 0.68rem;
+    font-weight: 600;
+}
+
+.md-typeset .kit-where {
+    color: #5b7392;
+}
+
+/* the receiver slot holds two options; the second grows so its price lines up with
+   the antenna's and the computer's */
+.md-typeset .kit-opt {
+    display: flex;
+    flex-direction: column;
+}
+
+.md-typeset .kit-opt:last-child {
+    flex: 1;
+}
+
+.md-typeset .kit-part .kit-or {
+    margin: 0.6rem 0 0.15rem;
+    font-size: 0.66rem;
+    font-weight: 600;
+    color: #5b7392;
     text-align: center;
 }
 
-.md-typeset .gear-card svg {
-    width: 42px;
-    height: 42px;
-    margin-bottom: 10px;
-}
-
-.md-typeset .gear-card .gear-title {
-    font-weight: 700;
-    color: #12365e;
-    margin-bottom: 3px;
-}
-
-.md-typeset .gear-card .gear-desc {
-    font-size: 0.72rem;
+/* a joint: the lead line from one part to the next, a dot where it meets each, the
+   connection written above and below it */
+.md-typeset .kit-joint {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.15rem;
+    font-size: 0.6rem;
+    line-height: 1.2;
     color: #5b7392;
+    text-align: center;
+}
+
+/* the words stand off the line by the same distance, however many lines each has */
+.md-typeset .kit-joint span {
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.md-typeset .kit-joint span:first-child {
+    bottom: calc(50% + 0.45rem);
+}
+
+.md-typeset .kit-joint span:last-child {
+    top: calc(50% + 0.45rem);
+}
+
+.md-typeset .kit-joint::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    left: -5px;
+    right: -5px;
+    top: 50%;
+    height: 10px;
+    transform: translateY(-50%);
+    background:
+        radial-gradient(circle, var(--kit-dot) 0 3px, #fff 3.5px 4.5px, transparent 5px) left center / 10px 10px no-repeat,
+        radial-gradient(circle, var(--kit-dot) 0 3px, #fff 3.5px 4.5px, transparent 5px) right center / 10px 10px no-repeat,
+        linear-gradient(var(--kit-line), var(--kit-line)) center / 100% 1.5px no-repeat;
+}
+
+.md-typeset .kit-addons p {
+    font-size: 0.7rem;
+    color: #5b7392;
+}
+
+.md-typeset .kit-note {
+    margin: 0.7rem 0 0;
+    font-size: 0.64rem;
+    color: #5b7392;
+}
+
+/* narrow column: the chain runs down the page, the joint's words beside its line */
+@container kit (max-width: 680px) {
+    .md-typeset .kit {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .md-typeset .kit-joint span {
+        position: static;
+    }
+
+    .md-typeset .kit-joint {
+        height: 3.2rem;
+        align-items: flex-start;
+        gap: 0.1rem;
+        padding-left: calc(50% + 0.8rem);
+        text-align: left;
+    }
+
+    .md-typeset .kit-joint::before {
+        left: 50%;
+        right: auto;
+        top: -5px;
+        bottom: -5px;
+        width: 10px;
+        height: auto;
+        transform: translateX(-50%);
+        background:
+            radial-gradient(circle, var(--kit-dot) 0 3px, #fff 3.5px 4.5px, transparent 5px) center top / 10px 10px no-repeat,
+            radial-gradient(circle, var(--kit-dot) 0 3px, #fff 3.5px 4.5px, transparent 5px) center bottom / 10px 10px no-repeat,
+            linear-gradient(var(--kit-line), var(--kit-line)) center / 1.5px 100% no-repeat;
+    }
+}
+
+.md-typeset .kit-budget {
+    margin: 0 0 1.6rem;
+    padding: 0.85rem 1.1rem;
+    border-radius: 12px;
+    background: #f5f9fe;
+}
+
+.md-typeset .kit-budget p {
+    margin: 0;
+    font-size: 0.74rem;
+}
+
+/* The dAISy-catcher, drawn and labelled: the drawing from the website's About page
+   (scripts/build-daisy-diagram.mjs in the website repo), laid out by the width of the
+   column instead of the window, as the docs column is narrower than the page */
+.md-typeset .dz-wrap {
+    container: dz / inline-size;
+    margin: 1.2rem 0 0.4rem;
+}
+
+.md-typeset .dz {
+    position: relative;
+    max-width: 960px;
+    margin: 0 auto;
+    color: #12365e;
+    --dz-line: #1668dc;
+    --dz-dot: #f97316;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 10px;
+    row-gap: 6px;
+    grid-template-areas: "gpio mcu radio" "stage stage stage" "usb sma shield";
+}
+
+.md-typeset .dz-stage { position: relative; grid-area: stage; aspect-ratio: 1000 / 716; }
+.md-typeset .dz .dz-board { position: absolute; display: block; height: auto; left: 7%; top: 10.06%; width: 86%; border-radius: 0; box-shadow: none; }
+.md-typeset .dz-lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.md-typeset .dz-lead { fill: none; stroke: var(--dz-line); stroke-width: 1.6; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.md-typeset .dz-dot { fill: var(--dz-dot); stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
+.md-typeset .dz-beside { display: none; }
+.md-typeset .dz .dz-label { margin: 0; line-height: 1.3; font-weight: 500; text-wrap: balance; text-align: center; font-size: 0.62rem; }
+.md-typeset .dz-l-gpio, .md-typeset .dz-l-mcu, .md-typeset .dz-l-radio { align-self: end; }
+.md-typeset .dz-l-sma { grid-area: sma; }
+.md-typeset .dz-l-usb { grid-area: usb; }
+.md-typeset .dz-l-gpio { grid-area: gpio; }
+.md-typeset .dz-l-radio { grid-area: radio; }
+.md-typeset .dz-l-shield { grid-area: shield; }
+.md-typeset .dz-l-mcu { grid-area: mcu; }
+
+@container dz (min-width: 640px) {
+    .md-typeset .dz { display: block; aspect-ratio: 1000 / 440; }
+    .md-typeset .dz-stage { position: absolute; inset: 0; aspect-ratio: auto; }
+    .md-typeset .dz .dz-board { left: 25.5%; top: 11.82%; width: 49%; }
+    .md-typeset .dz-beside { display: block; }
+    .md-typeset .dz-stacked { display: none; }
+    .md-typeset .dz .dz-label { position: absolute; font-size: 0.68rem; transform: translateY(-50%); }
+    .md-typeset .dz .dz-l-sma { left: 0; right: 77.2%; padding-right: 9px; top: 89.09%; text-align: right; }
+    .md-typeset .dz .dz-l-usb { left: 0; right: 82.4%; padding-right: 9px; top: 48.64%; text-align: right; }
+    .md-typeset .dz .dz-l-gpio { left: 0; right: 78.8%; padding-right: 9px; top: 13.18%; text-align: right; }
+    .md-typeset .dz .dz-l-radio { left: 82.6%; right: 0; padding-left: 9px; top: 44.55%; text-align: left; }
+    .md-typeset .dz .dz-l-shield { left: 78%; right: 0; padding-left: 9px; top: 83.18%; text-align: left; }
+    .md-typeset .dz .dz-l-mcu { left: 79.2%; right: 0; padding-left: 9px; top: 10.45%; text-align: left; }
+}
+
+/* the build-up, once, when the drawing scrolls into view: each point its dot, its line,
+   then its words. Without script, in print and with reduced motion it is simply there. */
+.md-typeset .dz.armed .dz-dot, .md-typeset .dz.armed .dz-label { opacity: 0; }
+.md-typeset .dz.armed .dz-lead { stroke-dashoffset: 1; }
+.md-typeset .dz.armed.in .dz-dot { animation: dz-pop 0.6s ease-out both; animation-delay: calc(var(--i) * 1.5s); }
+.md-typeset .dz.armed.in .dz-lead { animation: dz-draw 1s ease-in-out both; animation-delay: calc(var(--i) * 1.5s + 0.3s); }
+.md-typeset .dz.armed.in .dz-label { animation: dz-say 0.8s ease-out both; animation-delay: calc(var(--i) * 1.5s + 1s); }
+@keyframes dz-pop { from { opacity: 0; } to { opacity: 1; } }
+@keyframes dz-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes dz-say { from { opacity: 0; } to { opacity: 1; } }
+@media print {
+    .md-typeset .dz.armed .dz-dot, .md-typeset .dz.armed .dz-label { opacity: 1; animation: none; }
+    .md-typeset .dz.armed .dz-lead { stroke-dashoffset: 0; animation: none; }
 }
 
 /* Headings: navy ink, accent bar under section titles */
@@ -864,3 +1121,179 @@
 .md-typeset .hero h1 {
     color: #1976d2;
 }
+
+/* Steppers: a guide one step at a time, as a card with a counter and dots on top and
+   Back / Next below. Without the script (.stepper--on) the steps read top to bottom. */
+.md-typeset .stepper--on {
+    margin: 1.4rem 0 1.8rem;
+    border: 1px solid #dbe7f5;
+    border-radius: 14px;
+    background: #fff;
+    overflow: hidden;
+    scroll-margin-top: 5rem;
+}
+
+.md-typeset .stepper-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.6rem 1.2rem;
+    border-bottom: 1px solid #e6edf6;
+    background: #f7fafe;
+}
+
+.md-typeset .stepper-head .stepper-count {
+    margin: 0;
+    font-size: 0.66rem;
+    font-weight: 600;
+    color: #5b7392;
+    font-variant-numeric: tabular-nums;
+}
+
+.md-typeset .stepper-dots {
+    display: flex;
+    align-items: center;
+}
+
+/* each dot sits in a 24px hit area */
+.md-typeset .stepper-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.md-typeset .stepper-dot::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #d5e2f2;
+    transition: width 0.15s ease, background-color 0.15s ease;
+}
+
+.md-typeset .stepper-dot.is-done::before {
+    background: #8db8ea;
+}
+
+.md-typeset .stepper-dot.is-current::before {
+    width: 18px;
+    background: #1976d2;
+}
+
+.md-typeset .stepper-dot:focus-visible {
+    outline: 2px solid #1976d2;
+    outline-offset: -2px;
+    border-radius: 6px;
+}
+
+.md-typeset .stepper--on > .stepper-step {
+    padding: 0 1.2rem 0.4rem;
+}
+
+.md-typeset .stepper--on > .stepper-step > h2:first-child {
+    margin-top: 1.1rem;
+}
+
+.md-typeset .stepper--on > .stepper-step > h2:focus {
+    outline: none;
+}
+
+/* a step opened from a link is its page's :target; keep its permalink for hover only */
+.md-typeset .stepper--on > .stepper-step > h2:target > .headerlink:not(:hover):not(:focus) {
+    opacity: 0;
+}
+
+.md-typeset .stepper-foot {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.75rem 1.2rem;
+    border-top: 1px solid #e6edf6;
+}
+
+.md-typeset .stepper-back,
+.md-typeset .stepper-next {
+    font: inherit;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.md-typeset .stepper-back {
+    padding: 0.45rem 0.6rem;
+    border: 0;
+    background: none;
+    color: #5b7392;
+}
+
+.md-typeset .stepper-back:hover {
+    color: #12365e;
+}
+
+.md-typeset .stepper-next {
+    margin-left: auto;
+    padding: 0.5rem 0.95rem;
+    border: 1px solid #1976d2;
+    background: #1976d2;
+    color: #fff;
+}
+
+.md-typeset .stepper-next:hover {
+    background: #1565c0;
+}
+
+.md-typeset .stepper-back:focus-visible,
+.md-typeset .stepper-next:focus-visible {
+    outline: 2px solid #1976d2;
+    outline-offset: 2px;
+}
+
+/* things to have ready, on a stepper's first step */
+.md-typeset .ready {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.6rem;
+    margin: 0.4rem 0 1rem;
+}
+
+.md-typeset .ready p {
+    margin: 0;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid #dbe7f5;
+    border-radius: 10px;
+    font-size: 0.68rem;
+    line-height: 1.45;
+    color: #5b7392;
+}
+
+.md-typeset .ready strong {
+    display: block;
+    font-size: 0.74rem;
+    color: #12365e;
+}
+
+@media print {
+    .md-typeset .stepper-head,
+    .md-typeset .stepper-foot {
+        display: none;
+    }
+
+    .md-typeset .stepper--on > .stepper-step[hidden] {
+        display: block;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .md-typeset .stepper-dot::before {
+        transition: none;
+    }
+}
+

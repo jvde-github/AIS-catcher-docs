@@ -14,37 +14,10 @@ AIS-catcher follows a modular architecture: one or more **inputs** feed a decodi
 - [**Model**](model.md) — message decoding and processing; AIS-catcher includes various decoder models for experimentation.
 - [**Output**](output/overview.md) — community feed, UDP/TCP/HTTP/MQTT, web viewers, PostgreSQL and the screen.
 
-Each setting is documented with its JSON key and command-line switch. In managed mode the most common settings appear as fields in the [dashboard](../managed/dashboard.md); this reference covers the complete set.
+Each setting is documented with its JSON key and its command-line switch side by side, for a [configuration file](../usage/json-configuration.md) and for the [command line](../usage/cli.md).
 
 !!! note "Key casing (CLI vs JSON)"
     In JSON configuration files, keys are case-sensitive and should be lowercase. On the command line, setting names passed after a device/output switch (e.g. `-gr`, `-gm`, `-u`, `-H`) are not case-sensitive. Tables in this documentation show setting names in lowercase to match JSON.
-
-## Usage Profiles
-
-The same three stages scale from simple to complex setups:
-
-<div class="profile-grid">
-  <div class="profile-card">
-    <div class="profile-title">Receiver</div>
-    <p class="profile-desc">Minimal decode & output</p>
-  </div>
-  <div class="profile-card">
-    <div class="profile-title">Aggregator</div>
-    <p class="profile-desc">Route & filter streams</p>
-  </div>
-  <div class="profile-card">
-    <div class="profile-title">Database</div>
-    <p class="profile-desc">Log to PostgreSQL</p>
-  </div>
-  <div class="profile-card">
-    <div class="profile-title">Experimenter</div>
-    <p class="profile-desc">Multi-SDR testing</p>
-  </div>
-  <div class="profile-card">
-    <div class="profile-title">Map Viewer</div>
-    <p class="profile-desc">Built-in visualization</p>
-  </div>
-</div>
 
 ## Advanced Architecture
 

@@ -1,30 +1,44 @@
-# Output Settings
+# Outputs
 
-!!! tip "Step-by-step guides"
-    On aiscatcher.org: **[Send AIS to your chart plotter](https://www.aiscatcher.org/guides/udp)** and **[Share with the community map](https://www.aiscatcher.org/guides/community)**, with screenshots, in the control panel, in the configuration file and on the command line.
+**Settings → Outputs** lists where your data goes: the community map first, then the outputs you added.
 
-The **Output** menu defines where your data goes. Add or edit outputs without touching a configuration file — each output is defined by a few fields, for example an HTTP feed with its protocol, URL and posting interval.
+## Community Map
 
-![Dashboard — HTTP output](../assets/qs-output-http.webp)
+![The Community map page, with sharing switched on and no key yet](../assets/managed/community-map.webp)
 
-## Community Feed
+**Share with the Community Map** sends your ships to the [aiscatcher.org](https://www.aiscatcher.org) community map. A new station shares from the start, anonymously.
 
-Share your data with the [aiscatcher.org](https://aiscatcher.org) community. Create a sharing key by [registering your station](https://aiscatcher.org/addstation_ac), enter it under **Output → Community** and make sure sharing is enabled — you can then view detailed statistics and coverage for your station. Sharing can also be anonymous (no key). See [Community Feed](../configuration/output/community-feed.md).
+To give your station a name, coverage statistics and its own page, register it:
 
-## Network Outputs
+1. [Create a station on aiscatcher.org](https://www.aiscatcher.org/addstation_ac). You get a station key.
+2. Paste the key in **Sharing Key** and press **Save changes**, then **Restart receiver**.
 
-Feed your data onwards to other applications and aggregators:
+Once a key is in, the button next to it reads **Edit station details** and opens your station on aiscatcher.org. Switch sharing off and nothing leaves the station.
 
-- **UDP** — the workhorse for feeding services like MarineTraffic and VesselFinder, or other applications on your network.
-- **HTTP** — post messages in JSON format to a URL at a set interval.
-- **MQTT** — publish messages to an MQTT broker.
-- **TCP** — serve or push raw NMEA over TCP.
+The community map icon in the control bar shows the state at a glance.
 
-The full set of options for each output type is documented in the [Output Options reference](../configuration/output/overview.md).
+## Other Programs
 
-## Web Viewer
+**+ Add output** opens **Add an output**:
 
-The dashboard already includes a [map](dashboard.md#the-map) for monitoring your own station. In addition, you can add one or more **web viewers** for external consumption: a full-featured, customizable map with plots, statistics and range views that you can share on your local network or publicly. See [Web Viewer](../configuration/output/web-viewer.md) for all options, and [aiscatcher.org/dashboards](https://aiscatcher.org/dashboards) for examples of stations sharing their viewer.
+| Output | What it does |
+|--------|--------------|
+| **UDP** | NMEA to another program on the network |
+| **HTTP** | Post batches to a web address |
+| **MQTT** | Publish to a broker |
+| **TCP Client** | Connect out to a server and send |
+| **TCP Server** | Let programs connect in and read |
+| **Database** | SQLite, PostgreSQL or CSV files |
+| **Screen** | Print the messages in the log |
 
-!!! note "Save and restart"
-    After changing anything, press **Save**, then restart the receiver for the changes to take effect.
+Fill in what the output needs, such as an address and a port, and give it a **Name**. The rest is under **Advanced settings**. **Active** switches an output off without deleting it.
+
+[Send Ships to Your Chart Plotter](chart-plotter.md) walks through a UDP output, start to finish.
+
+A mark next to an output in the list means it needs attention: amber for a setting, red for a problem while it runs. Hover over it to see why.
+
+## Maps, Home Assistant and Webhooks
+
+These are under **Settings → Services**. **+ Add server** adds a map of its own on another port, which you can share on your network or publicly, with the API and other feeds beside it. **Home Assistant** and **Webhooks** have their own pages there.
+
+Press **Save changes**, then **Restart receiver**, to use a change.

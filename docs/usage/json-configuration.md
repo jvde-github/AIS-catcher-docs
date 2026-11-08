@@ -1,144 +1,94 @@
-# JSON Configuration
+# Configuration File
 
-AIS-catcher (v0.41+) supports extensive configuration through JSON files. This guide describes the JSON structure, key settings, and common patterns.
-
-To start AIS-catcher with a JSON configuration file, use the `-C` option followed by the path to your `config.json` file:
+A configuration file holds the same settings as the command line, written as JSON. Load it with `-C`:
 
 ```bash
 AIS-catcher -C config.json
 ```
-This loads and applies the settings from the JSON file.
 
-## Basic Structure
+`-C` reads the file where it stands on the command line, so other switches can go with it: `AIS-catcher -C config.json -v 10`. To start from a command line you already use, let `-J` write the file for you: see [Command Line](cli.md#from-the-command-line-to-a-file).
 
-A JSON configuration file always starts with the configuration header:
+## A complete example
+
+One RTL-SDR, a web viewer on port 8100, a UDP output and the community feed:
+
 ```json
 {
-    "config": "aiscatcher",
-    "version": 1
+  "config": "aiscatcher",
+  "version": 1,
+  "sharing": true,
+  "receiver": [
+    { "input": "rtlsdr", "rtlsdr": { "tuner": "auto", "rtlagc": true } }
+  ],
+  "server": [
+    { "port": 8100, "station": "My station", "lat": 52.1, "lon": 4.3 }
+  ],
+  "udp": [
+    { "host": "192.168.1.20", "port": 10110, "description": "Chart plotter" }
+  ]
 }
 ```
 
-Where:
+Every file starts with `"config": "aiscatcher"` and `"version": 1`. With nothing else, AIS-catcher picks a receiver as it does on the command line.
 
-- `config`: Identifies the configuration type. Must be `"aiscatcher"`.
-- `version`: Configuration version. Currently, only `1` is supported.
+## The rules
 
+- **Keys are lowercase**, and case-sensitive.
+- **Outputs are lists**: `udp`, `tcp`, `http` and the others take one entry per output.
+- **`"active": false`** switches a section off and keeps its settings. Leave it out and the section is on.
+- **A value can be a number or a string**: `10110` and `"10110"` are the same.
 
-This is the absolute minimal structure (just the first two keys). If no receiver is configured, AIS-catcher will use the default behaviour for selecting an input device.
+## The main section
 
-To select the RTL-SDR as an input device:
+| Key | What it holds | Reference |
+|-----|---------------|-----------|
+| `config`, `version` | `"aiscatcher"` and `1`; required | |
+| `receiver` | The receivers, one object each | [below](#receivers-receiver) |
+| `stations` | Where the antennas stand | [below](#stations-stations) |
+| `sharing`, `sharing_key` | The community feed | [Community Feed](../configuration/output/community-feed.md) |
+| `screen`, `verbose`, `verbose_time` | What the screen shows | [Console Output](../configuration/output/console.md) |
+| `udp`, `tcp`, `tcp_listener` | UDP, TCP client and TCP server outputs | [UDP](../configuration/output/UDP.md), [TCP client](../configuration/output/TCP-client.md), [TCP server](../configuration/output/TCP-server.md) |
+| `http`, `mqtt` | HTTP and MQTT outputs | [HTTP](../configuration/output/HTTP.md), [MQTT](../configuration/output/MQTT.md) |
+| `db` | Databases | [Database](../configuration/output/PSQL.md) |
+| `server` | Web viewers | [Web Viewer](../configuration/output/web-viewer.md) |
+| `tracking`, `services` | The ship tracker and the servers that read it | [below](#tracking-and-services-tracking-services) |
+| `webhooks` | Addresses each event is posted to | [Webhooks](../api/webhooks.md) |
+| `mqtt_state` | The station's state on an MQTT broker | [Home Assistant](../api/home-assistant.md) |
+
+The generated [Configuration Keys](../references/config-keys.md) list every key with its type, default and values.
+
+## Receivers (`receiver`)
+
+Each entry of `receiver` is one receiver. `input` picks the kind of device, and a section of the same name holds its settings:
+
 ```json
 {
-    "config": "aiscatcher",
-    "version": 1,
-    "receiver": [
-        {
-            "input": "rtlsdr"
-        }
-    ]
+  "config": "aiscatcher",
+  "version": 1,
+  "receiver": [
+    { "input": "rtlsdr", "serial": "00000001", "description": "Mast" },
+    { "input": "rtlsdr", "serial": "00000002", "description": "Mast, long range",
+      "channel": "CD", "engines": [ { "type": "v1_high" } ] }
+  ]
 }
 ```
 
+| Key | What it does | Reference |
+|-----|--------------|-----------|
+| `input` | The kind of device: `rtlsdr`, `airspy`, `serialport`, `udpserver` and so on | [Inputs](../configuration/input/overview.md) |
+| `serial` | Picks one device of that kind by its serial number | |
+| `description` | The receiver's name in the viewer and the statistics | |
+| `station` | The number of the station in `stations` it stands at | [Stations](#stations-stations) |
+| `lat`, `lon` | Its position, when it names no station | |
+| `channel` | `AB`, the standard pair, or `CD`, the long-range pair | [Long Range AIS](../advanced/long-range.md) |
+| `sample_rate`, `bandwidth`, `freqoffset` | The settings every SDR has | [Inputs](../configuration/input/overview.md) |
+| `engines` | The decoders, each `{ "type": ... }` with optional `settings` | [Decoding](../configuration/model.md), [Engines](../references/config-keys.md#engines) |
+| `verbose`, `meta`, `own_mmsi` | Statistics on the screen, extra metadata, the station's own MMSI | [Console Output](../configuration/output/console.md) |
+| `rtlsdr`, `airspy`, … | The device section matching `input` | [Inputs](../configuration/input/overview.md) |
 
-> Note: older configurations allowed receiver selection at the root level (e.g. `input`, `serial`). This is legacy and may disappear in a future release. Prefer defining receivers in the `receiver` array. [^legacy-root-receiver]
+A device section configures a device but does not select it: `input` does. A single receiver can also stand in the main section itself, as `-J` writes it: `"rtlsdr": { ... }` at the top level.
 
-## Important Notes
-
-- JSON keys are case-sensitive and must be lowercase.
-- CLI setting names are not case-sensitive.
-- Define receivers in the `receiver` array (even for a single receiver).
-- Device sections (e.g. `rtlsdr`, `airspy`, `hydrasdr`) configure the device, but do not select it. Use `input` (and optionally `serial`) inside each receiver object.
-- `active` is optional in any section; if omitted, it is assumed to be `true`.
-- Outputs like `udp` are arrays to support multiple output channels.
-
-## Configuration Keys
-
-Configuration keys are grouped below by purpose. The complete list of keys the managed hub edits, with types, defaults and ranges, is on [Configuration Keys](../references/config-keys.md).
-
-### General Overview
-
-General (mostly optional) settings define fundamental aspects of AIS-catcher's operation.
-
-#### Root-level keys
-
-| Key | Type | Description | Documentation |
-|-----|------|-------------|---------------|
-| **General**  |
-| `config` | string | "aiscatcher" | |
-| `version` | number | 1 | |
-| `sharing` | boolean | Enable community feed sharing | [Community Feed](../configuration/output/community-feed.md) |
-| `sharing_key` | string | Community feed key | [Community Feed](../configuration/output/community-feed.md) |
-| `screen` | number | Screen output mode (0-5), one for all receivers | [Console Output](../configuration/output/console.md) |
-| `verbose_time` | number | Verbose update interval in seconds, one for all receivers | [Console Output](../configuration/output/console.md) |
-| **Receiver array** |
-| `receiver` | array | List of receiver objects (recommended even for a single receiver) [^legacy-root-receiver] | [Receiver configuration](#receiver-configuration-receiver-array) |
-| `stations` | array | Where the antennas stand: a number, name, position and altitude for each, and a vessel or GPS when they move | [Stations](#stations-stations-array) |
-| `tracking` | object | How the tracker keeps ships: backup file and interval, history, table size | [Tracking and services](#tracking-and-services-tracking-services). A server whose filter names stations (`stations`, or `id` on the command line) shows those stations alone: their markers, pages and figures |
-| `services` | array | Servers reading the tracker: port, address, what each serves and its filter | [Tracking and services](#tracking-and-services-tracking-services) |
-| `webhooks` | array | Addresses each event is posted to | [Webhooks](../api/webhooks.md) |
-| `mqtt_state` | object | The station's state on an MQTT broker, for Home Assistant | [Home Assistant](../api/home-assistant.md) |
-| **Output channels** |
-| `server` | array | Web viewer configuration | [Web Viewer](../configuration/output/web-viewer.md) |
-| `udp` | array | UDP output configuration | [UDP Output](../configuration/output/UDP.md) |
-| `tcp` | array | TCP output configuration (client) | [TCP Output](../configuration/output/TCP-client.md) |
-| `tcp_listener` | array | TCP output configuration (server) | [TCP Output](../configuration/output/TCP-server.md) |
-| `http` | array | HTTP output configuration | [HTTP Output](../configuration/output/HTTP.md) |
-| `mqtt` | array | MQTT output configuration | [MQTT Output](../configuration/output/MQTT.md) |
-
-#### Receiver configuration (`receiver` array)
-
-The root-level `receiver` key contains an array of receiver objects. This is the recommended structure going forward.
-
-##### Receiver object keys
-
-Each entry in the root-level `receiver` array is a receiver object. These keys live *inside* each receiver object:
-
-| Key | Type | Description | Documentation |
-|-----|------|-------------|---------------|
-| `input` | string | Selects the input device type for this receiver (e.g. `rtlsdr`, `airspy`, `hydrasdr`, `spyserver`, ...) | [Input Overview](../configuration/input/overview.md) |
-| `description` | string | A name for the receiver, shown in the viewer's receiver list and statistics | |
-| `station` | number | The number of the station in `stations` whose antenna this receiver uses | [Stations](#stations-stations-array) |
-| `lat`, `lon` | number | The receiver's position, when it names no station | [Stations](#stations-stations-array) |
-| `serial` | string/number | Receiver identifier (recommended; also used to target per-receiver CLI overrides in some setups) | |
-| `verbose` | boolean | Enable verbose output for this receiver | [Console Output](../configuration/output/console.md) |
-| `meta` | string | Metadata tags (T/D/M) for this receiver | [Console Output](../configuration/output/console.md) |
-| `own_mmsi` | number | Own MMSI of receiver station | |
-| `<device section>` | object | Device-specific configuration object matching `input` (e.g. `rtlsdr`, `airspy`, `hydrasdr`, ...). See examples in [Input Device Settings](#input-device-settings). | [Input Overview](../configuration/input/overview.md) |
-| `model` | object | Decoder model configuration for this receiver | [Model](../configuration/model.md) |
-
-##### Multi-receiver example
-
-Example with two receivers:
-```json
-{
-    "config": "aiscatcher",
-    "version": 1,
-    "receiver": [
-        {
-            "input": "airspy",
-            "serial": "airspy",
-            "airspy": {
-                "sample_rate": "3000K"
-            }
-        },
-        {
-            "input": "rtlsdr",
-            "serial": "ais",
-            "rtlsdr": {
-                "bandwidth": "192k"
-            }
-        }
-    ]
-}
-```
-
-In this example, each receiver selects a device via `input`, is optionally named via `serial`, and is configured via its device section (e.g. `rtlsdr`, `airspy`, `hydrasdr`).
-
-#### Stations (`stations` array)
-
-!!! tip "Step-by-step guide"
-    **[Locate your station](https://www.aiscatcher.org/guides/station)** on aiscatcher.org walks through this with screenshots: in the control panel, in the configuration file and on the command line.
+## Stations (`stations`)
 
 A station is where an antenna stands. Every ship's distance and bearing, and the range figures, are measured from the station that heard the ship, so receivers at different places each measure from their own. The viewer's own `lat` and `lon` are only used for a receiver that has no position.
 
@@ -152,7 +102,7 @@ Each entry of `stations` has a number and may have a name, a position and an alt
 | `alt` | number | Height of the antenna in metres |
 | `mmsi` | number | The vessel the station is on: it is wherever that vessel last reported, and `gps` does not apply |
 | `gps` | boolean | Whether GPS sentences move the station; off unless set to `true`. Its `lat` and `lon` are then where it stands until the first fix |
-| `share_loc` | boolean | Whether the station's position may leave this machine. Off unless set: no server, API or map then shows where it is, nor which vessel it rides, nor how far or in which direction a vessel it heard lies from it. The station's own range figures (furthest vessel, maximum distance, radar) still go to its owner: a browser on the station itself, a signed-in control panel, or an API key with system scope. Which vessels a station hears still hints at its general area |
+| `share_loc` | boolean | Whether the station's position may leave this machine. Off unless set: no server, API or map then shows where it is, nor which vessel it rides, nor how far or in which direction a vessel it heard lies from it. The station's own range figures (furthest vessel, maximum distance, radar) still go to its owner: a browser on the station itself, or an API key with system scope. Which vessels a station hears still hints at its general area |
 
 A message that names a station itself, as a feed from a hub does in its tag block, counts at that station when `stations` lists it, else at the input's.
 
@@ -181,8 +131,6 @@ Receiver 2: station 1 "Harbour mast" at 52.099998, 4.270000
 Receiver 3: station 0 "Pier", no position
 ```
 
-In managed mode the **Stations** page edits this list. Its first entry is the default station, always there under number 0, which cannot be deleted; every other station is numbered from 1. An input picks its station from the list on its own page, or creates one there. A file from before the default station was listed keeps working: the panel shows it from the viewer section's `station`, `lat`, `lon`, `share_loc`, `use_gps` and `own_mmsi`, and moves them into `stations` the first time Stations is saved.
-
 **A station that moves.** A receiver on a boat, or one with a GPS attached, does not stay where the file puts it. A station's position comes from one source at a time: the vessel its `mmsi` names, else GPS when `gps` is `true`, else its `lat` and `lon`.
 
 - A station with an `mmsi` rides that vessel: each position the vessel reports, heard by any receiver, moves the station there.
@@ -192,7 +140,7 @@ In managed mode the **Stations** page edits this list. Its first entry is the de
 
 These apply to the stations of the tracker and the services [below](#tracking-and-services-tracking-services), which report each station's position with its source (`configured`, `gps` or `vessel`) and the time of the last fix. The viewer under `server` keeps its own single position, set by `lat`, `lon`, `use_gps` and `own_mmsi` as before.
 
-#### Tracking and services (`tracking`, `services`)
+## Tracking and services (`tracking`, `services`)
 
 AIS-catcher keeps one picture of everything its receivers hear, the **tracker**, and offers it through **services**: a list of servers, each a port and what it serves: the web viewer, the API, MCP, the system service, GeoJSON, Prometheus. The tracker is built when the file has a server; without one nothing is kept. The viewer of `-N` and of a `server` section is such a server too. Both are part of the standard builds; a build made with `cmake -DAPI=OFF` leaves them out and refuses these keys.
 
@@ -231,9 +179,8 @@ Each entry of `services`, one server:
 
 | Key | Type | Description |
 |-----|------|-------------|
-| `port` | number | Required; one server per port. Not on the entry marked `main` |
-| `main` | boolean | Managed mode (`-E`): the server beside the control panel, on its port, the map always on; one entry, which also takes the viewer's options |
-| `active` | boolean | `false` switches the server off: it keeps its settings, which are still checked, but opens no port and keeps no ships. The main server always serves. On unless set |
+| `port` | number | Required; one server per port |
+| `active` | boolean | `false` switches the server off: it keeps its settings, which are still checked, but opens no port and keeps no ships. On unless set |
 | `bind` | string | Address to listen on; `127.0.0.1` unless set, so a server is reachable from other machines only when you say so. Beyond this machine, a server with `api`, `mcp` or `system` needs `keys` or `public` |
 | `ui` | boolean | The web viewer, on unless set `false`; with it the viewer's own options (`realtime`, `station`, `station_link`, `mbtiles`, …), see [Web Viewer](../configuration/output/web-viewer.md) |
 | `api` | boolean | The read API under `/api/v1`: stations, statistics, vessels with their tracks and visits, places with the ships inside and their visits, aircraft, and events. See [API](../api/overview.md). A server limited to some `stations` serves no aircraft, as aircraft are not kept by station |
@@ -247,11 +194,9 @@ Each entry of `services`, one server:
 | `public` | boolean | Its data is for anyone, without a key; never its `system` |
 | `view` | object | Which ships this server shows of what its tracker keeps, and how far back: `stations`, `mmsi_allow`, `mmsi_deny`, `hidden_buckets`, `hidden_classes`, `hidden_statuses`, `speed_min`, `speed_max`, `distance_min`, `distance_max`, `seen` (minutes since heard), `validated`, `repeated`, `track_time` (seconds of track served, at most what the tracker keeps), and `place_geometry` (`false` serves places with their marker position only, keeping their outlines on this machine; on unless set). What it leaves out no route of the server sends: the map, the API, MCP and GeoJSON. A view never makes a tracker; only a message filter does (`filter` on with its terms, or `zone`, `groups_in`). Leave it out to show all |
 
-In managed mode (`-E`) the **Services** tab edits these: the built-in viewer beside the control panel first, then each server of `services`, with **Add server** for another. Each server's page switches its services on and off, says whether it listens on this machine or the network, gives its keys (**New key** makes one, shows it once, and keeps only its SHA-256), and, with the viewer on, the viewer's own settings. A saved server whose port another program has is marked as not listening. **Try the API** sends a request to any of them as a program would, made on the station itself, with the key given, and shows the answer and the curl line that repeats it; under **MCP** it lists a server's tools, calls one with its arguments as an assistant would, and gives the line that connects Claude Code to it. How long ships and tracks are kept, and the backup, are under **System › Settings › History & backup**. The built-in viewer is the entry marked `main`: it always serves the map, may switch on `api`, `mcp`, `system`, `geojson` and `metrics`, and takes `keys` and `public` as any server does, following the address the control panel listens on. A saved change to the servers applies at once, also while the receivers are stopped; a server cannot take the control panel's port or the viewer's.
-
 A viewer under `server`, and `-N` on the command line, is read as an entry of `services`: the same server, with the same keys. One without a message filter shows the site's ships, and its `file`, `backup` and `history` are the site's `tracking`; one with `filter` on, or with `zone` or `groups_in`, keeps ships of its own behind that filter, as the viewer always did, while the backup stays the site's. On the command line the switches follow the port: `AIS-catcher -N 8100 api on mcp on`.
 
-**The filter** uses the terms of the viewer's own filter (**Settings → Filter**), under the same names, so a filter you set up in the viewer can be copied here as it stands. It selects from everything the tracker keeps: the server shows nothing outside it, in any list, count or event.
+**The filter** uses the terms of the web viewer's own filter (**Settings → Filter** on the map), under the same names, so a filter you set up in the viewer can be copied here as it stands. It selects from everything the tracker keeps: the server shows nothing outside it, in any list, count or event.
 
 | Term | Type | Description |
 |------|------|-------------|
@@ -267,380 +212,3 @@ A viewer under `server`, and `-N` on the command line, is read as an entry of `s
 | `mmsi_allow`, `mmsi_deny` | array | Only these MMSIs; never these |
 
 A request to `/api/v1/vessels` takes [filters of its own](../api/overview.md#vessels), named after the fields of a vessel (`?class=cargo,tanker&min_speed_kn=1`). They narrow what the server shows and never widen it.
-
-[^legacy-root-receiver]: Legacy configurations may use root-level `input` / `serial` to define a single receiver. This still works in some versions, but is discouraged and may be removed in a future release. Prefer putting `input` (and `serial`) inside each receiver object under `receiver`.
-
-## Input Device Settings
-
-AIS-catcher supports various input devices. Each device type has specific configuration options. Below are the supported devices and their respective settings. The documentation of the relevant keys can be found in the [Configuration](../configuration/input/overview.md) sections. Below we provide a few examples.
-
-### RTL-SDR (`rtlsdr`)
-<details>
-<summary>Example</summary>
-
-```json
-{
-    "rtlsdr": {
-        "active": true,
-        "rtlagc": true,
-        "tuner": "auto",
-        "bandwidth": "192K",
-        "sample_rate": "1536K",
-        "biastee": false
-    }
-}
-```
-</details>
-[Full RTL-SDR Documentation](../configuration/input/rtlsdr.md)
-
-### Airspy (`airspy`)
-<details>
-<summary>Example</summary>
-```json
-{
-    "airspy": {
-        "sample_rate": "3000K",
-        "linearity": 17,
-        "biastee": false
-    }
-}
-```
-</details>
-[Full Airspy Documentation](../configuration/input/airspy.md)
-
-### HydraSDR (`hydrasdr`)
-<details>
-<summary>Example</summary>
-```json
-{
-    "hydrasdr": {
-        "sample_rate": "3000K",
-        "linearity": 17,
-        "biastee": false
-    }
-}
-```
-</details>
-[Full HydraSDR Documentation](../configuration/input/hydrasdr.md)
-
-### Airspy HF+ (`airspyhf`)
-<details>
-<summary>Example</summary>
-```json
-{
-    "airspyhf": {
-        "sample_rate": "192k",
-        "threshold": "low",
-        "preamp": false
-    }
-}
-```
-[Full Airspy HF+ Documentation](../configuration/input/airspyhf.md)
-</details>
-
-### HackRF (`hackrf`)
-<details>
-<summary>Example</summary>
-```json
-{
-    "hackrf": {
-        "sample_rate": "6144k",
-        "lna": 8,
-        "vga": 20,
-        "preamp": false
-    }
-}
-```
-</details>
-[Full HackRF Documentation](../configuration/input/hackrf.md)
-
-### SDRPlay (`sdrplay`)
-<details>
-<summary>Example</summary>
-```json
-{
-    "sdrplay": {
-        "sample_rate": "2304K",
-        "agc": true,
-        "lnastate": 5,
-        "grdb": 40
-    }
-}
-```
-</details>
-[Full SDRPlay Documentation](../configuration/input/sdrplay.md)
-
-### SoapySDR (`soapysdr`)
-<details>
-<summary>Example</summary>
-```json
-{
-    "soapysdr": {
-        "active": true,
-        "device": "driver=rtlsdr",
-        "sample_rate": "1536K"
-    }
-}
-```
-</details>
-[Full SoapySDR Documentation](../configuration/input/soapysdr.md)
-
-### Serial Port Input (`serialport`)
-<details>
-<summary>Example</summary>
-```json
-{
-    "serialport": {
-        "baudrate": 38400,
-        "port": "/dev/tty0"
-    }
-}
-```
-</details>
-[Full Serial Port Documentation](../configuration/input/serial.md)
-
-### NMEA2000 (`nmea2000`)
-<details>
-<summary>Example</summary>
-```json
-{
-    "nmea2000": {
-        "active": true,
-        "port": "can0"
-    }
-}
-```
-</details>
-[Full NMEA2000 Documentation](../configuration/input/NMEA2000.md)
-
-## File Input Settings
-
-### WAV File (`wavfile`)
-<details>
-<summary>Example</summary>
-```json
-{
-    "wavfile": {
-        "active": true,
-        "filename": "recording.wav"
-    }
-}
-```
-</details>
-[Full WAV File Documentation](../configuration/input/wav.md)
-
-### Raw File (`file`)
-<details>
-<summary>Example</summary>
-```json
-{
-    "file": {
-        "active": true,
-        "filename": "data.raw"
-    }
-}
-```
-</details>
-[Full File Documentation](../configuration/input/file.md)
-
-## Network Input Settings
-
-### TCP Client (`rtltcp`)
-<details>
-<summary>Example</summary>
-```json
-{
-    "rtltcp": {
-        "host": "192.168.1.100",
-        "port": 12345
-    }
-}
-```
-</details>
-[Full TCP Documentation](../configuration/input/tcp.md)
-
-### SpyServer (`spyserver`)
-<details>
-<summary>Example</summary>
-```json
-{
-    "spyserver": {
-        "host": "server.example.com",
-        "port": 5555
-    }
-}
-```
-</details>
-[Full SpyServer Documentation](../configuration/input/spyserver.md)
-
-### UDP Server (`udpserver`)
-<details>
-<summary>Example</summary>
-```json
-{
-    "udpserver": {
-        "active": true,
-        "port": 10110
-    }
-}
-```
-</details>
-[Full UDP Documentation](../configuration/input/udp.md)
-
-### ZMQ (`zmq`)
-<details>
-<summary>Example</summary>
-```json
-{
-    "zmq": {
-        "active": true,
-        "endpoint": "tcp://localhost:5555"
-    }
-}
-```
-</details>
-[Full ZMQ Documentation](../configuration/input/tcp.md)
-
-## Output Settings
-
-AIS-catcher supports various output channels. Each output channel has specific configuration options.  The documentation of the relevant keys can be found in the [Configuration](../configuration/output/overview.md) sections with some JSON examples below.
-
-### Web Viewer (`server`)
-An entry of `server` is a server of [`services`](#tracking-and-services-tracking-services), written the way the viewer always was.
-<details>
-<summary>Example</summary>
-```json
-{
-    "server": [
-        {
-            "active": true,
-            "port": 8100,
-            "station": "My Station",
-            "share_loc": true,
-            "lat": 52,
-            "lon": 4.3
-        }
-    ]
-}
-```
-</details>
-[Full Web Server Documentation](../configuration/output/web-viewer.md)
-
-### Database Output (`db`)
-<details>
-<summary>Example</summary>
-```json
-{
-    "db": [
-        {
-            "active": true,
-            "type": "postgres",
-            "conn_str": "dbname=ais",
-            "station_id": 17,
-            "position": true,
-            "static": true
-        },
-        {
-            "active": true,
-            "type": "csv",
-            "conn_str": "/var/log/ais"
-        }
-    ]
-}
-```
-</details>
-
-[Full Database Documentation](../configuration/output/PSQL.md)
-
-### UDP Output (`udp`)
-<details>
-<summary>Example</summary>
-```json
-{
-    "udp": [
-        {
-            "active": true,
-            "host": "192.168.1.235",
-            "port": 4002,
-            "filter": false,
-            "allow_type": "1,2,3,5,18,19,24"
-        }
-    ]
-}
-```
-</details>
-[Full UDP Documentation](../configuration/output/UDP.md)
-
-### TCP  Output (Client) (`tcp`)
-<details>
-<summary>Example</summary>
-```json
-{
-    "tcp": [
-        {
-            "active": true,
-            "host": "5.9.207.224",
-            "port": 12,
-            "keep_alive": false
-        }
-    ]
-}
-```
-</details>
-[Full TCP Documentation](../configuration/output/TCP-client.md)
-
-### TCP  Output (Server) (`tcp_listener`)
-<details>
-<summary>Example</summary>
-```json
-{
-    "tcp_listener": [
-        {
-            "active": true,
-            "port": 5012
-        }
-    ]
-}
-```
-</details>
-[Full TCP Documentation](../configuration/output/TCP-server.md)
-
-### HTTP Output (`http`)
-<details>
-<summary>Example</summary>
-```json
-{
-    "http": [
-        {
-            "active": true,
-            "url": "http://example.com/ais",
-            "interval": 10,
-            "response": "json"
-        }
-    ]
-}
-```
-</details>
-[Full HTTP Documentation](../configuration/output/HTTP.md)
-
-### MQTT Output (`mqtt`)
-<details>
-<summary>Example</summary>
-```json
-{
-    "mqtt": [
-        {
-            "active": true,
-            "host": "mqtt.example.com",
-            "port": 1883,
-            "topic": "ais/messages",
-            "username": "user",
-            "password": "pass"
-        }
-    ]
-}
-```
-</details>
-[Full MQTT Documentation](../configuration/output/MQTT.md)
-
-

@@ -154,7 +154,7 @@ Optional fields, added depending on input mode and message contents:
 | fid | Integer | – | Functional Identifier |
 | data | String | hex | Raw binary payload (only when no decoder matched) |
 
-When the (DAC, FID) pair is recognised, the payload is decoded into structured fields instead of `data` — see [ASM payloads (Type 6 / Type 8)](#asm-payloads-type-6--type-8) below.
+When the (DAC, FID) pair is recognised, the payload is decoded into structured fields instead of `data` — see [ASM payloads (Type 6 / Type 8)](#asm) below.
 
 ### Type 7, 13: Binary / Safety Acknowledge {#type-7}
 
@@ -177,7 +177,7 @@ When the (DAC, FID) pair is recognised, the payload is decoded into structured f
 | fid | Integer | – | Functional Identifier |
 | data | String | hex | Raw binary payload (only when no decoder matched) |
 
-When the (DAC, FID) pair is recognised, the payload is decoded into structured fields — see [ASM payloads (Type 6 / Type 8)](#asm-payloads-type-6--type-8) below.
+When the (DAC, FID) pair is recognised, the payload is decoded into structured fields — see [ASM payloads (Type 6 / Type 8)](#asm) below.
 
 ### Type 9: Standard SAR Aircraft Position Report {#type-9}
 

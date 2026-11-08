@@ -1,55 +1,69 @@
 # Getting Around the Dashboard
 
-In managed mode, AIS-catcher hosts a **dashboard**: a web interface from which you set up, monitor and run your complete station — input device, decoder settings and all outputs — directly from the browser. All settings live in a JSON configuration file that AIS-catcher creates and maintains itself; there is nothing to edit by hand.
+In managed mode, AIS-catcher runs in the background and you set it up in the dashboard, in your browser. Open port 8118 of the computer that runs it, for example `http://localhost:8118`{ .address }. The [Quick Start](../getting-started/overview.md) covers the first start and the setup wizard.
 
-<!-- TODO screenshot: dashboard-overview.webp — the full dashboard with map, control buttons and menus visible; ideally annotated -->
-
-## Opening the Dashboard
-
-Managed mode is simply AIS-catcher started with the `-E` option — the same program, serving its own dashboard. Each [installation](../installation/overview.md) ends with AIS-catcher already running this way, so you can open the dashboard right away in a browser on the machine AIS-catcher runs on: `http://localhost:8118`{ .address }
-
-From another device on your network, use the receiver's address instead, e.g. `http://raspberrypi.local:8118`{ .address } or `http://192.168.1.50:8118`{ .address } — this requires AIS-catcher to be reachable from the network and a password, see [Remote Access and Security](remote-access.md).
-
-On first use, a short [setup wizard](setup-wizard.md) walks you through configuring your station.
+![The dashboard: the map with the control bar below it](../assets/managed/dashboard.webp)
 
 ## The Map
 
-The dashboard shows the vessels you are receiving live on a map, so you can see at a glance that your station is working and what your coverage looks like.
+The map fills the dashboard and shows the ships your station receives, live. Its menus at the top open the ship list, statistics and the map's own settings.
 
-<!-- TODO screenshot: dashboard-map.webp -->
+This map loads no plugins and no about page, and it has no log tab: the dashboard keeps the log under **Settings → System → Log**. For a map with plugins or an about page, add a server under **Settings → Services** and open that map instead.
 
-!!! note
-    The dashboard map is a simplified view for monitoring your own station. For a full-featured, customizable map that you can share with others, add a [web viewer](output.md#web-viewer) as an output.
+## The Control Bar
 
-## Controlling the Receiver
+The bar at the bottom runs the station:
 
-The receiver is started and stopped directly from the dashboard — there is no need to restart the program or touch the command line.
+- **A B C D**: a light for each AIS channel, which flashes as messages arrive.
+- **Start**, **Stop** or **Restart**: starts and stops the receiver. After you save changes, it reads **Restart**.
+- **Settings**: opens the settings.
+- **Running** or **Stopped**, with the time since the start. A count of warnings and errors appears next to it; press it to open the log.
+- The community map icon, on the right: its colour shows whether the station shares with the community map. It links to aiscatcher.org.
+- The arrow on the left hides the bar. **Controls** brings it back.
 
-<!-- TODO screenshot: dashboard-controls.webp — the start/stop/restart buttons and status indicator -->
-<!-- TODO: confirm the exact buttons and status elements (start / stop / restart, log view?) -->
+## Settings
 
-After changing any setting, press **Save**, then restart the receiver for the changes to take effect.
+**Settings** opens a list on the left. Each item opens a page:
 
-## Settings Menus
+| Item | What it holds |
+|------|---------------|
+| **Stations** | Your station's name and position. |
+| **Inputs** | Your receivers. See [Receiver](input.md). |
+| **Outputs** | The community map and the programs that get your data. See [Outputs](output.md). |
+| **Flow** | Which input reaches which output. |
+| **Services** | The map servers, Home Assistant and webhooks. |
+| **Places** | Ports, berths, anchorages and zones on the map. See [Places](#places). |
+| **System** | **Status**, **Data & history**, **Log**, **Config file**, **Access** and **About**. |
 
-All configuration is reached from the menus in the **bottom bar** of the dashboard:
+Each page ends with **Cancel** and **Save changes**. A saved change reaches the receiver when it restarts: press **Restart receiver** in the bar that appears at the top, or **Restart** in the control bar.
 
-- **Input** — the receiver: device type, channels, tuner gain, sample rate and high-sensitivity mode. See [Input Settings](input.md).
-- **Output** — where your data goes: the community feed, UDP, HTTP, MQTT, TCP and web viewers. See [Output Settings](output.md).
-- **System** — dashboard and system settings, such as remote access and the password.
+Under **System**:
 
-<!-- TODO: confirm what the System menu contains (log, password, remote access, backup?) and adjust the description -->
+- **Status** shows the receiver and the computer. **Copy for bug report** copies both.
+- **Data & history** sets whether ships and statistics are kept over a restart.
+- **Config file** shows the file the dashboard writes.
+- **Access** sets the password and HTTPS. See [Remote Access and Security](remote-access.md).
+- **About** has **Run setup**, which runs the setup wizard again.
 
-Every underlying setting is documented in detail in the [Settings reference](../configuration/overview.md).
+## Places
+
+**Settings → Places** is an editor for the places on the map: ports, berths, anchorages, terminals, guard zones and more. The first time, it asks to enable places and shows the folder they are saved in. Press **Save and continue**.
+
+Pick a place from the list or on the map, or press **New place**. Draw or reshape its outline, set its **Type** and its **Parent**, and press **Save place**. A save takes effect at once, on the map and for every ship inside the changed outline.
+
+- **Import…**, in the place menu, takes a GeoJSON Feature from anywhere. What it recognises is carried over: the name, the type, codes, the parent, category and rank. Everything else in the file is kept, and a Feature that says nothing about itself becomes a guard zone. The result opens for review and is stored when you save.
+- **Import shape** and **Paste shape**, in the map's toolbar, replace only the outline of the place you are editing.
+
+To use a folder of place files instead, enter it under **System → Data & history → Files → Place directory**.
 
 ## Starting Managed Mode Yourself
 
-Each platform's [installation](../installation/overview.md) normally leaves AIS-catcher running in managed mode, so starting it yourself is rarely necessary — typically only after a manual installation or when running AIS-catcher from a terminal.
-
-Managed mode is not the default: it must be enabled explicitly with the `-E` switch, which takes the configuration file and the address the dashboard listens on:
+The installs start AIS-catcher in managed mode for you. Started by hand, it takes `-E` with its configuration file and the address the dashboard listens on:
 
 ```console
-AIS-catcher -E /etc/AIS-catcher/config.json 127.0.0.1:8118
+AIS-catcher -E ~/aiscatcher.json 127.0.0.1:8118
 ```
 
-When any other command-line option is supplied, AIS-catcher runs in [manual mode](../usage/overview.md) instead and behaves as the classic command-line tool: it executes exactly what you type, and neither the dashboard nor its configuration file is used.
+With `127.0.0.1`, only this computer can open the dashboard. See [Remote Access and Security](remote-access.md) to open it to your network.
+
+Prefer a configuration file or the command line? See [Manual Mode](../usage/overview.md).

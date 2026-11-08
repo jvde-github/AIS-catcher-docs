@@ -4,8 +4,8 @@
 
 **AIS-Catcher** is free and open-source software that turns an inexpensive **Software Defined Radio** (SDR) into a complete **AIS** receiver: receive and visualize ship traffic on a live map, and share the data over the network or with the community. The source code is available on [GitHub](https://github.com/jvde-github/AIS-catcher) under the **GPLv3** license.
 
-[Get Started](getting-started/overview.md){ .md-button .md-button--primary }
-[What do I need?](what-you-need.md){ .md-button .md-button--secondary }
+[Quick Start](getting-started/overview.md){ .md-button .md-button--primary }
+[What You Need](what-you-need.md){ .md-button .md-button--secondary }
 [What is AIS?](ais-basics.md){ .md-button .md-button--secondary }
 
 </div>
@@ -13,14 +13,20 @@
 !!! warning "Disclaimer"
     **AIS-Catcher is intended for hobbyist and research projects only. It is NOT approved for use in navigation or safety-of-life applications.** [Read the full disclaimer](disclaimer.md).
 
-## Resources
+## Two ways to run it
 
-- [**Quick Start Guide**](https://www.aiscatcher.org/quickstart): From zero to a running station in six steps — install, then finalize the configuration in the browser.
-- [**Set up your own station**](https://www.aiscatcher.org/guides): Short guides on aiscatcher.org, a job at a time: your station's location, receivers, chart plotter, community map, the API, AI assistants and Home Assistant, each in the control panel, in JSON and on the command line.
-- [**Complete User Guide**](getting-started/overview.md): Detailed instructions and feature walkthroughs.
-- [**Community and Support**](community.md): Join the AIS-Catcher community at [aiscatcher.org](https://aiscatcher.org) to track your station's performance, share insights and get help.
-- [**AIS Basics**](ais-basics.md): An introduction to the Automatic Identification System.
-- [**Features**](getting-started/features.md): A complete overview of AIS-catcher's capabilities.
-- [**FAQ**](faq.md): Answers to frequently asked questions.
-- [**References**](references/overview.md): Links to additional resources and documentation.
+<div class="install-grid mode-grid">
 
+<a class="install-card" href="managed/dashboard/">
+<span class="install-title">Managed mode <span class="install-badge">Recommended</span></span>
+<span class="install-desc">AIS-catcher runs in the background, and you set it up in the dashboard in your browser. The Quick Start sets it up this way.</span>
+</a>
+
+<a class="install-card" href="usage/overview/">
+<span class="install-title">Manual mode</span>
+<span class="install-desc">You start AIS-catcher with a configuration file or command-line options, and it does exactly what they say. For scripts, small setups and complex configurations.</span>
+</a>
+
+</div>
+
+Each mode has its own tab, with its own guides. The [API](api/overview.md) works the same in both.

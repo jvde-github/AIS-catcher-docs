@@ -18,8 +18,6 @@ Places are optional. Without a place directory the viewer works as before.
 
 On the command line, `PLACES` is a setting of the web viewer (`-N`). In a JSON configuration it is the key `places` of the `server` object.
 
-In managed mode, open the **Places** tab of the dashboard. The first time, it asks whether to enable places and creates a `places` directory beside the configuration file. The directory can be changed later under the viewer's settings (**Storage → Place Directory**).
-
 ## What you get
 
 - **On the map.** Every place has a marker, and its outline appears when you point at it. Large ports show from far out, berths only close in (see [Place types](#place-types)).
@@ -147,18 +145,14 @@ A ship's reported destination is matched to your ports: first by UN/LOCODE, then
 
 ## Changing the catalogue
 
-In managed mode the **Places** tab is an editor: draw or reshape an outline, set the type and the port a place belongs to. A save takes effect at once, on the map and for every ship inside the changed outline.
-
-**Import place** takes a GeoJSON Feature from anywhere. What it recognises is carried over (the name, the type, codes, the port a place belongs to, category and rank, in their current or an older spelling), everything else in the file is kept, and a Feature that says nothing about itself becomes a guard zone. The result opens for review and is stored when you save. **Import shape** and **Paste shape** replace only the outline of the place you are editing.
-
-Files you edit by hand are read when AIS-catcher starts. There is no file watcher, so restart after changing them. Until then, a place whose file changed is matched as it was loaded but its outline is not served, and the log says so once. A file that breaks a rule is skipped whole and the log says why:
+Place files are read when AIS-catcher starts. There is no file watcher, so restart after changing them. Until then, a place whose file changed is matched as it was loaded but its outline is not served, and the log says so once. A file that breaks a rule is skipped whole and the log says why:
 
 ```
 Places: skipped 0f2e6b1a-3c4d-4e5f-8a9b-0c1d2e3f4a5b.geojson: Polygon edges cross or touch themselves
 Places: loaded 412 definitions from /etc/AIS-catcher/places
 ```
 
-Files written by earlier releases, with `schema_version` 1 or 2, load as they are. An `area` or a `custom` place is read as a guard zone, `size` as `rank` and `area_subtype` as `category`, and a port named by its UN/LOCODE becomes the place's parent once every file is loaded. The file itself changes only when the place is next saved in the editor, which writes it as schema 3. To convert a whole directory at once, run `scripts/migrate-places.py` from the source tree.
+Files written by earlier releases, with `schema_version` 1 or 2, load as they are. An `area` or a `custom` place is read as a guard zone, `size` as `rank` and `area_subtype` as `category`, and a port named by its UN/LOCODE becomes the place's parent once every file is loaded. The files themselves are left as they are. To convert a whole directory to schema 3, run `scripts/migrate-places.py` from the source tree.
 
 Two things to know before removing a place:
 
@@ -171,7 +165,7 @@ Two things to know before removing a place:
 
 | Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
-| <span class="cmd-setting">places</span> | string | <span class="cmd-value">-</span> | Directory of place files for the web viewer (CLI: `-N <port> PLACES <directory>`; managed mode: `control.viewer.places`) |
+| <span class="cmd-setting">places</span> | string | <span class="cmd-value">-</span> | Directory of place files for the web viewer (CLI: `-N <port> PLACES <directory>`) |
 | <span class="cmd-setting">place_geometry</span> | boolean | <span class="cmd-value">on</span> | Serve each place's outline to the map. Off keeps the outlines private to this installation: markers, lists and visits still work. A term of a server's view: `"view": { "place_geometry": false }` (CLI: `-N <port> PLACE_GEOMETRY off`) |
 
 </div>

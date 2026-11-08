@@ -1,20 +1,17 @@
-# Input Settings
+# Receiver
 
-!!! tip "Step-by-step guide"
-    **[Connect your receivers](https://www.aiscatcher.org/guides/receiver)** on aiscatcher.org walks through this with screenshots: in the control panel, in the configuration file and on the command line.
+**Settings → Inputs** lists your receivers. Each one has its own page. The setup wizard adds the first one; **+ Add input** adds another.
 
-The **Input** menu adjusts the receiver: device type, channels, tuner gain, sample rate, bandwidth and high-sensitivity mode.
+![An RTL-SDR input in Settings](../assets/managed/receiver.webp)
 
-![Dashboard — input settings](../assets/qs-input-settings.webp)
+- **Device Type**: the kind of receiver: RTL-SDR, Airspy, HackRF, SDRplay and the other SDRs, **Serial (NMEA receiver)**, **UDP (NMEA over the network)**, a **Network client** or **SpyServer**. A dAISy-catcher is a **Serial (NMEA receiver)** input; the setup wizard fills in its settings for you.
+- **Find devices** looks for receivers on this computer. Pick one to fill in its details.
+- **Serial Key** picks one dongle by its serial number, when more than one is plugged in. With a single dongle, leave it empty.
+- **Active** switches the input on or off without deleting it. A hollow dot in the list marks an input that is off.
+- **Station** is where this antenna stands, from the stations under **Settings → Stations**.
+- **Advanced settings** holds the rest, such as the tuner gain, the sample rate, the frequency correction and the decoding engine.
+- **Docs** opens the reference for that kind of receiver.
 
-If you have only a single SDR device connected, AIS-catcher will detect and use it automatically. With multiple devices, select the one to use by type and serial number.
+Press **Save changes**, then **Restart receiver**, to use a change.
 
-For SDR inputs (RTL-SDR, AirSpy, AirSpy HF+, HackRF, HydraSDR) two settings deserve special mention:
-
-- **Channel** (`AB` or `CD`) — choose between the standard AIS channel pair (161.975 / 162.025 MHz) or the long-range channels.
-- **High Sensitivity** — toggles the higher-sensitivity ("Challenger") decoder model. Trades CPU for a few percent more decoded messages. Equivalent to the `sensitivity_high` setting documented in [Model Settings](../configuration/model.md).
-
-!!! note "Save and restart"
-    After changing anything, press **Save**, then restart the receiver for the changes to take effect.
-
-All device-specific settings — gains, sample rates, bias-tee and more per device type — are documented in the [Input Options reference](../configuration/input/overview.md).
+A mark next to an input in the list means it needs attention: hover over it to see why, for example a device that is unplugged or used by another program.

@@ -7,7 +7,7 @@
 
 ## Installation
 
-First install AIS-catcher itself via the [install script](../installation/raspberrypi.md), then install AIS-catcher-control as a separate service:
+First install AIS-catcher itself via the [install script](../installation/ubuntu-debian.md), then install AIS-catcher-control as a separate service:
 
 ```console
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher-control/main/install_ais_catcher_control.sh)"

@@ -1,9 +1,5 @@
 # Building from Source
 
-!!! warning "Disclaimer"
-    **AIS-catcher is intended for hobbyist and research projects only. It is NOT approved for use in navigation or safety-of-life applications.** [Read the full disclaimer](../disclaimer.md).
-
-
 ## Building
 
 The steps to compile AIS-catcher for RTL-SDR dongles are fairly straightforward on most systems. There are various options including a standard Makefile, a ```solution``` file for MSVC (see next section) and you can use ```cmake```, as we will detail now.
@@ -74,22 +70,14 @@ vcpkg install rtlsdr rtlsdr:x64-windows ZeroMQ ZeroMQ:x64-windows soxr soxr:x64-
 ```
 The included solution file in the mscv directory allows you to build AIS-catcher with RTL-SDR/ZMQ support in the Visual Studio IDE.
 
-## Running AIS-catcher
-
-Once built and installed, there are two ways to run your station.
-
-<div class="recommended" markdown>
-
-**Managed mode** — start AIS-catcher in managed mode:
+## Managed mode
 
 ```bash
 AIS-catcher -E ~/aiscatcher.json 127.0.0.1:8118
 ```
 
-Then open `http://localhost:8118`{ .address } in a browser — the [setup wizard](../managed/setup-wizard.md) walks you through the configuration and starts the receiver. See [Getting Around the Dashboard](../managed/dashboard.md) to monitor and fine-tune your station.
+Then open the dashboard in your browser, as in the [Quick Start](../getting-started/overview.md#open-the-dashboard).
 
-</div>
+## Manual mode
 
-**Manual mode** — configure via command-line options, e.g. `AIS-catcher -v 10`:
-
-[Command Line Run](../usage/cli.md){ .md-button }
+Start receiving with your options on the command line, for example `AIS-catcher -v 10`. See [Manual Mode](../usage/overview.md).
