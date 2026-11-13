@@ -253,11 +253,27 @@
          <lastmod>2026-11-13</lastmod>
     </url>
     <url>
+         <loc>https://aiscatcher.org/docs/managed/api/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/managed/assistant/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
          <loc>https://aiscatcher.org/docs/managed/chart-plotter/</loc>
          <lastmod>2026-11-13</lastmod>
     </url>
     <url>
+         <loc>https://aiscatcher.org/docs/managed/community-map/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
          <loc>https://aiscatcher.org/docs/managed/dashboard/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/managed/home-assistant/</loc>
          <lastmod>2026-11-13</lastmod>
     </url>
     <url>
@@ -269,7 +285,15 @@
          <lastmod>2026-11-13</lastmod>
     </url>
     <url>
+         <loc>https://aiscatcher.org/docs/managed/receivers/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
          <loc>https://aiscatcher.org/docs/managed/remote-access/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/managed/station/</loc>
          <lastmod>2026-11-13</lastmod>
     </url>
     <url>
@@ -286,6 +310,26 @@
     </url>
     <url>
          <loc>https://aiscatcher.org/docs/tools/python/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/tutorials/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/tutorials/api-and-mcp/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/tutorials/home-automation/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/tutorials/places/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://aiscatcher.org/docs/tutorials/stations/</loc>
          <lastmod>2026-11-13</lastmod>
     </url>
     <url>
