@@ -12,7 +12,7 @@ AIS-catcher can pass every message it receives on to OpenCPN, a chart plotter or
 !!! tip "On the same computer?"
     If the chart plotter runs on the same computer as AIS-catcher, use the address `127.0.0.1`.
 
-<div class="stepper" markdown>
+<div class="stepper" data-eyebrow="Managed mode · Guide" markdown>
 
 <div class="stepper-step" markdown>
 
@@ -36,11 +36,9 @@ Give the output a **Name**, such as *Chart plotter*. Enter the **Address** and *
 
 <div class="stepper-step" markdown>
 
-## Save and restart
+## Save
 
-Press **Save changes**, then **Restart receiver** in the bar that appears.
-
-![Changes saved. Restart the receiver to use them.](../assets/guides/udp-3-restart.webp)
+Press **Save changes**. The output starts sending at once.
 
 </div>
 

@@ -1,7 +1,7 @@
 # Home Assistant and MQTT state
 
 !!! tip "Step-by-step guide"
-    **[Vessels in Home Assistant](https://www.aiscatcher.org/guides/home-assistant)** on aiscatcher.org walks through this with screenshots: in the control panel, in the configuration file and on the command line.
+    **[Vessels in Home Assistant](../managed/home-assistant.md)** walks through this in the dashboard, with screenshots.
 
 AIS-catcher can keep its state on an MQTT broker: whether it is up, how many vessels it sees, how each station and receiver is doing, where the vessels you watch are, and each event as it happens. The state topics are retained, so whoever subscribes gets the latest at once. With discovery on, Home Assistant finds the sensors by itself; any other MQTT client reads the same topics.
 

@@ -31,7 +31,7 @@
 - **Remote administration with password protection** — bind to `0.0.0.0` to manage the station from another machine; the panel then requires setting a password on first access.
 - **Managed web viewer** — in managed mode the web viewer is started automatically on the port above the control panel (8119 by default).
 - **Easy install** — the install script's new `-M`/`--managed` option sets up the systemd service in managed mode, and the Windows zip includes `start-GUI.bat` to launch AIS-catcher with the control panel.
-- See also the new [Quick Start guide](https://www.aiscatcher.org/quickstart) on aiscatcher.org — from zero to a running station in six steps.
+- See the [Quick Start](getting-started/overview.md): from a receiver in its box to ships on your own map, in five steps.
 
 ### Database output
 

@@ -16,13 +16,14 @@
 
 The command line provides the `-m` option which selects the specific decoding model.  In the current version, the following receiver models are embedded for raw data samples:
 
-- **Default Model** (``-m 2``): the default demodulation engine.
-- **Challenger Model** (``-m 4``): a higher-sensitivity demodulation engine — typically yields a few percent more decoded messages than the default at the cost of additional CPU. Easiest to enable via the `sensitivity_high` switch (see [NMEA Model Settings](#nmea-model-settings) below) rather than `-m 4` directly.
+- **Engine v2** (``-m 11``): the default since v0.71. It decodes the most messages from weak signals and uses the least CPU of the coherent engines. Its own settings are `dd_train` and `dd_weight`; `afc_wide` and `ps_ema` are accepted and have no effect.
+- **Engine v1** (``-m 2``): the default up to v0.70, with the settings `afc_wide` and `ps_ema`.
+- **Engine v1 High** (``-m 4``): engine v1 with an FM decoder beside it, for a few percent more messages than engine v1 at about twice its CPU.
 - **Base Model (non-coherent)** (``-m 1``): using FM discriminator model, similar to RTL-AIS (and GNUAIS/Aisdecoder) with tweaks to the Phase Locked Loop and main receiver filter (computed with a stochastic search algorithm).
 - **Standard Model (non-coherent)** (``-m 0``): as the Base Model with brute force timing recovery.
 - **FM Discriminator model**: (``-m `3`) as the Standard Model but with the input already assumed to be the output of an FM discriminator. Hence no FM demodulation takes place which allows ```AIS-catcher``` to be used as GNUAIS and AISdecoder.
 
-The Default Model is the most time and memory consuming but experiments suggest it to be the most effective. In my home station, it improves message count by a factor 2 - 3. The reception quality of the Standard Model over the Base Model is more modest at the expense of roughly a 20% increase in computation time. Advice is to start with the Default Model, which should run fine on most modern hardware including a Raspberry 4B and then scale down to ```-m 0```or even ```-m 1```, if needed.
+Of the older models, engine v1 takes the most time and memory, but experiments suggest it to be the most effective. In my home station, it improves message count by a factor 2 - 3. The reception quality of the Standard Model over the Base Model is more modest at the expense of roughly a 20% increase in computation time. Advice is to start with the Default Model, which should run fine on most modern hardware including a Raspberry 4B and then scale down to ```-m 0```or even ```-m 1```, if needed.
 
 ## Running multiple models 
 
@@ -41,7 +42,7 @@ The program will run and summarize the performance (count and timing) of three d
 [Standard (non-coherent)]:               932.47 ms
 [Base (non-coherent)]:                   859.065 ms
 ```
-In this example the Default Model performs quite well in contrast to the Standard non-coherent engine with 38 messages identified versus 4 for the standard engine. 
+In this example engine v1 performs quite well in contrast to the Standard non-coherent engine with 38 messages identified versus 4 for the standard engine. 
 This is typical when there are messages of poor quality. However, it increases the decoding time a bit and has a slightly higher memory usage so needs more powerful hardware. Please note that the improvements seen for this particular file are an exception.
 
 
@@ -111,7 +112,7 @@ AIS-catcher will also accept AIVDO input which is typically used for the MMSI of
 | <span class="cmd-setting">nmea_refresh</span> | boolean | <span class="cmd-value">false</span> | Recalculate NMEA lines |
 | <span class="cmd-setting">crc_check</span> | boolean | <span class="cmd-value">false</span> | Enable CRC validation |
 | <span class="cmd-setting">vdo</span> | boolean | <span class="cmd-value">true</span> | Accept AIVDO messages |
-| <span class="cmd-setting">sensitivity_high</span> | boolean | <span class="cmd-value">false</span> | Use the higher-sensitivity Challenger model (`-m 4`) instead of the default model (`-m 2`) for SDR input. Trades CPU for a few percent more decoded messages. |
+| <span class="cmd-setting">sensitivity_high</span> | boolean | <span class="cmd-value">false</span> | Deprecated, and without effect since v0.71: engine v2 is the default. For engine v1 High, select `-m 4` or the engine type `v1_high`. |
 | <span class="cmd-setting">gps</span> | boolean | <span class="cmd-value">false</span> | Enable GPS output |
 | <span class="cmd-setting">uuid</span> | string | <span class="cmd-value">-</span> | Set UUID for messages |
 | <span class="cmd-setting">warnings</span> | boolean | <span class="cmd-value">true</span> | Show warning messages |

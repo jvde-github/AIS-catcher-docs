@@ -2,7 +2,7 @@
  "openapi": "3.1.0",
  "info": {
   "title": "AIS-catcher",
-  "version": "v0.70",
+  "version": "v0.71",
   "description": "Vessels, places and events as this station hears them. Positions are what ships broadcast; not for navigation.\n\nEvery list answers {\"data\": [...], \"meta\": {...}}: meta.next is the request for the next page, null on the last. A list that changes over time also gives meta.poll, the request for what came after, to send again later. A cursor is opaque: send it back as it came. A cursor that points at what is no longer kept is answered 410: start again without it. Times are UTC, and units are in the field names. A field that is not known is null. Errors are problem details (RFC 9457). A server with keys takes them as Authorization: Bearer."
  },
  "tags": [
@@ -265,7 +265,7 @@
       "name": "limit",
       "in": "query",
       "required": false,
-      "description": "Rows on a page: 25 at most on a limited server",
+      "description": "Rows on a page. A limited server gives 25 unless asked for more, 250 at most; every 25 rows of a page count as one call, and a page larger than the hour has left is cut to what is left",
       "schema": {
        "type": "integer",
        "minimum": 1,
@@ -753,7 +753,7 @@
       "name": "limit",
       "in": "query",
       "required": false,
-      "description": "Rows on a page: 25 at most on a limited server",
+      "description": "Rows on a page. A limited server gives 25 unless asked for more, 250 at most; every 25 rows of a page count as one call, and a page larger than the hour has left is cut to what is left",
       "schema": {
        "type": "integer",
        "minimum": 1,
@@ -888,7 +888,7 @@
       "name": "limit",
       "in": "query",
       "required": false,
-      "description": "Rows on a page: 25 at most on a limited server",
+      "description": "Rows on a page. A limited server gives 25 unless asked for more, 250 at most; every 25 rows of a page count as one call, and a page larger than the hour has left is cut to what is left",
       "schema": {
        "type": "integer",
        "minimum": 1,
@@ -963,7 +963,7 @@
       "name": "limit",
       "in": "query",
       "required": false,
-      "description": "Rows on a page: 25 at most on a limited server",
+      "description": "Rows on a page. A limited server gives 25 unless asked for more, 250 at most; every 25 rows of a page count as one call, and a page larger than the hour has left is cut to what is left",
       "schema": {
        "type": "integer",
        "minimum": 1,
@@ -1017,7 +1017,7 @@
       "name": "limit",
       "in": "query",
       "required": false,
-      "description": "Rows on a page: 25 at most on a limited server",
+      "description": "Rows on a page. A limited server gives 25 unless asked for more, 250 at most; every 25 rows of a page count as one call, and a page larger than the hour has left is cut to what is left",
       "schema": {
        "type": "integer",
        "minimum": 1,
@@ -1071,7 +1071,7 @@
       "name": "limit",
       "in": "query",
       "required": false,
-      "description": "Rows on a page: 25 at most on a limited server",
+      "description": "Rows on a page. A limited server gives 25 unless asked for more, 250 at most; every 25 rows of a page count as one call, and a page larger than the hour has left is cut to what is left",
       "schema": {
        "type": "integer",
        "minimum": 1,
@@ -1292,7 +1292,7 @@
       "name": "limit",
       "in": "query",
       "required": false,
-      "description": "Rows on a page: 25 at most on a limited server",
+      "description": "Rows on a page. A limited server gives 25 unless asked for more, 250 at most; every 25 rows of a page count as one call, and a page larger than the hour has left is cut to what is left",
       "schema": {
        "type": "integer",
        "minimum": 1,
@@ -1346,7 +1346,7 @@
       "name": "limit",
       "in": "query",
       "required": false,
-      "description": "Rows on a page: 25 at most on a limited server",
+      "description": "Rows on a page. A limited server gives 25 unless asked for more, 250 at most; every 25 rows of a page count as one call, and a page larger than the hour has left is cut to what is left",
       "schema": {
        "type": "integer",
        "minimum": 1,
@@ -3428,6 +3428,9 @@
       "type": "string"
      },
      "hardware": {
+      "type": "string"
+     },
+     "processor": {
       "type": "string"
      },
      "uptime_s": {

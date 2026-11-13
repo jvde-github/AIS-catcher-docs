@@ -102,7 +102,7 @@ Each entry of `stations` has a number and may have a name, a position and an alt
 | `alt` | number | Height of the antenna in metres |
 | `mmsi` | number | The vessel the station is on: it is wherever that vessel last reported, and `gps` does not apply |
 | `gps` | boolean | Whether GPS sentences move the station; off unless set to `true`. Its `lat` and `lon` are then where it stands until the first fix |
-| `share_loc` | boolean | Whether the station's position may leave this machine. Off unless set: no server, API or map then shows where it is, nor which vessel it rides, nor how far or in which direction a vessel it heard lies from it. The station's own range figures (furthest vessel, maximum distance, radar) still go to its owner: a browser on the station itself, or an API key with system scope. Which vessels a station hears still hints at its general area |
+| `share_loc` | boolean | Whether the station's position may leave this machine, for a server that does not say so itself with its own `share_loc`. Off unless set: no server, API or map then shows where it is, nor which vessel it rides, nor how far or in which direction a vessel it heard lies from it. The station's own range figures (furthest vessel, maximum distance, radar) still go to its owner: a browser on the station itself, or an API key with system scope. Which vessels a station hears still hints at its general area |
 
 A message that names a station itself, as a feed from a hub does in its tag block, counts at that station when `stations` lists it, else at the input's.
 
@@ -188,6 +188,7 @@ Each entry of `services`, one server:
 | `system` | boolean | Receivers, outputs, health and the log, under `/api/v1/system` |
 | `geojson` | boolean | The ships as GeoJSON at `/geojson` |
 | `metrics` | boolean | Message counts for Prometheus at `/metrics`; `prome` says the same |
+| `share_loc` | boolean | Whether this server shows where the stations are: their positions, each vessel's distance and bearing, and the range. A server that does not say goes by each station's own `share_loc` |
 | `limited` | boolean | The short form for whoever asks: lists of 25 rows at most, vessel rows without the station, one vessel in full without its stations, and 25 data calls an hour from one address. Off unless set |
 | `tracking` | object | Ships of the server's own, behind a filter on the messages: the terms of an output's filter (`allow_type`, `block_mmsi`, `stations`, `unique`, …) and `zone` or `groups_in` for the receivers that feed it, with `history` and `track_time` for what it keeps. The backup and the places are the site's. Without it the server reads the site's tracker. A server whose filter names stations (`stations`, or `id` on the command line) shows those stations alone: their markers, pages and figures |
 | `keys` | array | The keys the server accepts, each `{ "name", "sha256", "scopes" }`: see [Keys](../api/overview.md#keys) |

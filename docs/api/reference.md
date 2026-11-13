@@ -1,6 +1,6 @@
 # API reference
 
-<!-- Written by scripts/api_reference.py from the OpenAPI document of AIS-catcher v0.70. Do not edit by hand: run the script again. -->
+<!-- Written by scripts/api_reference.py from the OpenAPI document of AIS-catcher v0.71. Do not edit by hand: run the script again. -->
 
 Every route of `/api/v1` with its parameters, and every object it answers with, field by field. [The API](overview.md) explains how the lists page and how to follow what changes. The same, for a client generator or an API tool: [openapi.json](openapi.json), as every server gives it at `/api/v1/openapi.json`.
 
@@ -14,7 +14,7 @@ The vessels heard lately, newest first; one vessel in full is /api/v1/vessels/{m
 
 | Parameter | In | Type | Description |
 |---|---|---|---|
-| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page: 25 at most on a limited server |
+| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page. A limited server gives 25 unless asked for more, 250 at most; every 25 rows of a page count as one call, and a page larger than the hour has left is cut to what is left |
 | `cursor` | query | string | What meta.next or meta.poll gave; without one a listing starts |
 | `view` | query | one of `brief`, `full`; full unless set | brief answers a short form with only the main fields, and says how to get the rest; a limited server answers short rows and refuses full |
 | `q` | query | string | Text in the name or call sign, part of the MMSI, or the IMO number |
@@ -81,7 +81,7 @@ The places, by name: ports, terminals, berths, anchorages, guard zones.
 
 | Parameter | In | Type | Description |
 |---|---|---|---|
-| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page: 25 at most on a limited server |
+| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page. A limited server gives 25 unless asked for more, 250 at most; every 25 rows of a page count as one call, and a page larger than the hour has left is cut to what is left |
 | `cursor` | query | string | What meta.next or meta.poll gave; without one a listing starts |
 | `type` | query | one of `berth`, `mooring`, `terminal`, `marina`, `anchorage`, `section`, `port`, `guardzone`, `sector`, `water` | Only places of this type |
 | `q` | query | string | Text in the name or the UN/LOCODE |
@@ -105,7 +105,7 @@ The vessels inside a place now, by MMSI.
 | Parameter | In | Type | Description |
 |---|---|---|---|
 | `uuid` | path | string | The place's id, as /api/v1/places lists it |
-| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page: 25 at most on a limited server |
+| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page. A limited server gives 25 unless asked for more, 250 at most; every 25 rows of a page count as one call, and a page larger than the hour has left is cut to what is left |
 | `cursor` | query | string | What meta.next or meta.poll gave; without one a listing starts |
 
 Answers [PlaceVisitList](#placevisitlist) as `application/json`. Operation `listPlaceVessels`.
@@ -118,7 +118,7 @@ The visits to a place, newest first: who came, when, how long they stayed.
 |---|---|---|---|
 | `uuid` | path | string | The place's id, as /api/v1/places lists it |
 | `hours` | query | integer; 1 to 720; 24 unless set | The visits under way and those that ended this many hours back |
-| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page: 25 at most on a limited server |
+| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page. A limited server gives 25 unless asked for more, 250 at most; every 25 rows of a page count as one call, and a page larger than the hour has left is cut to what is left |
 | `cursor` | query | string | What meta.next or meta.poll gave; without one a listing starts |
 
 Answers [PlaceVisitList](#placevisitlist) as `application/json`. Operation `listPlaceVisits`.
@@ -133,7 +133,7 @@ Events of the vessels, oldest first: safety messages, new destinations and statu
 
 | Parameter | In | Type | Description |
 |---|---|---|---|
-| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page: 25 at most on a limited server |
+| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page. A limited server gives 25 unless asked for more, 250 at most; every 25 rows of a page count as one call, and a page larger than the hour has left is cut to what is left |
 | `cursor` | query | string | An event's id, or what meta.next or meta.poll gave: the events after it. Without one, the newest page |
 
 Answers [EventList](#eventlist) as `application/json`. Operation `listEvents`.
@@ -189,7 +189,7 @@ The aircraft heard lately, newest first.
 
 | Parameter | In | Type | Description |
 |---|---|---|---|
-| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page: 25 at most on a limited server |
+| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page. A limited server gives 25 unless asked for more, 250 at most; every 25 rows of a page count as one call, and a page larger than the hour has left is cut to what is left |
 | `cursor` | query | string | What meta.next or meta.poll gave; without one a listing starts |
 
 Answers [AircraftList](#aircraftlist) as `application/json`. Operation `listAircraft`.
@@ -232,7 +232,7 @@ The log, oldest line first.
 
 | Parameter | In | Type | Description |
 |---|---|---|---|
-| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page: 25 at most on a limited server |
+| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page. A limited server gives 25 unless asked for more, 250 at most; every 25 rows of a page count as one call, and a page larger than the hour has left is cut to what is left |
 | `cursor` | query | string | What meta.next or meta.poll gave: the lines after it. Without one, the newest page |
 
 Answers [LogList](#loglist) as `application/json`. Operation `listLog`.
@@ -243,7 +243,7 @@ The installation's events, oldest first: the engine started or stopped, a receiv
 
 | Parameter | In | Type | Description |
 |---|---|---|---|
-| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page: 25 at most on a limited server |
+| `limit` | query | integer; 1 to 1000; 100 unless set | Rows on a page. A limited server gives 25 unless asked for more, 250 at most; every 25 rows of a page count as one call, and a page larger than the hour has left is cut to what is left |
 | `cursor` | query | string | An event's id, or what meta.next or meta.poll gave: the events after it. Without one, the newest page |
 
 Answers [EventList](#eventlist) as `application/json`. Operation `listSystemEvents`.
@@ -690,6 +690,7 @@ A field that does not apply to an event's kind is left out.
 | `build_date` | string |  |
 | `os` | string |  |
 | `hardware` | string |  |
+| `processor` | string |  |
 | `uptime_s` | integer | Seconds since AIS-catcher started |
 | `memory_bytes` | integer | Memory in use |
 | `received_bytes` | integer | Bytes from every input |

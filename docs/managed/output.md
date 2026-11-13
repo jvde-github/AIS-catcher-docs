@@ -11,7 +11,7 @@
 To give your station a name, coverage statistics and its own page, register it:
 
 1. [Create a station on aiscatcher.org](https://www.aiscatcher.org/addstation_ac). You get a station key.
-2. Paste the key in **Sharing Key** and press **Save changes**, then **Restart receiver**.
+2. Paste the key in **Sharing Key** and press **Save changes**.
 
 Once a key is in, the button next to it reads **Edit station details** and opens your station on aiscatcher.org. Switch sharing off and nothing leaves the station.
 
@@ -41,4 +41,4 @@ A mark next to an output in the list means it needs attention: amber for a setti
 
 These are under **Settings → Services**. **+ Add server** adds a map of its own on another port, which you can share on your network or publicly, with the API and other feeds beside it. **Home Assistant** and **Webhooks** have their own pages there.
 
-Press **Save changes**, then **Restart receiver**, to use a change.
+Press **Save changes**: the change is used at once.

@@ -12,7 +12,7 @@ AIS-catcher can pass every message it receives on to OpenCPN, a chart plotter or
 !!! tip "On the same computer?"
     If the chart plotter runs on the same computer as AIS-catcher, use the address `127.0.0.1`.
 
-<div class="stepper" markdown>
+<div class="stepper" data-eyebrow="Manual mode · Guide" markdown>
 
 <div class="stepper-step" markdown>
 

@@ -12,6 +12,6 @@
 - **Advanced settings** holds the rest, such as the tuner gain, the sample rate, the frequency correction and the decoding engine.
 - **Docs** opens the reference for that kind of receiver.
 
-Press **Save changes**, then **Restart receiver**, to use a change.
+Press **Save changes**: the change is used at once, and the receiver restarts by itself when the change needs it.
 
 A mark next to an input in the list means it needs attention: hover over it to see why, for example a device that is unplugged or used by another program.

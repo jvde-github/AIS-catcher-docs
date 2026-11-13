@@ -1,7 +1,7 @@
 # API
 
 !!! tip "Step-by-step guides"
-    **[Ask your station: the API](https://www.aiscatcher.org/guides/api)** and **[Let an AI assistant read your station](https://www.aiscatcher.org/guides/mcp)** on aiscatcher.org walk through this with screenshots: in the control panel, in the configuration file and on the command line.
+    **[Ask Your Station, the API](../managed/api.md)** and **[Let an AI Assistant Read Your Station](../managed/assistant.md)** walk through this in the dashboard, with screenshots.
 
 AIS-catcher answers questions about what it hears over HTTP: which vessels are around, where a vessel went, who called at a port, what happened lately, and how the receivers are doing. Programs use the **read API** under `/api/v1`; assistants such as Claude use the same data through **MCP**; monitoring tools use **health** and the **system** service.
 
@@ -34,7 +34,7 @@ Each is a switch on the server; `ui` is on unless set `false`, the others off un
 
 A server listens on `127.0.0.1` unless `bind` says otherwise, and then only programs on this machine reach it: no key is needed. A server that listens beyond this machine and offers `api`, `mcp` or `system` needs `keys`, or `"public": true` to say that anyone who reaches it may read it; AIS-catcher refuses to start otherwise. A server is one or the other, never both, and a public server on the network never offers `system`: that takes keys.
 
-A key is a long random text; the configuration holds only its SHA-256, so the file does not give the key away. In managed mode a server's page under **Servers** says whether it is **Open** or takes **Keys**, which is where a server on the network starts, and **New key** there makes one and shows it once. By hand:
+A key is a long random text; the configuration holds only its SHA-256, so the file does not give the key away. In managed mode a server's page under **Services** says whether it is **Open** or takes **Keys**, which is where a server on the network starts, and **New key** there makes one and shows it once. By hand:
 
 ```sh
 KEY=$(openssl rand -hex 24); echo "$KEY"                 # give this to the program, once
@@ -53,7 +53,7 @@ curl -H "Authorization: Bearer $KEY" http://station.local:8111/api/v1/vessels?li
 | `sha256` | The SHA-256 of the key, 64 hex digits |
 | `scopes` | `data` (the `api` and `mcp` services), `system` (the `system` service and health); `data` unless set |
 
-A request without a key, or with one the server does not know, gets `401`; a key without the scope gets `403`. A key made with **New key** in the control panel is 48 random hex digits, which no one can guess however often they try, so a key you write yourself should be just as long and random. The viewer (`ui`) is not behind keys: give a server with keys only the services that need them.
+A request without a key, or with one the server does not know, gets `401`; a key without the scope gets `403`. A key made with **New key** in the dashboard is 48 random hex digits, which no one can guess however often they try, so a key you write yourself should be just as long and random. The viewer (`ui`) is not behind keys: give a server with keys only the services that need them.
 
 A key travels in the `Authorization` header over plain HTTP, so anyone who can watch the connection can read it. Beyond your own network, put a TLS reverse proxy (Caddy, nginx) or a VPN (WireGuard, Tailscale) in front of the server; the proxy is also the place to limit how many requests a client may make.
 
@@ -135,6 +135,7 @@ while True:
 | Parameter | Description |
 |-----------|-------------|
 | `q` | Text in the name or call sign, part of the MMSI, or the IMO number |
+| `destination` | Text in the destination |
 | `bbox` | `west,south,east,north` in degrees |
 | `near`, `radius_nm` | `lat,lon` and nautical miles (10 unless set) |
 | `mmsi` | These vessels |

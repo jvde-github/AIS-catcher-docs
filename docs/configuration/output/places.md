@@ -16,7 +16,7 @@ Places are optional. Without a place directory the viewer works as before.
     </div>
 </div>
 
-On the command line, `PLACES` is a setting of the web viewer (`-N`). In a JSON configuration it is the key `places` of the `server` object.
+On the command line, `PLACES` is a setting of the web viewer (`-N`). In a JSON configuration it is the key `places` under `tracking`, see [Tracking and services](../../usage/json-configuration.md#tracking-and-services-tracking-services).
 
 ## What you get
 

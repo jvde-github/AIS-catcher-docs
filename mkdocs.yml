@@ -79,7 +79,13 @@ nav:
       - Outputs: managed/output.md
       - Remote Access and Security: managed/remote-access.md
       - Guides:
+          - Name and Place Your Station: managed/station.md
+          - Connect Your Receivers: managed/receivers.md
           - Send Ships to Your Chart Plotter: managed/chart-plotter.md
+          - Share with the Community Map: managed/community-map.md
+          - Ask Your Station, the API: managed/api.md
+          - Let an AI Assistant Read Your Station: managed/assistant.md
+          - Vessels in Home Assistant: managed/home-assistant.md
   - Manual Mode:
       - How Manual Mode Works: usage/overview.md
       - Command Line: usage/cli.md
@@ -136,6 +142,13 @@ nav:
             - NMEA2000: configuration/output/NMEA2000.md
             - Database (PostgreSQL / SQLite): configuration/output/PSQL.md
           - Configuration Keys: references/config-keys.md
+  - Tutorials:
+      - Overview: tutorials/index.md
+      - Connecting Your Station to Other Tools:
+          - 1. Multiple Receivers and Stations: tutorials/stations.md
+          - 2. Geofencing with Places: tutorials/places.md
+          - 3. The API and MCP: tutorials/api-and-mcp.md
+          - 4. Home Automation and Webhooks: tutorials/home-automation.md
   - API:
       - Overview: api/overview.md
       - Reference: api/reference.md

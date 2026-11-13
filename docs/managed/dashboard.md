@@ -15,7 +15,7 @@ This map loads no plugins and no about page, and it has no log tab: the dashboar
 The bar at the bottom runs the station:
 
 - **A B C D**: a light for each AIS channel, which flashes as messages arrive.
-- **Start**, **Stop** or **Restart**: starts and stops the receiver. After you save changes, it reads **Restart**.
+- **Start** or **Stop**: starts and stops the receiver.
 - **Settings**: opens the settings.
 - **Running** or **Stopped**, with the time since the start. A count of warnings and errors appears next to it; press it to open the log.
 - The community map icon, on the right: its colour shows whether the station shares with the community map. It links to aiscatcher.org.
@@ -35,7 +35,7 @@ The bar at the bottom runs the station:
 | **Places** | Ports, berths, anchorages and zones on the map. See [Places](#places). |
 | **System** | **Status**, **Data & history**, **Log**, **Config file**, **Access** and **About**. |
 
-Each page ends with **Cancel** and **Save changes**. A saved change reaches the receiver when it restarts: press **Restart receiver** in the bar that appears at the top, or **Restart** in the control bar.
+Each page ends with **Cancel** and **Save changes**. A saved change is used at once; the receiver restarts by itself when a change needs it.
 
 Under **System**:
 

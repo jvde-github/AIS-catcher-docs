@@ -696,27 +696,12 @@
 
 /* Browser-address pill: URLs the user types into the address bar */
 .md-typeset code.address {
-    background: #e3edf9;
-    border: 1px solid #9fb8d4;
-    border-radius: 999px;
-    padding: 0.25em 0.9em 0.25em 2.1em;
+    background: #eef4fb;
+    border: 1px solid #d5e2f2;
+    border-radius: 0.3rem;
+    padding: 0.1em 0.45em;
     color: #0d3a66;
-    box-shadow: inset 0 1px 2px rgba(18, 54, 94, 0.10);
-    position: relative;
     white-space: nowrap;
-}
-
-.md-typeset code.address::before {
-    content: "";
-    position: absolute;
-    left: 0.75em;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1em;
-    height: 1em;
-    background-color: #42566e;
-    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="black" stroke-width="2"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></g></svg>') no-repeat center / contain;
-    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="black" stroke-width="2"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></g></svg>') no-repeat center / contain;
 }
 
 /* JSON blocks: light "config file" card */
@@ -1122,13 +1107,17 @@
     color: #1976d2;
 }
 
-/* Steppers: a guide one step at a time, as a card with a counter and dots on top and
-   Back / Next below. Without the script (.stepper--on) the steps read top to bottom. */
+/* Steppers: a guide one step at a time, drawn as the website's wizard window: the guide's
+   name and the step's title on top with dots and a counter, Back / Next below. Without the
+   script (.stepper--on) the steps read top to bottom. */
 .md-typeset .stepper--on {
+    display: flex;
+    flex-direction: column;
     margin: 1.4rem 0 1.8rem;
-    border: 1px solid #dbe7f5;
-    border-radius: 14px;
+    border: 1px solid #dbe4ef;
+    border-radius: 0.8rem;
     background: #fff;
+    box-shadow: 0 8px 28px rgba(18, 54, 94, 0.08);
     overflow: hidden;
     scroll-margin-top: 5rem;
 }
@@ -1138,16 +1127,42 @@
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    padding: 0.6rem 1.2rem;
-    border-bottom: 1px solid #e6edf6;
-    background: #f7fafe;
+    padding: 0.8rem 1.2rem;
+    border-bottom: 1px solid #e2e8f0;
+    background: linear-gradient(to right, #f8fafc, #fff);
 }
 
-.md-typeset .stepper-head .stepper-count {
+.md-typeset .stepper-head p {
     margin: 0;
-    font-size: 0.66rem;
+}
+
+.md-typeset .stepper-eyebrow {
+    font-size: 0.55rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: #94a3b8;
+}
+
+.md-typeset .stepper-title {
+    font-size: 0.96rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #0f172a;
+}
+
+.md-typeset .stepper-progress {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.md-typeset .stepper-count {
+    font-size: 0.58rem;
     font-weight: 600;
-    color: #5b7392;
+    color: #64748b;
+    white-space: nowrap;
     font-variant-numeric: tabular-nums;
 }
 
@@ -1156,12 +1171,12 @@
     align-items: center;
 }
 
-/* each dot sits in a 24px hit area */
+/* each dot sits in an 18px hit area */
 .md-typeset .stepper-dot {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
+    width: 18px;
     height: 24px;
     padding: 0;
     border: 0;
@@ -1171,19 +1186,22 @@
 
 .md-typeset .stepper-dot::before {
     content: "";
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 999px;
-    background: #d5e2f2;
-    transition: width 0.15s ease, background-color 0.15s ease;
+    background: #e2e8f0;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.md-typeset .stepper-dot:hover::before {
+    transform: scale(1.25);
 }
 
 .md-typeset .stepper-dot.is-done::before {
-    background: #8db8ea;
+    background: #93c5fd;
 }
 
 .md-typeset .stepper-dot.is-current::before {
-    width: 18px;
     background: #1976d2;
 }
 
@@ -1194,28 +1212,31 @@
 }
 
 .md-typeset .stepper--on > .stepper-step {
-    padding: 0 1.2rem 0.4rem;
+    flex: 1;
+    padding: 1rem 1.2rem 0.6rem;
 }
 
+/* the step's title shows in the window's header */
 .md-typeset .stepper--on > .stepper-step > h2:first-child {
-    margin-top: 1.1rem;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
 }
 
-.md-typeset .stepper--on > .stepper-step > h2:focus {
-    outline: none;
-}
-
-/* a step opened from a link is its page's :target; keep its permalink for hover only */
-.md-typeset .stepper--on > .stepper-step > h2:target > .headerlink:not(:hover):not(:focus) {
-    opacity: 0;
+.md-typeset .stepper--on > .stepper-step > h2:first-child + * {
+    margin-top: 0;
 }
 
 .md-typeset .stepper-foot {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    padding: 0.75rem 1.2rem;
-    border-top: 1px solid #e6edf6;
+    padding: 0.8rem 1.2rem 1rem;
+    border-top: 1px solid #f1f5f9;
 }
 
 .md-typeset .stepper-back,
@@ -1223,27 +1244,36 @@
     font: inherit;
     font-size: 0.7rem;
     font-weight: 600;
-    border-radius: 8px;
+    padding: 0.45rem 1rem;
+    border-radius: 0.4rem;
     cursor: pointer;
+    transition: background-color 0.15s ease;
 }
 
 .md-typeset .stepper-back {
-    padding: 0.45rem 0.6rem;
-    border: 0;
-    background: none;
-    color: #5b7392;
+    border: 1px solid #cbd5e1;
+    background: #fff;
+    color: #334155;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.md-typeset .stepper-back::before {
+    content: "\2190\00a0\00a0";
 }
 
 .md-typeset .stepper-back:hover {
-    color: #12365e;
+    background: #f8fafc;
 }
 
 .md-typeset .stepper-next {
     margin-left: auto;
-    padding: 0.5rem 0.95rem;
     border: 1px solid #1976d2;
     background: #1976d2;
     color: #fff;
+}
+
+.md-typeset .stepper-next::after {
+    content: "\00a0\00a0\2192";
 }
 
 .md-typeset .stepper-next:hover {
@@ -1256,34 +1286,347 @@
     outline-offset: 2px;
 }
 
-/* things to have ready, on a stepper's first step */
+/* The stage: the window stands on the website's harbour photograph */
+.md-typeset .stepper-stage--on {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0 1.8rem;
+    padding: 2.6rem 1rem;
+    border-radius: 0.8rem;
+    background-image:
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.62), rgba(6, 11, 25, 0.82)),
+        url("../assets/quickstart-stage.jpg");
+    background-size: cover;
+    background-position: center 42%;
+}
+
+.md-typeset .stepper-stage--on > .stepper--on {
+    width: 100%;
+    max-width: 38rem;
+    min-height: 30rem;
+    margin: 0;
+    border: 0;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+@media screen and (max-width: 44.9375em) {
+    .md-typeset .stepper-stage--on {
+        padding: 0;
+        background: none;
+    }
+
+    .md-typeset .stepper-stage--on > .stepper--on {
+        min-height: 0;
+        border: 1px solid #dbe4ef;
+        box-shadow: 0 8px 28px rgba(18, 54, 94, 0.08);
+    }
+
+    /* the dots say where you are; the title keeps the room */
+    .md-typeset .stepper-count {
+        display: none;
+    }
+}
+
+/* a stepper's welcome: the logo, a few lines and the things to have ready */
+.md-typeset .stepper-welcome {
+    max-width: 27rem;
+    margin: 0.4rem auto 0;
+    text-align: center;
+}
+
+.md-typeset .stepper-welcome img {
+    display: block;
+    width: 3.8rem;
+    height: 3.8rem;
+    margin: 0 auto 0.7rem;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.md-typeset .stepper-welcome p {
+    color: #334155;
+}
+
+.md-typeset .ready-label {
+    margin: 1.3rem 0 0.5rem;
+    font-size: 0.55rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-align: center;
+    color: #94a3b8;
+}
+
 .md-typeset .ready {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 0.6rem;
-    margin: 0.4rem 0 1rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+    max-width: 27rem;
+    margin: 0 auto 1rem;
 }
 
 .md-typeset .ready p {
     margin: 0;
-    padding: 0.7rem 0.8rem;
-    border: 1px solid #dbe7f5;
-    border-radius: 10px;
-    font-size: 0.68rem;
+    padding: 0.8rem 0.4rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.55rem;
+    font-size: 0.6rem;
     line-height: 1.45;
-    color: #5b7392;
+    text-align: center;
+    color: #64748b;
+}
+
+.md-typeset .ready svg {
+    display: block;
+    width: 1.3rem;
+    height: 1.3rem;
+    margin: 0 auto 0.4rem;
+    fill: #1976d2;
 }
 
 .md-typeset .ready strong {
     display: block;
-    font-size: 0.74rem;
-    color: #12365e;
+    font-size: 0.72rem;
+    color: #0f172a;
+}
+
+/* a walk through screens: each with a few words and its screenshot, two abreast */
+.md-typeset .walk {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem 1rem;
+    margin: 1rem 0;
+}
+
+.md-typeset .walk-step {
+    display: flex;
+    flex-direction: column;
+}
+
+.md-typeset .walk-step p {
+    margin: 0 0 0.5rem;
+    font-size: 0.68rem;
+    line-height: 1.5;
+    color: #475569;
+}
+
+.md-typeset .walk-step p:first-child {
+    flex: 1;
+}
+
+.md-typeset .walk-step p:first-child > strong:first-child {
+    display: block;
+    font-size: 0.76rem;
+    color: #0f172a;
+}
+
+/* a screenshot framed as a small window, as the website's are */
+.md-typeset img.shot {
+    display: block;
+    width: 100%;
+    padding-top: 22px;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.55rem;
+    background-color: #f1f5f9;
+    background-image:
+        radial-gradient(circle 3.5px at 13px 11px, #f87171 98%, transparent),
+        radial-gradient(circle 3.5px at 26px 11px, #fbbf24 98%, transparent),
+        radial-gradient(circle 3.5px at 39px 11px, #34d399 98%, transparent);
+    background-repeat: no-repeat;
+    box-shadow: 0 8px 22px rgba(2, 6, 23, 0.12);
+}
+
+@media screen and (max-width: 34em) {
+    .md-typeset .walk {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.md-typeset .stepper-fine {
+    max-width: 32rem;
+    margin: 1.4rem auto 0;
+    font-size: 0.62rem;
+    line-height: 1.55;
+    text-align: center;
+    color: #8492a6;
+}
+
+/* Tutorials: the parts of a series as a chain above the title, the one being read filled */
+.md-typeset .series {
+    margin: 0 0 1.4rem;
+}
+
+.md-typeset .series p {
+    display: flex;
+    margin: 0;
+}
+
+.md-typeset .series a {
+    position: relative;
+    flex: 1;
+    padding: 1.15rem 0.6rem 0 0;
+    font-size: 0.68rem;
+    line-height: 1.3;
+    color: #475569;
+}
+
+.md-typeset .series a::before {
+    content: "";
+    position: absolute;
+    top: 0.32rem;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #b7cbe6;
+}
+
+.md-typeset .series a:last-child::before {
+    display: none;
+}
+
+.md-typeset .series a::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 0.7rem;
+    height: 0.7rem;
+    border: 2px solid #6f9fd8;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.md-typeset .series a.is-current {
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.md-typeset .series a.is-current::after {
+    border-color: #1976d2;
+    background: #1976d2;
+    box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.18);
+}
+
+.md-typeset .series small {
+    display: block;
+    font-family: var(--md-code-font-family), monospace;
+    font-size: 0.58rem;
+    font-weight: 400;
+    color: #8492a6;
+}
+
+.md-typeset .lead {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: #334155;
+}
+
+.md-typeset .tutorial-meta {
+    font-family: var(--md-code-font-family), monospace;
+    font-size: 0.6rem;
+    color: #8492a6;
+}
+
+.md-typeset figure figcaption {
+    max-width: none;
+    margin-top: 0.4rem;
+    font-size: 0.64rem;
+    font-style: normal;
+    color: #64748b;
+}
+
+/* the tutorials of a series as cards with their picture */
+.md-typeset .tutorial-list p {
+    margin: 0 0 0.8rem;
+}
+
+.md-typeset .tutorial-list a {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr);
+    column-gap: 1rem;
+    align-content: center;
+    padding: 0.7rem;
+    border: 1px solid #dbe4ef;
+    border-radius: 0.7rem;
+    background: #fff;
+    color: #475569;
+    font-size: 0.7rem;
+    line-height: 1.5;
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.md-typeset .tutorial-list a:hover {
+    border-color: #9fc0e8;
+    box-shadow: 0 6px 20px rgba(18, 54, 94, 0.1);
+}
+
+.md-typeset .tutorial-list img {
+    grid-row: 1 / span 3;
+    align-self: center;
+    border-radius: 0.4rem;
+}
+
+.md-typeset .tutorial-list small {
+    font-family: var(--md-code-font-family), monospace;
+    font-size: 0.58rem;
+    color: #8492a6;
+}
+
+.md-typeset .tutorial-list strong {
+    font-size: 0.86rem;
+    line-height: 1.3;
+    color: #0f172a;
+}
+
+@media screen and (max-width: 34em) {
+    .md-typeset .series p {
+        display: block;
+    }
+
+    .md-typeset .series a {
+        display: block;
+        padding: 0 0 0.5rem 1.2rem;
+    }
+
+    .md-typeset .series a::before {
+        display: none;
+    }
+
+    .md-typeset .series small {
+        display: inline;
+        margin-right: 0.4rem;
+    }
+
+    .md-typeset .tutorial-list a {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .md-typeset .tutorial-list img {
+        grid-row: auto;
+        margin-bottom: 0.5rem;
+    }
 }
 
 @media print {
     .md-typeset .stepper-head,
     .md-typeset .stepper-foot {
         display: none;
+    }
+
+    .md-typeset .stepper-stage--on {
+        padding: 0;
+        background: none;
+    }
+
+    .md-typeset .stepper--on > .stepper-step > h2:first-child {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 1em 0 0.6em;
+        clip: auto;
+        white-space: normal;
     }
 
     .md-typeset .stepper--on > .stepper-step[hidden] {
