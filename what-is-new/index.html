@@ -3348,6 +3348,28 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#decoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-assistants-and-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API, assistants and events
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#https" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3462,6 +3484,28 @@
     <span class="md-ellipsis">
       
         Input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ais-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AIS messages
       
     </span>
   </a>
@@ -4305,6 +4349,28 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#decoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-assistants-and-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API, assistants and events
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#https" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4419,6 +4485,28 @@
     <span class="md-ellipsis">
       
         Input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ais-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AIS messages
       
     </span>
   </a>
@@ -5117,6 +5205,19 @@
 
 <h1 id="whats-new">What's New?<a class="headerlink" href="#whats-new" title="Permanent link">&para;</a></h1>
 <h2 id="edge">Edge<a class="headerlink" href="#edge" title="Permanent link">&para;</a></h2>
+<h3 id="decoding">Decoding<a class="headerlink" href="#decoding" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>A new decoding engine, v2, is the default</strong> — it runs when no model is chosen, after being tested on the edge builds since July. In our tests it decodes between 4% and 10% more messages than the previous default, mostly from weak signals, and uses about 30% less CPU. <code>-m 2</code>, or engine type <code>v1_base</code>, selects the previous engine. On v2 the settings <code>AFC_WIDE</code> and <code>PS_EMA</code> are accepted and have no effect, and <code>sensitivity_high</code> no longer selects another engine.</li>
+<li><strong>Less CPU at 1536K on 64-bit ARM</strong> — downsampling 8-bit input at 1536K, as an RTL-SDR delivers it, is faster on 64-bit ARM machines.</li>
+</ul>
+<h3 id="api-assistants-and-events">API, assistants and events<a class="headerlink" href="#api-assistants-and-events" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Read API</strong> — <code>/api/v1</code> answers which vessels are around, where a vessel went, who called at a place and what happened lately; <code>/api/v1/openapi.json</code> describes it. A server offers it with <code>api</code>, open or guarded by keys. See <a href="../api/overview/">API</a>.</li>
+<li><strong>MCP</strong> — an assistant such as Claude can ask the station the same questions, through <code>mcp</code> on a server.</li>
+<li><strong>Webhooks</strong> — each event is posted to an address as it happens: <code>-W https://...</code>, or <strong>Services → Webhooks</strong> in the control panel. See <a href="../api/webhooks/">Webhooks</a>.</li>
+<li><strong>Home Assistant</strong> — AIS-catcher keeps its state on an MQTT broker and Home Assistant finds the sensors by itself: <code>-W mqtt://...</code>, or <strong>Services → Home Assistant</strong>. See <a href="../api/home-assistant/">Home Assistant and MQTT state</a>.</li>
+<li><strong>Event history</strong> — the ticker has a history button that opens past events in the side table.</li>
+</ul>
 <h3 id="https">HTTPS<a class="headerlink" href="#https" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Optional HTTPS</strong> — a server with <code>tls</code> (<code>cert</code>, <code>key</code>), or <code>-N ... TLS_CERT file TLS_KEY file</code>, serves over HTTPS. The control panel takes its own from Settings → System → Access, <code>control.tls</code> or <code>-E ... TLS_CERT file TLS_KEY file</code>.</li>
@@ -5143,6 +5244,7 @@
 <h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Fedora support</strong> — the install script now detects <code>dnf</code> alongside <code>apt</code>, so the same one-line command works on Fedora as well as on Debian, Ubuntu and Raspberry Pi OS. Pre-built RPMs are provided for Fedora 43 and 44 (<code>x86_64</code> and <code>aarch64</code>); other releases build from source.</li>
+<li><strong>A safer install script</strong> — an interrupted installation puts the service back as it was, a package configuration prompt no longer stops it, and the summary says when sharing is on.</li>
 <li><strong>Docker image on Debian trixie</strong> — the published image moved from Debian bookworm to trixie (Debian 13), matching the base image the feeder containers that build on top of it already use.</li>
 </ul>
 <h3 id="web-viewer">Web viewer<a class="headerlink" href="#web-viewer" title="Permanent link">&para;</a></h3>
@@ -5156,6 +5258,8 @@
 <li><strong>Vessel type filter covers every class</strong> — Class B / pleasure craft got their own entry and "Other / not reported" catches everything without one (aircraft, base stations, AtoN, SART), so selecting Cargo alone hides everything else.</li>
 <li><strong>New map backgrounds</strong> — the CARTO backgrounds (Positron, Dark Matter, Voyager) now require an API key from CARTO and show an "API key required" watermark without one, so they are replaced by <a href="https://openfreemap.org">OpenFreeMap</a> vector maps: <strong>Positron</strong>, <strong>Bright</strong>, <strong>Liberty</strong> and <strong>Dark</strong>, with label-free versions of Positron and Dark. These need no key and no account, and are sharper at every zoom level. Anyone who prefers CARTO can get a free key at <a href="https://carto.com/basemaps/apikey">carto.com/basemaps/apikey</a> and paste it into the <code>carto_basemaps</code> plugin, which brings all six back.</li>
 <li><strong>AIS-catcher Light and Dark</strong> — map backgrounds of our own on the OpenFreeMap data: borders blended into the land, only countries and large cities in a wide view, towns as you zoom in, and the names of seas, lakes and rivers. Dark is in neutral greys with the sea lighter than the land.</li>
+<li><strong>Chart overlays</strong> — nautical chart overlays for Spain, Norway, Finland, Canada and the German and Dutch inland waterways.</li>
+<li><strong>Stations on the ship card</strong> — the ship card lists every station that heard the ship, with how long ago.</li>
 </ul>
 <h3 id="places">Places<a class="headerlink" href="#places" title="Permanent link">&para;</a></h3>
 <ul>
@@ -5165,16 +5269,18 @@
 <li><strong>Guard zones in the ticker</strong> — draw a guard zone around anything you want to watch. A ship entering or leaving it is announced in the event ticker as a notice, marked with ⚠. Crossings of a port, a sector or a water are announced as routine events.</li>
 <li><strong>No phantom visitors</strong> — only a position the ship can have reached from its previous one is used, and a crossing counts once the next position confirms it. A corrupted message with a wrong MMSI never puts a ship in your port.</li>
 <li><strong>Large place catalogues</strong> — a place's outline is read from its file when the map asks for it instead of kept in memory, so thousands of places load in less than half the time and take far less memory.</li>
+<li><strong>Sortable vessel lists</strong> — a place's window sorts on its column headings, and a scrollbar turns the pages of its vessel lists.</li>
 <li><strong>Coming from an earlier edge build?</strong> — place files written before this release use an older layout and are skipped at startup. <strong>Import place</strong> in the Places tab reads them one at a time and saves them in the current layout; <code>python3 scripts/migrate-places.py &lt;directory&gt; --write</code> converts a whole directory.</li>
 </ul>
 <h3 id="stations">Stations<a class="headerlink" href="#stations" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>A private station gives no distances</strong> — a vessel's distance and bearing from a station tell where that station is, so they are only shown when the station that heard the vessel shares its position (<code>share_loc on</code>). This holds for the viewer, the API and every other output; turn <code>share_loc</code> on to get the distance column and the distance filters back.</li>
+<li><strong>Each server decides whether it shows where the stations are</strong> — <code>share_loc</code> is now a server's setting, <strong>Station locations</strong> in the control panel. Off, the server gives no station positions and no distances, bearings or range, because a distance tells where a station is; the ships and the station names still show. A station's position can also be <strong>None</strong>.</li>
 <li><strong>A station's marker says how it is doing</strong> — green while it receives, grey when it has heard nothing for 15 minutes (the same rule as the <code>station_quiet</code> event and the health check), and grey with a red edge when every receiver naming it has lost its device; on the station's own map a slow red ring pulses around it then. The station's hover and card say "Quiet since 14:05" or "Receiver down". The orange marker five minutes after the page opened is gone: the state is decided by the station's host and sent to the map only when it changes.</li>
 <li><strong>The viewer's GeoJSON copies are gone</strong> — <code>/api/path.geojson</code> and <code>/api/allpath.geojson</code> are no longer served by the viewer. The <code>geojson</code> service answers <code>/geojson</code> and <code>/allpath.geojson</code> as before, and <code>/api/v1/vessels/{mmsi}/track?format=geojson</code> gives one vessel's track.</li>
 <li><strong>A viewer of some stations is a filter</strong> — a server whose filter names stations with <code>id</code> (<code>-N 8100 filter on id 1001</code>) shows those stations alone, with a ship table of its own that keeps its own backup <code>file</code>; the stations' names and positions come from <code>stations</code> in the configuration file. <code>station_id</code> on a server is refused. See <a href="../configuration/output/web-viewer/#several-stations-in-one-viewer">Several stations in one viewer</a>.</li>
 <li><strong>The v0.70 ship lists are a switch, <code>api_v0</code></strong> — <code>/ships.json</code>, <code>/api/ships.json</code>, <code>/api/ships_full.json</code> and <code>/stat.json</code> stay on for a <code>-N</code> and a <code>server</code> section; an entry of <code>services</code> serves them only with <code>"api_v0": true</code> (in managed mode the <strong>API v0</strong> line under <strong>Serves</strong>); <code>limited</code> does not cap them. A configuration the control panel moves from the old viewer or <code>server</code> section keeps them on. See <a href="../configuration/output/web-viewer/#the-ship-list-for-scripts-api-v0">The ship list for scripts</a>.</li>
 <li><strong>Prometheus per input and per output</strong> — <code>/metrics</code> adds <code>ais_input_*</code> (messages, bytes, up, last message, errors, connections) and <code>ais_output_*</code> (messages, bytes, dropped, connections) rows, labelled with the input or output, its type and description. See <a href="../configuration/output/web-viewer/#sending-data-to-prometheus-for-use-in-grafana-dashboards">Sending data to Prometheus</a>.</li>
+<li><strong>Prometheus signal metrics once per vessel</strong> — <code>ais_msg_ppm</code> and <code>ais_msg_level</code> give one sample per vessel and channel at each scrape, in place of a line per message.</li>
 </ul>
 <h3 id="http-output">HTTP output<a class="headerlink" href="#http-output" title="Permanent link">&para;</a></h3>
 <ul>
@@ -5187,6 +5293,18 @@
 <h3 id="input">Input<a class="headerlink" href="#input" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Secure WebSocket input</strong> — <code>-t wss://host/path</code> reads NMEA over WebSocket with TLS (port 443 by default), passing the URL's path and query to the server. Credentials in the URL become an <code>Authorization</code> header — <code>user:password@</code> for Basic, a bare <code>token@</code> for Bearer — or use the <code>username</code>/<code>password</code> settings; <code>ssl_verify off</code> accepts self-signed certificates. Reads the <a href="https://openwaters.io/ais/">Open Waters</a> NMEA stream directly. See <a href="../configuration/input/tcp/">Input over TCP</a>.</li>
+</ul>
+<h3 id="network">Network<a class="headerlink" href="#network" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>A slow server no longer stalls decoding</strong> — the MQTT, TCP and community feed outputs and the rtl_tcp input connect and reconnect off the decoding thread, so a broker that is slow or refuses connections cannot make the receiver lose samples.</li>
+<li><strong>Windows checks TLS certificates</strong> — the Windows build verifies server certificates against the Windows root store.</li>
+</ul>
+<h3 id="ais-messages">AIS messages<a class="headerlink" href="#ais-messages" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Environmental reports (DAC 1, FID 26)</strong> — every sensor report of a message is decoded, not only the first, and a sensor site shows on the map with its water level, weather, air gap, dew point and salinity.</li>
+<li><strong>Inland water levels and bridge clearance</strong> — the inland water level message (DAC 200, FID 26) is decoded, and bridge clearances and gauge levels show on the map.</li>
+<li><strong>Time of arrival in nanoseconds</strong> — the JSON outputs carry <code>toa_ns</code>, integer nanoseconds since the epoch, next to <code>toa</code>.</li>
+<li><strong>Stricter static data</strong> — an IMO number is kept only when its check digit holds and an ENI only when it is well formed, so a corrupted number no longer sticks to a ship.</li>
 </ul>
 <h3 id="devices">Devices<a class="headerlink" href="#devices" title="Permanent link">&para;</a></h3>
 <ul>
