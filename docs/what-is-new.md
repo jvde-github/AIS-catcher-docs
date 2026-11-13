@@ -2,6 +2,19 @@
 
 ## Edge
 
+### Decoding
+
+- **A new decoding engine, v2, is the default** — it runs when no model is chosen, after being tested on the edge builds since July. In our tests it decodes between 4% and 10% more messages than the previous default, mostly from weak signals, and uses about 30% less CPU. `-m 2`, or engine type `v1_base`, selects the previous engine. On v2 the settings `AFC_WIDE` and `PS_EMA` are accepted and have no effect, and `sensitivity_high` no longer selects another engine.
+- **Less CPU at 1536K on 64-bit ARM** — downsampling 8-bit input at 1536K, as an RTL-SDR delivers it, is faster on 64-bit ARM machines.
+
+### API, assistants and events
+
+- **Read API** — `/api/v1` answers which vessels are around, where a vessel went, who called at a place and what happened lately; `/api/v1/openapi.json` describes it. A server offers it with `api`, open or guarded by keys. See [API](api/overview.md).
+- **MCP** — an assistant such as Claude can ask the station the same questions, through `mcp` on a server.
+- **Webhooks** — each event is posted to an address as it happens: `-W https://...`, or **Services → Webhooks** in the control panel. See [Webhooks](api/webhooks.md).
+- **Home Assistant** — AIS-catcher keeps its state on an MQTT broker and Home Assistant finds the sensors by itself: `-W mqtt://...`, or **Services → Home Assistant**. See [Home Assistant and MQTT state](api/home-assistant.md).
+- **Event history** — the ticker has a history button that opens past events in the side table.
+
 ### HTTPS
 
 - **Optional HTTPS** — a server with `tls` (`cert`, `key`), or `-N ... TLS_CERT file TLS_KEY file`, serves over HTTPS. The control panel takes its own from Settings → System → Access, `control.tls` or `-E ... TLS_CERT file TLS_KEY file`.
@@ -28,6 +41,7 @@
 ### Installation
 
 - **Fedora support** — the install script now detects `dnf` alongside `apt`, so the same one-line command works on Fedora as well as on Debian, Ubuntu and Raspberry Pi OS. Pre-built RPMs are provided for Fedora 43 and 44 (`x86_64` and `aarch64`); other releases build from source.
+- **A safer install script** — an interrupted installation puts the service back as it was, a package configuration prompt no longer stops it, and the summary says when sharing is on.
 - **Docker image on Debian trixie** — the published image moved from Debian bookworm to trixie (Debian 13), matching the base image the feeder containers that build on top of it already use.
 
 ### Web viewer
@@ -41,6 +55,8 @@
 - **Vessel type filter covers every class** — Class B / pleasure craft got their own entry and "Other / not reported" catches everything without one (aircraft, base stations, AtoN, SART), so selecting Cargo alone hides everything else.
 - **New map backgrounds** — the CARTO backgrounds (Positron, Dark Matter, Voyager) now require an API key from CARTO and show an "API key required" watermark without one, so they are replaced by [OpenFreeMap](https://openfreemap.org) vector maps: **Positron**, **Bright**, **Liberty** and **Dark**, with label-free versions of Positron and Dark. These need no key and no account, and are sharper at every zoom level. Anyone who prefers CARTO can get a free key at [carto.com/basemaps/apikey](https://carto.com/basemaps/apikey) and paste it into the `carto_basemaps` plugin, which brings all six back.
 - **AIS-catcher Light and Dark** — map backgrounds of our own on the OpenFreeMap data: borders blended into the land, only countries and large cities in a wide view, towns as you zoom in, and the names of seas, lakes and rivers. Dark is in neutral greys with the sea lighter than the land.
+- **Chart overlays** — nautical chart overlays for Spain, Norway, Finland, Canada and the German and Dutch inland waterways.
+- **Stations on the ship card** — the ship card lists every station that heard the ship, with how long ago.
 
 ### Places
 
@@ -50,16 +66,18 @@
 - **Guard zones in the ticker** — draw a guard zone around anything you want to watch. A ship entering or leaving it is announced in the event ticker as a notice, marked with ⚠. Crossings of a port, a sector or a water are announced as routine events.
 - **No phantom visitors** — only a position the ship can have reached from its previous one is used, and a crossing counts once the next position confirms it. A corrupted message with a wrong MMSI never puts a ship in your port.
 - **Large place catalogues** — a place's outline is read from its file when the map asks for it instead of kept in memory, so thousands of places load in less than half the time and take far less memory.
+- **Sortable vessel lists** — a place's window sorts on its column headings, and a scrollbar turns the pages of its vessel lists.
 - **Coming from an earlier edge build?** — place files written before this release use an older layout and are skipped at startup. **Import place** in the Places tab reads them one at a time and saves them in the current layout; `python3 scripts/migrate-places.py <directory> --write` converts a whole directory.
 
 ### Stations
 
-- **A private station gives no distances** — a vessel's distance and bearing from a station tell where that station is, so they are only shown when the station that heard the vessel shares its position (`share_loc on`). This holds for the viewer, the API and every other output; turn `share_loc` on to get the distance column and the distance filters back.
+- **Each server decides whether it shows where the stations are** — `share_loc` is now a server's setting, **Station locations** in the control panel. Off, the server gives no station positions and no distances, bearings or range, because a distance tells where a station is; the ships and the station names still show. A station's position can also be **None**.
 - **A station's marker says how it is doing** — green while it receives, grey when it has heard nothing for 15 minutes (the same rule as the `station_quiet` event and the health check), and grey with a red edge when every receiver naming it has lost its device; on the station's own map a slow red ring pulses around it then. The station's hover and card say "Quiet since 14:05" or "Receiver down". The orange marker five minutes after the page opened is gone: the state is decided by the station's host and sent to the map only when it changes.
 - **The viewer's GeoJSON copies are gone** — `/api/path.geojson` and `/api/allpath.geojson` are no longer served by the viewer. The `geojson` service answers `/geojson` and `/allpath.geojson` as before, and `/api/v1/vessels/{mmsi}/track?format=geojson` gives one vessel's track.
 - **A viewer of some stations is a filter** — a server whose filter names stations with `id` (`-N 8100 filter on id 1001`) shows those stations alone, with a ship table of its own that keeps its own backup `file`; the stations' names and positions come from `stations` in the configuration file. `station_id` on a server is refused. See [Several stations in one viewer](configuration/output/web-viewer.md#several-stations-in-one-viewer).
 - **The v0.70 ship lists are a switch, `api_v0`** — `/ships.json`, `/api/ships.json`, `/api/ships_full.json` and `/stat.json` stay on for a `-N` and a `server` section; an entry of `services` serves them only with `"api_v0": true` (in managed mode the **API v0** line under **Serves**); `limited` does not cap them. A configuration the control panel moves from the old viewer or `server` section keeps them on. See [The ship list for scripts](configuration/output/web-viewer.md#the-ship-list-for-scripts-api-v0).
 - **Prometheus per input and per output** — `/metrics` adds `ais_input_*` (messages, bytes, up, last message, errors, connections) and `ais_output_*` (messages, bytes, dropped, connections) rows, labelled with the input or output, its type and description. See [Sending data to Prometheus](configuration/output/web-viewer.md#sending-data-to-prometheus-for-use-in-grafana-dashboards).
+- **Prometheus signal metrics once per vessel** — `ais_msg_ppm` and `ais_msg_level` give one sample per vessel and channel at each scrape, in place of a line per message.
 
 ### HTTP output
 
@@ -72,6 +90,18 @@
 ### Input
 
 - **Secure WebSocket input** — `-t wss://host/path` reads NMEA over WebSocket with TLS (port 443 by default), passing the URL's path and query to the server. Credentials in the URL become an `Authorization` header — `user:password@` for Basic, a bare `token@` for Bearer — or use the `username`/`password` settings; `ssl_verify off` accepts self-signed certificates. Reads the [Open Waters](https://openwaters.io/ais/) NMEA stream directly. See [Input over TCP](configuration/input/tcp.md).
+
+### Network
+
+- **A slow server no longer stalls decoding** — the MQTT, TCP and community feed outputs and the rtl_tcp input connect and reconnect off the decoding thread, so a broker that is slow or refuses connections cannot make the receiver lose samples.
+- **Windows checks TLS certificates** — the Windows build verifies server certificates against the Windows root store.
+
+### AIS messages
+
+- **Environmental reports (DAC 1, FID 26)** — every sensor report of a message is decoded, not only the first, and a sensor site shows on the map with its water level, weather, air gap, dew point and salinity.
+- **Inland water levels and bridge clearance** — the inland water level message (DAC 200, FID 26) is decoded, and bridge clearances and gauge levels show on the map.
+- **Time of arrival in nanoseconds** — the JSON outputs carry `toa_ns`, integer nanoseconds since the epoch, next to `toa`.
+- **Stricter static data** — an IMO number is kept only when its check digit holds and an ENI only when it is well formed, so a corrupted number no longer sticks to a ship.
 
 ### Devices
 
