@@ -23,10 +23,11 @@ The AIS-catcher executables are built with the latest Windows MSVC compiler. Ple
 | Version | Win32 | x64 | Win32 + SDRPlay | x64 + SDRPlay |
 | :------ | :---- | :--: | :-------------- | :------------ |
 | **Edge** (latest, recommended) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/Edge/AIS-catcher.x86.zip) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/Edge/AIS-catcher.x64.zip) | not shipped | not shipped |
+| v0.71 (latest release) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/v0.71/AIS-catcher.x86.zip) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/v0.71/AIS-catcher.x64.zip) | not shipped | not shipped |
 | v0.70 (older, no managed mode) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/v0.70/AIS-catcher.x86.zip) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/v0.70/AIS-catcher.x64.zip) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/v0.70/AIS-catcher.SDRPLAY.x86.zip) | [ZIP](https://github.com/jvde-github/AIS-catcher/releases/download/v0.70/AIS-catcher.SDRPLAY.x64.zip) |
 
 !!! note "Edge is the latest build, not the browser"
-    **Edge** is the latest build of AIS-catcher, produced automatically from the `main` branch each time the code changes. It is the recommended download and the only Windows build with managed mode and `start-GUI.bat`. The name refers to the build, not the Microsoft Edge browser.
+    **Edge** is the latest build of AIS-catcher, produced automatically from the `main` branch each time the code changes. It is the recommended download. Managed mode and `start-GUI.bat` are in Edge and in v0.71. The name refers to the build, not the Microsoft Edge browser.
 
     v0.70 is an older release, kept for its SDRPlay builds (see below). It predates managed mode, so started with `-E` it stops with `Option -E is obsolete`.
 
