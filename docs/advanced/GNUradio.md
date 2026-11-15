@@ -4,6 +4,8 @@ The latest code base of AIS-catcher can take streaming data via ZeroMQ (ZMQ) as 
 ```bash
 AIS-catcher -z CF32 tcp://127.0.0.1:5555 -s 96000
 ```
+AIS-catcher connects to the publisher at that address and subscribes to everything it sends. The ZMQ input is built in and needs no ZeroMQ library. It talks to publishers on ZeroMQ 4 or later, over `tcp://` only; `ipc://` endpoints are not supported.
+
 Next we can build a simple GRC model that performs all the necessary steps and has a ZMQ Pub Sink with the chosen endpoint:
 ![Image](https://raw.githubusercontent.com/jvde-github/AIS-catcher/media/media/SDRuno%20GRC.png)
 Running this model, will allow us to successfully decode the messages in the file:

@@ -31,7 +31,6 @@ AIS-catcher requires libraries for the particular hardware you want to use. The 
 | **HackRF** | libhackrf-dev | hackrf | - |
 | **SDRplay 1A** | [API 3.x](https://www.sdrplay.com/downloads/) | - | [API 3.x](https://www.sdrplay.com/downloads/) |
 | **SoapySDR** | libsoapysdr-dev | - | - |
-| **ZeroMQ** | libzmq3-dev | zeromq | ZeroMQ ZeroMQ:x64-windows |
 | **HTTP secure** | libssl-dev | - | openssl openssl:x64-windows |
 | **ZIP** | zlib1g-dev | - | zlib zlib:x64-windows |
 
@@ -66,9 +65,9 @@ make
 
 Ensure that you have ```vcpkg``` [installed](https://vcpkg.io/en/getting-started.html) and integrated into Visual Studio via ```vcpkg integrate install``` (as Administrator). Then install the rtl-sdr drivers as follows:
 ```
-vcpkg install rtlsdr rtlsdr:x64-windows ZeroMQ ZeroMQ:x64-windows soxr soxr:x64-windows
+vcpkg install rtlsdr rtlsdr:x64-windows soxr soxr:x64-windows
 ```
-The included solution file in the mscv directory allows you to build AIS-catcher with RTL-SDR/ZMQ support in the Visual Studio IDE.
+The included solution file in the mscv directory allows you to build AIS-catcher with RTL-SDR support in the Visual Studio IDE.
 
 ## Managed mode
 

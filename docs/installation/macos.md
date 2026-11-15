@@ -43,7 +43,6 @@ For other hardware types, install the corresponding libraries:
 | **Airspy** | `airspy` |
 | **Airspy HF+** | `airspyhf` |
 | **HackRF** | `hackrf` |
-| **ZeroMQ** | `zeromq` |
 
 For example, to install support for Airspy and HackRF:
 

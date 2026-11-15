@@ -46,6 +46,7 @@ Various protocols are supported as input. The table below lists the available pr
 | `basestation` | BaseStation (ADS-B SBS-1)              | `beast` | Beast binary (ADS-B)                          |
 | `raw1090`| Raw 1090 MHz frames (ADS-B)                  | `tls`    | NMEA0183 over TLS                             |
 | `mqtts`  | MQTT over TLS (port 8883 unless given)       | `wssmqtt` | MQTT over WebSocket and TLS (port 443 unless given) |
+| `zmq`    | ZeroMQ publisher (raw I/Q), as `-z`          |          |                                               |
 
 Use the appropriate protocol based on your server's configuration and data format. 
 
@@ -94,7 +95,8 @@ Note the difference with file input, where the format is a positional argument: 
 | Specific Options | | | |
 | <span class="cmd-setting">host</span> | string | <span class="cmd-value">-</span> | Remote host address |
 | <span class="cmd-setting">port</span> | string | <span class="cmd-value">-</span> | Remote port number |
-| <span class="cmd-setting">protocol</span> | string | <span class="cmd-value">rtltcp</span> | Protocol (rtltcp/txt/tls/mqtt/mqtts/wsmqtt/wssmqtt/ws/wss/gpsd/basestation/beast/raw1090/none) |
+| <span class="cmd-setting">protocol</span> | string | <span class="cmd-value">rtltcp</span> | Protocol (rtltcp/txt/tls/mqtt/mqtts/wsmqtt/wssmqtt/ws/wss/gpsd/basestation/beast/raw1090/zmq/none) |
+| <span class="cmd-setting">endpoint</span> | string | <span class="cmd-value">-</span> | A ZeroMQ publisher as `tcp://host:port`, the form `-z` takes; sets `host` and `port` |
 | <span class="cmd-setting">url</span> | string | <span class="cmd-value">-</span> | Complete URL: protocol, optional `user:password@` or `token@`, host, port, path and query |
 | <span class="cmd-setting">format</span> | string | <span class="cmd-value">CU8</span> | Format of the incoming data: `CU8`, `CS8`, `CS16` or `CF32` for raw I/Q, or `TXT`, `BASESTATION`, `BEAST`, `RAW1090`. Implied by `protocol`, so set it after that setting — see [Raw sample streams without a protocol](#raw-sample-streams-without-a-protocol) |
 | <span class="cmd-setting">ssl_verify</span> | boolean | <span class="cmd-value">true</span> | Verify the TLS certificate on `wss`, `tls`, `mqtts` and `wssmqtt` |
