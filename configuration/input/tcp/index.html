@@ -4112,6 +4112,12 @@
 <td><code>wssmqtt</code></td>
 <td style="text-align: left;">MQTT over WebSocket and TLS (port 443 unless given)</td>
 </tr>
+<tr>
+<td style="text-align: left;"><code>zmq</code></td>
+<td style="text-align: left;">ZeroMQ publisher (raw I/Q), as <code>-z</code></td>
+<td></td>
+<td style="text-align: left;"></td>
+</tr>
 </tbody>
 </table>
 <p>Use the appropriate protocol based on your server's configuration and data format. </p>
@@ -4195,7 +4201,13 @@ Each sentence's NMEA 4.10 TAG block (<code>s:</code> station, <code>c:</code> ti
 <td><span class="cmd-setting">protocol</span></td>
 <td>string</td>
 <td><span class="cmd-value">rtltcp</span></td>
-<td>Protocol (rtltcp/txt/tls/mqtt/mqtts/wsmqtt/wssmqtt/ws/wss/gpsd/basestation/beast/raw1090/none)</td>
+<td>Protocol (rtltcp/txt/tls/mqtt/mqtts/wsmqtt/wssmqtt/ws/wss/gpsd/basestation/beast/raw1090/zmq/none)</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">endpoint</span></td>
+<td>string</td>
+<td><span class="cmd-value">-</span></td>
+<td>A ZeroMQ publisher as <code>tcp://host:port</code>, the form <code>-z</code> takes; sets <code>host</code> and <code>port</code></td>
 </tr>
 <tr>
 <td><span class="cmd-setting">url</span></td>
