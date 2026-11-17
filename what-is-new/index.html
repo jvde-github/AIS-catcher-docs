@@ -3791,6 +3791,45 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#nmea-2000" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NMEA 2000
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-071" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.71
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 0.71">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#decoding" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3857,7 +3896,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
+  <a href="#installation_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Installation
@@ -3967,7 +4006,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#nmea-2000" class="md-nav__link">
+  <a href="#nmea-2000_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         NMEA 2000
@@ -4792,6 +4831,45 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#nmea-2000" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NMEA 2000
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-071" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version 0.71
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 0.71">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#decoding" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4858,7 +4936,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
+  <a href="#installation_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Installation
@@ -4968,7 +5046,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#nmea-2000" class="md-nav__link">
+  <a href="#nmea-2000_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         NMEA 2000
@@ -5648,6 +5726,15 @@
 
 <h1 id="whats-new">What's New?<a class="headerlink" href="#whats-new" title="Permanent link">&para;</a></h1>
 <h2 id="edge">Edge<a class="headerlink" href="#edge" title="Permanent link">&para;</a></h2>
+<h3 id="nmea-2000">NMEA 2000<a class="headerlink" href="#nmea-2000" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>No NMEA2000 library needed</strong> — NMEA 2000 over SocketCAN (<code>-i</code>, <code>-I</code>, Linux) is built in, and the TCP input reads NMEA 2000 frame lines from a gateway with protocol <code>n2k</code>, on any platform. An interface that cannot be opened is retried instead of ending AIS-catcher.</li>
+</ul>
+<h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Small and static builds</strong> — <code>-DMINIMAL=ON</code> builds without the web viewer, API, databases and TLS, at about half the size; with <code>-DSTATIC=ON</code> on Alpine it gives one static binary without dependencies.</li>
+</ul>
+<h2 id="version-071">Version 0.71<a class="headerlink" href="#version-071" title="Permanent link">&para;</a></h2>
 <h3 id="decoding">Decoding<a class="headerlink" href="#decoding" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>A new decoding engine, v2, is the default</strong> — it runs when no model is chosen, after being tested on the edge builds since July. In our tests it decodes between 4% and 10% more messages than the previous default, mostly from weak signals, and uses about 30% less CPU. <code>-m 2</code>, or engine type <code>v1_base</code>, selects the previous engine. On v2 the settings <code>AFC_WIDE</code> and <code>PS_EMA</code> are accepted and have no effect, and <code>sensitivity_high</code> no longer selects another engine.</li>
@@ -5684,7 +5771,7 @@
 <li><strong>Reworked <code>-D</code> output with three backends</strong> — one shared 5-table schema written to <strong>PostgreSQL</strong>, <strong>SQLite</strong> (<code>-D sqlite:file.db</code>) or <strong>CSV files</strong> (<code>-D csv:directory</code>), so a database no longer requires a server. Defaults are bounded — latest state per vessel plus hourly reception statistics — and full position/static history is opt-in. See <a href="../configuration/output/PSQL/">Database output</a>.</li>
 <li><strong>Configurable from the control panel</strong> — a new <strong>Database</strong> output channel with a backend selector, and in the config file a single <code>db</code> array with a <code>type</code> field.</li>
 </ul>
-<h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
+<h3 id="installation_1">Installation<a class="headerlink" href="#installation_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Fedora support</strong> — the install script now detects <code>dnf</code> alongside <code>apt</code>, so the same one-line command works on Fedora as well as on Debian, Ubuntu and Raspberry Pi OS. Pre-built RPMs are provided for Fedora 43 and 44 (<code>x86_64</code> and <code>aarch64</code>); other releases build from source.</li>
 <li><strong>A safer install script</strong> — an interrupted installation puts the service back as it was, a package configuration prompt no longer stops it, and the summary says when sharing is on.</li>
@@ -5756,7 +5843,7 @@
 <li><strong>SDRplay RSP1B and RSPdxR2</strong> — now reported by name instead of as <code>UNKNOWN</code>.</li>
 <li><strong>SDRplay on Windows</strong> — pre-built Windows binaries with SDRplay support are no longer published, as the SDRplay API installer can no longer be downloaded from an automated build. <a href="../installation/windows/">v0.70</a> is the last Windows release that includes them. SDRplay support is unchanged on Linux and macOS, and can still be built from source on Windows.</li>
 </ul>
-<h3 id="nmea-2000">NMEA 2000<a class="headerlink" href="#nmea-2000" title="Permanent link">&para;</a></h3>
+<h3 id="nmea-2000_1">NMEA 2000<a class="headerlink" href="#nmea-2000_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Correct AIS text over N2K</strong> — Aid-to-Navigation names, safety-related text, and vessel name/callsign fields are now encoded correctly when output over NMEA 2000.</li>
 </ul>
