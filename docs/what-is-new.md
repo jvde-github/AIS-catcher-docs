@@ -2,6 +2,16 @@
 
 ## Edge
 
+### NMEA 2000
+
+- **No NMEA2000 library needed** — NMEA 2000 over SocketCAN (`-i`, `-I`, Linux) is built in, and the TCP input reads NMEA 2000 frame lines from a gateway with protocol `n2k`, on any platform. An interface that cannot be opened is retried instead of ending AIS-catcher.
+
+### Installation
+
+- **Small and static builds** — `-DMINIMAL=ON` builds without the web viewer, API, databases and TLS, at about half the size; with `-DSTATIC=ON` on Alpine it gives one static binary without dependencies.
+
+## Version 0.71
+
 ### Decoding
 
 - **A new decoding engine, v2, is the default** — it runs when no model is chosen, after being tested on the edge builds since July. In our tests it decodes between 4% and 10% more messages than the previous default, mostly from weak signals, and uses about 30% less CPU. `-m 2`, or engine type `v1_base`, selects the previous engine. On v2 the settings `AFC_WIDE` and `PS_EMA` are accepted and have no effect, and `sensitivity_high` no longer selects another engine.
