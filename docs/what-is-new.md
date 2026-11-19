@@ -9,6 +9,15 @@
 ### Installation
 
 - **Small and static builds** — `-DMINIMAL=ON` builds without the web viewer, API, databases and TLS, at about half the size; with `-DSTATIC=ON` on Alpine it gives one static binary without dependencies.
+- **Checked downloads** — every package on the release has its SHA-256 beside it, and the install script refuses a download that does not match.
+
+### Security
+
+- **A configuration key is written once** — a file that names a key twice is refused, with the key and its line. A command line may still repeat a setting.
+- **Control lines are opt-in** — station and key lines on a text input are taken only where the input says `control on`; a feed can no longer change the station list.
+- **Public servers tell less** — a server that is `public` on the network leaves the device serial, the system and the outputs out of the map's statistics, and an assistant's tool calls count against a limited server's hour as API requests do.
+- **No silent plain text** — an output over `mqtts`, `wssmqtt` or `tls` is refused at start in a build without OpenSSL.
+- **Positions must be real** — a position that is not a number or outside the globe is dropped, from GPS, gpsd and Basestation input alike.
 
 ## Version 0.71
 

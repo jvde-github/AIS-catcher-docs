@@ -37,6 +37,7 @@ Every file starts with `"config": "aiscatcher"` and `"version": 1`. With nothing
 - **Outputs are lists**: `udp`, `tcp`, `http` and the others take one entry per output.
 - **`"active": false`** switches a section off and keeps its settings. Leave it out and the section is on.
 - **A value can be a number or a string**: `10110` and `"10110"` are the same.
+- **A key is written once in an object**: a file that names a key twice is refused, with the key and the line it is on. That holds for the file `-C` reads, for the configuration of managed mode and for a save from the dashboard.
 
 ## The main section
 

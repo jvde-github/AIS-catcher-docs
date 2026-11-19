@@ -31,6 +31,8 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-cat
 
 A build takes about 20 minutes on a Raspberry Pi 4, and is needed on other Fedora releases and for PostgreSQL support.
 
+The script checks the package it downloads against the SHA-256 that the release carries beside it (`<package>.sha256`). A package that does not match is not installed: the script tries once more and then builds from source.
+
 !!! note
     The pre-built packages do not run on the first Raspberry Pi and the first Pi Zero.
 

@@ -94,7 +94,7 @@ AIS-catcher will also accept AIVDO input which is typically used for the MMSI of
 ### Common Settings
 | Setting (JSON key / CLI setting name) | Type | Default | Description |
 |---------|------|---------|-------------|
-| <span class="cmd-setting">droop</span> | boolean | <span class="cmd-value">true</span> | Enable droop compensation in CIC5 filters |
+| <span class="cmd-setting">droop</span> | boolean | <span class="cmd-value">true</span> | Deprecated, and without effect: droop compensation in the CIC5 filters is always on. `droop off` gives a warning. |
 | <span class="cmd-setting">fp_ds</span> | boolean | <span class="cmd-value">false</span> | Enable fixed-point downsampling |
 | <span class="cmd-setting">station_id</span> | integer | <span class="cmd-value">0</span> | Station identifier |
 | <span class="cmd-setting">own_mmsi</span> | integer | <span class="cmd-value">-1</span> | Own vessel MMSI |
@@ -115,4 +115,5 @@ AIS-catcher will also accept AIVDO input which is typically used for the MMSI of
 | <span class="cmd-setting">sensitivity_high</span> | boolean | <span class="cmd-value">false</span> | Deprecated, and without effect since v0.71: engine v2 is the default. For engine v1 High, select `-m 4` or the engine type `v1_high`. |
 | <span class="cmd-setting">gps</span> | boolean | <span class="cmd-value">false</span> | Enable GPS output |
 | <span class="cmd-setting">uuid</span> | string | <span class="cmd-value">-</span> | Set UUID for messages |
+| <span class="cmd-setting">control</span> | boolean | <span class="cmd-value">false</span> | Take control lines from this input: JSON lines with `"topic": "station"` or `"topic": "key"`, as a hub's ingress sends them to fill the station list and the API keys. Off unless set, so a feed cannot change either: `-go control on` on the one input that carries them. |
 | <span class="cmd-setting">warnings</span> | boolean | <span class="cmd-value">true</span> | Show warning messages |

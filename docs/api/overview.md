@@ -32,7 +32,7 @@ Each is a switch on the server; `ui` is on unless set `false`, the others off un
 
 ## Keys
 
-A server listens on `127.0.0.1` unless `bind` says otherwise, and then only programs on this machine reach it: no key is needed. A server that listens beyond this machine and offers `api`, `mcp` or `system` needs `keys`, or `"public": true` to say that anyone who reaches it may read it; AIS-catcher refuses to start otherwise. A server is one or the other, never both, and a public server on the network never offers `system`: that takes keys.
+A server listens on `127.0.0.1` unless `bind` says otherwise, and then only programs on this machine reach it: no key is needed. A server that listens beyond this machine and offers `api`, `mcp` or `system` needs `keys`, or `"public": true` to say that anyone who reaches it may read it; AIS-catcher refuses to start otherwise. A server is one or the other, never both, and a public server on the network never offers `system`: that takes keys. Its map keeps the machine to itself as well: the statistics (`/api/stat.json`, `/api/output_stats.json`) leave out the device serial, the operating system, hardware, processor, memory use and the list of outputs.
 
 A key is a long random text; the configuration holds only its SHA-256, so the file does not give the key away. In managed mode a server's page under **Services** says whether it is **Open** or takes **Keys**, which is where a server on the network starts, and **New key** there makes one and shows it once. By hand:
 
@@ -205,7 +205,7 @@ With `mcp` among its services a server speaks the [Model Context Protocol](https
 | `recent_events` | Safety messages, new destinations and statuses, arrivals and departures |
 | `list_aircraft`, `get_aircraft` | The aircraft an ADS-B receiver hears, and one of them |
 
-The tools that list take `limit` and `cursor` as the API does; the vessel tools answer 25 short rows unless `limit` says otherwise, the others 30, and `vessels_in_area` and `vessels_near` also take `class`. On a limited server the handshake and the tool list are free and each tool call is one of the hour's data calls.
+The tools that list take `limit` and `cursor` as the API does; the vessel tools answer 25 short rows unless `limit` says otherwise, the others 30, and `vessels_in_area` and `vessels_near` also take `class`. On a limited server the handshake and the tool list are free and a tool call counts as its request to the API does: one of the hour's data calls, or one for every 25 rows of a larger page.
 
 On a server that also offers `system`, and for a caller that may read it (a server without keys, or a key with the `system` scope), the installation's own tools come with them, so an assistant asks the station rather than reading its configuration:
 

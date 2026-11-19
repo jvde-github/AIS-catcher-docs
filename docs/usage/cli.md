@@ -68,6 +68,8 @@ Every switch and setting is in the reference: [inputs](../configuration/input/ov
 AIS-catcher -gr tuner 33.3 -u 192.168.1.20 10110 -J config.json
 ```
 
+A command line may give a setting twice, and the last one counts; a configuration file names a key once, so `-J` stops on such a command line and names the key.
+
 Without a file name, it prints the configuration on the screen. `-C` reads a file back, and can be combined with other switches:
 
 ```bash
@@ -148,5 +150,5 @@ use: AIS-catcher [options]
 
 	Model specific settings:
 
-	[-go Model: AFC_WIDE [on/off] FP_DS [on/off] PS_EMA [on/off] SOXR [on/off] SRC [on/off] DROOP [on/off] DD_TRAIN [weight] DD_WEIGHT [weight] ]
+	[-go Model: AFC_WIDE [on/off] FP_DS [on/off] PS_EMA [on/off] SOXR [on/off] SRC [on/off] DD_TRAIN [weight] DD_WEIGHT [weight] ]
 ````

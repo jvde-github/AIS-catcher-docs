@@ -25,16 +25,16 @@ with the following timings:
 ```
 Some libraries will require significant hardware resources. The advice is to use the native built-in downsampling functionality but it is fun to experiment.
 
-The default downsampler uses a simple but efficient CIC5 filter. To mitigate some of the drawbacks of this method, version 0.39 onwards uses by default a simple droop compensator in the form of a fast 3 tap filter which can be switched off with the switch ``-go DROOP off``. 
+The default downsampler uses a simple but efficient CIC5 filter. To mitigate some of the drawbacks of this method, version 0.39 onwards uses a simple droop compensator in the form of a fast 3 tap filter. It is always on: the switch ``-go DROOP off`` used for the comparison below was retired after v0.71 and now only gives a warning. 
 The following results are from my home station running for a few hours with the various methods running in parallel and counting the number of messages:
 
 | Downsampler | RTL-SDR @ 1536K  | AirSpy HF+ @ 192K  | SDRPlay RSPdx @ 3072K | 
 | :--- | :--- | :--- | :-- | 
-|``-go DROOP off``	| 94219 |16022 | 16530 |
+|``-go DROOP off`` (before it was retired)	| 94219 |16022 | 16530 |
 |``-go DROOP on`` (default) | 98176 (+4.20%) | 16265 (+1.52%) | 17190 (+3.99%) |
 |``-go SOXR on`` (SOX downsampling)	| 97652 (+3.64%) | 16209 (+1.17%) | 17049 (+3.14%) |
 
-For reference, the command line instruction to test is:
+For reference, the command line instruction of that test, on a version that still had the switch, was:
 ```console
 AIS-catcher  -v 10 -gr rtlagc on -m 2 -go droop off -m 2 -m 2 -go soxr on
 ```
