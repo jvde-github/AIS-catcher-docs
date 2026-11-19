@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
     
     
       
@@ -4150,6 +4150,7 @@ AIS-catcher<span class="w"> </span>-d<span class="w"> </span><span class="m">000
 <p><code>-J</code> writes the command line as a <a href="../json-configuration/">configuration file</a> instead of running it:</p>
 <div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-gr<span class="w"> </span>tuner<span class="w"> </span><span class="m">33</span>.3<span class="w"> </span>-u<span class="w"> </span><span class="m">192</span>.168.1.20<span class="w"> </span><span class="m">10110</span><span class="w"> </span>-J<span class="w"> </span>config.json
 </code></pre></div>
+<p>A command line may give a setting twice, and the last one counts; a configuration file names a key once, so <code>-J</code> stops on such a command line and names the key.</p>
 <p>Without a file name, it prints the configuration on the screen. <code>-C</code> reads a file back, and can be combined with other switches:</p>
 <div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-C<span class="w"> </span>config.json<span class="w"> </span>-v<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
@@ -4224,7 +4225,7 @@ AIS-catcher<span class="w"> </span>-d<span class="w"> </span><span class="m">000
 
     Model specific settings:
 
-    [-go Model: AFC_WIDE [on/off] FP_DS [on/off] PS_EMA [on/off] SOXR [on/off] SRC [on/off] DROOP [on/off] DD_TRAIN [weight] DD_WEIGHT [weight] ]
+    [-go Model: AFC_WIDE [on/off] FP_DS [on/off] PS_EMA [on/off] SOXR [on/off] SRC [on/off] DD_TRAIN [weight] DD_WEIGHT [weight] ]
 </code></pre></div>
 
 

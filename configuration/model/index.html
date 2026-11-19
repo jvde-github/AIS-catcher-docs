@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
     
     
       
@@ -4228,7 +4228,7 @@ Note that CRC/checksum is the simple xor-checksum for validating that the NMEA l
 <td><span class="cmd-setting">droop</span></td>
 <td>boolean</td>
 <td><span class="cmd-value">true</span></td>
-<td>Enable droop compensation in CIC5 filters</td>
+<td>Deprecated, and without effect: droop compensation in the CIC5 filters is always on. <code>droop off</code> gives a warning.</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">fp_ds</span></td>
@@ -4327,6 +4327,12 @@ Note that CRC/checksum is the simple xor-checksum for validating that the NMEA l
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
 <td>Set UUID for messages</td>
+</tr>
+<tr>
+<td><span class="cmd-setting">control</span></td>
+<td>boolean</td>
+<td><span class="cmd-value">false</span></td>
+<td>Take control lines from this input: JSON lines with <code>"topic": "station"</code> or <code>"topic": "key"</code>, as a hub's ingress sends them to fill the station list and the API keys. Off unless set, so a feed cannot change either: <code>-go control on</code> on the one input that carries them.</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">warnings</span></td>

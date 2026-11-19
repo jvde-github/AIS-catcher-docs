@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
     
     
       
@@ -3812,6 +3812,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4852,6 +4863,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5733,6 +5755,15 @@
 <h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Small and static builds</strong> — <code>-DMINIMAL=ON</code> builds without the web viewer, API, databases and TLS, at about half the size; with <code>-DSTATIC=ON</code> on Alpine it gives one static binary without dependencies.</li>
+<li><strong>Checked downloads</strong> — every package on the release has its SHA-256 beside it, and the install script refuses a download that does not match.</li>
+</ul>
+<h3 id="security">Security<a class="headerlink" href="#security" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>A configuration key is written once</strong> — a file that names a key twice is refused, with the key and its line. A command line may still repeat a setting.</li>
+<li><strong>Control lines are opt-in</strong> — station and key lines on a text input are taken only where the input says <code>control on</code>; a feed can no longer change the station list.</li>
+<li><strong>Public servers tell less</strong> — a server that is <code>public</code> on the network leaves the device serial, the system and the outputs out of the map's statistics, and an assistant's tool calls count against a limited server's hour as API requests do.</li>
+<li><strong>No silent plain text</strong> — an output over <code>mqtts</code>, <code>wssmqtt</code> or <code>tls</code> is refused at start in a build without OpenSSL.</li>
+<li><strong>Positions must be real</strong> — a position that is not a number or outside the globe is dropped, from GPS, gpsd and Basestation input alike.</li>
 </ul>
 <h2 id="version-071">Version 0.71<a class="headerlink" href="#version-071" title="Permanent link">&para;</a></h2>
 <h3 id="decoding">Decoding<a class="headerlink" href="#decoding" title="Permanent link">&para;</a></h3>

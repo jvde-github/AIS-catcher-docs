@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
     
     
       
@@ -3932,7 +3932,7 @@ with the following timings:
 [AIS engine v0.35 SRC]:                  3762.6 ms
 </code></pre></div>
 Some libraries will require significant hardware resources. The advice is to use the native built-in downsampling functionality but it is fun to experiment.</p>
-<p>The default downsampler uses a simple but efficient CIC5 filter. To mitigate some of the drawbacks of this method, version 0.39 onwards uses by default a simple droop compensator in the form of a fast 3 tap filter which can be switched off with the switch <code>-go DROOP off</code>. 
+<p>The default downsampler uses a simple but efficient CIC5 filter. To mitigate some of the drawbacks of this method, version 0.39 onwards uses a simple droop compensator in the form of a fast 3 tap filter. It is always on: the switch <code>-go DROOP off</code> used for the comparison below was retired after v0.71 and now only gives a warning. 
 The following results are from my home station running for a few hours with the various methods running in parallel and counting the number of messages:</p>
 <table>
 <thead>
@@ -3945,7 +3945,7 @@ The following results are from my home station running for a few hours with the 
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>-go DROOP off</code></td>
+<td style="text-align: left;"><code>-go DROOP off</code> (before it was retired)</td>
 <td style="text-align: left;">94219</td>
 <td style="text-align: left;">16022</td>
 <td style="text-align: left;">16530</td>
@@ -3964,7 +3964,7 @@ The following results are from my home station running for a few hours with the 
 </tr>
 </tbody>
 </table>
-<p>For reference, the command line instruction to test is:
+<p>For reference, the command line instruction of that test, on a version that still had the switch, was:
 <div class="language-console highlight"><pre><span></span><code><span class="go">AIS-catcher  -v 10 -gr rtlagc on -m 2 -go droop off -m 2 -m 2 -go soxr on</span>
 </code></pre></div>
 Please note that the runs are performed on different days over different time spans so this does not represent a comparison of devices but you can compare within a column.</p>

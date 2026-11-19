@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
     
     
       
@@ -4083,6 +4083,7 @@
 <div class="language-console highlight"><pre><span></span><code><span class="go">sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) -M"</span>
 </code></pre></div>
 <p>A build takes about 20 minutes on a Raspberry Pi 4, and is needed on other Fedora releases and for PostgreSQL support.</p>
+<p>The script checks the package it downloads against the SHA-256 that the release carries beside it (<code>&lt;package&gt;.sha256</code>). A package that does not match is not installed: the script tries once more and then builds from source.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The pre-built packages do not run on the first Raspberry Pi and the first Pi Zero.</p>
