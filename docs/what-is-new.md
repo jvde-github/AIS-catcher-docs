@@ -15,7 +15,7 @@
 
 - **A configuration key is written once** — a file that names a key twice is refused, with the key and its line. A command line may still repeat a setting.
 - **Control lines are opt-in** — station and key lines on a text input are taken only where the input says `control on`; a feed can no longer change the station list.
-- **Public servers tell less** — a server that is `public` on the network leaves the device serial, the system and the outputs out of the map's statistics, and an assistant's tool calls count against a limited server's hour as API requests do.
+- **The system in brief** — the map's statistics name the operating system and hardware by family and the processor by its architecture, the same for every viewer, and an assistant's tool calls count against a limited server's hour as API requests do.
 - **No silent plain text** — an output over `mqtts`, `wssmqtt` or `tls` is refused at start in a build without OpenSSL.
 - **Positions must be real** — a position that is not a number or outside the globe is dropped, from GPS, gpsd and Basestation input alike.
 

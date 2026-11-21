@@ -32,7 +32,7 @@ Each is a switch on the server; `ui` is on unless set `false`, the others off un
 
 ## Keys
 
-A server listens on `127.0.0.1` unless `bind` says otherwise, and then only programs on this machine reach it: no key is needed. A server that listens beyond this machine and offers `api`, `mcp` or `system` needs `keys`, or `"public": true` to say that anyone who reaches it may read it; AIS-catcher refuses to start otherwise. A server is one or the other, never both, and a public server on the network never offers `system`: that takes keys. Its map keeps the machine to itself as well: the statistics (`/api/stat.json`, `/api/output_stats.json`) leave out the device serial, the operating system, hardware, processor, memory use and the list of outputs.
+A server listens on `127.0.0.1` unless `bind` says otherwise, and then only programs on this machine reach it: no key is needed. A server that listens beyond this machine and offers `api`, `mcp` or `system` needs `keys`, or `"public": true` to say that anyone who reaches it may read it; AIS-catcher refuses to start otherwise. A server is one or the other, never both, and a public server on the network never offers `system`: that takes keys. The map's statistics (`/api/stat.json`) are the same for every viewer: the operating system and hardware by family, the processor by its architecture, and each output by its description, never where it sends.
 
 A key is a long random text; the configuration holds only its SHA-256, so the file does not give the key away. In managed mode a server's page under **Services** says whether it is **Open** or takes **Keys**, which is where a server on the network starts, and **New key** there makes one and shows it once. By hand:
 
