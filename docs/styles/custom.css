@@ -332,6 +332,13 @@
     margin: 12px auto 20px;
 }
 
+.hero .hero-note {
+    display: block;
+    margin-top: 18px;
+    font-size: 0.85em;
+    color: #5a6b7d;
+}
+
 /* Notes and asides */
 .md-typeset blockquote {
     border-left: 4px solid #1976d2;

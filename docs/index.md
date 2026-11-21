@@ -5,8 +5,10 @@
 **AIS-Catcher** is free and open-source software that turns an inexpensive **Software Defined Radio** (SDR) into a complete **AIS** receiver: receive and visualize ship traffic on a live map, and share the data over the network or with the community. The source code is available on [GitHub](https://github.com/jvde-github/AIS-catcher) under the **GPLv3** license.
 
 [Quick Start](getting-started/overview.md){ .md-button .md-button--primary }
-[What You Need](what-you-need.md){ .md-button .md-button--secondary }
-[What is AIS?](ais-basics.md){ .md-button .md-button--secondary }
+[Install](installation/overview.md){ .md-button .md-button--secondary }
+[What's New](what-is-new.md){ .md-button .md-button--secondary }
+
+<span class="hero-note">New to AIS? Read [What is AIS?](ais-basics.md) and [What You Need](what-you-need.md).</span>
 
 </div>
 

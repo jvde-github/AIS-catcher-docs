@@ -65,14 +65,14 @@ nav:
       - What is AIS?: ais-basics.md
       - What You Need: what-you-need.md
       - Quick Start: getting-started/overview.md
-      - Install:
-          - All Installs: installation/overview.md
-          - Raspberry Pi and Linux: installation/ubuntu-debian.md
-          - Windows: installation/windows.md
-          - macOS: installation/macos.md
-          - Docker: installation/docker.md
-          - Build from Source: installation/build-source.md
-          - AIS-catcher-control: usage/gui.md
+  - Install:
+      - Choose Your System: installation/overview.md
+      - Raspberry Pi and Linux: installation/ubuntu-debian.md
+      - Windows: installation/windows.md
+      - macOS: installation/macos.md
+      - Docker: installation/docker.md
+      - Build from Source: installation/build-source.md
+      - AIS-catcher-control: usage/gui.md
   - Managed Mode:
       - Getting Around: managed/dashboard.md
       - Receiver: managed/input.md
@@ -159,11 +159,11 @@ nav:
   - Help:
       - Troubleshooting: advanced/troubleshooting.md
       - Community: community.md
-      - What is New?: what-is-new.md
       - Features: getting-started/features.md
       - Long Range AIS: advanced/long-range.md
       - Validation: advanced/validation.md
       - License: references/license.md
+  - What's New: what-is-new.md
 
 
 # Notes for contributors: versioned here, deliberately not on the site.
