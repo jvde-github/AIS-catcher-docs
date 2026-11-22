@@ -1,43 +1,42 @@
-/* Header and Navigation Styles */
-.md-header,
-.md-header[data-md-state=shadow] {
-    background-color: white;
-    color: black;
-    box-shadow: none;
-}
+/* The header: the logo with the name, a pale search field and two links, on white. The logo sits left of the name
+   and "Documentation", centred on them whether they share a line or "Documentation" folds under the name. */
+.md-header { background: #fff; color: #0b315b; box-shadow: none; border-bottom: 1px solid #cde2ef; }
+.md-header__inner { align-items: center; padding: 0 .6rem; }
+.ais-brand { display: flex; align-items: center; gap: .4rem; min-width: 0; margin: 0 .4rem; color: #0b315b; }
+.ais-brand:hover { color: #0b315b; }
+.ais-brand img { flex: none; width: auto; height: 1.2rem; }
+.ais-brand__text { display: flex; flex-wrap: wrap; align-items: baseline; min-width: 0; line-height: 1.2; }
+.ais-brand__name { margin-right: .6rem; font-size: .85rem; font-weight: 900; letter-spacing: -.01em; }
+.ais-brand__name b { color: #06a5d6; }
+.ais-brand__sub { font-size: .6rem; color: #799ab5; }
+.ais-header-links { display: flex; gap: 1rem; margin-left: auto; padding-right: .6rem; font-size: .65rem; }
+.ais-header-links a { color: #40637e; }
+.ais-header-links a:hover { color: #0876d8; }
 
-/* The name as a wordmark, AIS-catcher in two tones over "Documentation"; the site name stays the text for titles and screen readers */
-.md-header__topic:first-child { flex-direction: column; justify-content: center; height: 100%; line-height: 1.2; }
-.md-header__topic:first-child .md-ellipsis { font-size: 0; }
-.md-header__topic:first-child .md-ellipsis::before,
-.md-header__topic:first-child .md-ellipsis::after { font-size: .85rem; font-weight: 800; letter-spacing: -.01em; }
-.md-header__topic:first-child .md-ellipsis::before { content: "AIS-"; content: "AIS-" / ""; color: #0b315b; }
-.md-header__topic:first-child .md-ellipsis::after { content: "catcher"; content: "catcher" / ""; color: #069fd2; }
-.md-header__topic:first-child::after { content: "Documentation"; content: "Documentation" / ""; font-size: .6rem; color: #5f7c99; }
-/* the logo beside the wordmark at every width, as one; Material hides it below 76.25em and sets it 1rem apart */
-.md-header__button.md-logo { display: block; margin-right: 0; padding-right: .2rem; }
-body[dir] .md-header__title { margin-left: .3rem; min-width: 5.4rem; }
-.md-header__button[for=__drawer] { order: -1; }
-/* where the wordmark and the whole search field do not both fit, the logo alone names the site */
-@media screen and (max-width: 24.3125em) {
-    body[dir] .md-header__title { min-width: 0; }
-    .md-header__topic:first-child { visibility: hidden; }
-}
-
-/* Below 60em Material's search is an icon only: here it looks like the field it opens */
+/* Below 60em search is a button that looks like the field it opens */
 @media screen and (max-width: 59.984375em) {
-    .md-header__button[for=__search] { display: flex; align-items: center; gap: .4rem; flex: 0 1 9rem; min-width: 0; margin: .5rem .4rem; padding: 0 .6rem; border: 1px solid #c3ddea; border-radius: 9px; background: #f3f9fd; color: #6884a2; }
-    .md-header__button[for=__search]::after { content: "Search the docs"; font-size: .7rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .md-header__button.md-icon[for=__search] svg { flex: none; width: 1rem; height: 1rem; }
+    .md-header__button.ais-search-button { display: flex; align-items: center; gap: .4rem; flex: 0 1 10rem; min-width: 0; margin: 0 0 0 auto; padding: .35rem .6rem; border: 1px solid #c3ddea; border-radius: 9px; background: #f3f9fd; color: #6884a2; }
+    .ais-search-button span { font-size: .7rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .md-header__button.md-icon.ais-search-button svg { flex: none; width: .9rem; height: .9rem; }
+    .ais-brand__name { font-size: .75rem; }
+    .ais-header-links { display: none; }
 }
-/* From 60em the field itself, in light colours: Material's are for a dark header, and this one is white */
+/* where the name and the whole search field do not both fit, the logo alone names the site */
+@media screen and (max-width: 24.3125em) {
+    .ais-brand__text { display: none; }
+}
 @media screen and (min-width: 60em) {
-    .md-search__input { border: 1px solid #c3ddea; border-radius: 9px; background-color: #f3f9fd; color: #12365e; }
+    .md-search { flex: 0 1 17rem; margin-left: 1.2rem; }
+    .md-search__inner,
+    [data-md-toggle=search]:checked ~ .md-header .md-search__inner { width: 100%; }
+    .md-search__form { background: none; }
+    .md-search__input { border: 1px solid #c3ddea; border-radius: 9px; background-color: #f3f9fd; color: #12365e; font-size: .7rem; }
     .md-search__input:hover { background-color: #eaf4fb; }
     .md-search__input::placeholder,
     .md-search__input ~ .md-search__icon { color: #6884a2; }
 }
-.md-header { border-bottom: 1px solid #deebf4; }
+
+.md-main { background-color: #f8fbfe; }
 
 /* From 76.25em the sections sit in a navy column at the left edge, as the home page's rail; below it they are the hamburger's drawer */
 @media screen and (min-width: 76.25em) {
@@ -47,53 +46,31 @@ body[dir] .md-header__title { margin-left: .3rem; min-width: 5.4rem; }
     .md-content { max-width: 52rem; margin-inline: auto; padding-top: 1.2rem; }
     body:has(.ais-qs, .ais-page) .md-content { max-width: 66rem; }
     /* painted on the page, not the sidebar: Material sizes the sidebar to its contents and scrolls them inside */
-    .md-main { background: linear-gradient(172deg, #0b345f 0%, #062449 94%) fixed 0 0 / 12.1rem 100% no-repeat; }
-    .md-sidebar--primary { padding: 1rem 0; }
+    .md-main { background-image: linear-gradient(#08345e, #082f59); background-attachment: fixed; background-size: 12.1rem 100%; background-repeat: no-repeat; }
+    .md-sidebar--primary { padding: 1.4rem 0; }
     .md-sidebar--primary .md-sidebar__scrollwrap { scrollbar-color: #2e5f84 transparent; }
     .md-sidebar--primary .md-nav--primary > .md-nav__title { display: none; }
     .md-sidebar--primary .md-nav__item { padding: 0; }
-    .md-sidebar--primary .md-nav__link { margin: 2px .6rem 0; padding: .45rem .6rem; border-radius: 9px; color: #d5eaff; font-weight: 600; }
+    .md-sidebar--primary .md-nav__link { margin: 2px .7rem 0; padding: .55rem .6rem; border-radius: 9px; color: #d5eaff; font-size: .65rem; font-weight: 650; }
     .md-sidebar--primary .md-nav__link:is(:hover, :focus-visible) { background: rgba(106, 198, 239, .17); color: #fff; }
-    .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item--active > .md-nav__link { background: #145686; color: #fff; box-shadow: inset 3px 0 0 #57def2; }
-    .md-sidebar--primary .md-nav .md-nav .md-nav__link { margin-left: 1.2rem; padding-block: .3rem; font-weight: 400; color: #c3dcf2; }
-    .md-sidebar--primary .md-nav .md-nav .md-nav__link--active { background: none; box-shadow: none; color: #83e6ff; font-weight: 700; }
+    .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item--active > .md-nav__link { background: #c6f1ff; color: #07365c; }
+    .md-sidebar--primary .md-nav .md-nav .md-nav__link { margin-left: 1.35rem; padding-block: .4rem; font-size: .6rem; font-weight: 400; opacity: .88; }
+    .md-sidebar--primary .md-nav .md-nav .md-nav__link--active { background: none; color: #83e6ff; font-weight: 700; opacity: 1; }
 }
 
-/* Where the page sits: Home / section, quiet above the content */
-.md-path { font-size: .65rem; padding-top: 0; }
-.md-path__link { color: #7d95ab; }
-.md-path__item:not(:first-child):before { content: "/"; background: none; -webkit-mask-image: none; mask-image: none; width: auto; height: auto; margin: 0 .3rem; color: #b5c6d6; }
-.md-path__item:first-child .md-path__link::before { content: ""; width: .8rem; height: .8rem; margin-right: .3rem; background-color: currentColor; -webkit-mask: var(--ais-home-icon) center / contain no-repeat; mask: var(--ais-home-icon) center / contain no-repeat; }
+/* Where the page sits: Docs / section / page, quiet above the content */
+.md-path { font-size: .6rem; padding-top: 0; }
+.md-path__link { color: #829ab0; }
+.md-path__item:not(:first-child):before { content: "/"; background: none; -webkit-mask-image: none; mask-image: none; width: auto; height: auto; margin: 0 .4rem; color: #b5c6d6; }
+.md-path__item:first-child .md-path__link::before { content: ""; width: .75rem; height: .75rem; margin-right: .35rem; background-color: currentColor; -webkit-mask: var(--ais-home-icon) center / contain no-repeat; mask: var(--ais-home-icon) center / contain no-repeat; }
 :root { --ais-home-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>'); }
 
-.md-tabs {
-    background-color: white;
-    color: black;
-    border-bottom: 1px solid #e3e9f1;
-    box-shadow: 0 2px 8px rgba(18, 54, 94, 0.05);
-}
-
-.md-tabs__link {
-    color: #42566e;
-    font-weight: 500;
-    opacity: 1;
-}
-
-.md-tabs__link:hover {
-    color: #1976d2;
-}
-
-.md-tabs__item--active .md-tabs__link,
-.md-tabs__link--active {
-    color: #1976d2;
-    font-weight: 700;
-    border-bottom: 2px solid #1976d2;
-}
-
-/* Mobile Navigation Styles */
-.md-nav__title {
-    background-color: white !important;
-    color: black !important;
+/* Mobile Navigation Styles: the drawer's titles; from 76.25em the table of contents' title sits on the page */
+@media screen and (max-width: 76.234375em) {
+    .md-nav__title {
+        background-color: white !important;
+        color: black !important;
+    }
 }
 
 .md-nav__item .md-nav__link--active {

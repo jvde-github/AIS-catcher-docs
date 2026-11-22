@@ -8,7 +8,7 @@ theme:
   custom_dir: overrides
   logo:   assets/logo.svg
   favicon: assets/logo.svg
-  language: 'en'
+  language: custom
   palette:
     primary: 'blue'
     accent: 'light blue'

@@ -1,0 +1,21 @@
+{#- The header: the menu, the logo with the name, search, and two links; "Documentation" folds under the name, beside the logo, where the line is short -#}
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header') }}">
+    <label class="md-header__button md-icon" for="__drawer">
+      {% include ".icons/material/menu.svg" %}
+    </label>
+    <a href="{{ nav.homepage.url | url }}" class="ais-brand" aria-label="{{ config.site_name }}">
+      {% include "partials/logo.html" %}
+      <span class="ais-brand__text"><span class="ais-brand__name">AIS-<b>catcher</b></span><span class="ais-brand__sub">Documentation</span></span>
+    </a>
+    <label class="md-header__button md-icon ais-search-button" for="__search">
+      {% include ".icons/material/magnify.svg" %}
+      <span>{{ lang.t("search.placeholder") }}</span>
+    </label>
+    {% include "partials/search.html" %}
+    <div class="ais-header-links">
+      <a href="{{ config.repo_url }}">GitHub</a>
+      <a href="https://www.aiscatcher.org">AIS-catcher.org ↗</a>
+    </div>
+  </nav>
+</header>

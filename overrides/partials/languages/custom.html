@@ -1,0 +1,5 @@
+{#- English, with the search field's own words -#}
+{% import "partials/languages/en.html" as language %}
+{% macro t(key) %}{{ {
+  "search.placeholder": "Search the documentation…"
+}[key] or language.t(key) }}{% endmacro %}
