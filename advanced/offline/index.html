@@ -1400,6 +1400,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Offline Web Viewer
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1416,6 +1434,69 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-works-offline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What works offline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-needs-the-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What needs the internet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maps-of-your-own" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Maps of your own
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choose-the-map-in-the-viewer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choose the map in the viewer
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3971,6 +4052,58 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-works-offline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What works offline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-needs-the-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What needs the internet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maps-of-your-own" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Maps of your own
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choose-the-map-in-the-viewer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choose the map in the viewer
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3989,19 +4122,88 @@
   
 
 
-<h1 id="offline-web-viewer">Offline web viewer<a class="headerlink" href="#offline-web-viewer" title="Permanent link">&para;</a></h1>
-<p>The web viewer works without an internet connection out of the box: all web assets (libraries, styles and fonts) are baked into the AIS-catcher executable. This facilitates using the web interface whilst traveling without an internet connection.</p>
-<div class="admonition note">
-<p class="admonition-title">Deprecated: CDN setting</p>
-<p>Older versions relied on online libraries and offered the <code>CDN</code> setting to point at a locally cloned copy of the web assets. This is deprecated — no separate download is needed anymore.</p>
+<h1 id="offline-web-viewer">Offline Web Viewer<a class="headerlink" href="#offline-web-viewer" title="Permanent link">&para;</a></h1>
+<p>The web viewer works without an internet connection, on a boat at sea or on a network of its own. Only the map underneath the ships comes from the internet, and for that AIS-catcher can serve maps from files of your own.</p>
+<h2 id="what-works-offline">What works offline<a class="headerlink" href="#what-works-offline" title="Permanent link">&para;</a></h2>
+<p>Everything the viewer is made of is built into AIS-catcher: its pages, scripts and styles, the icons and the flags. Nothing is fetched from elsewhere to draw it. The ships on the map, their cards, the ship list, the statistics and the plots all work without internet. So does the dashboard.</p>
+<p>Older versions loaded their libraries from the internet, and had a <code>cdn</code> setting for a local copy. That setting has no effect now, and the log says it can go.</p>
+<h2 id="what-needs-the-internet">What needs the internet<a class="headerlink" href="#what-needs-the-internet" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>The maps and charts the viewer offers:</strong> <strong>OpenStreetMap</strong>, the AIS-catcher and OpenFreeMap maps, <strong>Satellite</strong>, <strong>OpenSeaMap</strong> and the national charts. Without internet, the ships show on an empty background.</li>
+<li><strong>The weather overlays:</strong> <strong>RainViewer Radar</strong> and <strong>Atmospheric Ducting</strong>.</li>
+<li><strong>Links to other sites:</strong> a ship's page on aiscatcher.org or VesselFinder, the community map, and these docs.</li>
+<li><strong>The maps in the dashboard</strong> where you place a station or draw a place. Maps of your own do not reach them.</li>
+</ul>
+<h2 id="maps-of-your-own">Maps of your own<a class="headerlink" href="#maps-of-your-own" title="Permanent link">&para;</a></h2>
+<p>AIS-catcher serves map tiles from files on its own computer, in two forms:</p>
+<ul>
+<li><strong>An MBTiles file:</strong> one file that holds the tiles, as many map tools export them.</li>
+<li><strong>A folder of tiles:</strong> one picture per tile, in folders by zoom level and column, <code>zoom/x/y.png</code>, numbered as OpenStreetMap numbers them.</li>
+</ul>
+<p>Each can be a base map or an overlay on top of the base map. The tiles must be pictures, PNG or JPEG: the viewer does not draw vector tiles. MBTiles takes SQLite, which the standard builds include.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Managed mode</label><label for="__tabbed_1_2">Config file</label><label for="__tabbed_1_3">Command line</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Copy the file or the folder into the folder of the configuration file: <code>/etc/AIS-catcher</code> on a Raspberry Pi or Linux install. The dashboard takes no path outside it.</li>
+<li>In the dashboard, open <strong>Settings → Services → Main</strong> and open <strong>Map page</strong>.</li>
+<li>Under <strong>Map tiles</strong>, enter the full path in <strong>MBTiles maps</strong>, <strong>MBTiles overlays</strong>, <strong>Tile folder maps</strong> or <strong>Tile folder overlays</strong>, one per line.</li>
+<li>Press <strong>Save changes</strong>.</li>
+</ol>
+<p><img alt="Settings → Services → Main, Map page: an MBTiles file under Map tiles" src="../../assets/guides/offline-main.webp" /></p>
+<p>The dashboard's map is Main's, so it shows them too. Another server that serves the map has the same settings under its own <strong>Map page</strong>.</p>
 </div>
-<p>The one thing that still requires a connection is the background map. For a fully offline experience, include offline maps in <code>mbtiles</code> format:</p>
-<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>MBTILES<span class="w"> </span>filename.mbtiles
+<div class="tabbed-block">
+<p>Add the files to the <code>server</code> entry of the web viewer:</p>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aiscatcher"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"server"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">8100</span><span class="p">,</span><span class="w"> </span><span class="nt">"mbtiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/home/pi/maps/europe.mbtiles"</span><span class="p">,</span><span class="w"> </span><span class="nt">"fsoverlay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/home/pi/maps/seamarks"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div>
-<p>or as an overlay:</p>
-<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>MBOVERLAY<span class="w"> </span>filename.mbtiles
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mbtiles</code></td>
+<td>MBTiles files as base maps.</td>
+</tr>
+<tr>
+<td><code>mboverlay</code></td>
+<td>MBTiles files as overlays.</td>
+</tr>
+<tr>
+<td><code>fstiles</code></td>
+<td>Folders of tiles as base maps.</td>
+</tr>
+<tr>
+<td><code>fsoverlay</code></td>
+<td>Folders of tiles as overlays.</td>
+</tr>
+</tbody>
+</table>
+<p>Each takes one path, a list of paths, or paths separated by commas. Restart AIS-catcher with the file:</p>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-C<span class="w"> </span>config.json
 </code></pre></div>
-<p><img alt="image" src="https://github.com/user-attachments/assets/3a0282b5-8e16-4fe1-bedf-7a0e97d75674" /></p>
+</div>
+<div class="tabbed-block">
+<p>Add the settings after the <code>-N</code> of the web viewer:</p>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>mbtiles<span class="w"> </span>/home/pi/maps/europe.mbtiles<span class="w"> </span>mboverlay<span class="w"> </span>/home/pi/maps/seamarks.mbtiles
+</code></pre></div>
+<p><code>fstiles</code> and <code>fsoverlay</code> take a folder of tiles in the same way. To give several, separate them with commas.</p>
+</div>
+</div>
+</div>
+<p>A file or folder that does not open is named in the log, as <code>Failed to load MBTiles from:</code> or <code>Failed to load FileSystemTiles from:</code> with its path.</p>
+<h2 id="choose-the-map-in-the-viewer">Choose the map in the viewer<a class="headerlink" href="#choose-the-map-in-the-viewer" title="Permanent link">&para;</a></h2>
+<p>Open the map's settings. A map of your own is listed under the name stored in the MBTiles file, or under the name of its folder. Pick it as the <strong>Day map</strong> or the <strong>Night map</strong>. An overlay of your own appears under <strong>Overlays</strong>, beside the ones the viewer offers.</p>
 
 
 

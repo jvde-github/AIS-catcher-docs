@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#visializing-adsb-plane-in-web-viewer" class="md-skip">
+        <a href="#show-aircraft-ads-b-on-the-map" class="md-skip">
           Skip to content
         </a>
       
@@ -368,6 +368,8 @@
         <div class="md-main__inner md-grid">
           
             
+              
+                
               
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
@@ -1428,6 +1430,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aircraft (ADS-B)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1444,6 +1464,69 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#find-the-feed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Find the feed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-network-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add a network input
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check it works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        More
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3959,7 +4042,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -3970,6 +4055,58 @@
   
     
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#find-the-feed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Find the feed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-network-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add a network input
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check it works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        More
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -3983,19 +4120,209 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+
 
 
   
   
 
 
-<h1 id="visializing-adsb-plane-in-web-viewer">Visializing ADSB plane in web viewer<a class="headerlink" href="#visializing-adsb-plane-in-web-viewer" title="Permanent link">&para;</a></h1>
-<p>AIS-catcher can connect to a ADSB feed over TCP. The plane feed will then be visualized in the WebViewer. To input formats are supported, Beast, e.g,
-<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-t<span class="w"> </span>beast<span class="w"> </span>localhost<span class="w"> </span><span class="m">30003</span><span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span>
-</code></pre></div></p>
-<p>and BaseStation format:</p>
-<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-t<span class="w"> </span>basestation<span class="w"> </span>localhost<span class="w"> </span><span class="m">30002</span><span class="w"> </span>-N<span class="w"> </span><span class="m">81000</span>
+<h1 id="show-aircraft-ads-b-on-the-map">Show Aircraft (ADS-B) on the Map<a class="headerlink" href="#show-aircraft-ads-b-on-the-map" title="Permanent link">&para;</a></h1>
+<p>AIS-catcher can read the aircraft that an ADS-B decoder such as dump1090 or readsb receives, and show them on its map next to the ships.</p>
+<p><strong>You need:</strong> dump1090, readsb or another ADS-B decoder, on this computer or on your network. AIS-catcher does not receive 1090 MHz itself, so the decoder needs a receiver of its own.</p>
+<div class="admonition tip">
+<p class="admonition-title">On the same computer?</p>
+<p>If the ADS-B decoder runs on the same computer as AIS-catcher, use the address <code>127.0.0.1</code>.</p>
+</div>
+<div class="stepper" data-eyebrow="Guide">
+<div class="stepper-step">
+<h2 id="find-the-feed">Find the feed<a class="headerlink" href="#find-the-feed" title="Permanent link">&para;</a></h2>
+<p>The ADS-B decoder sends what it receives on network ports. AIS-catcher reads three of its formats:</p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Usual port</th>
+<th>What it sends</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beast</td>
+<td>30005</td>
+<td>Each message in binary, with its signal level.</td>
+</tr>
+<tr>
+<td>Raw</td>
+<td>30002</td>
+<td>Each message as a line of hex, such as <code>*8D4840D6202CC371C32CE0576098;</code>.</td>
+</tr>
+<tr>
+<td>BaseStation (SBS)</td>
+<td>30003</td>
+<td>Lines of text with the message decoded, the position included.</td>
+</tr>
+</tbody>
+</table>
+<p>Use Beast where you can: the aircraft's card then also shows the signal level.</p>
+<p>If the decoder runs on another computer, its port must be open to the network.</p>
+</div>
+<div class="stepper-step">
+<h2 id="add-a-network-input">Add a network input<a class="headerlink" href="#add-a-network-input" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Managed mode</label><label for="__tabbed_1_2">Config file</label><label for="__tabbed_1_3">Command line</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>In the dashboard, open <strong>Settings</strong>, choose <strong>Inputs</strong> and press <strong>+ Add input</strong>.</li>
+<li>As <strong>Device Type</strong>, choose <strong>Network client (RTL-TCP, TCP, MQTT)</strong>.</li>
+<li>As <strong>Protocol</strong>, choose the format of the feed: <strong>BEAST</strong> for port 30005, <strong>RAW1090</strong> for 30002, <strong>BASESTATION</strong> for 30003.</li>
+<li>Enter the <strong>Host</strong> and <strong>Port</strong> of the ADS-B decoder. Give the input a <strong>Name</strong>, such as <em>Aircraft</em>.</li>
+<li>Press <strong>Save changes</strong>. If the receiver is stopped, press <strong>Start</strong> in the control bar.</li>
+</ol>
+<p><img alt="A Network client input named Aircraft: protocol BEAST, host 192.168.1.30, port 30005" src="../../assets/guides/adsb-input.webp" /></p>
+</div>
+<div class="tabbed-block">
+<p>Add an entry to the <code>receiver</code> list, next to the receiver your ships come from:</p>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aiscatcher"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rtlsdr"</span><span class="p">,</span><span class="w"> </span><span class="nt">"serial"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000001"</span><span class="p">,</span><span class="w"> </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mast dongle"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rtltcp"</span><span class="p">,</span><span class="w"> </span><span class="nt">"rtltcp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"beast"</span><span class="p">,</span><span class="w"> </span><span class="nt">"host"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.1.30"</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">30005</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aircraft"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"server"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">8100</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>input</code></td>
+<td><code>rtltcp</code>: a network client, the input that also reads RTL-TCP and NMEA over TCP.</td>
+</tr>
+<tr>
+<td><code>protocol</code></td>
+<td>The format of the feed: <code>beast</code> for port 30005, <code>raw1090</code> for 30002, <code>basestation</code> for 30003.</td>
+</tr>
+<tr>
+<td><code>host</code>, <code>port</code></td>
+<td>Where the ADS-B decoder sends it.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>The input's name in the statistics.</td>
+</tr>
+<tr>
+<td><code>server</code></td>
+<td>The <a href="../../configuration/output/web-viewer/">web viewer</a>, whose map shows the aircraft.</td>
+</tr>
+</tbody>
+</table>
+<p>Then restart AIS-catcher with the file:</p>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-C<span class="w"> </span>config.json
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Add <code>-t</code> with the format, the address and the port of the feed to the command you already use:</p>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-d<span class="w"> </span><span class="m">00000001</span><span class="w"> </span>-t<span class="w"> </span>beast<span class="w"> </span><span class="m">192</span>.168.1.30<span class="w"> </span><span class="m">30005</span><span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span>
+</code></pre></div>
+<p>The format is <code>beast</code> for port 30005, <code>raw1090</code> for 30002 or <code>basestation</code> for 30003. <code>-N 8100</code> starts the <a href="../../configuration/output/web-viewer/">web viewer</a>, whose map shows the aircraft.</p>
+<p>With <code>-t</code> in the command, AIS-catcher no longer picks a dongle by itself. Keep AIS coming in with <code>-d</code> and the serial number of your dongle. <code>AIS-catcher -l</code> lists the dongles that are connected, with their serial numbers.</p>
+<div class="admonition tip">
+<p class="admonition-title">From the command line to a configuration file</p>
+<p>Add <code>-J</code> to print your command line as a configuration file instead of running it: <code>AIS-catcher -t beast 192.168.1.30 30005 -J</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<p>AIS-catcher connects to the feed, and connects again by itself when the decoder restarts.</p>
+</div>
+<div class="stepper-step">
+<h2 id="check-it-works">Check it works<a class="headerlink" href="#check-it-works" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Managed mode</label><label for="__tabbed_2_2">Config file</label><label for="__tabbed_2_3">Command line</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Open the map of the dashboard.</p>
+</div>
+<div class="tabbed-block">
+<p>Open the web viewer, at <code class="address">http://localhost:8100</code> on the computer that runs AIS-catcher.</p>
+</div>
+<div class="tabbed-block">
+<p>Open the web viewer, at <code class="address">http://localhost:8100</code> on the computer that runs AIS-catcher.</p>
+</div>
+</div>
+</div>
+<p>Within a minute, the aircraft appear on the map: orange in flight, grey on the ground. Hover over one for its callsign, altitude and speed. Press it for its card: the <strong>Callsign</strong> and <strong>ICAO</strong> address at the top, <strong>Altitude</strong>, <strong>Speed</strong> and <strong>Heading</strong> under <strong>Flight</strong>, and <strong>Distance</strong>, <strong>Bearing</strong> and <strong>RSSI</strong> under <strong>ADS-B</strong>. <strong>RSSI</strong> is the signal level, which only a Beast feed carries.</p>
+<p><strong>Distance</strong> and <strong>Bearing</strong> are measured from your station, so they need its position: see <a href="../../managed/station/">Name and Place Your Station</a>.</p>
+<p>The <strong>Aircraft</strong> overlay is on from the start. To switch it off or on again, press the layers button on the map (<strong>Map layers and styling</strong>) and tick <strong>Aircraft</strong> under <strong>Overlays</strong>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Managed mode</label><label for="__tabbed_3_2">Config file</label><label for="__tabbed_3_3">Command line</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="admonition question">
+<p class="admonition-title">No aircraft on the map?</p>
+<ul>
+<li>Open <strong>Settings → Inputs</strong>. A mark next to the input means it needs attention: hover over it to see why. <strong>Not connected: trying again.</strong> means that nothing answers at that address and port.</li>
+<li>Check that the <strong>Protocol</strong> matches the port. A Beast port read as <strong>RAW1090</strong> gives no aircraft.</li>
+</ul>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="admonition question">
+<p class="admonition-title">No aircraft on the map?</p>
+<ul>
+<li>AIS-catcher's log says when it is not connected to the feed. Check the <code>host</code> and the <code>port</code>, and that the decoder runs.</li>
+<li>Check that the <code>protocol</code> matches the port. A Beast port read as <code>raw1090</code> gives no aircraft.</li>
+</ul>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="admonition question">
+<p class="admonition-title">No aircraft on the map?</p>
+<ul>
+<li>AIS-catcher's log says when it is not connected to the feed. Check the address and the port after <code>-t</code>, and that the decoder runs.</li>
+<li>Check that the format after <code>-t</code> matches the port. A Beast port read as <code>raw1090</code> gives no aircraft.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<h2 id="more">More<a class="headerlink" href="#more" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Managed mode</label><label for="__tabbed_4_2">Config file</label><label for="__tabbed_4_3">Command line</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li><strong>Aircraft in the API:</strong> under <strong>Settings → Services → Main</strong>, switch <strong>API</strong> on. See <a href="../../managed/api/">Ask Your Station, the API</a>.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><strong>Aircraft in the API:</strong> add <code>"api": true</code> to the <code>server</code> entry. See <a href="../../managed/api/">Ask Your Station, the API</a>.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><strong>Aircraft in the API:</strong> add <code>api on</code> after the port of <code>-N</code>. See <a href="../../managed/api/">Ask Your Station, the API</a>.</li>
+</ul>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>What the API gives:</strong> <code>/api/v1/aircraft</code> lists the aircraft heard lately, newest first. <code>/api/v1/aircraft/</code> with an ICAO address, such as <code>/api/v1/aircraft/4840D6</code>, gives one. An AI assistant reads them with <code>list_aircraft</code> and <code>get_aircraft</code>: see <a href="../../managed/assistant/">Let an AI Assistant Read Your Station</a>.</li>
+<li><strong>How long they stay:</strong> an aircraft leaves the map a minute after its last message, or five minutes after it when it is on the ground.</li>
+<li><strong>Colours:</strong> <strong>Aircraft Color</strong>, under <strong>Ship Outline</strong> in the settings of the map, colours the aircraft by their altitude.</li>
+<li><strong>Several stations:</strong> a map server that shows only some of your stations shows no aircraft, because aircraft are not kept by station.</li>
+</ul>
+<p>Every setting of the network input is in the <a href="../../configuration/input/tcp/">TCP client reference</a>.</p>
 
 
 
@@ -4003,8 +4330,13 @@
 
 
 
+  
+  
 
 
+
+
+  
 
 
 

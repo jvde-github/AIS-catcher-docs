@@ -22,10 +22,13 @@
     padding: 0;
     display: block;
   }
-  body:has(.ais-landing) .md-sidebar--primary,
   body:has(.ais-landing) .md-sidebar--secondary,
   body:has(.ais-landing) .md-tabs {
     display: none;
+  }
+  /* Below 76.25em the primary sidebar is the drawer the hamburger opens */
+  @media screen and (min-width: 76.25em) {
+    body:has(.ais-landing) .md-sidebar--primary { display: none; }
   }
   body:has(.ais-landing) .md-content,
   body:has(.ais-landing) .md-content__inner,
@@ -37,6 +40,7 @@
   body:has(.ais-landing) .md-content__inner:before,
   body:has(.ais-landing) .md-content__inner:after,
   body:has(.ais-landing) .md-content__button { display: none; }
+  body[dir]:has(.ais-landing) .md-sidebar--primary ~ .md-content > .md-content__inner { margin: 0; }
   body:has(.ais-landing) .md-main { background: #fff; }
   body:has(.ais-landing) .md-header { box-shadow: 0 1px 0 #deebf4; }
 }
@@ -73,6 +77,7 @@
 .md-typeset .ais-rail__brand { display: flex; align-items: center; gap: var(--s3); padding: 0 var(--s2) var(--s5); color: #fff; }
 .md-typeset a.ais-rail__brand:hover { color: #fff; }
 .ais-rail__brand img { filter: brightness(0) invert(1); flex: 0 0 33px; }
+.md-typeset .ais-rail__swirl { display: block; width: calc(100% + 2 * var(--s4)); max-width: none; height: 34px; margin: calc(-1 * var(--s3)) calc(-1 * var(--s4)) var(--s4); }
 .ais-rail__brand strong { display: block; font-size: 21px; letter-spacing: -.03em; line-height: 1.15; }
 .ais-rail__brand em { color: var(--ais-cyan); font-style: normal; }
 .md-typeset .ais-rail__brand small { display: block; margin-top: 2px; font-size: 13px; color: #9ec7e5; }
@@ -104,6 +109,8 @@
 .md-typeset .ais-action--outline:hover { color: #fff; background: rgba(255, 255, 255, .14); }
 .md-typeset .ais-action--blue { color: #fff; background: var(--ais-blue); }
 .md-typeset .ais-action--blue:hover { color: #fff; background: var(--ais-blue-dark); }
+.md-typeset .ais-action--soft { color: #155381; background: #fff; border: 1px solid #bad9ec; }
+.md-typeset .ais-action--soft:hover { color: #155381; border-color: #66b4e4; background: #f4faff; }
 
 /* The viewer in day and night mode: night is masked over day, and the seam sweeps back and forth */
 .md-typeset .ais-landing figure.ais-daynight { display: block; position: relative; width: auto; max-width: none; margin-top: 56px; overflow: hidden; border-radius: 12px; border: 1px solid rgba(154, 200, 229, .6); box-shadow: 0 24px 48px rgba(0, 26, 56, .45), 0 0 0 6px rgba(255, 255, 255, .08); }
@@ -204,7 +211,7 @@
 @media (max-width: 1030px) {
   .ais-landing { display: block; }
   .ais-rail__inner { position: static; min-height: 0; flex-direction: row; align-items: center; justify-content: space-between; gap: var(--s5); padding: var(--s3) var(--gutter); }
-  .md-typeset .ais-rail__brand, .md-typeset .ais-landing .ais-rail__bottom { display: none; }
+  .md-typeset .ais-rail__brand, .md-typeset .ais-rail__swirl, .md-typeset .ais-landing .ais-rail__bottom { display: none; }
   .ais-rail__nav { display: flex; gap: 4px; min-width: 0; overflow-x: auto; white-space: nowrap; scrollbar-width: thin; }
   .md-typeset .ais-rail__nav a { padding: 9px 10px; font-size: 14px; }
   .ais-rail__nav svg { width: 16px; height: 16px; }

@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#specifying-station-location" class="md-skip">
+        <a href="#location-from-gps" class="md-skip">
           Skip to content
         </a>
       
@@ -368,6 +368,8 @@
         <div class="md-main__inner md-grid">
           
             
+              
+                
               
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
@@ -1002,6 +1004,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Location from GPS
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1018,6 +1038,91 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#connect-the-gps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connect the GPS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#let-the-station-follow-gps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Let the station follow GPS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#show-it-on-the-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Show it on the map
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#save-and-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Save and start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check it works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        More
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3959,7 +4064,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -3970,6 +4077,80 @@
   
     
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#connect-the-gps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connect the GPS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#let-the-station-follow-gps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Let the station follow GPS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#show-it-on-the-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Show it on the map
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#save-and-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Save and start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check it works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        More
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -3983,28 +4164,256 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+
 
 
   
   
 
 
-<h1 id="specifying-station-location">Specifying Station Location<a class="headerlink" href="#specifying-station-location" title="Permanent link">&para;</a></h1>
-<p>As discussed above, the webserver will only share a known location of the station with the front-end web viewer if <code>share_loc</code> is set for the webserver:
+<h1 id="location-from-gps">Location from GPS<a class="headerlink" href="#location-from-gps" title="Permanent link">&para;</a></h1>
+<p>On a boat or in a vehicle, a GPS moves the station with the antenna. Every ship's distance and bearing is then measured from where the antenna is now.</p>
+<p><strong>You need:</strong> a station set up as in <a href="../../managed/station/">Name and Place Your Station</a>, and a GPS: one on a USB or serial port, one that gpsd reads, or an AIS receiver that passes GPS sentences along with the AIS.</p>
+<div class="stepper" data-eyebrow="Guide">
+<div class="stepper-step">
+<h2 id="connect-the-gps">Connect the GPS<a class="headerlink" href="#connect-the-gps" title="Permanent link">&para;</a></h2>
+<p>AIS-catcher reads the position from the <code>GGA</code>, <code>RMC</code> and <code>GLL</code> sentences of any satellite system, such as <code>$GPRMC</code> or <code>$GNRMC</code>. A sentence counts only while the GPS has a fix.</p>
+<p>With an AIS receiver that passes GPS sentences, or a boat's NMEA network that carries AIS and GPS together, the GPS needs no input of its own: its sentences come in on the input you have. Go to the next step.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Managed mode</label><label for="__tabbed_1_2">Config file</label><label for="__tabbed_1_3">Command line</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>In the dashboard, open <strong>Settings</strong>, choose <strong>Inputs</strong> and press <strong>+ Add input</strong>.</li>
+<li>
+<p>For a GPS on a USB or serial port, set <strong>Device Type</strong> to <strong>Serial (NMEA receiver)</strong>. Press <strong>Find ports</strong> to pick its <strong>Port</strong>, and set the <strong>Baud Rate</strong> the GPS sends at, often 9600.</p>
+<p>For a GPS that gpsd reads, set <strong>Device Type</strong> to <strong>Network client (RTL-TCP, TCP, MQTT)</strong>. Set <strong>Protocol</strong> to <strong>GPSD</strong>, <strong>Host</strong> to <code>localhost</code> and <strong>Port</strong> to <code>2947</code>.</p>
+</li>
+<li>
+<p>Give the input a <strong>Name</strong>, such as <em>GPS</em>. Under <strong>Station</strong>, choose the station the GPS is on. With one station, leave it as it is.</p>
+</li>
+<li>Press <strong>Save changes</strong>.</li>
+</ol>
+<p><img alt="A Serial (NMEA receiver) input named GPS: port /dev/ttyACM0, baud rate 9600" src="../../assets/guides/gps-input.webp" /></p>
+</div>
+<div class="tabbed-block">
+<p>Add an entry for the GPS to the <code>receiver</code> list:</p>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aiscatcher"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rtlsdr"</span><span class="p">,</span><span class="w"> </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AIS dongle"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"serialport"</span><span class="p">,</span><span class="w"> </span><span class="nt">"serialport"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"baudrate"</span><span class="p">:</span><span class="w"> </span><span class="mi">9600</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/dev/ttyACM0"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GPS"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>For a GPS that gpsd reads, the entry is:</p>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rtltcp"</span><span class="p">,</span><span class="w"> </span><span class="nt">"rtltcp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gpsd"</span><span class="p">,</span><span class="w"> </span><span class="nt">"host"</span><span class="p">:</span><span class="w"> </span><span class="s2">"localhost"</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">2947</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GPS"</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>serialport</code></td>
+<td>The <code>port</code> of the GPS and its <code>baudrate</code>, often 9600.</td>
+</tr>
+<tr>
+<td><code>rtltcp</code></td>
+<td>With <code>"protocol": "gpsd"</code>, reads the position from gpsd at <code>host</code> and <code>port</code>. gpsd listens on port 2947.</td>
+</tr>
+<tr>
+<td><code>station</code></td>
+<td>The <code>id</code> of the station the GPS is on. With one station, leave it out.</td>
+</tr>
+</tbody>
+</table>
+<p>On Linux, the paths under <code>/dev/serial/by-id/</code> name a GPS by its make and stay the same after a reboot.</p>
+</div>
+<div class="tabbed-block">
+<p>Add the GPS as an input to the command you already use. For a GPS on a USB or serial port, <code>-e</code> takes the baud rate and the port:</p>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-e<span class="w"> </span><span class="m">9600</span><span class="w"> </span>/dev/ttyACM0
+</code></pre></div>
+<p>For a GPS that gpsd reads:</p>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-t<span class="w"> </span>gpsd<span class="w"> </span>localhost<span class="w"> </span><span class="m">2947</span>
+</code></pre></div>
+<p>On Linux, the paths under <code>/dev/serial/by-id/</code> name a GPS by its make and stay the same after a reboot.</p>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">A GPS at 4800 baud</p>
+<p>The serial input runs at 9600, 19200, 38400, 57600 or 115200 baud. A GPS at 4800, the old NMEA 0183 speed, goes through gpsd: gpsd reads a GPS at any speed.</p>
+</div>
+</div>
+<div class="stepper-step">
+<h2 id="let-the-station-follow-gps">Let the station follow GPS<a class="headerlink" href="#let-the-station-follow-gps" title="Permanent link">&para;</a></h2>
+<p>The station moves with each fix from the inputs that stand at it. A station that no input stands at moves with a fix from any input.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Managed mode</label><label for="__tabbed_2_2">Config file</label><label for="__tabbed_2_3">Command line</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Open <strong>Settings</strong>, choose <strong>Stations</strong> and then the station the GPS is on.</li>
+<li>Under <strong>Position</strong>, switch <strong>No position</strong> off if it is on. <strong>Latitude</strong> and <strong>Longitude</strong> are where the station stands until the first fix. They may stay empty.</li>
+<li>Switch <strong>Follow GPS</strong> on. Its text names the inputs that move the station.</li>
+<li>Press <strong>Save changes</strong>.</li>
+</ol>
+<p><img alt="Settings → Stations: Follow GPS switched on, waiting for a fix" src="../../assets/guides/gps-station.webp" /></p>
+<p>Leave <strong>Rides a vessel (MMSI)</strong> empty: a station that rides a vessel moves with that ship's reports, not with GPS.</p>
+</div>
+<div class="tabbed-block">
+<p>Add <code>"gps": true</code> to the station's entry in <code>stations</code>:</p>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aiscatcher"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"stations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sailing yacht"</span><span class="p">,</span><span class="w"> </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">52.10</span><span class="p">,</span><span class="w"> </span><span class="nt">"lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.27</span><span class="p">,</span><span class="w"> </span><span class="nt">"gps"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>A station in <code>stations</code> stays where it is put unless <code>gps</code> is <code>true</code>. <code>lat</code> and <code>lon</code> are where it stands until the first fix: leave both out if you do not know them. Leave out <code>mmsi</code>: a station with an <code>mmsi</code> moves with that ship's reports, not with GPS.</p>
+<p>A file without a <code>stations</code> list follows GPS already, unless its <code>server</code> section has <code>"use_gps": false</code>.</p>
+</div>
+<div class="tabbed-block">
+<p>There is nothing to add: on the command line the station follows GPS, unless the <code>-N</code> has <code>use_gps off</code>. Its <code>lat</code> and <code>lon</code> on the <code>-N</code> are where it stands until the first fix.</p>
+<p>Leave out <code>own_mmsi</code>: with it, the station moves with that ship's reports, not with GPS.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="stepper-step">
+<h2 id="show-it-on-the-map">Show it on the map<a class="headerlink" href="#show-it-on-the-map" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Managed mode</label><label for="__tabbed_3_2">Config file</label><label for="__tabbed_3_3">Command line</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Open <strong>Settings → Services → Main</strong>. Under <strong>Shows</strong>, check that <strong>Station locations</strong> is on. On a new installation it is on already.</p>
+</div>
+<div class="tabbed-block">
+<p>The station's position stays on this computer until you let it out. Add <code>"share_loc": true</code> to the station's entry:</p>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sailing yacht"</span><span class="p">,</span><span class="w"> </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">52.10</span><span class="p">,</span><span class="w"> </span><span class="nt">"lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.27</span><span class="p">,</span><span class="w"> </span><span class="nt">"gps"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">"share_loc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>The station's position stays on this computer until you let it out. Add <code>share_loc on</code> to the <code>-N</code>:</p>
 <div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>share_loc<span class="w"> </span>on
 </code></pre></div>
-This option is switched off by default for privacy reasons in case the web viewer is shared externally.
-The NMEA decoder accepts NMEA lines from a GPS device (NMEA lines GPRMC, GPGLL and GPGGA):
-<div class="language-bash highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s1">'$GPGGA,161229.487,3723.2475,N,12158.3416,W,1,07,1.0,9.0,M,,,,0000*18'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>./AIS-catcher<span class="w"> </span>-r<span class="w"> </span>txt<span class="w"> </span>.
+</div>
+</div>
+</div>
+</div>
+<div class="stepper-step">
+<h2 id="save-and-start">Save and start<a class="headerlink" href="#save-and-start" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Managed mode</label><label for="__tabbed_4_2">Config file</label><label for="__tabbed_4_3">Command line</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Each page applies its changes when you press <strong>Save changes</strong>. If the receiver is stopped, press <strong>Start</strong> in the control bar.</p>
+</div>
+<div class="tabbed-block">
+<p>The whole file, with an RTL-SDR for the AIS, a GPS on a USB port and the web viewer:</p>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aiscatcher"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"stations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sailing yacht"</span><span class="p">,</span><span class="w"> </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">52.10</span><span class="p">,</span><span class="w"> </span><span class="nt">"lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.27</span><span class="p">,</span><span class="w"> </span><span class="nt">"gps"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">"share_loc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rtlsdr"</span><span class="p">,</span><span class="w"> </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AIS dongle"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"serialport"</span><span class="p">,</span><span class="w"> </span><span class="nt">"serialport"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"baudrate"</span><span class="p">:</span><span class="w"> </span><span class="mi">9600</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/dev/ttyACM0"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GPS"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"server"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">8100</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div>
-These GPS coordinates will be used to set the location of the station. In this way, the station can be visualized and tracked while on the move. This is useful if you use AIS-catcher to read from a hardware AIS receiver that has a built-in GPS.
-Another approach is to read from a GPSD server, e.g. when GPSD listens on port 2947 of the local PC: 
-<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-t<span class="w"> </span>gpsd<span class="w"> </span>localhost<span class="w"> </span><span class="m">2947</span><span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>share_loc<span class="w"> </span>on
+<p>Restart AIS-catcher with the file:</p>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-C<span class="w"> </span>config.json
 </code></pre></div>
-or from a serial device:
-<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-e<span class="w"> </span><span class="m">38400</span><span class="w"> </span>/dev/serial/by-id/usb-u-blox_AG_-_www.u-blox.com_u-blox
+</div>
+<div class="tabbed-block">
+<p>The whole command line, with an RTL-SDR for the AIS, a GPS on a USB port and the web viewer:</p>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-d<span class="w"> </span><span class="m">00000001</span><span class="w"> </span>-e<span class="w"> </span><span class="m">9600</span><span class="w"> </span>/dev/ttyACM0<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>station<span class="w"> </span><span class="s2">"Sailing yacht"</span><span class="w"> </span>share_loc<span class="w"> </span>on
 </code></pre></div>
-The web viewer has the options <code>-N use_gps on/off</code> and <code>-N own_mmsi xxxxx</code>. The first enables/disables the use of GPS NMEA input as the location for the receiver station (default is on). The latter sets the station's location as the location of the vessel with the specified MMSI. The own MMSI will be highlighted on the web viewer map.</p>
+<p>Restart AIS-catcher with the new command line.</p>
+<div class="admonition tip">
+<p class="admonition-title">From the command line to a configuration file</p>
+<p>Add <code>-J</code> to print your command line as a configuration file instead of running it: <code>AIS-catcher -e 9600 /dev/ttyACM0 -N 8100 share_loc on -J</code>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="stepper-step">
+<h2 id="check-it-works">Check it works<a class="headerlink" href="#check-it-works" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Managed mode</label><label for="__tabbed_5_2">Config file</label><label for="__tabbed_5_3">Command line</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>Open <strong>Settings → Stations</strong> and the station. Under <strong>Follow GPS</strong>, the line shows the <strong>Last fix</strong> and how long ago it came. Its dot is green while that fix is less than 5 minutes old. Until the first fix, it reads <strong>Waiting for a fix</strong>.</li>
+<li>The dashboard map shows the station where the GPS puts it.</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Waiting for a fix?</p>
+<ul>
+<li>Open <strong>Settings → Inputs</strong>. A mark next to the GPS input means it needs attention: hover over it to see why, for example a device that is unplugged.</li>
+<li>Check that the GPS input's <strong>Station</strong> is this station.</li>
+<li>A GPS indoors may not get a fix. Put it where it sees the sky.</li>
+</ul>
+</div>
+</div>
+<div class="tabbed-block">
+<p>The map of the <a href="../../configuration/output/web-viewer/">web viewer</a> shows the station where the GPS puts it.</p>
+<div class="admonition question">
+<p class="admonition-title">The station does not move?</p>
+<ul>
+<li>AIS-catcher says in its log when it cannot open the GPS's port or reach gpsd.</li>
+<li>Check that the GPS input stands at this station: its <code>station</code> is the station's <code>id</code>, or it has no <code>station</code> and the station's <code>id</code> is <code>0</code>.</li>
+<li>A GPS indoors may not get a fix. Put it where it sees the sky.</li>
+</ul>
+</div>
+</div>
+<div class="tabbed-block">
+<p>The map of the <a href="../../configuration/output/web-viewer/">web viewer</a> shows the station where the GPS puts it.</p>
+<div class="admonition question">
+<p class="admonition-title">The station does not move?</p>
+<ul>
+<li>AIS-catcher says in its log when it cannot open the GPS's port or reach gpsd.</li>
+<li>A GPS indoors may not get a fix. Put it where it sees the sky.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<p>On the map, the station's marker has a blue edge while a GPS fix places it. Right-click the marker and choose <strong>Follow station</strong> to keep the map centred on it.</p>
+<p>A GPS that also sends satellite sentences (<code>GSV</code>) fills <strong>GNSS Sky</strong> and <strong>Satellite Signals</strong> on the <strong>Plots</strong> tab. gpsd passes the position only.</p>
+</div>
+</div>
+<h2 id="more">More<a class="headerlink" href="#more" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Managed mode</label><label for="__tabbed_6_2">Config file</label><label for="__tabbed_6_3">Command line</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li><strong>No GPS on board:</strong> the station can ride the boat's own AIS transponder instead. Fill in its MMSI under <strong>Rides a vessel (MMSI)</strong>: see <a href="../../managed/station/#a-station-that-moves">A station that moves</a>.</li>
+<li><strong>GPS on the outputs:</strong> the UDP and TCP outputs pass the GPS sentences on with the AIS, so a chart plotter fed by AIS-catcher gets the position too. The dashboard has no switch to leave them out of an output. The community map never gets them.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><strong>No GPS on board:</strong> the station can ride the boat's own AIS transponder instead. Give its entry the <code>mmsi</code> of the boat: see <a href="../../managed/station/#a-station-that-moves">A station that moves</a>.</li>
+<li><strong>GPS on the outputs:</strong> the UDP and TCP outputs pass the GPS sentences on with the AIS, so a chart plotter fed by AIS-catcher gets the position too. To leave them out of an output, add <code>"filter": true, "gps": false</code> to its entry: see <a href="../../configuration/output/message-filtering/">Message Filtering</a>. The community map never gets them.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><strong>No GPS on board:</strong> the station can ride the boat's own AIS transponder instead. Add <code>own_mmsi</code> with the boat's MMSI to the <code>-N</code>: see <a href="../../managed/station/#a-station-that-moves">A station that moves</a>.</li>
+<li><strong>GPS on the outputs:</strong> the UDP and TCP outputs pass the GPS sentences on with the AIS, so a chart plotter fed by AIS-catcher gets the position too. To leave them out of an output, add <code>filter on gps off</code> after it, for example <code>-u 192.168.1.20 10110 filter on gps off</code>: see <a href="../../configuration/output/message-filtering/">Message Filtering</a>. The community map never gets them.</li>
+</ul>
+</div>
+</div>
+</div>
 
 
 
@@ -4012,8 +4421,13 @@ The web viewer has the options <code>-N use_gps on/off</code> and <code>-N own_m
 
 
 
+  
+  
 
 
+
+
+  
 
 
 

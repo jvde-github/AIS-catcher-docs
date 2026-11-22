@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#connecting-to-gnu-radio-via-zmq" class="md-skip">
+        <a href="#decode-samples-from-gnu-radio" class="md-skip">
           Skip to content
         </a>
       
@@ -368,6 +368,8 @@
         <div class="md-main__inner md-grid">
           
             
+              
+                
               
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
@@ -1456,6 +1458,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GNU Radio
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1472,6 +1492,80 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prepare-the-signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prepare the signal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-zmq-pub-sink" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add a ZMQ PUB Sink
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-zmq-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add a ZMQ input
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check it works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        More
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3959,7 +4053,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -3970,6 +4066,69 @@
   
     
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prepare-the-signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prepare the signal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-zmq-pub-sink" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add a ZMQ PUB Sink
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-zmq-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add a ZMQ input
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check it works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        More
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -3983,25 +4142,178 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+
 
 
   
   
 
 
-<h1 id="connecting-to-gnu-radio-via-zmq">Connecting to GNU Radio via ZMQ<a class="headerlink" href="#connecting-to-gnu-radio-via-zmq" title="Permanent link">&para;</a></h1>
-<p>The latest code base of AIS-catcher can take streaming data via ZeroMQ (ZMQ) as input. This eases the interface with packages like GNU Radio. The steps are simple and will be demonstrated by decoding the messages in the AIS example file from <a href="https://www.sdrplay.com/iq-demo-files/">here</a>. AIS-catcher cannot directly decode this file as the file contains only one channel, the frequency is shifted away from the center at 162Mhz and the sample rate of 62.5 KHz is not supported in our program. We can however perform decoding with some help from <a href="https://www.gnuradio.org/"><code>GNU Radio</code></a>. First start AIS-catcher to receive a stream (data format is complex float and sample rate is 96K) at a defined ZMQ endpoint:
-<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-z<span class="w"> </span>CF32<span class="w"> </span>tcp://127.0.0.1:5555<span class="w"> </span>-s<span class="w"> </span><span class="m">96000</span>
+<h1 id="decode-samples-from-gnu-radio">Decode Samples from GNU Radio<a class="headerlink" href="#decode-samples-from-gnu-radio" title="Permanent link">&para;</a></h1>
+<p>GNU Radio can send its samples to AIS-catcher over ZeroMQ (ZMQ). Use it to shift, filter or resample a signal before AIS-catcher decodes it, or to share one SDR between several programs.</p>
+<p><strong>You need:</strong> GNU Radio with its ZMQ blocks, and AIS-catcher started with a configuration file or the command line. The dashboard has no ZMQ input.</p>
+<div class="admonition tip">
+<p class="admonition-title">No ZeroMQ library needed</p>
+<p>The ZMQ input is part of AIS-catcher. It connects over <code>tcp://</code> to a publisher on ZeroMQ 4 or later. <code>ipc://</code> endpoints do not work.</p>
+</div>
+<div class="stepper" data-eyebrow="Guide">
+<div class="stepper-step">
+<h2 id="prepare-the-signal">Prepare the signal<a class="headerlink" href="#prepare-the-signal" title="Permanent link">&para;</a></h2>
+<p>AIS-catcher decodes the samples as it would those of an SDR. In the flowgraph, bring the signal to this form before it leaves GNU Radio:</p>
+<ul>
+<li><strong>Centre:</strong> 162.000 MHz. Channel A, at 161.975 MHz, then lies 25 kHz below the centre, and channel B, at 162.025 MHz, 25 kHz above it.</li>
+<li><strong>Rate:</strong> from 96,000 to 12,288,000 samples a second. AIS-catcher decodes 96K, 192K, 288K, 384K, 768K, 1536K, 3072K, 6144K and 12288K as they are. It resamples any other rate up to the next one in this list.</li>
+<li><strong>Pace:</strong> from a recording, add a <strong>Throttle</strong> block at the rate of the recording. Without it, GNU Radio sends faster than AIS-catcher decodes, and samples are dropped.</li>
+</ul>
+<p>For example, a recording made at 62,500 samples a second and centred on 161.985 MHz holds channel A only, 10 kHz below its centre. Three blocks between the source and the sink make it ready:</p>
+<ol>
+<li><strong>Throttle</strong>, with <strong>Sample Rate</strong> 62500.</li>
+<li><strong>Rational Resampler</strong>, with <strong>Interpolation</strong> 192 and <strong>Decimation</strong> 125. This gives 62,500 × 192 / 125 = 96,000 samples a second.</li>
+<li><strong>Frequency Xlating FIR Filter</strong>, with <strong>Taps</strong> <code>[1]</code>, <strong>Center Frequency</strong> 15000 and <strong>Sample Rate</strong> 96000. This moves 162.000 MHz, 15 kHz above the old centre, to the centre, and channel A with it to 25 kHz below.</li>
+</ol>
+<p>Resample before you shift. At 62,500 samples a second there is no room for channel A 25 kHz from the centre.</p>
+</div>
+<div class="stepper-step">
+<h2 id="add-a-zmq-pub-sink">Add a ZMQ PUB Sink<a class="headerlink" href="#add-a-zmq-pub-sink" title="Permanent link">&para;</a></h2>
+<p>End the flowgraph in a <strong>ZMQ PUB Sink</strong>. It publishes the samples, and AIS-catcher subscribes to them.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IO Type</strong></td>
+<td><strong>Complex</strong>. AIS-catcher reads it as <code>CF32</code>.</td>
+</tr>
+<tr>
+<td><strong>Address</strong></td>
+<td><code>tcp://*:5555</code> lets AIS-catcher connect from any computer on your network. With <code>tcp://127.0.0.1:5555</code>, only from this computer.</td>
+</tr>
+<tr>
+<td><strong>Pass Tags</strong></td>
+<td><strong>No</strong>. With tags, each message carries a header that AIS-catcher would read as samples.</td>
+</tr>
+<tr>
+<td><strong>Filter Key</strong></td>
+<td>Empty. A key goes out with every message, and AIS-catcher would read it as samples.</td>
+</tr>
+<tr>
+<td><strong>Connection</strong></td>
+<td><strong>Bind</strong>, under <strong>Advanced</strong>. AIS-catcher connects to the sink, not the other way round.</td>
+</tr>
+</tbody>
+</table>
+<p>Some versions of GNU Radio have no <strong>Filter Key</strong> or <strong>Connection</strong>. Set the others as above.</p>
+</div>
+<div class="stepper-step">
+<h2 id="add-a-zmq-input">Add a ZMQ input<a class="headerlink" href="#add-a-zmq-input" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Managed mode</label><label for="__tabbed_1_2">Config file</label><label for="__tabbed_1_3">Command line</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>The dashboard has no ZMQ input: the <strong>Device Type</strong> list does not offer one, and <strong>Network client (RTL-TCP, TCP, MQTT)</strong> has no ZMQ protocol.</p>
+<p>Run AIS-catcher in manual mode for this, with a configuration file or the command line: see <a href="../../usage/overview/">How Manual Mode Works</a>.</p>
+</div>
+<div class="tabbed-block">
+<p>Add an entry to the <code>receiver</code> list:</p>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aiscatcher"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zmq"</span><span class="p">,</span><span class="w"> </span><span class="nt">"zmq"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tcp://127.0.0.1:5555"</span><span class="p">,</span><span class="w"> </span><span class="nt">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CF32"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nt">"sample_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">96000</span><span class="p">,</span><span class="w"> </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GNU Radio"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"server"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">8100</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div>
-AIS-catcher connects to the publisher at that address and subscribes to everything it sends. The ZMQ input is built in and needs no ZeroMQ library. It talks to publishers on ZeroMQ 4 or later, over <code>tcp://</code> only; <code>ipc://</code> endpoints are not supported.</p>
-<p>Next we can build a simple GRC model that performs all the necessary steps and has a ZMQ Pub Sink with the chosen endpoint:
-<img alt="Image" src="https://raw.githubusercontent.com/jvde-github/AIS-catcher/media/media/SDRuno%20GRC.png" />
-Running this model, will allow us to successfully decode the messages in the file:</p>
-<p><img alt="Image" src="https://raw.githubusercontent.com/jvde-github/AIS-catcher/media/media/SDRuno%20example.png" /></p>
-<p>The ZMQ interface is useful if a datastream from an SDR needs to be shared and processed by multiple decoders or for experimentation with different decoder models with support from GNU Radio.</p>
-<p>Note that with <a href="https://github.com/ha7ilm/csdr">CSDR</a> and <a href="https://sox.sourceforge.net/">SoX</a> we can also decode this file as follows:
-<div class="language-bash highlight"><pre><span></span><code>sox<span class="w"> </span>SDRuno_20200907_184926Z_161985kHz.wav<span class="w"> </span>-t<span class="w"> </span>raw<span class="w"> </span>-b<span class="w"> </span><span class="m">32</span><span class="w"> </span>-e<span class="w"> </span>floating-point<span class="w"> </span>-<span class="w"> </span><span class="p">|</span>csdr<span class="w"> </span>shift_math_cc<span class="w"> </span><span class="m">0</span>.165<span class="w"> </span><span class="p">|</span><span class="w"> </span>AIS-catcher<span class="w">  </span>-r<span class="w"> </span>cf32<span class="w"> </span>.<span class="w"> </span>-s<span class="w"> </span><span class="m">62500</span><span class="w"> </span>-c<span class="w"> </span>X<span class="w"> </span>-v
-</code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>input</code></td>
+<td><code>zmq</code>: AIS-catcher subscribes to a ZMQ publisher.</td>
+</tr>
+<tr>
+<td><code>endpoint</code></td>
+<td>The <strong>Address</strong> of the sink, as <code>tcp://host:port</code>. On another computer, put its address in place of <code>127.0.0.1</code>.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>The format of the samples: <code>CF32</code> for <strong>Complex</strong>. Without it, AIS-catcher reads <code>CU8</code>.</td>
+</tr>
+<tr>
+<td><code>sample_rate</code></td>
+<td>The rate the flowgraph sends, in samples a second. The stream does not carry it.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>The input's name in the statistics.</td>
+</tr>
+<tr>
+<td><code>server</code></td>
+<td>The <a href="../../configuration/output/web-viewer/">web viewer</a>, whose map shows the ships.</td>
+</tr>
+</tbody>
+</table>
+<p>Then restart AIS-catcher with the file:</p>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-C<span class="w"> </span>config.json
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Add <code>-z</code> with the format and the endpoint, and <code>-s</code> with the sample rate:</p>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-z<span class="w"> </span>CF32<span class="w"> </span>tcp://127.0.0.1:5555<span class="w"> </span>-s<span class="w"> </span><span class="m">96000</span><span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span>
+</code></pre></div>
+<p><code>CF32</code> is the format of <strong>Complex</strong>. Without a format, AIS-catcher reads <code>CU8</code>. The endpoint is the <strong>Address</strong> of the sink: on another computer, put its address in place of <code>127.0.0.1</code>. <code>-s</code> gives the rate the flowgraph sends, which the stream does not carry. <code>-N 8100</code> starts the <a href="../../configuration/output/web-viewer/">web viewer</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">From the command line to a configuration file</p>
+<p>Add <code>-J</code> to print your command line as a configuration file instead of running it: <code>AIS-catcher -z CF32 tcp://127.0.0.1:5555 -s 96000 -J</code>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="stepper-step">
+<h2 id="check-it-works">Check it works<a class="headerlink" href="#check-it-works" title="Permanent link">&para;</a></h2>
+<p>Start the flowgraph and AIS-catcher, in either order: AIS-catcher keeps trying to connect until the sink is there.</p>
+<ul>
+<li>In an area with traffic, AIS-catcher shows each message it decodes on the screen.</li>
+<li>With the <a href="../../configuration/output/web-viewer/">web viewer</a> on, open <strong>Statistics</strong>. Under <strong>System</strong>, <strong>Message rate</strong> shows what comes in. Under <strong>This Session</strong>, <strong>Channel A</strong> and <strong>Channel B</strong> count the messages of each channel.</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Nothing decoded?</p>
+<ul>
+<li><strong>The log says AIS-catcher is not connected:</strong> nothing publishes at that endpoint. Check that the flowgraph runs, the address and the port, and that <strong>Connection</strong> is <strong>Bind</strong>.</li>
+<li><strong>The log says "not a ZeroMQ publisher of version 4 or later":</strong> another program answers on that port, or a ZeroMQ older than version 4.</li>
+<li><strong>Connected, but no messages:</strong> check the format and the sample rate you gave AIS-catcher against the flowgraph, that the signal is centred on 162.000 MHz, that <strong>Pass Tags</strong> is <strong>No</strong> and that <strong>Filter Key</strong> is empty.</li>
+</ul>
+</div>
+</div>
+</div>
+<h2 id="more">More<a class="headerlink" href="#more" title="Permanent link">&para;</a></h2>
+<p><strong>One channel.</strong> AIS-catcher can also decode a single channel that lies at the centre of the stream, at 12,000 to 192,000 samples a second. The recording above then needs no resampler: in the <strong>Frequency Xlating FIR Filter</strong>, set <strong>Center Frequency</strong> to -10000 and <strong>Sample Rate</strong> to 62500 to move channel A to the centre, and give AIS-catcher the rate 62500.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Config file</label><label for="__tabbed_2_2">Command line</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Add <code>"channel": "X"</code> to the <code>receiver</code> entry.</p>
+</div>
+<div class="tabbed-block">
+<p>Add <code>-c X</code> to the command.</p>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>Several decoders:</strong> a ZMQ PUB Sink serves every subscriber that connects. Several copies of AIS-catcher can decode one stream at the same time.</li>
+<li><strong>Every setting:</strong> the ZMQ input is a kind of <a href="../../configuration/input/tcp/">TCP client</a>, and that page lists its settings, such as <code>endpoint</code>. On the command line, <code>-gz</code> sets them.</li>
+</ul>
 
 
 
@@ -4009,8 +4321,13 @@ Running this model, will allow us to successfully decode the messages in the fil
 
 
 
+  
+  
 
 
+
+
+  
 
 
 

@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#using-ais-catcher-with-grafana-and-prometheus" class="md-skip">
+        <a href="#graph-your-station-in-grafana" class="md-skip">
           Skip to content
         </a>
       
@@ -368,6 +368,8 @@
         <div class="md-main__inner md-grid">
           
             
+              
+                
               
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
@@ -1251,10 +1253,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#hardware-requirements" class="md-nav__link">
+  <a href="#serve-the-counts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hardware requirements
+        Serve the counts
       
     </span>
   </a>
@@ -1262,10 +1264,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-make-prometheus-data-available-for-ais-catcher" class="md-nav__link">
+  <a href="#start-prometheus-and-grafana" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: Make Prometheus data available for AIS-catcher
+        Start Prometheus and Grafana
       
     </span>
   </a>
@@ -1273,10 +1275,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-create-a-container-stack-for-prometheus-and-grafana" class="md-nav__link">
+  <a href="#connect-grafana" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: create a container stack for prometheus and grafana
+        Connect Grafana
       
     </span>
   </a>
@@ -1284,10 +1286,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-configuring-prometheus" class="md-nav__link">
+  <a href="#check-it-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: Configuring Prometheus
+        Check it works
       
     </span>
   </a>
@@ -1295,21 +1297,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#accessing-prometheus-and-grafana-via-your-browser" class="md-nav__link">
+  <a href="#what-ais-catcher-counts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Accessing Prometheus and Grafana via your browser
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuring-data-source-and-dashboard-in-grafana" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuring data source and dashboard in Grafana
+        What AIS-catcher counts
       
     </span>
   </a>
@@ -4062,7 +4053,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -4081,10 +4074,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#hardware-requirements" class="md-nav__link">
+  <a href="#serve-the-counts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hardware requirements
+        Serve the counts
       
     </span>
   </a>
@@ -4092,10 +4085,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-make-prometheus-data-available-for-ais-catcher" class="md-nav__link">
+  <a href="#start-prometheus-and-grafana" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: Make Prometheus data available for AIS-catcher
+        Start Prometheus and Grafana
       
     </span>
   </a>
@@ -4103,10 +4096,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-create-a-container-stack-for-prometheus-and-grafana" class="md-nav__link">
+  <a href="#connect-grafana" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: create a container stack for prometheus and grafana
+        Connect Grafana
       
     </span>
   </a>
@@ -4114,10 +4107,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-configuring-prometheus" class="md-nav__link">
+  <a href="#check-it-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: Configuring Prometheus
+        Check it works
       
     </span>
   </a>
@@ -4125,21 +4118,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#accessing-prometheus-and-grafana-via-your-browser" class="md-nav__link">
+  <a href="#what-ais-catcher-counts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Accessing Prometheus and Grafana via your browser
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuring-data-source-and-dashboard-in-grafana" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuring data source and dashboard in Grafana
+        What AIS-catcher counts
       
     </span>
   </a>
@@ -4160,155 +4142,232 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+
 
 
   
   
 
 
-<h1 id="using-ais-catcher-with-grafana-and-prometheus">Using AIS-catcher with Grafana and Prometheus<a class="headerlink" href="#using-ais-catcher-with-grafana-and-prometheus" title="Permanent link">&para;</a></h1>
-<p><a href="https://grafana.com/"><code>Grafana</code></a> is an analytics platform that can provide alternative graphs for <code>AIS-catcher</code>.</p>
-<p>In this guide we will be using <a href="https://prometheus.io/"><code>Prometheus</code></a> as the data repository.</p>
-<p>Using Grafana and Prometheus in this configuration does not require a plan, account, or credentials for their respective cloud offerings.</p>
-<h2 id="hardware-requirements">Hardware requirements<a class="headerlink" href="#hardware-requirements" title="Permanent link">&para;</a></h2>
-<p>Prometheus will store a lot of data, and Grafana will do a lot of data queries. As a result, it would be better if you run these programs on a different system than your feeder Raspberry Pi. This will leave your Pi focused on data collection and processing, and unbothered by the CPU and Disk IO load that Prometheus/Grafana will cause.</p>
-<p>You <em>can</em> do it on a single system. We're assuming below that you are not.</p>
-<h2 id="step-1-make-prometheus-data-available-for-ais-catcher">Step 1: Make Prometheus data available for AIS-catcher<a class="headerlink" href="#step-1-make-prometheus-data-available-for-ais-catcher" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Edit your AIS-catcher's command line and ensure that <code>PROME on</code> is included after the <code>-N &lt;port&gt;</code> directive. For example:</li>
-</ul>
-<div class="language-console highlight"><pre><span></span><code><span class="go">AIS-catcher -N 8100 PROME on</span>
-</code></pre></div>
-<h2 id="step-2-create-a-container-stack-for-prometheus-and-grafana">Step 2: create a container stack for <code>prometheus</code> and <code>grafana</code><a class="headerlink" href="#step-2-create-a-container-stack-for-prometheus-and-grafana" title="Permanent link">&para;</a></h2>
-<p>You can skip this if you already have Prometheus and Grafana installed.</p>
-<p>The example will use a containerized (Docker) installation of Prometheus and Grafana. If you need to install Docker, please do so first. For a quick and painless way to get started, we suggest that you use <a href="https://github.com/sdr-enthusiasts/docker-install">this install script</a>.</p>
-<p>On the machine where you will run Prometheus and Grafana, create a docker-compose file in the <code>/opt/grafana</code> directory:</p>
-<div class="language-bash highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>-m777<span class="w"> </span>/opt/grafana/grafana/appdata<span class="w"> </span>/opt/grafana/prometheus/config<span class="w"> </span>/opt/grafana/prometheus/data
-<span class="nb">cd</span><span class="w"> </span>/opt/grafana
-cat<span class="w"> </span>&gt;<span class="w"> </span>docker-compose.yml
-</code></pre></div>
-<p>Now paste in the following text *):</p>
-<details>
-  <summary>&lt;&dash;&dash; Click the arrow to see the <code>docker-compose.yml</code> text</summary>
-
-<div class="language-yaml highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">'3.9'</span>
-
-<span class="nt">volumes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">grafana</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
-<span class="w">    </span><span class="nt">driver_opts</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
-<span class="w">      </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="s">"/opt/grafana/grafana/appdata"</span>
-<span class="w">      </span><span class="nt">o</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bind</span>
-<span class="w">  </span><span class="nt">prom-config</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
-<span class="w">    </span><span class="nt">driver_opts</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
-<span class="w">      </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="s">"/opt/grafana/prometheus/config"</span>
-<span class="w">      </span><span class="nt">o</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bind</span>
-<span class="w">  </span><span class="nt">prom-data</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
-<span class="w">    </span><span class="nt">driver_opts</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
-<span class="w">      </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="s">"/opt/grafana/prometheus/data"</span>
-<span class="w">      </span><span class="nt">o</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bind</span>
-
-<span class="nt">services</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">grafana</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana/grafana-oss:latest</span>
-<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
-<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana</span>
-<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana</span>
-<span class="w">    </span><span class="nt">tty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="c1"># uncomment the following section and set the variables if you are exposing Grafana to the internet behind a rev web proxy:</span>
-<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># snuids-radar-panel plugin is needed for polar plots:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GF_INSTALL_PLUGINS=snuids-radar-panel</span>
-<span class="w">    </span><span class="c1"># uncomment and set the following variables if you are exposing Grafana to the internet behind a rev web proxy:</span>
-<span class="w">    </span><span class="c1">#   - GF_SERVER_ROOT_URL=https://mywebsite.com/grafana/</span>
-<span class="w">    </span><span class="c1">#   - GF_SERVER_SERVE_FROM_SUB_PATH=true</span>
-<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3000:3000</span>
-<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana:/var/lib/grafana</span>
-
-<span class="w">  </span><span class="nt">prometheus</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prom/prometheus</span>
-<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
-<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
-<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
-<span class="w">    </span><span class="nt">tmpfs</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp</span>
-<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prom-config:/etc/prometheus</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prom-data:/prometheus</span>
-<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9090:9090</span>
-</code></pre></div>
-
-</details>
-
-<p>*) The volume definition structure is written this way purposely to ensure that the containers can place files in the persistent directories. Do not try to "directly" map volumes (<code>/opt/grafana/grafana/appdata:/var/lib/grafana</code>).</p>
-<p>Download and create Grafana and Prometheus for the first time with this command:</p>
-<div class="language-bash highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
-</code></pre></div>
-<p>You should now be able to see the following directories:</p>
-<ul>
-<li><code>/opt/grafana/grafana/appdata</code></li>
-<li><code>/opt/grafana/prometheus/config</code></li>
-<li><code>/opt/grafana/prometheus/data</code></li>
-</ul>
-<h2 id="step-3-configuring-prometheus">Step 3: Configuring Prometheus<a class="headerlink" href="#step-3-configuring-prometheus" title="Permanent link">&para;</a></h2>
-<p>Prometheus needs to be told where to look for the data from AIS-catcher. We will create a target prometheus configuration file that does this, please copy and paste the following. Make sure to replace <code>ip_of_AIS-catcher_machine:8100</code> with the IP address or hostname of the machine and the web port where <code>AIS-catcher</code> is running:</p>
-<div class="language-bash highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>prometheus<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">"echo -e \"  - job_name: 'ais'\n    static_configs:\n      - targets: ['ip_of_AIS-catcher_machine:8100']\" &gt;&gt; /etc/prometheus/prometheus.yml"</span>
-docker<span class="w"> </span>restart<span class="w"> </span>prometheus
-</code></pre></div>
-<p>(If you screw this up, <strong>do NOT</strong> re-run the command. Instead, try <code>sudo nano /opt/grafana/prometheus/config/prometheus.yml</code> and fix it that way.)</p>
-<h2 id="accessing-prometheus-and-grafana-via-your-browser">Accessing Prometheus and Grafana via your browser<a class="headerlink" href="#accessing-prometheus-and-grafana-via-your-browser" title="Permanent link">&para;</a></h2>
-<p>You should be able to point your web browser at:</p>
-<ul>
-<li><code>http://docker.host.ip.addr:9090/</code> to access the <code>prometheus</code> console.</li>
-<li><code>http://docker.host.ip.addr:3000/</code> to access the <code>grafana</code> console, use admin/admin as initial credentials, you should be prompted to change the password on first login.</li>
-</ul>
-<p>Remember to change <code>docker.host.ip.addr</code> to the IP address of the machine where Prometheus and Grafana are located.</p>
-<h2 id="configuring-data-source-and-dashboard-in-grafana">Configuring data source and dashboard in Grafana<a class="headerlink" href="#configuring-data-source-and-dashboard-in-grafana" title="Permanent link">&para;</a></h2>
-<p>After you have logged into the <code>grafana</code> console the following manual steps are required to connect to <code>prometheus</code> as the data source. <strong>You must do this</strong> even if you are already connected to Prometheus for other purposes (such as for getting <code>readsb</code>/<code>ultrafeeder</code>/<code>tar1090</code> data)</p>
+<h1 id="graph-your-station-in-grafana">Graph Your Station in Grafana<a class="headerlink" href="#graph-your-station-in-grafana" title="Permanent link">&para;</a></h1>
+<p>AIS-catcher counts what it receives in the form Prometheus reads. Prometheus keeps the counts over time, and Grafana draws them: messages per channel and per type, the range, and the signal of each ship.</p>
+<p><strong>You need:</strong> AIS-catcher receiving ships, and a computer with <a href="https://docs.docker.com/engine/install/">Docker</a> to run Prometheus and Grafana. Neither needs an account or a cloud plan.</p>
+<div class="admonition tip">
+<p class="admonition-title">Not on the station's Raspberry Pi</p>
+<p>Prometheus writes a lot to disk and Grafana reads it often. Run them on another computer, so the station keeps its processor for decoding. AIS-catcher, Prometheus and Grafana on one computer works too.</p>
+</div>
+<div class="stepper" data-eyebrow="Guide">
+<div class="stepper-step">
+<h2 id="serve-the-counts">Serve the counts<a class="headerlink" href="#serve-the-counts" title="Permanent link">&para;</a></h2>
+<p>Prometheus reads the counts from a server of AIS-catcher, at <code>/metrics</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Managed mode</label><label for="__tabbed_1_2">Config file</label><label for="__tabbed_1_3">Command line</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Give Prometheus a server of its own:</p>
 <ol>
-<li>In Grafana, click <code>Configuration</code> (cogwheel) -&gt; <code>Data Sources</code></li>
-<li>Click <code>Add a new data source</code> in the main panel</li>
-<li>Click <code>Prometheus</code> from the list of options provided</li>
-<li>Input or select the following options, if the option is not listed, do not input anything for that option:</li>
+<li>In the dashboard, open <strong>Settings → Services</strong> and press <strong>+ Add server</strong>.</li>
+<li>Give the server a <strong>Name</strong>, such as <em>Prometheus</em>, and note its <strong>Port</strong>. Set <strong>Listens on</strong> to <strong>Network</strong>.</li>
+<li>Under <strong>Serves</strong>, switch <strong>API</strong> off and <strong>Prometheus</strong> on.</li>
+<li>Under <strong>Access</strong>, choose <strong>Open</strong> to let anyone on your network read the counts. To ask for a key instead, keep <strong>Keys</strong> and press <strong>New key</strong>. Name the key, press <strong>Make key</strong> and copy it: it is shown once.</li>
+<li>For the longest distance, <code>ais_stat_distance</code>, also switch <strong>Station locations</strong> on under <strong>Shows</strong>.</li>
+<li>Press <strong>Save changes</strong>.</li>
 </ol>
+<p><img alt="A server named Prometheus: Prometheus /metrics switched on under Serves, Access open" src="../../assets/guides/grafana-server.webp" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Prometheus on the same computer?</p>
+<p>Then Main can serve the counts. Under <strong>Settings → Services → Main</strong>, switch <strong>Prometheus</strong> on under <strong>Serves</strong> and press <strong>Save changes</strong>. Main's port is the one after the dashboard's: 8119 unless you changed it. If the dashboard is open to your network, Main's <strong>Access</strong> asks who may read the counts, as in step 4.</p>
+</div>
+</div>
+<div class="tabbed-block">
+<p>Add <code>"metrics": true</code> to the <code>server</code> entry of the web viewer, or add an entry:</p>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aiscatcher"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"server"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">8100</span><span class="p">,</span><span class="w"> </span><span class="nt">"metrics"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">"share_loc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
-<th>Option</th>
-<th>Input</th>
+<th>Key</th>
+<th>What it does</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Name</td>
-<td><code>ais</code></td>
+<td><code>port</code></td>
+<td>The server's port.</td>
 </tr>
 <tr>
-<td>URL</td>
-<td><code>http://prometheus:9090/</code></td>
+<td><code>metrics</code></td>
+<td>Serves the counts at <code>/metrics</code>. <code>prome</code> is its older name and still works.</td>
+</tr>
+<tr>
+<td><code>share_loc</code></td>
+<td>Shows where the station is, and with it the longest distance, <code>ais_stat_distance</code>.</td>
 </tr>
 </tbody>
 </table>
-<p>Clicking <code>Save &amp; Test</code> should return a green message indicating success. The dashboard can now be imported with the following steps</p>
+<p>A <code>server</code> entry listens on your network, so Prometheus on another computer reaches it. Restart AIS-catcher with the file:</p>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-C<span class="w"> </span>config.json
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">The API on the same server?</p>
+<p>A server with the API and no keys listens on this computer alone: the log says so. Give the counts a server of their own then: <code>{ "port": 8101, "ui": false, "metrics": true }</code> beside <code>{ "port": 8100, "api": true }</code>.</p>
+</div>
+</div>
+<div class="tabbed-block">
+<p>Add <code>-N</code> with a port and <code>metrics on</code> to the command you already use. If it has a <code>-N</code> already, add <code>metrics on</code> after it:</p>
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-N<span class="w"> </span><span class="m">8100</span><span class="w"> </span>metrics<span class="w"> </span>on<span class="w"> </span>share_loc<span class="w"> </span>on
+</code></pre></div>
+<p><code>prome on</code> is the older name of <code>metrics on</code> and still works. <code>share_loc on</code> shows where the station is, and with it the longest distance, <code>ais_stat_distance</code>.</p>
+<p>A <code>-N</code> listens on your network, so Prometheus on another computer reaches it.</p>
+<div class="admonition tip">
+<p class="admonition-title">The API on the same server?</p>
+<p>A server with the API and no keys listens on this computer alone: the log says so. Give the counts a server of their own then: <code>AIS-catcher -N 8100 api on -N 8101 ui off metrics on</code>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="stepper-step">
+<h2 id="start-prometheus-and-grafana">Start Prometheus and Grafana<a class="headerlink" href="#start-prometheus-and-grafana" title="Permanent link">&para;</a></h2>
+<p>On the computer for Prometheus and Grafana, make a folder for them:</p>
+<div class="language-bash highlight"><pre><span></span><code>mkdir<span class="w"> </span>~/ais-grafana
+<span class="nb">cd</span><span class="w"> </span>~/ais-grafana
+</code></pre></div>
+<p>In it, save a file <code>prometheus.yml</code> that tells Prometheus where to read. Replace <code>192.168.1.10:8100</code> with the address of the computer that runs AIS-catcher and the port of its server:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span class="nt">global</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">scrape_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
+
+<span class="nt">scrape_configs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ais</span>
+<span class="w">    </span><span class="nt">static_configs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">targets</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'192.168.1.10:8100'</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>Prometheus reads <code>/metrics</code> unless told otherwise. If the server asks for a key, add it to the job. Prometheus sends it as <code>Authorization: Bearer &lt;key&gt;</code>, as AIS-catcher expects:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span class="nt">scrape_configs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ais</span>
+<span class="w">    </span><span class="nt">static_configs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">targets</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'192.168.1.10:8110'</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">authorization</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">credentials</span><span class="p">:</span><span class="w"> </span><span class="s">'&lt;key&gt;'</span>
+</code></pre></div>
+<p>Save a second file, <code>docker-compose.yml</code>, that runs both programs and keeps their data:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">prometheus</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prom/prometheus</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./prometheus.yml:/etc/prometheus/prometheus.yml:ro</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus-data:/prometheus</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9090:9090</span>
+
+<span class="w">  </span><span class="nt">grafana</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana/grafana-oss</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana-data:/var/lib/grafana</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3000:3000</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">prometheus-data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">grafana-data</span><span class="p">:</span>
+</code></pre></div>
+<p>Start them:</p>
+<div class="language-bash highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+<p>After a change to <code>prometheus.yml</code>, run <code>docker compose restart prometheus</code>.</p>
+</div>
+<div class="stepper-step">
+<h2 id="connect-grafana">Connect Grafana<a class="headerlink" href="#connect-grafana" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Hover over the <code>four squares</code> icon in the sidebar, click <code>+ Import</code></li>
-<li>Enter <code>18417</code> into the <code>Import via grafana.com</code> section and click <code>Load</code></li>
-<li>Select <code>readsb</code> from the bottom drop down list</li>
-<li>Click <code>Import</code> on the subsequent dialogue box</li>
+<li>Open Grafana at port 3000 of that computer, for example <code>http://192.168.1.20:3000</code>. Log in as <code>admin</code> with the password <code>admin</code>. Grafana then asks for a new password.</li>
+<li>Under <strong>Connections → Data sources</strong>, add a data source of the type <strong>Prometheus</strong>. As its server URL, enter <code>http://prometheus:9090</code> and press <strong>Save &amp; test</strong>.</li>
+<li>Under <strong>Dashboards</strong>, choose <strong>New → Import</strong>. Enter <code>18417</code>, the Grafana dashboard for AIS-catcher on grafana.com, and press <strong>Load</strong>. Pick the Prometheus data source and press <strong>Import</strong>.</li>
 </ol>
-<p>At this point you should see a very nice dashboard, you can find it under <code>General</code> in the <code>Dashboards</code> section. An example for readsb:
-<img src="https://user-images.githubusercontent.com/15090643/228942953-ed8b64aa-3a38-4c6f-bd42-e929b72399b2.png">
-<img src="https://user-images.githubusercontent.com/15090643/228943041-7e135856-543a-416a-9331-50853d2e0929.png">
-<img src="https://user-images.githubusercontent.com/15090643/228943083-c017c5a0-f5aa-4d03-b241-8e58f2c8a5f6.png"></p>
-<p>Feel free to edit the dashboard or add more panels to your liking.</p>
+<p>The Grafana dashboard shows the messages per channel and per type, the longest distance, and the frequency offset and signal level of the ships. Change it or add panels as you like.</p>
+</div>
+<div class="stepper-step">
+<h2 id="check-it-works">Check it works<a class="headerlink" href="#check-it-works" title="Permanent link">&para;</a></h2>
+<p>First check that AIS-catcher serves the counts:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Managed mode</label><label for="__tabbed_2_2">Config file</label><label for="__tabbed_2_3">Command line</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>At the top of the server's page, press <strong>Try the API</strong>. Pick the <strong>Endpoint</strong> <code>/metrics</code> and press <strong>Send</strong>. For a server with keys, paste the key under <strong>Key</strong> first. The answer lists the counts, starting with <code>ais_stat_count</code>.</p>
+</div>
+<div class="tabbed-block">
+<p>On the computer that runs AIS-catcher, ask for the counts from a terminal:</p>
+<div class="language-console highlight"><pre><span></span><code><span class="go">curl http://127.0.0.1:8100/metrics</span>
+</code></pre></div>
+<p>The answer lists the counts, starting with <code>ais_stat_count</code>. For a server with keys, add <code>-H "Authorization: Bearer $KEY"</code>.</p>
+</div>
+<div class="tabbed-block">
+<p>On the computer that runs AIS-catcher, ask for the counts from a terminal:</p>
+<div class="language-console highlight"><pre><span></span><code><span class="go">curl http://127.0.0.1:8100/metrics</span>
+</code></pre></div>
+<p>The answer lists the counts, starting with <code>ais_stat_count</code>. For a server with keys, add <code>-H "Authorization: Bearer $KEY"</code>.</p>
+</div>
+</div>
+</div>
+<p>Then open the list of targets in Prometheus, at port 9090 of its computer: for example <code>http://192.168.1.20:9090/targets</code>. The job <code>ais</code> is <strong>UP</strong>. In Grafana, the graphs fill in within a few minutes.</p>
+<p>The rows per ship, <code>ais_msg_ppm</code> and <code>ais_msg_level</code>, start after the first read: AIS-catcher keeps them only once something reads <code>/metrics</code>.</p>
+<div class="admonition question">
+<p class="admonition-title">The target is not UP?</p>
+<ul>
+<li><strong>Connection refused:</strong> the server listens on its own computer alone, or a firewall blocks the port. Make sure the server listens on your network.</li>
+<li><strong>401 Unauthorized:</strong> the server asks for a key. Add <code>authorization</code> to the job in <code>prometheus.yml</code>.</li>
+<li><strong>No distance in Grafana:</strong> the server does not show where the station is. See step 1.</li>
+</ul>
+</div>
+</div>
+</div>
+<h2 id="what-ais-catcher-counts">What AIS-catcher counts<a class="headerlink" href="#what-ais-catcher-counts" title="Permanent link">&para;</a></h2>
+<p>The counts start at zero when AIS-catcher starts, and when the settings of their server change. Prometheus sees the restart, so graphs of the rate carry on.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>What it counts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ais_stat_count</code></td>
+<td>Messages received.</td>
+</tr>
+<tr>
+<td><code>ais_stat_count_channel_A</code> to <code>ais_stat_count_channel_D</code></td>
+<td>Messages per channel.</td>
+</tr>
+<tr>
+<td><code>ais_stat_count_type_1</code> to <code>ais_stat_count_type_28</code></td>
+<td>Messages per message type.</td>
+</tr>
+<tr>
+<td><code>ais_stat_distance</code></td>
+<td>The longest distance to a ship, in nautical miles. Only on a server that shows where its stations are.</td>
+</tr>
+<tr>
+<td><code>ais_msg_ppm</code>, <code>ais_msg_level</code></td>
+<td>For each ship heard in the last five minutes, per channel: the frequency offset in ppm and the signal level in dB. Labelled with <code>mmsi</code>, <code>type</code>, <code>station_id</code>, <code>speed</code>, <code>shipclass</code> and <code>channel</code>.</td>
+</tr>
+<tr>
+<td><code>ais_stat_samples_dropped</code></td>
+<td>Messages left out of <code>ais_msg_ppm</code> and <code>ais_msg_level</code>, when more than 768 ships are heard within five minutes.</td>
+</tr>
+<tr>
+<td><code>ais_input_*</code>, <code>ais_output_*</code></td>
+<td>Per input and per output: messages, bytes and connections, the errors of an input and the drops of an output.</td>
+</tr>
+</tbody>
+</table>
+<p>Each input and output row is labelled with its number, its type and its name. The <a href="../../configuration/output/web-viewer/#sending-data-to-prometheus-for-use-in-grafana-dashboards">web viewer reference</a> lists every one.</p>
 
 
 
@@ -4316,8 +4375,13 @@ docker<span class="w"> </span>restart<span class="w"> </span>prometheus
 
 
 
+  
+  
 
 
+
+
+  
 
 
 
