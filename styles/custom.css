@@ -366,7 +366,7 @@
     color: #5b7392;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    font-size: 0.62rem;
+    font-size: 0.65rem;
 }
 
 .md-typeset table:not([class]) tbody tr:nth-child(even) {
@@ -772,7 +772,7 @@
 }
 
 .md-typeset .fact-card .label {
-    font-size: 0.62rem;
+    font-size: 0.65rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -964,7 +964,7 @@
 
 .md-typeset .kit-note {
     margin: 0.7rem 0 0;
-    font-size: 0.64rem;
+    font-size: 0.65rem;
     color: #5b7392;
 }
 
@@ -1041,7 +1041,7 @@
 .md-typeset .dz-lead { fill: none; stroke: var(--dz-line); stroke-width: 1.6; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 0; }
 .md-typeset .dz-dot { fill: var(--dz-dot); stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; }
 .md-typeset .dz-beside { display: none; }
-.md-typeset .dz .dz-label { margin: 0; line-height: 1.3; font-weight: 500; text-wrap: balance; text-align: center; font-size: 0.62rem; }
+.md-typeset .dz .dz-label { margin: 0; line-height: 1.3; font-weight: 500; text-wrap: balance; text-align: center; font-size: 0.65rem; }
 .md-typeset .dz-l-gpio, .md-typeset .dz-l-mcu, .md-typeset .dz-l-radio { align-self: end; }
 .md-typeset .dz-l-sma { grid-area: sma; }
 .md-typeset .dz-l-usb { grid-area: usb; }
@@ -1144,7 +1144,7 @@
 }
 
 .md-typeset .stepper-eyebrow {
-    font-size: 0.55rem;
+    font-size: 0.65rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.09em;
@@ -1166,7 +1166,7 @@
 }
 
 .md-typeset .stepper-count {
-    font-size: 0.58rem;
+    font-size: 0.65rem;
     font-weight: 600;
     color: #64748b;
     white-space: nowrap;
@@ -1178,13 +1178,13 @@
     align-items: center;
 }
 
-/* each dot sits in an 18px hit area */
+/* each dot sits in a hit area big enough for a finger */
 .md-typeset .stepper-dot {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 18px;
-    height: 24px;
+    width: 28px;
+    height: 32px;
     padding: 0;
     border: 0;
     background: none;
@@ -1293,170 +1293,12 @@
     outline-offset: 2px;
 }
 
-/* The stage: the window stands on the website's harbour photograph */
-.md-typeset .stepper-stage--on {
-    display: flex;
-    justify-content: center;
-    margin: 1rem 0 1.8rem;
-    padding: 2.6rem 1rem;
-    border-radius: 0.8rem;
-    background-image:
-        linear-gradient(to bottom, rgba(15, 23, 42, 0.62), rgba(6, 11, 25, 0.82)),
-        url("../assets/quickstart-stage.jpg");
-    background-size: cover;
-    background-position: center 42%;
-}
-
-.md-typeset .stepper-stage--on > .stepper--on {
-    width: 100%;
-    max-width: 38rem;
-    min-height: 30rem;
-    margin: 0;
-    border: 0;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
-}
-
 @media screen and (max-width: 44.9375em) {
-    .md-typeset .stepper-stage--on {
-        padding: 0;
-        background: none;
-    }
-
-    .md-typeset .stepper-stage--on > .stepper--on {
-        min-height: 0;
-        border: 1px solid #dbe4ef;
-        box-shadow: 0 8px 28px rgba(18, 54, 94, 0.08);
-    }
 
     /* the dots say where you are; the title keeps the room */
     .md-typeset .stepper-count {
         display: none;
     }
-}
-
-/* a stepper's welcome: the logo, a few lines and the things to have ready */
-.md-typeset .stepper-welcome {
-    max-width: 27rem;
-    margin: 0.4rem auto 0;
-    text-align: center;
-}
-
-.md-typeset .stepper-welcome img {
-    display: block;
-    width: 3.8rem;
-    height: 3.8rem;
-    margin: 0 auto 0.7rem;
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
-}
-
-.md-typeset .stepper-welcome p {
-    color: #334155;
-}
-
-.md-typeset .ready-label {
-    margin: 1.3rem 0 0.5rem;
-    font-size: 0.55rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    text-align: center;
-    color: #94a3b8;
-}
-
-.md-typeset .ready {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.5rem;
-    max-width: 27rem;
-    margin: 0 auto 1rem;
-}
-
-.md-typeset .ready p {
-    margin: 0;
-    padding: 0.8rem 0.4rem;
-    border: 1px solid #e2e8f0;
-    border-radius: 0.55rem;
-    font-size: 0.6rem;
-    line-height: 1.45;
-    text-align: center;
-    color: #64748b;
-}
-
-.md-typeset .ready svg {
-    display: block;
-    width: 1.3rem;
-    height: 1.3rem;
-    margin: 0 auto 0.4rem;
-    fill: #1976d2;
-}
-
-.md-typeset .ready strong {
-    display: block;
-    font-size: 0.72rem;
-    color: #0f172a;
-}
-
-/* a walk through screens: each with a few words and its screenshot, two abreast */
-.md-typeset .walk {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.1rem 1rem;
-    margin: 1rem 0;
-}
-
-.md-typeset .walk-step {
-    display: flex;
-    flex-direction: column;
-}
-
-.md-typeset .walk-step p {
-    margin: 0 0 0.5rem;
-    font-size: 0.68rem;
-    line-height: 1.5;
-    color: #475569;
-}
-
-.md-typeset .walk-step p:first-child {
-    flex: 1;
-}
-
-.md-typeset .walk-step p:first-child > strong:first-child {
-    display: block;
-    font-size: 0.76rem;
-    color: #0f172a;
-}
-
-/* a screenshot framed as a small window, as the website's are */
-.md-typeset img.shot {
-    display: block;
-    width: 100%;
-    padding-top: 22px;
-    border: 1px solid #e2e8f0;
-    border-radius: 0.55rem;
-    background-color: #f1f5f9;
-    background-image:
-        radial-gradient(circle 3.5px at 13px 11px, #f87171 98%, transparent),
-        radial-gradient(circle 3.5px at 26px 11px, #fbbf24 98%, transparent),
-        radial-gradient(circle 3.5px at 39px 11px, #34d399 98%, transparent);
-    background-repeat: no-repeat;
-    box-shadow: 0 8px 22px rgba(2, 6, 23, 0.12);
-}
-
-@media screen and (max-width: 34em) {
-    .md-typeset .walk {
-        grid-template-columns: minmax(0, 1fr);
-    }
-}
-
-.md-typeset .stepper-fine {
-    max-width: 32rem;
-    margin: 1.4rem auto 0;
-    font-size: 0.62rem;
-    line-height: 1.55;
-    text-align: center;
-    color: #8492a6;
 }
 
 /* Tutorials: the parts of a series as a chain above the title, the one being read filled */
@@ -1519,7 +1361,7 @@
 .md-typeset .series small {
     display: block;
     font-family: var(--md-code-font-family), monospace;
-    font-size: 0.58rem;
+    font-size: 0.65rem;
     font-weight: 400;
     color: #8492a6;
 }
@@ -1539,7 +1381,7 @@
 .md-typeset figure figcaption {
     max-width: none;
     margin-top: 0.4rem;
-    font-size: 0.64rem;
+    font-size: 0.65rem;
     font-style: normal;
     color: #64748b;
 }
@@ -1577,7 +1419,7 @@
 
 .md-typeset .tutorial-list small {
     font-family: var(--md-code-font-family), monospace;
-    font-size: 0.58rem;
+    font-size: 0.65rem;
     color: #8492a6;
 }
 
@@ -1620,11 +1462,6 @@
     .md-typeset .stepper-head,
     .md-typeset .stepper-foot {
         display: none;
-    }
-
-    .md-typeset .stepper-stage--on {
-        padding: 0;
-        background: none;
     }
 
     .md-typeset .stepper--on > .stepper-step > h2:first-child {

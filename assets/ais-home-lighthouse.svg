@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" preserveAspectRatio="xMidYMid slice">
+ <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#83c8ef"/><stop offset=".63" stop-color="#d0effd"/><stop offset="1" stop-color="#6fbee8"/></linearGradient><linearGradient id="sea" x2="0" y2="1"><stop stop-color="#2e9cce"/><stop offset="1" stop-color="#14659d"/></linearGradient></defs>
+ <rect width="420" height="300" fill="url(#sky)"/>
+ <circle cx="314" cy="72" r="32" fill="#fff4cb" opacity=".86"/>
+ <path d="M0 177q90-31 178 0t242 0v123H0" fill="url(#sea)"/>
+ <path d="M0 198Q100 173 212 202t208-5M0 241q94-22 194 1t226-4" fill="none" stroke="#d4f7ff" stroke-width="3" opacity=".56"/>
+ <path d="M0 240q53-54 122-39 54 9 94 44L264 300H0Z" fill="#61957d"/>
+ <path d="M0 265q92-43 144-18l50 53H0Z" fill="#376f72"/>
+ <!-- light house -->
+ <path d="M98 217 111 103h45l14 116Z" fill="#f7fcf8" stroke="#24546b" stroke-width="4"/>
+ <path d="M115 150h46l5 27h-55Z" fill="#d46255"/>
+ <path d="M109 103h50l-7-21h-34z" fill="#e8f7f8" stroke="#24546b" stroke-width="4"/>
+ <path d="M106 81h55l-27-24z" fill="#d85c4f" stroke="#24546b" stroke-width="3"/>
+ <rect x="119" y="84" width="27" height="18" fill="#effac9" stroke="#24546b" stroke-width="3"/>
+ <path d="M133 57V44" stroke="#24546b" stroke-width="4"/>
+ <path d="M104 105h57" stroke="#24546b" stroke-width="5"/>
+ <path d="M131 192q11-3 19 0v27h-19Z" fill="#296181"/>
+ <path d="M95 219h77" stroke="#22556e" stroke-width="7" stroke-linecap="round"/>
+ <path d="M180 215q59-13 99 20" fill="none" stroke="#78a78c" stroke-width="15" stroke-linecap="round"/>
+ <path d="M250 161l19-10 22 10-22 7Z" fill="#fff" opacity=".85"/>
+ <path d="M332 142l12-7 15 6-15 4Z" fill="#fff" opacity=".85"/>
+</svg>
