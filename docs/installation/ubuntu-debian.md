@@ -8,7 +8,7 @@ One script installs AIS-catcher and what it needs, and sets it up as a service t
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) -p -M"
 ```
 
-Then open the dashboard in your browser, as in the [Quick Start](../getting-started/overview.md#open-the-dashboard).
+Then open the dashboard in your browser, as in the [Quick Start](../getting-started/overview.md#open-the-dashboard). The first visit asks you to choose an admin password, with the setup code the installer prints when it finishes; `journalctl -u ais-catcher | grep 'setup code'` finds it later. There is no default password.
 
 !!! warning "Coming from manual mode?"
     Managed mode starts with fresh settings: your `/etc/AIS-catcher/config.json` and `config.cmd` are not carried over. The files stay where they are, so you can look at them while you set up the station in the dashboard. Running the installer again on a managed station is an update, and keeps your settings.

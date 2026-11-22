@@ -88,8 +88,9 @@ hide:
 <section class="ais-qs-card" aria-labelledby="open-the-dashboard">
   <div class="ais-qs-heading"><span class="ais-qs-number">2</span><div><h2 id="open-the-dashboard">Open the dashboard</h2><p>On the computer that runs AIS-catcher, open this address in your browser.</p></div></div>
   <p class="ais-qs-address"><code>http://localhost:8118</code></p>
-  <p>From another device on your network, use that computer's name or IP address instead, for example <code>http://raspberrypi.local:8118</code>. AIS-catcher then first asks you to set a password.</p>
-  <p class="ais-qs-fine">On macOS and in Docker, the commands above only let the computer itself in: replace <code>127.0.0.1</code> with <code>0.0.0.0</code> to open the dashboard from elsewhere. See <a href="../../managed/remote-access/">Remote Access and Security</a>.</p>
+  <p>From another device on your network, use that computer's name or IP address instead, for example <code>http://raspberrypi.local:8118</code>.</p>
+  <p><strong>First visit on Raspberry Pi and Linux.</strong> The install opens the dashboard to your network, so the first visit asks you to choose an admin password, with a setup code. The installer prints the setup code when it finishes; later, <code>journalctl -u ais-catcher | grep 'setup code'</code> finds it. There is no default password.</p>
+  <p class="ais-qs-fine">On Windows, on macOS and in Docker, the commands above only let the computer itself in, and ask for no password. Replace <code>127.0.0.1</code> with <code>0.0.0.0</code> to open the dashboard from elsewhere; the first visit then asks for a password and a setup code too. See <a href="../../managed/remote-access/">Remote Access and Security</a>.</p>
 </section>
 
 <section class="ais-qs-card" aria-labelledby="run-the-setup-wizard">

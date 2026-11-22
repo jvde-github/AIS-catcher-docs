@@ -1,12 +1,18 @@
 # Remote Access and Security
 
-By default the dashboard is only reachable from the machine AIS-catcher runs on (`127.0.0.1`). To administer it from another machine on your network, bind to all interfaces:
+Started with `127.0.0.1`, as on Windows, on macOS and in Docker in the [Quick Start](../getting-started/overview.md), the dashboard is only reachable from the machine AIS-catcher runs on. The Raspberry Pi and Linux install binds to all interfaces, so there it is open to your network from the start. To do the same by hand:
 
 ```console
 AIS-catcher -E /etc/AIS-catcher/config.json 0.0.0.0:8118
 ```
 
-When bound to anything other than `127.0.0.1`/`localhost`, a **password is required**: on first access the dashboard asks you to set one, and every subsequent session requires logging in.
+When bound to anything other than `127.0.0.1`/`localhost`, a **password is required**. There is no default password: on the first visit the dashboard asks you to choose one, together with a **setup code**, and every later session requires logging in. The setup code is eight letters and digits that AIS-catcher writes to its log when it starts:
+
+```console
+Control: to set the password, use setup code XXXXXXXX
+```
+
+The Raspberry Pi and Linux installer shows it when it finishes. For the service, `journalctl -u ais-catcher | grep 'setup code'` finds it later. Only someone who can read the machine's log has the code, so a stranger on the network cannot set the password first.
 
 <!-- TODO screenshot: install-password.webp — the set-a-password screen on first access -->
 
