@@ -1,161 +1,224 @@
-# Using AIS-catcher with Grafana and Prometheus
+---
+hide:
+  - toc
+---
 
-[`Grafana`](https://grafana.com/) is an analytics platform that can provide alternative graphs for `AIS-catcher`.
+# Graph Your Station in Grafana
 
-In this guide we will be using [`Prometheus`](https://prometheus.io/) as the data repository.
+AIS-catcher counts what it receives in the form Prometheus reads. Prometheus keeps the counts over time, and Grafana draws them: messages per channel and per type, the range, and the signal of each ship.
 
-Using Grafana and Prometheus in this configuration does not require a plan, account, or credentials for their respective cloud offerings.
+**You need:** AIS-catcher receiving ships, and a computer with [Docker](https://docs.docker.com/engine/install/) to run Prometheus and Grafana. Neither needs an account or a cloud plan.
 
-## Hardware requirements
+!!! tip "Not on the station's Raspberry Pi"
+    Prometheus writes a lot to disk and Grafana reads it often. Run them on another computer, so the station keeps its processor for decoding. AIS-catcher, Prometheus and Grafana on one computer works too.
 
-Prometheus will store a lot of data, and Grafana will do a lot of data queries. As a result, it would be better if you run these programs on a different system than your feeder Raspberry Pi. This will leave your Pi focused on data collection and processing, and unbothered by the CPU and Disk IO load that Prometheus/Grafana will cause.
+<div class="stepper" data-eyebrow="Guide" markdown>
 
-You *can* do it on a single system. We're assuming below that you are not.
+<div class="stepper-step" markdown>
 
-## Step 1: Make Prometheus data available for AIS-catcher
- 
+## Serve the counts
 
-- Edit your AIS-catcher's command line and ensure that `PROME on` is included after the `-N <port>` directive. For example:
+Prometheus reads the counts from a server of AIS-catcher, at `/metrics`.
 
-```console
-AIS-catcher -N 8100 PROME on
-```
+=== "Managed mode"
 
-## Step 2: create a container stack for `prometheus` and `grafana`
+    Give Prometheus a server of its own:
 
-You can skip this if you already have Prometheus and Grafana installed.
+    1. In the dashboard, open **Settings → Services** and press **+ Add server**.
+    2. Give the server a **Name**, such as *Prometheus*, and note its **Port**. Set **Listens on** to **Network**.
+    3. Under **Serves**, switch **API** off and **Prometheus** on.
+    4. Under **Access**, choose **Open** to let anyone on your network read the counts. To ask for a key instead, keep **Keys** and press **New key**. Name the key, press **Make key** and copy it: it is shown once.
+    5. For the longest distance, `ais_stat_distance`, also switch **Station locations** on under **Shows**.
+    6. Press **Save changes**.
 
-The example will use a containerized (Docker) installation of Prometheus and Grafana. If you need to install Docker, please do so first. For a quick and painless way to get started, we suggest that you use [this install script](https://github.com/sdr-enthusiasts/docker-install).
+    ![A server named Prometheus: Prometheus /metrics switched on under Serves, Access open](../assets/guides/grafana-server.webp)
 
-On the machine where you will run Prometheus and Grafana, create a docker-compose file in the `/opt/grafana` directory:
+    !!! tip "Prometheus on the same computer?"
+        Then Main can serve the counts. Under **Settings → Services → Main**, switch **Prometheus** on under **Serves** and press **Save changes**. Main's port is the one after the dashboard's: 8119 unless you changed it. If the dashboard is open to your network, Main's **Access** asks who may read the counts, as in step 4.
+
+=== "Config file"
+
+    Add `"metrics": true` to the `server` entry of the web viewer, or add an entry:
+
+    ```json
+    {
+      "config": "aiscatcher",
+      "version": 1,
+      "server": [
+        { "port": 8100, "metrics": true, "share_loc": true }
+      ]
+    }
+    ```
+
+    | Key | What it does |
+    |-----|--------------|
+    | `port` | The server's port. |
+    | `metrics` | Serves the counts at `/metrics`. `prome` is its older name and still works. |
+    | `share_loc` | Shows where the station is, and with it the longest distance, `ais_stat_distance`. |
+
+    A `server` entry listens on your network, so Prometheus on another computer reaches it. Restart AIS-catcher with the file:
+
+    ```bash
+    AIS-catcher -C config.json
+    ```
+
+    !!! tip "The API on the same server?"
+        A server with the API and no keys listens on this computer alone: the log says so. Give the counts a server of their own then: `{ "port": 8101, "ui": false, "metrics": true }` beside `{ "port": 8100, "api": true }`.
+
+=== "Command line"
+
+    Add `-N` with a port and `metrics on` to the command you already use. If it has a `-N` already, add `metrics on` after it:
+
+    ```bash
+    AIS-catcher -N 8100 metrics on share_loc on
+    ```
+
+    `prome on` is the older name of `metrics on` and still works. `share_loc on` shows where the station is, and with it the longest distance, `ais_stat_distance`.
+
+    A `-N` listens on your network, so Prometheus on another computer reaches it.
+
+    !!! tip "The API on the same server?"
+        A server with the API and no keys listens on this computer alone: the log says so. Give the counts a server of their own then: `AIS-catcher -N 8100 api on -N 8101 ui off metrics on`.
+
+</div>
+
+<div class="stepper-step" markdown>
+
+## Start Prometheus and Grafana
+
+On the computer for Prometheus and Grafana, make a folder for them:
 
 ```bash
-sudo mkdir -p -m777 /opt/grafana/grafana/appdata /opt/grafana/prometheus/config /opt/grafana/prometheus/data
-cd /opt/grafana
-cat > docker-compose.yml
+mkdir ~/ais-grafana
+cd ~/ais-grafana
 ```
 
-Now paste in the following text *):
-
-<details>
-  <summary>&lt;&dash;&dash; Click the arrow to see the <code>docker-compose.yml</code> text</summary>
+In it, save a file `prometheus.yml` that tells Prometheus where to read. Replace `192.168.1.10:8100` with the address of the computer that runs AIS-catcher and the port of its server:
 
 ```yaml
-version: '3.9'
+global:
+  scrape_interval: 15s
 
-volumes:
-  grafana:
-    driver: local
-    driver_opts:
-      type: none
-      device: "/opt/grafana/grafana/appdata"
-      o: bind
-  prom-config:
-    driver: local
-    driver_opts:
-      type: none
-      device: "/opt/grafana/prometheus/config"
-      o: bind
-  prom-data:
-    driver: local
-    driver_opts:
-      type: none
-      device: "/opt/grafana/prometheus/data"
-      o: bind
-
-services:
-  grafana:
-    image: grafana/grafana-oss:latest
-    restart: unless-stopped
-    container_name: grafana
-    hostname: grafana
-    tty: true
-    # uncomment the following section and set the variables if you are exposing Grafana to the internet behind a rev web proxy:
-    environment:
-    # snuids-radar-panel plugin is needed for polar plots:
-      - GF_INSTALL_PLUGINS=snuids-radar-panel
-    # uncomment and set the following variables if you are exposing Grafana to the internet behind a rev web proxy:
-    #   - GF_SERVER_ROOT_URL=https://mywebsite.com/grafana/
-    #   - GF_SERVER_SERVE_FROM_SUB_PATH=true
-    ports:
-      - 3000:3000
-    volumes:
-      - grafana:/var/lib/grafana
-
-  prometheus:
-    image: prom/prometheus
-    container_name: prometheus
-    hostname: prometheus
-    restart: unless-stopped
-    tmpfs:
-      - /tmp
-    volumes:
-      - prom-config:/etc/prometheus
-      - prom-data:/prometheus
-    ports:
-      - 9090:9090
+scrape_configs:
+  - job_name: ais
+    static_configs:
+      - targets: ['192.168.1.10:8100']
 ```
 
-</details>
+Prometheus reads `/metrics` unless told otherwise. If the server asks for a key, add it to the job. Prometheus sends it as `Authorization: Bearer <key>`, as AIS-catcher expects:
 
-*) The volume definition structure is written this way purposely to ensure that the containers can place files in the persistent directories. Do not try to "directly" map volumes (`/opt/grafana/grafana/appdata:/var/lib/grafana`).
+```yaml
+scrape_configs:
+  - job_name: ais
+    static_configs:
+      - targets: ['192.168.1.10:8110']
+    authorization:
+      credentials: '<key>'
+```
 
-Download and create Grafana and Prometheus for the first time with this command:
+Save a second file, `docker-compose.yml`, that runs both programs and keeps their data:
+
+```yaml
+services:
+  prometheus:
+    image: prom/prometheus
+    restart: unless-stopped
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    ports:
+      - 9090:9090
+
+  grafana:
+    image: grafana/grafana-oss
+    restart: unless-stopped
+    volumes:
+      - grafana-data:/var/lib/grafana
+    ports:
+      - 3000:3000
+
+volumes:
+  prometheus-data:
+  grafana-data:
+```
+
+Start them:
 
 ```bash
 docker compose up -d
 ```
 
-You should now be able to see the following directories:
+After a change to `prometheus.yml`, run `docker compose restart prometheus`.
 
-- `/opt/grafana/grafana/appdata`
-- `/opt/grafana/prometheus/config`
-- `/opt/grafana/prometheus/data`
+</div>
 
-## Step 3: Configuring Prometheus
+<div class="stepper-step" markdown>
 
-Prometheus needs to be told where to look for the data from AIS-catcher. We will create a target prometheus configuration file that does this, please copy and paste the following. Make sure to replace `ip_of_AIS-catcher_machine:8100` with the IP address or hostname of the machine and the web port where `AIS-catcher` is running:
+## Connect Grafana
 
-```bash
-docker exec -it prometheus sh -c "echo -e \"  - job_name: 'ais'\n    static_configs:\n      - targets: ['ip_of_AIS-catcher_machine:8100']\" >> /etc/prometheus/prometheus.yml"
-docker restart prometheus
-```
+1. Open Grafana at port 3000 of that computer, for example `http://192.168.1.20:3000`. Log in as `admin` with the password `admin`. Grafana then asks for a new password.
+2. Under **Connections → Data sources**, add a data source of the type **Prometheus**. As its server URL, enter `http://prometheus:9090` and press **Save & test**.
+3. Under **Dashboards**, choose **New → Import**. Enter `18417`, the Grafana dashboard for AIS-catcher on grafana.com, and press **Load**. Pick the Prometheus data source and press **Import**.
 
-(If you screw this up, **do NOT** re-run the command. Instead, try `sudo nano /opt/grafana/prometheus/config/prometheus.yml` and fix it that way.)
+The Grafana dashboard shows the messages per channel and per type, the longest distance, and the frequency offset and signal level of the ships. Change it or add panels as you like.
 
-## Accessing Prometheus and Grafana via your browser
+</div>
 
-You should be able to point your web browser at:
+<div class="stepper-step" markdown>
 
-* `http://docker.host.ip.addr:9090/` to access the `prometheus` console.
-* `http://docker.host.ip.addr:3000/` to access the `grafana` console, use admin/admin as initial credentials, you should be prompted to change the password on first login.
+## Check it works
 
-Remember to change `docker.host.ip.addr` to the IP address of the machine where Prometheus and Grafana are located.
+First check that AIS-catcher serves the counts:
 
-## Configuring data source and dashboard in Grafana
+=== "Managed mode"
 
-After you have logged into the `grafana` console the following manual steps are required to connect to `prometheus` as the data source. **You must do this** even if you are already connected to Prometheus for other purposes (such as for getting `readsb`/`ultrafeeder`/`tar1090` data)
+    At the top of the server's page, press **Try the API**. Pick the **Endpoint** `/metrics` and press **Send**. For a server with keys, paste the key under **Key** first. The answer lists the counts, starting with `ais_stat_count`.
 
-1. In Grafana, click `Configuration` (cogwheel) -> `Data Sources`
-2. Click `Add a new data source` in the main panel
-3. Click `Prometheus` from the list of options provided
-4. Input or select the following options, if the option is not listed, do not input anything for that option:
+=== "Config file"
 
-| Option | Input |
-| ------ | ------------- |
-| Name   | `ais` |
-| URL    | `http://prometheus:9090/` |
+    On the computer that runs AIS-catcher, ask for the counts from a terminal:
 
-Clicking `Save & Test` should return a green message indicating success. The dashboard can now be imported with the following steps
+    ```console
+    curl http://127.0.0.1:8100/metrics
+    ```
 
-1. Hover over the `four squares` icon in the sidebar, click `+ Import`
-2. Enter `18417` into the `Import via grafana.com` section and click `Load`
-3. Select `readsb` from the bottom drop down list
-4. Click `Import` on the subsequent dialogue box
+    The answer lists the counts, starting with `ais_stat_count`. For a server with keys, add `-H "Authorization: Bearer $KEY"`.
 
-At this point you should see a very nice dashboard, you can find it under `General` in the `Dashboards` section. An example for readsb:
-<img src="https://user-images.githubusercontent.com/15090643/228942953-ed8b64aa-3a38-4c6f-bd42-e929b72399b2.png">
-<img src="https://user-images.githubusercontent.com/15090643/228943041-7e135856-543a-416a-9331-50853d2e0929.png">
-<img src="https://user-images.githubusercontent.com/15090643/228943083-c017c5a0-f5aa-4d03-b241-8e58f2c8a5f6.png">
+=== "Command line"
 
-Feel free to edit the dashboard or add more panels to your liking.
+    On the computer that runs AIS-catcher, ask for the counts from a terminal:
+
+    ```console
+    curl http://127.0.0.1:8100/metrics
+    ```
+
+    The answer lists the counts, starting with `ais_stat_count`. For a server with keys, add `-H "Authorization: Bearer $KEY"`.
+
+Then open the list of targets in Prometheus, at port 9090 of its computer: for example `http://192.168.1.20:9090/targets`. The job `ais` is **UP**. In Grafana, the graphs fill in within a few minutes.
+
+The rows per ship, `ais_msg_ppm` and `ais_msg_level`, start after the first read: AIS-catcher keeps them only once something reads `/metrics`.
+
+!!! question "The target is not UP?"
+    - **Connection refused:** the server listens on its own computer alone, or a firewall blocks the port. Make sure the server listens on your network.
+    - **401 Unauthorized:** the server asks for a key. Add `authorization` to the job in `prometheus.yml`.
+    - **No distance in Grafana:** the server does not show where the station is. See step 1.
+
+</div>
+
+</div>
+
+## What AIS-catcher counts
+
+The counts start at zero when AIS-catcher starts, and when the settings of their server change. Prometheus sees the restart, so graphs of the rate carry on.
+
+| Metric | What it counts |
+|--------|----------------|
+| `ais_stat_count` | Messages received. |
+| `ais_stat_count_channel_A` to `ais_stat_count_channel_D` | Messages per channel. |
+| `ais_stat_count_type_1` to `ais_stat_count_type_28` | Messages per message type. |
+| `ais_stat_distance` | The longest distance to a ship, in nautical miles. Only on a server that shows where its stations are. |
+| `ais_msg_ppm`, `ais_msg_level` | For each ship heard in the last five minutes, per channel: the frequency offset in ppm and the signal level in dB. Labelled with `mmsi`, `type`, `station_id`, `speed`, `shipclass` and `channel`. |
+| `ais_stat_samples_dropped` | Messages left out of `ais_msg_ppm` and `ais_msg_level`, when more than 768 ships are heard within five minutes. |
+| `ais_input_*`, `ais_output_*` | Per input and per output: messages, bytes and connections, the errors of an input and the drops of an output. |
+
+Each input and output row is labelled with its number, its type and its name. The [web viewer reference](../configuration/output/web-viewer.md#sending-data-to-prometheus-for-use-in-grafana-dashboards) lists every one.

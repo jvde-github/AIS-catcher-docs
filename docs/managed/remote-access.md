@@ -14,6 +14,8 @@ Control: to set the password, use setup code XXXXXXXX
 
 The Raspberry Pi and Linux installer shows it when it finishes. For the service, `journalctl -u ais-catcher | grep 'setup code'` finds it later. Only someone who can read the machine's log has the code, so a stranger on the network cannot set the password first.
 
+On `127.0.0.1` or `localhost` the first visit also asks you to choose a password, but without a setup code, and the computer itself is never asked to log in. The password counts once the dashboard is open to the network.
+
 <!-- TODO screenshot: install-password.webp — the set-a-password screen on first access -->
 
 !!! warning
