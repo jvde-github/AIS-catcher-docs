@@ -204,8 +204,7 @@
 @media (max-width: 1030px) {
   .ais-landing { display: block; }
   .ais-rail__inner { position: static; min-height: 0; flex-direction: row; align-items: center; justify-content: space-between; gap: var(--s5); padding: var(--s3) var(--gutter); }
-  .md-typeset .ais-rail__brand { padding: 0; flex-shrink: 0; }
-  .md-typeset .ais-rail__brand small, .md-typeset .ais-landing .ais-rail__bottom { display: none; }
+  .md-typeset .ais-rail__brand, .md-typeset .ais-landing .ais-rail__bottom { display: none; }
   .ais-rail__nav { display: flex; gap: 4px; min-width: 0; overflow-x: auto; white-space: nowrap; scrollbar-width: thin; }
   .md-typeset .ais-rail__nav a { padding: 9px 10px; font-size: 14px; }
   .ais-rail__nav svg { width: 16px; height: 16px; }
@@ -221,7 +220,6 @@
 @media (max-width: 760px) {
   .ais-landing { --section: 48px; }
   .ais-rail__inner { display: block; padding: var(--s3) var(--gutter) var(--s2); }
-  .md-typeset .ais-rail__brand { margin-bottom: var(--s2); }
   .ais-rail__nav { margin: 0 -8px; }
   .md-typeset .ais-rail__nav a { gap: 6px; padding: var(--s2); }
   .ais-home-hero { --tail: 56px; padding-top: var(--section); }
@@ -234,7 +232,6 @@
   .md-typeset .ais-home-footer { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 540px) {
-  .ais-rail__brand img { width: 26px; height: 26px; }
   .ais-home-hero__actions { flex-direction: column; align-items: stretch; }
   .ais-path-grid { grid-template-columns: 1fr; }
   .md-typeset a.ais-path-card { padding: var(--s4) var(--s5); }
