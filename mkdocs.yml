@@ -24,8 +24,7 @@ theme:
         link: https://x.com/githubjvde
   features:
     - navigation.top
-    - navigation.tabs
-    - navigation.tabs.sticky
+    - navigation.path
     - content.code.annotate
     - content.code.copy
     - content.code.wrap
