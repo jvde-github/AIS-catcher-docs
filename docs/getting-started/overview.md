@@ -16,6 +16,7 @@ hide:
       <li><a href="#see-your-ships"><b>4</b>See your ships</a></li>
     </ol>
   </div>
+  <img class="ais-qs-hero__art" src="../../assets/ais-qs-harbour.webp" alt="" width="1600" height="697">
 </header>
 
 <section class="ais-qs ais-qs-kit" id="before-you-start" aria-label="What you need">
