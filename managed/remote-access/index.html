@@ -4055,10 +4055,13 @@
 
 
 <h1 id="remote-access-and-security">Remote Access and Security<a class="headerlink" href="#remote-access-and-security" title="Permanent link">&para;</a></h1>
-<p>By default the dashboard is only reachable from the machine AIS-catcher runs on (<code>127.0.0.1</code>). To administer it from another machine on your network, bind to all interfaces:</p>
+<p>Started with <code>127.0.0.1</code>, as on Windows, on macOS and in Docker in the <a href="../../getting-started/overview/">Quick Start</a>, the dashboard is only reachable from the machine AIS-catcher runs on. The Raspberry Pi and Linux install binds to all interfaces, so there it is open to your network from the start. To do the same by hand:</p>
 <div class="language-console highlight"><pre><span></span><code><span class="go">AIS-catcher -E /etc/AIS-catcher/config.json 0.0.0.0:8118</span>
 </code></pre></div>
-<p>When bound to anything other than <code>127.0.0.1</code>/<code>localhost</code>, a <strong>password is required</strong>: on first access the dashboard asks you to set one, and every subsequent session requires logging in.</p>
+<p>When bound to anything other than <code>127.0.0.1</code>/<code>localhost</code>, a <strong>password is required</strong>. There is no default password: on the first visit the dashboard asks you to choose one, together with a <strong>setup code</strong>, and every later session requires logging in. The setup code is eight letters and digits that AIS-catcher writes to its log when it starts:</p>
+<div class="language-console highlight"><pre><span></span><code><span class="go">Control: to set the password, use setup code XXXXXXXX</span>
+</code></pre></div>
+<p>The Raspberry Pi and Linux installer shows it when it finishes. For the service, <code>journalctl -u ais-catcher | grep 'setup code'</code> finds it later. Only someone who can read the machine's log has the code, so a stranger on the network cannot set the password first.</p>
 <!-- TODO screenshot: install-password.webp — the set-a-password screen on first access -->
 
 <div class="admonition warning">

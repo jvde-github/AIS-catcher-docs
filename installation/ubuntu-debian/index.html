@@ -4147,7 +4147,7 @@
 <h2 id="managed-mode">Managed mode<a class="headerlink" href="#managed-mode" title="Permanent link">&para;</a></h2>
 <div class="language-console highlight"><pre><span></span><code><span class="go">sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/jvde-github/AIS-catcher/main/scripts/aiscatcher-install) -p -M"</span>
 </code></pre></div>
-<p>Then open the dashboard in your browser, as in the <a href="../../getting-started/overview/#open-the-dashboard">Quick Start</a>.</p>
+<p>Then open the dashboard in your browser, as in the <a href="../../getting-started/overview/#open-the-dashboard">Quick Start</a>. The first visit asks you to choose an admin password, with the setup code the installer prints when it finishes; <code>journalctl -u ais-catcher | grep 'setup code'</code> finds it later. There is no default password.</p>
 <div class="admonition warning">
 <p class="admonition-title">Coming from manual mode?</p>
 <p>Managed mode starts with fresh settings: your <code>/etc/AIS-catcher/config.json</code> and <code>config.cmd</code> are not carried over. The files stay where they are, so you can look at them while you set up the station in the dashboard. Running the installer again on a managed station is an update, and keeps your settings.</p>
