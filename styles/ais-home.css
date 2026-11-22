@@ -74,13 +74,7 @@
 /* Rail: sticks below the header, so the sections stay in reach on a long page */
 .ais-landing__rail { background: linear-gradient(172deg, #0b345f 0%, #062449 94%); color: #fff; }
 .ais-rail__inner { position: sticky; top: 2.4rem; min-height: calc(100vh - 2.4rem); display: flex; flex-direction: column; padding: var(--s5) var(--s4); }
-.md-typeset .ais-rail__brand { display: flex; align-items: center; gap: var(--s3); padding: 0 var(--s2) var(--s5); color: #fff; }
-.md-typeset a.ais-rail__brand:hover { color: #fff; }
-.ais-rail__brand img { filter: brightness(0) invert(1); flex: 0 0 33px; }
 .md-typeset .ais-rail__swirl { display: block; width: calc(100% + 2 * var(--s4)); max-width: none; height: 34px; margin: calc(-1 * var(--s3)) calc(-1 * var(--s4)) var(--s4); }
-.ais-rail__brand strong { display: block; font-size: 21px; letter-spacing: -.03em; line-height: 1.15; }
-.ais-rail__brand em { color: var(--ais-cyan); font-style: normal; }
-.md-typeset .ais-rail__brand small { display: block; margin-top: 2px; font-size: 13px; color: #9ec7e5; }
 .ais-rail__nav { display: grid; gap: 4px; }
 .md-typeset .ais-rail__nav a { display: flex; align-items: center; gap: var(--s3); padding: 11px var(--s3); border-radius: 10px; color: #e4f1fa; font-size: 15px; font-weight: 600; transition: background-color .15s, color .15s; }
 .ais-rail__nav svg { width: 18px; height: 18px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
@@ -210,11 +204,8 @@
 }
 @media (max-width: 1030px) {
   .ais-landing { display: block; }
-  .ais-rail__inner { position: static; min-height: 0; flex-direction: row; align-items: center; justify-content: space-between; gap: var(--s5); padding: var(--s3) var(--gutter); }
-  .md-typeset .ais-rail__brand, .md-typeset .ais-rail__swirl, .md-typeset .ais-landing .ais-rail__bottom { display: none; }
-  .ais-rail__nav { display: flex; gap: 4px; min-width: 0; overflow-x: auto; white-space: nowrap; scrollbar-width: thin; }
-  .md-typeset .ais-rail__nav a { padding: 9px 10px; font-size: 14px; }
-  .ais-rail__nav svg { width: 16px; height: 16px; }
+  /* the hamburger holds the menu here, as on every other page */
+  .ais-landing__rail { display: none; }
   .ais-home-hero__copy { grid-template-columns: 1fr; }
   .md-typeset .ais-home-hero h1 { grid-row: auto; }
   .md-typeset .ais-home-hero__intro { margin-top: var(--s5); }
@@ -226,9 +217,6 @@
 }
 @media (max-width: 760px) {
   .ais-landing { --section: 48px; }
-  .ais-rail__inner { display: block; padding: var(--s3) var(--gutter) var(--s2); }
-  .ais-rail__nav { margin: 0 -8px; }
-  .md-typeset .ais-rail__nav a { gap: 6px; padding: var(--s2); }
   .ais-home-hero { --tail: 56px; padding-top: var(--section); }
   .md-typeset .ais-home-hero h1 { font-size: clamp(36px, 9vw, 52px); }
   .md-typeset .ais-landing figure.ais-daynight { margin-top: 40px; }
