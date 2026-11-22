@@ -1,5 +1,51 @@
 # Troubleshooting
 
+## No ships yet?
+
+Find where the signal stops: at the receiver, at the radio, or on the map. Start with the first check.
+
+### The receiver is not found
+
+=== "Managed mode"
+
+    Open **Settings → Inputs** and press **Find devices**. A mark next to an input in the list means it needs attention: hover over it to see why, for example a device that is unplugged or used by another program.
+
+=== "Config file"
+
+    `AIS-catcher -l` lists the receivers it finds on this computer, and stops.
+
+=== "Command line"
+
+    `AIS-catcher -l` lists the receivers it finds on this computer, and stops.
+
+- Plug the receiver in again.
+- Close any other program that uses it, such as another AIS or SDR program. A receiver serves one program at a time.
+- On Windows, an RTL-SDR needs the WinUSB driver, set once per dongle with Zadig: see [Windows](../installation/windows.md).
+
+### The receiver runs, but no messages arrive
+
+=== "Managed mode"
+
+    The lights **A B C D** in the control bar flash as messages arrive. Dark for several minutes means nothing comes in.
+
+=== "Config file"
+
+    Add `-v 10` after the file: `AIS-catcher -C config.json -v 10`. Every ten seconds AIS-catcher then prints how many messages came in.
+
+=== "Command line"
+
+    AIS-catcher prints each message it receives as a line of NMEA, unless `-q` is given. Add `-v 10` to see, every ten seconds, how many messages came in.
+
+- The antenna: connected, outside and as high as you can, with a view of water that has traffic. Indoors or behind a hill, little comes in. See [What You Need](../what-you-need.md).
+- Another program may have the receiver: close it.
+- An RTL-SDR can be off frequency: see [Frequency Correction](#frequency-correction).
+
+### Messages arrive, but no ships on the map
+
+- A ship appears once it has sent its position. Its name comes later: ships send it less often than their position.
+- Open the ship list from the map's menu. A ship without a position yet has its **Lat** and **Lon** empty. Click a ship with a position to find it on the map: it may lie outside the part you see.
+- Without the dashboard, the map is the [web viewer](../configuration/output/web-viewer.md), which `-N 8100` starts.
+
 ## Frequency Correction
 AIS-catcher tunes in on a frequency of 162 MHz. However, due to deviations in the internal oscillator of RTL-SDR devices, the actual frequency can be slightly off which will result in no or poor reception of AIS signals. It is therefore important to provide the program with the necessary correction in parts-per-million (ppm) to offset this deviation where needed. For most of our testing, we have used the RTL-SDR v3 dongle where in principle no frequency correction is needed as deviations are guaranteed to be small. For optimal reception though ensure you determine the necessary correction, e.g. [see](https://github.com/steve-m/kalibrate-rtl) and provide this as input via the ```-p``` switch on the command line.
 

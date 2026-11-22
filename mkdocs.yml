@@ -65,97 +65,97 @@ nav:
       - What is AIS?: ais-basics.md
       - What You Need: what-you-need.md
       - Quick Start: getting-started/overview.md
-  - Install:
+  - Use Your Station:
+      - Getting Around: managed/dashboard.md
+      - Inputs: managed/input.md
+      - Outputs: managed/output.md
+      - Remote Access and Security: managed/remote-access.md
+      - Manual Mode: usage/overview.md
+  - Guides:
+      - Set Up Your Station:
+          - Name and Place Your Station: managed/station.md
+          - Connect Your Receivers: managed/receivers.md
+          - Location from GPS: advanced/GPS.md
+          - Small Computers: advanced/Low-spec-devices.md
+      - Send Your Ships On:
+          - Send Ships to Your Chart Plotter: managed/chart-plotter.md
+          - Share with the Community Map: managed/community-map.md
+          - Vessels in Home Assistant: managed/home-assistant.md
+          - Grafana: advanced/grafana.md
+      - Build on Your Station:
+          - Ask Your Station, the API: managed/api.md
+          - Let an AI Assistant Read Your Station: managed/assistant.md
+      - More:
+          - Offline Web Viewer: advanced/offline.md
+          - Aircraft (ADS-B): advanced/ADSB.md
+          - GNU Radio: advanced/GNUradio.md
+      - Tutorials:
+          - Overview: tutorials/index.md
+          - 1. Multiple Receivers and Stations: tutorials/stations.md
+          - 2. Geofencing with Places: tutorials/places.md
+          - 3. The API and MCP: tutorials/api-and-mcp.md
+          - 4. Home Automation and Webhooks: tutorials/home-automation.md
+  - Install & Maintain:
       - Choose Your System: installation/overview.md
       - Raspberry Pi and Linux: installation/ubuntu-debian.md
       - Windows: installation/windows.md
       - macOS: installation/macos.md
       - Docker: installation/docker.md
       - Build from Source: installation/build-source.md
+      - Running as a Service: usage/service.md
       - AIS-catcher-control: usage/gui.md
-  - Managed Mode:
-      - Getting Around: managed/dashboard.md
-      - Receiver: managed/input.md
-      - Outputs: managed/output.md
-      - Remote Access and Security: managed/remote-access.md
-      - Guides:
-          - Name and Place Your Station: managed/station.md
-          - Connect Your Receivers: managed/receivers.md
-          - Send Ships to Your Chart Plotter: managed/chart-plotter.md
-          - Share with the Community Map: managed/community-map.md
-          - Ask Your Station, the API: managed/api.md
-          - Let an AI Assistant Read Your Station: managed/assistant.md
-          - Vessels in Home Assistant: managed/home-assistant.md
-  - Manual Mode:
-      - How Manual Mode Works: usage/overview.md
+  - Reference:
+      - Overview: configuration/overview.md
       - Command Line: usage/cli.md
       - Configuration File: usage/json-configuration.md
-      - Running as a Service: usage/service.md
-      - Guides:
-          - Send Ships to Your Chart Plotter: usage/chart-plotter.md
-          - Location from GPS: advanced/GPS.md
-          - Offline Web Viewer: advanced/offline.md
-          - Aircraft (ADS-B): advanced/ADSB.md
-          - GNU Radio: advanced/GNUradio.md
-          - Grafana: advanced/grafana.md
-          - Small Computers: advanced/Low-spec-devices.md
-      - Reference:
-          - Overview: configuration/overview.md
-          - Inputs:
-                - Overview: configuration/input/overview.md
-                - SDR Devices:
-                  - RTL-SDR: configuration/input/rtlsdr.md
-                  - AirSpy: configuration/input/airspy.md
-                  - AirSpy HF+: configuration/input/airspyhf.md
-                  - HackRF: configuration/input/hackrf.md
-                  - HydraSDR: configuration/input/hydrasdr.md
-                  - SDRPlay: configuration/input/sdrplay.md
-                  - SoapySDR: configuration/input/soapysdr.md
-                - Network Input:
-                  - TCP Client: configuration/input/tcp.md
-                  - UDP: configuration/input/udp.md
-                  - SpyServer: configuration/input/spyserver.md
-                - File Input:
-                  - Raw Files: configuration/input/file.md
-                  - WAV Files: configuration/input/wav.md
-                  - FM Discriminator Audio: advanced/FM-decoding.md
-                - Other Input:
-                  - Serial Port: configuration/input/serial.md
-                  - dAISy Catcher: configuration/input/daisy-catcher.md
-                  - NMEA2000: configuration/input/NMEA2000.md
-          - Decoding:
-              - Model: configuration/model.md
-              - Sample Rate: advanced/samplerate.md
-          - Outputs:
-            - Overview: configuration/output/overview.md
-            - Message Filtering: configuration/output/message-filtering.md
-            - Community Feed: configuration/output/community-feed.md
-            - Console Output: configuration/output/console.md
-            - Network Output:
+      - Configuration Keys: references/config-keys.md
+      - Inputs:
+          - Overview: configuration/input/overview.md
+          - SDR Devices:
+              - RTL-SDR: configuration/input/rtlsdr.md
+              - AirSpy: configuration/input/airspy.md
+              - AirSpy HF+: configuration/input/airspyhf.md
+              - HackRF: configuration/input/hackrf.md
+              - HydraSDR: configuration/input/hydrasdr.md
+              - SDRPlay: configuration/input/sdrplay.md
+              - SoapySDR: configuration/input/soapysdr.md
+          - Network Input:
+              - TCP Client: configuration/input/tcp.md
+              - UDP: configuration/input/udp.md
+              - SpyServer: configuration/input/spyserver.md
+          - File Input:
+              - Raw Files: configuration/input/file.md
+              - WAV Files: configuration/input/wav.md
+              - FM Discriminator Audio: advanced/FM-decoding.md
+          - Other Input:
+              - Serial Port: configuration/input/serial.md
+              - dAISy Catcher: configuration/input/daisy-catcher.md
+              - NMEA2000: configuration/input/NMEA2000.md
+      - Decoding:
+          - Model: configuration/model.md
+          - Sample Rate: advanced/samplerate.md
+      - Outputs:
+          - Overview: configuration/output/overview.md
+          - Message Filtering: configuration/output/message-filtering.md
+          - Community Feed: configuration/output/community-feed.md
+          - Console Output: configuration/output/console.md
+          - Network Output:
               - TCP Server: configuration/output/TCP-server.md
               - TCP Client: configuration/output/TCP-client.md
               - UDP: configuration/output/UDP.md
               - HTTP: configuration/output/HTTP.md
               - MQTT: configuration/output/MQTT.md
-            - Web Viewer: configuration/output/web-viewer.md
-            - Places: configuration/output/places.md
-            - NMEA2000: configuration/output/NMEA2000.md
-            - Database (PostgreSQL / SQLite): configuration/output/PSQL.md
-          - Configuration Keys: references/config-keys.md
-  - Tutorials:
-      - Overview: tutorials/index.md
-      - Connecting Your Station to Other Tools:
-          - 1. Multiple Receivers and Stations: tutorials/stations.md
-          - 2. Geofencing with Places: tutorials/places.md
-          - 3. The API and MCP: tutorials/api-and-mcp.md
-          - 4. Home Automation and Webhooks: tutorials/home-automation.md
-  - API:
-      - Overview: api/overview.md
-      - Reference: api/reference.md
-      - Webhooks: api/webhooks.md
-      - Home Assistant: api/home-assistant.md
-      - Python (aiscat): tools/python.md
-      - JSON AIS Format: references/JSON-decoding.md
+          - Web Viewer: configuration/output/web-viewer.md
+          - Places: configuration/output/places.md
+          - NMEA2000: configuration/output/NMEA2000.md
+          - Database (PostgreSQL / SQLite): configuration/output/PSQL.md
+      - API:
+          - Overview: api/overview.md
+          - Reference: api/reference.md
+          - Webhooks: api/webhooks.md
+          - Home Assistant and MQTT: api/home-assistant.md
+          - Python (aiscat): tools/python.md
+          - JSON AIS Format: references/JSON-decoding.md
   - Help:
       - Troubleshooting: advanced/troubleshooting.md
       - Community: community.md
@@ -164,7 +164,6 @@ nav:
       - Validation: advanced/validation.md
       - License: references/license.md
   - What's New: what-is-new.md
-
 
 # Notes for contributors: versioned here, deliberately not on the site.
 not_in_nav: |
@@ -203,6 +202,7 @@ plugins:
         installation/android.md: https://github.com/jvde-github/AIS-catcher-for-Android
         managed/setup-wizard.md: getting-started/overview.md
         usage/online-configuration.md: managed/dashboard.md
-        faq.md: usage/chart-plotter.md
+        faq.md: managed/chart-plotter.md
+        usage/chart-plotter.md: managed/chart-plotter.md
         community/overview.md: community.md
         references/overview.md: index.md

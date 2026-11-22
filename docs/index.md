@@ -15,6 +15,42 @@
 !!! warning "Disclaimer"
     **AIS-Catcher is intended for hobbyist and research projects only. It is NOT approved for use in navigation or safety-of-life applications.** [Read the full disclaimer](disclaimer.md).
 
+## What do you want to do?
+
+<div class="install-grid">
+
+<a class="install-card" href="getting-started/overview/">
+<span class="install-title">See ships on a map</span>
+<span class="install-desc">Install AIS-catcher, connect a receiver and watch the first ships come in.</span>
+</a>
+
+<a class="install-card" href="managed/chart-plotter/">
+<span class="install-title">Send ships to a chart plotter</span>
+<span class="install-desc">OpenCPN, a plotter or a navigation app on your network.</span>
+</a>
+
+<a class="install-card" href="managed/community-map/">
+<span class="install-title">Share with the community map</span>
+<span class="install-desc">Add what you hear to the live map at aiscatcher.org.</span>
+</a>
+
+<a class="install-card" href="managed/receivers/">
+<span class="install-title">Connect more receivers</span>
+<span class="install-desc">A second radio, a dAISy, or ships arriving over the network.</span>
+</a>
+
+<a class="install-card" href="managed/api/">
+<span class="install-title">Build on your station</span>
+<span class="install-desc">The API, an AI assistant and Home Assistant.</span>
+</a>
+
+<a class="install-card" href="advanced/troubleshooting/">
+<span class="install-title">No ships yet?</span>
+<span class="install-desc">Find out where the signal stops: the receiver, the radio or the map.</span>
+</a>
+
+</div>
+
 ## Two ways to run it
 
 <div class="install-grid mode-grid">
@@ -31,4 +67,6 @@
 
 </div>
 
-Each mode has its own tab, with its own guides. The [API](api/overview.md) works the same in both.
+The guides show every step for both, in tabs: **Managed mode**, **Config file** and **Command line**. The [API](api/overview.md) works the same in both.
+
+[AIS-catcher-control](usage/gui.md) is a separate, optional tool for Raspberry Pi and Debian. It starts and stops the AIS-catcher service and looks after the computer it runs on; the receiver itself is set up in AIS-catcher.

@@ -12,33 +12,57 @@ AIS-catcher can pass every message it receives on to OpenCPN, a chart plotter or
 !!! tip "On the same computer?"
     If the chart plotter runs on the same computer as AIS-catcher, use the address `127.0.0.1`.
 
-<div class="stepper" data-eyebrow="Managed mode · Guide" markdown>
+<div class="stepper" data-eyebrow="Guide" markdown>
 
 <div class="stepper-step" markdown>
 
 ## Add a UDP output
 
-In the dashboard, open **Settings**, choose **Outputs** and press **+ Add output**. Pick **UDP**.
+=== "Managed mode"
 
-![The Add an output page, with UDP first](../assets/guides/udp-1-add.webp)
+    1. In the dashboard, open **Settings**, choose **Outputs** and press **+ Add output**. Pick **UDP**.
+    2. Give the output a **Name**, such as *Chart plotter*. Enter the **Address** and **Port** of the program that receives it.
+    3. Press **Save changes**. The output starts sending at once.
 
-</div>
+    ![A UDP output named Chart plotter, sending to 192.168.1.20 port 10110](../assets/guides/udp-2-form.webp)
 
-<div class="stepper-step" markdown>
+=== "Config file"
 
-## Enter the address
+    Add a `udp` entry:
 
-Give the output a **Name**, such as *Chart plotter*. Enter the **Address** and **Port** of the program that receives it.
+    ```json
+    {
+      "config": "aiscatcher",
+      "version": 1,
+      "udp": [
+        { "host": "192.168.1.20", "port": 10110, "description": "Chart plotter" }
+      ]
+    }
+    ```
 
-![A UDP output named Chart plotter, sending to 192.168.1.20 port 10110](../assets/guides/udp-2-form.webp)
+    | Key | What it does |
+    |-----|--------------|
+    | `host`, `port` | Where the receiving program listens. |
+    | `description` | The output's name in the statistics. |
 
-</div>
+    Then restart AIS-catcher with the file:
 
-<div class="stepper-step" markdown>
+    ```bash
+    AIS-catcher -C config.json
+    ```
 
-## Save
+=== "Command line"
 
-Press **Save changes**. The output starts sending at once.
+    Add `-u` with the address and the port to the command you already use:
+
+    ```bash
+    AIS-catcher -u 192.168.1.20 10110
+    ```
+
+    To give the output a name in the statistics, add `description "Chart plotter"` after the port.
+
+    !!! tip "From the command line to a configuration file"
+        Add `-J` to print your command line as a configuration file instead of running it: `AIS-catcher -u 192.168.1.20 10110 -J`.
 
 </div>
 
@@ -54,10 +78,21 @@ Tell the receiving program to listen for NMEA over UDP on the same port. In Open
 
 ## Check it works
 
-- The ships appear on the plotter's chart within a minute. Names can take a few minutes longer: ships send them less often than their position.
-- In the dashboard, open **Statistics**. Under **Data Throughput**, the output's **Bytes out** keeps growing.
+The ships appear on the plotter's chart within a minute. Names can take a few minutes longer: ships send them less often than their position.
 
-    ![Data Throughput: the Chart plotter output with its bytes out](../assets/guides/udp-4-stats.webp){ width="480" }
+=== "Managed mode"
+
+    In the dashboard, open **Statistics**. Under **Data Throughput**, the output's **Bytes out** keeps growing.
+
+=== "Config file"
+
+    With the [web viewer](../configuration/output/web-viewer.md) on, open **Statistics**. Under **Data Throughput**, the output's **Bytes out** keeps growing.
+
+=== "Command line"
+
+    With the [web viewer](../configuration/output/web-viewer.md) on, open **Statistics**. Under **Data Throughput**, the output's **Bytes out** keeps growing.
+
+![Data Throughput: the Chart plotter output with its bytes out](../assets/guides/udp-4-stats.webp){ width="480" }
 
 !!! question "No ships on the plotter?"
     - **Bytes out grows:** AIS-catcher is sending. Check the port in the plotter and the firewall on that computer. UDP gets no reply, so AIS-catcher cannot tell whether anything is listening.
@@ -69,6 +104,22 @@ Tell the receiving program to listen for NMEA over UDP on the same port. In Open
 
 ## More
 
-- **Several programs:** add an output for each one.
-- **Every device on the network:** enter the network's broadcast address, for example `192.168.1.255`, and switch on **Broadcast** under **Options**.
-- **Programs that connect in:** some programs want to connect to AIS-catcher themselves. Add a **TCP Server** output for those instead.
+=== "Managed mode"
+
+    - **Several programs:** add an output for each one.
+    - **Every device on the network:** enter the network's broadcast address, for example `192.168.1.255`, and switch on **Broadcast** under **Options**.
+    - **Programs that connect in:** some programs want to connect to AIS-catcher themselves. Add a **TCP Server** output for those instead.
+
+=== "Config file"
+
+    - **Several programs:** add an entry to the `udp` list for each one.
+    - **Every device on the network:** use the network's broadcast address and add `"broadcast": true` to the `udp` entry.
+    - **Programs that connect in:** some programs want to connect to AIS-catcher themselves. Use a [TCP server](../configuration/output/TCP-server.md) output for those.
+
+=== "Command line"
+
+    - **Several programs:** add a `-u` for each one.
+    - **Every device on the network:** use the network's broadcast address and switch broadcast on: `-u 192.168.1.255 10110 broadcast on`.
+    - **Programs that connect in:** some programs want to connect to AIS-catcher themselves. Use a [TCP server](../configuration/output/TCP-server.md) output for those.
+
+Every UDP setting is in the [UDP reference](../configuration/output/UDP.md).

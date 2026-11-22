@@ -28,7 +28,7 @@ The bar at the bottom runs the station:
 | Item | What it holds |
 |------|---------------|
 | **Stations** | Your station's name and position. |
-| **Inputs** | Your receivers. See [Receiver](input.md). |
+| **Inputs** | Your receivers. See [Inputs](input.md). |
 | **Outputs** | The community map and the programs that get your data. See [Outputs](output.md). |
 | **Flow** | Which input reaches which output. |
 | **Services** | The map servers, Home Assistant and webhooks. |

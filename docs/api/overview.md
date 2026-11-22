@@ -1,7 +1,7 @@
 # API
 
 !!! tip "Step-by-step guides"
-    **[Ask Your Station, the API](../managed/api.md)** and **[Let an AI Assistant Read Your Station](../managed/assistant.md)** walk through this in the dashboard, with screenshots.
+    **[Ask Your Station, the API](../managed/api.md)** and **[Let an AI Assistant Read Your Station](../managed/assistant.md)** walk through this step by step: in the dashboard, in a configuration file and on the command line.
 
 AIS-catcher answers questions about what it hears over HTTP: which vessels are around, where a vessel went, who called at a port, what happened lately, and how the receivers are doing. Programs use the **read API** under `/api/v1`; assistants such as Claude use the same data through **MCP**; monitoring tools use **health** and the **system** service.
 
@@ -184,7 +184,7 @@ Names, call signs, destinations and message texts are what vessels broadcast. Tr
 
 ### From a web page
 
-The API sends no CORS headers, so a script on a page from another site cannot read it in a browser. Call it from a program, from a page the same server serves, or through a proxy of your own that adds the headers.
+A server open to the network sends CORS headers (`Access-Control-Allow-Origin: *`) and answers a browser's preflight request, so a script on a page from another site can read it, with a key where the server asks for one. A server that listens on this computer alone sends none: call it from a program, or from a page the same server serves.
 
 ### Versions
 

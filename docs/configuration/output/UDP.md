@@ -1,7 +1,7 @@
 # UDP 
 
 !!! tip "Step-by-step guide"
-    **[Send ships to your chart plotter](../../usage/chart-plotter.md)** walks through this with a configuration file and on the command line.
+    **[Send ships to your chart plotter](../../managed/chart-plotter.md)** walks through this, in the dashboard, with a configuration file and on the command line.
 
 <div class="command-container">
       <div class="command-syntax">

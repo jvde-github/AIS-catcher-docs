@@ -135,7 +135,7 @@ The first time, a short wizard sets up the station. Every step can be skipped, a
 
 <div class="walk-step" markdown>
 
-**AIS-catcher Community** To put your station on the community map, press **Create station on aiscatcher.org**, register it and paste the station key you get. Or press **Skip**.
+**AIS-catcher Community** A new station shares the ships it hears with the community map, anonymously. To give it a name and a page of its own, press **Create station on aiscatcher.org**, register it and paste the station key you get. Or press **Skip**: the station then keeps sharing anonymously. The summary says so, and **Outputs → Community map** switches sharing off.
 
 ![The setup wizard's community step](../assets/qs-w3-community.webp){ .shot loading=lazy }
 
@@ -164,7 +164,7 @@ In an area with traffic, the first ships appear on the dashboard map within a fe
 !!! question "No ships after a few minutes?"
     - Check that the antenna is connected, and that the station can see water with traffic.
     - Check that no other program uses the receiver.
-    - See [Troubleshooting](../advanced/troubleshooting.md).
+    - [No ships yet?](../advanced/troubleshooting.md#no-ships-yet) finds where the signal stops: the receiver, the radio or the map.
 
 Where to go next:
 

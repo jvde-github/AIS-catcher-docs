@@ -1,4 +1,4 @@
-# Receiver
+# Inputs
 
 **Settings → Inputs** lists your receivers. Each one has its own page. The setup wizard adds the first one; **+ Add input** adds another.
 
