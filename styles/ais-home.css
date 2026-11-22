@@ -72,14 +72,14 @@
 .md-typeset .ais-landing .ais-intro { margin-top: var(--s3); color: var(--ais-muted); font-size: 16px; line-height: 1.55; max-width: 60ch; }
 
 /* Rail: sticks below the header, so the sections stay in reach on a long page */
-.ais-landing__rail { background: linear-gradient(172deg, #0b345f 0%, #062449 94%); color: #fff; }
+.ais-landing__rail { background: linear-gradient(#08345e, #082f59); color: #fff; }
 .ais-rail__inner { position: sticky; top: 2.4rem; min-height: calc(100vh - 2.4rem); display: flex; flex-direction: column; padding: var(--s5) var(--s4); }
 .md-typeset .ais-rail__swirl { display: block; width: calc(100% + 2 * var(--s4)); max-width: none; height: 34px; margin: calc(-1 * var(--s3)) calc(-1 * var(--s4)) var(--s4); }
 .ais-rail__nav { display: grid; gap: 4px; }
-.md-typeset .ais-rail__nav a { display: flex; align-items: center; gap: var(--s3); padding: 11px var(--s3); border-radius: 10px; color: #e4f1fa; font-size: 15px; font-weight: 600; transition: background-color .15s, color .15s; }
+.md-typeset .ais-rail__nav a { display: flex; align-items: center; gap: var(--s3); padding: 11px var(--s3); border-radius: 10px; color: #d5eaff; font-size: 15px; font-weight: 650; transition: background-color .15s, color .15s; }
 .ais-rail__nav svg { width: 18px; height: 18px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
 .md-typeset .ais-rail__nav a:hover { background: rgba(106, 198, 239, .17); color: #fff; }
-.md-typeset .ais-rail__nav a.is-current { background: #145686; color: #fff; box-shadow: inset 3px 0 0 var(--ais-cyan); }
+.md-typeset .ais-rail__nav a.is-current { background: #c6f1ff; color: #07365c; }
 .md-typeset .ais-landing .ais-rail__bottom { margin-top: auto; padding: var(--s5) var(--s3) 0; font-size: 14px; line-height: 1.6; color: #cfe3f3; }
 .md-typeset .ais-rail__bottom a { color: #6bdef2; font-weight: 700; }
 .md-typeset .ais-rail__bottom a:hover { color: #fff; }
@@ -131,11 +131,11 @@
 .ais-home-section { padding: var(--section) var(--gutter) 0; }
 
 .ais-path-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s4); margin-top: var(--s5); }
-.md-typeset a.ais-path-card { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s2); padding: var(--s5); border: 1px solid var(--ais-line); border-radius: 14px; background: #fff; color: var(--ais-ink); transition: border-color .15s, background-color .15s; }
+.md-typeset .ais-path-card { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s2); padding: var(--s5); border: 1px solid var(--ais-line); border-radius: 14px; background: #fff; color: var(--ais-ink); transition: border-color .15s, background-color .15s; }
 .md-typeset a.ais-path-card:hover { color: var(--ais-ink); border-color: #83caed; background: #fbfdff; }
 .ais-icon-tile { width: 42px; height: 42px; display: grid; place-items: center; margin-bottom: var(--s2); border-radius: 10px; background: var(--ais-tile); color: #0b88ce; }
 .ais-icon-tile svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.85; stroke-linecap: round; stroke-linejoin: round; }
-.md-typeset .ais-path-card strong { font-size: 17px; font-weight: 700; }
+.md-typeset .ais-path-card > strong { font-size: 17px; font-weight: 700; }
 .md-typeset .ais-path-card__desc { font-size: 14px; line-height: 1.5; color: var(--ais-muted); }
 
 /* Panels sit on the same gutter as the sections, so their edges line up with the cards */

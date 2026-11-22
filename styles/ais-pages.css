@@ -132,9 +132,9 @@
 [dir] .md-typeset .ais-steps li { position: relative; margin: 0; padding-left: 38px; }
 .md-typeset .ais-steps a { display: block; color: var(--ais-ink); }
 .md-typeset .ais-steps a:hover strong { color: var(--ais-blue); }
-.ais-steps b { position: absolute; top: 0; left: 0; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: #0a9cda; color: #fff; font-size: 14px; }
-.ais-steps strong { display: block; padding-top: 3px; font-size: 16px; line-height: 1.3; }
-.ais-steps li span { display: block; margin-top: 4px; font-size: 14px; line-height: 1.45; color: var(--ais-muted); }
+.ais-steps :is(li, a) > b { position: absolute; top: 0; left: 0; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: #0a9cda; color: #fff; font-size: 14px; }
+.ais-steps :is(li, a) > strong { display: block; padding-top: 3px; font-size: 16px; line-height: 1.3; }
+.ais-steps :is(li, a) > span { display: block; margin-top: 4px; font-size: 14px; line-height: 1.45; color: var(--ais-muted); }
 
 .ais-two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s5); }
 [dir] .md-typeset .ais-rows { list-style: none; margin: 0; padding: 0; }
@@ -179,6 +179,25 @@
 .ais-cta__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s4); }
 .md-typeset .ais-cta__actions > a:not(.ais-action) { color: #9fe3f5; font-weight: 600; }
 .md-typeset .ais-cta__actions > a:not(.ais-action):hover { color: #fff; }
+
+/* Getting Around: a dark hero, eyebrows over section heads, three steps in a row, the screenshot with numbered pins */
+.ais-hero--night { border-color: #0d3a68; background: repeating-radial-gradient(circle at 86% 50%, transparent 0 58px, rgba(87, 222, 242, .13) 59px 60px), linear-gradient(110deg, #0b315b, #0e4c86); }
+.md-typeset .ais-hero--night h1 { color: #fff; }
+.md-typeset .ais-hero--night h1 span { color: var(--ais-cyan); }
+.md-typeset .ais-hero--night .ais-hero__copy > p { color: #cfe6f7; }
+.md-typeset .ais-eyebrow { display: block; margin-bottom: var(--s2); font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #0a8ac4; }
+.md-typeset :is(.ais-hero--night, .ais-cta) .ais-eyebrow { color: var(--ais-cyan); }
+.md-typeset .ais-hero__copy > p.ais-chips { display: flex; flex-wrap: wrap; gap: var(--s2); margin-top: var(--s5); }
+.ais-chips > span { padding: 6px 12px; border: 1px solid rgba(156, 204, 223, .45); border-radius: 99px; font-size: 13px; color: #e4f1fa; }
+.md-typeset .ais-chips code { padding: 0; background: none; color: #9fe3f5; }
+.ais-chips__live:before { content: ''; display: inline-block; width: 8px; height: 8px; margin-right: 6px; border-radius: 50%; background: #2fd08a; }
+[dir] .md-typeset .ais-steps--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.md-typeset figure.ais-shot { display: block; margin: 0; padding: var(--s3); border-radius: 16px; background: linear-gradient(#0b315b, #082a4f); }
+.ais-shot__frame { position: relative; }
+.md-typeset .ais-shot img, .md-typeset .ais-bar-shot { display: block; width: 100%; max-width: none; height: auto; border-radius: 8px; }
+.ais-shot__pin { position: absolute; width: 28px; height: 28px; margin: -14px 0 0 -14px; display: grid; place-items: center; border-radius: 50%; background: var(--ais-cyan); color: #06325a; font-size: 14px; font-weight: 800; box-shadow: 0 0 0 5px rgba(87, 222, 242, .35); }
+/* one gap between the parts of a section; the grid sections space their own */
+.md-typeset .ais-learn > section:not(.ais-two, .ais-cta) > * + * { margin-top: var(--s4); }
 
 /* What You Need */
 .ais-kit-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s4); }
@@ -233,6 +252,7 @@
   .ais-two, .ais-choice-grid, .ais-guide-group { grid-template-columns: 1fr; }
   .ais-guide-group { gap: var(--s4); }
   [dir] .md-typeset .ais-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  [dir] .md-typeset .ais-steps--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .ais-range { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 760px) {
@@ -249,6 +269,8 @@
   .ais-hero__art { -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 30%); mask-image: linear-gradient(180deg, transparent 0%, #000 30%); }
   .ais-hero--shot .ais-hero__art { top: auto; right: auto; width: auto; height: 200px; aspect-ratio: auto; margin: 0 var(--s5); }
   .ais-minute { grid-template-columns: 1fr; gap: var(--s3); }
+  [dir] .md-typeset .ais-steps--3 { grid-template-columns: 1fr; }
+  .ais-shot__pin { width: 22px; height: 22px; margin: -11px 0 0 -11px; font-size: 12px; box-shadow: 0 0 0 3px rgba(87, 222, 242, .35); }
   .ais-panel, .md-typeset section.ais-cta { padding: var(--s5); }
   .ais-kit-grid, .ais-place, .md-typeset section.ais-cta { grid-template-columns: 1fr; }
   .ais-place { gap: var(--s5); }

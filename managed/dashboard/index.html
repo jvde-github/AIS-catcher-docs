@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Comprehensive guide to installing, configuring, and using AIS-catcher.">
+        <meta name="description" content="The dashboard of managed mode, in your browser: the map, the control bar, the settings and places.">
       
       
         <meta name="author" content="jvde.github@gmail.com">
@@ -83,65 +83,32 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#getting-around-the-dashboard" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
     </div>
     
     
-      
-
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
+      <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="AIS-catcher Docs" class="md-header__button md-logo" aria-label="AIS-catcher Docs" data-md-component="logo">
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <a href="../.." class="ais-brand" aria-label="AIS-catcher Docs">
       
   <img src="../../assets/logo.svg" alt="logo">
 
+      <span class="ais-brand__text"><span class="ais-brand__name">AIS-<b>catcher</b></span><span class="ais-brand__sub">Documentation</span></span>
     </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    <label class="md-header__button md-icon ais-search-button" for="__search">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      <span>Search the documentation…</span>
     </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            AIS-catcher Docs
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            
-              Getting Around
-            
-          </span>
-        </div>
-      </div>
-    </div>
-    
-      
-    
-    
-    
-    
-      
-      
-        <label class="md-header__button md-icon" for="__search">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
+    <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search the documentation…" placeholder="Search the documentation…" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
@@ -169,23 +136,11 @@
     </div>
   </div>
 </div>
-      
-    
-    
-      <div class="md-header__source">
-        <a href="https://github.com/jvde-github/AIS-catcher" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
-  </div>
-  <div class="md-source__repository">
-    GitHub
-  </div>
-</a>
-      </div>
-    
+    <div class="ais-header-links">
+      <a href="https://github.com/jvde-github/AIS-catcher">GitHub</a>
+      <a href="https://www.aiscatcher.org">AIS-catcher.org ↗</a>
+    </div>
   </nav>
-  
 </header>
     
     <div class="md-container" data-md-component="container">
@@ -199,6 +154,8 @@
         <div class="md-main__inner md-grid">
           
             
+              
+                
               
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
@@ -486,26 +443,6 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Getting Around
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -523,80 +460,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#the-map" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The Map
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-control-bar" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The Control Bar
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Settings
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#places" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Places
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#starting-managed-mode-yourself" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Starting Managed Mode Yourself
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -3815,7 +3678,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -3824,71 +3689,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#the-map" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The Map
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-control-bar" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The Control Bar
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Settings
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#places" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Places
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#starting-managed-mode-yourself" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Starting Managed Mode Yourself
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -3901,29 +3701,12 @@
               
                 
 
-
-
   
 
 
   <nav class="md-path" aria-label="Navigation" >
     <ol class="md-path__list">
-      
-        
-  
-  
-    <li class="md-path__item">
-      <a href="../.." class="md-path__link">
-        
-  <span class="md-ellipsis">
-    Home
-  </span>
-
-      </a>
-    </li>
-  
-
-      
+      <li class="md-path__item"><a href="../.." class="md-path__link"><span class="md-ellipsis">Docs</span></a></li>
       
         
   
@@ -3943,6 +3726,7 @@
   
 
       
+      <li class="md-path__item"><span class="md-path__link" aria-current="page"><span class="md-ellipsis">Getting Around</span></span></li>
     </ol>
   </nav>
 
@@ -3950,91 +3734,158 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+
 
 
   
   
 
 
-<h1 id="getting-around-the-dashboard">Getting Around the Dashboard<a class="headerlink" href="#getting-around-the-dashboard" title="Permanent link">&para;</a></h1>
-<p>In managed mode, AIS-catcher runs in the background and you set it up in the dashboard, in your browser. Open port 8118 of the computer that runs it, for example <code class="address">http://localhost:8118</code>. The <a href="../../getting-started/overview/">Quick Start</a> covers the first start and the setup wizard.</p>
-<p><img alt="The dashboard: the map with the control bar below it" src="../../assets/managed/dashboard.webp" /></p>
-<h2 id="the-map">The Map<a class="headerlink" href="#the-map" title="Permanent link">&para;</a></h2>
-<p>The map fills the dashboard and shows the ships your station receives, live. Its menus at the top open the ship list, statistics and the map's own settings.</p>
-<p>This map loads no plugins and no about page, and it has no log tab: the dashboard keeps the log under <strong>Settings → System → Log</strong>. For a map with plugins or an about page, add a server under <strong>Settings → Services</strong> and open that map instead.</p>
-<h2 id="the-control-bar">The Control Bar<a class="headerlink" href="#the-control-bar" title="Permanent link">&para;</a></h2>
-<p>The bar at the bottom runs the station:</p>
-<ul>
-<li><strong>A B C D</strong>: a light for each AIS channel, which flashes as messages arrive.</li>
-<li><strong>Start</strong> or <strong>Stop</strong>: starts and stops the receiver.</li>
-<li><strong>Settings</strong>: opens the settings.</li>
-<li><strong>Running</strong> or <strong>Stopped</strong>, with the time since the start. A count of warnings and errors appears next to it; press it to open the log.</li>
-<li>The community map icon, on the right: its colour shows whether the station shares with the community map. It links to aiscatcher.org.</li>
-<li>The arrow on the left hides the bar. <strong>Controls</strong> brings it back.</li>
-</ul>
-<h2 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h2>
-<p><strong>Settings</strong> opens a list on the left. Each item opens a page:</p>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>What it holds</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Stations</strong></td>
-<td>Your station's name and position.</td>
-</tr>
-<tr>
-<td><strong>Inputs</strong></td>
-<td>Your receivers. See <a href="../input/">Inputs</a>.</td>
-</tr>
-<tr>
-<td><strong>Outputs</strong></td>
-<td>The community map and the programs that get your data. See <a href="../output/">Outputs</a>.</td>
-</tr>
-<tr>
-<td><strong>Flow</strong></td>
-<td>Which input reaches which output.</td>
-</tr>
-<tr>
-<td><strong>Services</strong></td>
-<td>The map servers, Home Assistant and webhooks.</td>
-</tr>
-<tr>
-<td><strong>Places</strong></td>
-<td>Ports, berths, anchorages and zones on the map. See <a href="#places">Places</a>.</td>
-</tr>
-<tr>
-<td><strong>System</strong></td>
-<td><strong>Status</strong>, <strong>Data &amp; history</strong>, <strong>Log</strong>, <strong>Config file</strong>, <strong>Access</strong> and <strong>About</strong>.</td>
-</tr>
-</tbody>
-</table>
-<p>Each page ends with <strong>Cancel</strong> and <strong>Save changes</strong>. A saved change is used at once; the receiver restarts by itself when a change needs it.</p>
-<p>Under <strong>System</strong>:</p>
-<ul>
-<li><strong>Status</strong> shows the receiver and the computer. <strong>Copy for bug report</strong> copies both.</li>
-<li><strong>Data &amp; history</strong> sets whether ships and statistics are kept over a restart.</li>
-<li><strong>Config file</strong> shows the file the dashboard writes.</li>
-<li><strong>Access</strong> sets the password and HTTPS. See <a href="../remote-access/">Remote Access and Security</a>.</li>
-<li><strong>About</strong> has <strong>Run setup</strong>, which runs the setup wizard again.</li>
-</ul>
-<h2 id="places">Places<a class="headerlink" href="#places" title="Permanent link">&para;</a></h2>
-<p><strong>Settings → Places</strong> is an editor for the places on the map: ports, berths, anchorages, terminals, guard zones and more. The first time, it asks to enable places and shows the folder they are saved in. Press <strong>Save and continue</strong>.</p>
-<p>Pick a place from the list or on the map, or press <strong>New place</strong>. Draw or reshape its outline, set its <strong>Type</strong> and its <strong>Parent</strong>, and press <strong>Save place</strong>. A save takes effect at once, on the map and for every ship inside the changed outline.</p>
-<ul>
-<li><strong>Import…</strong>, in the place menu, takes a GeoJSON Feature from anywhere. What it recognises is carried over: the name, the type, codes, the parent, category and rank. Everything else in the file is kept, and a Feature that says nothing about itself becomes a guard zone. The result opens for review and is stored when you save.</li>
-<li><strong>Import shape</strong> and <strong>Paste shape</strong>, in the map's toolbar, replace only the outline of the place you are editing.</li>
-</ul>
-<p>To use a folder of place files instead, enter it under <strong>System → Data &amp; history → Files → Place directory</strong>.</p>
-<h2 id="starting-managed-mode-yourself">Starting Managed Mode Yourself<a class="headerlink" href="#starting-managed-mode-yourself" title="Permanent link">&para;</a></h2>
-<p>The installs start AIS-catcher in managed mode for you. Started by hand, it takes <code>-E</code> with its configuration file and the address the dashboard listens on:</p>
-<div class="language-console highlight"><pre><span></span><code><span class="go">AIS-catcher -E ~/aiscatcher.json 127.0.0.1:8118</span>
-</code></pre></div>
-<p>With <code>127.0.0.1</code>, only this computer can open the dashboard. See <a href="../remote-access/">Remote Access and Security</a> to open it to your network.</p>
-<p>Prefer a configuration file or the command line? See <a href="../../usage/overview/">Manual Mode</a>.</p>
+<div class="ais-page ais-learn">
+
+<header class="ais-hero ais-hero--night">
+  <div class="ais-hero__copy">
+    <span class="ais-eyebrow">Use your station · Managed mode</span>
+    <h1>Your station, <span>at a glance.</span></h1>
+    <p>In managed mode, AIS-catcher runs in the background and you run your station from the dashboard, in your browser: the ships it receives, the receiver, and every setting.</p>
+    <p class="ais-chips"><span class="ais-chips__live">Web dashboard</span><span>Port 8118: <code>localhost:8118</code></span></p>
+  </div>
+</header>
+
+<p class="ais-notice"><strong>Already installed?</strong> Open port 8118 of the computer that runs AIS-catcher, for example <code>http://localhost:8118</code>. First time? The <a href="../../getting-started/overview/">Quick Start</a> covers the first start and the setup wizard.</p>
+
+<ol class="ais-steps ais-steps--3" aria-label="On this page">
+  <li><a href="#the-map"><b>1</b><strong>Explore the map</strong><span>Live ships and the map's menus</span></a></li>
+  <li><a href="#the-control-bar"><b>2</b><strong>Run your station</strong><span>Start, stop and see it working</span></a></li>
+  <li><a href="#settings"><b>3</b><strong>Change settings</strong><span>Receivers, outputs and more</span></a></li>
+</ol>
+
+<section aria-labelledby="meet-your-dashboard">
+  <div class="ais-panel__head">
+    <span class="ais-eyebrow">The dashboard</span>
+    <h2 id="meet-your-dashboard">Meet your dashboard</h2>
+    <p>The map fills the screen. Its menus sit at the top; the bar that runs the station sits at the bottom.</p>
+  </div>
+  <figure class="ais-shot">
+    <div class="ais-shot__frame">
+      <img src="../../assets/managed/dashboard-overview.webp" alt="The dashboard: the approaches to Hook of Holland on the map with the ships the station receives, the menus at the top and the control bar at the bottom" width="2880" height="1800">
+      <span class="ais-shot__pin" style="left: 19%; top: 24%">1</span>
+      <span class="ais-shot__pin" style="left: 36.5%; top: 2.9%">2</span>
+      <span class="ais-shot__pin" style="left: 38%; top: 96.4%">3</span>
+    </div>
+  </figure>
+  <ol class="ais-steps ais-steps--3" aria-label="What the numbers show">
+    <li><b>1</b><strong>The map</strong><span>The ships your station receives, live</span></li>
+    <li><b>2</b><strong>The menus</strong><span>The ship list, statistics and the map's settings</span></li>
+    <li><b>3</b><strong>The control bar</strong><span>Start, stop, settings and how the station is doing</span></li>
+  </ol>
+</section>
+
+<section class="ais-panel ais-two" aria-labelledby="the-map">
+  <div>
+    <span class="ais-eyebrow">1 · The map</span>
+    <h2 id="the-map">Watch the ships around you</h2>
+    <p class="ais-fine">The map shows the ships your station receives, live. Its menus at the top open the ship list, statistics and the map's own settings.</p>
+  </div>
+  <p class="ais-endnote"><strong>The dashboard's map is a plain one.</strong> It loads no plugins and no about page, and it has no log tab: the log is under <strong>Settings → System → Log</strong>. For a map with plugins or an about page, add a server under <strong>Settings → Services</strong> and open that map instead.</p>
+</section>
+
+<section aria-labelledby="the-control-bar">
+  <div class="ais-panel__head">
+    <span class="ais-eyebrow">2 · The control bar</span>
+    <h2 id="the-control-bar">Run your station from the bar</h2>
+    <p>The bar at the bottom of the dashboard runs the station.</p>
+  </div>
+  <img class="ais-bar-shot" src="../../assets/managed/dashboard-controlbar.webp" alt="The control bar: the channel lights, Stop, Settings, Running with the time since the start, and the community map icon" width="2880" height="130">
+  <div class="ais-path-grid">
+    <div class="ais-path-card"><strong>Channel lights</strong><span class="ais-path-card__desc">A light for each AIS channel, A B C D, which flashes as messages arrive.</span></div>
+    <div class="ais-path-card"><strong>Start or Stop</strong><span class="ais-path-card__desc">Starts and stops the receiver.</span></div>
+    <div class="ais-path-card"><strong>Settings</strong><span class="ais-path-card__desc">Opens the settings.</span></div>
+    <div class="ais-path-card"><strong>Running or Stopped</strong><span class="ais-path-card__desc">With the time since the start. A count of warnings and errors appears next to it; press it to open the log.</span></div>
+    <div class="ais-path-card"><strong>The community map icon</strong><span class="ais-path-card__desc">On the right. Its colour shows whether the station shares with the community map; it links to aiscatcher.org.</span></div>
+    <div class="ais-path-card"><strong>The arrow</strong><span class="ais-path-card__desc">On the left, it hides the bar. <strong>Controls</strong> brings it back.</span></div>
+  </div>
+</section>
+
+<section aria-labelledby="settings">
+  <div class="ais-panel__head">
+    <span class="ais-eyebrow">3 · Settings</span>
+    <h2 id="settings">Everything under Settings</h2>
+    <p><strong>Settings</strong> opens a list on the left. Each item opens a page.</p>
+  </div>
+  <div class="ais-path-grid">
+    <a class="ais-path-card" href="../station/"><span class="ais-icon-tile"><svg aria-hidden="true"><use href="../../assets/ais-home-icons.svg#tower"></use></svg></span><strong>Stations</strong><span class="ais-path-card__desc">Your station's name and position.</span></a>
+    <a class="ais-path-card" href="../input/"><span class="ais-icon-tile"><svg aria-hidden="true"><use href="../../assets/ais-home-icons.svg#signal"></use></svg></span><strong>Inputs</strong><span class="ais-path-card__desc">Your receivers.</span></a>
+    <a class="ais-path-card" href="../output/"><span class="ais-icon-tile"><svg aria-hidden="true"><use href="../../assets/ais-home-icons.svg#link"></use></svg></span><strong>Outputs</strong><span class="ais-path-card__desc">The community map and the programs that get your data.</span></a>
+    <div class="ais-path-card"><span class="ais-icon-tile"><svg aria-hidden="true"><use href="../../assets/ais-home-icons.svg#layers"></use></svg></span><strong>Flow</strong><span class="ais-path-card__desc">Which input reaches which output.</span></div>
+    <div class="ais-path-card"><span class="ais-icon-tile"><svg aria-hidden="true"><use href="../../assets/ais-home-icons.svg#globe"></use></svg></span><strong>Services</strong><span class="ais-path-card__desc">The map servers, Home Assistant and webhooks.</span></div>
+    <a class="ais-path-card" href="#places"><span class="ais-icon-tile"><svg aria-hidden="true"><use href="../../assets/ais-home-icons.svg#map"></use></svg></span><strong>Places</strong><span class="ais-path-card__desc">Ports, berths, anchorages and zones on the map.</span></a>
+    <a class="ais-path-card" href="#system"><span class="ais-icon-tile"><svg aria-hidden="true"><use href="../../assets/ais-home-icons.svg#cpu"></use></svg></span><strong>System</strong><span class="ais-path-card__desc">Status, data and history, the log, the configuration file, access and about.</span></a>
+  </div>
+  <p class="ais-notice"><strong>Saving.</strong> Each page ends with <strong>Cancel</strong> and <strong>Save changes</strong>. A saved change is used at once; the receiver restarts by itself when a change needs it.</p>
+  <details class="ais-more" id="system">
+    <summary><span class="ais-icon-tile"><svg aria-hidden="true"><use href="../../assets/ais-home-icons.svg#cpu"></use></svg></span>What is under System?</summary>
+    <div class="ais-more__body">
+      <p><strong>Status</strong> shows the receiver and the computer. <strong>Copy for bug report</strong> copies both.</p>
+      <p><strong>Data &amp; history</strong> sets whether ships and statistics are kept over a restart.</p>
+      <p><strong>Log</strong> holds the log, which the dashboard's map does not show.</p>
+      <p><strong>Config file</strong> shows the file the dashboard writes.</p>
+      <p><strong>Access</strong> sets the password and HTTPS. See <a href="../remote-access/">Remote Access and Security</a>.</p>
+      <p><strong>About</strong> has <strong>Run setup</strong>, which runs the setup wizard again.</p>
+    </div>
+  </details>
+</section>
+
+<section class="ais-panel ais-panel--flow" aria-labelledby="places">
+  <div class="ais-panel__head">
+    <span class="ais-eyebrow">Settings · Places</span>
+    <h2 id="places">Draw your own places</h2>
+    <p><strong>Settings → Places</strong> is an editor for the places on the map: ports, berths, anchorages, terminals, guard zones and more.</p>
+  </div>
+  <ol class="ais-steps ais-steps--3">
+    <li><b>1</b><strong>Open Places</strong><span>The first time, it asks to enable places and shows the folder they are saved in. Press <b>Save and continue</b>.</span></li>
+    <li><b>2</b><strong>Pick or draw a place</strong><span>Pick one from the list or on the map, or press <b>New place</b>. Draw or reshape its outline, and set its <b>Type</b> and its <b>Parent</b>.</span></li>
+    <li><b>3</b><strong>Save the place</strong><span>Press <b>Save place</b>. It takes effect at once, on the map and for every ship inside the changed outline.</span></li>
+  </ol>
+  <details class="ais-more">
+    <summary><span class="ais-icon-tile"><svg aria-hidden="true"><use href="../../assets/ais-home-icons.svg#layers"></use></svg></span>Import a place, or keep places in a folder</summary>
+    <div class="ais-more__body">
+      <p><strong>Import…</strong>, in the place menu, takes a GeoJSON Feature from anywhere. What it recognises is carried over: the name, the type, codes, the parent, category and rank. Everything else in the file is kept, and a Feature that says nothing about itself becomes a guard zone. The result opens for review and is stored when you save.</p>
+      <p><strong>Import shape</strong> and <strong>Paste shape</strong>, in the map's toolbar, replace only the outline of the place you are editing.</p>
+      <p>To use a folder of place files instead, enter it under <strong>System → Data &amp; history → Files → Place directory</strong>.</p>
+    </div>
+  </details>
+</section>
+
+<section aria-label="Start managed mode yourself">
+<details class="ais-more" id="start-it-yourself">
+  <summary><span class="ais-icon-tile"><svg aria-hidden="true"><use href="../../assets/ais-home-icons.svg#terminal"></use></svg></span>Start managed mode yourself</summary>
+  <div class="ais-more__body">
+    <p>The installs start AIS-catcher in managed mode for you. Started by hand, it takes <code>-E</code> with its configuration file and the address the dashboard listens on:</p>
+    <div class="language-console highlight"><pre><span></span><code>AIS-catcher -E ~/aiscatcher.json 127.0.0.1:8118</code></pre></div>
+    <p>With <code>127.0.0.1</code>, only this computer can open the dashboard. See <a href="../remote-access/">Remote Access and Security</a> to open it to your network. Prefer a configuration file or the command line? See <a href="../../usage/overview/">Manual Mode</a>.</p>
+  </div>
+</details>
+</section>
+
+<section class="ais-cta" aria-label="Next">
+  <div><span class="ais-eyebrow">Keep exploring</span><h2>What's next for your station?</h2></div>
+  <div class="ais-cta__actions"><a class="ais-action ais-action--primary" href="../receivers/">Connect your receivers</a><a class="ais-action ais-action--primary" href="../output/">Outputs</a><a class="ais-action ais-action--primary" href="../remote-access/">Access and security</a></div>
+</section>
+
+</div>
+
+<script>
+(function () {
+    function openTarget() {
+        var el = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+        if (el && el.tagName === 'DETAILS') { el.open = true; el.scrollIntoView(); }
+    }
+    window.addEventListener('hashchange', openTarget);
+    openTarget();
+})();
+</script>
 
 
 
@@ -4042,8 +3893,13 @@
 
 
 
+  
+  
 
 
+
+
+  
 
 
 
