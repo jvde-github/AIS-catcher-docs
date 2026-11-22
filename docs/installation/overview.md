@@ -42,3 +42,23 @@ Pick your system. Each page shows the install for managed mode and for manual mo
 </a>
 
 </div>
+
+## After installing
+
+Every install ends the same way: open the dashboard in your browser and run the setup wizard.
+
+<p class="ais-qs-address"><code>http://localhost:8118</code></p>
+
+From another device, use the computer's name or IP address instead, for example `http://raspberrypi.local:8118`. The [Quick Start](../getting-started/overview.md#open-the-dashboard) walks through the wizard.
+
+## Keep it running
+
+<div class="ais-path-grid">
+
+<a class="ais-path-card" href="../../usage/service/"><span class="ais-icon-tile"><svg aria-hidden="true"><use href="../../assets/ais-home-icons.svg#terminal"></use></svg></span><strong>Running as a service</strong><span class="ais-path-card__desc">Start AIS-catcher at boot, and start, stop and check it.</span></a>
+
+<a class="ais-path-card" href="../ubuntu-debian/#updating"><span class="ais-icon-tile"><svg aria-hidden="true"><use href="../../assets/ais-home-icons.svg#tool"></use></svg></span><strong>Updating</strong><span class="ais-path-card__desc">On Raspberry Pi and Linux, run the install script again. Docker and macOS have their own steps.</span></a>
+
+<a class="ais-path-card" href="../../usage/gui/"><span class="ais-icon-tile"><svg aria-hidden="true"><use href="../../assets/ais-home-icons.svg#layers"></use></svg></span><strong>Control tool for Raspberry Pi</strong><span class="ais-path-card__desc">AIS-catcher-control, for Raspberry Pi and Debian: start, stop and update AIS-catcher, read its log and reboot, all from the browser.</span></a>
+
+</div>

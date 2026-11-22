@@ -2,7 +2,7 @@
 // step shows at a time in a window like the website's wizard: the guide's name
 // (data-eyebrow) and the step's title on top with dots and a counter, Back / Next below.
 // Without it, and in print, the steps read top to bottom. A link to a heading inside a
-// step opens that step. Inside a .stepper-stage the window stands on the harbour photo.
+// step opens that step.
 (function () {
     function titleOf(step) {
         var h = step.querySelector('h2');
@@ -70,8 +70,6 @@
         root.insertBefore(head, steps[0]);
         root.appendChild(foot);
         root.classList.add('stepper--on');
-        if (root.parentElement.classList.contains('stepper-stage'))
-            root.parentElement.classList.add('stepper-stage--on');
 
         var cur = 0;
         function go(i, moved) {

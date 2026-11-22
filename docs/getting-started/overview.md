@@ -1,52 +1,39 @@
 ---
+title: Quick Start
+description: Install AIS-catcher, connect your receiver and see the first ships on your own map.
 hide:
   - toc
-  - navigation
 ---
 
-# Quick Start
+<header class="ais-qs ais-qs-hero">
+  <div class="ais-qs-hero__copy">
+    <h1>Get your station <span>receiving.</span></h1>
+    <p>Install AIS-catcher, connect your receiver and see the first ships on your own map, in four steps.</p>
+    <ol class="ais-qs-journey" aria-label="The four steps">
+      <li><a href="#install-ais-catcher"><b>1</b>Install</a></li>
+      <li><a href="#open-the-dashboard"><b>2</b>Open the dashboard</a></li>
+      <li><a href="#run-the-setup-wizard"><b>3</b>Run the setup wizard</a></li>
+      <li><a href="#see-your-ships"><b>4</b>See your ships</a></li>
+    </ol>
+  </div>
+</header>
 
-<div class="stepper-stage" markdown>
+<section class="ais-qs ais-qs-kit" id="before-you-start" aria-label="What you need">
+  <div class="ais-qs-kit__intro">
+    <strong>Have these ready</strong>
+    <p>Ships send AIS by radio on 162 MHz. The antenna and receiver pick it up, and AIS-catcher turns it into ships on a map. Connect the antenna to the receiver, and the receiver to the computer.</p>
+    <p class="ais-qs-kit__links"><a href="../../what-you-need/">What you need</a><a href="../../ais-basics/">What is AIS?</a></p>
+  </div>
+  <ul class="ais-qs-kit__items">
+    <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1zm1 13.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0m2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0M9.5 1a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM9 3.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1h-5a.5.5 0 0 0-.5.5M1.5 2A1.5 1.5 0 0 0 0 3.5v7A1.5 1.5 0 0 0 1.5 12H6v2h-.5a.5.5 0 0 0 0 1H7v-4H1.5a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5H7V2z"/></svg><span><strong>Computer</strong><small>A Raspberry Pi, a PC or a Mac</small></span></li>
+    <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4H6zM7 1v1h1V1zm2 0v1h1V1zM6 5a1 1 0 0 0-1 1v8.5A1.5 1.5 0 0 0 6.5 16h4a1.5 1.5 0 0 0 1.5-1.5V6a1 1 0 0 0-1-1zm0 1h5v8.5a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5z"/></svg><span><strong>Receiver</strong><small>An RTL-SDR dongle or a dAISy-catcher</small></span></li>
+    <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707m2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708m5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708m2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM6 8a2 2 0 1 1 2.5 1.937V15.5a.5.5 0 0 1-1 0V9.937A2 2 0 0 1 6 8"/></svg><span><strong>Antenna</strong><small>A VHF antenna for 162 MHz</small></span></li>
+  </ul>
+</section>
 
-<div class="stepper" data-eyebrow="Your own station · Quick Start" markdown>
+<section class="ais-qs ais-qs-card ais-qs-install" aria-labelledby="install-ais-catcher" markdown="1">
 
-<div class="stepper-step" markdown>
-
-## Before you start
-
-<div class="stepper-welcome" markdown>
-
-![](../assets/logo-blue.svg)
-
-From a receiver in its box to ships on your own map, in five steps. AIS-catcher runs in **managed mode**: it runs in the background, and you set it up in the dashboard in your browser.
-
-</div>
-
-<p class="ready-label">Have these ready</p>
-
-<div class="ready" markdown>
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1zm1 13.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0m2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0M9.5 1a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM9 3.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1h-5a.5.5 0 0 0-.5.5M1.5 2A1.5 1.5 0 0 0 0 3.5v7A1.5 1.5 0 0 0 1.5 12H6v2h-.5a.5.5 0 0 0 0 1H7v-4H1.5a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5H7V2z"/></svg> **Computer** A Raspberry Pi, a PC or a Mac
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4H6zM7 1v1h1V1zm2 0v1h1V1zM6 5a1 1 0 0 0-1 1v8.5A1.5 1.5 0 0 0 6.5 16h4a1.5 1.5 0 0 0 1.5-1.5V6a1 1 0 0 0-1-1zm0 1h5v8.5a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5z"/></svg> **Receiver** An RTL-SDR dongle or a dAISy-catcher
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707m2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708m5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708m2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM6 8a2 2 0 1 1 2.5 1.937V15.5a.5.5 0 0 1-1 0V9.937A2 2 0 0 1 6 8"/></svg> **Antenna** A VHF antenna, tuned to 162 MHz
-
-</div>
-
-<div class="stepper-fine" markdown>
-
-Not sure what to get? See [What you need](../what-you-need.md). Connect the antenna to the receiver, and the receiver to the computer. To run AIS-catcher with a configuration file or command-line options instead, see [Manual Mode](../usage/overview.md).
-
-</div>
-
-</div>
-
-<div class="stepper-step" markdown>
-
-## Install AIS-catcher
-
-Pick your computer:
+<div class="ais-qs-heading"><span class="ais-qs-number">1</span><div><h2 id="install-ais-catcher">Install AIS-catcher</h2><p>Pick your computer. You see the steps for that one only.</p></div></div>
 
 === "Raspberry Pi and Linux"
 
@@ -91,89 +78,58 @@ Pick your computer:
 
     The settings live in the `ais-config` volume, so they survive a restart. With a dAISy-catcher, add `--device /dev/ttyACM0`. See [Docker](../installation/docker.md).
 
-Something else, such as Android? See [all installs](../installation/overview.md).
+<p class="ais-qs-note"><strong>Managed mode.</strong> AIS-catcher runs in the background, and you set it up in the dashboard in your browser. Prefer a configuration file or the command line? See <a href="../../usage/overview/">Manual Mode</a>. Something else, such as Android? See <a href="../../installation/overview/">all installs</a>.</p>
+
+</section>
+
+<div class="ais-qs ais-qs-stages">
+
+<section class="ais-qs-card" aria-labelledby="open-the-dashboard">
+  <div class="ais-qs-heading"><span class="ais-qs-number">2</span><div><h2 id="open-the-dashboard">Open the dashboard</h2><p>On the computer that runs AIS-catcher, open this address in your browser.</p></div></div>
+  <p class="ais-qs-address"><code>http://localhost:8118</code></p>
+  <p>From another device on your network, use that computer's name or IP address instead, for example <code>http://raspberrypi.local:8118</code>. AIS-catcher then first asks you to set a password.</p>
+  <p class="ais-qs-fine">On macOS and in Docker, the commands above only let the computer itself in: replace <code>127.0.0.1</code> with <code>0.0.0.0</code> to open the dashboard from elsewhere. See <a href="../../managed/remote-access/">Remote Access and Security</a>.</p>
+</section>
+
+<section class="ais-qs-card" aria-labelledby="run-the-setup-wizard">
+  <div class="ais-qs-heading"><span class="ais-qs-number">3</span><div><h2 id="run-the-setup-wizard">Run the setup wizard</h2><p>The first time, a short wizard sets up the station.</p></div></div>
+  <div class="ais-qs-shot"><img src="../../assets/qs-w2-input.webp" alt="The setup wizard's choice of receiver" loading="lazy"></div>
+  <p>Pick your receiver: the wizard lists the SDRs it finds, the dAISy-catcher and other serial receivers. At the end, keep <strong>Start the receiver after saving</strong> ticked and press <strong>Save &amp; Close</strong>. Every step can be skipped, and changed later under <strong>Settings</strong>.</p>
+</section>
+
+<aside class="ais-qs-sharing" aria-label="Community sharing">
+  <span class="ais-qs-sharing__icon" aria-hidden="true">i</span>
+  <div>
+    <strong>Before you save: sharing with the community map</strong>
+    <p>A new station shares the ships it hears with the map at aiscatcher.org, anonymously. In the wizard, <strong>Create station on aiscatcher.org</strong> gives it a name and a page of its own. <strong>Skip</strong> keeps it anonymous, and it still shares. To stop sharing, switch it off under <strong>Outputs → Community map</strong>. See <a href="../../managed/community-map/">Share with the Community Map</a>.</p>
+  </div>
+</aside>
+
+<section class="ais-qs-card ais-qs-card--wide" aria-labelledby="see-your-ships">
+  <div class="ais-qs-card__copy">
+    <div class="ais-qs-heading"><span class="ais-qs-number">4</span><div><h2 id="see-your-ships">See your ships</h2><p>In an area with traffic, the first ships appear on the dashboard map within a few minutes.</p></div></div>
+    <ul class="ais-qs-checks">
+      <li>The lights <strong>A B C D</strong> in the control bar flash as messages arrive.</li>
+      <li>Names take longer: ships send them less often than their position.</li>
+      <li>No ships after a few minutes? <a href="../../advanced/troubleshooting/#no-ships-yet">No ships yet?</a> finds where the signal stops.</li>
+    </ul>
+    <a class="ais-action ais-action--blue" href="../../managed/dashboard/">Getting around the dashboard</a>
+  </div>
+  <div class="ais-qs-map"><img src="../../assets/ais-home-viewer-day.webp" alt="The dashboard map with the ships a station receives" loading="lazy"></div>
+</section>
 
 </div>
 
-<div class="stepper-step" markdown>
+<section class="ais-qs ais-qs-next" aria-labelledby="whats-next">
+  <div>
+    <h2 id="whats-next">Your station is running.</h2>
+    <p>Send ships to your chart plotter, add receivers, or set the station up to run for good.</p>
+  </div>
+  <div class="ais-qs-next__links">
+    <a href="../../managed/chart-plotter/">Send ships to your chart plotter</a>
+    <a href="../../managed/receivers/">Connect more receivers</a>
+    <a href="../../installation/overview/#keep-it-running">Keep it running</a>
+  </div>
+</section>
 
-## Open the dashboard
-
-On the computer that runs AIS-catcher, open this address in your browser:
-
-```console
-http://localhost:8118
-```
-
-From another device on your network, use that computer's name or IP address in its place, for example `http://raspberrypi.local:8118`. AIS-catcher then first asks you to set a password. On macOS and in Docker, the commands in the previous step only let the computer itself in: replace `127.0.0.1` with `0.0.0.0` to open the dashboard from elsewhere.
-
-</div>
-
-<div class="stepper-step" markdown>
-
-## Run the setup wizard
-
-The first time, a short wizard sets up the station. Every step can be skipped, and everything can be changed later under **Settings**.
-
-<div class="walk" markdown>
-
-<div class="walk-step" markdown>
-
-**Welcome** Press **Get started**.
-
-![The setup wizard's welcome](../assets/qs-w1-welcome.webp){ .shot loading=lazy }
-
-</div>
-
-<div class="walk-step" markdown>
-
-**Input Device** Pick your receiver. The wizard lists the SDRs it finds on the computer, the dAISy-catcher and other serial receivers.
-
-![The setup wizard's choice of receiver](../assets/qs-w2-input.webp){ .shot loading=lazy }
-
-</div>
-
-<div class="walk-step" markdown>
-
-**AIS-catcher Community** A new station shares the ships it hears with the community map, anonymously. To give it a name and a page of its own, press **Create station on aiscatcher.org**, register it and paste the station key you get. Or press **Skip**: the station then keeps sharing anonymously. The summary says so, and **Outputs → Community map** switches sharing off.
-
-![The setup wizard's community step](../assets/qs-w3-community.webp){ .shot loading=lazy }
-
-</div>
-
-<div class="walk-step" markdown>
-
-**Summary** Check it, keep **Start the receiver after saving** ticked, and press **Save & Close**.
-
-![The setup wizard's summary](../assets/qs-w4-summary.webp){ .shot loading=lazy }
-
-</div>
-
-</div>
-
-With a station key, your station gets a name, coverage statistics and its own page on aiscatcher.org. Before the summary the wizard also offers **AISHub**, for members of that data exchange: otherwise press **Skip**.
-
-</div>
-
-<div class="stepper-step" markdown>
-
-## See your ships
-
-In an area with traffic, the first ships appear on the dashboard map within a few minutes. Names can take longer: ships send them less often than their position.
-
-!!! question "No ships after a few minutes?"
-    - Check that the antenna is connected, and that the station can see water with traffic.
-    - Check that no other program uses the receiver.
-    - [No ships yet?](../advanced/troubleshooting.md#no-ships-yet) finds where the signal stops: the receiver, the radio or the map.
-
-Where to go next:
-
-- [Getting Around the Dashboard](../managed/dashboard.md): the map, the receiver controls and the settings.
-- [Send Ships to Your Chart Plotter](../managed/chart-plotter.md).
-- [Outputs](../managed/output.md): the community map, other programs and services.
-
-</div>
-
-</div>
-
-</div>
+<p class="ais-qs ais-qs-disclaimer"><strong>Receive-only.</strong> Not approved for navigation or safety-of-life use. <a href="../../disclaimer/">Disclaimer</a></p>

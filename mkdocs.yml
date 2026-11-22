@@ -35,6 +35,8 @@ repo_url: https://github.com/jvde-github/AIS-catcher
 repo_name: GitHub
 extra_css:
   - styles/custom.css
+  - styles/ais-home.css
+  - styles/ais-pages.css
 extra_javascript:
   - javascripts/stepper.js
 
@@ -61,10 +63,11 @@ extra:
 
 nav:
   - Home: index.md
-  - Get Started:
-      - What is AIS?: ais-basics.md
-      - What You Need: what-you-need.md
+  - Start Receiving:
       - Quick Start: getting-started/overview.md
+      - What You Need: what-you-need.md
+      - What is AIS?: ais-basics.md
+      - Features: getting-started/features.md
   - Use Your Station:
       - Getting Around: managed/dashboard.md
       - Inputs: managed/input.md
@@ -72,6 +75,7 @@ nav:
       - Remote Access and Security: managed/remote-access.md
       - Manual Mode: usage/overview.md
   - Guides:
+      - Overview: guides/index.md
       - Set Up Your Station:
           - Name and Place Your Station: managed/station.md
           - Connect Your Receivers: managed/receivers.md
@@ -89,6 +93,7 @@ nav:
           - Offline Web Viewer: advanced/offline.md
           - Aircraft (ADS-B): advanced/ADSB.md
           - GNU Radio: advanced/GNUradio.md
+          - Long Range AIS: advanced/long-range.md
       - Tutorials:
           - Overview: tutorials/index.md
           - 1. Multiple Receivers and Stations: tutorials/stations.md
@@ -134,6 +139,7 @@ nav:
       - Decoding:
           - Model: configuration/model.md
           - Sample Rate: advanced/samplerate.md
+          - Validation: advanced/validation.md
       - Outputs:
           - Overview: configuration/output/overview.md
           - Message Filtering: configuration/output/message-filtering.md
@@ -159,9 +165,6 @@ nav:
   - Help:
       - Troubleshooting: advanced/troubleshooting.md
       - Community: community.md
-      - Features: getting-started/features.md
-      - Long Range AIS: advanced/long-range.md
-      - Validation: advanced/validation.md
       - License: references/license.md
   - What's New: what-is-new.md
 
