@@ -2,6 +2,10 @@
 
 ## Edge
 
+### Inputs
+
+- **TCP server input** — `-x tcp server port` listens for senders that connect and push their data: NMEA, or with `FORMAT` NMEA 2000 frame lines, BaseStation or RAW1090. Lines from several senders never mix. In JSON it is the `tcpserver` input. Without the word `-x` stays UDP.
+
 ### NMEA 2000
 
 - **No NMEA2000 library needed** — NMEA 2000 over SocketCAN (`-i`, `-I`, Linux) is built in, and the TCP input reads NMEA 2000 frame lines from a gateway with protocol `n2k`, on any platform. An interface that cannot be opened is retried instead of ending AIS-catcher.

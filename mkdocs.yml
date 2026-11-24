@@ -32,14 +32,15 @@ theme:
 
 repo_url: https://github.com/jvde-github/AIS-catcher
 repo_name: GitHub
-extra_css:
-  - styles/custom.css
-  - styles/ais-home.css
-  - styles/ais-pages.css
 extra_javascript:
   - javascripts/stepper.js
 
 extra:
+  # loaded by overrides/main.html with the build's time on the address, so a new page never meets an old cached stylesheet
+  stylesheets:
+    - styles/custom.css
+    - styles/ais-home.css
+    - styles/ais-pages.css
   social:
     - icon: fontawesome/solid/house
       link: https://aiscatcher.org

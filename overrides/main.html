@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{#- The site's stylesheets, with the build's time on the address: GitHub Pages lets a browser keep a stylesheet
+    for ten minutes, and a page from a new build must not be drawn with the old one -#}
+{% block extrahead %}
+  {% for path in config.extra.stylesheets %}
+    <link rel="stylesheet" href="{{ path | url }}?v={{ build_date_utc.strftime('%Y%m%d%H%M%S') }}">
+  {% endfor %}
+{% endblock %}

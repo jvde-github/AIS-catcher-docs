@@ -108,7 +108,7 @@ For detailed information about specific devices and input types, please refer to
 ### Other Inputs
 
 - [TCP Input](tcp.md)
-- [UDP Input](udp.md)
+- [UDP or TCP Server Input](udp.md)
 - [SpyServer Input](spyserver.md)
 - [File ](file.md)
 - [Wave File ](wav.md)

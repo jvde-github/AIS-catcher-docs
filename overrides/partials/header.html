@@ -5,7 +5,7 @@
       {% include ".icons/material/menu.svg" %}
     </label>
     <a href="{{ nav.homepage.url | url }}" class="ais-brand" aria-label="{{ config.site_name }}">
-      {% include "partials/logo.html" %}
+      <img src="{{ config.theme.logo | url }}" alt="" width="24" height="24">{#- sized here too, so a page never shows it at full size -#}
       <span class="ais-brand__text"><span class="ais-brand__name">AIS-<b>catcher</b></span><span class="ais-brand__sub">Documentation</span></span>
     </a>
     <label class="md-header__button md-icon ais-search-button" for="__search">

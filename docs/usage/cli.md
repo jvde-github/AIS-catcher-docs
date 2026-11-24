@@ -128,7 +128,7 @@ use: AIS-catcher [options]
 	[-r [optional: yy] filename - read IQ data from file or stdin (.), short for -r -ga FORMAT yy FILE filename
 	[-t [[protocol]] [host [port]] - read IQ data from remote RTL-TCP instance]
 	[-w filename - read IQ data from WAV file, short for -w -gw FILE filename]
-	[-x [server][port] - UDP input of NMEA messages at port on server
+	[-x [[udp/tcp]] [server] [port] - listen at port on server for NMEA over UDP (default), or over TCP for FORMAT TXT, N2K, BASESTATION or RAW1090]
 	[-y [host [port]] - read IQ data from remote SpyServer]
 	[-z [optional [format]] [optional endpoint] - read IQ data from [endpoint] in [format] via ZMQ (default: format is CU8)]
 

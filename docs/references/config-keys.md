@@ -38,7 +38,7 @@ name inside the object configures it.
 
 | Key | Type | Default | Values | Description |
 |---|---|---|---|---|
-| `input` | string | – | `RTLSDR` · `AIRSPY` · `AIRSPYHF` · `HACKRF` · `HYDRASDR` HydraSDR · `SERIALPORT` SERIAL · `UDPSERVER` UDP Server · `RTLTCP` TCP Client · `SPYSERVER` · `NMEA2000` | Device Type |
+| `input` | string | – | `RTLSDR` · `AIRSPY` · `AIRSPYHF` · `HACKRF` · `HYDRASDR` HydraSDR · `SERIALPORT` SERIAL · `UDPSERVER` UDP Server · `TCPSERVER` TCP Server · `RTLTCP` TCP Client · `SPYSERVER` · `NMEA2000` | Device Type |
 | `channel` | string | `"AB"` | `AB` · `CD` | AB is standard, CD the long-range pair. Only with `input` = `RTLSDR` or `AIRSPY` or `AIRSPYHF` or `HACKRF` or `HYDRASDR` |
 | `nmea_channel` | string | – | `AB` | Channel letters in the NMEA output; AB for software that only knows A and B. Only with `channel` = `CD` |
 | `serial` | string | – |  | Pick a device by serial number. Only with `input` = `RTLSDR` or `AIRSPY` or `AIRSPYHF` or `HYDRASDR` or `HACKRF` |
@@ -152,8 +152,18 @@ With `input` = `UDPSERVER`. [Documentation](../configuration/input/udp.md)
 
 | Key | Type | Default | Values | Description |
 |---|---|---|---|---|
-| `server` | string | – |  | Local address the UDP server listens on |
+| `server` | string | – |  | Local address the server listens on |
 | `port` | number | – |  | Port |
+
+#### `tcpserver`
+
+With `input` = `TCPSERVER`. [Documentation](../configuration/input/udp.md#tcp-server)
+
+| Key | Type | Default | Values | Description |
+|---|---|---|---|---|
+| `server` | string | – |  | Local IPv4 address the server listens on |
+| `port` | number | – |  | Port |
+| `format` | string | `"txt"` | `txt` · `n2k` · `basestation` · `raw1090` | What the senders send |
 
 #### `hackrf`
 
