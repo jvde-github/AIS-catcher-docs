@@ -16,7 +16,8 @@
 
 The command line provides the `-m` option which selects the specific decoding model.  In the current version, the following receiver models are embedded for raw data samples:
 
-- **Engine v2** (``-m 11``): the default since v0.71. It decodes the most messages from weak signals and uses the least CPU of the coherent engines. Its own settings are `dd_train` and `dd_weight`; `afc_wide` and `ps_ema` are accepted and have no effect.
+- **Engine v2 High** (``-m 12``, engine type `v2_high`): the default. Engine v2 decodes the most messages from weak signals and uses the least CPU of the coherent engines. A message that fails its checksum is repaired by flipping up to two of its 8 least certain bits; one sampling phase finding the repair is enough. In our recordings this gives between 4% and 15% more messages than v2 Base, with about 30 corrupt messages in 100,000. Its own settings are `dd_train` and `dd_weight`; `afc_wide` and `ps_ema` are accepted and have no effect.
+- **Engine v2 Base** (``-m 11``, engine type `v2_base`): engine v2 with careful repair: one of the 5 least certain bits, and only when two sampling phases find the same repair, for about one corrupt message in 100,000.
 - **Engine v1** (``-m 2``): the default up to v0.70, with the settings `afc_wide` and `ps_ema`.
 - **Engine v1 High** (``-m 4``): engine v1 with an FM decoder beside it, for a few percent more messages than engine v1 at about twice its CPU.
 - **Base Model (non-coherent)** (``-m 1``): using FM discriminator model, similar to RTL-AIS (and GNUAIS/Aisdecoder) with tweaks to the Phase Locked Loop and main receiver filter (computed with a stochastic search algorithm).
@@ -112,7 +113,7 @@ AIS-catcher will also accept AIVDO input which is typically used for the MMSI of
 | <span class="cmd-setting">nmea_refresh</span> | boolean | <span class="cmd-value">false</span> | Recalculate NMEA lines |
 | <span class="cmd-setting">crc_check</span> | boolean | <span class="cmd-value">false</span> | Enable CRC validation |
 | <span class="cmd-setting">vdo</span> | boolean | <span class="cmd-value">true</span> | Accept AIVDO messages |
-| <span class="cmd-setting">sensitivity_high</span> | boolean | <span class="cmd-value">false</span> | Deprecated, and without effect since v0.71: engine v2 is the default. For engine v1 High, select `-m 4` or the engine type `v1_high`. |
+| <span class="cmd-setting">sensitivity_high</span> | boolean | <span class="cmd-value">false</span> | Deprecated, and without effect: choose an engine instead, `-m 4` or engine type `v1_high` for engine v1 High, `-m 12` or `v2_high` for engine v2 High. |
 | <span class="cmd-setting">gps</span> | boolean | <span class="cmd-value">false</span> | Enable GPS output |
 | <span class="cmd-setting">uuid</span> | string | <span class="cmd-value">-</span> | Set UUID for messages |
 | <span class="cmd-setting">control</span> | boolean | <span class="cmd-value">false</span> | Take control lines from this input: JSON lines with `"topic": "station"` or `"topic": "key"`, as a hub's ingress sends them to fill the station list and the API keys. Off unless set, so a feed cannot change either: `-go control on` on the one input that carries them. |

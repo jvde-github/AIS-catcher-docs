@@ -53,9 +53,9 @@ A second engine compares decoders and doubles CPU. `engines` is an optional arra
 
 | Key | Type | Values | Description |
 |---|---|---|---|
-| `type` | string | `auto` Auto · `v1_base` AIS Engine v1 Base · `v1_high` AIS Engine v1 High · `v2_base` AIS Engine v2 Base (experimental) | Decoder |
+| `type` | string | `auto` Auto · `v1_base` AIS Engine v1 Base · `v1_high` AIS Engine v1 High · `v2_base` AIS Engine v2 Base · `v2_high` AIS Engine v2 High | Decoder |
 | `zone` | string[] |  | Routes this engine to outputs sharing a zone |
-| `settings.fp_ds` | boolean | `v1_base` · `v1_high` · `v2_base` | Integer downsampling of 1536K input: less CPU on low-end hardware |
+| `settings.fp_ds` | boolean | `v1_base` · `v1_high` · `v2_base` · `v2_high` | Integer downsampling of 1536K input: less CPU on low-end hardware |
 
 ### Device sections
 
