@@ -55,18 +55,20 @@
       
     
     
-      <link rel="stylesheet" href="../../../styles/custom.css">
-    
-      <link rel="stylesheet" href="../../../styles/ais-home.css">
-    
-      <link rel="stylesheet" href="../../../styles/ais-pages.css">
-    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
+  
+    <link rel="stylesheet" href="../../../styles/custom.css?v=20261124162853">
+  
+    <link rel="stylesheet" href="../../../styles/ais-home.css?v=20261124162853">
+  
+    <link rel="stylesheet" href="../../../styles/ais-pages.css?v=20261124162853">
+  
+
   </head>
   
   
@@ -84,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#input-as-udp-server" class="md-skip">
+        <a href="#input-as-udp-or-tcp-server" class="md-skip">
           Skip to content
         </a>
       
@@ -100,10 +102,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </label>
     <a href="../../.." class="ais-brand" aria-label="AIS-catcher Docs">
-      
-  <img src="../../../assets/logo.svg" alt="logo">
-
-      <span class="ais-brand__text"><span class="ais-brand__name">AIS-<b>catcher</b></span><span class="ais-brand__sub">Documentation</span></span>
+      <img src="../../../assets/logo.svg" alt="" width="24" height="24"><span class="ais-brand__text"><span class="ais-brand__name">AIS-<b>catcher</b></span><span class="ais-brand__sub">Documentation</span></span>
     </a>
     <label class="md-header__button md-icon ais-search-button" for="__search">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
@@ -2378,6 +2377,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UDP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3754,6 +3775,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UDP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3850,18 +3893,47 @@
   
 
 
-<h1 id="input-as-udp-server">Input as UDP server<a class="headerlink" href="#input-as-udp-server" title="Permanent link">&para;</a></h1>
+<h1 id="input-as-udp-or-tcp-server">Input as UDP or TCP server<a class="headerlink" href="#input-as-udp-or-tcp-server" title="Permanent link">&para;</a></h1>
 <div class="command-container">
       <div class="command-syntax">
         <span class="cmd-name">AIS-catcher</span>
         <span class="cmd-flag">-x</span>
+        <span class="cmd-value">server</span>
+        <span class="cmd-value">port</span>
+        [<span class="cmd-setting">setting</span> <span class="cmd-value">value</span>]
+        ...
+    </div>
+    <div class="command-syntax">
+        <span class="cmd-name">AIS-catcher</span>
+        <span class="cmd-flag">-x</span>
+        <span class="cmd-value">udp/tcp</span>
+        <span class="cmd-value">server</span>
+        <span class="cmd-value">port</span>
         [<span class="cmd-setting">setting</span> <span class="cmd-value">value</span>]
         ...
     </div>
 </div>
-<p>You can receive NMEA input via a built-in UDP server:
+<p>AIS-catcher can listen for data that other devices send to it, as a UDP input or a TCP server.</p>
+<h2 id="udp">UDP<a class="headerlink" href="#udp" title="Permanent link">&para;</a></h2>
+<p>UDP takes NMEA, one datagram after another:
 <div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-x<span class="w"> </span><span class="m">192</span>.168.1.235<span class="w"> </span><span class="m">4002</span>
+</code></pre></div>
+In a JSON configuration:
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"udpserver"</span><span class="p">,</span><span class="w"> </span><span class="nt">"udpserver"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"server"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.1.235"</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">4002</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div></p>
+<h2 id="tcp-server">TCP server<a class="headerlink" href="#tcp-server" title="Permanent link">&para;</a></h2>
+<p>A TCP server is for senders that connect and push their data, such as another AIS-catcher with <code>-P</code>, OpenCPN, an NMEA 2000 gateway, or a transponder in "TCP client" mode:
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-x<span class="w"> </span>tcp<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="m">4002</span>
+</code></pre></div>
+It takes NMEA unless <code>FORMAT</code> says otherwise: <code>TXT</code> (NMEA), <code>N2K</code> (NMEA 2000 frame lines from a gateway), <code>BASESTATION</code> or <code>RAW1090</code>. For example, for an NMEA 2000 gateway:
+<div class="language-bash highlight"><pre><span></span><code>AIS-catcher<span class="w"> </span>-x<span class="w"> </span>tcp<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="m">4002</span><span class="w"> </span>FORMAT<span class="w"> </span>N2K
+</code></pre></div>
+In a JSON configuration the TCP server is an input of its own:
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tcpserver"</span><span class="p">,</span><span class="w"> </span><span class="nt">"tcpserver"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"server"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0"</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">4002</span><span class="p">,</span><span class="w"> </span><span class="nt">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"n2k"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></p>
+<p>Each connection is read in whole lines, so lines from several senders never mix. Lines end in a line feed. A connection that sends more than 8192 bytes without a line end is closed. A quiet connection is never closed. The server address must be an IPv4 address or <code>localhost</code>; <code>0.0.0.0</code> listens on every interface.</p>
+<p>Messages sent in parts (AIS two-part messages, NMEA 2000 fast packets) are put together across all senders of one input, so two senders that send parts with the same sequence number at the same moment can lose one of them. Give such senders an input each.</p>
+<p>Anyone who can reach the port can send ships to it, over UDP and TCP alike: listen on <code>127.0.0.1</code> or a local network address unless the port must be open.</p>
 <h2 id="summary-settings">Summary Settings<a class="headerlink" href="#summary-settings" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -3904,16 +3976,22 @@
 <td></td>
 </tr>
 <tr>
+<td><span class="cmd-setting">format</span></td>
+<td>string</td>
+<td><span class="cmd-value">TXT</span></td>
+<td>TCP server only: <code>TXT</code>, <code>N2K</code>, <code>BASESTATION</code> or <code>RAW1090</code></td>
+</tr>
+<tr>
 <td><span class="cmd-setting">port</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
-<td>UDP server port to listen on</td>
+<td>Port to listen on</td>
 </tr>
 <tr>
 <td><span class="cmd-setting">server</span></td>
 <td>string</td>
 <td><span class="cmd-value">-</span></td>
-<td>UDP server address to bind to</td>
+<td>Address to listen on</td>
 </tr>
 </tbody>
 </table>

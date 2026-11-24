@@ -55,18 +55,20 @@
       
     
     
-      <link rel="stylesheet" href="../../styles/custom.css">
-    
-      <link rel="stylesheet" href="../../styles/ais-home.css">
-    
-      <link rel="stylesheet" href="../../styles/ais-pages.css">
-    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
+  
+    <link rel="stylesheet" href="../../styles/custom.css?v=20261124162853">
+  
+    <link rel="stylesheet" href="../../styles/ais-home.css?v=20261124162853">
+  
+    <link rel="stylesheet" href="../../styles/ais-pages.css?v=20261124162853">
+  
+
   </head>
   
   
@@ -100,10 +102,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </label>
     <a href="../.." class="ais-brand" aria-label="AIS-catcher Docs">
-      
-  <img src="../../assets/logo.svg" alt="logo">
-
-      <span class="ais-brand__text"><span class="ais-brand__name">AIS-<b>catcher</b></span><span class="ais-brand__sub">Documentation</span></span>
+      <img src="../../assets/logo.svg" alt="" width="24" height="24"><span class="ais-brand__text"><span class="ais-brand__name">AIS-<b>catcher</b></span><span class="ais-brand__sub">Documentation</span></span>
     </a>
     <label class="md-header__button md-icon ais-search-button" for="__search">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
@@ -2061,6 +2060,17 @@
     <span class="md-ellipsis">
       
         udpserver
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcpserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tcpserver
       
     </span>
   </a>
@@ -4133,6 +4143,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tcpserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tcpserver
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#hackrf" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4502,7 +4523,7 @@ name inside the object configures it.</p>
 <td><code>input</code></td>
 <td>string</td>
 <td>–</td>
-<td><code>RTLSDR</code> · <code>AIRSPY</code> · <code>AIRSPYHF</code> · <code>HACKRF</code> · <code>HYDRASDR</code> HydraSDR · <code>SERIALPORT</code> SERIAL · <code>UDPSERVER</code> UDP Server · <code>RTLTCP</code> TCP Client · <code>SPYSERVER</code> · <code>NMEA2000</code></td>
+<td><code>RTLSDR</code> · <code>AIRSPY</code> · <code>AIRSPYHF</code> · <code>HACKRF</code> · <code>HYDRASDR</code> HydraSDR · <code>SERIALPORT</code> SERIAL · <code>UDPSERVER</code> UDP Server · <code>TCPSERVER</code> TCP Server · <code>RTLTCP</code> TCP Client · <code>SPYSERVER</code> · <code>NMEA2000</code></td>
 <td>Device Type</td>
 </tr>
 <tr>
@@ -4565,7 +4586,7 @@ name inside the object configures it.</p>
 <tr>
 <td><code>type</code></td>
 <td>string</td>
-<td><code>auto</code> Auto · <code>v1_base</code> AIS Engine v1 Base · <code>v1_high</code> AIS Engine v1 High · <code>v2_base</code> AIS Engine v2 Base (experimental)</td>
+<td><code>auto</code> Auto · <code>v1_base</code> AIS Engine v1 Base · <code>v1_high</code> AIS Engine v1 High · <code>v2_base</code> AIS Engine v2 Base · <code>v2_high</code> AIS Engine v2 High</td>
 <td>Decoder</td>
 </tr>
 <tr>
@@ -4577,7 +4598,7 @@ name inside the object configures it.</p>
 <tr>
 <td><code>settings.fp_ds</code></td>
 <td>boolean</td>
-<td><code>v1_base</code> · <code>v1_high</code> · <code>v2_base</code></td>
+<td><code>v1_base</code> · <code>v1_high</code> · <code>v2_base</code> · <code>v2_high</code></td>
 <td>Integer downsampling of 1536K input: less CPU on low-end hardware</td>
 </tr>
 </tbody>
@@ -5006,7 +5027,7 @@ name inside the object configures it.</p>
 <td>string</td>
 <td>–</td>
 <td></td>
-<td>Local address the UDP server listens on</td>
+<td>Local address the server listens on</td>
 </tr>
 <tr>
 <td><code>port</code></td>
@@ -5014,6 +5035,42 @@ name inside the object configures it.</p>
 <td>–</td>
 <td></td>
 <td>Port</td>
+</tr>
+</tbody>
+</table>
+<h4 id="tcpserver"><code>tcpserver</code><a class="headerlink" href="#tcpserver" title="Permanent link">&para;</a></h4>
+<p>With <code>input</code> = <code>TCPSERVER</code>. <a href="../../configuration/input/udp/#tcp-server">Documentation</a></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>server</code></td>
+<td>string</td>
+<td>–</td>
+<td></td>
+<td>Local IPv4 address the server listens on</td>
+</tr>
+<tr>
+<td><code>port</code></td>
+<td>number</td>
+<td>–</td>
+<td></td>
+<td>Port</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>string</td>
+<td><code>"txt"</code></td>
+<td><code>txt</code> · <code>n2k</code> · <code>basestation</code> · <code>raw1090</code></td>
+<td>What the senders send</td>
 </tr>
 </tbody>
 </table>
